@@ -1,0 +1,47 @@
+@charset "utf-8";
+/******************************/
+
+/******************************/
+.addRessDetails{background:#fff;}
+.addRessDetails>div{margin:0;min-height:4rem;line-height:4rem;border-top:0.1rem solid #ebecf0;position:relative;}
+/*.addRessDetails>div:before{content:'';display:inline-block;width:1.4rem;height:1.4rem;background:url('./images/');}*/
+.addRessDetails>div input{font-size:1.2rem;color:#b2b2b2;display:inline-block;position:absolute;left:4.5rem;height:4rem;width:29rem;border:none;}
+/*.addRessDetails>div textarea{color:#b2b2b2;font-size:1.3rem;padding:0.6rem 0;line-height:1.6rem;position:absolute;left:3.8rem;width:86%;border:none;}*/
+.addRessDetails .add .editAddress{font-size:1.2rem;color:#b2b2b2;line-height:1.8rem;width:29rem;/*border:1px solid red;*/float:left;margin-left:4.5rem;margin-top:1.1rem;padding-bottom:0.8rem;}
+
+.addRessDetails	.add  .chooseAddInf{margin:0 1.8rem 0 4.5rem;border-bottom:0.1rem solid #ebecf0;}
+.addRessDetails	.add  .chooseAddInf select{font-size:1.2rem;color:#b2b2b2;height:2rem;margin-right:1%;}
+
+.addRessDetails .a:before,.addRessDetails .b:before,.addRessDetails .add:before,.addRessDetails .c:before{content:''; width:2rem; height:2rem; background:url('../images/addIcon.png') 0 0 no-repeat;background-size:2rem auto;display:inline-block;position:absolute;left:1.8rem;top:1rem;}
+.addRessDetails .a:before{background-position:left top;}
+.addRessDetails .b:before{background-position:left 32.5%;}
+.addRessDetails .add:before{top:3rem;background-position:left 66%;}
+.addRessDetails .c:before{background-position:left 100%;}
+
+/*********↓↓当输入框进行编辑时的样式↓↓************/
+.addRessDetails .a .aa{font-size:1.4rem;color:#656565;}
+.addRessDetails .b .bb{font-size:1.4rem;color:#656565;}
+.addRessDetails .c .cc{font-size:1.4rem;color:#656565;}
+.addRessDetails .add .address{font-size:1.4rem;color:#656565;}
+/*********↑↑↑↑*********/
+/*
+.addRessDetails .a{background:url('../images/addIcon.png') no-repeat;background-size:1.4rem auto;background-position:left top;}
+.addRessDetails .b{background:url('../images/addIcon.png') no-repeat;background-size:auto 1.6rem;background-position:left top;}
+.addRessDetails .add{background:url('../images/addIcon.png') no-repeat;background-size:1.5rem auto;background-position:left top;}
+*/
+
+
+
+/*.addRessDetails .address{height:4.5rem;background:url('./images/location_24x24.png') no-repeat 1.8rem center;background-size:1.5rem auto;}*/
+
+/*.addRessDetails .c{background:url('../images/addIcon.png') no-repeat;background-size:1.6rem auto;background-position:left bottom;}*/
+.addRessDetails .radioSty{font-size:1.3rem;color:#666666;text-indent:1.8rem;position:relative;}
+.addRessDetails .radioSty:after{content:'';display:block;height:1.8rem;width:1.8rem;position:absolute;top:1rem;right:1.8rem;background:url('../images/circle.png') no-repeat;background-size:1.75rem auto;}
+.addRessDetails .checked:after{background-position: left bottom;}
+
+/*********************************************************/
+/**底部菜单布局设置**/
+.saveEdit{font-size:1.5rem;color:#fff;;height:4rem;line-height:4rem;text-align:center;width:100%;background:#fbd74b;margin-top:2rem;}
+/***************/
+
+/***********结束************/

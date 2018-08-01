@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+.page_articleDetail .headimg {height: 23.6rem; position: relative; background: url(../images/index_blank.png) no-repeat center center / 16rem auto;}
+.page_articleDetail .headimg img {width: 36rem; height:23.6rem;}
+.page_articleDetail .headimg button {position: absolute; width:4.32rem; height:4.32rem; border:none; right:2.7rem; bottom:-2.3rem; background: url(../images/article_shang_btn@2x.png) no-repeat 0 0 / 4.32rem 4.32rem;}
+
+.page_articleDetail .btns {height:4rem; line-height:4rem; margin: 0 1rem 1rem 1rem; padding-left: 0.4rem; border-bottom:solid 0.1rem #ddd; font-size:1.2rem;}
+.page_articleDetail .btns .comment {text-indent: 1.8rem; display:inline-block; background:url(../images/article_comment_icon@2x.png) no-repeat 0 center / 1.5rem auto; color:rgba(136, 136, 136, 1);}
+.page_articleDetail .btns .shang {text-indent: 1.8rem; display:inline-block; margin-left: 1rem; background:url(../images/bang_mibi_icon@2x.png) no-repeat 0 center / 1.5rem auto; color:rgba(255, 154, 0, 1);}
+
+.page_articleDetail .articletitle {line-height:2.4rem; font-size:1.6rem; text-align: center; margin: 2rem; margin-bottom: 1.2rem;}
+.page_articleDetail .author {text-align: center; font-size:1rem; color: rgba(136, 136, 136, 1); margin: 0 1rem;}
+
+.page_articleDetail .content {margin: 1rem; overflow-x: hidden;}
+.page_articleDetail .content img {max-width:100%;}
+
+.page_articleDetail .tips h3{line-height:5rem; text-align: center; background: rgba(245, 245, 245, 1); font-size:1.5rem;}
+
+/*******饭局列表*******/
+.page_articleDetail .tips .list{display:block; padding-top:1.4rem;}
+.page_articleDetail .tips .list>ul{width:100%;}
+.page_articleDetail .tips .list>ul>li{width:100%; margin-bottom:1.4rem; background-color:#fff;}
+.page_articleDetail .tips .list>ul>li .p_banner{width:100%; height:8rem;background:no-repeat url('../images/pro_banner.png') 0 0 / auto 8rem;}
+.page_articleDetail .tips .list .pro_top{width:34rem; height:4.5rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; padding:1rem;}
+.page_articleDetail .tips .list .User_Img{margin-top:0.2rem;margin-right:1.2rem;}
+.page_articleDetail .tips .list .User_Img .imgPortrait{width:4.2rem;height:4.2rem; border:none;}
+
+.page_articleDetail .tips .list .User_Conten{width:29rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_articleDetail .tips .list .User_Conten .Contens{width:75%;letter-spacing:0rem; padding-top:0.2rem;}
+.page_articleDetail .tips .list .User_Conten .Contens .qUserName{font-size:1.5rem;color:#414141;}
+.page_articleDetail .tips .list .User_Conten .Contens .msgDetail{font-size:1.2rem;line-height:1.2rem;letter-spacing:0rem;color:#333333;margin:0.6rem auto;}
+.page_articleDetail .tips .list .User_Conten .Contens .msgDetail .song_mi{float:left;}
+.page_articleDetail .tips .list .User_Conten .Contens .msgDetail .b_right{padding-right:0.8rem; margin-right:0.8rem; border-right:0.2rem solid #8e8e8e;}
+.page_articleDetail .tips .list .User_Conten .Contens .msgDetail font{color:#8e8e8e;}
+.page_articleDetail .tips .list .User_Conten .User_right{width:25%;}
+.page_articleDetail .tips .list .User_Conten .User_right img{width:5.9rem; height:3rem; margin-top:0.7rem;}
+
+.page_articleDetail .tips .list .pro_center{width:100%; height:20.6rem; overflow:hidden; position:relative;}
+.page_articleDetail .tips .list .pro_center img{width:100%;}
+.page_articleDetail .tips .list .pro_center span{width:5.6rem; height:2.1rem; line-height:2.1rem; font-size:1.1rem; color:#FFF; text-align:center; background:url(../images/class.png)  0 0 / 5.6rem 2.1rem no-repeat; position:absolute;top:2.2rem; left:0rem;}
+
+.page_articleDetail .tips .list .pro_title{width:33rem; margin:0rem auto; border-bottom:0.1rem solid #eeeeee; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; position:relative;}
+.page_articleDetail .tips .list .pro_title .title_left{width:24rem; max-height:4rem; line-height:2rem; font-size:1.5rem; color:#414141; padding:1.5rem 0rem; letter-spacing:0rem; display:inline-block; overflow:hidden;}
+.page_articleDetail .tips .list .pro_title .price_right{line-height:2.2rem; font-size:1.6rem; color:#ffa315; font-weight:600; display:inline-block; position:absolute; bottom:1.5rem; right:0rem;}
+
+.page_articleDetail .tips .list .pro_buttom{width:33rem; height:5rem; line-height:5rem; margin:0rem auto; font-size:1.2rem; color:#8c8c8c; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_articleDetail .tips .list .pro_buttom .pro_time{width:18.4rem; height:2rem; padding:1.5rem 0rem; line-height:2rem; text-indent:1.7rem; position:relative; display:inline-block; letter-spacing:0rem;}
+.page_articleDetail .tips .list .pro_buttom .pro_time:before{content:''; position:absolute; top:1.9rem; left:0rem; width:1.3rem; height:1.3rem; background:no-repeat url('../images/pro_time.png') 0 0 / 1.3rem 1.3rem;}
+.page_articleDetail .tips .list .pro_buttom .pro_adress{width:14rem; padding:1.5rem 0rem;  height:2rem; line-height:2rem; line-height:2rem; text-indent:1.7rem; position:relative; display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:inline-block;}
+.page_articleDetail .tips .list .pro_buttom .pro_adress:before{content:''; position:absolute; top:1.9rem; left:0rem; width:1.3rem; height:1.3rem; background:no-repeat url('../images/adress.png') 0 0 / 1.3rem 1.3rem;}

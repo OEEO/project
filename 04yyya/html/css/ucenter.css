@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+.header {border:none; position:absolute; top:0.6rem; left:0;background:none;}
+/*.header .turnBack{border-left:0.15rem solid #fff;border-top:0.15rem solid #fff;}
+.header .msg {width:2.3rem; height:2.3rem; position:relative; background:url('../images/message_normal@2x.png') no-repeat 0 0 / 2.3rem auto; float:right;}
+.header .new:after {content:''; width:0.7rem; height:0.7rem; position:absolute; top:0; right:-0.2rem; background:#F00; border-radius:50%;}
+*/
+.userCenter_body {background:#f3f3f3;}	
+
+.userCenter_head {overflow:hidden; width:100%; height:36rem; position:relative;}
+.userCenter_head .bg {width:44rem; height:44rem; left:-2rem; top:-2rem; position:absolute; -webkit-filter: blur(0.7rem); /* Chrome, Opera */-moz-filter: blur(0.7rem); -o-filter: blur(0.7rem);-ms-filter: blur(0.7rem);filter: blur(0.7rem);}
+.userCenter_head .overbg{overflow:hidden;z-index:1;background-color:#111;width:100%;min-height:20rem;height:100%;position:absolute;filter: Alpha(Opacity=30);-moz-opacity:0.33;/* Moz + FF 透明度*/ opacity: 0.3; /* 支持CSS3的浏览器（FF 1.5也支持）透明度*/}
+.userCenter_head .front{z-index:2; width:20rem; left:8rem; top:15rem; position:absolute; text-align:center;}
+.userCenter_head .imgPortrait{width:8rem; height:8rem; border:0.1rem #fff solid; margin-bottom:0.2rem; box-shadow:0 0 0.3rem rgba(255,255,255,0.5); border-radius:50%; background:none; padding:0.4rem; display:inline-block; overflow:hidden;}
+.userCenter_head .imgPortrait img {width:8rem; height:8rem; border-radius:50%;}
+.userCenter_head .front .name{font-size:1.8rem;margin-top:0.5rem;color:white;line-height:2.4rem;}
+.user_introduce{font-size:1.2rem;margin-top:0.5rem;width:100%;height:4rem;position:relative;text-align:center;color:white;line-height:2rem;}
+
+.userCenter_menu {margin-top:1rem;padding:0;width:100%;}
+/*  .userCenter_menu a{display:block;}*/
+.userCenter_menu .li_item {background:#ffffff; margin-top:1rem; width:100%; box-shadow:0 0 0.1rem #999;}
+
+.userCenter_menu .li_item .liBetweens{height:0.1rem; background:#e0e0e0; margin:0rem 1.5rem;}
+.userCenter_menu a {font-size:1.5rem; display:block;height:4rem; line-height:4rem;  padding-left:6rem; position:relative;}
+.userCenter_menu a:before {content:''; width:2rem; height:2rem; left:1.8rem;background:url('../images/ucenter_menu_icons.png') 0 0 no-repeat;background-size:2rem auto; position:absolute; top:1.2rem; }
+.userCenter_menu a .arrowRight{}/*右侧的箭头*/
+.userCenter_menu a.list1:before {background-position:0 0;}
+.userCenter_menu a.list2:before {background-position:0 -4rem;}
+.userCenter_menu a.list3:before {background-position:0 -8rem;}
+.userCenter_menu a.list4:before {background-position:0 -28rem;}
+.userCenter_menu a.list5:before {background-position:0 -26rem;}
+
+.userCenter_menu a:link.list1:before {background-position:0 940;}
+
+/*.userCenter_menu a.list2:before {background-position:0 13.5%;}
+.userCenter_menu a.list3:before {background-position:0 26.8%;}
+.userCenter_menu a.list4:before {background-position:0 40.3%;}
+.userCenter_menu a.list5:before {background-position:0 53.5%;}
+.userCenter_menu a.list6:before {background-position:0 67%;}
+.userCenter_menu a.list7:before {background-position:0 80.5%;}
+.userCenter_menu a.list8:before {background-position:0 94%;}
+
+a:link, a:visited, a:hover, a:active
+*/

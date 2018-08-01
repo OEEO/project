@@ -1,0 +1,12 @@
+<view class="searchbox">
+    <view class="search">
+        <input type="text" placeholder="请输入活动ID…" placeholder-style="color:#ccc" bindinput="getid"/>
+        <text class="search_icon" bindtap="go">进入</text>
+    </view>
+    <view class="hot">热门搜索</view>
+    <view class="searchlist">
+        <block wx:for="{{tags}}" wx:key="tag">
+            <text data-id="{{item.id}}" bindtap="tagurl">{{item.name}}</text>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,20 @@
+@charset "utf-8";
+/***/
+.header{width:100%;position:fixed;top:0;border-bottom:#ccc solid 0.1rem;}
+/******************************************/
+.content {background:#ddd;}
+.content li {padding:0 1rem; margin-bottom:1rem; background:#fff;}
+.content li .top {display:block; height:7.5rem; border-bottom:solid 1px #ddd; padding-top:1rem;}
+.content li .top .left {float:left; width:10rem; height:6.5rem; overflow:hidden; position:relative;}
+.content li .top .left .type {width:4rem; height:1.8rem; position:absolute; font-size:1rem; left:0; top:0; background:rgba(0, 0, 0, 0.36); color:#fff; text-align:center; line-height:1.8rem;}
+.content li .top .left img {width:10rem; min-height:6.5rem;}
+.content li .top .right {width:21rem; height:6.5rem; float:right; line-height:1.6rem;}
+.content li .top .right .t {height:3.2rem; font-size:1.3rem; color:#636363; overflow:hidden; margin-bottom:0.2rem;}
+.content li .top .right .c {height:1.6rem; color:#a6a6a6; font-size:1.1rem; margin-bottom:0.2rem;}
+.content li .top .right .b {height:1.6rem; color:#594943; font-size:1.1rem;}
+.content li .top .right .b .l {float:left;}
+.content li .top .right .b .r {float:right;}
+
+.content li .bottom {height:3.8rem;}
+.content li .bottom .status {float:left; line-height:3.8rem;}
+.content li .bottom .btn {float:right; line-height:1.8rem; margin-top:1rem; border-radius:0.3rem; padding:0 1rem; text-align:center; border:solid 1px #616161; color:#616161; margin-left:0.5rem; font-size:0.9rem;}

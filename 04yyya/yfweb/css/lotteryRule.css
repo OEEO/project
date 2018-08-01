@@ -1,0 +1,25 @@
+.page_lotteryRule .ruleList {
+    font-size: 1.4rem;
+    color: #343434;
+}
+
+.page_lotteryRule .ruleItem {}
+
+.page_lotteryRule .ruleItem .ruleTitle {
+    padding: 2rem 1.5rem;
+}
+
+.page_lotteryRule .ruleItem .ruleContent {
+    background: #f5f5f5;
+    padding: 1.5rem;
+    line-height: 2rem;
+}
+
+.page_lotteryRule .ruleItem .ruleSubList {
+    list-style: circle;
+    padding: 0 2rem;
+}
+
+.page_lotteryRule .ruleItem .ruleSubList li {
+    margin-bottom: 0.8rem;
+}

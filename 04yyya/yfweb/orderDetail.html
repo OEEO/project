@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/public.css">
+	<link rel="stylesheet" type="text/css" href="css/orderDetail.css">
+
+	<script src="js/plugins/jquery.min.js"></script>
+	<script src="js/public.js"></script>
+	<script src="js/orderDetail.js"></script>
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">订单详情</div>
+	<div class="orderOperation"></div>
+</div>
+<div class="headerBlank"></div><!--设置空白，避免顶部菜单遮住网页内容-->
+
+<div id="mainContent">
+	<div class="consumerCode">
+		<div class="the_blankt" ></div>
+		<div class="consumptionStatusTop">
+			<div class="consumptionStatusLeft">消费码</div>
+			<div class="consumptionStatusRight" onclick="orderDetailObject.showCode();">查看二维码</div>
+		</div>
+		<ul class="consumerCodeList"></ul>
+		<!--<div class="consumerCodeInf">有效期
+			<div class="consumerCodeInfDate"></div>
+		</div>-->
+		<div class="the_blankc" ></div>
+	</div>
+	<!-- ------------------------------------------------------------- -->
+
+
+	<div class="orderInf">
+		<div class="actInfTitle">
+			<div class="actInfDaren">达人：<span></span></div>
+			<div class="actInfconnect"></div>
+		</div>
+
+		<div class="orderListLeft">
+
+		</div>
+		<div class="orderListRight">
+			<div class="orderTitle"></div>
+			<div class="t_b">
+				<div class="number">0份</div>
+				<i class="center_boeder"></i>
+				<div class="total">单价：<font></font></div>
+				<div class="status"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+
+	</div>
+
+	<div class="the_blankb">订单详情</div>
+
+	<ul class="orderDetail"></ul>
+
+	<a href="javascript:;" style="display:none;"><div class="refund">申请退款</div></a>
+
+	<div class="bb_liuyan"></div>
+
+	<div class="commentList"></div>
+
+	<div class="bottomBlank"></div>
+	<div class="footer priceMenu orderBottom">立即付款</div>
+</div>
+
+<div class="QRcode" onclick="orderDetailObject.hideCode();">
+	<div class="views">
+		<!--<div class="a">查看消费码</div>
+		<div class="b">参加活动时请出示消费码</div>-->
+		<div class="d"></div>
+		<div class="L_niu"></div>
+		<div class="R_niu"></div>
+
+		<div class="dBtm">左右滑动切换消费码</div>
+	</div>
+	<!--<img class="closed" src="./images/closed@2x.png" onclick="orderDetailObject.hideCode();">-->
+</div>
+<script src="js/member.js"></script>
+<script src="js/plugins/jquery.qrcode-0.12.0.min.js"></script>
+</body>
+</html>

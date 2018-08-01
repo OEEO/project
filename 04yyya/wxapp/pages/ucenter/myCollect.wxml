@@ -1,0 +1,18 @@
+<scroll-view scroll-y="true" class="wrapper" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+    <view class="content">
+        <block wx:for="{{collectlist}}" wx:key="collect">
+            <navigator class="item" url="../tips/Detail?tips_id:{{item.id}}">
+                <view class="left">
+                    <image src="{{item.path}}" />
+                    <view class="category">活动</view>
+                </view>
+                <view class="right">
+                    <view class="t">[{{item.catname}}]{{item.title}}</view>
+                    <view class="c">{{item.times.start_time}}-{{item.times.end_time}}</view>
+                    <view class="b">{{item.simpleaddress}}</view>
+                </view>
+            </navigator>
+            <view class="btn" bindtap="cancel" data-id="{{item.id}}">取消收藏</view>
+        </block>
+    </view>
+</scroll-view>

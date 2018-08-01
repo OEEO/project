@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/raiseDetail2.css">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/plugins/jquery.touchwipe.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/raiseDetail2.js"></script>
+</head>
+
+<body>
+    <div class="header line">
+        <!--   <div><a class="clicklogo" style="background: url(../images/yami_white.png) no-repeat center center / 7rem 3.2rem;
+                                position: absolute;top: 0.8rem;left: 1.2rem;height: 3.4rem;width: 7rem;"></a>
+                            </div>-->
+        <!--<div class="turnBack" onclick="javascript:page.back();">-->
+            <!--<div class="arrow"></div>-->
+        <!--</div>-->
+        <div class="title"></div>
+
+        <div class="crowdday">
+            <a class="shares" style="background: url(../images/raiseshare_white.png) no-repeat center center / 2.2rem 2.2rem;
+                                height: 2.3rem;width: 2.2rem;top:1.1rem;right: 1.2rem;">
+            </a>
+        </div>
+        <!--   <a class="userMsg" href="javascript:jump('ucenter')"></a> -->
+    </div>
+    <!--<div class="headerBlank"></div>-->
+    <!--
+<div class="userCenter">
+
+    <div class="userCenter_menu">
+        <div class="li_item">
+            <a href="?" class="list1">去首页<i class="arrowRight"></i>
+        </div>
+        <div class="add_border_bian"></div>
+        <div class="li_item">
+            <a href="javascript:jump('myOrder');" class="list1">我报名的活动<i class="arrowRight"></i>
+                <span class="number3"><font>0</font>个待付款</span></a>
+        </div>
+        <div class="add_border"></div>
+        <div class="li_item">
+            <a href="javascript:jump('myGoodsOrder');" class="list13">我购买的商品<i class="arrowRight"></i>
+                <span class="number4"><font>0</font>个待付款</span></a>
+        </div>
+        <div class="add_border"></div>
+        <div class="li_item">
+            <a href="javascript:jump('myRaiseOrder');" class="list14">我参加的众筹<i class="arrowRight"></i>
+                <span class="number5"><font>0</font>个待付款</span></a>
+        </div>
+        <div class="the_blank"></div>
+        <div class="add_border"></div>
+        <div class="li_item">
+            <a href="javascript:jump('myProfit')" class="list16">我的收益<i class="arrowRight"></i></a>
+        </div>
+        <div class="add_border"></div>
+        <div class="li_item">
+            <a href="javascript:jump('myRaisePriority')" class="list15">我的优先认筹权<i class="arrowRight"></i></a>
+        </div>
+        <div class="add_border"></div>
+        <div class="li_item">
+            <a href="javascript:jump('myCoupon')" class="list3">我的优惠券<i class="arrowRight"></i></a>
+        </div>
+        <div class="add_border"></div>
+        <div class="li_item">
+            <a href="javascript:jump('myCollect')" class="list12">我的收藏<i class="arrowRight"></i></a>
+        </div>
+        <div class="add_border"></div>
+        <div class="li_item">
+            <a href="javascript:jump('myMsgs');" class="list11">我的消息<i class="arrowRight"></i></a>
+        </div>
+        <div class="add_border_bian"></div>
+        <div class="the_blank"></div>
+        <div class="add_border_bian"></div>
+        <div class="li_item">
+            <a href="javascript:jump('feedBack');" class="list6">客服中心<i class="arrowRight"></i></a>
+        </div>
+        <div class="add_border_bian"></div>
+    </div>
+</div>
+-->
+
+
+    <div class="r_detail">
+        <div class="c_video"></div>
+
+        <!-- 发起人信息 -->
+        <div class="subdec-top">
+            <div class="head-pic">
+                <div class="time">
+                    <div style="padding-top: 1rem;">
+                        <!--<div style="font-size: 1.4rem;color: #b39851;float: left;">发起人：</div> -->
+                        <div class="nickname"></div>
+                    </div>
+                    <div class="city_name" style="float: left;padding: 0.5rem 0.9rem 0 0;"></div>
+                    <div style="height: 1rem;width: 1rem;float: left;background: url('../images/city_point.jpg') center no-repeat;
+                            background-size: 1.5rem,1.5rem;position: relative;top: 0.9rem;right: 0.45rem;">
+                    </div>
+                    <div class="c_time" style="padding-top: 0.5rem;"></div>
+                </div>
+                <img class="headimg" src="" />
+                <span class="collected-count">关注人数：10</span>
+            </div>
+        </div>
+
+        <!-- 项目摘要 -->
+        <h1 style="margin-top: 3rem;"></h1>
+        <h2 style="font-size: 1.2rem;margin: 2rem 1.6rem;font-weight: normal;"></h2>
+
+        <!-- 项目进度线图 -->
+        <div class="c_list" style="border-radius: 2px; margin-top: 2.5rem;">
+            <!--<p><span>认筹总额</span><span>目标金额</span></p><p><span>￥<font name="totaled"></font></span><span>￥<font name="total"></font></span></p>-->
+            <!-- 了解更多 -->
+            <!-- <p style="margin-top: 0.5rem; text-align: right;">
+            <span>
+                <a href="http://mp.weixin.qq.com/s/tF9IZ6EdVonKGL-t3uIJ8A" style="color: #333;">了解更多</a>
+                <span style="border-right: 0.15rem solid #333;border-bottom: 0.15rem solid #333;display: block;width: 0.8rem;height: 0.8rem;
+                            -webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);-o-transform: rotate(-45deg);position: relative;
+                            top: 0.4rem;float: right;">
+                </span>
+            </span>
+        </p> -->
+            <!-- <p><span style="font-size: 1.6rem;">￥<font name="totaled"></font></span></p> -->
+            <!-- 线和点 -->
+            <div class="shell">
+                <!--            <i class="stone"></i> -->
+                <div class="c_line">
+                    <span>
+                        <div class="num">
+                            <font name="percent"></font>%</div>
+                        <div class="dot"></div>
+                    </span>
+                </div>
+            </div>
+            <p style="text-align: right;">
+                <span style="color: #b39851;">目标金额 (￥)
+                    <font name="total"></font>
+                </span>
+            </p>
+            <div class="sublist">
+                <div class="item">
+                    <p class="title">已认筹(￥)</p>
+                    <p class="content">
+                        <font name="totaled"></font>
+                    </p>
+                </div>
+                <div class="item">
+                    <p class="title">认筹人数</p>
+                    <p class="content">
+                        <font name="sum"></font>
+                    </p>
+                </div>
+                <div class="item">
+                    <p class="title">剩余天数</p>
+                    <p class="content" name="days"></p>
+                </div>
+            </div>
+        </div>
+        <!-- 分隔条 -->
+        <div style="width: 100%; height: 1rem; background-color: #f5f5f5;"></div>
+
+        <!--<div class="the_blank"></div>-->
+        <div class="detail">
+            <div class="subdec">
+                <!--
+            <div class="subdec-top">
+
+                <div class="head-pic">
+                    <img class="headimg" src=""/>
+                    <div class="time"><span class="nickname"></span><span class="c_time"></span></div>
+                </div>
+                <h1></h1>
+                <div class="c_video"></div>
+            </div>
+            -->
+                <!-- 导航 -->
+                <div class="status_check">
+                    <a href="javascript:void(0);" class="statu add_hei" data="myRaise">
+                        <span>我的项目</span>
+                    </a>
+                    <a href="javascript:void(0);" class="statu raiseReturn" data="raiseReturn">
+                        <span>项目回报</span>
+                    </a>
+                    <a href="javascript:void(0);" class="statu contact" data="contact">
+                        <span>联系我们</span>
+                    </a>
+                    <a href="javascript:void(0);" class="statu" data="riskTips">
+                        <span>风险提示</span>
+                    </a>
+                </div>
+                <!-- 内容 -->
+                <table style="margin: 0 auto;">
+                    <tr>
+                        <td class="dec">
+                            <!-- 联系我们 -->
+                            <div class="item contact" style="display: none;">
+                                <div class="contact-main">
+                                    <div>
+                                        <p>关于项目的详细信息，或有任何问题
+                                            <br>欢迎添加小助理咨询</p>
+                                    </div>
+                                    <div class="tips">小助理微信号：yami194</div>
+                                    <div class="wx-icon-wrap">
+                                        <img class="wx-icon" src="./images/wx_icon.png"></img>
+                                    </div>
+                                    <button class="wx-copy-btn">点击复制微信号</button>
+                                </div>
+                                <!-- 用于复制微信号 -->
+                                <input type="text" value="yami194" class="wx-account" style="opacity: 0; height: 0;">
+                            </div>
+                            <!-- 风险提示 -->
+                            <div class="item riskTips" style="display: none;">
+                                <div class="raise-tag-wrap">
+                                    <div class="raise-tag">关于项目</div>
+                                </div>
+                                <div class="raise-content">
+                                    该项目须在
+                                    <span class="raise_end_time"></span>前达到
+                                    <font name="total"></font>元目标金额才算成功，否则已支持订单将取消；订单取消时已支付金额将自动退还到您的个人账号。
+                                </div>
+                                <div class="raise-tag-wrap">
+                                    <div class="raise-tag">什么是众筹?</div>
+                                </div>
+                                <div class="raise-content">
+                                    人们不是在这里购买已经存在的商品——我们是在参与创意。实现创意并不总是那么容易，一些项目会完成得很精彩，还有一些会遇到想不到的问题————但请对它们保持耐心。
+                                </div>
+                                <div class="raise-content">
+                                    发起者对他们的项目负责。一旦你支持一个项目，你需要相信发起者可以很好的完成他的工作。你可以对发起者做一点研究，了解他们的经验、名声。支持者也要判断什么是值得支持的项目。一些项目并不会按照计划进行，所以众筹的项目发起者在这里详细记录他们的计划进展，但是没有事情是可以保证。当您支持一个项目，您需要记住这点。
+                                </div>
+                                <div class="raise-tag-wrap">
+                                    <div class="raise-tag">如何找到我们?</div>
+                                </div>
+                                <div class="raise-content">
+                                    <div>官方客服微信号：yami194</div>
+                                    <div>客服热线：020-23336323</div>
+                                    <div>官方邮箱：service@yami.ren</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="headerBlank"></div>
+    <div class="footer crowdMenu">
+        <!--<div class="crowdday">
+                    <img src="images/q@2x.png" class="qa" onclick="javascript:window.location.href='http://mp.weixin.qq.com/s/tF9IZ6EdVonKGL-t3uIJ8A'"/>
+                    <img src="images/comment@2x.png" onclick="javascript:jump('raiseComment', {raise_id:raiseDetail2Object.raise_id})" class="info"/>
+                    <img src="images/raiseshare@2x.png" class="shares"/>
+                </div>-->
+        <!-- <div class="fr">
+                    <div class="subleft" style="color: #888;">
+                        <span class="lt" style="font-size: 1.2rem;"><font name="sum">105</font>人已认筹，项目天数：</span>
+                        <span class="lb" style="font-size: 1.2rem;" name="days">已结束</span>
+                    </div>
+                    <div class="ready">
+                        VIP优先认筹中
+                    </div>
+                    <div style="width: 8rem;padding: 0.7rem;margin-right: 1rem;">
+                        <div style="background: #ff192f;height: 2.68rem;border-radius: 2px;padding-top: 0.3rem;">
+                            <a href="javascript:jump('raiseReturn', {raise_id:raiseDetail2Object.raise_id})" class="submitBtn">支持TA</a>
+                        </div>
+                    </div>
+                </div> -->
+        <button class="suport-btn whole-btn" onclick="javascript:jump('raisePay2', raiseDetail2Object.data)">兑换礼券</button>
+    </div>
+    <div class="fixed fixed_top">
+        <div class="statusbox">
+            <div class="status_check">
+                <a href="javascript:void(0);" class="statu add_hei" data="myRaise">
+                    <span>我的项目</span>
+                </a>
+                <a href="javascript:void(0);" class="statu raiseReturn" data="raiseReturn">
+                    <span>项目回报</span>
+                </a>
+                <a href="javascript:void(0);" class="statu contact" data="contact">
+                    <span>联系我们</span>
+                </a>
+                <a href="javascript:void(0);" class="statu" data="riskTips">
+                    <span>风险提示</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="fixed fixed_bottom">
+        <div class="timebox">
+            <div class="boxleft">
+                <p>- 距离上线还有 -</p>
+                <div class="downtime">
+                    <font>0</font>
+                    <font>0</font>天
+                    <font>0</font>
+                    <font>0</font>时
+                    <font>0</font>
+                    <font>0</font>分
+                    <font>0</font>
+                    <font>0</font> 秒
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="follow-btn">
+                <i></i>关注
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

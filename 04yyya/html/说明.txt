@@ -1,0 +1,18 @@
+首页 		   	choice.html
+
+活动详情	        tips.html
+
+（闪购）商品详情
+
+明星达人	    	daRen.html
+
+订单列表（我的订单）    myOrder.html
+
+个人中心		ucenter.html
+
+申请成为达人		
+
+确认参加		
+
+确认购买		
+

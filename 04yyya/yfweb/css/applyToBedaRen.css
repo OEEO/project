@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.page_applyToBedaRen .applytobe{font-size:1.6rem;position:absolute;right:1.6rem;top:0;color:#b39851;line-height: 4.5rem;}
+
+.page_applyToBedaRen input::-webkit-input-placeholder {color: #ccc  !important; /* WebKit browsers */}
+.page_applyToBedaRen input:-moz-placeholder {color: #ccc  !important; /* Mozilla Firefox 4 to 18 */}
+.page_applyToBedaRen input::-moz-placeholder {color: #ccc  !important; /* Mozilla Firefox 19+ */}
+
+.page_applyToBedaRen .contents {padding:0 1.5rem; display: block;}
+.page_applyToBedaRen .item {border-bottom: solid 0.1rem #e8e8e8; height: 5rem; overflow: hidden;}
+.page_applyToBedaRen .item .left {float: left; width:20rem; line-height:5rem; font-size:1.2rem; color:#888;}
+.page_applyToBedaRen .item .right {float: right; width:12.5rem; line-height: 4.4rem; height:4.4rem; font-size:1.2rem; overflow: hidden; text-align: right; margin: 0.3rem 0;}
+.page_applyToBedaRen .item .right.headpic img {width:4rem; height:4rem; border-radius: 50%;vertical-align: middle;}
+.page_applyToBedaRen .item .right input[type="text"] {border:none; background:none; width:12rem; height:5rem; text-align: right;}
+.page_applyToBedaRen .item .right select {height: 3rem;appearance:none; -moz-appearance:none; -webkit-appearance:none; border: none; color:#333; text-align: right; padding-right: 1.4rem; background: url(../images/select_icon.jpg) no-repeat right center / 1.1rem auto;direction: rtl;}
+.page_applyToBedaRen .item .right .img {width:6.8rem; height:auto; border:none;}
+.page_applyToBedaRen .item .right .img.empty {width:2rem; height:2rem;vertical-align: middle;}
+
+.page_applyToBedaRen .bott_none{ height:6rem;}
+
+.page_applyToBedaRen .contenting{margin:0 auto; text-align:center; width:30rem; padding:0 3rem 1.5rem 3rem; background: #f7f7f7; border-bottom: solid 0.1rem #eee;}
+.page_applyToBedaRen .contenting .title_top{width:100%; color:#B5B5B5; font-size:1.8rem; line-height:6rem;}
+.page_applyToBedaRen .contenting .title_bottom{width:100%; color:#B5B5B5; font-size:1.4rem; line-height:1.6rem;}
+
+/***********结束************/

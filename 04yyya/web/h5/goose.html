@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="帅鹅颜值大PK">
+    <meta name="keywords" content="颜值">
+    <title>帅鹅颜值大PK</title>
+    <!-- 载入index.css文件，用于控制页面中元素的显示样式 -->
+    <link href="css/goose.css?v=2.8" rel="stylesheet" />
+    <!-- 载入jQuery核心框架 -->
+    <script type="text/javascript" src="../js/plugins/jquery.min.js"></script>
+    <script src="https://hm.baidu.com/hm.js?783716691e606db0c3dd11a238224da2"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../js/plugins/jsapi.js"></script>
+    <script src="js/goose.js?v=2.8"></script>
+    <script>
+        var _hmt = _hmt || [];
+        _hmt.push(['_trackPageview', window.location.href]);
+    </script>
+</head>
+<body>
+<div class="container index">
+    <div class="mainimg" onclick="go();">
+        <img class="vs" src="img/goose/1/2.png" />
+        <img class="h" src="img/goose/1/3.png" />
+        <img class="g" src="img/goose/1/4.png" />
+        <img class="go" src="img/goose/1/5.png"/>
+    </div>
+    <img class="title" src="img/goose/1/1.png" onclick="go();" />
+</div>
+
+<div class="container second">
+    <img class="hot" src="img/goose/2/1.png" />
+    <div class="input">
+        <img class="namebg" src="img/goose/2/2.png"/>
+        <div class="name">
+            <input type="text" class="nickname" id="nickname" value=""/>
+        </div>
+        <img class="sexbg" src="img/goose/2/4.png"/>
+        <div class="sex">
+            <input type="button" name="sex" value="0" class="girl"/>
+            <input type="button" name="sex" value="1" class="boy"/>
+        </div>
+        <div class="save" onclick="save()"></div>
+    </div>
+</div>
+
+<div class="container third">
+    <img class="p" src="img/goose/3/1.png" />
+    <div class="btn">
+        <img class="back" src="img/goose/3/2.png" onclick="$('.third').hide();$('.second').fadeIn('fast');"/>
+        <input id="upload-file" type="file" onchange="upload(this.files[0])"/>
+        <img class="up-img" src="img/goose/3/3.png" />
+    </div>
+    <div class="upload">
+        <img src="img/goose/3/5.png" class="rota" onClick="rotating()"/>
+        <div class="zoom">
+            <span class="add"></span>
+            <div class="line"><div class="subline"></div><span class="move"></span></div>
+            <span class="sub"></span>
+        </div>
+        <div class="up">
+            <div class="canvaslay"><canvas class="canvas"></canvas></div>
+            <div class="make" onclick="setTimeout(function (){create();},1000);"></div>
+        </div>
+
+    </div>
+    <canvas class="img"></canvas>
+    <canvas class="makeimg"></canvas>
+</div>
+
+</body>
+</html>

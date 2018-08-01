@@ -1,0 +1,4 @@
+/* pages/order/refund.wxss */
+.bg {
+    width: 100%;
+}

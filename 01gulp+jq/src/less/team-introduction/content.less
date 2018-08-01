@@ -1,0 +1,44 @@
+.main-content {
+    .players-wrapper {
+        padding-top: 48px;
+        .player {
+            float: left;
+            position: relative;
+            border: 1px solid #cbcbcb;
+            background-color: #fff;
+            width: 218px;
+            height: 270px;
+            text-align: center;
+            margin-right: 25px;
+            margin-bottom: 24px;
+            vertical-align: top;
+            .label {
+                position: absolute;
+                right: 13px;
+                top: 11px;
+                width: 52px;
+                height: 18px;
+                border: 1px solid #cbcbcb;
+                border-radius: 9px;
+                text-align: center;
+                background: #fff;
+            }
+            .avatar {
+                & img {
+                    margin-top: 36px;
+                }
+            }
+            .top-hero {
+                position: absolute;
+                bottom: 22px;
+                padding: 0 22px;
+                img {
+                    margin-left: 6px;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

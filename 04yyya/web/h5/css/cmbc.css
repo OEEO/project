@@ -1,0 +1,32 @@
+@charset "utf-8";
+*,html,body{padding:0px;margin:0px;}
+.div{position: relative;}
+img{width: 100%;height: 100%;display: block;}
+a{width: 2.2rem;height: 0.66rem; background:rgba(0,255,0,0);position: absolute;z-index: 99;}
+.o .one{
+    top: 7.33rem;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+.s .one{
+    top: 6.74rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.t .one{
+    top: 10.78rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.p .one {
+    top: 8.09rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

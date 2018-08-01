@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="renderer" content="webkit">
+        <meta name="force-rendering" content="webkit">
+        <meta name="format-detection" content="telephone=no" />
+        <link rel="shortcut icon" href="http://mat1.gtimg.com/sports/kbsweb/favicon.ico" type="image/x-icon">
+        <title></title>
+        <link rel="stylesheet" href="../tmp/style/main.css?t={VERSION_TIME}" />
+        <!-- built style will be auto injected -->
+        <script>
+            /**
+             * 图片加载失败时调用的函数。0 -- 默认头像， 1 -- 灰色图片
+             * 例子：<img src="man.png" onerror="nofind(0)" alt="This is a man" />
+             */
+            function nofind(type) {
+                var url = type === 0 ?
+                    'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/unmen.png' :
+                    'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/blank.png';
+                var img = event.srcElement;
+                img.src = url;
+                img.onerror = null;
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="main">
+            <!-- built html will be auto injected -->
+            <div id="no-info-tip">暂无战队信息，<a href="http://sports.qq.com/video/djsp.htm" target="_blank">去电竞首页逛逛</a></div>
+            <div class="main-header hide">
+                <div class="main-header-wrapper">
+                    <img src="" onerror="nofind()" alt="This is team's logo" width="300" height="300" class="logo" />
+                    <div class="content">
+                        <div class="name">
+                            <p class="suptitle">--</p>
+                            <p class="subtitle">--</p>
+                        </div>
+                        <div class="summary">
+                        </div>
+                        <div class="avg_data">
+                            <div class="league_name">
+                                <img src="../src/assets/prev-icon.png" class="previous">
+                                <span></span>
+                                <img src="../src/assets/next-icon.png" class="next">
+                            </div>
+                            <div class="league_avg_data team-avg">
+                                <div class="winRate">
+                                    <p class="lg">--</p>
+                                    <p class="sm">胜率</p>
+                                </div>
+                                <div class="KDA">
+                                    <p class="lg">--</p>
+                                    <p class="sm">KDA</p>
+                                </div>
+                                <div class="firstBloodRate">
+                                    <p class="lg">--</p>
+                                    <p class="sm">一血率</p>
+                                </div>
+                                <div class="DPS">
+                                    <p class="lg">--</p>
+                                    <p class="sm">分均输出</p>
+                                </div>
+                                <div class="tower">
+                                    <p class="lg">--</p>
+                                    <p class="sm">场均推塔</p>
+                                </div>
+                                <div class="golds">
+                                    <p class="lg">--</p>
+                                    <p class="sm">分均经济</p>
+                                </div>
+                                <div class="CSPM">
+                                    <p class="lg">--</p>
+                                    <p class="sm">分均补刀</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content hide">
+                <div class="players-wrapper clearfix">
+                    <div class="player">
+                        <div class="label"></div>
+                        <a href="javascript:;" class="avatar">
+                            <img src="" alt="头像" height="165" onerror="nofind(0)">
+                        </a>
+                        <div class="top-hero">
+                            <img src="" alt="英雄" width="30" onerror="nofind(0)">
+                        </div>
+                    </div>
+                </div>
+                <div class="league-nav">
+                    <div>比赛记录</div>
+                    <div id="collapse"></div>
+                    <div id="date-picker" class="date-picker"></div>
+                </div>
+                <div id="no-list-tip">暂无比赛记录</div>
+                <div class="history-match-item hide">
+                    <div class="match-title">
+                        <p class="league-name">暂无比赛记录</p>
+                        <div class="teams clearfix">
+                            <div class="left-team">
+                                <img src="" width="48" height="48" onerror="nofind()" class="logo">
+                                <div class="name"></div>
+                            </div>
+                            <div class="right-team">
+                                <div class="name"></div>
+                                <img src="" width="48" height="48" onerror="nofind()" class="logo">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <p class="score">-&nbsp;:&nbsp;-</p>
+                            <div style="margin-top: -4px">
+                                <span class="date"></span><span class="time"></span><span class="type"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="match-item">
+                        <div class="match-item-header">
+                            <div>
+                                <p class="bo">BO1</p>
+                                <p class="duration">--:--</p>
+                            </div>
+                            <div class="result">--</div>
+                            <div class="left">
+                                <span class="golds">--</span>
+                                <span class="dragon">--</span>
+                                <span class="baron">--</span>
+                                <span class="total_kill">--</span>
+                            </div>
+                            <div class="right">
+                                <span class="total_kill">--</span>
+                                <span class="baron">--</span>
+                                <span class="dragon">--</span>
+                                <span class="golds">--</span>
+                            </div>
+                            <a class="video" target="_blank"></a>
+                        </div>
+                        <div class="match-item-content">
+                            <div class="left-team-member">
+                                <div class="member">
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="avatar">
+                                    <div class="name">--</div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="hero">
+                                    <div class="kda">
+                                        <p>--</p>
+                                        <p>[-/-/-]</p>
+                                    </div>
+                                    <div class="gold">--</div>
+                                </div>
+                                <div class="member">
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="avatar">
+                                    <div class="name">--</div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="hero">
+                                    <div class="kda">
+                                        <p>--</p>
+                                        <p>[-/-/-]</p>
+                                    </div>
+                                    <div class="gold">--</div>
+                                </div>
+                                <div class="member">
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="avatar">
+                                    <div class="name">--</div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="hero">
+                                    <div class="kda">
+                                        <p>--</p>
+                                        <p>[-/-/-]</p>
+                                    </div>
+                                    <div class="gold">--</div>
+                                </div>
+                                <div class="member">
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="avatar">
+                                    <div class="name">--</div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="hero">
+                                    <div class="kda">
+                                        <p>--</p>
+                                        <p>[-/-/-]</p>
+                                    </div>
+                                    <div class="gold">--</div>
+                                </div>
+                                <div class="member">
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="avatar">
+                                    <div class="name">--</div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="hero">
+                                    <div class="kda">
+                                        <p>--</p>
+                                        <p>[-/-/-]</p>
+                                    </div>
+                                    <div class="gold">--</div>
+                                </div>
+                            </div>
+                            <div class="compare">
+                                <div class="compare-item">
+                                    <div class="compare-item-left">
+                                        <p>--</p>
+                                        <p>-/-/-</p>
+                                    </div>
+                                    <div class="compare-item-middle">
+                                        <div class="compare-title">KDA</div>
+                                        <div class="progress-bar">
+                                            <div class="left-progress"></div>
+                                            <div class="right-progress"></div>
+                                        </div>
+                                    </div>
+                                    <div class="compare-item-right">
+                                        <p>--</p>
+                                        <p>-/-/-</p>
+                                    </div>
+                                </div>
+                                <div class="compare-item">
+                                    <div class="compare-item-left">
+                                        --
+                                    </div>
+                                    <div class="compare-item-middle">
+                                        <div class="compare-title">分均补刀</div>
+                                        <div class="progress-bar">
+                                            <div class="left-progress"></div>
+                                            <div class="right-progress"></div>
+                                        </div>
+                                    </div>
+                                    <div class="compare-item-right">
+                                        --
+                                    </div>
+                                </div>
+                                <div class="compare-item">
+                                    <div class="compare-item-left">
+                                        --
+                                    </div>
+                                    <div class="compare-item-middle">
+                                        <div class="compare-title">分均伤害</div>
+                                        <div class="progress-bar">
+                                            <div class="left-progress"></div>
+                                            <div class="right-progress"></div>
+                                        </div>
+                                    </div>
+                                    <div class="compare-item-right">
+                                        --
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right-team-member">
+                                <div class="member">
+                                    <div class="gold">--</div>
+                                    <div class="kda">
+                                        <p>--</p>
+                                        <p>[-/-/-]</p>
+                                    </div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="hero">
+                                    <div class="name">--</div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="avatar">
+                                </div>
+                                <div class="member">
+                                    <div class="gold">--</div>
+                                    <div class="kda">
+                                        <p>--</p>
+                                        <p>[-/-/-]</p>
+                                    </div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="hero">
+                                    <div class="name">--</div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="avatar">
+                                </div>
+                                <div class="member">
+                                    <div class="gold">--</div>
+                                    <div class="kda">
+                                        <p>--</p>
+                                        <p>[-/-/-]</p>
+                                    </div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="hero">
+                                    <div class="name">--</div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="avatar">
+                                </div>
+                                <div class="member">
+                                    <div class="gold">--</div>
+                                    <div class="kda">
+                                        <p>--</p>
+                                        <p>[-/-/-]</p>
+                                    </div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="hero">
+                                    <div class="name">--</div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="avatar">
+                                </div>
+                                <div class="member">
+                                    <div class="gold">--</div>
+                                    <div class="kda">
+                                        <p>--</p>
+                                        <p>[-/-/-]</p>
+                                    </div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="hero">
+                                    <div class="name">--</div>
+                                    <img src="" width="30" height="30" onerror="nofind(0)" class="avatar">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="load-more hide">LOAD MORE</div>
+            </div>
+        </div>
+        <!-- built script will be auto injected -->
+        <script data-main="../src/script/js/team-introduction.js?t={VERSION_TIME}" src="../src/script/require.js"></script>
+    </body>
+
+</html>

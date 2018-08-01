@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/choice.css">
+<script src="js/plugins/jquery.min.js"></script>
+<script src="js/plugins/jquery.touchwipe.min.js"></script>
+<script src="js/public.js"></script>
+<script src="js/choice.js"></script>
+</head>
+<body>
+<div class="header">
+	<!--<div class="location">广州</div>-->
+	<div class="logo"><img src="images/logo.png" alt="logo"></div>
+	<a class="userMsg" href="javascript:jump('ucenter')"></a>
+</div>
+<div class="headerBlank"></div>
+<!--<div class="menu_top" style="display:none;">-->
+	<!--<div class="menu_list m_l yellow_border">精选</div>-->
+	<!--<div class="menu_list m_r ">达人</div>-->
+<!--</div>-->
+<!--<div class="table_one">-->
+    <!--设置空白，避免顶部菜单遮住网页内容-->
+    <!-- ---------------------------------------------------------------------------------- -->
+    <div class="pageHead"></div>
+    <!-- --------------------------------------------------------------------------------- -->
+    <!---- 中部菜单 ---->
+    <div class="discover_menu">
+        <a href="javascript:jump('raiseList')">众筹</a>
+        <!--<a href="javascript:jump('category', {tag_id:76, title:'私房美味'})">私房美味</a>-->
+        <a href="javascript:jump('category', {category: -4, title:'饭局活动'})">饭局活动</a>
+        <a href="javascript:jump('category', {category:-3, title:'荐物'})">荐物</a>
+
+        <a href="javascript:jump('themeList')">精选专题</a>
+   <!-- <a href="https://j.youzan.com/eO2EcY">有赞商城</a> -->
+        <!--<a href="javascript:window.location.href='http://yummy194.cn/h5/map.html'" rel="nofollow" target="_blank">KLASS 11</a>-->
+    </div>
+
+    <!-- 商品列表开始 -->
+    <!--<div class="goods_list">-->
+        <!--<div class="list_title">优选商品</div>-->
+        <!--<div class="plist"><div class="list"></div></div>-->
+    <!--</div>-->
+
+    <!-- 活动列表开始 -->
+    <div class="pro_list">
+        <!--<div class="list_title">精选活动</div>-->
+    	<ul class="product_list raiseList"></ul>
+    </div>
+    <center><img class="loading" src="images/loading@2x.png" /></center>
+    <!-- 专场列表结束 -->
+    <div class="clearfix"></div>
+    <div class="the_blank"></div>
+<!--</div>-->
+<!--<div class="table_two" style="display:none;">-->
+	<!--<div class="header_banner">-->
+    	<!--<a href=""><img src="images/daren.png"/></a>-->
+    <!--</div>-->
+    <!--<div class="daren_menu">-->
+    	<!--<div class="mn new color_y">最新</div>-->
+        <!--<span></span>-->
+        <!--<div class="mn hot">最热</div>-->
+    <!--</div>-->
+    <!--<div class="daren_conten">-->
+    	<!--<ul class="conten_body_new"></ul>-->
+        <!--<ul class="conten_body_hot" style="display:none"></ul>-->
+    <!--</div>-->
+<!--</div>-->
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/ask.css">
+<script src="js/plugins/jquery.min.js"></script>
+<script src="js/public.js"></script>
+<script src="js/ask.js"></script>
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+	<div class="title">活动答疑</div>
+</div>
+<div class="headerBlank"></div><!--设置空白，避免顶部菜单遮住网页内容-->
+<div class="content"></div>
+<div class="commitQuestionBlank"></div>
+<div class="footer commitQuestion">
+	<div id="" class="m_question" contenteditable="true" onKeyUp="askObject.whetherNull(this);" onfocus="if($(this).text()=='我要提问')$(this).empty();" onblur="if($(this).text()==''){$(this).empty();$(this).append('我要提问');}askObject.whetherNull(this);">我要提问</div>
+	<button type="submit">发送</button>
+</div>
+</body>
+</html>

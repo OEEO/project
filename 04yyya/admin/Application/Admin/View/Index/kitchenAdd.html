@@ -1,0 +1,486 @@
+<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=B6JBZ-JLVK4-QFCUC-DFNRG-PBIP7-OTFAJ"
+        xmlns="http://www.w3.org/1999/html"></script>
+
+
+<form class="am-form" method="post" onsubmit="return checkdata()">
+    <fieldset>
+        <div class="am-form-group">
+            <label for="kitchenName">厨房名称</label>
+            <input type="text" class="" id="kitchenName" name="kitchenName" placeholder="请输入厨房名称" required/>
+        </div>
+        <div class="am-form-group">
+            <label for="nickname">负责人昵称</label>
+            <input type="text" class="" id="nickname" name="nickname" placeholder="请输入负责人昵称" required />
+        </div>
+        <div class="am-form-group">
+            <label for="telephone">负责人手机号</label>
+            <input type="text" class="" id="telephone" name="telephone" placeholder="请输入负责人手机号" required />
+        </div>
+        <div class="am-form-group">
+            <label for="weixincode">负责人微信号</label>
+            <input type="text" class="" id="weixincode" name="weixincode" placeholder="请输入负责人微信号" required />
+        </div>
+        <div class="am-form-group">
+            <label for="category">厨房分类</label>
+            <select id="category">
+            <foreach name="category" item="r">
+                <option value="{$r.id}">{$r.name}</option>
+            </foreach>
+            </select>
+        </div>
+
+        <div class="am-form-group">
+            <label for="label">厨房关键字</label>
+            <div class="tags">
+                <div id="label" class="am-btn-group" data-am-button>
+                    <foreach name="label" item="row">
+                        <label class="am-btn am-btn-default am-btn-xs">
+                            <input type="checkbox" name="tags[]" value="{$row.id}"> {$row.name}
+                        </label>
+                    </foreach>
+                </div>
+            </div>
+            <div class="am-u-sm-4">最多可以选择5个</div>
+        </div>
+
+        <div class="am-form-group">
+            <label for="introduction">厨房简介</label>
+            <textarea id="introduction" name="introduction"  contenteditable="true" required/></textarea>
+
+        </div>
+
+        <div class="am-form-group">
+            <label for="citys">所在地址</label>
+            <select id="citys">
+                <option value="">请选择市</option>
+                <foreach name="citys" item="row" key="k">
+                    <option value="{$k}">{$row}</option>
+                </foreach>
+            </select>
+            <select id="area">
+
+            </select>
+        </div>
+
+        <div class="am-form-group">
+            <label for="address">详细地址</label>
+            <input type="text" name="address" id="address" />
+        </div>
+
+        <div class="am-form-group">
+            <input type="button"  id="checkMapBtn" class="am-btn am-btn-success" value="定位">
+        </div>
+
+        <div class="am-g am-margin-top">
+            <label for="container">地图</label>
+            <div class="am-u-sm-10">
+                <div id="container" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label>厨房封面图<br><small>(640 * 420)</small></label>
+            <a href="javascript:void(0);" class="upload_picture"></a>
+            <input type="hidden"  name="url"/>
+            <input type="hidden"  name="pic_id"/>
+        </div>
+
+        <div class="am-form-group" id="pics_group">
+            <label>轮播图<br><small>(640 * 420)</small></label>
+            <a href="javascript:void(0);" class="upload_group_picture"></a>
+            <input type="hidden" name="url" />
+            <input type="hidden"  name="pic_id"/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="volume">可容纳人数</label>
+            <input type="text" class="" id="volume" name="volume" placeholder="可容纳人数" required/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="proportion">场地面积</label>
+            <input type="text" class="" id="proportion" name="proportion" placeholder="场地面积(m²)" required/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="select_time">起止时间</label>
+            <div id="select_time">
+                <div name="part">
+                <!--周 时 分-->
+                    <div name="start" style="float: left">
+                        <span style="float: left">周</span>
+                        <select name="start_week" style="float: left;width: 25%;" >
+                            <option value="1">一</option>
+                            <option value="2">二</option>
+                            <option value="3">三</option>
+                            <option value="4">四</option>
+                            <option value="5">五</option>
+                            <option value="6">六</option>
+                            <option value="7">日</option>
+                        </select>
+                        <span style="float: left">时</span>
+                        <select name="start_hour" style="float: left;width: 25%;">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                        </select>
+                        <span style="float: left">分</span>
+                        <select name="start_min" style="float: left;width: 25%;">
+                            <option value="0">0</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                            <option value="40">40</option>
+                            <option value="45">45</option>
+                            <option value="50">50</option>
+                            <option value="55">55</option>
+                        </select>
+                        <div class="am-cf"></div>
+                    </div>
+                    <div name="end" style="float: left">
+                        <span style="float: left">周</span>
+                        <select name="end_week" style="float: left;width: 25%;" >
+                            <option value="1">一</option>
+                            <option value="2">二</option>
+                            <option value="3">三</option>
+                            <option value="4">四</option>
+                            <option value="5">五</option>
+                            <option value="6">六</option>
+                            <option value="7">日</option>
+                        </select>
+                        <span style="float: left">时</span>
+                        <select name="end_hour" style="float: left;width: 25%;">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                        </select>
+                        <span style="float: left">分</span>
+                        <select name="end_min" style="float: left;width: 25%;">
+                            <option value="0">0</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                            <option value="40">40</option>
+                            <option value="45">45</option>
+                            <option value="50">50</option>
+                            <option value="55">55</option>
+                        </select>
+                        <div class="am-cf"></div>
+                    </div>
+                    <div class="am-cf"></div>
+                </div>
+            </div>
+            <input type="button" class="am-btn am-btn-success" value="添加时间段" onclick="addtime()">
+        </div>
+
+        <div class="am-form-group">
+            <label for="m_tag">场地设备</label>
+            <div id="m_tag">
+                <foreach name="facility" item="row">
+                    <label class="am-checkbox-inline">
+                        <input type="checkbox" name="facility_tag[]" value="{$row.id}"> {$row.name}
+                    </label>
+                </foreach>
+                <p><input type="checkbox" id="checkedAll_facility" name="checkedAll_facility" value="1" >全选</p>
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label for="context">备注</label>
+            <input type="text" class="" id="context" name="context" placeholder="备注" required/>
+        </div>
+
+        <p><input type="button" class="am-btn am-btn-default" value="提交" onclick="add()"></button> <button  type="button" class="am-btn am-btn-default" onclick="history.back();">返回</button></p>
+    </fieldset>
+</form>
+
+<script src="__RS__/js/ajaxUpload.js"></script>
+<script>
+    function removePic(em){
+        $(em).parents('span').remove();
+    }
+
+    //图片上传
+    $('.upload_picture').click(function(){
+        pic_upload(this, [640, 420], function(files){
+            for(var i in files){
+                $('.upload_picture').html('<span><img data="'+ files[i].pic_id +'" src="'+ files[i].path +'" onclick="imgEnlarge(this)"><a href="javascript:void(0);" onclick="removePic(this)">×</a></span>');
+            }
+        },false);
+    });
+
+    $('.upload_group_picture').click(function(){
+        pic_upload(this, [640, 420], function(files){
+            for(var i in files){
+                $('.upload_group_picture').before('<span><img data="'+ files[i].pic_id +'" src="'+ files[i].path +'" onclick="imgEnlarge(this)" width="60px" height="60px"><a href="javascript:void(0);" onclick="removePic(this)">×</a></span>');
+            }
+        });
+    });
+
+
+
+    //全选设备
+    $('#checkedAll_facility').change(function(){
+        if($(this).is(':checked')){
+            $("[name^='facility_tag']").prop('checked',true);
+        }else{
+            $("[name^='facility_tag']").prop('checked',false);
+        }
+    })
+    //自动判断全选
+    $("[name^='facility_tag']").change(function(){
+        var c = false;
+        $("[name^='facility_tag']").each(function(){
+            if(!$(this).is(':checked'))c = true;
+        })
+        if(c){
+            $('#checkedAll_facility').prop('checked',false);
+        }else{
+            $('#checkedAll_facility').prop('checked',true);
+        }
+    })
+
+    //判断关键字是否超过5个
+    $('.tags label').click(function(){
+        if($('.tags .am-active').length >= 5){
+            if($(this).attr('class') == 'am-btn am-btn-default am-btn-xs'){
+                alert('关键字最多5个');
+                $('.tags label').attr('class',"am-btn am-btn-default am-btn-xs");
+            }
+        }
+    });
+
+    //qq地图
+    var map = new qq.maps.Map(document.getElementById("container"),{
+        zoom: 13
+    });
+    var marker, islocation = false, _marker = false;
+    var position = [];
+    //绑定单击事件添加参数
+    qq.maps.event.addListener(map, 'click', function(event) {
+        islocation = false;
+        geocoder.getAddress(event.latLng);
+    });
+    //将坐标转换为地址
+    geocoder = new qq.maps.Geocoder({
+        complete : function(result){
+            if(islocation){
+                map.setCenter(result.detail.location);
+                if(_marker){
+                    _marker = false;
+                    position = [result.detail.location.getLng(), result.detail.location.getLat()];
+                    if(marker && marker.setMap)marker.setMap(null);
+                    marker = new qq.maps.Marker({
+                        position:result.detail.location,
+                        draggable: true,
+                        map:map
+                    });
+                }
+            }else{
+                var city = result.detail.addressComponents.city;
+                var district = result.detail.addressComponents.district;
+                var street = result.detail.addressComponents.street;
+                var streetNumber = result.detail.addressComponents.streetNumber||'';
+                var bool = false;
+
+                $('#citys').children().each(function(){
+                    if(city.indexOf($(this).text()) > -1){
+                        $('#citys').val($(this).attr('value'));
+                        setTimeout(function(){
+                            $('#area').children().each(function(){
+                                if(district.indexOf($(this).text()) > -1){
+                                    $('#area').val($(this).attr('value'));
+                                }
+                            });
+                        }, 1000);
+                        bool = true;
+                    }
+                });
+                if(!bool){
+                    alert('该城市尚未开通吖咪服务!');
+                    return;
+                }
+                position = [result.detail.location.getLng(), result.detail.location.getLat()];
+                //$('#address').val(street);
+                $('#address').val(street + streetNumber);
+                if(marker && marker.setMap)marker.setMap(null);
+                marker = new qq.maps.Marker({
+                    position:result.detail.location,
+                    draggable: true,
+                    map:map
+                });
+            }
+        }
+    });
+    $('#checkMapBtn').click(function(){
+        var address = $('#citys').find('[value="'+ $('#citys').val() +'"]').text() + '市,' + $('#area').find('[value="'+ $('#area').val() +'"]').text() + '区';
+        address += ',' + $('#address').val();
+        islocation = true;
+        _marker = true;
+        geocoder.getLocation(address);
+    });
+    islocation = true;
+    geocoder.getLocation('广州市,天河区');
+
+    $('#citys').change(function(){
+        var citys_id = $('#citys').val();
+        $.ajax({
+            url : '__CONTROLLER__/kitchenAdd.html',
+            data : {'id' : citys_id , 'oper' : 'get_area'},
+            type: 'post',
+            success: function (d) {
+                $('#area').empty();
+                var code = '<option value="">请选择区</option>';
+                for(i in d){
+                    code += '<option value="'+d[i]['id']+'">'+d[i]['name']+'</option>'
+                }
+                $('#area').append(code);
+            }
+        });
+    })
+
+    function addtime(){
+        var list = $('#select_time [name="part"]').eq(0).clone();
+        //list += '<div onclick="delete_time(this)">删除</div>';
+        //$('#select_time').append(list);
+        $(list).appendTo('#select_time')
+        var code = '<div onclick="delete_time(this)">删除</div>';
+        $('#select_time').append(code);
+    }
+
+    function delete_time(e){
+        $(e).prev().remove();
+        $(e).remove();
+    }
+
+    function add(){
+        var data = {};
+        var start_week = {};
+        var start_hour = {};
+        var start_min = {};
+        var end_week = {};
+        var end_hour = {};
+        var end_min = {};
+        var pic_group = {};
+        var facility = {};
+        $('#select_time [name="start_week"]').each(function(w){
+            start_week[w] = $(this).val();
+        })
+        $('#select_time [name="start_hour"]').each(function(h){
+            start_hour[h] = $(this).val();
+        })
+        $('#select_time [name="start_min"]').each(function(m){
+            start_min[m] = $(this).val();
+        })
+        $('#select_time [name="end_week"]').each(function(w){
+            end_week[w] = $(this).val();
+        })
+        $('#select_time [name="end_hour"]').each(function(h){
+            end_hour[h] = $(this).val();
+        })
+        $('#select_time [name="end_min"]').each(function(m){
+            end_min[m] = $(this).val();
+        })
+        $('[name="facility_tag[]"]').each(function(f){
+            if($(this).is(':checked')){
+                facility[f] = $(this).val();
+            }
+        })
+        $('#pics_group img').each(function(p){
+            pic_group[p] = $(this).attr('data');
+        })
+
+        var tags_id = [];
+        $('.tags .am-active input').each(function(){
+            tags_id.push(this.value);
+        });
+        data.tags_id = tags_id.join(',');
+
+        data.kitchenName = $('#kitchenName').val();
+        data.nickname = $('#nickname').val();
+        data.telephone = $('#telephone').val();
+        data.weixincode = $('#weixincode').val();
+        data.category = $('#category').val();
+        data.introduction = $('#introduction').val();
+        data.city_id = $('#area').val();
+        data.address = $('#address').val();
+        data.lng = position[0];
+        data.lat = position[1];
+        data.pic_id = $('.upload_picture img').attr('data')
+        data.pic_group = pic_group;
+        data.volume = $('#volume').val();
+        data.proportion = $('#proportion').val();
+        data.open_time_start_week = start_week;
+        data.open_time_start_hour = start_hour;
+        data.open_time_start_min = start_min;
+        data.open_time_end_week = end_week;
+        data.open_time_end_hour = end_hour;
+        data.open_time_end_min = end_min;
+        data.facility = facility;
+        data.context = $('#context').val();
+        $.ajax({
+            url: '__CONTROLLER__/kitchenAdd.html',
+            data: {'data': data , 'oper' : 'submit'},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                if(d.status == 1){
+                    alert(d.info);
+                    window.location.href = '__CONTROLLER__/kitchen';
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+</script>

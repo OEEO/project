@@ -1,0 +1,248 @@
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"> </script>
+    <div id="Usercontainer" style="width:100%;height:800px; margin:0px auto 20px;"></div>
+
+<script>
+    $(document).ready(function() {
+        var title = {
+            text: '订单金额统计曲线图'
+        };
+        var chart = {
+            type: 'spline',
+            reflow: true,
+            colorCount:36
+        };
+        var subtitle = {
+            text: ''
+        };
+        var xAxis = {
+            title: {
+                text: ''
+            },
+            categories: ['<?=join("','",$datehight) ?>']
+        };
+        var yAxis = {
+            title: {
+                text: '各参数数量'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        };
+
+        var tooltip = {
+            shared: true,
+            crosshairs: true
+        };
+        var colors = ['#2f7ed8','#0d233a','#8bbc21','#910000', '#1aadce','#492970','#f28f43','#77a1e5','#c42525','#a6c96a','#e749e1','#f5454d','#82191e','#c64789','#e32286','#26b7ae','#167670','#729cfc','#063cb8','#9751d9','#78628d','#02c1ff','#0e4637','#079d75','#5cc95a','#7dec3a','#377910','#b7b521','#f8f642','#ec9626','#e026ec','#7d0b84','#ff8787','#ffc287','#a4601d','#267a73'];
+        var series =  [
+            {
+                name: '所有订单总金额',
+                data: [<?=join(",", $order_total) ?>]
+            },
+            {
+                name: '所有订单共实际支付的金额',
+                data: [<?=join(",", $act_pay) ?>]
+            },
+            {
+                name: '所有订单共优惠的金额',
+                data: [<?=join(",", $coupon_price) ?>]
+            },
+            {
+                name: '从吖咪下单的订单总金额',
+                data: [<?=join(",", $yami_order_total) ?>]
+            },
+            {
+                name: '从吖咪下单的订单共实际支付的金额',
+                data: [<?=join(",", $yami_act_pay) ?>]
+            },
+            {
+                name: '从吖咪下单的订单共优惠的金额',
+                data: [<?=join(",", $yami_coupon_price) ?>]
+            },
+            {
+                name: '从有饭下单的订单总金额',
+                data: [<?=join(",", $youfan_order_total) ?>]
+            },
+            {
+                name: '从有饭下单的订单共实际支付的金额',
+                data: [<?=join(",", $youfan_act_pay) ?>]
+            },
+            {
+                name: '从有饭下单的订单共优惠的金额',
+                data: [<?=join(",", $youfan_coupon_price) ?>]
+            },
+            {
+                name: '从其他渠道下单的订单总金额',
+                data: [<?=join(",", $Other_order_total) ?>]
+            },
+            {
+                name: '从其他渠道下单的订单共实际支付的金额',
+                data: [<?=join(",", $Other_act_pay) ?>]
+            },
+            {
+                name: '从其他渠道下单的订单共优惠的金额',
+                data: [<?=join(",", $Other_coupon_price) ?>]
+            },
+            {
+                name: '所有活动订单总金额',
+                data: [<?=join(",", $tips_order_total) ?>]
+            },
+            {
+                name: '所有活动订单共实际支付的金额',
+                data: [<?=join(",", $tips_act_pay) ?>]
+            },
+            {
+                name: '所有活动订单共优惠的金额',
+                data: [<?=join(",", $tips_coupon_price) ?>]
+            },
+            {
+                name: '从吖咪下单的所有活动订单总金额',
+                data: [<?=join(",", $tipsYami_order_total) ?>]
+            },
+            {
+                name: '从吖咪下单的所有活动订单共实际支付的金额',
+                data: [<?=join(",", $tipsYami_act_pay) ?>]
+            },
+            {
+                name: '从吖咪下单的所有活动订单共优惠的金额',
+                data: [<?=join(",", $tipsYami_coupon_price) ?>]
+            },
+            {
+                name: '从有饭下单的所有活动订单总金额',
+                data: [<?=join(",", $tipsYoufan_order_total) ?>]
+            },
+            {
+                name: '从有饭下单的所有活动订单共实际支付的金额',
+                data: [<?=join(",", $tipsYoufan_act_pay) ?>]
+            },
+            {
+                name: '从有饭下单的所有活动订单共优惠的金额',
+                data: [<?=join(",", $tipsYoufan_coupon_price) ?>]
+            },
+            {
+                name: '从其他渠道下单的所有活动订单总金额',
+                data: [<?=join(",", $tipsOther_order_total) ?>]
+            },
+            {
+                name: '从其他渠道下单的所有活动订单共实际支付的金额',
+                data: [<?=join(",", $tipsOther_act_pay) ?>]
+            },
+            {
+                name: '从其他渠道下单的所有活动订单共优惠的金额',
+                data: [<?=join(",", $tipsOther_coupon_price) ?>]
+            },
+            {
+                name: '所有商品订单总金额',
+                data: [<?=join(",", $goods_order_total) ?>]
+            },
+            {
+                name: '所有商品订单共实际支付的金额',
+                data: [<?=join(",", $goods_act_pay) ?>]
+            },
+            {
+                name: '所有商品订单共优惠的金额',
+                data: [<?=join(",", $goods_coupon_price) ?>]
+            },
+            {
+                name: '从吖咪下单的所有商品订单总金额',
+                data: [<?=join(",", $goodsYami_order_total) ?>]
+            },
+            {
+                name: '从吖咪下单的所有商品订单共实际支付的金额',
+                data: [<?=join(",", $goodsYami_act_pay) ?>]
+            },
+            {
+                name: '从吖咪下单的所有商品订单共优惠的金额',
+                data: [<?=join(",", $goodsYami_coupon_price) ?>]
+            },
+            {
+                name: '从有饭下单的所有商品订单总金额',
+                data: [<?=join(",", $goodsYoufan_order_total) ?>]
+            },
+            {
+                name: '从有饭下单的所有商品订单共实际支付的金额',
+                data: [<?=join(",", $goodsYoufan_act_pay) ?>]
+            },
+            {
+                name: '从有饭下单的所有商品订单共优惠的金额',
+                data: [<?=join(",", $goodsYoufan_coupon_price) ?>]
+            },
+            {
+                name: '从其他渠道下单的所有商品订单总金额',
+                data: [<?=join(",", $goodsOther_order_total) ?>]
+            },
+            {
+                name: '从其他渠道下单的所有商品订单共实际支付的金额',
+                data: [<?=join(",", $goodsOther_act_pay) ?>]
+            },
+            {
+                name: '从其他渠道下单的所有商品订单共优惠的金额',
+                data: [<?=join(",", $goodsOther_coupon_price) ?>]
+            },
+            {
+                name: '所有众筹订单总金额',
+                data: [<?=join(",", $raise_order_total) ?>]
+            },
+            {
+                name: '所有众筹订单共实际支付的金额',
+                data: [<?=join(",", $raise_act_pay) ?>]
+            },
+            {
+                name: '所有众筹订单共优惠的金额',
+                data: [<?=join(",", $raise_coupon_price) ?>]
+            },
+            {
+                name: '从吖咪下单的所有众筹订单总金额',
+                data: [<?=join(",", $raiseYami_order_total) ?>]
+            },
+            {
+                name: '从吖咪下单的所有众筹订单共实际支付的金额',
+                data: [<?=join(",", $raiseYami_act_pay) ?>]
+            },
+            {
+                name: '从吖咪下单的所有众筹订单共优惠的金额',
+                data: [<?=join(",", $raiseYami_coupon_price) ?>]
+            },
+            {
+                name: '从有饭下单的所有众筹订单总金额',
+                data: [<?=join(",", $raiseYoufan_order_total) ?>]
+            },
+            {
+                name: '从有饭下单的所有众筹订单共实际支付的金额',
+                data: [<?=join(",", $raiseYoufan_act_pay) ?>]
+            },
+            {
+                name: '从有饭下单的所有众筹订单共优惠的金额',
+                data: [<?=join(",", $raiseYoufan_coupon_price) ?>]
+            },
+            {
+                name: '从其他渠道下单的所有众筹订单总金额',
+                data: [<?=join(",", $raiseOther_order_total) ?>]
+            },
+            {
+                name: '从其他渠道下单的所有众筹订单共实际支付的金额',
+                data: [<?=join(",", $raiseOther_act_pay) ?>]
+            },
+            {
+                name: '从其他渠道下单的所有众筹订单共优惠的金额',
+                data: [<?=join(",", $raiseOther_coupon_price) ?>]
+            },
+        ];
+
+        var json = {};
+        json.chart = chart;
+        json.title = title;
+        json.subtitle = subtitle;
+        json.xAxis = xAxis;
+        json.yAxis = yAxis;
+        json.tooltip = tooltip;
+        json.series = series;
+        json.colors = colors;
+
+        $('#Usercontainer').highcharts(json);
+    });
+</script>

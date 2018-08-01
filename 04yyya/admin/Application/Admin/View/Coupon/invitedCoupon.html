@@ -1,0 +1,384 @@
+<!--日历js、css文件加载 start-->
+<!--<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.config.js"></script>
+<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.all.min.js"> </script>-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+
+<form class="am-form" method="post" onsubmit="return checkdata()">
+    <fieldset>
+        <input type="hidden" name="id" value="{$data.id}"/>
+        <!--<div class="am-form-group">
+            <label for="CouponMember_id">发布者</label>
+            <label class="am-radio-inline">
+                <input type="radio"  value="0" name="ReleaseType" onchange="changeMember(this)" required/> 系统
+            </label>
+            <label class="am-radio-inline">
+                <input type="radio" value="1" name="ReleaseType" onchange="changeMember(this)" required/> 达人
+            </label>
+            <input type="number" class="" id="CouponMember_id" name="CouponMember_id" placeholder="请输入达人ID" required/>
+        </div>-->
+
+        <!--<div class="am-form-group">
+            <div>选择分类</div>
+            <label class="am-radio-inline">
+                <input type="radio"  value="0" name="CouponCategory"  required/> 营销券
+            </label>
+            <label class="am-radio-inline">
+                <input type="radio" value="1" name="CouponCategory" required/> 邀请券
+            </label>
+            <label class="am-radio-inline">
+                <input type="radio" value="2" name="CouponCategory" required/> 注册券
+            </label>
+        </div>-->
+        <!--注册券-->
+        <input type="hidden" name="CouponCategory" value="3">
+
+        <div class="am-form-group">
+            <label for="CouponName">被邀请券名称</label>
+            <input type="text" class="" id="CouponName" name="CouponName" value="{$data.name}" placeholder="被邀请券名称" maxlength="10" required/>
+        </div>
+
+        <div class="am-form-group">
+            <div>优惠券类型</div>
+            <label class="am-radio-inline">
+                <if condition="$data.type eq 0">
+                    <input type="radio"  value="0" name="CouponType" checked="checked" onchange="changeType(this)"  required/> 抵价券
+                    <else/>
+                    <input type="radio"  value="0" name="CouponType"  onchange="changeType(this)"  required/> 抵价券
+                </if>
+            </label>
+            <label class="am-radio-inline">
+                <if condition="$data.type eq 1">
+                    <input type="radio" value="1" name="CouponType" checked="checked" onchange="changeType(this)"  required/> 折扣券
+                    <else/>
+                    <input type="radio" value="1" name="CouponType" onchange="changeType(this)"  required/> 折扣券
+                </if>
+            </label>
+            <label class="am-radio-inline">
+                <if condition="$data.type eq 2">
+                    <input type="radio" value="2" name="CouponType" checked="checked" onchange="changeType(this)"  required/> 礼品券
+                    <else/>
+                    <input type="radio" value="2" name="CouponType" onchange="changeType(this)"  required/> 礼品券
+                </if>
+            </label>
+        </div>
+
+        <div class="am-form-group">
+            <label for="CouponValue">优惠值</label>
+            <input type="number" id="CouponValue" name="CouponValue" value="{$data.value}" placeholder="原值：{$data.value}"/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="CouponContent">礼品券内容</label>
+            <textarea class="" rows="5" id="CouponContent" name="CouponContent" >{$data.content}</textarea>
+            <!--<input type="text" class="" id="CouponContent" name="CouponContent" value="" placeholder=""/>-->
+        </div>
+
+        <div class="am-form-group">
+            <label for="CouponCount">数量上限</label>
+            <input type="number" class="" id="CouponCount" name="CouponCount" value="0" disabled />
+        </div>
+
+        <div class="am-form-group">
+            <label for="select_time">持续时间</label>
+            <div id="select_time">
+                <!--<input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-startDate" name="CouponStart_time"  placeholder="开始时间" required readonly="true" value="0"/>-->
+                <!--<input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-endDate" name="CouponEnd_time"  placeholder="结束时间" required readonly="true" value="0"/>-->
+                <input type="hidden" name="CouponStart_time" value="0">
+                <input type="hidden" name="CouponEnd_time" id='CouponEnd_time' value="">
+                <input type="number" id="day" style="width: 100px;float: left;" onchange="settime()" required/><span style="float: left;">天</span><input type="number" id="hour" style="width: 100px;float: left;" onchange="settime()"><span style="float: left;">小时</span>
+            </div>
+        </div>
+
+        <br/>
+        <div class="am-form-group">
+            <label for="CouponMin_amount">最低消费限制</label>
+            <input type="number" class="" id="CouponMin_amount" name="CouponMin_amount" placeholder="" value="{$data.min_amount}" />
+        </div>
+
+
+
+        <div class="am-form-group">
+            <label for="m_tag">允许的会员标签 (必选)</label>
+            <div id="m_tag">
+                <?php foreach($member_tag as $row1){ ?>
+                <label class="am-checkbox-inline">
+                    <?php    if($data['member_tags'] == '*'){ ?>
+                    <input type="checkbox" name="member_tag[]" checked="checked" value="<?php echo $row1['id'];?>"> <?php echo $row1['name'];?>
+                </label>
+                <?php    }else{?>
+                <?php        if(in_array($row1['id'],$data['member_tags'])){ ?>
+                <input type="checkbox" name="member_tag[]" checked="checked" value="<?php echo $row1['id'];?>"> <?php echo $row1['name'];?>
+                </label>
+                <?php        }else{ ?>
+                <input type="checkbox" name="member_tag[]"  value="<?php echo $row1['id'];?>"><?php echo $row1['name'];?>
+                </label>
+                <?php        } ?>
+                <?php    } ?>
+                <?php } ?>
+                <?php if($data['member_tags'] == '*'){ ?>
+                <p><input type="checkbox" id="checkedAll_member_tag" name="checkedAll_member_tag" value="1" checked="checked">全选</p>
+            </div>
+        </div>
+        <?php }else{ ?>
+        <p><input type="checkbox" id="checkedAll_member_tag" name="checkedAll_member_tag" value="1" >全选</p>
+        </div>
+        </div>
+        <?php } ?>
+
+
+
+        <div class="am-form-group">
+            <label for="t_tag">允许的活动标签</label>
+            <div id="t_tag">
+                <?php foreach($tips_tag as $row1){ ?>
+                <label class="am-checkbox-inline">
+                    <?php    if($data['tips_tags'] == '*'){ ?>
+                    <input type="checkbox" name="tips_tag[]" checked="checked" value="<?php echo $row1['id'];?>"> <?php echo $row1['name'];?>
+                </label>
+                <?php    }else{?>
+                <?php        if(in_array($row1['id'],$data['tips_tags'])){ ?>
+                <input type="checkbox" name="tips_tag[]" checked="checked" value="<?php echo $row1['id'];?>"> <?php echo $row1['name'];?>
+                </label>
+                <?php        }else{ ?>
+                <input type="checkbox" name="tips_tag[]"  value="<?php echo $row1['id'];?>"><?php echo $row1['name'];?>
+                </label>
+                <?php        } ?>
+                <?php    } ?>
+                <?php } ?>
+                <?php if($data['tips_tags'] == '*'){ ?>
+                <p><input type="checkbox" id="checkedAll_tips_tag" name="checkedAll_tips_tag" value="1" checked="checked">全选</p>
+            </div>
+        </div>
+        <?php }else{ ?>
+        <p><input type="checkbox" id="checkedAll_tips_tag" name="checkedAll_tips_tag" value="1" >全选</p>
+        </div>
+        </div>
+        <?php } ?>
+
+
+        <div class="am-form-group">
+            <label for="g_tag">允许的商品标签</label>
+            <div id="g_tag">
+                <?php foreach($goods_tag as $row1){ ?>
+                <label class="am-checkbox-inline">
+                    <?php    if($data['goods_tags'] == '*'){ ?>
+                    <input type="checkbox" name="goods_tag[]" checked="checked" value="<?php echo $row1['id'];?>"> <?php echo $row1['name'];?>
+                </label>
+                <?php    }else{?>
+                <?php        if(in_array($row1['id'],$data['goods_tags'])){ ?>
+                <input type="checkbox" name="goods_tag[]" checked="checked" value="<?php echo $row1['id'];?>"> <?php echo $row1['name'];?>
+                </label>
+                <?php        }else{ ?>
+                <input type="checkbox" name="goods_tag[]"  value="<?php echo $row1['id'];?>"><?php echo $row1['name'];?>
+                </label>
+                <?php        } ?>
+                <?php    } ?>
+                <?php } ?>
+                <?php if($data['goods_tags'] == '*'){ ?>
+                <p><input type="checkbox" id="checkedAll_goods_tag" name="checkedAll_goods_tag" value="1" checked="checked">全选</p>
+            </div>
+        </div>
+        <?php }else{ ?>
+        <p><input type="checkbox" id="checkedAll_goods_tag" name="checkedAll_goods_tag" value="1" >全选</p>
+        </div>
+        </div>
+        <?php } ?>
+
+
+        <div class="am-form-group">
+            <label for="CouponName">备注</label>
+            <textarea name="remarks" rows="5" cols="50" >{$data.remarks}</textarea>
+        </div>
+
+
+        <label for="g_tag">是否开启</label>
+        <div id="status">
+            <if condition="$data.status eq 1">
+                <input type="radio" name="status"  value="0"><span>关闭</span>
+                <input type="radio" name="status" checked value="1"><span>开启</span>
+                <else/>
+                <input type="radio" name="status" checked value="0"><span>关闭</span>
+                <input type="radio" name="status"  value="1"><span>开启</span>
+            </if>
+        </div>
+
+        <p><button type="submit" class="am-btn am-btn-default">提交</button> <button  type="button" class="am-btn am-btn-default" onclick="history.back();">返回</button></p>
+    </fieldset>
+</form>
+
+
+<script>
+    function do_once(){
+        var ct = $('[name="CouponType"]:checked ').val();
+        $('#CouponValue').attr('disabled',false);
+        $('#CouponContent').attr('disabled',false);
+
+
+        if(ct == 0){
+            //$('#CouponValue').attr('placeholder','请输入抵扣价格');
+            $('#CouponContent').attr('disabled',true);
+            $('#CouponContent').val('');
+        }
+        if(ct == 1){
+            //$('#CouponValue').attr('placeholder','请输入折扣比例（1-100）');
+            $('#CouponContent').attr('disabled',true);
+            $('#CouponContent').val('');
+        }
+        if(ct == 2){
+            $('#CouponValue').attr('disabled',true);
+            $('#CouponValue').attr('placeholder','');
+            $('#CouponValue').val('');
+        }
+    }
+    do_once();
+
+    function settime(){
+        var day = parseInt($('#day').val()?$('#day').val():0);
+        var hour = parseInt($('#hour').val()?$('#hour').val():0);
+        var count = day*3600*24+hour*3600;
+        $('#CouponEnd_time').val(count);
+    }
+
+
+    function changeMember(o){
+        var value = ($(o).val());
+        $('#CouponMember_id').attr('disabled',false);
+        $('#CouponMember_id').val('');
+        if(value ==0)$('#CouponMember_id').attr('disabled',true);
+        //if(value ==1)$('#CouponMember_id').attr('placeholder','请输入达人ID');
+    }
+
+    function changeType(o){
+        var value = ($(o).val());
+        $('#CouponValue').attr('disabled',false);
+        $('#CouponContent').attr('disabled',false);
+        $('#CouponValue').val('');
+        $('#CouponContent').val('');
+        if(value == 0){
+            $('#CouponValue').attr('placeholder','请输入抵扣价格');
+            $('#CouponContent').attr('disabled',true);
+        }
+        if(value == 1){
+            $('#CouponValue').attr('placeholder','请输入折扣比例（1-100）');
+            $('#CouponContent').attr('disabled',true);
+        }
+        if(value == 2){
+            $('#CouponValue').attr('disabled',true);
+            $('#CouponValue').attr('placeholder','');
+        }
+    }
+
+    //全选用户标签
+    $('#checkedAll_member_tag').change(function(){
+        if($(this).is(':checked')){
+            $("[name^='member_tag']").prop('checked',true);
+        }else{
+            $("[name^='member_tag']").prop('checked',false);
+        }
+    })
+    //自动判断全选
+    $("[name^='member_tag']").change(function(){
+        var c = false;
+        $("[name^='member_tag']").each(function(){
+            if(!$(this).is(':checked'))c = true;
+        })
+        if(c){
+            $('#checkedAll_member_tag').prop('checked',false);
+        }else{
+            $('#checkedAll_member_tag').prop('checked',true);
+        }
+    })
+
+    //全选活动标签
+    $('#checkedAll_tips_tag').change(function(){
+        if($(this).is(':checked')){
+            $("[name^='tips_tag']").prop('checked',true);
+        }else{
+            $("[name^='tips_tag']").prop('checked',false);
+        }
+    })
+    //自动判断全选
+    $("[name^='tips_tag']").change(function(){
+        var c = false;
+        $("[name^='tips_tag']").each(function(){
+            if(!$(this).is(':checked'))c = true;
+        })
+        if(c){
+            $('#checkedAll_tips_tag').prop('checked',false);
+        }else{
+            $('#checkedAll_tips_tag').prop('checked',true);
+        }
+    })
+
+    //全选商品标签
+    $('#checkedAll_goods_tag').change(function(){
+        if($(this).is(':checked')){
+            $("[name^='goods_tag']").prop('checked',true);
+        }else{
+            $("[name^='goods_tag']").prop('checked',false);
+        }
+    })
+    //自动判断全选
+    $("[name^='goods_tag']").change(function(){
+        var c = false;
+        $("[name^='goods_tag']").each(function(){
+            if(!$(this).is(':checked'))c = true;
+        })
+        if(c){
+            $('#checkedAll_goods_tag').prop('checked',false);
+        }else{
+            $('#checkedAll_goods_tag').prop('checked',true);
+        }
+    })
+
+    //日历
+    $('#my-startDate').datetimepicker();
+    $('#my-endDate').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-alert');
+        $('#my-startDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                        alert('开始日期应小于结束日期！');
+                        $('#my-startDate').val("");
+                    } else {
+                        startDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+
+        $('#my-endDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                        alert('结束日期应大于开始日期！');
+                        $('#my-endDate').val("");
+                    } else {
+                        endDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+    });
+
+    function checkdata(){
+        var check =false;
+        $('#m_tag input').each(function(){
+            if($(this).is(':checked')){
+                check = true;
+            }
+        })
+        if(!check){
+            alert('必须选一个会员标签');
+        }
+        return check;
+    }
+
+
+</script>

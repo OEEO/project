@@ -1,0 +1,100 @@
+.page_breakfastDiary.wrapper{background: #f9f8f6;}
+.page_breakfastDiary .punch_head{background: #fff;}
+.page_breakfastDiary .punch_head .symbol{width: 23.184rem;height: 7.68rem;display: block;margin: 0 auto;padding: 1.92rem 0;}
+.page_breakfastDiary .punch_head .punch_btn{width: 10.56rem;height: 10.56rem;margin: 0 auto;display: block;}
+.page_breakfastDiary .punch_head .punch_time{font-size: 0.96rem;color: #ccc;text-align: center;margin: 0.96rem 0;}
+.page_breakfastDiary .punch_head .intro{display: flex;width: 33rem;height: 5.76rem;padding:0 1.5rem;border-top:solid 0.1rem #eee;}
+.page_breakfastDiary .punch_head .intro > div{flex: 1;margin: 0.96rem 0;position: relative;}
+.page_breakfastDiary .punch_head .intro .ileft .headimg{width: 3.84rem;height: 3.84rem;border-radius: 50%;position: absolute;left: 0;top: 0;}
+.page_breakfastDiary .punch_head .intro .ileft .punch_user{font-size: 1.44rem;color: #666;width:10rem;display:block;height: 3.84rem;padding-left: 4.8rem;line-height: 3.84rem;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.page_breakfastDiary .punch_head .intro .iright{display: flex;text-align: center;}
+.page_breakfastDiary .punch_head .intro .iright span{flex: 1;color: #ccc;font-size: 0.96rem;}
+.page_breakfastDiary .punch_head .intro .iright span font{color: #666;font-size: 1.44rem;display: inline-block;width: 100%;}
+
+.page_breakfastDiary .punch_content{width:36rem;padding-top: 1.5rem;position: relative;background: #f9f8f6;}
+.page_breakfastDiary .punch_content span{width: 0.75rem;height: 1.5rem;background: #f9f8f6;position: absolute;top: 2.1rem;}
+.page_breakfastDiary .punch_content span.g1{left: 0rem;border-radius: 0 0.75rem 0.75rem 0;}
+.page_breakfastDiary .punch_content span.g2{right: 0rem;border-radius: 0.75rem 0 0 0.75rem;}
+.page_breakfastDiary .punch_content .punch_item{border-radius: 0.2rem;background: #fff;margin: 0 auto;width: 33rem;display: block;margin-bottom: 1.5rem;position: relative;}
+.page_breakfastDiary .punch_content .punch_item .item_head{padding: 0 1.92rem 0 4.8rem;font-size: 1.1rem;color: #ccc;height: 2.88rem;line-height: 2.88rem;border-bottom: dotted 0.1rem #f9f8f6;position: relative;}
+.page_breakfastDiary .punch_content .punch_item .item_head .itemr{position:absolute;top:0.672rem;right:1.92rem;width: 1.536rem;height: 1.536rem;}
+.page_breakfastDiary .punch_content .punch_item .item_context{color: #888;font-size: 1.44rem;padding:0 1.1rem;}
+.page_breakfastDiary .punch_content .punch_item .item_context .itemtitle{padding: 2rem 0 0.96rem; word-wrap: break-word;}
+.page_breakfastDiary .punch_content .punch_item .item_head .iteml i{background: url("../images/punch_date.png") no-repeat left center / 100% 100%;width: 1.152rem;height: 1.152rem;display: inline-block;position: absolute;top: 0.8rem;left: 1.92rem;}
+.page_breakfastDiary .punch_content .punch_item .item_context img{width: 30.72rem;max-height: 30.72rem;display: block;padding-bottom: 1.1rem;object-fit: cover;}
+.page_breakfastDiary .punch_content .no_more{width:36rem; height:2.5rem; background:url(../images/no_mre.png) center top / auto 80% no-repeat; clear:both;}
+
+.page_breakfastDiary .banner {height:14.6rem; overflow: hidden;}
+
+#dialogBox.page_breakfastDiary{margin-left: -14rem;background: none ;padding:0;}
+#dialogBox.page_breakfastDiary .sbox{width: 28rem;border-radius: 0.2rem 0.2rem 0.4rem 0.4rem;}
+#dialogBox.page_breakfastDiary .sbox .context{margin-bottom: 2.88rem !important;}
+#dialogBox.page_breakfastDiary .context i.clearpsd {background: url("../images/close@2x.png") no-repeat 0 0 / 2.3rem 2.3rem; display: block;  height: 2.3rem;  position: absolute;right: 0;top: 0;width: 2.3rem;}
+#dialogBox.page_breakfastDiary .uppic{width: 24rem;height: 18rem;margin: 1.92rem auto 0;position: relative;}
+#dialogBox.page_breakfastDiary .punchpic{width: 24rem;height:18rem;display: block;object-fit: cover;}
+#dialogBox.page_breakfastDiary input[type="file"] {width: 24rem;height:18rem;position: absolute;left: 0;top: 0;opacity: 0;}
+
+#dialogBox.page_breakfastDiary .protate{width: 24rem;height: 1.92rem;text-align: center;display: none;margin: 1.16rem auto 0;}
+#dialogBox.page_breakfastDiary .protate img.pr{width: 1.92rem;height: 1.92rem;}
+
+#dialogBox.page_breakfastDiary .punch_text{margin: 2.88rem auto 0;}
+#dialogBox.page_breakfastDiary .punch_text .punchtitle{background: #f5f5f5;color: #888;height: 7.68rem;border-radius: 0.2rem;padding: 0.96rem;font-size: 1.44rem;border: none;width: 22.08rem;}
+#dialogBox.page_breakfastDiary .punchbtn{width: 24rem;height: 4.8rem;background: #ffdc00;border-radius: 0.2rem;line-height: 4.8rem;font-size: 1.44rem;color: #40220f;text-align: center;margin: 0 auto;}
+#dialogBox.page_breakfastDiary .punch_success{margin-top:5.76rem;}
+#dialogBox.page_breakfastDiary .punch_finish{width: 3.84rem;height: 3.84rem;}
+#dialogBox.page_breakfastDiary .finish_text{font-size: 1.725rem;color: #333;text-align: center;margin: 1rem auto 5rem;}
+#dialogBox.page_breakfastDiary .btns::after{display: none;}
+#dialogBox.page_breakfastDiary .btns{border: none;background: none;height: 4.8rem;margin-bottom: 1.92rem;padding: 0;position: relative;border-radius: 0.2rem;}
+#dialogBox.page_breakfastDiary .btns button{width: 24rem;background: #ffdc00; line-height: 4.8rem; height: 4.8rem;border-radius: 0.2rem;}
+#dialogBox.page_breakfastDiary .btns button.agree{font-size: 1.44rem;color: #40220f;}
+#dialogBox.page_breakfastDiary .createBtn {width: 24rem;background: #ffdc00;border:none;font-size: 1.44rem;color: #40220f; line-height: 4.8rem; height: 4.8rem;border-radius: 0.2rem;}
+
+.page_breakfastDiary .fadebox{display: none;}
+.page_breakfastDiary .fadebg{display: block;; width:100%; height:100%; background:rgba(0,0,0,0.6); position:fixed; top:0rem; left:0rem; z-index:1000;}
+.page_breakfastDiary .fadecontext{width: 36rem;position: fixed;bottom: 0;left:0;background: #fff;z-index:1000;}
+.page_breakfastDiary .fadecontext p{margin: 0;color: #333;width: 36rem;height: 4.7rem;line-height: 4.7rem;text-align: center;font-size: 1.44rem;display: block;}
+.page_breakfastDiary .fadecontext p.delt{color: #ff3f3f;border-top: 0.1rem solid #f9f8f6;}
+.page_breakfastDiary .fadecontext .space{width: 36rem;height: 0.57rem;background: #f9f8f6;display: block;}
+
+/***加载缓冲开始***/
+.page_breakfastDiary .loading {width:2.5rem; height:2.5rem;}
+@-webkit-keyframes btnRotate {
+    0% {
+        -webkit-transform: rotateZ(0deg);
+    }
+    100% {
+        -webkit-transform: rotateZ(360deg);
+    }
+}
+@-moz-keyframes btnRotate {
+    0% {
+        -moz-transform: rotateZ(0deg);
+    }
+    100% {
+        -moz-transform: rotateZ(360deg);
+    }
+}
+.page_breakfastDiary .loading {
+    /*-moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); */
+    -webkit-animation: btnRotate 1.5s linear infinite;
+    -moz-animation: btnRotate 1.5s linear infinite;
+}
+
+.page_breakfastDiary .no_msgs {text-align: center;}
+.page_breakfastDiary .no_msgs img{width:12.24rem; height:11.28rem; margin:4.8rem auto 1.92rem;}
+.page_breakfastDiary .no_msgs p{display:block; width:36rem; font-size:1.44rem; text-align:center; color:#888;margin: 0;}
+.page_breakfastDiary .no_msgs p img{width: 1.72rem;height: 1.72rem;vertical-align: middle;margin: 0;}
+
+/*****公众号二维码*****/
+.page_breakfastDiary .er_wei_ma{display:none; width:100%; height:100%; background:rgba(0,0,0,0.6); position:fixed; top:0rem; left:0rem; z-index:9999;}
+.page_breakfastDiary .er_wei_ma .box_t{width:22.08rem; margin:0 auto; background:#FFF;border-radius: 0.2rem;position: absolute;left: 50%;top: 50%;-webkit-transform: translateX(-50%) translateY(-50%);transform: translateX(-50%) translateY(-50%);}
+.page_breakfastDiary .er_wei_ma .box_t .title_top{width:15.36rem;text-align:center; font-size:1.44rem; color:#555;padding:2.78rem 0 0.48rem;margin: 0 auto;}
+.page_breakfastDiary .er_wei_ma .box_t img{width:15.36rem; height:15.36rem;display: block;margin: 0 auto;padding-bottom: 2.3rem;}
+
+.page_breakfastDiary .imgbox{display:none;}
+.page_breakfastDiary .imgbox .imgboxbg{width:100%; height:100%; background:#000; position:fixed; top:0rem; left:0rem; z-index:9998;}
+.page_breakfastDiary .imgbox img{width: 100%;height: auto;position: fixed;left: 50%;top: 50%;-webkit-transform: translateX(-50%) translateY(-50%);transform: translateX(-50%) translateY(-50%);z-index: 9999;}

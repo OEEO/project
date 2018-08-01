@@ -1,0 +1,113 @@
+{__NOLAYOUT__}
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{$pagetitle}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="icon" type="image/png" href="__AMUI__/i/favicon.png">
+<link rel="apple-touch-icon-precomposed" href="__AMUI__/i/app-icon72x72@2x.png">
+<meta name="apple-mobile-web-app-title" content="{$pagetitle}" />
+<link rel="stylesheet" href="__AMUI__/css/amazeui.min.css"/>
+<link rel="stylesheet" href="__RS__/css/admin.css">
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__AMUI__/js/jquery.min.js"></script>
+<script src="__AMUI__/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<style>
+.header {
+  text-align: center;
+  background:#F7F0F5;
+}
+.header h1 {
+  font-size: 200%;
+  color: #333;
+  margin-top: 30px;
+}
+.header p {
+  font-size: 14px;
+}
+.yzm {height:45px;}
+#doc-vld-yzm {width:50%;}
+.yzm a {height:40px;}
+.yzm img {height:42px;}
+</style>
+</head>
+<body>
+<div class="header">
+	<div class="am-g">
+		<h1><img src="__RS__/images/logo.png" width="131"></h1>
+	</div>
+	<hr />
+</div>
+<div class="am-g">
+	<div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+		<h3>后台登录</h3>
+		<hr>
+		
+		<form name="login" method="post" class="am-form">
+			<label for="doc-vld-user">用户名：</label>
+			<input type="text" name="username" id="doc-vld-user" class="am-input-xs am-u-sm-12 am-u-md-12" placeholder="请输入管理员用户名" required/>
+			<br>
+			<label for="doc-vld-pwd">密 码：</label>
+			<input type="password" name="password" class="am-input-xs am-u-sm-12 am-u-md-12" id="doc-vld-pwd" placeholder="请输入管理员密码" minlength="6" required/>
+			<br>
+			<label for="doc-vld-yzm">验证码:</label>
+			<div class="yzm">
+				<input type="text" name="captcha" class="am-input-xs am-u-sm-6 am-u-md-6" id="doc-vld-yzm" placeholder="输入密码" required/>
+				<a href="javascript:void(0);" class="am-u-sm-6 am-u-md-6" onClick="$(this).children().attr('src', '__MODULE__/index/captcha.html?'+Math.random())" title="看不清？换一张">
+					<img src="__MODULE__/index/captcha.html" class="am-img-thumbnail am-radius">
+				</a>
+			</div>
+			<br />
+
+			<div class="am-cf">
+				<input type="submit" name="" value="登入后台" class="am-btn am-btn-primary am-btn-sm am-fl">
+			</div>
+		</form>
+		<hr>
+		<p>&copy; 2015 吖咪厨房, 广州吖咪网络有限公司</p>
+	</div>
+</div>
+<script>
+$(document.login).submit(function(){
+	var datas = {};
+	datas.username = $(document.login.username).val();
+	datas.password = $(document.login.password).val();
+	datas.captcha = $(document.login.captcha).val();
+	$.ajax({
+		url: '',
+		data: datas,
+		dataType: 'json',
+		type: 'post',
+		success: function(d){
+			if(d.status == 1){
+				alert(d.info);
+				window.location.reload();
+			}else{
+				$('.yzm input').val('');
+				$('.yzm a').click();
+				alert(d.info);
+			}
+		}
+	});
+	return false;
+});
+
+
+</script>
+</body>
+</html>

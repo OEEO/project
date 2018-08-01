@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/confirmEnrolling.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/member.js"></script>
+</head>
+<body  style="min-height:100%;background:#ebecf0;">
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">确认报名</div>
+</div>
+<div class="the_blank"></div>
+
+<div class="pageTitleMenu"> 
+	<div class="Left" id="mainpic"><img src="images/portrait.jpg"></div>
+	<div class="Right">
+		<div class="title" id="title"></div>
+		<div class="price" id="price"></div>
+	</div>
+	<div class="clearfix"></div>
+	<div id="times" class="acttime"></div>
+	<div class="copies">数量
+		<span class="num">
+			<img src="./images/confirmBuySub.png" onclick="changeCopies(this,-1)" title="减1">
+			<div class="b" contenteditable="true" onblur="vals(this)" title="请输入购买量">1</div>
+			<img src="./images/confirmBuyAdd.png" onclick="changeCopies(this,1)" title="加1">
+		</span> 
+	</div>
+</div>
+
+<div class="li_item">
+	<a href="javascript:void(0);" class="coupon">使用优惠券<span id="coupon_price"></span><i class="arrowRight"></i></a>
+</div>
+	
+<div class="li_item">
+	<a href="javascript:void(0);">绑定的手机号<span id="telephone"></span><i class="arrowRight"></i></a>
+</div>
+
+<div class="li_item">
+	<div class="leaveWords">留言<div class="words" contenteditable="true"></div></div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="contactCustomerService">联系客服</div>
+
+<div class = "priceMenuBlank"></div>
+<div class = "priceMenu">
+	<div class="goodPrice"><span id="buy_price">175</span> <small>元</small></div>
+	<a id="submitBtn" href="javascript:void(0);">提交订单</a>
+</div>
+</body>
+<script>
+$('<script>').attr('src', 'js/confirmEnrolling.js?q='+Math.random()).appendTo('html');
+</script>
+</html>

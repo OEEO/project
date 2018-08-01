@@ -1,0 +1,23 @@
+<view class="settingMenu">
+	<view class="menuItem">
+		<navigator bindtap="showCode" class="list2">邀请好友<i class="arrowRight"></i></navigator>
+	</view>
+    <view class="center_border"></view>
+	<view class="the_blank"></view>
+    <view class="center_border"></view>
+	<view class="menuItem">
+		<navigator url="about" class="list4">关于吖咪<i class="arrowRight"></i></navigator>
+	</view>
+    <view class="center_border"></view>
+</view>
+<view class="the_blank"></view>
+<view class="pageBottom">
+	<navigator bindtap="logout">退出登录</navigator>
+</view>
+
+<view class="er_wei_ma" bindtap="hideCode" wx:if="{{showQrCode}}">
+	<view class="box_t">
+    	<view class="title_top">扫一扫关注我们</view>
+		<image src="http://img.yummy194.cn/images/123.jpg" />
+	</view>
+</view>

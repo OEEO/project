@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/evaluationStar.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/evaluationStar.js"></script>
+
+</head>
+<body style="min-height:100%;background:#ebecf0">
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">评价活动</div>
+	<div class="orderOperation" onclick="javascript:confirm('真的要提交吗？');">提交</div>
+</div>
+
+<div class="content">
+	<div class="item">给活动评分</div>
+	<div class="stars">
+		<img src="./images/star_full.png" onclick="evaluationStar(0)">
+		<img src="./images/star_empty.png" onclick="evaluationStar(1)">
+		<img src="./images/star_empty.png" onclick="evaluationStar(2)">
+		<img src="./images/star_empty.png" onclick="evaluationStar(3)">
+		<img src="./images/star_empty.png" onclick="evaluationStar(4)">
+		<span><i>1</i>星</span>
+	</div>
+	<div class="item">评价</div>
+	<!-- ---------两行注释h线之间是本页 工具部分------------ -->
+<!--	<div class="detailWords" contenteditable="true">请输入详细描述</div>-->
+		<div class="detailWords" contenteditable="true" onfocus="if($(this).text()=='请输入详细描述')$(this).empty();" onblur="	if($(this).text()=='')$(this).append('请输入详细描述');">请输入详细描述</div>
+	<!--
+	<textarea class="detailWords" onfocus="if(value=='请输入详细描述'){value=''}" onblur="if (value ==''){value='请输入详细描述'}">请输入详细描述</textarea>
+	<!-- --------------------- -->	
+	<div class="item">添加图片</div>
+	<div class="addImgs">
+		<img src="./images/add160x160@2x.png" onclick="javascript:alert();">
+	</div>
+</div>
+</body>
+</html>

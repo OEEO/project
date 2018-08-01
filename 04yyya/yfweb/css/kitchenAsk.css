@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+.page_kitchenAsk {background:rgba(245, 245, 245, 1);}
+.page_kitchenAsk .content {padding: 0.4rem 1.4rem 0 1.4rem; background: #fff; box-shadow: 0 0rem 0.1rem rgba(0, 0, 0, 0.2);}
+.page_kitchenAsk .content.success {position: relative; height:30rem; background: url('../images/enquiryfinish_icon@1x.png') no-repeat center center / 10rem 10rem; border:none; box-shadow: none;}
+.page_kitchenAsk .content.success:before {content: '询价成功!'; font-size: 1.5rem; position: absolute; top:22rem; text-align: center; width:100%; left:0;}
+.page_kitchenAsk .content.success:after {content: '工作人员会尽快与您联系,请耐心等待～'; font-size: 1.2rem; position: absolute; top:25rem; text-align: center; width:100%; left:0;}
+.page_kitchenAsk .content .line {height:4.5rem; line-height: 4.5rem; border-bottom: solid 0.1rem rgba(238, 238, 238, 1); font-size: 1.4rem; color:rgba(0,0,0,0.6);}
+.page_kitchenAsk .content .line:last-child {border: none;}
+.page_kitchenAsk .content .line > div > div {min-width:4rem; margin: 0.8rem 0.2rem 0 0; height:2.8rem; text-align:center; color:#666; line-height:2.8rem; border:solid 0.1rem rgba(220,220,220,0.3); border-radius: 0.5rem; display: inline-block; padding:0 1.6rem 0 0.2rem; position: relative; float: right;}
+.page_kitchenAsk .content .line > div > div:after {content: "▼"; position: absolute; line-height:2.8rem; right:0.5rem; color:#ddd; font-size:1rem; }
+.page_kitchenAsk .content .line .left {float: left;}
+.page_kitchenAsk .content .line .right {float: right; width: 20rem;}
+.page_kitchenAsk .content .line input {margin: 0; padding: 0; line-height: 4rem; text-align: right; width:20rem; border:none; background: none; color:rgba(0,0,0,0.6); font-size: 1.4rem;}
+
+.page_kitchenAsk button.btn {width:32rem; height:4rem; font-size:1.5rem; line-height: 4rem; color: #fff; background:#FFDC00; border-radius: 0.25rem; margin: 2.5rem auto 0 auto; border: none; display: block;}

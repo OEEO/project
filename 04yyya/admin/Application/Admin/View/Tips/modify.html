@@ -1,0 +1,1143 @@
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=B6JBZ-JLVK4-QFCUC-DFNRG-PBIP7-OTFAJ"></script>
+
+<div class="tips_add_content" style="display: flex !important;">
+    <div class="view">
+        <iframe name="viewBox"></iframe>
+    </div>
+    <form name="addForm" class="am-form editerBox">
+
+        <div class="am-tabs am-margin" data-am-tabs="{noSwipe: 1}">
+            <ul class="am-tabs-nav am-nav am-nav-tabs">
+                <li class="am-active"><a href="#tab1">基本信息</a></li>
+                <li><a href="#tab2">时间价位</a></li>
+                <li><a href="#tab3">菜单</a></li>
+                <li><a href="#tab4">地点环境</a></li>
+                <li><a href="#tab5">预定须知</a></li>
+            </ul>
+
+            <div class="am-tabs-bd">
+                <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">所属类别</div>
+                        <div class="am-u-sm-3">
+                            <select name="category_id" id="category_id" onchange="category_select()">
+                                <foreach name="categorys" item="row">
+                                    <option value="{$row.id}"<?php if($row['id'] == $data['category_id'])echo ' selected'?>>{$row.name}</option>
+                                </foreach>
+                            </select>
+                        </div>
+                        <div class="am-u-sm-7"></div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            活动标题
+                        </div>
+                        <div class="am-u-sm-4">
+                            <input type="text" name="title" class="am-input-sm" value="{$data.title}">
+                        </div>
+                        <div class="am-u-sm-6">*必填，不可重复</div>
+                    </div>
+
+                    <!--<div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            副标题
+                        </div>
+                        <div class="am-u-sm-4">
+                            <input type="text" name="intro" class="am-input-sm" value="{$data.intro}">
+                        </div>
+                        <div class="am-u-sm-6">选填</div>
+                    </div>-->
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            活动亮点
+                        </div>
+                        <div class="am-u-sm-4 edgesarea">
+                            <input type="text" name="edges[]" id="edge_1" class="am-input-sm" placeholder="亮点一" value="{$data.edge_1}">
+                            <input type="text" name="edges[]" class="am-input-sm" placeholder="亮点二" value="{$data.edge_2}">
+                            <input type="text" name="edges[]" class="am-input-sm" placeholder="亮点三" value="{$data.edge_3}">
+                        </div>
+                        <div class="am-u-sm-6">至少填写一项</div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">活动标签</div>
+                        <div class="am-u-sm-6 tags">
+                            <div class="am-btn-group" data-am-button>
+                                <foreach name="tags" item="row">
+                                <label class="am-btn am-btn-default am-btn-xs<?php if(in_array($row['id'], $data['tags']))echo ' am-active';?>">
+                                    <input type="checkbox" name="tags[]" value="{$row.id}"> {$row.name}
+                                </label>
+                                </foreach>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-4">最多可以选择3个</div>
+                    </div>
+                    <div class="am-g am-margin-top" id="context" <?php if($data['category_id'] != 2)echo 'style="display: none;"'?>>
+                        <div class="am-u-sm-2 ">
+                            活动描述
+                            <small style="display: block; margin-top: 20px; text-align: right; color:#999;">*注: <br/>
+                                如需要加粗的，请使用‘[b]***[/b]’来备注。例：[b]体检时间[/b]<br/>
+                                如需要换行的，请使用‘[br/]’来备注。例：体检时间[br/]<br/>
+                                此处只能存在纯文本内容
+                            </small>
+                        </div>
+                        <div class="am-u-sm-10 content">
+                            <textarea name="tips_content" rows="5"  wrap="physical" cols="2" >{$data.content}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            活动图组
+                            <small style="display: block; margin-top: 20px; text-align: right; color:#999;">*注: 尺寸限制 640*420 (px)</small>
+                        </div>
+                        <div class="am-u-sm-10 pics pics_group">
+                            <foreach name="data.pics_group" item="row">
+                                <span<?php if($data['pic_id'] == $row['id'])echo ' class="mainpic"'?>>
+                                    <img src="{$row.path}" data="{$row.id}" onclick="imgEnlarge(this)">
+                                    <a onclick="removePic(this)" href="javascript:void(0);">×</a>
+                                </span>
+                            </foreach>
+                            <a href="javascript:void(0);" class="add">+</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-tab-panel am-fade" id="tab2">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            活动单价
+                        </div>
+                        <div class="am-u-sm-4 price">
+                            <input type="text" name="price" class="am-input-sm am-text-center" value="{$data.price}"<?php if($data['status'] == 1 && $data['is_pass'] == 1)echo ' disabled';?>>
+                        </div>
+                        <div class="am-u-sm-6">*必填，必须为数字</div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">购买类型</div>
+                        <div class="am-u-sm-10 buy_status locked">
+                            <div class="am-btn-group" data-am-button>
+                                <label class="am-btn am-btn-default am-btn-xs<?php if($data['buy_status']==0)echo ' am-active';?>">
+                                    <input type="radio" name="buy_status" value="0"> 常规购买
+                                </label>
+                                <!--<label class="am-btn am-btn-default am-btn-xs<?php if($data['buy_status']==1)echo ' am-active';?>">-->
+                                    <!--<input type="radio" name="buy_status" value="1"> 可包桌-->
+                                <!--</label>-->
+                                <label class="am-btn am-btn-default am-btn-xs<?php if($data['buy_status']==2)echo ' am-active';?>">
+                                    <input type="radio" name="buy_status" value="2"> 可定制
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="am-g am-margin-top discount"<?php if($data['buy_status']==0 || $data['buy_status']==2)echo ' style="display:none;"';?>>-->
+                        <!--<div class="am-u-sm-2 am-text-right">-->
+                            <!--包场折扣-->
+                        <!--</div>-->
+                        <!--<div class="am-u-sm-4 point">-->
+                            <!--<input type="text" name="discount" class="am-input-sm am-text-center" value="{$data.discount}"<?php if($data['status'] == 1 && $data['is_pass'] == 1)echo ' disabled';?>>-->
+                        <!--</div>-->
+                        <!--<div class="am-u-sm-6">*必填，必须为0~100的数字</div>-->
+                    <!--</div>-->
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            活动时间
+                        </div>
+                        <div class="am-u-sm-10 times">
+                            <table class="timesTable">
+                                <thead>
+                                <tr>
+                                    <th>开始时间</th>
+                                    <th>结束时间</th>
+                                    <th>成局人数</th>
+                                    <th>开始购买时间</th>
+                                    <th>截止购买时间</th>
+                                    <th>每人限购</th>
+                                    <th>最低购买</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                            <?php if(count($data['times']) > 0):?>
+                            <?php foreach($data['times'] as $times):?>
+                                <tr times_id="{$times.id}">
+                                    <td><input style="width:120px" type="text" name="start_time" value="<?=date('Y-m-d H:i', $times['start_time'])?>" data-date-format="yyyy-mm-dd hh:ii"></td>
+                                    <td><input style="width:120px" type="text" name="end_time" value="<?=date('Y-m-d H:i', $times['end_time'])?>" data-date-format="yyyy-mm-dd hh:ii" ></td>
+                                    <td class="num"><input style="width:25px" type="text" name="min_num" value="{$times.min_num}" > - <input style="width:25px" type="text" name="max_num" value="{$times.max_num}"></td>
+                                    <td><input style="width:120px" type="text" name="start_buy_time" value="<?=date('Y-m-d H:i', $times['start_buy_time'])?>" data-date-format="yyyy-mm-dd hh:ii" placeholder="默认上架时间.."></td>
+                                    <td><input style="width:120px" type="text" name="stop_buy_time" value="<?=date('Y-m-d H:i', $times['stop_buy_time'])?>" data-date-format="yyyy-mm-dd hh:ii" placeholder="默认开始时间.." ></td>
+                                    <td><input style="width:30px" type="text" name="limit_num" value="{$times.limit_num}" placeholder="无限" ></td>
+                                    <td><input style="width:30px" type="text" name="lowest_num" value="{$times.lowest_num}" placeholder="无限" ></td>
+                                    <td>
+                                        <button type="button" class="am-btn am-btn-xs am-btn-link"  <?php if($data['status'] != 1 && $data['is_pass'] != 1) echo 'onclick="$(this).parent().parent().remove()"';?>>移除</button>
+                                        <button type="button" class="am-btn am-btn-xs am-btn-link" onclick="groupPrice(<?=$times['id']?>);">拼团列表</button>
+                                    </td>
+                                </tr>
+                            <?php endforeach;?>
+                            <?php else:?>
+                            <table class="timesTable">
+                                <tr>
+                                    <td><input style="width:120px" type="text" name="start_time" value="" data-date-format="yyyy-mm-dd hh:ii"></td>
+                                    <td><input style="width:120px" type="text" name="end_time" value="" data-date-format="yyyy-mm-dd hh:ii"></td>
+                                    <td class="num"><input style="width:25px" type="text" name="min_num" value=""> - <input style="width:25px" type="text" name="max_num" value=""></td>
+                                    <td><input style="width:120px" type="text" name="start_buy_time" value="" data-date-format="yyyy-mm-dd hh:ii" placeholder="默认上架时间.."></td>
+                                    <td><input style="width:120px" type="text" name="stop_buy_time" value="" data-date-format="yyyy-mm-dd hh:ii" placeholder="默认开始时间.."></td>
+                                    <td><input style="width:30px" type="text" name="limit_num" value="" placeholder="无限"></td>
+                                    <td><input style="width:30px" type="text" name="lowest_num" value="" placeholder="无限"></td>
+                                    <td><button type="button" class="am-btn am-btn-xs am-btn-link" onclick="$(this).parent().parent().remove()">移除</button></td>
+                                </tr>
+                            <?php endif;?>
+                                </tbody>
+                            </table>
+                            <p><button type="button" class="am-btn am-btn-xs addBtn am-btn-default">+ 增加 +</button></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-tab-panel am-fade" id="tab3">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            菜单图组
+                            <small style="display: block; margin-top:20px ; text-align: right; color:#999;">*注: 尺寸限制 640*420 (px)</small>
+                        </div>
+                        <div class="am-u-sm-10 pics menu_pics_group">
+                            <foreach name="data.menu_pics_group" item="row">
+                                <span>
+                                    <img src="{$row.path}" data="{$row.id}" onclick="imgEnlarge(this)">
+                                    <a onclick="removePic(this)" href="javascript:void(0);">×</a>
+                                </span>
+                            </foreach>
+                            <a href="javascript:void(0);" class="add">+</a>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            <select class="am-input-sm" name="menu_type" onchange="changeMenu(this.value)">
+                                <option value="A"<?php if(strpos($data['menu'][0]['name'], '前菜') === 0)echo ' selected="selected"';?>>中餐菜单</option>
+                                <option value="B"<?php if(strpos($data['menu'][0]['name'], '头盘') === 0)echo ' selected="selected"';?>>西餐菜单</option>
+                                <option value="C"<?php if(strpos($data['menu'][0]['name'], '活动流程') === 0)echo ' selected="selected"';?>>其他菜单</option>
+                            </select>
+                            <small style="display: block; margin-top: 50px; text-align: right; color:#999;">*注: 输入菜品后按 Enter 键才能继续添加菜品..</small>
+                        </div>
+                        <div class="am-u-sm-10">
+                            <ul class="am-u-sm-12 menu">
+                                <foreach name="data.menu" item="row">
+                                    <li class="am-g">
+                                        <div class="am-u-sm-1 name"><font><?php if(strchr($row['name'],'A@')==false || strchr($row['name'],'B@')==false || strchr($row['name'],'C@')==false):?><?php echo $row['name'];?><?php else:?><?php substr($row['name'], 2);?><?php endif;?></font>:</div>
+                                        <div class="am-u-sm-11<?=(strchr($row['name'],'A@')==false || strchr($row['name'],'B@')==false || strchr($row['name'],'C@')==false)?($row['name']=='活动流程'?' full':''):(substr($row['name'], 2)=='活动流程'?' full':'')?>">
+                                            <?php if(strchr($row['name'],'A@')==false || strchr($row['name'],'B@')==false || strchr($row['name'],'C@')==false):?>
+                                            <?php if($row['name']=='Tips'):?>
+                                            <input type="text" class="tips" value="<?=(!empty($row['value'])?$row['value']:'')?>">
+                                            <?php else:?>
+                                            <foreach name="row.value" item="v">
+                                                <?php if($v!=''):?>
+                                                <span><font>{$v}</font><a href="javascript:void(0);" onclick="$(this).parent().remove()">×</a></span>
+                                                <?php else:?>
+                                                <span><font></font><a href="javascript:void(0);" onclick="$(this).parent().remove()">×</a></span>
+                                                <?php endif;?>
+                                            </foreach>
+                                            <a href="javascript:void(0);" class="add" onclick="addMenuItem(this)">+</a>
+                                            <?php endif;?>
+                                            <?php else:?>
+                                            <?php if(substr($row['name'], 2)=='Tips'):?>
+                                            <input type="text" class="tips" value="<?=(!empty($row['value'])?$row['value']:'')?>">
+                                            <?php else:?>
+                                            <foreach name="row.value" item="v">
+                                                <?php if($v!=''):?>
+                                                <span><font>{$v}</font><a href="javascript:void(0);" onclick="$(this).parent().remove()">×</a></span>
+                                                <?php else:?>
+                                                <span><font></font><a href="javascript:void(0);" onclick="$(this).parent().remove()">×</a></span>
+                                                <?php endif;?>
+                                            </foreach>
+                                            <a href="javascript:void(0);" class="add" onclick="addMenuItem(this)">+</a>
+                                            <?php endif;?>
+                                            <?php endif;?>
+
+                                        </div>
+                                    </li>
+
+                                </foreach>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="am-tab-panel am-fade" id="tab4">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">选择场地</div>
+                        <div class="am-u-sm-10" id="addressArea">
+                            <select class="AddressSelect" name="space_id" <?php if($data['status'] == 1 && $data['is_pass'] == 1) echo ' disabled="disabled"';?>>
+                            <foreach name="spaceselect" item="space">
+                                <option value="{$space.spaceid}" <?php if($space['spaceid'] == $data['space_id']) echo ' selected="selected"';?>>{$space.city_name}市&nbsp;&nbsp;{$space.areaname}区&nbsp;&nbsp;{$space.address}</option>
+
+                            </foreach>
+                            <option value="0">新增</option>
+                            </select>
+
+                        </div>
+                        <div class="am-u-sm-10" id="Addcitys" style="display: none">
+                            <select class="select" name="city_id">
+                                <foreach name="citys" key="id" item="name">
+                                    <option value="{$id}">{$name}</option>
+                                </foreach>
+                            </select>
+                            <select class="select" name="area_id">
+                                <foreach name="areas" item="row">
+                                    <option value="{$row.id}">{$row.name}</option>
+                                </foreach>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">标注地图</div>
+                        <div class="am-u-sm-10">
+                            <div id="container"></div>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">简写地址</div>
+                        <div class="am-u-sm-3">
+                            <input type="text" name="simpleaddress" class="am-input-sm" value="{$data.simpleaddress}"<?php if($data['status'] == 1 && $data['is_pass'] == 1 || $data['space_id'] !=0 )echo ' disabled="disabled"';?>>
+                        </div>
+                        <div class="am-u-sm-7"></div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">详细地址</div>
+                        <div class="am-u-sm-5">
+                            <input type="text" name="address" class="am-input-sm" value="{$data.address}"<?php if($data['status'] == 1 && $data['is_pass'] == 1  || $data['space_id'] !=0 )echo ' disabled="disabled"';?>>
+                        </div>
+                        <div class="am-u-sm-5"><button id="checkMapBtn" type="button" class="am-btn am-btn-default am-btn-sm"<?php if($data['status'] == 1 && $data['is_pass'] == 1 || $data['space_id'] !=0)echo ' disabled="disabled"';?>>定位地图</button> <small class="fonts-size:12px;">*注:不用填写省市区</small></div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            环境图片
+                            <small style="display: block; margin-top: 20px; text-align: right; color:#999;">*注: 尺寸不限制</small>
+                        </div>
+                        <div class="am-u-sm-10 pics environment_pics_group" id="enviromentPics" >
+                            <foreach name="data.environment_pics_group" item="row">
+                                <span>
+                                    <img src="{$row.path}" data="{$row.id}" onclick="imgEnlarge(this)">
+                                    <a <?php if($data["status"] == 1 && $data["is_pass"] == 1):?> onclick="" <?php else:?> onclick="removePic(this)"<?php endif; ?> href="javascript:void(0);" >×</a>
+                                </span>
+                            </foreach>
+                            <a href="javascript:void(0);" class="add"  <?php if($data["status"] == 1 && $data["is_pass"] == 1):?> onclick="" <?php else:?> onclick="addpic()"<?php endif; ?> >+</a>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            <input type="text" maxlength="5" class="context_title" name="context_title" placeholder="特色" value="{$data.context_title}">
+                            <small style="display: block; margin-top: 20px; text-align: right; color:#999;">*注: 内容支持富文本,不填特色标题则不会出现该模块!</small>
+                        </div>
+                        <div class="am-u-sm-10">
+                            <div class="context_text" contenteditable="true" name="context_text">{$data.context_text}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-tab-panel am-fade" id="tab5">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">是否公开</div>
+                        <div class="am-u-sm-10 is_public">
+                            <div class="am-btn-group" data-am-button>
+                                <label class="am-btn am-btn-default am-btn-xs<?php if($data['is_public'])echo ' am-active';?>">
+                                    <input type="radio" name="is_public" value="1"> 公开
+                                </label>
+                                <label class="am-btn am-btn-default am-btn-xs<?php if(!$data['is_public'])echo ' am-active';?>">
+                                    <input type="radio" name="is_public" value="0"> 不公开
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right" data-private="{$p}">是否私房菜</div>
+                        <div class="am-u-sm-10 is_private_cuisine">
+                            <div class="am-btn-group" data-am-button>
+                                <label class="am-btn am-btn-default am-btn-xs <?php if($p == 1) echo 'am-active';?>">
+                                    <input type="radio" name="is_private_cuisine" value="1"> 私房菜
+                                </label>
+                                <label class="am-btn am-btn-default am-btn-xs <?php if($p == 0) echo 'am-active';?>">
+                                    <input type="radio" name="is_private_cuisine" value="0"> 非私房菜
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            活动须知
+                        </div>
+                        <div class="am-u-sm-10 notices">
+                            <foreach name="notices" item="row">
+                                <if condition="$row.status eq 1">
+                                    <label <?php if($p==1)echo 'style="display: none";';?>><input type="checkbox" checked="checked" data-notice-status="{$row.status}" disabled="disabled"> {$row.context}</label>
+                                <elseif condition="$row.status eq 2"/>
+                                    <label><input type="checkbox" name="notice_id[]" value="{$row.id}"<?php if(in_array($row['id'], explode(',', $data['notice'])))echo ' checked="checked"';?> data-notice-status="{$row.status}"> {$row.context}</label>
+                                <elseif condition="$row.status eq 4"/>
+                                    <label <?php if($p==0)echo 'style="display: none";';?>><input type="checkbox" checked="checked" name="notice_id[]" disabled="disabled"  data-notice-status="{$row.status}" value="{$row.id}"<?php if(in_array($row['id'], explode(',', $data['notice'])))echo ' checked="checked"';?>> {$row.context}</label>
+                                <else/>
+                                    <?php if(in_array($row['id'], explode(',', $data['notice']))) ?>
+                                     <label><input type="checkbox" name="notice_id[]" value="{$row.id}" data-notice-status="{$row.status}" <?php if(in_array($row['id'], explode(',', $data['notice'])))echo ' checked="checked"';?>>{$row.context}</label>
+                                    <?php ?>
+                                </if>
+                            </foreach>
+                            <p align="center"><button type="button" class="am-btn am-btn-xs addBtn am-btn-default" onclick="addNotice(this)">+ 增加 +</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="am-margin">
+            <button type="button" class="am-btn am-btn-success am-btn-sm" onclick="saveAndView()">保存并预览</button>
+            <!--<button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="tips_submit()">提交审核</button>-->
+            <button type="button" class="am-btn am-btn-default am-btn-xs" onclick="location.href='__CONTROLLER__/index.html'">返回</button>
+        </div>
+    </form>
+    <div style="clear:both;"></div>
+</div>
+
+<!-- 编辑拼团 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="pieceBox">
+    <div class="am-modal-dialog" style=" width: 700px; ">
+        <form name="piece" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">编辑拼团</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm" >
+                    <div class="am-u-sm-12 am-u-md-12" >
+                        <font color="red">注意：</font> 当你输入的成团人数大于该分期的最大参与人数时，系统默认取该分期的最大参与人数的一半
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm" >
+                    <div class="am-u-sm-12 am-u-md-12" style="padding: 0rem;height: 400px;">
+                        <table class="timesPriceTable">
+                            <thead>
+                                    <tr>
+                                    <th>团数</th>
+                                    <th>拼团折扣价</th>
+                                    <th>成团人数</th>
+                                    <th>限购人数</th>
+                                    <th>拼团限时（小时）</th>
+                                    <th>是否封顶</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <p align="center"><button type="button" class="am-btn am-btn-xs addBtn am-btn-default" onclick="addBtn(this)">+ 增加 +</button></p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.am-modal').appendTo('body');
+    var member_id = {$data.member_id};
+    var tips_id = {$data.id};
+    <?php if(!empty($data['longitude']))echo "var position = [". $data['longitude'].','. $data['latitude'] ."]"; else echo "var position = [];";?>
+
+    $('.view iframe').attr('src', 'http://<?=WEB_DOMAIN?>/?page=tipsDetail&tips_id=' + tips_id);
+
+    function tips_submit(){
+        $.post('', {tips_id:tips_id, submit:1}, function(d){
+            if(d.status == 1){
+                alert(d.info);
+                location.href = '__CONTROLLER__/index.html';
+            }else{
+                alert(d.info);
+            }
+        }, 'json');
+    }
+
+    //保存并预览
+    function saveAndView(fn){
+        var data = {};
+        data.tips_id = tips_id;
+        data.member_id = member_id;
+        data.category_id = document.addForm.category_id.value;
+        data.title = document.addForm.title.value;
+        data.tips_content = document.addForm.tips_content.value;
+        //data.intro = document.addForm.intro.value;
+        data.edge_1 = document.getElementById('edge_1').value;
+        data.price = document.addForm.price.value;
+        //data.discount = document.addForm.discount.value;
+        data.space_id = document.addForm.space_id.value;
+        data.longitude = position[0];
+        data.latitude = position[1];
+        data.simpleaddress = document.addForm.simpleaddress.value;
+        data.area_id = document.addForm.area_id.value;
+        data.citys_id = document.addForm.city_id.value;
+        data.address = document.addForm.address.value;
+        data.pic_id = $('.pics_group .mainpic img').attr('data');
+        data.is_public = $('.is_public label.am-active input').val();
+        data.buy_status = $('.buy_status .am-active input').val();
+        if(document.addForm.context_title.value != ''){
+            data.context_title = document.addForm.context_title.value;
+            data.context_text = $('.context_text').html();
+        }
+        data.submit = 0;
+        //人数判断
+        if(parseInt(data.min_num) > parseInt(data.restrict_num)){
+            alert('最小人数不能大于最大人数！');
+            return;
+        }
+
+        if(data.pic_id == undefined || data.pic_id == ''){
+            alert('请设置封面图');
+            return;
+
+        }
+        //判断地址是否该生成场地
+        if(!data.address){
+            data.area_id = document.addForm.area_id.value;
+        }
+
+
+        //判断是否存在场地。如果存在则不传地区id
+        if(!data.space_id || data.space_id == 0){
+            data.area_id = document.addForm.area_id.value;
+            data.citys_id = document.addForm.city_id.value;
+        }
+
+
+        //判断亮点
+        if(!data.edge_1){
+            alert('必须设定一个亮点！');
+            return;
+        }
+        var edges = [];
+        $('.edgesarea input').each(function() {
+            if (this.value !== null && this.value !== '') {
+                edges.push(this.value);
+            }
+        });
+        data.edges =edges.join(',');
+
+        //活动图组
+        var pics = [];
+        $('.pics_group img').each(function(){
+            pics.push($(this).attr('data'));
+        });
+        data.group_pic_ids = pics.join(',');
+
+        //菜单图组
+        var pics = [];
+        $('.menu_pics_group img').each(function(){
+            pics.push($(this).attr('data'));
+        });
+        data.menu_group_pic_ids = pics.join(',');
+
+        //环境图组
+        var pics = [];
+        $('.environment_pics_group img').each(function(){
+            pics.push($(this).attr('data'));
+        });
+        data.environment_group_pic_ids = pics.join(',');
+
+        //活动标签
+        var tags_id = [];
+        $('.tags label.am-active input').each(function(){
+            tags_id.push(this.value);
+        });
+        data.tags_id = tags_id.join(',');
+
+        //活动时间
+        data.times = [];
+        $('.times tbody tr').each(function(){
+            var times = {};
+            if($(this).attr('times_id'))times.id = $(this).attr('times_id');
+            times.start_time = $(this).find('[name="start_time"]').val();
+            times.end_time = $(this).find('[name="end_time"]').val();
+            times.min_num = $(this).find('[name="min_num"]').val();
+            times.max_num = $(this).find('[name="max_num"]').val();
+            times.start_buy_time = $(this).find('[name="start_buy_time"]').val();
+            times.stop_buy_time = $(this).find('[name="stop_buy_time"]').val();
+            times.limit_num = $(this).find('[name="limit_num"]').val();
+            times.lowest_num = $(this).find('[name="lowest_num"]').val();
+            data.times.push(times);
+        });
+
+        //新增的须知
+        data.addnotice = [];
+        $('.notices label input[name="addnotice"]').each(function(){
+            var addnotice = {};
+            if($(this).val() != ''){
+                addnotice.notice = $(this).val();
+                data.addnotice.push(addnotice);
+            }
+        });
+
+        //活动菜单
+        var menuArr = [];
+        var menuType = document.addForm.menu_type.value;
+        $('.menu li').each(function(){
+            var name = $(this).find('.name font').text();
+            if (name !=='' && name !==undefined){
+                if(name == 'Tips'){
+                    var menu = menuStrToBase($(this).find('input.tips').val());
+                    menuArr.push(menuType + '@Tips:' + menu);
+                }else{
+                    var menu = [];
+                    $(this).find('span font').each(function(){
+                        menu.push(menuStrToBase($(this).text()));
+                    });
+                    menuArr.push(menuType + '@' + menuStrToBase(name) + ':' + menu.join(','));
+                }
+            }
+        });
+        data.menu = menuArr.join('|');
+
+        //活动须知
+        var notice = [];
+        $('[name="notice_id[]"]:checked').each(function(){
+            notice.push(this.value);
+        });
+        data.notice = notice.join(',');
+
+        $.ajax({
+            data : data,
+            type : 'post',
+            dataType : 'json',
+            success : function(d){
+                if(d.status == 1){
+                    if(typeof(fn) == 'function'){
+                        alert('复制成功!');
+                        fn(d.info);
+                    }else{
+                        alert('保存成功!');
+                    }
+                    $('.view iframe').attr('src','http://<?=WEB_DOMAIN?>/?page=tipsDetail&tips_id=' + tips_id);
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+
+    var map = new qq.maps.Map(document.getElementById("container"),{
+        zoom: 13
+    });
+    var marker, islocation = false, _marker = false;
+    <?php if($data['status'] != 1 || $data['is_pass'] != 1):?>
+    //绑定单击事件添加参数
+    qq.maps.event.addListener(map, 'click', function(event) {
+        islocation = false;
+        geocoder.getAddress(event.latLng);
+    });
+    <?php endif;?>
+    //将坐标转换为地址
+    geocoder = new qq.maps.Geocoder({
+        complete : function(result){
+            if(islocation){
+                map.setCenter(result.detail.location);
+                if(_marker){
+                    _marker = false;
+                    position = [result.detail.location.getLng(), result.detail.location.getLat()];
+                    if(marker && marker.setMap)marker.setMap(null);
+                    marker = new qq.maps.Marker({
+                        position:result.detail.location,
+                        draggable: true,
+                        map:map
+                    });
+                }
+            }else{
+                var city = result.detail.addressComponents.city;
+                var district = result.detail.addressComponents.district;
+                var street = result.detail.addressComponents.street;
+                var streetNumber = result.detail.addressComponents.streetNumber||'';
+                var bool = false;
+                if(!_marker){
+                    $('select[name="city_id"]').children().each(function(){
+                        if(city.indexOf($(this).text()) > -1){
+                            $('select[name="city_id"]').val($(this).attr('value'));
+                            setTimeout(function(){
+                                $('select[name="area_id"]').children().each(function(){
+                                    if(district.indexOf($(this).text()) > -1){
+                                        $('select[name="area_id"]').val($(this).attr('value'));
+                                    }
+                                });
+                            }, 1000);
+                            bool = true;
+                        }
+                    });
+                    if(!bool){
+                        alert('该城市尚未开通吖咪服务!');
+                        return;
+                    }
+                }
+                if([result.detail.location.getLng(), result.detail.location.getLat()] != position && !_marker){
+                    $('input[name="simpleaddress"]').val(street);
+                    $('input[name="address"]').val(street + streetNumber);
+                }
+                _marker = false;
+                position = [result.detail.location.getLng(), result.detail.location.getLat()];
+                map.setCenter(result.detail.location);
+                if(marker && marker.setMap)marker.setMap(null);
+                marker = new qq.maps.Marker({
+                    position:result.detail.location,
+                    draggable: true,
+                    map:map
+                });
+            }
+        }
+    });
+//    geocoder = new qq.maps.Geocoder({
+//        complete : function(result){
+//            if(marker && marker.setMap)marker.setMap(null);
+//            map.setCenter(result.detail.location);
+//            position = [result.detail.location.getLng(), result.detail.location.getLat()];
+//            marker = new qq.maps.Marker({
+//                position:result.detail.location,
+//                draggable: true,
+//                map:map
+//            });
+//        }
+//    });
+
+    if(position.length == 2){
+        var latLng = new qq.maps.LatLng(position[1], position[0]);
+        //调用获取位置方法
+        _marker = true;
+        geocoder.getAddress(latLng);
+//        if(marker && marker.setMap)marker.setMap(null);
+//        marker = new qq.maps.Marker({
+//            position: latLng,
+//            draggable: true,
+//            map:map
+//        });
+    }
+    $('#checkMapBtn').click(function(){
+        var address = $('select[name="city_id"]').find('[value="'+ $('select[name="city_id"]').val() +'"]').text() + '市,' + $('select[name="area_id"]').find('[value="'+ $('select[name="area_id"]').val() +'"]').text() + '区';
+        address += ',' + $('input[name="address"]').val();
+        islocation = true;
+        _marker = true;
+        geocoder.getLocation(address);
+    });
+    <?php if(empty($data['citys_id']))echo "islocation=true;geocoder.getLocation('广州市,天河区');$('select[name=\"area_id\"]').val(2095)";?>
+
+
+    <?php if(!empty($data['menu'])):?>
+    var mArr = [];
+    $('.menu li').each(function(){
+        menu = $.trim($(this).find('.name font').text());
+        mArr.push(menu);
+    });
+    if($.inArray('Tips', mArr) == -1){
+        var code = '<li class="am-g"><div class="am-u-sm-1 name"><font>Tips</font>:</div><div class="am-u-sm-11"><input type="text" class="tips" value=""></div></li>';
+        $('.menu').append(code);
+    }
+    <?php endif;?>
+
+    var menus = {
+        'A' : [ '前菜', '汤品', '热菜','主食','点心', '甜品', '其他', '酒水饮品', 'Tips'],
+        'B' : ['头盘','沙拉','汤', '主菜', '主食', '甜品', '其他', '酒水饮品', 'Tips'],
+        'C' : ['活动流程', '菜单',  '饮品', '伴手礼', 'Tips']
+    };
+    function changeMenu(option){
+        var option = option||'A';
+        var code = '';
+        for(var i in menus[option]){
+            if(menus[option][i] == 'Tips') {
+                code += '<li class="am-g">';
+                code += '   <div class="am-u-sm-1 name"><font>' + menus[option][i] + '</font>:</div>';
+                code += '   <div class="am-u-sm-11">';
+                code += '       <input type="text" class="tips">';
+                code += '   </div>';
+                code += '</li>';
+            }else if(menus[option][i] == '活动流程'){
+                code += '<li class="am-g">';
+                code += '   <div class="am-u-sm-1 name"><font>' + menus[option][i] + '</font>:</div>';
+                code += '   <div class="am-u-sm-11 full">';
+                code += '       <a href="javascript:void(0);" class="add" onclick="addMenuItem(this)">+</a>';
+                code += '   </div>';
+                code += '</li>';
+            }else{
+                code += '<li class="am-g">';
+                code += '   <div class="am-u-sm-1 name"><font>' + menus[option][i] + '</font>:</div>';
+                code += '   <div class="am-u-sm-11">';
+                code += '       <a href="javascript:void(0);" class="add" onclick="addMenuItem(this)">+</a>';
+                code += '   </div>';
+                code += '</li>';
+            }
+        }
+        if($('select[name="menu_type"]').val() == 'C'){
+            code +='<div class="am-u-sm-12"><a href="javascript:void(0);" class="add" onclick="addmenuName(this)">+添加 +</a></div>'
+        }
+        $('.menu').html(code);
+    }
+
+    <?php if(empty($data['menu']))echo "changeMenu();";?>
+
+    function addMenuItem(em){
+        $('<input type="text">').appendTo($(em).parent()).keypress(function(event){
+            if(event.which == '13'){
+                $('<span><font>'+ $(this).val() +'</font><a href="javascript:void(0);" onclick="$(this).parent().remove()">×</a></span>').appendTo($(this).parent());
+                $('<a href="javascript:void(0);" class="add" onclick="addMenuItem(this)">+</a>').appendTo($(this).parent());
+                $(this).remove();
+            }
+        }).focus();
+        $(em).remove();
+    }
+
+    function addmenuName(em) {
+        var li = $(".menu li").eq(-3)
+        var code = '';
+        code += '<li class="am-g">';
+        code += '   <div class="am-u-sm-1 name"><input type="text" onkeydown="menuName(this)"></div>';
+        code += '   <div class="am-u-sm-11">';
+        code += '       <a href="javascript:void(0);" class="add" onclick="addMenuItem(this)">+</a>';
+        code += '   </div>';
+        code += '</li>';
+        $(".menu li").eq(-3).after(code);
+    }
+
+    function menuName(em){
+        $(em).keypress(function(event) {
+            if (event.which == '13') {
+                $(this).parent().html('<font>' + $(em).val() + '</font>:')
+            }
+        })
+    }
+
+    $('input[name="is_private_cuisine"]').change(function() {
+        var val = $(this).val();
+        if (val == 1) {
+            // 私房菜
+            $('[data-notice-status="4"]').parent('label').show();
+            $('[data-notice-status="1"]').parent('label').hide();
+        } else {
+            $('[data-notice-status="1"]').parent('label').show();
+            $('[data-notice-status="4"]').parent('label').hide();
+        }
+    });
+
+    $('select[name="city_id"]').change(function(){
+        $.post('', {city_id:this.value}, function(d){
+            if(!d.info){
+                var code = '';
+                for(var i in d){
+                    if(d[i].id == '2095' || d[i].id == '2160'){
+                        code += '<option value="'+ d[i].id +'" selected>'+ d[i].name +'</option>';
+                    }else{
+                        code += '<option value="'+ d[i].id +'">'+ d[i].name +'</option>';
+                    }
+                }
+                $('select[name="area_id"]').html(code);
+                $('select[name="area_id"]').change();
+            }else{
+                alert(d.info);
+            }
+        }, 'json');
+    });
+    $('select[name="area_id"]').change(function(){
+        console.log($('select[name="city_id"]').find('[value="'+ $('select[name="city_id"]').val() +'"]').text() + '市,' + $(this).find('[value="'+ this.value +'"]').text() + '区');
+        geocoder.getLocation($('select[name="city_id"]').find('[value="'+ $('select[name="city_id"]').val() +'"]').text() + '市,' + $(this).find('[value="'+ this.value +'"]').text() + '区');
+    });
+
+    $('.times [data-date-format="yyyy-mm-dd hh:ii"]').datetimepicker();
+    $('.times .addBtn').click(function(){
+        var min_num = $('.times .num:last input')[0].value;
+        var max_num = $('.times .num:last input')[1].value;
+        var code = '<tr>';
+        code += '<td><input style="width:120px" type="text" name="start_time" value="" data-date-format="yyyy-mm-dd hh:ii"></td>';
+        code += '<td><input style="width:120px" type="text" name="end_time" value="" data-date-format="yyyy-mm-dd hh:ii"></td>';
+        code += '<td class="num"><input style="width:25px" type="text" name="min_num" value="'+min_num+'"> - <input style="width:25px" type="text" name="max_num" value="'+max_num+'"></td>';
+        code += '<td><input style="width:120px" type="text" name="start_buy_time" value="" placeholder="默认上架时间.." data-date-format="yyyy-mm-dd hh:ii"></td>';
+        code += '<td><input style="width:120px" type="text" name="stop_buy_time" value="" placeholder="默认开始时间.." data-date-format="yyyy-mm-dd hh:ii"></td>';
+        code += '<td><input style="width:30px" type="text" name="limit_num" value="" placeholder="无限"></td>';
+        code += '<td><input style="width:30px" type="text" name="lowest_num" value="" placeholder="无限"></td>';
+        code += '<td><button type="button" class="am-btn am-btn-xs am-btn-link" onclick="$(this).parent().parent().remove()">移除</button></td>';
+        code += '</tr>';
+        $(code).appendTo($('.times tbody')).find('[data-date-format="yyyy-mm-dd hh:ii"]').datetimepicker();
+    });
+
+    $('.pics_group .add').click(function(){
+        pic_upload(this, [640, 420], function(files){
+            for(var i in files){
+                if($('.pics_group .mainpic').size() == 0)
+                    $('.pics_group .add').before('<span class="mainpic"><img data="'+ files[i].pic_id +'" src="'+ files[i].path +'" onclick="imgEnlarge(this)"><a href="javascript:void(0);" onclick="removePic(this)">×</a></span>');
+                else
+                    $('.pics_group .add').before('<span><img data="'+ files[i].pic_id +'" src="'+ files[i].path +'" onclick="imgEnlarge(this)"><a href="javascript:void(0);" onclick="removePic(this)">×</a></span>');
+            }
+            $('.pics_group span').click(function(d){
+                $('.pics_group .mainpic').removeClass('mainpic');
+                $(this).addClass('mainpic');
+            });
+        });
+    });
+    $('.pics_group span').click(function(d){
+        $('.pics_group .mainpic').removeClass('mainpic');
+        $(this).addClass('mainpic');
+    });
+
+    $('.menu_pics_group .add').click(function(){
+        pic_upload(this, [640, 420], function(files){
+            for(var i in files){
+                $('.menu_pics_group .add').before('<span><img data="'+ files[i].pic_id +'" src="'+ files[i].path +'" onclick="imgEnlarge(this)"><a href="javascript:void(0);" onclick="removePic(this)">×</a></span>');
+            }
+        });
+    });
+
+//    $('.environment_pics_group .add').click(function(){
+//        pic_upload(this, [640, 0], function(files){
+//            for(var i in files){
+//                $('.environment_pics_group .add').before('<span><img data="'+ files[i].pic_id +'" src="'+ files[i].path +'" onclick="imgEnlarge(this)"><a href="javascript:void(0);"<?php if($data["status"] != 1 && $data["is_pass"] != 1):?>onclick="removePic(this)"<?php endif; ?>>×</a></span>');
+//            }
+//        });
+//    });
+
+    function addpic(){
+        pic_upload(this, [640, 420], function(files){
+            for(var i in files){
+                $('.environment_pics_group .add').before('<span><img data="'+ files[i].pic_id +'" src="'+ files[i].path +'" onclick="imgEnlarge(this)"><a href="javascript:void(0);"<?php if($data["status"] == 1 && $data["is_pass"] == 1):?> onclick="" <?php else:?>onclick="removePic(this)"<?php endif; ?>>×</a></span>');
+            }
+        });
+    }
+    //获取场地的值
+    var positionAdd=[];
+    $('select[name="space_id"]').change(function(){
+        var piccode='';
+        if(this.value != 0) {
+            $.post('', {space_id: this.value}, function (d) {
+                if (parseFloat(d.longitude) != '' && parseFloat(d.longitude) != null) {
+                    positionAdd = [parseFloat(d.longitude), parseFloat(d.latitude)];
+                } else {
+                    positionAdd = [];
+                }
+                if (positionAdd.length == 2) {
+                    var latLng = new qq.maps.LatLng(positionAdd[1], positionAdd[0]);
+                    //调用获取位置方法
+                    _marker = true;
+                    geocoder.getAddress(latLng);
+                }
+
+                if (d.environment_pics.length != 0){
+                    for (var i in d.environment_pics) {
+                        piccode += '<span><img src="' + d.environment_pics[i].path + '" data="' + d.environment_pics[i].id + '" onclick="imgEnlarge(this)">';
+                        piccode += '<a <?php if($data["status"] == 1 && $data["is_pass"] == 1):?> onclick=""  <?php else:?> onclick="removePic(this)"<?php endif; ?> href="javascript:void(0);" >×</a></span>';
+
+                    }
+                }
+                piccode +='<a href="javascript:void(0);" class="add" <?php if($data["status"] == 1 && $data["is_pass"] == 1):?> onclick="" <?php else:?> onclick="addpic()" <?php endif; ?> >+</a>';
+                $('#enviromentPics').html(piccode);
+
+                $('#Addcitys').hide()
+                $('input[name="simpleaddress"]').val(d.spacename);
+                $('input[name="address"]').val(d.address);
+                $('input[name="simpleaddress"]').attr('disabled', true);
+                $('input[name="address"]').attr('disabled', true);
+                $('#checkMapBtn').attr('disabled', true);
+            });
+        }else{
+            piccode +='<a href="javascript:void(0);" class="add" <?php if($data["status"] == 1 && $data["is_pass"] == 1):?> onclick="" <?php else:?> onclick="addpic()"<?php endif; ?> >+</a>';
+            $('#enviromentPics').html(piccode);
+            $('input[name="simpleaddress"]').removeAttr('disabled');
+            $('input[name="address"]').removeAttr('disabled');
+            $('#checkMapBtn').removeAttr('disabled');
+            $('#Addcitys').show()
+            $('input[name="simpleaddress"]').val( '');
+            $('input[name="address"]').val( '');
+            var latLng = new qq.maps.LatLng(0, 0);
+            _marker = true;
+            geocoder.getAddress(latLng);
+        }
+    });
+
+    function removePic(em){
+        $(em).parents('span').remove();
+    }
+
+    $('.tips_add_member button').click(function(){
+        member_id = $('.tips_add_member #mid').val();
+
+
+        if(/^\d+$/.test(member_id)){
+            $.post('__ACTION__.html', {'member_id':member_id}, function(id){
+                if(/^\d+$/.test(id)){
+                    tips_id = id;
+                    $('.view iframe').attr('src', 'http://<?=WEB_DOMAIN?>/?page=tipsDetail&tips_id=' + tips_id);
+                    $('.tips_add_member').fadeOut('fast');
+                    $('.tips_add_content').css('display', 'flex');
+                }
+            });
+        }else{
+            alert('会员ID填写不正确!');
+        }
+    });
+
+    //昵称模糊查询
+    $('#search_member').keyup(function(){
+        $('#getUser').empty();
+        var search_key = $(this).val();
+
+        $.ajax({
+            url: '__CONTROLLER__/getUser.html',
+            data: {'search_key': search_key},
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                var code = '<table class="am-table am-table-striped am-table-hover table-main">';
+                code += '  <thead>';
+                code += '    <tr>';
+                code += '        <th class="table-id">ID</th><th class="table-title">昵称</th><th class="table-type">性别</th><th class="table-author">手机号</th>';
+                code += '    </tr>';
+                code += '  </thead>';
+                code += '  <tbody>';
+                var sex = ['', '男', '女'];
+                for(i in d){
+                    code += '    <tr>';
+                    code += '      <td>'+ d[i].id +'</td>';
+                    code += '      <td><a href="javascript:choose('+d[i].id+')">'+ d[i].nickname +'</a></td>';
+                    code += '      <td>'+ sex[d[i].sex] +'</td>';
+                    code += '      <td>'+ d[i].telephone +'</td>';
+                    code += '    </tr>';
+                }
+                code += '  </tbody>';
+                code += '</table>';
+                $(code).appendTo('#getUser');
+                $('#getUser').show();
+            }
+        });
+    })
+
+    function choose(id){
+        $('#mid').val(id);
+    }
+
+    $('.buy_status label').click(function(){
+        if($(this).find('input').val() == 1){
+            $('.discount').show();
+        }else{
+            $('.discount').hide();
+        }
+    });
+
+    $('.timepicker .date').datetimepicker();
+
+    <?php if(session('?copyTips')):?>
+    $(function(){
+        saveAndView(function(id){
+            location.href='modify.html?tips_id=' + id;
+        });
+    });
+    <?php endif;?>
+
+    //拼团列表
+    function groupPrice(type_times_id) {
+        $('.timesPriceTable tbody tr').remove();
+        $.ajax({
+            url : '__CONTROLLER__/GetPrice.html',
+            data : {'type_times_id' : type_times_id },
+            dataType : 'json',
+            type : 'POST',
+            success: function(d) {
+                if (d.status == 0) {
+                    alert(d.info);
+                } else {
+                    var code = '';
+                    for (var r in d) {
+                        code += '<tr price_id="' + d[r]['id'] + '">';
+                        code += '<td><input style="width:30px" type="text" name="phase" value="' + d[r]['phase'] + '"></td>';
+                        code += '<td><input style="width:80px" type="text" name="price" value="' + d[r]['price'] + '" placeholder="拼团折扣价"></td>';
+                        code += '<td><input style="width:80px" type="text" name="count" value="' + d[r]['count'] + '" placeholder="成团人数" ></td>';
+                        code += '<td><input style="width:80px" type="text" name="limit_num" value="' + d[r]['limit_num'] + '" placeholder="限购人数" ></td>';
+                        code += '<td><input style="width:30px" type="text" name="limit_time" value="' + d[r]['limit_time'] + '" placeholder="拼团限时（小时）"></td>';
+                        if(d[r]['is_cap'] == 1){
+                            code += '<td><div class="am-btn-group is_cap" data-am-button><label class="am-btn am-btn-default am-btn-xs am-active">';
+                            code +='<input type="radio" name="is_cap" value="1"> 封顶 </label>';
+                            code +='<label class="am-btn am-btn-default am-btn-xs">';
+                            code +='<input type="radio" name="is_cap" value="0"> 不封顶</label></div></td>';
+                        }else{
+                            code += '<td><div class="am-btn-group is_cap" data-am-button><label class="am-btn am-btn-default am-btn-xs">';
+                            code +='<input type="radio" name="is_cap" value="1"> 封顶 </label>';
+                            code +='<label class="am-btn am-btn-default am-btn-xs am-active">';
+                            code +='<input type="radio" name="is_cap" value="0"> 不封顶</label></div></td>';
+                        }
+
+                        code += '<td><button type="button" class="am-btn am-btn-xs am-btn-link" onclick="$(this).parent().parent().remove()">删除</button></td>';
+                        code += '</tr>';
+                    }
+                    $('.timesPriceTable tbody').append(code);
+                }
+            }
+        });
+        $('#pieceBox').modal({
+            relatedTarget: this,
+            onConfirm: function (em) {
+                var data = {};
+                data.type_times_id = type_times_id;
+                data.type_id = tips_id;
+                data.type = 0;
+                data.times = [];
+                $('.timesPriceTable tbody tr').each(function(){
+                    var times = {};
+                    if($(this).attr('price_id'))times.id = $(this).attr('price_id');
+                    times.phase = $(this).find('[name="phase"]').val();
+                    times.price = $(this).find('[name="price"]').val();
+                    times.count = $(this).find('[name="count"]').val();
+                    times.limit_num = $(this).find('[name="limit_num"]').val();
+                    times.limit_time = $(this).find('[name="limit_time"]').val();
+                    times.is_cap = $('.is_cap label.am-active input').val();
+                    data.times.push(times);
+                });
+                $.ajax({
+                    url:'PostPrice.html',
+                    type:'post',
+                    data:data,
+                    dataType:'json',
+                    success:function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                    }
+                });
+
+            }
+        });
+    }
+
+    //添加拼团
+    function addBtn(em){
+        var time_tr = $(em).parents().parent().find('.timesPriceTable tbody').find('tr');
+        var num = time_tr.length;
+        var phase = num + 1;
+        var code = '<tr price_id="">';
+            code += '<td><input style="width:30px" type="text" name="phase" value="' + phase + '"></td>';
+            code += '<td><input style="width:80px" type="text" name="price" value="" placeholder="拼团折扣价"></td>';
+            code += '<td><input style="width:80px" type="text" name="count" value="3" placeholder="成团人数" ></td>';
+            code += '<td><input style="width:80px" type="text" name="limit_num" value="" placeholder="限购人数" ></td>';
+            code += '<td><input style="width:30px" type="text" name="limit_time" value="2" placeholder="拼团限时（小时）"></td>';
+            code += '<td><div class="am-btn-group is_cap" data-am-button><label class="am-btn am-btn-default am-btn-xs am-active">';
+            code += '<input type="radio" name="is_cap" value="1"> 封顶 </label>';
+            code += '<label class="am-btn am-btn-default am-btn-xs">';
+            code += '<input type="radio" name="is_cap" value="0"> 不封顶</label></div></td>';
+            code += '<td><button type="button" class="am-btn am-btn-xs am-btn-link" onclick="$(this).parent().parent().remove()">删除</button></td>';
+            code += '</tr>';
+        $(code).appendTo($(em).parents().parent().find('.timesPriceTable tbody'));
+    }
+
+    //选择分类
+    function category_select(){
+        var opt=$("#category_id").val();
+        if(opt == 2){
+            $('#context').css('display','block');
+        }
+    }
+
+    //添加须知
+    function addNotice(em){
+        var code =''
+        code +='<label><input  type="text" name="addnotice" width="98%"><button type="button" class="am-btn am-btn-xs am-btn-link" onclick="$(this).parent().remove()">删除</button></label>';
+        $(em).parent().before(code);
+    }
+</script>

@@ -1,0 +1,93 @@
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"> </script>
+    <div id="Usercontainer" style="width:100%;height:400px; margin:0px auto 20px;"></div>
+
+<script>
+    $(document).ready(function() {
+        var title = {
+            text: '用户曲线图'
+        };
+        var chart = {
+            type: 'spline',
+            reflow: true
+        };
+        var subtitle = {
+            text: ''
+        };
+        var xAxis = {
+            title: {
+                text: ''
+            },
+            categories: ['<?=join("','",$datehight) ?>']
+        };
+        var yAxis = {
+            title: {
+                text: '各参数数量'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        };
+
+        var tooltip = {
+            shared: true,
+            crosshairs: true
+        }
+        var series =  [
+            {
+                name: '新增用户总数',
+                data: [<?=join(",", $totalcont) ?>]
+            },
+            {
+                name: '从吖咪Web新增用户数',
+                data: [<?=join(",", $yamiWebcont) ?>]
+            },
+            {
+                name:'从吖咪APP新增用户数',
+                data: [<?=join(",", $yamiAppcont) ?>]
+            },
+            {
+                name:'从我有饭Web新增用户数',
+                data: [<?=join(",", $youfanwebcont) ?>]
+            },
+            {
+                name:'从我有饭APP新增用户数',
+                data: [<?=join(",", $youfanAppcont) ?>]
+            },
+            {
+                name:'从其他渠道新增用户数',
+                data: [<?=join(",", $Othercont) ?>]
+            },
+            {
+                name:'成为Host总数',
+                data: [<?=join(",", $Hostcont) ?>]
+            },
+            {
+                name:'吖咪Host数',
+                data: [<?=join(",", $yami_Hostcont) ?>]
+            },
+            {
+                name:'我有饭Host数',
+                data: [<?=join(",", $youfan_Hostcont) ?>]
+            },
+            {
+                name:'其他渠道Host数',
+                data: [<?=join(",", $Other_Hostcont) ?>]
+            }
+        ];
+
+        var json = {};
+        json.chart = chart;
+        json.title = title;
+        json.subtitle = subtitle;
+        json.xAxis = xAxis;
+        json.yAxis = yAxis;
+        json.tooltip = tooltip;
+        json.series = series;
+
+        $('#Usercontainer').highcharts(json);
+    });
+</script>

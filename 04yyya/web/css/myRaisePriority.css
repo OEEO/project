@@ -1,0 +1,21 @@
+.wrapper.page_myRaisePriority{background: #f5f5f5;}
+.page_myRaisePriority .raisevip{margin-top: 2.88rem;}
+.page_myRaisePriority .viplist{width: 31.6rem;height: 18.34rem;display: block;margin:0 auto 1.92rem;text-align: center;}
+.page_myRaisePriority .viplist.list1{background: url("../images/raise_card@2x.png") no-repeat 0 0 / 100% 100%;}
+.page_myRaisePriority .viplist.list2{background: url("../images/raise_card1@2x.png") no-repeat 0 0 / 100% 100%;}
+.page_myRaisePriority .list_rtitle{font-size: 1.7rem;color: #9c855c;padding: 2.5rem 2.68rem 0.96rem;line-height: 2rem;overflow:hidden; white-space: nowrap; text-overflow:ellipsis;}
+.page_myRaisePriority .list_title{
+    color: #ccc;
+    font-size: 1.55rem;
+    padding: 0 2.68rem 1.5rem;
+    line-height: 1.9rem;
+    height: 3.8rem;
+}
+.page_myRaisePriority .list_time{color: #9c855c;font-size: 1.15rem;margin-bottom: 1.4rem;}
+.page_myRaisePriority .usebtn{width: 7.68rem;height: 2.88rem;font-size: 1.44rem;color: #fff;text-align: center;line-height: 2.88rem;background: #9c855c;border-radius: 0.2rem;display: block;margin: 0 auto;}
+.page_myRaisePriority .viplist.list2 .list_title,.page_myRaisePriority .viplist.list2 .list_time,.page_myRaisePriority .viplist.list2 .list_rtitle{color: #888;}
+.page_myRaisePriority .viplist.list2 .usebtn{background: #888;}
+
+.page_myRaisePriority .no_msgs {text-align: center;}
+.page_myRaisePriority .no_msgs img{width:10rem; height:10rem; margin:8rem 13rem auto 13rem;}
+.page_myRaisePriority .no_msgs span{display:block; width:36rem; font-size:1.2rem; text-align:center; color:#969696; margin-top:2rem;}

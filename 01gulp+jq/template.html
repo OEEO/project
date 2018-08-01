@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="//mat1.gtimg.com/sports/kbsweb/favicon.ico" type="image/x-icon">
+    <title></title>
+    <link rel="stylesheet" href="../tmp/style/main.css" />
+    <!-- built style will be auto injected -->
+    <script>
+        /**
+         * 图片加载失败时调用的函数。0 -- 默认头像， 1 -- 灰色图片
+         * 例子：<img src="man.png" onerror="nofind(0)" alt="This is a man" /> 
+         */
+        function nofind(type) {
+            var url = type === 0
+                ? '//mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/unmen.png'
+                : '//mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/blank.png';
+            var img = event.srcElement;
+            img.src = url;
+            img.onerror = null;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="main">
+    <!-- built html will be auto injected -->
+    </div>
+    <!-- built script will be auto injected -->
+    <script data-main="../src/script/js/{page}.js" src="../src/script/require.js"></script>
+</body>
+
+</html>

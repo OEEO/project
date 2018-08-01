@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/goodsDetail.css">
+
+<script src="js/plugins/jquery.min.js"></script>
+<script src="js/public.js"></script>
+<script src="js/goodsDetail.js"></script>
+</head>
+<body>
+<div class="header changeStyle">
+	<div class="turnBack" onclick="goodsDetailObject.back()"><div class="arrow"></div></div>
+</div>
+<canvas id="cv" width="798px" height="1098px" style="display:none;"></canvas>
+<div id="mainContent">
+	<div class="bodyTop"></div>
+	<div class="limit_time_tip">
+		限时购
+		<span>离结束还剩<i class="time"></i></span>
+	</div>
+	<div class="them_title">
+		<!--<a href="javascript:void(0);" class="share"></a>-->
+		<!--<a href="javascript:void(0);" class="collect"></a>-->
+
+		<p class="title_t"></p>
+
+		<div class="title_s" style="display: none;border: solid 1px #eee;margin:  0 0 1.5rem">
+			<div style="background:red;color:white;float:left;padding: 0 0.6rem 0.1rem;font-size: 1.1rem;border-radius: 5px;height: 2rem;margin: 0.8rem 0.5rem 0.5rem;line-height: 2.2rem;">分享赚</div>
+			<span class="share_money" style="color: red;">￥<font>19.9</font></span>
+			<span class="profit_share" style="float: right; margin: 0 1.2rem 0 0;">分享</span>
+			<img src="http://test.yummy194.cn/images/share_icon.jpg" alt="" style="float: right;height: 2.8rem;margin: 0.5rem 0 0 0" class="profit_share">
+			<span class="qrcode" style="float: right; margin: 0 1rem 0 0;" >二维码</span>
+			<img src="http://test.yummy194.cn/images/qrcode_icon.jpg" alt="" style="float: right;height: 3rem;margin: 0.4rem 0 0 0" class="qrcode">
+		</div>
+
+
+		<div class="data">剩余 <i>7</i> 份 <span class="selled"></span> <span class="tag">国内包邮</span></div>
+		<ul class="edges"></ul>
+		<div class="pieceBox">
+			<span class="piece-pie">拼</span>&nbsp;
+			<span>限时<font class="limit_time"></font>小时</span>
+			<span class="margin10"><font class="count"></font>人成团</span>&nbsp;
+			<span class="limit_num_text">每人限购<font class="limit_num"></font>份</span>
+			<button>拼团规则</button>
+		</div>
+		<div class="group-head-welfare-wrap">
+			<span>团长福利</span>
+			<span class="group-head-welfare"></span>
+		</div>
+	</div>
+
+	<div class="group-booking-box">
+		<div class="group-booking-title">
+            <span class="left">
+                <span class="title-num"></span><span>人正在拼单，可直接参与</span>
+            </span>
+            <span class="right">
+                <span class="title-more">查看更多</span>
+            </span>
+        </div>
+		<div class="group-booking-list">
+			<div class="group-booking-item">
+                <span class="left">
+					<img class="img-wrap">
+                    <span class="name">波德莱尔</span>
+                </span>
+                <span class="right">
+                    <span class="text">
+                        <div class="short-of">
+                            还差
+                            <span class="red-text">
+                                <span class="short-of-num">1</span>人
+                            </span>
+                            成团
+                        </div>
+                        <div class="time">
+                            仅剩
+                            <span class="left-time">05:00:00</span>
+                            结束
+                        </div>
+                    </span>
+                    <span class="take-in-btn" data-id="">参与拼团</span>
+                </span>
+            </div>
+		</div>
+	</div>
+
+    <div class="more-modal-wrap modal-wrap" style="display: none;">
+        <div class="more-modal modal">
+            <div class="cancel-icon"></div>
+            <div class="title">正在拼团</div>
+            <div class="main">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="take-in-modal-wrap modal-wrap" style="display: none;">
+        <div class="take-in-modal modal">
+            <div class="cancel-icon"></div>
+            <div class="title">参与<span id="piece-group-host"></span>的拼团</div>
+            <div class="main">
+                <div class="short-of">
+                    仅剩
+                    <span class="red-text" style="color: #f33827;">
+                        <span class="short-of-num">2</span>个
+                    </span>
+                    名额，
+                    <span class="left-time">05:00:00</span>
+                    后结束
+                </div>
+                <div class="imgs">
+                </div>
+                <div class="take-in-btn">参与拼团</div>
+            </div>
+        </div>
+    </div>
+
+	<div id="goods_content" class="goods_content goods_detail_content"></div>
+	<div class="goods_content">
+		<div class="title attr">商品规格</div>
+		<table class="attr_list"></table>
+	</div>
+
+	<div class="goods_content">
+		<!--<a href="javascript:void(0);" class="more">查看详情 &gt;</a>-->
+
+		<!--
+		<a href="javascript:void(0);" class="darenDetail">
+			<img>
+			<div class="right">
+				<div class="t"></div>
+				<div class="b"></div>
+			</div>
+		</a>
+		-->
+
+		<div class="title tell">贴心提示</div>
+		<ul class="tell_List"></ul>
+	</div>
+
+	<div class="daren_commentList">
+		<div class="title">买家评价</div>
+		<div class="commentList"></div>
+	</div>
+
+	<div class="recommend">
+		<div class="title">推荐好物</div>
+		<div class="tips_list">
+		</div>
+	</div>
+
+	<div class="yummy_block">
+		<img class="yummy" src="images/yummy@2x.png" alt="">
+	</div>
+
+	<div class="priceMenuBlank"></div>
+	<div class="footer priceMenu">
+		<div class="btn-group">
+			<a href="javascript:;" data-btn="chat">
+				<img src="images/chat@2x.png" alt="">
+			</a>
+			<!--<a href="javascript:;" data-btn="like">-->
+				<!--<span class="follow-img"></span>-->
+			<!--</a>-->
+			<a href="javascript:;" data-btn="share">
+				<img class="sm-img" src="images/course-detail-page_share1@2x.png" alt="">
+			</a>
+		</div>
+		<div class="fr">
+			<div class="submitLeft"><i id="price"></i><span>元/份</span></div>
+			<div class="submitBtn">JOIN</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+</body>
+</html>
+

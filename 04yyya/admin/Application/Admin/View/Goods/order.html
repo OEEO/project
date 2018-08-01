@@ -1,0 +1,102 @@
+<!--日历js、css文件加载 start-->
+<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.config.js"></script>
+<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+
+<p style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" id="export_excel">导出Excel</button>
+</p>
+
+<form class="am-g">
+    <div class="am-alert am-alert-danger" id="my-alert" style="display: none">
+        <p>开始日期应小于结束日期！</p>
+    </div>
+    <!--input type="text" name="id" id="search_id" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="id查询" value="{$search_id}"/-->
+    <input type="text" name="title" id="search_title" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="关键字模糊查询" value="{$search_title}"/>
+    <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="购买者查询" value="{$search_member}"/>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-startDate" name="start_buy_time"  placeholder="开始时间" required readonly="true" value="{$search_start_time}"/>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-endDate" name="stop_buy_time"  placeholder="结束时间" required readonly="true" value="{$search_stop_time}"/>
+    <button type="button" class="am-btn am-btn-primary" onclick="search_reset()">重置</button>
+    <button type="submit" class="am-btn am-btn-success">提交</button>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+
+<script>
+    $('.am-modal').appendTo('body');
+    //日历
+    $('#my-startDate').datetimepicker();
+    $('#my-endDate').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-startDate');
+        $('#my-startDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                        alert('开始日期应小于结束日期！');
+                        $('#my-startDate').val("");
+                    } else {
+                        startDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+
+        $('#my-endDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+
+                    if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                        alert('结束日期应大于开始日期！');
+                        $('#my-endDate').val("");
+                    } else {
+                        endDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+    });
+
+
+    function OrderDelete(id){
+        if(window.confirm('确定要删除这条记录吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderDelete.html',
+                data : {'id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    //清空搜索框
+    function search_reset(){
+
+        $("form input").val('');
+    }
+
+
+    //导出excel
+    $('#export_excel').click(function(){
+
+        var search_title = $('#search_title').val();
+        var search_member = $('#search_member').val();
+        var search_startdate = $('#my-startDate').val();
+        var search_enddate = $('#my-endDate').val();
+
+
+        window.open("__CONTROLLER__/OrderExport.html?title="+search_title+"&member="+search_member+"&start_buy_time="+search_startdate+"&stop_buy_time="+search_enddate,"_blank","width=1000,height=600 ")
+    })
+</script>

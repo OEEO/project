@@ -1,0 +1,125 @@
+@charset "utf-8";
+#header, #header .header, #main .wrapper .headerBlank{
+    height: 4.6rem;
+}
+
+#header .header.page_raisePay{
+    height: 4.5rem;
+    border-bottom: 0.1rem solid #f5f5f5;
+}
+
+.page_raisePay p{margin: 0;}
+.page_raisePay .same p,.page_raisePay .payment .way{font-size: 1.3rem;color: #b39851;margin-left: 1.5rem;padding: 1.5rem 0 0.5rem;}
+.page_raisePay .same > div,.page_raisePay .payment .paytype{width: 33rem; margin: 0 auto;display: block;border-bottom: 0.1rem solid #eee;}
+
+.page_raisePay .raiseitem .itemcontext span{width: 16.2rem;display: inline-block;font-size: 1.45rem;color: #333;padding: 0 0 1.2rem;}
+.page_raisePay .shop_address .address span,.page_raisePay .certification .cbox span{width:31rem;font-size: 1.45rem;color: #ccc;padding: 0 0 1.2rem;display: inline-block;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.page_raisePay .certification .cbox span{padding: 0;}
+.page_raisePay .certification .cbox{padding: 0 0 1.2rem;font-size: 1.45rem;color: #888;}
+.page_raisePay .shop_address .address span.arrowRight,.page_raisePay .certification .cbox span.arrowRight{width: 0.8rem;height: 1.4rem;float:right;background: url(../images/becomechef_next_icon@2x.png) no-repeat right center / 0.8rem auto;}
+.page_raisePay .payment .way span,.page_raisePay .payment .way a{width: 16.2rem;display: inline-block;}
+.page_raisePay .payment .way a{text-decoration: underline;color: #888;}
+.page_raisePay .raiseitem .itemcontext span.money,.page_raisePay .payment .way a{text-align: right;}
+.page_raisePay .raiseitem .itemcontext .title{width: 24.2rem;}
+.page_raisePay .raiseitem .itemcontext .money{width: 8.2rem;}
+
+/*选择数量*/
+.page_raisePay .copies{
+    color: #8c8c8c;
+    font-size: 1.3rem;
+    line-height: 5rem;
+    margin: 0 0.2rem;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+.page_raisePay .copies:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+.page_raisePay .copies .num{display: -webkit-inline-box;display: -ms-inline-flexbox;display: inline-flex; float: left;-webkit-box-align: center;-ms-flex-align: center;align-items: center;}
+.page_raisePay .copies .num_c{ width:2rem; height:2rem; padding: 0.5rem; border: 1px solid #D0D0D0;border-radius: 0.4rem;}
+.page_raisePay .copies .num img{float:left;width:2rem;height:auto;}
+.page_raisePay .copies .b{font-size:1.6rem;color:#b39851;float:left;height:5rem;line-height:5rem;width:4rem;text-align:center;outline: none;border: none;}
+
+
+
+
+
+.page_raisePay .payment .paytype {padding: 0.5rem 0;}
+.page_raisePay .payment .paytype > a{line-height:4rem;color: #333;font-size: 1.4rem;display: block;}
+.page_raisePay .payment .paytype > a small {color:#999;}
+.page_raisePay .payment .paytype > a.wx{border-bottom: 0.1rem dashed #ddd;}
+.page_raisePay .payment .paytype > a.disable{-webkit-filter: grayscale(100%); -moz-filter: grayscale(1); color:#ccc; -ms-filter: grayscale(100%); -o-filter: grayscale(100%);  filter: grayscale(100%); filter: gray; color:#ccc;}
+.page_raisePay .payment .paytype .wx:before{width:2rem;height:2rem;content:'';background: url("../images/weixin@2x.png") no-repeat left center / 2rem 2rem;padding-right: 3rem;}
+.page_raisePay .payment .paytype .alipay:before{width:2rem;height:2rem;content:'';background: url("../images/alipay.png") no-repeat left center / 2rem 2rem;padding-right: 3rem;}
+.page_raisePay .payment .paytype .selected{width: 2rem;height: 4rem;display: inline-block;float:right;background:url("../images/unselect@2x.png") no-repeat right center / 2rem 2rem;}
+.page_raisePay .payment .paytype .selected.on{background:url("../images/select@2x.png") no-repeat right center / 2rem 2rem;}
+
+.page_raisePay.payMenu{border-top: 0.1rem solid #f5f5f5;background: #fff;}
+.page_raisePay.payMenu .paymoney{color: #b39851;float: left;font-size: 1.3rem;height: 4.7rem;line-height: 4.7rem;text-align: center;width: 50%; }
+.page_raisePay.payMenu .paymoney font{font-size: 1.7rem;}
+.page_raisePay.payMenu .submitBtn {background: #ff192f;border-radius: 0.2rem;color: #fff;float: left;font-size: 1.2rem;font-weight: normal;height: 3rem;line-height: 3rem;margin-left: 7.9rem;margin-top: 0.8rem;text-align: center;width: 24%;}
+.page_raisePay .wx_num .wxinput input {border: none;color: #333;font-size: 1.45rem;padding: 0 0 1.6rem;width: 100%;}
+.page_raisePay .wx_num .wxinput input::-moz-placeholder{color: #ccc;}
+.page_raisePay .wx_num .wxinput input::-webkit-input-placeholder{color: #ccc;}
+.page_raisePay .wx_num .wxinput input:-ms-input-placeholder{color: #ccc;}
+/*弹出框*/
+#dialogBox.largepay .context{padding-bottom: 3.5rem;margin-bottom: 0;}
+#dialogBox.largepay{background:none;margin-left: -14rem;padding:0;}
+#dialogBox.largepay .sbox{width: 28rem;border-radius: 0.2rem 0.2rem 0.4rem 0.4rem;}
+#dialogBox.largepay .context .solve{padding: 2.88rem 1.5rem 1.52rem;background: #fff;border-radius: 0.2rem 0.2rem 0 0;}
+#dialogBox.largepay .context .solve h3 {color: #333;  font-size: 1.7rem;margin: 0;padding-bottom: 2rem; text-align: center;}
+#dialogBox.largepay .context .solve p{font-size: 1.2rem;color: #888;text-align: left;line-height: 2.2rem;}
+#dialogBox.largepay .context .solve .subtitle{font-size: 1.4rem;color: #333;padding-bottom: 1rem;font-weight: bold;text-align: center;}
+
+#dialogBox.largepay .btns::after,#dialogBox.agreementBox .btns::after,#dialogBox.certificationbox .btns::after{display: none;}
+#dialogBox.largepay .btns,#dialogBox.agreementBox .btns,#dialogBox.certificationbox .btns{padding:0;background: #b39851;width: 28rem;border-radius: 0 0 0.3rem 0.3rem;}
+#dialogBox.largepay .btns button.closeBtn{color: #fff;}
+#dialogBox.largepay .btns button,#dialogBox.agreementBox .btns button,#dialogBox.certificationbox .btns button{height: 4.224rem;width: 100%;}
+
+/*众筹协议弹出框*/
+#dialogBox.agreementBox{margin-left: -14rem;background:none;padding:0;}
+#dialogBox.agreementBox .sbox{padding-top: 1.92rem;width: 28rem;border-radius: 0.2rem 0.2rem 0.4rem 0.4rem;height: 30.08rem;}
+#dialogBox.agreementBox .context .agreement .agreement-title {color: #333;font-size: 1.7rem;margin: 0 auto 2rem;padding: 0.2rem 0;width: 9.5rem;}
+#dialogBox.agreementBox .context .agreement .agreement-text > h5 {color: #333;  font-size: 1.4rem;margin: 0;padding-top: 2rem; }
+#dialogBox.agreementBox .context .agreement .agreement-text > h5:first-child{padding-top: 0;}
+#dialogBox.agreementBox .context .agreement .agreement-text > p {color: #888;font-size: 1.2rem;line-height: 2rem;margin: 0;padding: 0 1.5rem;text-align: justify;}
+#dialogBox.agreementBox .context .agreement .agreement-text > p:last-child{padding-bottom:0;}
+#dialogBox.agreementBox .context .agreement .agreement-text {height: 16rem;overflow: auto;}
+#dialogBox.agreementBox .context .readagree{font-size: 1.35rem;color: #333;margin: 1.5rem 1.5rem;text-align: left;}
+#dialogBox.agreementBox .context .readagree i{background: url("../images/noselect@2x.png") no-repeat 0 0 / 1.5rem 1.5rem;width: 1.5rem;height: 1.5rem;display: inline-block;vertical-align: sub;padding-right: 1rem;}
+#dialogBox.agreementBox .context .readagree i.icon_checkbox{background: url("../images/select@2x.png") no-repeat 0 0 / 1.5rem 1.5rem;}
+#dialogBox.agreementBox .btns button.agree,#dialogBox.certificationbox .btns button.agree{color: #fff;width: 100%;}
+button:disabled{background: #ccc !important;border-radius: 0 0 0.2rem 0.2rem;}
+
+/*实名认证弹出框*/
+#dialogBox.certificationbox{margin-left: -14rem;background: none;padding:0;}
+#dialogBox.certificationbox .sbox{width: 28rem;border-radius: 0.2rem 0.2rem 0.4rem 0.4rem;}
+#dialogBox.certificationbox .context{padding: 0 2.88rem 3.84rem;}
+#dialogBox.certificationbox .context .cform{padding-top: 3.84rem;}
+#dialogBox.certificationbox .context .cform label{width:100%;display: inline-block;color: #888;font-size: 1.3rem;padding-bottom: 0.8rem;text-align: left;}
+#dialogBox.certificationbox .context .cform input{width: 20.24rem;padding: 1rem 1rem;background: #fff;border: 0.1rem solid #eee;border-radius: 0.2rem;margin-bottom: 1.92rem;color: #333;font-size: 1.3rem;}
+#dialogBox.certificationbox .context .cform .errorinfo{width: 100%;display: inline-block;display: none;text-align: left;color: #ff3f3f;}
+#dialogBox.certificationbox .context i.clearpsd {background: url("../images/close@2x.png") no-repeat 0 0 / 2.3rem 2.3rem; display: block;  height: 2.3rem;  position: absolute;right: 1.35rem;top: 1.35rem;width: 2.3rem;}
+#dialogBox.certificationbox .context .cform .codebox{width:22.35rem;display: flex;display: -webkit-flex;flex-flow: row nowrap;justify-content:space-between;}
+#dialogBox.certificationbox .context .cform .codet{width: 10.56rem;}
+#dialogBox.certificationbox .context .cform .updatecode{width:11.68rem;color: #ccc;font-size: 1.15rem;text-align: right;}
+#dialogBox.certificationbox .context .cform .codebox .code{width: 8.56rem;height: 3.64rem;margin-bottom: 0;padding: 0 1rem;}
+#dialogBox.certificationbox .context .cform .codebox .codeimg{width: 10.56rem;border-radius: 0.2rem;height: 3.74rem;}
+
+.page_raisePay .stage ul{display: block;}
+.page_raisePay .stage li{width:100%;background: #FCFCFC;}
+.page_raisePay .stage li p{font-size: 1.4rem;color: #b39851;padding: 2rem 1.5rem 1.4rem;}
+.page_raisePay .stage li .subitem{font-size: 1.3rem;color: #ccc;padding: 0 1.5rem 1.8rem;}
+.page_raisePay .stage li .subitem .subtotal{float: right;}
+.page_raisePay .stage li .subitem .subtotal font{font-size: 1.7rem;}
+.page_raisePay .stage li.having{border-left: 0.3rem solid #b39851;background: #fbf9f4;}
+.page_raisePay .stage li.having .hline{border-left: 0.1rem solid #b39851;margin-left: 0.2rem;}
+.page_raisePay .stage li.having .subitem{color: #888;}
+.page_raisePay .stage li.having .subitem,.page_raisePay .stage li.having p{padding: 0 1.5rem 1.8rem 0.8rem;}
+.page_raisePay .stage li.having p{padding: 2rem 1.5rem 1.4rem 0.8rem;}
+

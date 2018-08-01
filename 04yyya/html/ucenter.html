@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/ucenter.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="header changeStyle">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<a class="msg" href="myMsgs.html"></a>
+</div>
+        
+<div class="userCenter_body">
+	<div class="userCenter_head">
+		<img class="bg" src="images/add/images/2.jpg"><!-- 图片背景模糊处理 -->
+		<div class="overbg"></div>
+		<div class="front">
+			<div class="imgPortrait"><img width="100%" src="images/add/images/2.jpg" /></div>
+			<div id="nickname" class="name"></div>
+			<div id="signature" class="user_introduce"></div>
+		</div>
+	</div>
+	<div class="userCenter_menu">
+		<div class="li_item">
+			<a href="myOrder.html" class="list1">我的订单<i class="arrowRight"></i></a>
+			<div class="liBetweens"></div>
+			<a href="myValue.html" class="list2">我的收藏<i class="arrowRight"></i></a>
+		</div>
+	
+		<div class="li_item">
+			<a href="myCoupon.html" class="list3">我的优惠券<i class="arrowRight"></i></a>
+		</div>
+	
+		<div class="li_item">
+			<a href="applyToBedaRen.html" class="list4">申请成为达人<i class="arrowRight"></i></a>
+		</div>
+		
+		 <div class="li_item">
+			<a href="setup.html" class="list5">设置<i class="arrowRight"></i></a>
+		</div>
+		
+		<div class="li_item">
+			<a href="chooseReceiptAddress.html" class="list2">选择收货地址<i class="arrowRight"></i></a>
+			<div class="liBetweens"></div>
+			<a href="addAddress.html" class="list2">测试专用<i class="arrowRight"></i></a>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+$('<script>').attr('src', 'js/public.js?q=' + Math.random()).appendTo('html');
+$('<script>').attr('src', 'js/member.js?q=' + Math.random()).appendTo('html');
+
+$(function(){
+	if(parent.member){
+		$('#nickname').html(parent.member.nickname);
+		if(parent.member.signature){
+			$('#signature').html(parent.member.signature);
+		}else{
+			$('#signature').html('这个家伙很懒，什么都没有留下...');
+		}
+		if(parent.member.path){
+			$('.userCenter_head img').attr('src', parent.member.path.pathFormat());
+		}else{
+			$('.userCenter_head img').attr('src', 'images/portrait.jpg');
+		}
+	}
+});
+</script>
+</html>

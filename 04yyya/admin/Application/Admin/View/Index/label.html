@@ -1,0 +1,353 @@
+<button type="button" id="select" class="am-btn am-btn-primary" onclick="addLabel()">新增标签</button>
+<br/>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-12 am-u-md-12 am-text-left">
+        <p style="text-align: left; font-size: 16px; color: #FF0000;">注：</p>
+        <p style="text-align: left; font-size: 14px; text-indent: 1em;"><font>1、</font>如果添加回复众筹问答权限标签，一定要填写以下格式：<font color="#f00" size="3">众筹【ID：**】</font>，否则视为无效</p>
+    </div>
+</div>
+
+<div class="am-g am-margin-top" id="official">
+    <div class="am-u-sm-12 am-u-md-12 am-text-left">
+        <div class="item_list">
+            <label class="am-checkbox am-secondary item_group">
+                <span>官方标签</span>
+                <select id="selectType_official" onchange="official(this)" >
+                    <option value="">全部</option>
+                    <option value="0">会员</option>
+                    <option value="1">活动</option>
+                    <option value="2">商品</option>
+                    <option value="3">达人</option>
+                    <option value="4">场地</option>
+                </select>
+            </label>
+            <div class="am-g item_list" id="official_list">
+                <foreach name="official" key="key" item="row">
+                        <div class="am-checkbox am-secondary" data-type="{$row.type}" data-id="{$row.id}">
+                            <span><font onclick="updateLabel({$row.id})">{$row.name}</font><a href="javascript:void(0);" onclick="deleteLabel({$row.id})">×</a></span>
+                        </div>
+                </foreach>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="am-g am-margin-top" id="noofficial">
+    <div class="am-u-sm-12 am-u-md-12 am-text-left">
+        <div class="item_list">
+            <label class="am-checkbox am-secondary item_group">
+                <span>非官方标签</span>
+                <select id="selectType_noofficial" onchange="noofficial(this)" >
+                    <option value="">全部</option>
+                    <option value="0">会员</option>
+                    <option value="1">活动</option>
+                    <option value="2">商品</option>
+                    <option value="3">达人</option>
+                    <option value="4">场地</option>
+                </select>
+            </label>
+            <div class="am-g item_list" id="noofficial_list">
+                <foreach name="noofficial" key="key" item="row">
+                    <div class="am-checkbox am-secondary"  data-type="{$row.type}" data-id="{$row.id}">
+                        <span><font onclick="updateLabel({$row.id})">{$row.name}</font><a href="javascript:void(0);" onclick="deleteLabel({$row.id})">×</a></span>
+                    </div>
+                </foreach>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--修改标签-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="resetLabel">
+    <div class="am-modal-dialog">
+        <form name="resetLabel" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">标签</div>
+            <div class="am-modal-bd">
+
+                <div class="am-form-group">
+                    <div class="am-form-group">
+                        <label class="am-radio-inline">
+                            <input type="radio"  value="0" name="official" checked> 非官方
+                        </label>
+                        <label class="am-radio-inline">
+                            <input type="radio" value="1" name="official"> 官方
+                        </label>
+                    </div>
+                </div>
+
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="labelName" class="am-input-sm" id="labelName" placeholder="请输入标签名" data-equal-to="#doc-vld-pwd-5" required/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!--添加标签-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="AddLabel">
+    <div class="am-modal-dialog">
+        <form name="AddLabel" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">标签</div>
+            <div class="am-modal-bd">
+                <div class="am-form-group">
+                    <div class="am-form-group">
+                        <label class="am-radio-inline">
+                            <input type="radio"  value="0" name="add_official" checked> 非官方
+                        </label>
+                        <label class="am-radio-inline">
+                            <input type="radio" value="1" name="add_official"> 官方
+                        </label>
+                    </div>
+                    <label for="addlabelType">标签类别</label>
+                    <select id="addlabelType" name="addlabelType">
+                        <option value="0">会员标签</option>
+                        <option value="1">活动标签</option>
+                        <option value="2">商品标签</option>
+                        <option value="3">达人标签</option>
+                        <option value="4">场地标签</option>
+                    </select>
+                    <span class="am-form-caret"></span>
+                </div>
+
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="labelName" class="am-input-sm" id="addlabelName" placeholder="请输入标签名" data-equal-to="#doc-vld-pwd-5" required/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.am-modal').appendTo('body');
+
+    //标签筛选
+    //官方
+    function official(em){
+        var num = parseInt($(em).val());
+        var official = $('#official_list div')
+        switch (num){
+            case 0 :
+                    for(var i=0;i<official.length;i++){
+                        var t = $('#official_list div').eq(i).attr('data-type');
+                        if(t == 0){
+                            $('#official_list div').eq(i).css('display','block')
+                        }else{
+                            $('#official_list div').eq(i).css('display','none')
+                        }
+                    }
+
+                break;
+            case 1 :
+                    for(var i=0;i<official.length;i++){
+                        var t = $('#official_list div').eq(i).attr('data-type');
+                        if(t == 1){
+                            $('#official_list div').eq(i).css('display','block')
+                        }else{
+                            $('#official_list div').eq(i).css('display','none')
+                        }
+                    }
+                break;
+            case 2 :
+                    for(var i=0;i<official.length;i++){
+                        var t = $('#official_list div').eq(i).attr('data-type');
+                        if(t == 2){
+                            $('#official_list div').eq(i).css('display','block')
+                        }else{
+                            $('#official_list div').eq(i).css('display','none')
+                        }
+                    }
+                break;
+            case 3 :
+                    for(var i=0;i<official.length;i++){
+                        var t = $('#official_list div').eq(i).attr('data-type');
+                        if(t == 3){
+                            $('#official_list div').eq(i).css('display','block')
+                        }else{
+                            $('#official_list div').eq(i).css('display','none')
+                        }
+                    }
+                break;
+            case 4 :
+                    for(var i=0;i<official.length;i++){
+                        var t = $('#official_list div').eq(i).attr('data-type');
+                        if(t == 4){
+                            $('#official_list div').eq(i).css('display','block')
+                        }else{
+                            $('#official_list div').eq(i).css('display','none')
+                        }
+                    }
+                break;
+            default :
+                    for(var i=0;i<official.length;i++){
+                        $('#official_list div').eq(i).css('display','block')
+                    }
+
+        }
+    }
+    //非官方
+    function noofficial(em){
+        var num = parseInt($(em).val());
+        var noofficial = $('#noofficial_list div')
+        switch (num){
+            case 0 :
+                    for(var i=0;i<noofficial.length;i++){
+                        var t = $('#noofficial_list div').eq(i).attr('data-type');
+                        if(t == 0){
+                            $('#noofficial_list div').eq(i).css('display','block')
+                        }else{
+                            $('#noofficial_list div').eq(i).css('display','none')
+                        }
+                    }
+
+                break;
+            case 1 :
+                    for(var i=0;i<noofficial.length;i++){
+                        var t = $('#noofficial_list div').eq(i).attr('data-type');
+                        if(t == 1){
+                            $('#noofficial_list div').eq(i).css('display','block')
+                        }else{
+                            $('#noofficial_list div').eq(i).css('display','none')
+                        }
+                    }
+                break;
+            case 2 :
+                    for(var i=0;i<noofficial.length;i++){
+                        var t = $('#noofficial_list div').eq(i).attr('data-type');
+                        if(t == 2){
+                            $('#noofficial_list div').eq(i).css('display','block')
+                        }else{
+                            $('#noofficial_list div').eq(i).css('display','none')
+                        }
+                    }
+                break;
+            case 3 :
+                    for(var i=0;i<noofficial.length;i++){
+                        var t = $('#noofficial_list div').eq(i).attr('data-type');
+                        if(t == 3){
+                            $('#noofficial_list div').eq(i).css('display','block')
+                        }else{
+                            $('#noofficial_list div').eq(i).css('display','none')
+                        }
+                    }
+                break;
+            case 4 :
+                    for(var i=0;i<noofficial.length;i++){
+                        var t = $('#noofficial_list div').eq(i).attr('data-type');
+                        if(t == 4){
+                            $('#noofficial_list div').eq(i).css('display','block')
+                        }else{
+                            $('#noofficial_list div').eq(i).css('display','none')
+                        }
+                    }
+                break;
+            default :
+                    for(var i=0;i<noofficial.length;i++){
+                        $('#noofficial_list div').eq(i).css('display','block')
+                    }
+
+        }
+    }
+
+    //标签新增
+    function addLabel(){
+        $('#addlabelName').val('');
+        $('#AddLabel').modal({
+            relatedTarget: this,
+
+            onConfirm: function() {
+                var labelname = $('#addlabelName').val();
+                var labeltype = $('#addlabelType').val();
+                var official = $("input[name='add_official']:checked").val()
+
+                if(labelname == ''){
+                    alert('标签名为必填！');
+                    return;
+                }
+                if(labeltype == ''){
+                    alert('标签类型为必填！');
+                    return;
+                }
+
+                $.post('__CONTROLLER__/addlabel.html', {'official':official,'labelname':labelname,'labeltype':labeltype}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            }
+        });
+    }
+
+    //标签修改
+    function updateLabel(id){
+
+        $.ajax({
+            url: '__CONTROLLER__/updatelabel.html',
+            data: {'id': id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                //alert(d.type);
+                //alert(d.name);
+                $('#labelType').val(d.type);
+                $('#labelName').val(d.name);
+                if(d.official == 1){
+                    $("input[name=official]:eq(1)").attr("checked",'checked');
+                }else{
+                    $("input[name=official]:eq(0)").attr("checked",'checked');
+                }
+                //window.location.reload();
+            }
+        });
+
+        $('#resetLabel').modal({
+            relatedTarget: this,
+
+            onConfirm: function() {
+                var labelname = $('#labelName').val();
+                var labeltype = $('#labelType').val();
+
+                if(labelname == ''){
+                    alert('标签名为必填！');
+                    return;
+                }
+                if(labeltype == ''){
+                    alert('标签类型为必填！');
+                    return;
+                }
+
+                $.post('__CONTROLLER__/updatelabel.html', {'id':id,'labelname':labelname,'labeltype':labeltype}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            }
+        });
+    }
+
+    //标签删除
+    function deleteLabel(id){
+        if(window.confirm('确定要删除这个标签吗？')) {
+            $.post('__CONTROLLER__/deletelabel.html', {'id': id}, function (d) {
+                if (d.status == 1) {
+                    alert(d.info);
+                    window.location.href = window.location.href;
+                } else {
+                    alert(d.info);
+                }
+            }, 'json');
+        }
+    }
+</script>

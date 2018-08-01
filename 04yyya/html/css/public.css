@@ -1,0 +1,276 @@
+<<<<<<< .mine
+@charset "utf-8";
+/**************************** 自定义的公共样式 开始 ****************************/
+.arrowRight{cursor: pointer;display:inline-block;position:absolute;right:1.8rem;top:1.5rem;width:1rem;height:1rem;border-right:0.15rem solid #636363;border-top:0.15rem solid #636363;-webkit-transform:rotate(45deg); -moz-transform:rotate(45deg);-o-transform:rotate(45deg);}/*自定义样式 ：向右的箭头 */
+/*页面头部的悬浮菜单*/
+.header {color:#000;height:4.5rem;background:#fff;position:relative;z-index:999;width:100%;border-bottom:0.1rem solid #eee;}
+.header .turnBack{cursor: pointer;left:1.5rem;top:1.3rem;display:block;width:2.6rem;height:2rem;position:absolute;text-align:center;}
+.header .turnBack .arrow{border-left:0.15rem solid #000;border-top:0.15rem solid #000;display:block;width:1.2rem;height:1.2rem;-webkit-transform:rotate(-45deg); -moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);position:absolute;left:0.35rem;top:0.35rem;}
+/*.header .turnBack{left:1.5rem;top:1.42rem;border-left:0.15rem solid #000;border-top:0.15rem solid #000;display:block;width:1.2rem;height:1.2rem;-webkit-transform:rotate(-45deg); -moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);position:absolute;}*/
+/*
+.header .turnBack {position:absolute; width:1.8rem; height:1.8rem; left:1.5rem; top:1.5rem; -webkit-transform:rotate(-37.5deg); 
+-moz-transform:rotate(-37.5deg);
+-o-transform:rotate(-37.5deg);}
+.header .turnBack:before {content:''; position:absolute; width:100%; height:0.2rem; background:#666;}
+.header .turnBack:after {content:''; position:absolute; left:0.12rem; top:0rem; width:0.2rem; height:100%; background:#666; -webkit-transform:rotate(-15deg); 
+-moz-transform:rotate(-15deg); 
+-o-transform:rotate(-15deg);}
+*/
+.header .title {text-align:center; font-size:1.7rem; line-height:4.5rem;}
+
+/*****************************************************
+.header{position:fixed;top:0;background:#000;color:#fff;}
+.header .turnBack:before,.header .turnBack:after{background:#fff;}
+/*****************************************************/
+.header .title{text-align:center; font-size:1.7rem; line-height:4.5rem;}
+.header .uCenter{inline-block;width:2.1rem; height:2rem; background:url('../images/headerIconS.png') 0 0 no-repeat;background-size:2rem auto;background-position:left 83%;position:absolute;right:1.5rem; top:1.3rem;cursor: pointer;}
+
+.header .values{display:inline-block;width:2.1rem; height:2rem; background:url('../images/headerIconS.png') 0 0 no-repeat;background-size:2rem auto;background-position:left 16.6%; position:absolute;right:5rem; top:1.3rem;cursor: pointer;}
+
+.header .valued{background-position:left top;}
+.header .share{display:inline-block;width:2.1rem; height:2rem; background:url('../images/headerIconS.png') 0 0 no-repeat;background-size:2rem auto; position:absolute; background-position:left 50%;right:1.8rem;top:1.3rem;cursor: pointer;}
+
+.header .Operation{font-size:1.3rem;color:#000;position:absolute;right:1rem;top:1.6rem;display:inline-block;}
+
+
+.header .msg {width:2.4rem; height:2.4rem; position:absolute; top:1.2rem; right:1.5rem; background:url('../images/message_normal@2x.png') no-repeat 0 -2.4rem / 2.4rem auto;cursor: pointer;}
+.header .new:after {content:''; width:0.7rem; height:0.7rem; position:absolute; top:0; right:-0.2rem; background:#F00; border-radius:50%;}
+
+.headerBlank{clear:both;border:none;top:0;height:4.5rem;}/*设置空白，防止header遮住页面内容*/
+
+/*************************header 滚动后 改变 样式****************************/
+.changeStyle{border:none;color:#fff;background:rgba(0,0,0,0.2);}
+.changeStyle .turnBack .arrow{border-color:#fff;}
+.changeStyle .uCenter{background-position:left bottom; }
+.changeStyle .values{background-position:left 33.2%;}
+.changeStyle .valued{background-position:left top;}
+.changeStyle .share{background-position:left 66%;}
+.changeStyle .msg {background-position:left top;}
+/***********************************/
+
+/*标题样式 “推荐课程”、“相关活动”  等等*/
+.item_title {height:3rem;margin-left:1rem;margin-top:1rem;}
+.item_title span{display:block;padding:0 0.5rem;border-left:0.2rem solid #f7d557;border-right:0.2rem solid #f7d557;float:left;color:#7e7e7e;font-size:1.55rem;font-weight:500;}
+.item_title i{margin:0.1rem 2rem;float:right;color:#7e7e7e;font-size:1.5rem;font-weight:500;}
+/*****************/
+
+/**************页面中部的  活动描述、商品详情等 部分******************/
+
+.actInfoMenu{font-size:1.6rem;color:#969696;text-align:center;padding:1.35rem 2.2rem 1.687rem 2.2rem;clear:both;border-bottom:0.1rem solid #eee;}
+.actInfoMenu span{display:inline-block;/*width:6rem;*/position:relative;}
+.actInfoMenu span:before{background: #ffe479 none repeat scroll 0 0;content: ""; height: 0.1rem;left: -9rem; position: absolute;top: 1rem;width: 8rem;}
+.actInfoMenu span:after{background: #ffe479 none repeat scroll 0 0;content: ""; height: 0.1rem;right: -9rem; position: absolute;top: 1rem;width: 8rem;}
+
+/**************************************/
+
+/*活动的标签*/
+.mtags span{font-size:1rem;color:#a8a8a8;margin:0 0.6rem;padding: 0.2rem 0.5rem;border:0.1rem #a8a8a8 solid;border-radius:0.6rem;}
+.mtags:after{content:""; width: 0; clear: both; }
+.tags{height:3.8rem;}
+.tags span{font-size:1rem;color:#a8a8a8;padding: 0.2rem 0.5rem;margin:0.9rem 0.6rem auto 0.6rem;height:1.6rem;line-height:1.6rem;text-align:center;display:inline-block;border:0.1rem #a8a8a8 solid;border-radius:0.6rem;}
+/**/
+
+/*用户的 圆形头像 加默认边框*/
+.imgPortrait{display:inline-block;width:6.5rem;height:6.5rem;border-radius: 50%;border:0.3rem solid #fdeb7b;overflow:hidden;}
+/***/
+
+/**********各个页面不同模块之间的间隔 灰块************/
+.the_blank{clear:both;margin:0;padding:0;height:1.2rem;background:#ebecf0;}
+/**********************/
+/************************* 自定义的公共样式 结束*********************/
+
+/****************************** 登录界面（开始） *********************************/
+.loginBox {width:36rem; height:100%; overflow:hidden; position:relative; background:#f0c552 url(../images/login_bg.jpg) no-repeat; background-size:100% auto; /*background:-moz-linear-gradient(top,#f8d15a,#f8b25a); background:-webkit-linear-gradient(top,#f8d15a,#f8b25a); background:-o-linear-gradient(top,#f8d15a,#f8b25a);*/}
+.loginBox label {display:block; position:relative; height:3rem; margin-top:1rem;}
+.loginBox .tel_icon {background:url(../images/login_btn_icon.jpg) no-repeat 0 -7.2rem / 2.4rem auto; height: 2.4rem;position: absolute;width: 2.4rem; top:0.5rem; left:0.8rem;}
+.loginBox .pwd_icon {background:url(../images/login_btn_icon.jpg) no-repeat 0 -9.6rem / 2.4rem auto; height: 2.4rem;position: absolute;width: 2.4rem; top:0.5rem; left:0.8rem;}
+.loginBox .ver_icon {background:url(../images/login_btn_icon.jpg) no-repeat 0 -12rem / 2.4rem auto; height: 2.4rem;position: absolute;width: 2.4rem; top:0.5rem; left:0.8rem;}
+.disabled {color:#ddd !important; background:#f7f7f7 !important;}
+
+/* 按钮组 */
+.loginBox .btn_box {padding:2rem; width:32rem; position:absolute; left:0; top:50%;}
+.loginBox .btn_box .wx {width:100%; height:4.4rem; color:#79bd5e; background:-moz-linear-gradient(top,#fff,#fff9e1); background:-webkit-linear-gradient(top,#fff,#fff9e1); background:-o-linear-gradient(top,#fff,#fff9e1); border:solid 0.1rem #edd378; box-shadow:0 0.1rem 0.1rem #daaa65; font-size:1.8rem;}
+.loginBox .btn_box button {text-indent:2rem; position:relative;}
+.loginBox .btn_box button:before {content:''; width:2.4rem; height:2.4rem; position:absolute; top:1rem; left:50%; margin-left:-5rem; background:url(../images/login_btn_icon.jpg) 0 0 no-repeat; background-size:2.4rem auto;}
+.loginBox .btn_box button.wx:before {margin-left:-5.5rem;}
+.loginBox .btn_box button.dx:before {background-position:0 -2.4rem;}
+.loginBox .btn_box button.pw:before {background-position:0 -4.8rem;}
+.loginBox .btn_box .dx,.loginBox .btn_box .pw {height:4.4rem; color:#dc8d28; float:left; width:15.2rem; margin-top:2rem; background:-moz-linear-gradient(top,#ffe994,#ffe68c); background:-webkit-linear-gradient(top,#ffe994,#ffe68c); background:-o-linear-gradient(top,#ffe994,#ffe68c); border:solid 0.1rem #edd378; box-shadow:0 0.1rem 0.1rem #daaa65; font-size:1.6rem;}
+.loginBox .btn_box .pw {float:right;}
+
+/* 短信登录 */
+.loginBox .dx_box {padding:2rem; width:32rem; position:absolute; left:36rem; top:50%; display:none;}
+.loginBox .dx_box input {display:block;}
+.loginBox .dx_box .telephone,.loginBox .dx_box .verifycode {line-height:3rem; font-size:1.5rem; width:16rem; padding:0 12rem 0 4rem; border:none; background:none; border-bottom:solid 0.1rem #fff; color:#fff;}
+.loginBox .dx_box .sendcode {width:12rem; text-align:right; position:absolute; line-height:3rem; right:0; top:0; color:#fff; font-size:1.4rem;}
+.loginBox .dx_box .submit {width:100%; height:4.4rem; color:#dc8d28; background:-moz-linear-gradient(top,#fff,#fff9e1); background:-webkit-linear-gradient(top,#fff,#fff9e1); background:-o-linear-gradient(top,#fff,#fff9e1); border:solid 0.1rem #edd378; box-shadow:0 0.1rem 0.1rem #daaa65; font-size:1.8rem; margin-top:1.7rem;}
+.loginBox .dx_box .bottom {margin-top:1.2rem; font-size:1.4rem;}
+.loginBox .dx_box .bottom .wx {float:left; color:#fff;}
+.loginBox .dx_box .bottom .pw {float:right; color:#fff;}
+
+/* 密码登录 */
+.loginBox .pw_box {padding:2rem; width:32rem; position:absolute; left:36rem; top:50%; display:none;}
+.loginBox .pw_box input {display:block;}
+.loginBox .pw_box .telephone,.loginBox .pw_box .password {line-height:3rem; font-size:1.5rem; width:28rem; padding-left:4rem; border:none; background:none; border-bottom:solid 0.1rem #fff; color:#fff;}
+.loginBox .pw_box .submit {width:100%; height:4.4rem; color:#dc8d28; background:-moz-linear-gradient(top,#fff,#fff9e1); background:-webkit-linear-gradient(top,#fff,#fff9e1); background:-o-linear-gradient(top,#fff,#fff9e1); border:solid 0.1rem #edd378; box-shadow:0 0.1rem 0.1rem #daaa65; font-size:1.8rem; margin-top:1.7rem;}
+.loginBox .pw_box .bottom {margin-top:1.2rem; font-size:1.4rem;}
+.loginBox .pw_box .bottom .wx {float:left; color:#fff;}
+.loginBox .pw_box .bottom .dx {float:right; color:#fff;}
+
+.loginBox ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+}
+.loginBox :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+}
+.loginBox ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+}
+.loginBox :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #fff;
+}
+/****************************** 登录界面（结束） *********************************/
+
+
+
+
+
+=======
+@charset "utf-8";
+/**************************** 自定义的公共样式 开始 ****************************/
+.arrowRight{cursor: pointer;display:inline-block;position:absolute;right:1.8rem;top:1.5rem;width:1rem;height:1rem;border-right:0.15rem solid #636363;border-top:0.15rem solid #636363;-webkit-transform:rotate(45deg); -moz-transform:rotate(45deg);-o-transform:rotate(45deg);}/*自定义样式 ：向右的箭头 */
+/*页面头部的悬浮菜单*/
+.header {color:#000;height:4.5rem;background:#fff;position:relative;z-index:999;width:100%;border-bottom:0.1rem solid #eee;}
+.header .turnBack{cursor: pointer;left:1.5rem;top:1.3rem;display:block;width:2.6rem;height:2rem;position:absolute;text-align:center;}
+.header .turnBack .arrow{border-left:0.15rem solid #000;border-top:0.15rem solid #000;display:block;width:1.2rem;height:1.2rem;-webkit-transform:rotate(-45deg); -moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);position:absolute;left:0.35rem;top:0.35rem;}
+/*.header .turnBack{left:1.5rem;top:1.42rem;border-left:0.15rem solid #000;border-top:0.15rem solid #000;display:block;width:1.2rem;height:1.2rem;-webkit-transform:rotate(-45deg); -moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);position:absolute;}*/
+/*
+.header .turnBack {position:absolute; width:1.8rem; height:1.8rem; left:1.5rem; top:1.5rem; -webkit-transform:rotate(-37.5deg); 
+-moz-transform:rotate(-37.5deg);
+-o-transform:rotate(-37.5deg);}
+.header .turnBack:before {content:''; position:absolute; width:100%; height:0.2rem; background:#666;}
+.header .turnBack:after {content:''; position:absolute; left:0.12rem; top:0rem; width:0.2rem; height:100%; background:#666; -webkit-transform:rotate(-15deg); 
+-moz-transform:rotate(-15deg); 
+-o-transform:rotate(-15deg);}
+*/
+.header .title {text-align:center; font-size:1.7rem; line-height:4.5rem;}
+
+/*****************************************************
+.header{position:fixed;top:0;background:#000;color:#fff;}
+.header .turnBack:before,.header .turnBack:after{background:#fff;}
+/*****************************************************/
+.header .title{text-align:center; font-size:1.7rem; line-height:4.5rem;}
+.header .uCenter{inline-block;width:2.1rem; height:2rem; background:url('../images/headerIconS.png') 0 0 no-repeat;background-size:2rem auto;background-position:left 83%;position:absolute;right:1.5rem; top:1.3rem;cursor: pointer;}
+
+.header .values{display:inline-block;width:2.1rem; height:2rem; background:url('../images/headerIconS.png') 0 0 no-repeat;background-size:2rem auto;background-position:left 16.6%; position:absolute;right:5rem; top:1.3rem;cursor: pointer;}
+
+.header .valued{background-position:left top;}
+.header .share{display:inline-block;width:2.1rem; height:2rem; background:url('../images/headerIconS.png') 0 0 no-repeat;background-size:2rem auto; position:absolute; background-position:left 50%;right:1.8rem;top:1.3rem;cursor: pointer;}
+
+.header .Operation{font-size:1.2rem;color:#000;position:absolute;right:1rem;top:1.6rem;display:inline-block;cursor: pointer;}
+.header .manage{font-size:1rem;color:#000;position:absolute;right:1rem;bottom:0.8rem;display:inline-block;cursor: pointer;}
+
+.header .msg {width:2.4rem; height:2.4rem; position:absolute; top:1.2rem; right:1.5rem; background:url('../images/message_normal@2x.png') no-repeat 0 -2.4rem / 2.4rem auto;cursor: pointer;}
+.header .new:after {content:''; width:0.7rem; height:0.7rem; position:absolute; top:0; right:-0.2rem; background:#F00; border-radius:50%;}
+
+.headerBlank{clear:both;border:none;top:0;height:4.5rem;}/*设置空白，防止header遮住页面内容*/
+
+/*************************header 滚动后 改变 样式****************************/
+.changeStyle{border:none;color:#fff;background:rgba(0,0,0,0.2);}
+.changeStyle .turnBack .arrow{border-color:#fff;}
+.changeStyle .uCenter{background-position:left bottom; }
+.changeStyle .values{background-position:left 33.2%;}
+.changeStyle .valued{background-position:left top;}
+.changeStyle .share{background-position:left 66%;}
+.changeStyle .msg {background-position:left top;}
+/***********************************/
+
+/*标题样式 “推荐课程”、“相关活动”  等等*/
+.item_title {height:3rem;margin-left:1rem;margin-top:1rem;}
+.item_title span{display:block;padding:0 0.5rem;border-left:0.2rem solid #f7d557;border-right:0.2rem solid #f7d557;float:left;color:#7e7e7e;font-size:1.55rem;font-weight:500;}
+.item_title i{margin:0.1rem 2rem;float:right;color:#7e7e7e;font-size:1.5rem;font-weight:500;}
+/*****************/
+
+/**************页面中部的  活动描述、商品详情等 部分******************/
+
+.actInfoMenu{font-size:1.6rem;color:#969696;text-align:center;padding:1.35rem 2.2rem 1.687rem 2.2rem;clear:both;border-bottom:0.1rem solid #eee;}
+.actInfoMenu span{display:inline-block;/*width:6rem;*/position:relative;}
+.actInfoMenu span:before{background: #ffe479 none repeat scroll 0 0;content: ""; height: 0.1rem;left: -9rem; position: absolute;top: 1rem;width: 8rem;}
+.actInfoMenu span:after{background: #ffe479 none repeat scroll 0 0;content: ""; height: 0.1rem;right: -9rem; position: absolute;top: 1rem;width: 8rem;}
+
+/**************************************/
+
+/*活动的标签*/
+.mtags span{font-size:1rem;color:#a8a8a8;margin:0 0.6rem;padding: 0.2rem 0.5rem;border:0.1rem #a8a8a8 solid;border-radius:0.6rem;}
+.mtags:after{content:""; width: 0; clear: both; }
+.tags{height:3.8rem;}
+.tags span{font-size:1rem;color:#a8a8a8;padding: 0.2rem 0.5rem;margin:0.9rem 0.6rem auto 0.6rem;height:1.6rem;line-height:1.6rem;text-align:center;display:inline-block;border:0.1rem #a8a8a8 solid;border-radius:0.6rem;}
+/**/
+
+/*用户的 圆形头像 加默认边框*/
+.imgPortrait{display:inline-block;width:6.5rem;height:6.5rem;border-radius: 50%;border:0.3rem solid #fdeb7b;overflow:hidden;}
+/***/
+
+/**********各个页面不同模块之间的间隔 灰块************/
+.the_blank{clear:both;margin:0;padding:0;height:1.2rem;background:#ebecf0;}
+/**********************/
+/************************* 自定义的公共样式 结束*********************/
+
+/****************************** 登录界面（开始） *********************************/
+.loginBox {width:36rem; height:100%; overflow:hidden; position:relative; background:#f0c552 url(../images/login_bg.jpg) no-repeat; background-size:100% auto; /*background:-moz-linear-gradient(top,#f8d15a,#f8b25a); background:-webkit-linear-gradient(top,#f8d15a,#f8b25a); background:-o-linear-gradient(top,#f8d15a,#f8b25a);*/}
+.loginBox label {display:block; position:relative; height:3rem; margin-top:1rem;}
+.loginBox .tel_icon {background:url(../images/login_btn_icon.jpg) no-repeat 0 -7.2rem / 2.4rem auto; height: 2.4rem;position: absolute;width: 2.4rem; top:0.5rem; left:0.8rem;}
+.loginBox .pwd_icon {background:url(../images/login_btn_icon.jpg) no-repeat 0 -9.6rem / 2.4rem auto; height: 2.4rem;position: absolute;width: 2.4rem; top:0.5rem; left:0.8rem;}
+.loginBox .ver_icon {background:url(../images/login_btn_icon.jpg) no-repeat 0 -12rem / 2.4rem auto; height: 2.4rem;position: absolute;width: 2.4rem; top:0.5rem; left:0.8rem;}
+.disabled {color:#ddd !important; background:#f7f7f7 !important;}
+
+/* 按钮组 */
+.loginBox .btn_box {padding:2rem; width:32rem; position:absolute; left:0; top:50%;}
+.loginBox .btn_box .wx {width:100%; height:4.4rem; color:#79bd5e; background:-moz-linear-gradient(top,#fff,#fff9e1); background:-webkit-linear-gradient(top,#fff,#fff9e1); background:-o-linear-gradient(top,#fff,#fff9e1); border:solid 0.1rem #edd378; box-shadow:0 0.1rem 0.1rem #daaa65; font-size:1.8rem;}
+.loginBox .btn_box button {text-indent:2rem; position:relative;}
+.loginBox .btn_box button:before {content:''; width:2.4rem; height:2.4rem; position:absolute; top:1rem; left:50%; margin-left:-5rem; background:url(../images/login_btn_icon.jpg) 0 0 no-repeat; background-size:2.4rem auto;}
+.loginBox .btn_box button.wx:before {margin-left:-5.5rem;}
+.loginBox .btn_box button.dx:before {background-position:0 -2.4rem;}
+.loginBox .btn_box button.pw:before {background-position:0 -4.8rem;}
+.loginBox .btn_box .dx,.loginBox .btn_box .pw {height:4.4rem; color:#dc8d28; float:left; width:15.2rem; margin-top:2rem; background:-moz-linear-gradient(top,#ffe994,#ffe68c); background:-webkit-linear-gradient(top,#ffe994,#ffe68c); background:-o-linear-gradient(top,#ffe994,#ffe68c); border:solid 0.1rem #edd378; box-shadow:0 0.1rem 0.1rem #daaa65; font-size:1.6rem;}
+.loginBox .btn_box .pw {float:right;}
+
+/* 短信登录 */
+.loginBox .dx_box {padding:2rem; width:32rem; position:absolute; left:36rem; top:50%; display:none;}
+.loginBox .dx_box input {display:block;}
+.loginBox .dx_box .telephone,.loginBox .dx_box .verifycode {line-height:3rem; font-size:1.5rem; width:16rem; padding:0 12rem 0 4rem; border:none; background:none; border-bottom:solid 0.1rem #fff; color:#fff;}
+.loginBox .dx_box .sendcode {width:12rem; text-align:right; position:absolute; line-height:3rem; right:0; top:0; color:#fff; font-size:1.4rem;}
+.loginBox .dx_box .submit {width:100%; height:4.4rem; color:#dc8d28; background:-moz-linear-gradient(top,#fff,#fff9e1); background:-webkit-linear-gradient(top,#fff,#fff9e1); background:-o-linear-gradient(top,#fff,#fff9e1); border:solid 0.1rem #edd378; box-shadow:0 0.1rem 0.1rem #daaa65; font-size:1.8rem; margin-top:1.7rem;}
+.loginBox .dx_box .bottom {margin-top:1.2rem; font-size:1.4rem;}
+.loginBox .dx_box .bottom .wx {float:left; color:#fff;}
+.loginBox .dx_box .bottom .pw {float:right; color:#fff;}
+
+/* 密码登录 */
+.loginBox .pw_box {padding:2rem; width:32rem; position:absolute; left:36rem; top:50%; display:none;}
+.loginBox .pw_box input {display:block;}
+.loginBox .pw_box .telephone,.loginBox .pw_box .password {line-height:3rem; font-size:1.5rem; width:28rem; padding-left:4rem; border:none; background:none; border-bottom:solid 0.1rem #fff; color:#fff;}
+.loginBox .pw_box .submit {width:100%; height:4.4rem; color:#dc8d28; background:-moz-linear-gradient(top,#fff,#fff9e1); background:-webkit-linear-gradient(top,#fff,#fff9e1); background:-o-linear-gradient(top,#fff,#fff9e1); border:solid 0.1rem #edd378; box-shadow:0 0.1rem 0.1rem #daaa65; font-size:1.8rem; margin-top:1.7rem;}
+.loginBox .pw_box .bottom {margin-top:1.2rem; font-size:1.4rem;}
+.loginBox .pw_box .bottom .wx {float:left; color:#fff;}
+.loginBox .pw_box .bottom .dx {float:right; color:#fff;}
+
+.loginBox ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+}
+.loginBox :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+}
+.loginBox ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+}
+.loginBox :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #fff;
+}
+/****************************** 登录界面（结束） *********************************/
+
+
+
+
+
+
+>>>>>>> .r4159

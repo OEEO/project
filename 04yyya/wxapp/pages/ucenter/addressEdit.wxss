@@ -1,0 +1,84 @@
+.address-edit-form {
+    padding: 0 40rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.address-edit-form .address-edit-form_item {
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom: 1rpx solid #eee;
+    font-size: 24rpx;
+    color: #333;
+    display: flex;
+}
+
+.address-edit-form .address-edit-form_item > text {
+    display: inline-block;
+    width: 5em;
+    margin-right: 30rpx;
+}
+
+.address-edit-form .address-edit-form_item > input {
+    display: inline-block;
+    border: none;
+    outline: none;
+    height: 80rpx;
+    line-height: 80rpx;
+    flex: 1;
+}
+
+.address-edit-form picker {
+    display: inline-block;
+    flex: 1;
+}
+
+.address-edit-default {
+    background: #fff;
+    line-height: 80rpx;
+    height: 80rpx;
+    padding-left: 80rpx;
+    position: relative;
+}
+
+.address-edit-default > icon {
+    margin-right: 10rpx;
+    vertical-align: middle;
+    line-height: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 40rpx;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+}
+
+.address-edit-default > text {
+    display: inline-block;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 24rpx;
+}
+
+.bottom-btn-group {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    padding: 26rpx 0;
+}
+
+.bottom-btn-group > view {
+    flex: 1;
+    text-align: center;
+    line-height: 40rpx;
+    color: #B39851;
+    font-size: 36rpx;
+}
+
+.bottom-btn-group > view.border-right {
+    border-right: 1px solid #B39851;
+}

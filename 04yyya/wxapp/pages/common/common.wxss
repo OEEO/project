@@ -1,0 +1,70 @@
+.text24 {
+    font-size: 24rpx;
+}
+
+.text28 {
+    font-size: 28rpx;
+}
+
+.text32 {
+    font-size: 32rpx;
+}
+
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-default {
+    color: #333;
+}
+
+.text-yellow {
+    color: #B39851;
+}
+
+.text-gray {
+    color: #999;
+}
+
+.text-decoration {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    border-radius: 8rpx;
+    text-align: center;
+    height: 48rpx;
+    line-height: 48rpx;
+    font-size: 24rpx;
+    padding: 0 20rpx;
+}
+
+.btn.btn-yellow {
+    background: #fff;
+    border: 1rpx solid #B39851;
+    color: #B39851;
+}
+
+.clearfix:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix{
+    height: 1%;
+}

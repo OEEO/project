@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<base href="../">
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/a.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<!--<script type="text/javascript" src="js/plugins/jquery.SuperSlide.2.1.1.js"></script>
+
+<script type="text/javascript" src="js/plugins/myMobileSliderWithBottom.js"></script>
+<script type="text/javascript" src="js/plugins/yxMobileSlider.js"></script>-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/a.js"></script>
+
+
+</head>
+<body>
+<img src="./tools/15.png">
+<br/>
+<div class="the_blank"></div>
+
+<div class="content">
+<!-- ---------两行注释h线之间是本页 工具部分------------ -->
+<style>
+.addRessDetails{}
+.addRessDetails>div{height:4rem;line-height:4rem;border-bottom:0.1rem solid #ebecf0;position:relative;}
+/*.addRessDetails>div:before{content:'';display:inline-block;width:1.4rem;height:1.4rem;background:url('./images/');}*/
+.addRessDetails>div input{/*float:right;margin-left:5rem;*/font-size:1.3rem;color:#b2b2b2;position:absolute;left:3.8rem;height:4rem;width:86%;border:none;}
+.addRessDetails>div textarea{color:#b2b2b2;font-size:1.3rem;padding:0.6rem 0;line-height:1.6rem;position:absolute;left:3.8rem;width:86%;border:none;}
+
+.addRessDetails .a{background:url('./images/mine.png') no-repeat 1rem center;background-size:1.6rem auto;}
+.addRessDetails .b{background:url('./images/sj.png') no-repeat 1.2rem center;background-size:1.15rem 1.6rem;}
+.addRessDetails .address{height:4.5rem;background:url('./images/location_24x24.png') no-repeat 1rem center;background-size:1.5rem auto;}
+.addRessDetails .c{background:url('./images/email.png') no-repeat 1rem center;background-size:1.6rem 1.1rem;}
+.addRessDetails .d{font-size:1.3rem;color:#666666;text-indent:1.1rem;}
+.addRessDetails>div .asDefault{position:absolute;right:0.8rem;top:1rem;height:1.8rem;width:auto;}
+
+/*********************************************************/
+/**底部菜单布局设置**/
+.saveEdit{font-size:1.66rem;color:#fff;;height:4rem;line-height:4rem;text-align:center;width:100%;background:#fbd74b;}
+/***************/
+</style>
+<div class="addRessDetails">
+	<div class="a" ><input type="text" name="" value="收货人" onfocus="if(value=='收货人'){value=''}" onblur="if (value ==''){value='收货人'}" ></div>
+	<div class="b" ><input type="text" name="" value="手机号码" onfocus="if(value=='手机号码'){value=''}" onblur="if (value ==''){value='手机号码'}" ></div>
+	<div class="address">
+		<textarea type="text" name="" onfocus="if(value=='收货地址'){value=''}" onblur="if (value ==''){value='收货地址'}" >收货地址</textarea>
+	</div>
+	<div class="c" ><input type="text" name="" value="邮政编码" onfocus="if(value=='邮政编码'){value=''}" onblur="if (value ==''){value='邮政编码'}" ></div>
+	<div class="d">设为默认地址<img class="asDefault" src="./images/chooseAdd.png"></div>
+</div>
+<div class="the_blank"></div>
+<div class="saveEdit" onclick="javascript:alert();">保存</div>
+<!-- --------------------- -->	
+	<div style="height:400px;"></div>
+</div>
+</body>
+</html>

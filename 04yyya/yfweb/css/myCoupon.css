@@ -1,0 +1,35 @@
+@charset "utf-8";
+#header .Operation{ font-size:1.7rem; color:#b39851; line-height:1.5rem;}
+.page_myCoupon {background:#f5f5f5;}
+.page_myCoupon .top{width:33rem; height:4rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; margin:2.5rem 1.5rem;}
+.page_myCoupon .top .catch{width:25.5rem; height:3.1rem; line-height:3.1rem; background:#fff; font-size:1.4rem; padding:0.2rem 0;  border-radius:4%;}
+.page_myCoupon .top .catch input{display:block; width:24rem; height:3.1rem; line-height:3.1rem; background:#fff; border:none; padding-left:1.5rem; color:#999; outline: 0 none;}
+.page_myCoupon .top .serch_buttom{width:6.5rem; height:3.5rem; line-height:3.5rem; background:#b39851; margin-left:1rem; color:#FFF; font-size:1.6rem; text-align:center; border-radius:5%;}
+
+.page_myCoupon .content{margin-bottom:3.2rem;}
+.page_myCoupon .content.empty {min-height:20rem; background: url('../images/coupon_noon_icon@2x.png') no-repeat center center / 10rem 10rem;box-sizing: border-box; color: #b2b2b2; font-size: 1.2rem; min-height: 20rem; padding-top: 17rem; text-align: center;}
+/******************************/
+.page_myCoupon .content .canUser{width:32rem; margin:2rem auto 1rem auto; color:#888888; font-size:1.4rem;text-align: center;}
+.page_myCoupon .content .canUser .c_border{display:inline-block;width:8rem; margin:0.5rem 1rem; color:#cccccc; border-bottom:0.1rem solid #cccccc;}
+.page_myCoupon .coupon{cursor: pointer;margin:0 auto;margin-top:1.2rem;width:32rem;height:15rem;background:url('../images/choosecoupon_pho_n@2x.png') -0.2rem 0 no-repeat;background-size:32.4rem 15.5rem;position:relative;}
+.page_myCoupon .overdue{cursor: pointer;margin:0 auto;margin-top:1.2rem;width:32rem;height:15rem;background:url('../images/choosecoupon_pho_d@2x.png') no-repeat;background-size:32.4rem 15rem;position:relative;}/*设置优惠 的 已过期 */
+
+.page_myCoupon .unavailable{background-position:left bottom;}
+
+/*.couponLines{background:#e5e5e5;height:0.2rem;width:100%;position:absolute;margin-top:-6.89rem;z-index:0;}*/
+
+.page_myCoupon .couponLeft{font-size:3.2rem;letter-spacing:0;color:#fdfffe;width:32rem;height:6rem;line-height:11rem;text-align:center;text-indent:-1rem;}
+.page_myCoupon .couponLeft font{font-size:2rem;letter-spacing:0;line-height:9rem;text-align:center;}
+.page_myCoupon .couponRight{position:absolute;width:30rem;height:5.5rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; line-height:5.5rem; padding:0 0.5rem 0 1.3rem;}
+.page_myCoupon .type_title{font-size:1.5rem;color:#fdfffe;margin:0;padding:0; line-height:5.5rem; text-align:center; height:3.5rem;}
+
+.page_myCoupon .couponRight>div{width:15.5rem; margin-left:0.5rem; font-size:1.2rem;color:#c3c3c3; letter-spacing:0; line-height:6rem; overflow:hidden;}
+.page_myCoupon .couponRight>i{width:14.5rem; font-size:1.2rem;color:#c3c3c3;display:block; letter-spacing:0; line-height:6rem; overflow:hidden;}
+
+.page_myCoupon .choosed:after {content:''; position: absolute; top:0; left:0; right:0; bottom:0; border:0.2rem solid #ffdc00;}
+.page_myCoupon .choosed .couponLeft {color:#ffdc00;}
+.page_myCoupon .choosed .type_title {color:#ffdc00;}
+
+.page_myCoupon .nolist{width:14rem; height:14rem; margin-top:6rem; margin-left:11rem;}
+.page_myCoupon .nolist_title{display:inline-block; width:36rem; height:5rem; line-height:5rem; text-align:center; font-size:1.5rem; color:#bdbdbd;}
+/***********结束************/

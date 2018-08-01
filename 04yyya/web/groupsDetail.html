@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/groupsDetail.css">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/groupsDetail.js"></script>
+</head>
+<body>
+<div class="header line">
+    <div class="turnBack" onclick="page.back()"><div class="arrow"></div></div>
+    <div class="title">组团详情</div>
+    <!--<div class="orderOperation">我要开团</div>-->
+    <a class="userMsg" href="javascript:jump('ucenter')"></a>
+</div>
+<div class="headerBlank"></div><!--设置空白，避免顶部菜单遮住网页内容-->
+
+<div class="pageTitleMenu">
+    <div class="piece-success_member">
+        <img id="piece-success_member_avatar" class="piece-success_member_avatar" src="" alt="">
+        <p class="main-title"></p>
+        <p class="sub-title">发现了好物推荐给你！快来一起吧！</p>
+    </div>
+    <div class="orderInf" onclick="groupsDetailObject.createNewPiece()">
+        <div class="orderListLeft">
+            <img>
+        </div>
+        <div class="orderListRight">
+            <div class="orderTitle"></div>
+            <div class="t_c"></div>
+            <div class="t_b"><font></font>/份<span id="piece_count"></span></div>
+            <span></span>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="split"></div>
+    <div class="groupsbox">
+        <div class="groups-t">
+            <div class="group-imgs"></div>
+            <div class="owe">还差<font>x</font>人成团，快去召唤小伙伴来组团吧</div>
+            <div class="endtime">
+                剩余<font>00</font><font class="dian">：</font><font>00</font><font class="dian">：</font><font>00</font>结束
+            </div>
+            <img class="piece-success" src="images/piece_success.png" alt="">
+        </div>
+        <div class="groups_list">
+        </div>
+    </div>
+    <div class="split"></div>
+    <div id="goods_detail">
+        <div  class="goods_content goods_detail_content">
+            <p class="main-title text-center">商品详情</p>
+            <div id="goods_content"></div>
+        </div>
+        <div class="goods_content">
+            <div class="title attr">商品规格</div>
+            <table class="attr_list"></table>
+        </div>
+
+        <div class="goods_content">
+            <a href="javascript:void(0);" class="darenDetail">
+                <img>
+                <div class="right">
+                    <div class="t"></div>
+                    <div class="b"></div>
+                </div>
+            </a>
+
+            <div class="title tell">贴心提示</div>
+            <ul class="tell_List"></ul>
+        </div>
+
+        <div class="recommend">
+            <div class="title">推荐好物</div>
+            <div class="tips_list">
+            </div>
+        </div>
+    </div>
+    <div class="yami_groups">
+        <div class="groups_title">吖咪拼团</div>
+        <span class="groups_rule text-danger" onclick="groupsDetailObject.rules(1)">拼团规则</span>
+        <img class="ruleimg" src="images/groups_rule.png"/>
+    </div>
+</div>
+<div class="bottomBlank"></div>
+<div class="footer orderBottom">
+    <a href="javascript:void(0)" class="groupshare" onclick="groupsDetailObject.createNewPiece()">我要开团</a>
+    <a href="javascript:void(0)" class="kaituan">我要参团</a>
+</div>
+<div class="fixed rulebox">
+    <div class="rule_context">
+        <div class="ruletitle">拼团规则</div>
+        <p>1.新老用户均可选择您心仪的商品开团，完成支付即可开团，开团后您需要邀请好友参与拼团.</p>
+        <p>2.在限定时间内邀请到规定人数的好友参团，才可以享受拼团优惠.</p>
+        <p>3.若限定时间内参团人数不足、库存不足或商品下架，则拼团失败，系统将在3天内退款.</p>
+        <p>4.订单信息请在吖咪APP或吖咪yummy公众号(yamiyummy194)查看.</p>
+        <div class="rulebtns" onclick="groupsDetailObject.rules(0)">确定</div>
+    </div>
+</div>
+
+<div class="fixed groups_success">
+    <div class="success_context">
+        <div class="ruletitle">开团成功</div>
+        <img class="success_icon" src="images/horn@2x.png"/>
+        <p>还差<font class="num">0</font>人即可成团，<br/>赶快去邀请好友参团</p>
+        <div class="rulebtns" onclick="groupsDetailObject.goshare()">去邀请</div>
+        <i class="closeicon" onclick="groupsDetailObject.hideGroupsSuccess()"></i>
+    </div>
+</div>
+</body>
+</html>

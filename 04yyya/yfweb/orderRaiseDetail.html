@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/orderRaiseDetail.css">
+
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/orderRaiseDetail.js"></script>
+</head>
+<body>
+<div class="header line">
+    <div class="turnBack" onclick="javascript:page.back()"><div class="arrow"></div></div>
+    <div class="title">众筹订单详情</div>
+    <!--<div class="orderOperation"></div>-->
+</div>
+<div class="headerBlank"></div><!--设置空白，避免顶部菜单遮住网页内容-->
+
+<div id="mainContent">
+    <div class="c_list">
+        <p><span>认筹总额</span><span>目标金额</span></p>
+        <p><span>￥<font name="totaled"></font></span><span>￥<font name="total"></font></span></p>
+        <div class="shell">
+            <i class="stone"></i>
+            <div class="c_line">
+                <span></span>
+            </div>
+        </div>
+        <div class="sublist">
+            <span><font name="percent"></font>%</span>
+            <span><font name="sum"></font>人认筹</span>
+            <span name="days"></span>
+        </div>
+    </div>
+    <div class="split"></div>
+    <div class="orderInf">
+        <div class="orderListLeft">
+
+        </div>
+        <div class="orderListRight">
+            <div class="orderTitle"></div>
+            <div class="subot"></div>
+            <div class="t_b">
+                <!--<div class="number"><font>0</font>份</div>-->
+                <!--<div class="center_boeder"></div>-->
+                <div class="total">支持：￥<font>0</font></div>
+                <div class="status"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="orderLottery">
+        抽奖码<span id="code" class="code">code</span><span id="lottery_status" class="lottery_status">未开奖</span>
+        <div class="l_right"><span class="lottery_detail">抽奖细则</span></div>
+    </div>
+    <div class="split"></div>
+    <ul class="orderDetail"></ul>
+
+    <!--<div class="commentList"></div>-->
+    <div class="stage">
+        <ul class="stageitem">
+            <li>
+                <div class="hline">
+                    <p class="stage-one">阶段一 <font class="state"></font></p>
+                    <div class="subitem"><span class="subscription"></span><span class="subtotal">小计：￥<font></font></span></div>
+                </div>
+            </li>
+            <li>
+                <div class="hline">
+                    <p class="stage-one">阶段二 <font class="state"></font></p>
+                <div class="subitem"><span class="subscription"></span><span class="subtotal">小计：￥<font></font></span></div>
+            </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="bottomBlank"></div>
+    <div class="footer priceMenu orderBottom">立即支付</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html class="no-js" style="font-size: 10px !important;">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{$pagetitle}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<link rel="icon" type="image/png" href="__AMUI__/i/favicon.png">
+	<!--<link rel="stylesheet" href="__AMUI__/css/amazeui.min.css"/>-->
+	<?php if(IS_WAP):?>
+	<link rel="stylesheet" href="__AMUI__/css/wapamazeui.css"/>
+	<link rel="stylesheet" href="__RS__/css/wap.css">
+	<?php else:?>
+	<link rel="stylesheet" href="__AMUI__/css/amazeui.min.css"/>
+
+	<?php endif;?>
+	<!--[if lt IE 9]>
+	<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+	<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+	<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+	<script src="__AMUI__/js/amazeui.legacy.js"></script>
+	<![endif]-->
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="__AMUI__/js/jquery.min.js"></script>
+	<script src="__AMUI__/js/amazeui.min.js"></script>
+	<!--<![endif]-->
+
+	<link rel="stylesheet" href="__RS__/css/admin.css">
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+	以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+	<div class="am-topbar-brand">
+		<strong>{$webname}</strong> <small>{$pagename}</small>
+	</div>
+
+	<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+	<div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+		<ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+			<li><a href="__MODULE__/Message/feedback.html"><span class="am-icon-envelope-o"></span> 会员反馈消息 <span class="am-badge am-badge-warning">{$feedbacknum}</span></a></li>
+			<li class="am-dropdown" data-am-dropdown>
+				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+					<span class="am-icon-users"></span> {:session('member.group_name')} <span class="am-icon-caret-down"></span>
+				</a>
+				<ul class="am-dropdown-content">
+					<li><a href="javascript:resetPassword({:session('admin.id')});"><span class="am-icon-cog"></span>修改密码</a></li>
+					<li><a href="__MODULE__/index/logout.html"><span class="am-icon-power-off"></span> 退出</a></li>
+				</ul>
+			</li>
+			<li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+		</ul>
+	</div>
+</header>
+
+<!-- 修改密码 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="resetPassword">
+	<div class="am-modal-dialog">
+		<form name="resetPass" class="am-form am-modal-bd" data-am-validator>
+			<div class="am-modal-hd">修改密码</div>
+			<div class="am-modal-bd">
+				<div class="am-g am-margin-top-sm">
+					<span>旧密码</span><input type="password" name="" class="am-input-sm" id="old_password" placeholder="输入8-30位的密码" minlength="8" required/>
+				</div>
+				<div class="am-g am-margin-top-sm">
+					<span>新密码</span><input type="password" name="" class="am-input-sm" id="new_password" placeholder="输入8-30位的密码" data-equal-to="#doc-vld-pwd-5" minlength="8" required/>
+				</div>
+			</div>
+		</form>
+		<div class="am-modal-footer">
+			<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+			<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+		</div>
+	</div>
+</div>
+<!-- sidebar start -->
+<div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+	<ul class="am-list admin-sidebar-list">
+		<foreach name="menu" item="row">
+			<if condition="isset($row['sub'])">
+				<li class="admin-parent">
+					<a <if condition="strtolower($Think.const.CONTROLLER_NAME) eq $row['sign']"> class="now"</if> data-am-collapse="{target: '#collapse-nav-{$row.sign}'}"><span class="am-icon-file"></span> {$row.name} <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+					<ul class="am-list am-collapse admin-sidebar-sub <if condition="strtolower($Think.const.CONTROLLER_NAME) eq $row['sign']">am-in</if>" id="collapse-nav-{$row.sign}">
+			<foreach name="row.sub" item="sub">
+				<li><a href="__MODULE__/{$row.sign}/{$sub.sign}.html" class="am-cf <if condition="strtolower($Think.const.CONTROLLER_NAME) eq $row['sign'] and strtolower($Think.const.ACTION_NAME) eq $sub['sign']">now</if>"><span class="am-icon-file"></span> {$sub.name}</a></li>
+			</foreach>
+	</ul>
+	</li>
+	<else />
+	<li><a <if condition="strtolower($Think.const.CONTROLLER_NAME) eq $row['sign']"> class="now"</if> href="__MODULE__/{$row.sign}/index.html"><span class="am-icon-file"></span> {$row.name}</a></li>
+	</if>
+	</foreach>
+	</ul>
+</div>
+<!-- sidebar end -->
+<a href="javascript:void(0);" class="setBarBtn" ></a>
+<!-- content start -->
+<div class="admin-content">
+	<div class="am-cf am-padding">
+		<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">{$pagename}</strong> / <small>{$actname}</small></div>
+	</div>
+	{__CONTENT__}
+	<div style="height:40px; clear:both; width:100%;"></div>
+</div>
+<!-- content end -->
+<footer>
+	<p class="am-padding-left">Copyright &copy; 2015 yummy194.com All Rights Reserved 版权所有 广州吖咪网络科技有限公司</p>
+</footer>
+</body>
+<script src="__AMUI__/js/app.js"></script>
+<script src="__RS__/js/main.js"></script>
+<?php if(IS_WAP)echo '<script src="__RS__/js/wap.js"></script>';?>
+<script>
+//密码修改
+function resetPassword(id){
+	$('#resetPassword').modal({
+		relatedTarget: this,
+		onConfirm: function() {
+			var oldpass = $('#old_password').val();
+			var newpass = $('#new_password').val();
+
+			if(newpass.length <8){
+				alert('密码必须8位数以上');
+				return;
+			}
+			$.post('/admin/admin/resetPass.html', {'id':id,'oldpassword':oldpass,'password':newpass}, function(d){
+				if(d.status == 1){
+					alert(d.info);
+					window.location.href = window.location.href;
+				}else{
+					alert(d.info);
+				}
+			}, 'json');
+		}
+	});
+}
+$('.setBarBtn').css('left', 0).addClass('inset');
+$('.admin-sidebar').width(20);
+$('.admin-sidebar > ul').hide();
+$('.setBarBtn').click(function(){
+	if($(this).hasClass('inset')){
+		$('.admin-sidebar').animate({width:200}, 'fast');
+		$('.admin-sidebar > ul').fadeIn('fast');
+		$('.admin-content').animate({left:201}, 'fast');
+		$(this).animate({left:180}, 'fast');
+		$(this).removeClass('inset');
+	}else{
+		$('.admin-sidebar').animate({width:20}, 'fast');
+		$('.admin-sidebar > ul').fadeOut('fast');
+		$('.admin-content').animate({left:21}, 'fast');
+		$(this).animate({left:0}, 'fast');
+		$(this).addClass('inset');
+	}
+});
+
+<?php if(!IS_WAP):?>
+$('.admin-sidebar').width(20);
+$('.admin-sidebar > ul').hide();
+$('.admin-content').css('left', 21);
+$('.setBarBtn').css('left', 0).addClass('inset');
+<?php endif;?>
+</script>
+</html>

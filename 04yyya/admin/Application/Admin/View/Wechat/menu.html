@@ -1,0 +1,323 @@
+<div class="wechatToolsBox">
+    <button class="am-btn am-btn-primary am-btn-xs">同步图文素材</button>
+    <select>
+        <option value="0"<if condition="$channel == 0"> selected="selected"</if>>吖咪公众号</option>
+        <option value="1"<if condition="$channel == 1"> selected="selected"</if>>我有饭公众号</option>
+    </select>
+</div>
+
+<div class="wechatMenuBox">
+    <div class="viewBox">
+        <div class="top"><if condition="$channel == 0">吖咪公众号<else/>我有饭公众号</if></div>
+        <ul class="left"></ul>
+        <ul class="center"></ul>
+        <ul class="right"></ul>
+        <div class="bottom">
+            <a href="javascript:void(0);"></a>
+            <a href="javascript:void(0);"></a>
+            <a href="javascript:void(0);"></a>
+        </div>
+    </div>
+    <ul class="master">
+        <h2>设置菜单:</h2>
+        <li class="am-g">
+            <label class="am-u-sm-1">菜单一</label>
+            <input type="text" class="am-u-sm-4 left m_name">
+            <select class="am-u-sm-2 center m_type" onchange="change_type(this, this.value, 0)">
+                <option value="0">点击跳转到网址:</option>
+                <option value="1">点击发送素材:</option>
+                <option value="2">点击弹出子菜单:</option>
+            </select>
+            <input type="text" class="am-u-sm-5 right m_value">
+        </li>
+        <li class="am-g">
+            <label class="am-u-sm-1">菜单二</label>
+            <input type="text" class="am-u-sm-4 left m_name">
+            <select class="am-u-sm-2 center m_type" onchange="change_type(this, this.value, 1)">
+                <option value="0">点击跳转到网址:</option>
+                <option value="1">点击发送素材:</option>
+                <option value="2">点击弹出子菜单:</option>
+            </select>
+            <input type="text" class="am-u-sm-5 right m_value">
+        </li>
+        <li class="am-g">
+            <label class="am-u-sm-1">菜单三</label>
+            <input type="text" class="am-u-sm-4 left m_name">
+            <select class="am-u-sm-2 center m_type" onchange="change_type(this, this.value, 2)">
+                <option value="0">点击跳转到网址:</option>
+                <option value="1">点击发送素材:</option>
+                <option value="2">点击弹出子菜单:</option>
+            </select>
+            <input type="text" class="am-u-sm-5 right m_value">
+        </li>
+        <p><button type="button" class="am-btn am-btn-success" onclick="save()">保存并预览</button> <button type="button" class="am-btn am-btn-link am-btn-xs" onclick="getlist()">重置</button></p>
+    </ul>
+</div>
+
+
+<script>
+
+var mediaData = {};
+$.ajax({
+    url : 'qrcode.html',
+    data : {act:'getForeverList'},
+    dataType : 'json',
+    type : 'post',
+    success : function(d){
+        if(!d.info){
+            for(var i in d){
+                mediaData[d[i].media_id] = d[i].title;
+            }
+            getlist();
+        }else{
+            console.warn(d.info);
+        }
+    }
+});
+
+function change_type(em, n, i){
+    $(em).nextAll('.right').remove();
+    $(em).parent().nextAll('.sub_' + i).remove();
+    switch (parseInt(n)) {
+        case 0:
+            $(em).after('<input type="text" class="am-u-sm-5 right m_value" placeholder="请输入要跳转的网址..">');
+            break;
+        case 1:
+            $(em).after('<input type="text" class="am-u-sm-5 right m_value" placeholder="请从列表中选择素材.." data-id="" onkeyup="selectMedia(this)" onblur="blurMedia(this)" onfocus="focusMedia(this)">');
+//            $(em).after('<span class="am-u-sm-5 right">正在加载公众号的永久素材..</span>');
+//            var code = '';
+//            for(var i in mediaData){
+//                code += '<option value="'+ mediaData[i].media_id +'">'+ mediaData[i].title +'</option>';
+//            }
+//            $(em).next('span').remove();
+//            $('<select class="am-u-sm-5 right m_value">').html(code).appendTo($(em).parent());
+            break;
+        case 2:
+            $(em).after('<span class="am-u-sm-5 right"></span>');
+            var code = '<ul class="sub sub_'+ i +'">';
+            code += '<li>';
+            code += '<button type="button" class="add" onclick="addSub(this)">----- 添加子菜单 -----</button>';
+            code += '</li>';
+            code += '</ul>';
+            $(em).parent().after(code);
+            break;
+    }
+}
+
+var isclicked = false;
+function selectMedia(em){
+    $('.mediaLayBox').empty();
+    var title = $(em).val();
+    var left = $(em).position().left;
+    var top = $(em).position().top + $(em).outerHeight() + parseInt($(em).css('margin-top'));
+    var code = '';
+    for(var i in mediaData){
+        if(title == '' || mediaData[i].indexOf(title) >= 0)
+            code += '<button type="button" data-id="'+ i +'">'+ mediaData[i] +'</button>';
+    }
+    if(code == '')code = '<p style="text-align: center; color:#999;">素材标题查询失败..</p>';
+    $('.mediaLayBox').html(code);
+    $('.mediaLayBox button').on('click', function(){
+        isclicked = true;
+        $(em).val($(this).text());
+        $(em).attr('data-id', $(this).data('id'));
+    });
+    $('.mediaLayBox').css({left:left + 'px', top:top + 'px'});
+}
+
+function blurMedia(em){
+    setTimeout(function(){
+        $('.mediaLayBox').remove();
+        if(!isclicked){
+            var media_id = $(em).data('id');
+            if(media_id == ''){
+                $(em).val('');
+            }else{
+                for(var i in mediaData){
+                    if(i == media_id){
+                        $(em).val(mediaData[i]);
+                    }
+                }
+            }
+        }
+        isclicked = false;
+    }, 500);
+}
+
+function focusMedia(em){
+    $('.mediaLayBox').remove();
+    var title = $(em).val();
+    var left = $(em).position().left;
+    var top = $(em).position().top + $(em).outerHeight() + parseInt($(em).css('margin-top'));
+    var code = '';
+    for(var i in mediaData){
+        if(title == '' || mediaData[i].indexOf(title) >= 0)
+            code += '<button type="button" data-id="'+ i +'">'+ mediaData[i] +'</button>';
+    }
+    if(code == '')code = '<p style="text-align: center; color:#999;">素材标题查询失败..</p>';
+    $('<div class="mediaLayBox">'+ code +'</div>').appendTo($(em).parent()).find('button').on('click', function(){
+        isclicked = true;
+        $(em).val($(this).text());
+        $(em).attr('data-id', $(this).data('id'));
+    });
+    $('.mediaLayBox').css({left:left + 'px', top:top + 'px'});
+}
+
+function addSub(em){
+    var code = '<li class="am-g">';
+    code += '<input type="text" class="am-u-sm-4 left m_name">';
+    code += '<select class="am-u-sm-2 center m_type" onchange="change_type(this, this.value)">';
+    code += '<option value="0">点击跳转到网址:</option>';
+    code += '<option value="1">点击发送素材:</option>';
+    code += '</select>';
+    code += '<input type="text" class="am-u-sm-5 right m_value">';
+    code += '<button class="am-u-sm-1 am-btn am-btn-xs remove" style="margin-top: 10px;" onclick="$(this).parent().remove()">移除</button>';
+    code += '</li>';
+    $(em).parent().before(code);
+}
+
+function getlist(){
+    $.ajax({
+        type : 'post',
+        dateType : 'json',
+        data : {act:'list'},
+        success : function(d){
+            for(var i in d){
+                var $em = $('ul.master > li:eq('+ i +')');
+                $em.find('.m_name').val(d[i].name);
+                var $opt = $('div.viewBox .bottom > a:eq('+ i +')');
+                $opt.text(d[i].name);
+                $opt.removeClass('sub').off('click');
+                switch (d[i].type){
+                    case 'view':
+                        $opt.attr('title', '跳转到:' + d[i].url);
+                        $em.find('.m_type').val(0).change();
+                        (function mychange($em, d){
+                            if($em.find('.m_value').is('input'))
+                                $em.find('.m_value').val(d.url);
+                            else
+                                setTimeout(function(){mychange($em, d)}, 300);
+                        })($em, d[i]);
+                        break;
+                    case 'media_id':
+                        $opt.attr('title', '发送素材:' + d[i].media_id);
+                        $em.find('.m_type').val(1).change();
+                        (function mychange($em, d){
+                            if($em.find('.m_value').is('input'))
+                                $em.find('.m_value').attr('data-id', d.media_id).val(mediaData[d.media_id]);
+                            else
+                                setTimeout(function(){mychange($em, d)}, 300);
+                        })($em, d[i]);
+                        break;
+                    default:
+                        $opt.attr('title', '弹出子菜单').addClass('sub').on('click', function(){
+                            var index = $(this).index();
+                            $('div.viewBox ul').not(':eq('+ index +')').hide();
+                            $('div.viewBox ul:eq('+ index +')').toggle();
+                        });
+                        for(var j in d[i].sub_button){
+                            if(d[i].sub_button[j].type == 'media_id')
+                                $('div.viewBox ul:eq('+ i +')').append('<a href="javascript:void(0);" title="发送素材:'+ d[i].sub_button[j].media_id +'">'+ d[i].sub_button[j].name +'</a>');
+                            else
+                                $('div.viewBox ul:eq('+ i +')').append('<a href="javascript:void(0);" title="跳转到:'+ d[i].sub_button[j].url +'">'+ d[i].sub_button[j].name +'</a>');
+                        }
+                        $em.find('.m_type').val(2).change();
+                        (function mychange($em, d, i){
+                            if($em.next().hasClass('sub')){
+                                for(var j in d.sub_button){
+                                    var sub = d.sub_button[j];
+                                    $('ul.master > li:eq('+ i +')').next().find('.add').click();
+                                    var e = $('ul.master > li:eq('+ i +')').next().find('li:eq('+ j +')');
+                                    e.find('.m_name').val(sub.name);
+                                    if(sub.type == 'media_id') {
+                                        e.find('.m_type').val(1).change();
+                                        (function _mychange(e, sub){
+                                            if(e.find('.m_value').is('input'))
+                                                e.find('.m_value').attr('data-id', sub.media_id).val(mediaData[sub.media_id]);
+                                            else
+                                                setTimeout(function(){_mychange(e, sub)}, 300);
+                                        })(e, sub);
+                                    }else{
+                                        e.find('.m_type').val(0).change();
+                                        (function _mychange(e, sub){
+                                            if(e.find('.m_value').is('input'))
+                                                e.find('.m_value').val(sub.url);
+                                            else
+                                                setTimeout(function(){_mychange(e, sub)}, 300);
+                                        })(e, sub);
+                                    }
+                                }
+                            }else
+                                setTimeout(function(){mychange($em, d, i)}, 300);
+                        })($em, d[i], i);
+                }
+
+            }
+        }
+    });
+}
+
+function save(){
+    var data = [];
+    $('ul.master > li').each(function(){
+        var d = {};
+        var name = $(this).find('.m_name').val();
+        if(name == '' || name.length > 5){
+            alert('菜单名要在1~5个字符之间');
+            return;
+        }
+        d.name = $(this).find('.m_name').val();
+        switch (parseInt($(this).find('.m_type').val())){
+            case 0:
+                d.type = 'view';
+                d.url = $(this).find('.m_value').val();
+                break;
+            case 1:
+                d.type = 'media_id';
+                d.media_id = $(this).find('.m_value').data('id');
+                break;
+            case 2:
+                if($(this).next().hasClass('sub')){
+                    d.sub_button = [];
+                    $(this).next().find('li').each(function(){
+                        if($(this).find('.m_name').size() > 0){
+                            var sub = {};
+                            var name = $(this).find('.m_name').val();
+                            if(name == '' || name.length > 10){
+                                alert('子菜单名要在1~10个字符之间');
+                                return;
+                            }
+                            sub.name = $(this).find('.m_name').val();
+                            if($(this).find('.m_type').val() == 1){
+                                sub.type = 'media_id';
+                                sub.media_id = $(this).find('.m_value').data('id');
+                            }else{
+                                sub.type = 'view';
+                                sub.url = $(this).find('.m_value').val();
+                            }
+                            d.sub_button.push(sub);
+                        }
+                    });
+                }
+                break;
+            default:
+                alert('类型不对');
+                return;
+        }
+        data.push(d);
+    });
+    $.ajax({
+        type : 'post',
+        dataType : 'json',
+        data : {act:'save', data:JSON.stringify({button:data})},
+        success : function(d){
+            if(d.status == 1){
+                alert(d.info);
+                getlist();
+            }else{
+                alert(d.info);
+            }
+        }
+    });
+}
+</script>

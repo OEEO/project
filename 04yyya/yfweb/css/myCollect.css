@@ -1,0 +1,23 @@
+@charset "utf-8";
+/******************************/
+.page_myCollect {background: rgba(245, 245, 245, 1);}
+.page_myCollect .collectmenu{width: 11.52rem;height: 2.88rem;line-height: 2.88rem;margin: 0.7rem auto;border-radius: 0.48rem;border: 0.05rem solid #b39851;display: flex;}
+.page_myCollect .collectmenu a{flex-direction: row;flex: 1;font-size: 1.44rem; color: #b39851;text-align: center;}
+.page_myCollect .collectmenu a.action{background: #b39851;color: #fff;}
+
+.page_myCollect .content {position: relative;}
+.page_myCollect .content .item {display: block; height: 11.5rem; background: #fff; padding: 1.4rem; box-shadow: 0 0 0.2rem rgba(0,0,0,0.2); box-sizing: border-box; margin-top: 1.5rem;}
+.page_myCollect .content .item .left {width:10.8rem; height:8.4rem; float: left; overflow: hidden; position: relative;}
+.page_myCollect .content .item .left img {height:8.4rem;}
+.page_myCollect .content .item .category {position: absolute;height: 2.3rem;overflow: hidden; background: url(../images/collect_icon@1x.png) no-repeat 0 0 / 4.4rem 2.3rem; left:0; bottom:0; width:3.6rem; padding-left:0.8rem; font-size: 1.2rem; color:#fff; line-height:2.3rem;}
+
+.page_myCollect .content .item .right {width: 21.4rem; height:8.4rem; float: right;}
+.page_myCollect .content .item .right .t {height:4.2rem; line-height: 2.1rem; font-size: 1.4rem; overflow: hidden;}
+.page_myCollect .content .item .right .c {line-height: 2.1rem; color:#999; height: 2.1rem;}
+.page_myCollect .content .item .right .b span {display: inline-block; padding:0 0.6rem; margin-left:0.8rem; line-height: 2rem; font-size:1.2rem; background: #eee; border-radius: 0.4rem;}
+.page_myCollect .content .item .right .b {line-height: 2.1rem; color:#999;}
+
+.page_myCollect .content button {border:none; background: none; color: #b39851; position: absolute; right:1.4rem; margin-top: -2.8rem;}
+.page_myCollect .content .no_msgs{width:36rem; background:#f5f5f5; position:absolute; top:10.7rem; left:0; right:0; bottom:0rem;}
+.page_myCollect .content .no_msgs img{width:10rem; height:10rem; margin:8rem 13rem auto 13rem;}
+.page_myCollect .content .no_msgs span{display:block; width:36rem; font-size:1.2rem; text-align:center; color:#969696; margin-top:2rem;}

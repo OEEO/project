@@ -1,0 +1,8 @@
+.page_raiseInvite .receivebox{width: 36rem;height:100%;background: url("../images/vipbg.jpg") no-repeat 0 0 / 36rem 100%;display: block;position: relative;}
+.page_raiseInvite .receivebox .centerbox{width: 28.8rem;height: 48rem;text-align:center;display: block;background: url("../images/frame.jpg") no-repeat 0 0 / 100% 100%;position: absolute;left: 50%;top: 50%;transform: translateX(-50%) translateY(-50%);-webkit-transform: translateX(-50%) translateY(-50%);}
+.page_raiseInvite .receivebox .centerbox .headpic {border: 0.1rem solid rgba(255, 255, 255, 0.3);border-radius: 50%;height: 6rem;width: 6rem;margin-top: 7.68rem;}
+.page_raiseInvite .receivebox .centerbox p{color: #9c855c;margin: 0 3rem;padding: 0;text-align: center}
+.page_raiseInvite .receivebox .centerbox .nickname{font-size: 1.728rem;padding: 0.96rem 0;line-height: 1.8rem;}
+.page_raiseInvite .receivebox .centerbox .intro{font-size: 1.44rem;color: #fff;padding: 1.92rem 0 1.54rem;line-height: 1.5rem;}
+.page_raiseInvite .receivebox .centerbox .title{font-size: 1.536rem;line-height: 1.8rem;}
+.page_raiseInvite .vipsubmit{width: 19.2rem;background: #9c855c;color: #ddd;height: 4rem;line-height: 4rem;margin-top: 4.8rem;font-size: 1.44rem;display: inline-block;}

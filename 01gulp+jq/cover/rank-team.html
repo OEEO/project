@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="http://mat1.gtimg.com/sports/kbsweb/favicon.ico" type="image/x-icon">
+    <title>战队榜</title>
+    <link rel="stylesheet" href="../tmp/style/main.css?t={VERSION_TIME}" />
+    <!-- built style will be auto injected -->
+    <!-- 引入bootstrap样式 -->
+    <link rel="stylesheet" href="../src/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../src/css/bootstrap-table.css">
+    <link rel="stylesheet" href="../src/css/bootstrap-table-fixed-columns.css">
+    <link rel="stylesheet" href="../src/css/rank.css?t={VERSION_TIME}">
+
+    <script data-main="../src/script/js/rank-team.js?t={VERSION_TIME}" src="../src/script/require.js"></script>
+
+    <!-- jquery -->
+    <script src="../src/script/lib/jquery.js"></script>
+    <script src="../src/script/lib/bootstrap.min.js"></script>
+    <script src="../src/script/lib/bootstrap-table.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../src/script/lib/bootstrap-table-fixed-columns.js"></script>
+
+    <script>
+        /**
+         * 图片加载失败时调用的函数。0 -- 默认头像， 1 -- 灰色图片
+         * 例子：<img src="man.png" onerror="nofind(0)" alt="This is a man" /> 
+         */
+        function nofind(type) {
+            var url = type === 0
+                ? 'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/unmen.png'
+                : 'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/blank.png';
+            var img = event.srcElement;
+            img.src = url;
+            img.onerror = null;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="main">
+    <!-- built html will be auto injected -->
+        <div id="data-box">
+            <div id="data-header">
+
+                <div id="league" >
+                    <div id="now-league">
+                        <span>加载中...</span>
+                        <img src="../src/assets/rank-down.png">
+                    </div>
+                    <div id="league-select">
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="data">
+                    <div id="now-data">
+                        <span>战队榜</span>
+                        <img src="../src/assets/rank-down.png">
+                    </div>
+                    <div id="data-select">
+                        <ul>
+                            <li index="1">积分榜</li>
+                            <li index="2">战队榜</li>
+                            <li index="3">选手榜</li>
+                            <li index="4">英雄榜</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="table-scroll">
+                    <div class="table-scroll table-scroll-left"><span><</span></div>
+                    <div class="table-scroll table-scroll-right"><span>></span></div>
+                </div>
+            </div>
+
+            <div id="lane-select" onmouseleave ='$("#lane-select").fadeOut(200)'>
+              <ul>
+                <li>全部</li>
+                <li>上路</li>
+                <li>打野</li>
+                <li>中路</li>
+                <li>ADC</li>
+                <li>辅助</li>
+              </ul>
+            </div>
+
+            <div id="dataTable">
+                  <table id="table"></table>
+            </div>
+        </div>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "esport_data_web_sp",
+  "version": "1.0.0",
+  "description": "1. 安装node(v4.0.0及以上)\r 2. 安装依赖``npm install``\r 3. 开发``npm run dev``\r 4. 预发布``npm run pre``\r 5. 正式环境发布``npm run prod``",
+  "main": "gulpfile.js",
+  "scripts": {
+    "pre": "cross-env NODE_ENV=pre node bin/build.js && cross-env NODE_ENV=pre gulp style",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp dev",
+    "prod": "cross-env NODE_ENV=production node bin/build.js && cross-env NODE_ENV=production gulp style"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@112.74.37.30:/alidata/git/esport_data_web/esport_data_web_sp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.1.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-base64": "^0.1.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-less": "^3.3.2",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.3",
+    "gulp-replace": "^0.6.1",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "mkdirp": "^0.5.1",
+    "uglify-js": "^3.4.0"
+  }
+}

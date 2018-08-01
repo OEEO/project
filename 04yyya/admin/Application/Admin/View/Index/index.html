@@ -1,0 +1,132 @@
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"> </script>
+    <!--<ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+      <li><a href="{:U('Question/gradehomework')}" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>最新作业<br/>{$howmeWorks}</a></li>
+      <li><a href="#" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>今日成交订单<br/>{$new_deal}</a></li>
+      <li><a href="#" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>今日新增用户<br/>{$new_member}</a></li>
+      <li><a href="#" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>在线用户<br/></a></li>
+    </ul>-->
+    <div id="Usercontainer" style="width:100%;height:400px; margin:0px auto 20px;"></div>
+    <p style="text-align: center">
+        新增用户列表
+    </p>
+    <!--<form method="get" class="am-g">-->
+        <!--<input type="text" style="width:200px;vertical-align: bottom;display: inline-block;" name="start_time"readonly="true" required="" class="am-form-field timepicker" value="<?=(I('get.start_time')?:'')?>" placeholder="开始时间">-->
+        <!--<input type="text" style="width:200px;vertical-align: bottom;display: inline-block;" name="end_time"readonly="true" required="" class="am-form-field timepicker" value="<?=(I('get.end_time')?:'')?>" placeholder="结束时间">-->
+        <!--<button class="am-btn am-btn-default">筛选</button>-->
+    <!--</form>-->
+    <hr/>
+    <div id="loadUser">
+        {:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+    </div>
+    <div class="prolist-abtn" style="font-size: 22px; color: red;text-align: center;"></div>
+<script>
+    $(function() {
+        //新增会员列表
+        var i = 1;
+        $(window).bind('scroll', function () {
+            show();
+        });
+        function show() {
+            if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+                ajaxRead(i++);
+            }
+        }
+
+        function ajaxRead(page) {
+            $(".prolist-abtn").empty();
+            var html = "";
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                data: {'page': page},
+                url: '__CONTROLLER__/loadUser.html',
+                beforeSend: function () {
+                    $(".prolist-abtn").html('loading...');
+                    console.log('loading...');
+                },
+                success: function (data) {
+                    if (data.length > 0) {
+                        for (var r in data) {
+                            html += '<tr>';
+                            html += '<td>' + data[r]['id'] + '</td>';
+                            html += '<td>' + data[r]['nickname'] + '</td>';
+                            html += '<td><img src="' + data[r]['path'] + '" height="50px" width="50px"></td>';
+                            html += '<td>' + data[r]['channel'] + '</td>';
+                            html += '<td>' + data[r]['register_time'] + '</td>';
+                            html += '</tr>';
+
+                        }
+                        $("#loadUser table tbody").append($(html));
+                    } else {
+                        $(".prolist-abtn").html('已加载完...');
+
+                    }
+                },
+                complete: function () {
+                    console.log('mission acomplete.')
+                }
+
+            });
+        }
+    });
+    $(document).ready(function() {
+        var title = {
+            text: '用户交易曲线图'
+        };
+        var chart = {
+            type: 'spline',
+            reflow: true
+        };
+        var subtitle = {
+            text: ''
+        };
+        var xAxis = {
+            title: {
+                text: ''
+            },
+            categories: ['<?=join("','",$datehight) ?>']
+        };
+        var yAxis = {
+            title: {
+                text: '各参数数量'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        };
+
+        var tooltip = {
+            shared: true,
+            crosshairs: true
+        }
+        var series =  [
+            {
+                name: '成交订单',
+                data: [<?=join(",", $ordernum) ?>]
+            },
+            {
+                name: '新增用户',
+                data: [<?=join(",", $usernum) ?>]
+            },
+            {
+                name: '活跃用户',
+                data: [<?=join(",", $membernum) ?>]
+            }
+        ];
+
+        var json = {};
+        json.chart = chart;
+        json.title = title;
+        json.subtitle = subtitle;
+        json.xAxis = xAxis;
+        json.yAxis = yAxis;
+        json.tooltip = tooltip;
+        json.series = series;
+
+        $('#Usercontainer').highcharts(json);
+    });
+</script>

@@ -1,0 +1,68 @@
+@charset "utf-8";
+/******************************/
+
+.noValues{width:11.55rem;margin:auto;margin-top:40%;}
+.noValues>p{font-size:1.5rem;color:#969696;margin:0;margin-top:1.2rem;letter-spacing:0.2rem;text-align:center;}
+.noValues .defaultImg{width:100%;height:auto;}
+/*******************************/
+.valueMenu{height:4rem;background:#fff;/*border-bottom:0.1rem solid #ebecf0;*/}
+.valueMenu>div{font-size:1.5rem;color:#969696;width:33%;float:left;margin:1rem 0;margin-bottom:0;height:2rem;line-height:2rem;text-align:center;}
+.valueMenu .show{color:#fcd74b;padding-bottom:0.8rem;border-bottom:0.25rem solid #fbd74b;}
+
+/*******************************/
+.goodsList,.daRenList{display:none;}
+/*******************************/
+
+/* -- ++++++++++++++收藏的活动++++++++++++++ -- */
+.tipsList .tipsInfStyle{background:#fff;}
+.tipsList .orderListLeft{float:left;width:11.38rem;height:7.28rem;margin:0.8rem;margin-left:1.8rem;/*margin-top:0.6rem;*/}/*图片*/
+.tipsList .orderListLeft .orderTypeBg{line-height:2rem;height:2rem;width:4.5rem;position:absolute;background:rgba(0,0,0,0.5);}/*订单分类 饭局、商品 等 的背景*/
+.tipsList .orderListLeft .orderType{font-size:1.1rem;color:#fff;line-height:2rem;height:2rem;width:4.5rem;position:absolute;text-align:center;}/*订单分类 饭局、商品 等*/
+
+.tipsList .orderListRight{float:left;width:20rem;height:7.28rem;margin-top:0.82rem;position:relative;}/*右侧信息列表*/
+.tipsList .orderListRight .orderTitle{font-size:1.3rem;color:#636363;height:3.4rem;overflow:hidden;/*white-space:nowrap;text-overflow:ellipsis;*/}/*右 商品标题*/
+.tipsList .orderListRight .actAdd{font-size:1.1rem;color:#a3a3a3;margin-top:0.2rem;text-indent:1.4rem;float:left;background:url('../images/location_20x20.png')no-repeat left center;background-size:1rem;}/*活动地点*/
+
+
+.tipsList .orderListRight .actTime{font-size:1.1rem;color:#a3a3a3;margin-top:0.2rem;margin-left:1rem;text-indent:1.4rem;float:left;background:url('../images/time2.png')no-repeat left center;background-size:1rem;}/*活动时间*/
+.tipsList  .orderListRight .actPrice{font-size:1.5rem;color:#fcd74b;position:absolute;bottom:-0.2rem;left:0;}/*活动价格*/
+
+.tipsList  .orderListRight .values{cursor: pointer;position:absolute;display:inline-block;width:2.1rem; height:2rem; background:url('../images/value.png') 0 0 no-repeat;background-size:2rem auto;background-position:left bottom; right:0.5rem; bottom:-0.2rem;}
+.tipsList  .orderListRight .valued{background-position:left top;}
+/* ===================收藏的活动列表 结束================== */
+
+
+/* ====================收藏的商品列表===================== */
+.goodsList .goodsInfStyle{background:#fff;}
+.goodsList .orderListLeft{float:left;width:11.38rem;height:7.28rem;margin:0.8rem;margin-left:1.8rem;/*margin-top:0.6rem;*/}/*图片*/
+
+/*.goodsList .orderListLeft .orderTypeBg{line-height:2rem;height:2rem;width:4.5rem;position:absolute;background:rgba(0,0,0,0.5);}/*订单分类 饭局、商品 等 的背景*
+.goodsList .orderListLeft .orderType{font-size:1.1rem;color:#fff;line-height:2rem;height:2rem;width:4.5rem;position:absolute;text-align:center;}/*订单分类 饭局、商品 等*/
+.goodsList .orderListRight{float:left;width:20rem;height:7.28rem;margin-top:0.82rem;position:relative;}/*右侧信息列表*/
+.goodsList .orderListRight .orderTitle{font-size:1.3rem;color:#636363;height:4rem;overflow:hidden;/*white-space:nowrap;text-overflow:ellipsis;*/}/*右 商品标题*/
+
+.goodsList .orderListRight .orderPrice{font-size:1.5rem;color:#fcd74b;position:absolute;bottom:-0.2rem;left:0;}/*右 时间、邮费等*/
+.goodsList .orderListRight .values{cursor: pointer;display:inline-block;width:2.1rem; height:2rem; background:url('../images/value.png') 0 0 no-repeat;background-size:2rem auto;background-position:left bottom; position:absolute;right:0.5rem; bottom:-0.2rem;}
+.goodsList .orderListRight .valued{background-position:left top;}
+
+
+/* ===================收藏的商品列表 结束================== */
+
+
+
+/* ********************收藏的达人******************** */
+.daRenInfStyle{display:block;height:4.8rem;padding:1rem 1.8rem;position:relative;background:#fff;}
+
+.daRenInfStyle .daRenPic{float:left;}
+.daRenInfStyle .daRenPic .imgPortrait{width:4.8rem;height:4.8rem;border:none;} 
+.daRenInfStyle .daRenInf{float:left;margin-left:1.2rem;}
+.daRenInfStyle .daRenInf .daRenName{font-size:1.4rem;color:#585858;margin-top:0.6rem;}
+.daRenInfStyle .daRenInf .daRenActInf{font-size:1.2rem;color:#a3a3a3;margin-top:0.4rem;}
+.daRenInfStyle .daRenInf .daRenActInf {}
+.daRenInfStyle .daRenInf .daRenActInf i{margin:0 0.6rem;display:inline-block;width:0.1rem;height:1rem;border-left:0.1rem solid #acacac;}
+.daRenInfStyle .values{cursor: pointer;position:absolute;display:inline-block;width:2.1rem; height:2rem; background:url('../images/value.png') 0 0 no-repeat;background-size:2rem auto;background-position:left bottom; left:31.2rem;bottom:1.6rem;}
+.daRenInfStyle .valued{background-position:left top;}
+
+/* ******************收藏的达人结束******************* */
+
+.overdue{background:#dfdfdf!important;}/*收藏的 活动、商品 已过期*/

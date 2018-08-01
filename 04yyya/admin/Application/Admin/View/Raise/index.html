@@ -1,0 +1,853 @@
+<!--日历js、css文件加载 start-->
+<!--<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.config.js"></script>
+<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.all.min.js"> </script>-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<script src="http://www.daimajiayuan.com/member/templets/js/jquery.zclip.min.js"></script>
+<!--日历js、css文件加载 end-->
+<style type="text/css">
+.suggestionsBox {
+    position: absolute;
+    left: 10px;
+    margin: 10px 0px 0px 0px;
+    width: 200px;
+    background-color: #212427;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border: 2px solid #000;
+    color: #fff;
+    z-index: 99;;
+}
+.suggestionList li {
+    margin: 0px 0px 3px 0px;
+    padding: 3px;
+    cursor: pointer;
+}
+.suggestionList li:hover {
+    background-color: #659CD8;
+}
+</style>
+<?
+<p style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" id="export_excel" onclick="exportExcel()">导出Excel</button>
+    <button class="am-btn am-btn-primary" id="raise_nextpay" onclick="raiseNextPay()">二次支付</button>
+</p>
+
+<form style="margin: 20px;">
+    <div class="am-g" style="margin-bottom: 10px;">
+        <span>分类</span>
+        <select name="category" id="search_category" style="width: 100px">
+            <option value="">请选择</option>
+            <foreach name="category_list" item="row">
+                <eq name="row.id" value="$search_category">
+                    <option value="{$row.id}" selected="selected">{$row.name}</option>
+                    <else/>
+                    <option value="{$row.id}">{$row.name}</option>
+                </eq>
+            </foreach>
+        </select>
+
+
+        &nbsp;&nbsp;
+        <sapn>标签</sapn>
+        <select name="tag" id="search_tag" style="width: 100px">
+            <option value="">请选择</option>
+            <foreach name="tags" item="row">
+                <eq name="row.id" value="$search_tag">
+                    <option value="{$row.id}" selected="selected">{$row.name}</option>
+                    <else/>
+                    <option value="{$row.id}">{$row.name}</option>
+                </eq>
+            </foreach>
+        </select>
+
+        &nbsp;&nbsp;
+        <sapn>状态</sapn>
+        <select name="status" id="search_status" style="width: 100px">
+            <option value="0" <?php if($search_status == 0)echo "selected='selected'";?>>下架</option>
+            <option value="1" <?php if($search_status == 1 || $search_status == null)echo "selected='selected'";?> >正常</option>
+        </select>
+
+    </div>
+    <div class="am-g">
+        <div class="am-alert am-alert-danger" id="my-alert" style="display: none">
+            <p>开始日期应小于结束日期！</p>
+        </div>
+        <input type="text" name="title" id="search_title" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="关键字模糊查询" value="{$search_title}"/>
+        <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="发布者查询" value="{$search_member}"/>
+        <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-startDate" name="start_time"  placeholder="开始时间" required readonly="true" value="{$search_start_time}"/>
+        <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-endDate" name="end_time"  placeholder="结束时间" required readonly="true" value="{$search_end_time}"/>
+        <button type="button" class="am-btn am-btn-primary" onclick="search_rest()">重置</button>
+        <button type="submit" class="am-btn am-btn--success">提交</button>
+    </div>
+</form>
+
+{:W('Cate/table', [$datas, $lang, $operations, $pages, $batch])}
+
+<!-- 预览 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="preview">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">预览</div>
+            <p></p>
+            <iframe height="640px" width="360px"></iframe>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 标签修改 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="tips_tags">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">众筹标签</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <input type="hidden" name="tips_id" id="tips_id" value="">
+                <div class="am-form-group">
+                    <label for="official_tag">官方众筹标签</label>
+                    <div id="official_tag">
+
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="normal_tag">普通众筹标签</label>
+                    <div id="normal_tag">
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+<!-- 众筹问答列表 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="questionArea">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">众筹</strong> / <small>众筹问答列表</small></div>
+        </div>
+        <form name="question" class="am-form am-modal-bd" data-am-validator>
+            <input type="hidden" name="raise_id"  value="raise_id">
+            <ul class="am-u-sm-12" style="height: auto;" id="questionItem">
+                <!--<input type="hidden" name="postType"  value="UpdateQuestion">-->
+                <!--<div class="am-g am-margin-top am-text-left">-->
+                    <!--<div class="am-u-sm-3 am-u-md-3">问答项目:<br/><button type="button" onclick="delete(this);">删除</button></div>-->
+                    <!--<div class="am-u-sm-9 am-u-md-9">-->
+                        <!--<div class="am-g">-->
+                            <!--<div class="am-u-md-2">问</div>-->
+                            <!--<div class="am-u-md-10"><input type="text" name="ask_title"  class="am-form-field am-radius" style=" float:left;"></div>-->
+                        <!--</div>-->
+                        <!--<div class="am-g">-->
+                            <!--<div class="am-u-md-2">答</div>-->
+                            <!--<div class="am-u-md-10"><input type="text" name="answer_title"  class="am-form-field am-radius" style=" float:left;"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </ul>
+
+            <div class="am-g" ><div class="am-u-sm-12"><p align="center"><button type="button" class="am-btn am-btn-xs addBtn am-btn-default" onclick="add_btn()">+ 增加 +</button></p></div></div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交保存</span>
+        </div>
+    </div>
+</div>
+<!-- 查看操作日志 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="showlogs">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">日志</strong> / <small>众筹修改日志</small></div>
+            <div class="am-fr am-cf">
+                <input id="starttime" type="text" class="am-input-sm am-text-center" placeholder="开始时间" />
+                <input id="endtime" type="text" class="am-input-sm am-text-center" placeholder="结束时间" />
+            </div>
+            <div style="clear:both"></div>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <div class="am-g error-log">
+                <div class="am-u-sm-12 am-u-sm-centered">
+                    <pre class="am-pre-scrollable am-text-left"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 众筹选择购买者二次支付 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="raisePay">
+    <div class="am-modal-dialog">
+        <form name="raisePayarea" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">选择购买者</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">众筹类目ID:</div>
+                    <div class="am-u-sm-9 am-u-md-9">
+                        <input type="text" name="raise_times_id" id="raise_times_id" placeholder="类目ID" style="width: 70px; float:left;">
+                        <input type="hidden" name="raise_id" id="raise_id" value="">
+                        <input type="text" id="search_raise_times_title" placeholder="众筹类目标题查找类目ID" value="" required style="width: 100px; float:left; margin: 0rem 15px;"/>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <div class="am-u-sm-3 am-u-md-3"></div>
+                    <div class="am-u-sm-9 am-u-md-9">
+
+                        <div class="am-scrollable-vertical" id="getRaise" style="display: none;height: 200px">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">*输入购买者的ID</span>
+                    <div class="am-u-sm-9 am-u-md-9">
+                        <textarea name="member_arr" id="member_arr" style="overflow:visible;"></textarea>
+                        允许批量添加，一行一个，点回车换行
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 设置特权 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="Raise_Privilege" style="width: 800px;">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">众筹特权</div>
+        <div class="am-scrollable-vertical am-text-left" style="height: 500px;">
+            <div class="am-g am-margin-top-sm am-text-left">
+                <div class="am-u-sm-2 am-u-md-2">选择发布人:</div>
+                <div class="am-u-sm-10 am-u-md-10">
+                    <div class="am-g am-margin-top-sm am-text-left">
+                        <input type="text" style="width:200px; float: left;" value="" class="am-form-field am-radius" id="inputString" onkeyup="lookup(this.value);" onblur="fill(this,'');" />
+                        <input type="text" style="width:200px; float: left;" value="" class="am-form-field am-radius" name="num" placeholder="限人数,不限制人数不填写">
+                        <div class="tips_times" style="float: left;"><select  name="tips_times_id"></select></div>
+                        <input type="hidden" value="" id="member_id" name="member_id">
+                        <button type="button" class="am-btn am-btn--success" onclick="addPri()" >添加</button>
+                        <input type="hidden" value="" name="raise_id">
+                    </div>
+                    <div class="am-selected-content am-dropdown-content"  id="suggestions" style="min-width: 200px; display: none; left: 0px;">
+                        <ul class="am-selected-list" id="autoSuggestionsList" style="height: 200px; overflow: hidden; overflow-y: auto;">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm am-text-left">
+                <div class="am-u-sm-12 am-u-md-12"  id="err" style="color: #ff2222"></div>
+            </div>
+            <div class="am-g am-margin-top-sm am-text-left"  style="border-top: 3px dashed #ff2222; padding-top: 30px;">
+                <div class="am-u-sm-12 am-u-md-12" style=" text-align: center; font-weight: bold; font-size: 16px;">众筹特权-分发人列表</div>
+                <div class="am-u-sm-12 am-u-md-12" >
+                    <div class="am-u-sm-3 am-u-md-3" style=" text-align: left; font-weight: bold; font-size: 12px;">复制的链接在这里显示(每个档位的链接一样哒，分享一个即可)：</div>
+                    <div class="am-u-sm-9 am-u-md-9" id="UrlThere"></div>
+
+                </div>
+            </div>
+            <div class="am-g am-margin-top-sm am-text-left">
+                <div class="am-u-sm-12 am-u-md-12">
+                    <table class="am-table am-table-striped am-table-hover privilegeTable">
+                        <thead>
+                            <tr>
+                                <th>分发人ID</th>
+                                <th>分发人昵称</th>
+                                <th style="width: 200px; ">档位标题</th>
+                                <th>分发人数</th>
+                                <th>领取人数</th>
+                                <th>购买人数</th>
+                                <th>购买金额</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $('.am-modal').appendTo('body');
+
+    //跳转详情页面
+    function detail(id){
+        window.location.href = '__CONTROLLER__/detail?'+id;
+    }
+
+    function preview(id){
+        var url = 'http://<?=WEB_DOMAIN?>/?page=choice-raiseDetail&raise_id='+id;
+        $('iframe').attr('src',url);
+        $('#preview p').html('网址:http://<?=WEB_DOMAIN?>/?page=choice-raiseDetail&raise_id=' + id);
+        $('#preview').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+
+            }
+        });
+    }
+
+    //发送目标金额达到短信
+    function raiseSendSms(id){
+        if(window.confirm('确定要发送达到目标金额短信？')){
+            $.ajax({
+                url : '__CONTROLLER__/raiseSendSms.html',
+                data : {'id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+
+    }
+
+    // （1下架 2上架）
+    function checkout(id, oper){
+
+        if(oper == 2){ //下架活动
+            $.ajax({
+                url : '__CONTROLLER__/online.html',
+                data : {'id' : id ,'status' : 0},
+                dataType : 'json',
+                type : 'POST',
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+        if(oper == 1){ //上架活动
+            $.ajax({
+                url : '__CONTROLLER__/online.html',
+                data : {'id' : id ,'status' : 1 },
+                dataType : 'json',
+                type : 'POST',
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+
+    }
+
+    //查询栏日历
+    $('#my-startDate').datetimepicker();
+    $('#my-endDate').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-alert');
+        $('#my-startDate').datetimepicker().
+            on('changeDate.datepicker.amui', function(event) {
+                if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                    alert('开始日期应小于结束日期！ ');
+                    $('#my-startDate').val("");
+                } else {
+                    startDate = new Date(event.date);
+                    clicktime = 1;
+                }
+                $(this).datetimepicker('close');
+            });
+
+        $('#my-endDate').datetimepicker().
+            on('changeDate.datepicker.amui', function(event) {
+                if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                    alert('结束日期应大于开始日期！');
+                    $('#my-endDate').val("");
+                } else {
+                    endDate = new Date(event.date);
+                    clicktime = 1;
+                }
+                $(this).datetimepicker('close');
+            });
+    });
+
+    //修改标签
+    function tips_tags(id){
+        $('#tips_id').val(id);
+        $('#official_tag').empty();
+        $('#normal_tag').empty();
+        $.ajax({
+            url : '__CONTROLLER__/getTipsTags.html',
+            data : {'id' : id },
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                var code_official = '';
+                var code = '';
+                for(i in d.official_tips_tags){
+                    var check = false;
+                    for(k in d.my_official){
+                        if(d.my_official[k]==d.official_tips_tags[i].id)check = true;
+                    }
+                    if(check){
+                        code_official += '<input type="checkbox" name="official_label[]" checked value="'+d.official_tips_tags[i].id+'"><span>'+d.official_tips_tags[i].name+'</span> &nbsp;';
+                    }else{
+                        code_official += '<input type="checkbox" name="official_label[]" value="'+d.official_tips_tags[i].id+'"><span>'+d.official_tips_tags[i].name+'</span> &nbsp;';
+                    }
+                }
+                for(j in d.tips_tags){
+                    var check = false;
+                    for(l in d.my_label){
+                        if(d.my_label[l]==d.tips_tags[j].id)check = true;
+                    }
+                    if(check){
+                        code += '<input type="checkbox" name="label[]" checked value="'+d.tips_tags[j].id+'"><span>'+d.tips_tags[j].name+'</span> &nbsp;';
+                    }else{
+                        code += '<input type="checkbox" name="label[]" value="'+d.tips_tags[j].id+'"><span>'+d.tips_tags[j].name+'</span> &nbsp;';
+                    }
+                }
+                $(code_official).appendTo('#official_tag');
+                $(code).appendTo('#normal_tag');
+            }
+        });
+        $('#tips_tags').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var tips_id = $('#tips_id').val();
+                var official_tag_ids = [];
+                $('#official_tag input:checked').each(function(){
+                    if(/^\d+$/.test(this.value))official_tag_ids.push(this.value);
+                });
+                var tag_ids = [];
+                $('#normal_tag input:checked').each(function(){
+                    if(/^\d+$/.test(this.value))tag_ids.push(this.value);
+                });
+
+                $.ajax({
+                    url : '__CONTROLLER__/getTipsTags.html',
+                    data : {'tips_id' : tips_id,'official_tag_ids' : official_tag_ids , 'tag_ids' : tag_ids },
+                    dataType : 'json',
+                    type : 'POST',
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                });
+
+            }
+        });
+    }
+
+    //分期查看
+    function showCategory(raise_id) {
+        $('.timesBox').remove();
+        $.ajax({
+            url : '__CONTROLLER__/showCategory.html',
+            data : {'raise_id' : raise_id },
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                var code = '<thead><tr>';
+                code += '<th>类目ID</th>';
+                code += '<th>类目标题</th>';
+                code += '<th>档位类型</th>';
+                code += '<th>档位总额</th>';
+                code += '<th>预付金额</th>';
+                code += '<th>库存类型</th>';
+                code += '<th>剩余库存</th>';
+                code += '<th>库存</th>';
+                code += '<th>限购</th>';
+                code += '</tr></thead><tbody>';
+                for(var r in d.raise_times){
+                    code += '<tr>';
+                    code += '<td>'+d.raise_times[r]['id']+'</td>';
+                    code += '<td>'+d.raise_times[r]['title']+'</td>';
+                    code += '<td>'+d.raise_times[r]['priceType']+'</td>';
+                    code += '<td>'+d.raise_times[r]['price']+'</td>';
+                    code += '<td>'+d.raise_times[r]['prepay']+'</td>';
+                    code += '<td>'+d.raise_times[r]['stockType']+'</td>';
+                    code += '<td>'+d.raise_times[r]['stock']+'</td>';
+                    code += '<td>'+d.raise_times[r]['quota']+'</td>';
+                    code += '<td>'+d.raise_times[r]['limit_num']+'</td>';
+                    code += '</tr>';
+                }
+                var code = '<tr class="timesBox"><td colspan="11"><form><p >注:<span style="color: #FF0000"> 当库存类型为不限制时，库存和剩余库存为-1</span></p><table class="timesTable">'+ code +'</tbody></table></form></td></tr>';
+                var em = $('input[value="'+ raise_id +'"]').parents('tr');
+                var ob = $(code);
+                em.after(ob);
+
+            }
+        });
+    }
+
+    //问答列表
+    function AddUpdate(raise_id) {
+        document.question.raise_id.value = raise_id;
+        $('#questionItem').empty();
+        $.ajax({
+            url : '__CONTROLLER__/Question.html',
+            data : {'raise_id' : raise_id ,'postType': 'checkQuestion'},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                var code = '';
+                for(var r in d.answer){
+                    code += '<li class="am-g am-margin-top am-text-left" style=" border-bottom: 1px solid #DDDDDD;">';
+                    code += '<div class="am-u-sm-2 am-u-md-2"  style="width: 80px; padding: 0px;">问答（'+ d.answer[r]['phase']+'）:<br/><input type="hidden" name="phase" value=""><button type="button" onclick="$(this).parent().parent().remove()">删除</button></div>';
+                    code += '<div class="am-u-sm-10 am-u-md-10" style=" margin: 0px auto; padding: 0px 0px 0px 5px;  border-left: 1px solid #DDDDDD;">';
+                    code += '<div class="am-g"><div class="am-u-md-1">问</div>';
+                    code += '<div class="am-u-md-11"><input type="text" name="ask_title" class="am-text-left"  value="'+ d.answer[r]['ask_title']+'"  style=" float:left;"></div></div>';
+                    code += '<div class="am-g"><div class="am-u-md-1">答</div>';
+                    code += '<div class="am-u-md-11"><input type="text" name="answer_title" class="am-text-left"  value="'+ d.answer[r]['answer_title']+'"   style=" float:left;"></div></div>';
+                    code += '</div></li>';
+                }
+                $(code).appendTo('#questionItem');
+
+            },
+        });
+        $('#questionArea').modal({
+            relatedTarget: this,
+            onConfirm: function () {
+//                var ob = $('#questionArea');
+//                var jsonData = ob.find("form").serializeArray();
+                var data ={};
+                data.postType ='UpdateQuestion';
+                data.raise_id = document.question.raise_id.value;
+                data.answer = [];
+                $('#questionItem li').each(function(){
+                    var answer = {};
+                    answer.phase = $(this).find('[name="phase"]').val();
+                    answer.ask_title = $(this).find('[name="ask_title"]').val();
+                    answer.answer_title = $(this).find('[name="answer_title"]').val();
+                    data.answer.push(answer);
+                });
+                $.ajax({
+                    url : '__CONTROLLER__/Question.html',
+                    type:'post',
+                    data:data,
+                    dataType:'json',
+                    success:function(d){
+                        if(d.status == 1){
+                            alert('保存成功!');
+                            window.location.reload();
+                        }else{
+                            alert(d.info);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    //添加答卡
+    function  add_btn(){
+        var r = $('#questionItem').find('.am-margin-top').length;
+        var code='';
+        var phase = r+1;
+        code += '<li class="am-g am-margin-top am-text-left" style=" border-bottom: 1px solid #DDDDDD;">';
+        code += '<div class="am-u-sm-2 am-u-md-2" style="width: 80px; padding: 0px;">问答（'+phase+'）:<br/><input type="hidden" name="phase" value="'+phase+'"><button type="button" onclick="$(this).parent().parents().remove()">删除</button></div>';
+        code += '<div class="am-u-sm-10 am-u-md-10"  style=" margin: 0px auto; padding: 0px 0px 0px 5px;  border-left: 1px solid #DDDDDD;">';
+        code += '<div class="am-g"><div class="am-u-md-1">问</div>';
+        code += '<div class="am-u-md-11"><input type="text" name="ask_title" class="am-text-left"  value="" style=" float:left;"></div></div>';
+        code += '<div class="am-g"><div class="am-u-md-1">答</div>';
+        code += '<div class="am-u-md-11"><input type="text" name="answer_title" class="am-text-left"  value=""  style=" float:left;"></div></div>';
+        code += '</div></li>';
+        $(code).appendTo('#questionItem');
+    }
+
+    //清空搜索框
+    function search_rest(){
+        $('#search_title').val('');
+        $('#search_member').val('');
+        $('#my-startDate').val('');
+        $('#my-endDate').val('');
+        $("select option:selected").prop("selected", false);
+    }
+
+    //选择购买用户二次支付
+    function raiseNextPay(){
+        $('#raisePay').modal({
+            relatedTarget: this,
+            onConfirm: function () {
+                var data ={};
+                data.member_arr = document.raisePayarea.member_arr.value;
+                data.raise_times_id = document.raisePayarea.raise_times_id.value;
+                data.raise_id = document.raisePayarea.raise_id.value;
+                data.typeName = 'raisePay';
+
+                $.ajax({
+                    url: '__CONTROLLER__/raise_nextpay.html',
+                    data: data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if (d.status == 0) {
+                            alert(d.info)
+                        }
+                    }
+                })
+            }
+        })
+
+    }
+
+    //获取众筹类目ID
+    $('#search_raise_times_title').keyup(function(){
+        $('#getRaise').empty();
+        var  data ={};
+        data.search_key = $(this).val();
+        data.search_type = 'search_raise_times';
+
+        $.ajax({
+            url: '__CONTROLLER__/raise_nextpay.html',
+            data: data,
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                var code = '';
+                for(i in d){
+                    //alert(d[i]['id']+'---'+d[i]['nickname']);
+                    code += '<div class="item'+d[i]['raise_times_id']+'" onclick="chooseraise('+d[i]['id']+','+d[i]['raise_times_id']+',this)"><a href="#">'+d[i]['raise_times_id']+'</a>&nbsp;&nbsp;<a href="#">'+d[i]['raise_times_title']+'</a></div>';
+                }
+
+                $(code).appendTo('#getRaise');
+                $('#getRaise').show();
+                //window.location.reload();
+            }
+        });
+    })
+
+    //点击选择用户
+    function chooseraise(raise_id,raise_times_id,e){
+        document.raisePayarea.raise_id.value = raise_id;
+        document.raisePayarea.raise_times_id.value = raise_times_id;
+        $('#getRaise').hide();
+    }
+    //导出Excel
+    function exportExcel(){
+        var search_title = $('#search_title').val();
+        var search_member = $('#search_member').val();
+        var search_startdate = $('#my-startDate').val();
+        var search_enddate = $('#my-endDate').val();
+        var search_category = $('#search_category').val();
+        var search_citys = $('#search_citys').val();
+        var search_theme = $('#search_theme').val();
+        var search_tag = $('#search_tag').val();
+        var search_is_pass = $('#search_is_pass').val();
+
+        window.open("__CONTROLLER__/CourseExport.html?title="+search_title+"&member="+search_member+"&start_buy_time="+search_startdate+"&stop_buy_time="+search_enddate+"&category="+search_category+"&citys="+search_citys+"&theme="+search_theme+"&tag="+search_tag,"_blank","width=1000,height=600 ")
+    }
+
+    //日志
+    var tips_id,stime,etime;
+    function showLogs(id, starttime, endtime){
+        tips_id = id;
+        var dt = {};
+        dt.id = tips_id;
+        if(starttime){
+            stime = starttime;
+            dt.starttime = starttime;
+        }
+        if(endtime){
+            etime = endtime;
+            dt.endtime = endtime;
+        }
+
+        $.ajax({
+            url : '__CONTROLLER__/showlogs.html',
+            data : dt,
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                if(d.status == 1){
+                    var code = '';
+                    for(i in d.info){
+                        if(i >= d.info.length - 1)
+                            code += '<span class="am-text-success">['+ d.info[i].datetime +']</span> '+ d.info[i].username +' 创建活动!<br />';
+                        else
+                            code += '<span class="am-text-success">['+ d.info[i].datetime +']</span> '+ d.info[i].username +' 修改过活动!<br />';
+                    }
+                    $('#showlogs pre').html(code);
+                    $('#showlogs').modal('open');
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+
+
+    //设置特权
+    function setPrivilege(id){
+        $('input[name="raise_id"]').val(id);
+        $('#inputString').val('');
+        $('input[name="num"]').val('');
+        $('.privilegeTable tbody').empty();
+        $('.tips_times select').empty();
+        $.ajax({
+            url : '__CONTROLLER__/setPrivilege.html',
+            data : {'typeName' : 'distributeList','raise_id':id },
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                var nickname ='';
+                var code ='';
+                var tips_times ='<option value="0">请选择档位</option>';
+                for(i in d.privilege){
+                    var url = 'http://<?=WEB_DOMAIN?>/?page=receiveVIP&privilege_id='+ d.privilege[i].id+'&type='+d.privilege[i].type+'&type_id='+id+'&tips_times_id='+d.privilege[i].tips_times_id;
+                    code += '<tr><td>'+d.privilege[i].member_id+'</td><td>'+d.privilege[i].distribute_nickname+'</td><td style="width: 200px;">'+d.privilege[i].raise_times_title+'</td><td>'+d.privilege[i].number+'</td><td>'+d.privilege[i].distributeNum+'</td><td>'+d.privilege[i].BuyerNum+'</td><td>'+d.privilege[i].BuyTotal+'</td><td><a onclick="del(this,'+d.privilege[i].id+')">删除</a> <a onclick="CopyUrl(this)" title="'+url+'">复制链接</a> </td></tr>'
+                }
+                $(code).appendTo($('.privilegeTable tbody'));
+
+                for(j in d.tips_times){
+                    tips_times +='<option value="'+d.tips_times[j].id+'">'+d.tips_times[j].title+'</option>'
+                }
+                $(tips_times).appendTo($('.tips_times select'));
+            }
+        });
+        $('#Raise_Privilege').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+
+            }
+        });
+    }
+
+    //众筹特权-分发人添加
+    function lookup(inputString) {
+        if(inputString.length == 0) {
+            // Hide the suggestion box.
+            $('#suggestions').hide();
+        } else {
+            $.post('__CONTROLLER__/setPrivilege.html', {nickname: inputString,'typeName' : 'selectNickName'}, function(data){
+                if(data.length >0) {
+                    $('#suggestions').show();
+                    $('#autoSuggestionsList').html(data);
+                }
+            });
+        }
+    } // lookup
+
+    function fill(em,thisValue) {
+        var nickname = $(em).find('strong').html();
+        if (nickname != '' && nickname != undefined) {
+            $('#inputString').val(nickname + '|' + thisValue);
+            setTimeout("$('#suggestions').hide();", 200);
+            var raise_id = $('input[name="raise_id"]').val();
+        }
+//        var member_id = thisValue;
+//         $('#inputString').val(member_id);
+//        var code = '';
+//        $.post('__CONTROLLER__/setPrivilege.html', {member_id: thisValue,'raise_id':raise_id,'typeName' : 'AddPrivilege'}, function(d){
+//            if(d>0){
+//                code += '<tr><td>'+thisValue+'</td><td>'+nickname+'</td><td>0</td><td>0</td><td>0</td><td></td></tr>'
+//            }
+//            $(code).appendTo($('.privilegeTable tbody'));
+//        });
+    }
+
+    //添加特权分发人
+    function addPri(){
+        $('#err').empty();
+        var name_string = $('#inputString').val();
+        var nickname = name_string.split('|')[0];
+        var member_id = name_string.split('|')[1];
+        var num = $('input[name="num"]').val();
+        var raise_id = $('input[name="raise_id"]').val();
+        var tips_times_id = $('select[name="tips_times_id"]').val();
+        var tips_times_title = $('select[name="tips_times_id"] option:selected').text();
+        var err =''
+        if(num == 0 && num != ''  ){
+            err += '<p>请输入分发数量！</p>';
+        }
+        if(tips_times_id == '' || tips_times_id == 0 || tips_times_id == undefined ){
+            err += '<p>请正确选择档位！</p>';
+        }
+        if(nickname == '' ||  nickname == undefined ||member_id == '' || member_id == undefined ){
+            err += '<p>请正确选择档位！</p>';
+        }
+        if(num == '')num = -1;
+        if(err == ''){
+            var code = '';
+            $.post('__CONTROLLER__/setPrivilege.html', {'member_id': member_id,'num': num,'raise_id':raise_id,'tips_times_id':tips_times_id,'typeName' : 'AddPrivilege'}, function(d){
+                if(d.status == 1){
+                    var url = 'http://<?=WEB_DOMAIN?>/?page=receiveVIP&privilege_id='+d.info.id+'&type='+2+'&type_id='+raise_id+'&tips_times_id='+tips_times_id;
+                    if(num == -1){
+                        num = '不限制人数';
+                    }
+                    code += '<tr><td>'+member_id+'</td><td>'+nickname+'</td><td style=" width: 200px;">'+tips_times_title+'</td><td>'+num+'</td><td>0</td><td>0</td><td>0</td><td><a onclick="del(this,'+d.info.id+')">删除</a> <a onclick="CopyUrl(this)" title="'+url+'">复制链接</a></td></tr>'
+                }else{
+                    alert(d.info);
+                }
+                $(code).appendTo($('.privilegeTable tbody'));
+                $('input[name="num"]').val('');
+                $('#inputString').val('');
+                $('select[name="tips_times_id"]').val('');
+            });
+        }else{
+            $(err).appendTo($('#err'));
+        }
+    }
+
+    //删除特权分发人
+    function del(em,id){
+        if(confirm('是否确定删除特权分发人')) {
+            $.post('__CONTROLLER__/setPrivilege.html', {'privilege_id': id, 'typeName': 'DelPrivilege'}, function (d) {
+                if (d.status == 1) {
+                    $(em).parent().parent().remove()
+                } else {
+                    alert(d.info);
+                }
+            });
+        }
+    }
+    //复制特权分发人的URL
+//    function priClone(em,id){
+//       alert($(em).attr('title'))
+////    }
+    function CopyUrl(em){
+        $('#UrlThere').html($(em).attr('title'));
+    }
+
+    function setToHome(id, type) {
+        $.ajax({
+            url: '/Admin/Home/add',
+            type: 'post',
+            data: {id: id, type: type},
+            timeout: 5000
+        }).done(function (data) {
+            // console.log(data);
+            if (data.status === 0) {
+                alert('添加成功');
+            } else {
+                alert(data.info);
+            }
+        }).fail(function (e) {
+            alert(e.toString());
+        });
+    }
+
+    function viewLottery(id) {
+        location.href = '/Admin/Raise/lottery?raise_id=' + id;
+    }
+</script>

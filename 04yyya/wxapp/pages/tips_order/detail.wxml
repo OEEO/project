@@ -1,0 +1,127 @@
+<view class="header line">
+	<view class="title">订单详情</view>
+	<view class="orderOperation" wx:if="{{orderlist.act_status == 0}}" data-id="{{orderlist.id}}" bindtap="cancelOrder">取消订单</view>
+</view>
+
+<scroll-view scroll-y="true" class="wrapper" bindscrolltolower="">
+	<block wx:if="{{orderlist.type == 0 && orderlist.act_status > 0 && orderlist.act_status < 7}}">
+	<view class="consumerCode">
+    	<view class="the_blankt" ></view>	
+		<view class="consumptionStatusTop">
+			<view class="consumptionStatusLeft">消费码</view>
+			<view class="consumptionStatusRight" bindtap="showCode">查看二维码</view>
+		</view>
+		<view class="consumerCodeList">
+			<block wx:for="{{orderlist.check_code}}" wx:key="check_code" wx:for-item="codes">
+				<view wx:if="{{codes.status == 0}}">
+					<view>{{codes.code}}<view class="span"><view wx:if="{{codes.nickname !=null && codes.nickname != ''}}">(<font class="ni">{{codes.nickname}}</font>)</view><font class="yz">未验证</font></view></view>
+				</view>
+				<view wx:else>
+					<view><text>{{codes.code}}</text><view class="span"><view wx:if="{{codes.nickname !=null && codes.nickname != ''}}">(<font class="ni">{{codes.nickname}}</font>)</view><font class="yz">已验证</font></view></view>
+				</view>
+			</block>
+		</view>
+		<!--<view class="consumerCodeInf">有效期
+			<view class="consumerCodeInfDate"></view>
+		</view>-->
+        <view class="the_blankc" ></view>
+	</view>
+	</block>
+    
+	<view class="orderInf">
+		<view class="actInfTitle">
+			<view class="actInfDaren">达人：<text>{{orderlist.nickname}}</text></view>
+			<view class="actInfconnect">{{orderlist.catname}}</view>
+		</view>
+		<view class="orderListLeft">
+			<image src="{{orderlist.path}}" />
+		</view>
+		<view class="orderListRight">
+			<view class="orderTitle">{{orderlist.nickname}}</view>
+			<view class="t_b">
+				<view class="number">{{orderlist.count}}份</view>
+				<i class="center_boeder"></i>
+				<view class="total">单价：<font>{{orderlist.price}}</font></view>
+				<view class="status">{{orderlist.statu}}</view>
+			</view>
+		</view>
+		<view class="clearfix"></view>
+	</view>
+    
+	<view class="the_blankb">订单详情</view>
+	
+	<view class="orderDetail">
+		<view>食客<text>{{member.nickname}}</text></view>
+		<view>订单总额<text class="add_color">￥{{orderlist.total}}</text></view>
+		<block wx:if="{{orderlist.coupon}}">
+			<view wx:if="{{orderlist.coupon.type == 0}}">优惠金额<text>{{orderlist.coupon.value}}</text></view>
+			<view wx:elif="{{orderlist.coupon.type == 1}}">优惠折扣<text>{{orderlist.coupon.value*10}}折</text></view>
+		</block>
+		<view>下单手机<text>{{member.telephone}}</text></view>
+		<view>订单编号<text>{{orderlist.sn}}</text></view>
+		<view>就餐时间<text>{{orderlist.start_time}}-{{orderlist.end_time}}</text></view>
+		<view>下单时间<text>{{orderlist.create_time}}</text></view>
+		<view class="orderAddress">地点<text>{{orderlist.address}}</text></view>
+	</view>
+    
+    <view wx:if="{{orderlist.act_status == 5}}" class="refund" data-id="{{orderlist.id}}" bindtap="cancelRefund">取消退款</view>
+    
+	<block wx:if="{{orderlist.act_status != 4}}">
+    <view class="bb_liuyan">
+		<view class="the_blankb">留言</view>
+		<view class="liuyan">{{orderlist.context}}</view>
+	</view>
+	</block>
+	<block wx:if="{{orderlist.act_status == 4}}">
+	<view class="commentList">
+		<block wx:if="{{orderlist.comment && orderlist.comment.id}}">
+			<view class="com_list"> 
+				<view class="h_pic">  
+					<image src="{{member.path}}"/> 
+				</view> 
+				<view class="pic_right">  
+					<view class="name_title">   
+						<view class="names">{{member.nickname}}</view>   
+						<text>{{orderlist.comment.datetime}}</text>  
+					</view>
+					<view class="t_content" align="center">{{orderlist.comment.content}}</view>
+					<block wx:if="{{orderlist.comment.pics.length > 0}}">
+					<view class="imges" data-pics="{{orderlist.comment.pics}}" bindtap="checkpic">
+					<block wx:for="{{orderlist.comment.pics}}" wx:key="comment">
+						<image src="{{item}}" data-url="{{item}}" bindtap="geturl"/>
+					</block>	
+					</view>
+					</block>
+				</view>
+			</view>
+		</block>
+	</view>
+	</block>
+	<view class="bottomBlank"></view>
+</scroll-view>
+<view id="footer">
+	<view class="footer priceMenu orderBottom" wx:if="{{orderlist.act_status == 0}}" data-id="{{orderlist.id}}" bindtap="wxpay">立即付款</view>
+	<view class="footer priceMenu orderBottom" wx:if="{{orderlist.act_status == 2 || orderlist.act_status == 3}}"><navigator url="../comment/evaluation?order_id={{orderlist.id}}">立即评价</navigator></view>
+</view>
+
+<view class="QRcode" hidden="{{hide}}" bindtap="hideCode">
+	<view class="views">
+		<view class="d">
+			<swiper class="codeswiper"
+  autoplay="{{autoplay}}" duration="500" bindchange="changenum">
+				<block wx:for="{{getcode}}" wx:key="code">
+					<swiper-item>
+					<view class="p">{{item}}</view>
+					<view class="codeimg">
+						<canvas canvas-id="mycanvas{{index}}"/>
+					</view>
+					</swiper-item>
+				</block>
+			</swiper>
+			
+			<view class="num">{{current + 1}}/{{getcode.length}}</view>
+		</view>
+        
+		<view class="dBtm">左右滑动切换消费码</view>
+	</view>
+</view>

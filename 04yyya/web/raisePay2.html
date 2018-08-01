@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/raisePay2.css">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/plugins/jquery.touchwipe.min.js"></script>
+    <script src="js/public.js?v=1.1"></script>
+    <script src="js/raisePay2.js"></script>
+</head>
+<body>
+<div class="header line">
+    <div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+    <div class="title">兑换礼券</div>
+</div>
+<div class="headerBlank"></div>
+<!--<h1 style="color: black;margin: 2rem 0 0 1.4rem;">领取详情</h1>-->
+
+
+<!--<div class="gift-cert box-item">-->
+    <!--<div class="title">礼券详情</div>-->
+<!--</div>-->
+
+<!--<div class="raiseitem same">-->
+    <!--<p>选择的回报</p>-->
+    <!--<div class="itemcontext">-->
+        <!--<span class="title"></span>-->
+        <!--<span class="money"></span>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<div class="the_blank2"></div>&ndash;&gt;-->
+<!--<div class="pay_num same">-->
+    <!--<p>选择数量</p>-->
+    <!--<div class="copies" style="display: flex;padding-bottom: 0.8rem;">-->
+        <!--<span class="num">-->
+            <!--<div class="num_c"  onclick="raisePay2Object.changeCopies(this,-1)">-->
+                <!--<img src="./images/submitorder_quantity_reduce_btn_h@2x.png" title="减1">-->
+            <!--</div>-->
+            <!--<input id="num" class="b" placeholder="数量" value="1" type="number"/>-->
+            <!--<div class="num_c" onclick="raisePay2Object.changeCopies(this,1)">-->
+                <!--<img src="./images/submitorder_quantity_increase_btn_h@2x.png" title="加1">-->
+            <!--</div>-->
+        <!--</span>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<div class="the_blank"></div>&ndash;&gt;-->
+<!--<div class="shop_address same">-->
+    <!--<p>收货地址</p>-->
+    <!--<div class="address">-->
+        <!--<span class="add">请选择收货地址</span>-->
+        <!--<span class="arrowRight"></span>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<div class="the_blank2"></div>&ndash;&gt;-->
+<!--<div class="wx_num same">-->
+    <!--<p>微信号 (非昵称)</p>-->
+    <!--<div class="wxinput">-->
+        <!--<input class="wxcode" type="text" placeholder="请填写微信号"/>-->
+    <!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<div class="the_blank"></div>&ndash;&gt;-->
+<!--<div class="certification same">-->
+    <!--<p>实名认证</p>-->
+    <!--<div class="cbox">-->
+        <!--<span class="name_id">请填写姓名、身份证号</span>-->
+        <!--<span class="arrowRight"></span>-->
+    <!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<div class="the_blank"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="payment">&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="way">&ndash;&gt;-->
+        <!--&lt;!&ndash;<span>支付方式</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a onclick="javascript:raisePay2Object.explain()" href="javascript:void(0)">限额说明</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="paytype">&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="wx" href="javascript:void(0);">&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="text">微信支付<small>(金额不超过2000可用)</small></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="selected on"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="alipay" href="javascript:void(0);">&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="text">支付宝</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="selected"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="the_blank"></div>&ndash;&gt;-->
+<!--<div class="stage">-->
+    <!--<ul class="stageitem"></ul>-->
+<!--</div>-->
+<!--<div class="headerBlank"></div>-->
+<!--<div class="footer payMenu">-->
+    <!--&lt;!&ndash;<div class="paymoney">实际金额：<font name="money">99</font>元</div>&ndash;&gt;-->
+    <!--<div class="paymoney">实付金额：<font name="money" id="buy_price">99</font>元</div>-->
+    <!--<a href="javascript:void(0)" class="submitBtn">确认领取</a>-->
+<!--</div>-->
+
+<div class="gift-detail box-item">
+    <div class="title">礼券详情（价值888元，A/B套餐二选一）</div>
+    <div class="p active">
+        <span>A. Duria猫山王榴莲冷冻果肉（300克装）4盒</span>
+        <span class="tick"></span>
+    </div>
+    <div class="p">
+        <span>B. Duria猫山王榴莲冰皮月饼（360克装）3盒</span>
+        <span class="tick"></span>
+    </div>
+</div>
+<div class="gift-code-wrap box-item">
+    <div class="title">礼券编码</div>
+    <input type="text" class="input-text gift-code" placeholder="请输入礼券编码">
+</div>
+<div class="name-wrap box-item">
+    <div class="title">姓名</div>
+    <input type="text" class="input-text name" placeholder="请输入姓名">
+</div>
+<div class="phone-wrap box-item">
+    <div class="title">手机号</div>
+    <input type="text" class="input-text phone" placeholder="请输入手机号">
+</div>
+<div class="address-wrap box-item">
+    <div class="title">收货地址</div>
+    <input type="text" class="input-text address" placeholder="请输入收货地址">
+</div>
+<div class="wxcode-wrap box-item">
+    <div class="title">微信号 (非昵称)</div>
+    <input type="text" class="input-text wxcode" placeholder="请输入微信号">
+</div>
+
+<div class="spe-footer">
+    <div class="confirm-btn">确认兑换</div>
+</div>
+</body>
+</html>

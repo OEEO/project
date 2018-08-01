@@ -1,0 +1,101 @@
+
+<p class="mobile_none" style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" id="add" onclick="add()">添加</button>
+
+</p>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<!-- 添加短网址 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="shorturl_add">
+    <div class="am-modal-dialog">
+        <form name="shorturl_add" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">添加短网址</div>
+            <div class="am-modal-bd am-scrollable-vertical am-text-left" style="height: 100px; ">
+                <input type="text" name="shorturl" id="shorturl" value="" placeholder="输入生成短网址的长网址" />
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+<!-- 修改短网址 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="shorturl_update">
+    <div class="am-modal-dialog">
+        <form name="shorturl_update" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">添加短网址</div>
+            <div class="am-modal-bd am-scrollable-vertical am-text-left" style="height: 100px; ">
+                <input type="text" name="shorturl" id="update_shorturl" value="" placeholder="输入生成短网址的长网址" />
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.am-modal').appendTo('body');
+    function add(){
+        $('#shorturl_add').modal({
+            relatedTarget: this,
+            onConfirm: function () {
+                var data = {};
+                data.typename = 'add';
+                data.shorturl = $('#shorturl').val();
+                $.ajax({
+                    url : '__ACTION__.html',
+                    data :  data,
+                    type : 'post',
+                    success : function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                            window.location.reload();
+                        }else{
+                            alert(d.info);
+                        }
+                    }
+                });
+            }
+        })
+    }
+    function update(id){
+        var data = {};
+        data.typename = 'get_update';
+        data.id = id;
+        $.ajax({
+            url: '__ACTION__.html',
+            data: data,
+            type: 'post',
+            success: function (d) {
+                if(d.status ==1){
+                    $('#update_shorturl').val(d.info);
+                }
+                $('#shorturl_update').modal({
+                    relatedTarget: this,
+                    onConfirm: function () {
+                        var data = {};
+                        data.typename = 'post_update';
+                        data.id = id;
+                        data.shorturl = $('#update_shorturl').val();
+                        $.ajax({
+                            url: '__ACTION__.html',
+                            data: data,
+                            type: 'post',
+                            success: function (d) {
+                                if (d.status == 1) {
+                                    alert(d.info);
+                                    window.location.reload();
+                                } else {
+                                    alert(d.info);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+    }
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/lotteryRule.js"></script>
+</head>
+<body>
+<div class="header line">
+    <div class="turnBack" onclick="javascript:page.back()"><div class="arrow"></div></div>
+    <div class="title">抽奖规则</div>
+</div>
+
+<!-- main content -->
+<div class="headerBlank"></div>
+<div class="ruleList">
+    <div class="ruleItem">
+        <div class="ruleTitle">一、抽奖时间</div>
+        <div class="ruleContent">
+            项目结束后第二天上午8点（看最终方案）系统自动抽奖，如项目延期则抽奖顺延(如：项目15日结束，17日开奖)
+        </div>
+    </div>
+    <div class="ruleItem">
+        <div class="ruleTitle">二、抽奖规则</div>
+        <div class="ruleContent">
+            <div>
+                <p>1、每N人抽取一份奖品的规则</p>
+                <p>每N人抽一人，N人以上但不到2N人也抽两人，以此递进</p>
+            </div>
+            <div>
+                <p>2、N个人抽X份奖品的规则</p>
+                <p>总抽奖人数N，在N人中根据算法抽取X人获得奖品；当N小于或等于X时，则每位参与者获取一份奖品</p>
+            </div>
+        </div>
+    </div>
+    <div class="ruleItem">
+        <div class="ruleTitle">三、抽奖算法</div>
+        <div class="ruleContent">
+            <ul class="ruleSubList">
+                <li>开奖日上一个交易日收盘时的上证指数6位数字 & 收盘时的深证成指7位数字，两组数字排列得到的13位数</li>
+                <li>将此13位数整除以项目结束时总抽奖码数，得到的余数加1，即得到该项目的中奖抽奖码</li>
+                <li>如果项目开多个奖，则以项目公示“ 每X个参与者抽取1名中奖用户”中的X作为基数，第N个中奖抽奖码 =第一个中奖抽奖码+（N-1）*X</li>
+                <li>如果加值后抽奖码超过了总抽奖码个数，则将抽奖码减去总抽奖码数得到新的中奖抽奖码</li>
+                <li>每个抽奖码只有一次中奖机会，如果抽奖码重复中奖，则将该抽奖码+1得到新的中奖抽奖码。</li>
+            </ul>
+        </div>
+    </div>
+    <div class="ruleItem">
+        <div class="ruleTitle">四、抽奖结果</div>
+        <div class="ruleContent">
+            开奖结果将会在开奖后由短信通知您，同时您也可以在您的订单中查看抽奖详情。
+            <p>提示:抽奖订单无法退款。</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

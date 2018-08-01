@@ -1,0 +1,483 @@
+<!--日历js、css文件加载 start-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+<?php if(IS_WAP):?>
+<style>
+    .datetimepicker table td{ font-size:0.14rem;}
+    #admin-offcanvas{display:none;}
+</style>
+<?php endif;?>
+<p class="mobile_none" style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" id="export_excel">导出Excel</button>
+    <button class="am-btn am-btn-warning" id="export_excel_old">（旧）导出Excel</button>
+    <button class="am-btn am-btn-success" onclick="two_order()">特权批量生成二次订单</button>
+
+</p>
+
+<form class="am-g">
+    <div class="am-alert am-alert-danger" id="my-alert" style="display: none">
+        <p>开始日期应小于结束日期！</p>
+    </div>
+    <input type="text" name="sn" id="search_sn" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="订单号查询" value="{$search_sn}"/>
+    <input type="text" name="title" id="search_title" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="众筹标题模糊查询" value="{$search_title}"/>
+    <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="购买者查询" value="{$search_member}"/>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-startDate" name="start_order_time"  placeholder="下单开始时间" required readonly="true" value="{$search_start_order_time}"/>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-endDate" name="stop_order_time"  placeholder="下单结束时间" required readonly="true" value="{$search_stop_order_time}"/>
+    <select id="act_status" name="act_status" style="width: 150px; height: 2.825em; margin-bottom: 1.5em;">
+        <option value="">请选择</option>
+        <option value="0" <?php if(isset($search_act_status) && $search_act_status == 0)echo "selected='selected'";?>>未支付</option>
+        <option value="1" <?php if($search_act_status == 1)echo "selected='selected'";?>>已支付</option>
+        <option value="7" <?php if($search_act_status == 7)echo "selected='selected'";?>>已取消</option>
+    </select>
+    <select name="status" id="search_status" style="width: 100px; height: 2.825em; margin-bottom: 1.5em;">
+        <option value="">请选择</option>
+        <option value="0" <?php if(isset($search_status) && $search_status == 0)echo "selected='selected'";?>>已删除</option>
+        <option value="1" <?php if($status == 1 || $search_status == 1)echo "selected='selected'";?>>正常状态</option>
+        <option value="2" <?php if($search_status == 2)echo "selected='selected'";?>>已关闭</option>
+    </select>
+    <select id="search_goods_type" name="goods_type" style="width: 100px; height: 2.825em; margin-bottom: 1.5em;">
+        <option value="">请选择</option>
+        <option value="1" <?php if($search_goods_type == 1)echo "selected='selected'";?>>全款</option>
+        <option value="2" <?php if($search_goods_type == 2)echo "selected='selected'";?>>预付金</option>
+        <option value="3" <?php if($search_goods_type == 3)echo "selected='selected'";?>>尾款</option>
+    </select>
+    <select id="search_is_free" name="is_free" style="width: 100px; height: 2.825em; margin-bottom: 1.5em;">
+        <option value="">请选择</option>
+        <option value="0" <?php if($search_is_free == 1)echo "selected='selected'";?>>非免费</option>
+        <option value="1" <?php if($search_is_free == 2)echo "selected='selected'";?>>免费</option>
+    </select>
+    <!--<button type="button" class="am-btn am-btn-primary" onclick="search_rest()">重置</button>-->
+    <button type="submit" class="am-btn am-btn-success" style="margin-bottom: 1.5em;">提交</button>
+</form>
+
+<!-- 快照 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="snapshot">
+    <div class="am-modal-dialog">
+        <form name="resetBanner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">快照</div>
+            <div class="am-modal-bd am-scrollable-vertical am-text-left">
+
+                <div class="am-g am-margin-top-sm" id="snapshotData">
+
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 退款申请 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="refund">
+    <div class="am-modal-dialog">
+        <form name="refund" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">退款申请</div>
+            <input type="hidden" id="refund_id">
+            <div class="am-modal-bd am-scrollable-vertical am-text-left">
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="refund_money" class="am-input-sm" id="refund_money" placeholder="退款金额"/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <textarea name="refund_reason" class="am-input-sm" id="refund_reason" placeholder="退款理由"></textarea>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 二次订单生成，规定天数支付 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="limit_day">
+    <div class="am-modal-dialog">
+        <form name="limit_day" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">限时支付</div>
+            <div class="am-modal-bd am-scrollable-vertical am-text-left" style="height: 100px; ">
+                <input style="width: 45%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my_limitDay" name="limitDay"  placeholder="限制支付时间" required value=""/>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 发送筛选短信，多少天退款 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="limit_refund">
+    <div class="am-modal-dialog">
+        <form name="limit_refund" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">预约金退回到用户支付账户的天数设置<br/>（仅用于短信内容显示）</div>
+            <div class="am-modal-bd am-scrollable-vertical am-text-left" style="height: 100px; ">
+                <input type="text" name="days_refund" style="width: 100px; display: inline;" class="am-input-sm" id="days_refund" value="7" /><span>天</span>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- 特权二次订单生成 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="raisePay">
+    <div class="am-modal-dialog">
+        <form name="raisePayarea" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">特权二次订单生成</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">*输入订单ID</span>
+                    <div class="am-u-sm-9 am-u-md-9">
+                        <textarea name="order_arr" id="order_arr" style="overflow:visible;"></textarea>
+                        允许批量添加，一行一个，点回车换行
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">*限制支付时间</span>
+                    <div class="am-u-sm-9 am-u-md-9">
+                        <input style="width: 45%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="limitDay" name="limitDay"  placeholder="限制支付时间" required value=""/>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+
+
+
+<script>
+    $('.am-modal').appendTo('body');
+    //日历
+    $('#my-startDate').datetimepicker();
+    $('#my-endDate').datetimepicker();
+    $('#create-startDate').datetimepicker();
+    $('#create-endDate').datetimepicker();
+    $('#my_limitDay').datetimepicker();
+    $('#limitDay').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    var clicktimes = 0;
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-startDate');
+        $('#my-startDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                        alert('开始日期应小于结束日期！');
+                        $('#my-startDate').val("");
+                    } else {
+                        startDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+
+        $('#my-endDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+
+                    if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                        alert('结束日期应大于开始日期！');
+                        $('#my-endDate').val("");
+                    } else {
+                        endDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+        $('#create-startDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                        alert('开始日期应小于结束日期！');
+                        $('#create-startDate').val("");
+                    } else {
+                        startDate = new Date(event.date);
+                        clicktimes = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+
+        $('#create-endDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+
+                    if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                        alert('结束日期应大于开始日期！');
+                        $('#create-endDate').val("");
+                    } else {
+                        endDate = new Date(event.date);
+                        clicktimes = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+    });
+
+    //订单退款
+    function OrderRefund(id,price){
+        if(window.confirm('确定要申请退款吗？')){
+            $('#refund_money').val(price);
+            $('#refund_id').val(id);
+            var id = $('#refund_id').val();
+            $('#refund').modal({
+                relatedTarget: this,
+                onConfirm: function () {
+                    var data = {};
+                    data.typename = 'Raise_Refund';
+                    data.order_id = $('#refund_id').val();
+                    data.money = $('#refund_money').val();
+                    data.cause = $('#refund_reason').val();
+                    data.is_allow = 0;
+                    $.ajax({
+                        url : '__CONTROLLER__/OrderRefund.html',
+                        data : {'data' : data},
+                        type : 'post',
+                        success : function(d){
+                            if(d.status == 1){
+                                alert(d.info);
+                                window.location.reload();
+                            }else{
+                                alert(d.info);
+                            }
+                        }
+                    });
+                }
+            })
+        }
+    }
+
+    //取消订单
+    function cancel(id){
+        if(window.confirm('确定要取消这条记录吗？（可以恢复）')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderCancel.html',
+                data : {'order_id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+    //删除订单
+    function order_delete(id){
+        if(window.confirm('确定要删除这条记录吗？(不能恢复)')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderDelete.html',
+                data : {'order_id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    //恢复订单
+    function recovery(id){
+        if(window.confirm('确定要恢复这条订单吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderRecovery.html',
+                data : {'order_id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    //快照
+    function snapshot(id){
+        $.ajax({
+            url : '__CONTROLLER__/snapshot.html',
+            data : {'id' : id,'typename':'RaiseSnapshot'},
+            type: 'post',
+            success: function (d) {
+                if (d.status == 1) {
+                    $('#snapshotData').empty();
+                    var code='';
+                    code += '<span class="am-u-sm-4">标题：</span><span class="am-u-sm-8">'+ d.info.raise_title+'</span>';
+                    code += '<span class="am-u-sm-4">项目简介：</span><span class="am-u-sm-8">'+ d.info.raise_introduction+'</span>';
+                    code += '<span class="am-u-sm-4">类目方式：</span><span class="am-u-sm-8">'+ d.info.raise_type+'</span>';
+                    code += '<span class="am-u-sm-4">类目目标金额：</span><span class="am-u-sm-8">'+ d.info.raise_price+'</span>';
+                    code += '<span class="am-u-sm-4">类目预付金额：</span><span class="am-u-sm-8">'+ d.info.raise_prepay+'</span>';
+                    code += '<span class="am-u-sm-4">支付金额：</span><span class="am-u-sm-8">'+ d.info.raise_act_pay+'</span>';
+                    code += '<span class="am-u-sm-4">下单时间：</span><span class="am-u-sm-8">'+ d.info.datetime+'</span>';
+
+                    $('#snapshotData').append(code);
+
+                }else{
+                    alert('查看失败');
+                }
+            }
+        });
+        $('#snapshot').modal({
+            relatedTarget: this,
+            onConfirm: function () {
+
+            }
+        })
+    }
+
+    //普通的二次支付
+    function OrderNextpay(id){
+        if(window.confirm('确定生成二次订单吗？')){
+
+            var today = new  Date();
+            var s = today.getFullYear()+"-"+(today.getMonth()+1)+"-"+(today.getDate()+3)+" "+today.getHours()+":"+today.getMinutes();
+            $('#my_limitDay').val(s);
+            $('#limit_day').modal({
+                relatedTarget: this,
+                onConfirm: function () {
+                    var data = {};
+                    var my_limitDay = $('#my_limitDay').val();
+                    if(my_limitDay == ''){
+                        data.limit_day = new Date();
+                    }else{
+                        data.limit_day = $('#my_limitDay').val();
+                    }
+                    data.id = id;
+                    $.ajax({
+                        url: '__CONTROLLER__/OrderNextpay.html',
+                        data: data,
+                        type: 'post',
+                        success: function (d) {
+                            if (d.status == 1) {
+                                alert(d.info);
+                                window.location.reload();
+                            } else {
+                                alert(d.info);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+    //特权的二次订单批量生成
+    function two_order(){
+
+        $('#raisePay').modal({
+            relatedTarget: this,
+            onConfirm: function () {
+                var data ={};
+                data.order_arr = document.raisePayarea.order_arr.value;
+                data.limit_day = document.raisePayarea.limitDay.value;
+//                data.raise_id = document.raisePayarea.raise_id.value;
+//                data.typeName = 'raisePay';
+
+                $.ajax({
+                    url: '__CONTROLLER__/privilege_order.html',
+                    data: data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if (d.status == 1) {
+                            alert(d.info)
+                            window.location.reload();
+                        }else{
+                            alert(d.info)
+
+                        }
+                    }
+                })
+            }
+        })
+    }
+
+    //发送未筛选的用户
+    function Ordersend(id){
+        if(window.confirm('确定发送短信？')){
+            $('#limit_refund').modal({
+                relatedTarget: this,
+                onConfirm: function () {
+                    var data = {};
+                    data.limit_day = $('#days_refund').val();
+                    data.id = id;
+                    data.TypeName = 'Ordersend';
+                    $.ajax({
+                        url: '__ACTION__.html',
+                        data: data,
+                        type: 'post',
+                        success: function (d) {
+                            if (d.status == 1) {
+                                alert(d.info);
+                                window.location.reload();
+                            } else {
+                                alert(d.info);
+                            }
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+    function search_rest(){
+       $('input').val('');
+       $("select option:selected").prop("selected", false);
+   }
+
+    //导出excel
+    $('#export_excel').click(function(){
+        var search_sn = $('#search_sn').val();
+        var search_title = $('#search_title').val();
+        var search_member = $('#search_member').val();
+        var search_start_order_time = $('#my-startDate').val();
+        var search_stop_order_time = $('#my-endDate').val();
+        var search_act_status = $('#act_status').val();
+        var search_status = $('#search_status').val();
+        var search_goods_type = $('#search_goods_type').val();
+        var is_free = $('#search_is_free').val();
+
+        window.open("__CONTROLLER__/raiseOrderExport.html?sn="+search_sn+"&title="+search_title+"&member="+search_member+"&start_order_time="+search_start_order_time+"&stop_order_time="+search_stop_order_time+"&act_status="+search_act_status+"&status="+search_status+"&goods_type="+search_goods_type+"&is_free="+is_free,"_blank","width=1000,height=600 ")
+    })
+
+    //导出excel（旧）
+    $('#export_excel_old').click(function(){
+        var search_sn = $('#search_sn').val();
+        var search_title = $('#search_title').val();
+        var search_member = $('#search_member').val();
+        var search_start_order_time = $('#my-startDate').val();
+        var search_stop_order_time = $('#my-endDate').val();
+        var search_act_status = $('#act_status').val();
+        var search_status = $('#search_status').val();
+        var search_goods_type = $('#search_goods_type').val();
+
+        window.open("__CONTROLLER__/raiseOrderExport_old.html?sn="+search_sn+"&title="+search_title+"&member="+search_member+"&start_order_time="+search_start_order_time+"&stop_order_time="+search_stop_order_time+"&act_status="+search_act_status+"&status="+search_status+"&goods_type="+search_goods_type,"_blank","width=1000,height=600 ")
+    })
+
+
+
+
+</script>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/kitchenAsk.css">
+<script src="js/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/kitchenAsk.js"></script>
+
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+	<div class="title">厨房+ 询价</div>
+</div>
+<div class="headerBlank"></div>
+<form class="content">
+	<div class="line">
+		<div class="left">活动目的</div>
+		<div class="right"><input type="text" name="aim" placeholder="如Party.."></div>
+	</div>
+	<div class="line">
+		<div class="left">使用时间</div>
+		<div class="right">
+			<div class="time"></div>
+			<div class="day"></div>
+			<div class="month"></div>
+		</div>
+	</div>
+	<div class="line">
+		<div class="left">活动人数</div>
+		<div class="right"><input type="text" placeholder="0" name="num" value=""></div>
+	</div>
+	<div class="line">
+		<div class="left">活动预算(非必填)</div>
+		<div class="right"><input type="text" placeholder="0" name="budget" value=""></div>
+	</div>
+	<div class="line">
+		<div class="left">联系人</div>
+		<div class="right"><input type="text" placeholder="0" name="contacts" value=""></div>
+	</div>
+	<div class="line">
+		<div class="left">联系手机</div>
+		<div class="right"><input type="text" placeholder="1230000000" name="telephone" value="1230000000"></div>
+	</div>
+	<div class="line">
+		<div class="left">留言</div>
+		<div class="right"><input type="text" name="context" placeholder="如需要K歌自助餐等.."></div>
+	</div>
+</form>
+<button class="btn" type="button">发送询价请求</button>
+</body>
+</html>

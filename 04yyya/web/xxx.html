@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ws = new WebSocket('ws://120.25.165.87:88');
+    var p;
+    ws.addEventListener('open',function(){
+        console.info('连接成功!');
+        p = setInterval(function(){
+            if(ws == null)
+                clearInterval(p);
+            else
+                ws.send(Math.random());
+        }, 5000);
+    });
+    ws.addEventListener('message',function(d){
+        console.log(d);
+    });
+    ws.addEventListener('close',function(){
+        ws = null;
+        console.info('连接断开!');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@charset "utf-8";
+.header .orderOperation{position:absolute;right:1rem;top:1.6rem;}
+/***************************************************/
+.takePhotos{height:12rem;text-align:center;}
+.takePhotos>img{height:6rem;margin-top:3rem;background:#fff;}
+/***************************************************/
+.userInf{font-size:1.5rem;color:#585858;display:block;position:relative;background:#fff;}
+.userInf>li{display:block;margin:0 1rem;padding:0 0.8rem;height:4rem;line-height:4rem;position:relative;border-top:0.1rem solid #eee;}
+.userInf>li>div{font-size:1.4rem;float:right;margin:1.1rem 0;max-width:27rem;line-height:1.8rem;}
+.userInf .default{text-align:left;}
+/*********自定义的 radio 样式**********/
+.radioS{display:inline-block;float:left;margin-left:1.6rem;height:1.7rem;}
+.radioS:before{display:inline-block;content:'';cursor: pointer;background:url('../images/circle.png') no-repeat left top;width:1.12rem;height:1.082rem;background-size:1.08rem auto;margin-right:0.5rem;}
+.checked:before{background-position: left bottom;}
+/*******自定义的 radio 样式 结束********/
+
+.userInf>li>div label{margin-left:2rem;color:#a3a3a3;}
+.userInf>li>div input{appearance:radio;-moz-appearance:radio; /* Firefox */-webkit-appearance:radio; /* Safari 和 Chrome */}
+
+/***********结束************/

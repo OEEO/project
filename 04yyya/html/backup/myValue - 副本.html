@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/myValue.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<!--<script type="text/javascript" src="js/myValue.js"></script>-->
+
+</head>
+<body>
+<script>
+
+//makeConditions('tips.html#4354');
+function whichToshow(num){
+	$('.valueMenu').children('div').css('color','#969696');
+	$('.tipsList').css('display','none');
+	$('.goodsList').css('display','none');
+	$('.daRenList').css('display','none');
+	
+	var show;
+	switch(num){
+		case 0:show = $('.tipsList');break;
+		case 1:show = $('.goodsList');break;
+		case 2:show = $('.daRenList');break;
+		default:break;
+		}
+	$('.valueMenu').children('div').eq(num).css('color','#fcd74b');
+	show.css('display','block');
+	}
+
+</script>
+<div class="header">
+	<a class="turnBack" href="javascript:parent.page.back();"></a>
+	<div class="title">我的收藏</div>
+</div>
+<div class="valueMenu">
+	<div class="act" onclick="whichToshow(0)">活动</div>
+	<div class="goods" onclick="whichToshow(1)">商品</div>
+	<div class="daRen" onclick="whichToshow(2)">达人</div>
+</div>
+<div class="the_blank"></div>
+<!-- ++++++++++++++收藏的活动++++++++++++++ -->
+<style>
+/* -- ++++++++++++++收藏的活动++++++++++++++ -- */
+.tipsList .orderListLeft{float:left;width:11.38rem;height:7.28rem;margin:0.8rem;margin-left:1.8rem;/*margin-top:0.6rem;*/}/*图片*/
+.tipsList .orderListLeft .orderTypeBg{line-height:2rem;height:2rem;width:4.5rem;position:absolute;background:rgba(0,0,0,0.5);}/*订单分类 饭局、商品 等 的背景*/
+.tipsList .orderListLeft .orderType{font-size:1.1rem;color:#fff;line-height:2rem;height:2rem;width:4.5rem;position:absolute;text-align:center;}/*订单分类 饭局、商品 等*/
+
+.tipsList .orderListRight{float:left;width:20rem;height:7.28rem;margin-top:0.82rem;position:relative;}/*右侧信息列表*/
+.tipsList .orderListRight .orderTitle{font-size:1.3rem;color:#636363;height:3.4rem;overflow:hidden;/*white-space:nowrap;text-overflow:ellipsis;*/}/*右 商品标题*/
+.tipsList .actAdd{font-size:1.1rem;color:#a3a3a3;margin-top:0.2rem;text-indent:1.4rem;float:left;background:url('./images/location_20x20.png')no-repeat left center;background-size:1rem;}/*活动地点*/
+
+
+.tipsList .actTime{font-size:1.1rem;color:#a3a3a3;margin-top:0.2rem;margin-left:1rem;text-indent:1.4rem;float:left;background:url('./images/time2.png')no-repeat left center;background-size:1rem;}/*活动时间*/
+.tipsList  .orderListRight .actPrice{font-size:1.5rem;color:#fcd74b;position:absolute;bottom:-0.2rem;left:0;}/*活动价格*/
+.tipsList  .orderListRight .values{cursor: pointer;position:absolute;display:inline-block;width:2.1rem; height:2rem; background:url('./images/value.png') 0 0 no-repeat;background-size:2rem auto;background-position:left bottom; right:0.5rem; bottom:-0.2rem;}
+.tipsList  .orderListRight .valued{background-position:left top;}
+/* ===================收藏的活动列表 结束================== */
+
+</style>
+<div class="tipsList">
+<!-- --------------------- -->
+		<a href="tips.html#651">
+		<div class="orderListLeft">
+			<div class="orderTypeBg"></div>
+			<div class="orderType">饭局</div>
+			<img width=100% height=100% src="uploads/20151012/1.jpg">
+		</div>
+	</a>	
+		<div class="orderListRight">
+			<a href="tips.html#651">
+				<div class="orderTitle">综合咖啡体验，新手之选，走进咖啡的世界</div>
+			</a>
+				<div class="actAdd">珠江新城</div>
+				<div class="actTime">09.26&#160;周六&#160;09:30</div>	
+				<div class="actPrice">￥ 120</div>
+				<div class="values valued" onclick="makeConditions('tips.html#651',this)"></div>
+		</div>
+	<div class="the_blank"></div>
+	
+<!-- --------------------- -->
+<!-- --------------------- --
+		<div class="userHeadImg" style="height:4rem;">
+			<img class="imgPortrait" src="./uploads/member/Heineken@yami.COM/55b300c4b73fc.JPG">
+			<div class="userHeadName">HFSam D</div>
+		</div>
+		<a class="actImgLink" href="javascript:void(0);" data-url="">
+			<img width="100%" src="uploads/20151012/561ba6858a844.jpg" alt="Heineken"/>
+			<div class="orderLast">剩余190份</div>
+		</a>
+		<div class="actBottom">
+			 <div class="actTitle" data-url="#">珠江新城珠江新城珠江新城珠江新城</div>
+			 <div class="actAdd">珠江新城</div>
+			 <div class="actTime">09.26&#160;周六&#160;09:30</div>
+			 <div class="clearfix"></div>
+			 <div class="mtags"><span>饭局</span><span>松饼</span><span>糕点</span></div>
+			 <div class="actPrice">198<i>元</i></div>
+		</div>
+	
+	<!-- --------------------- --
+		<div class="the_blank"></div>
+	<!-- --------------------- --
+		<div class="userHeadImg" style="height:4rem;">
+			<img class="imgPortrait" src="./uploads/member/Heineken@yami.COM/55b300c4b73fc.JPG">
+			<div class="userHeadName">HFSam D</div>
+		</div>
+		<a class="actImgLink" href="javascript:void(0);" data-url="">
+			<img width="100%" src="uploads/20151012/561ba6858a844.jpg" alt="Heineken"/>
+			<div class="orderLast">剩余190份</div>
+		</a>
+		<div class="actBottom">
+			 <div class="actTitle" data-url="#">珠江新城珠江新城珠江新城珠江新城</div>
+			 <div class="actAdd">珠江新城</div>
+			 <div class="actTime">09.26&#160;周六&#160;09:30</div>
+			 <div class="clearfix"></div>
+			 <div class="mtags"><span>饭局</span><span>松饼</span><span>糕点</span></div>
+			 <div class="actPrice">198<i>元</i></div>
+		</div>
+	<!-- --------------------- -->	
+</div>
+<!-- ++++++++++++++收藏的活动 结束++++++++++++++ -->
+
+
+<!-- ====================收藏的商品列表===================== -->
+<div class="goodsList" >
+<style>
+.goodsList .orderListRight .orderPrice{font-size:1.5rem;color:#fcd74b;position:absolute;bottom:-0.2rem;left:0;}/*右 时间、邮费等*/
+.goodsList .orderListRight .values{cursor: pointer;position:absolute;display:inline-block;width:2.1rem; height:2rem; background:url('./images/value.png') 0 0 no-repeat;background-size:2rem auto;background-position:left bottom; right:0.5rem; bottom:-0.2rem;}
+.goodsList .orderListRight .valued{background-position:left top;}
+/**************************/
+.daRenInfStyle .values{cursor: pointer;position:absolute;display:inline-block;width:2.1rem; height:2rem; background:url('./images/value.png') 0 0 no-repeat;background-size:2rem auto;background-position:left bottom; left:31.2rem;/*right:0.5rem;*/ bottom:0.3rem;}
+.daRenInfStyle .valued{background-position:left top;}
+
+</style>
+	<a href="goodsDetail.html#651">
+		<div class="orderListLeft">
+			<!--<div class="orderTypeBg"></div>
+			<div class="orderType">饭局</div>-->
+			<img width=100% height=100% src="uploads/20151012/1.jpg">
+		</div>
+	</a>	
+		<div class="orderListRight">
+			<a href="goodsDetail.html#651">
+				<div class="orderTitle">综合咖啡体验，新手之选，走进咖啡的世界</div>
+			</a>	
+				<div class="orderPrice">￥ 120</div>
+				<div class="values valued" onclick="makeConditions('goodsDetail.html#651',this)"></div>
+		</div>
+	<div class="the_blank"></div>
+	
+	
+	<a href="goodsDetail.html#6512">
+		<div class="orderListLeft">
+<!--			<div class="orderTypeBg"></div>
+			<div class="orderType">饭局</div>-->
+			<img width=100% height=100% src="uploads/20151012/1.jpg">
+		</div>
+	</a>	
+		<div class="orderListRight">
+			<a href="goodsDetail.html#6512">
+				<div class="orderTitle">综合咖啡体验，新手之选，走进咖啡的世界</div>
+			</a>	
+				<div class="orderPrice">￥ 120</div>
+				<div class="values" onclick="makeConditions('goodsDetail.html#6512',this)"></div>
+		</div>
+	<div class="the_blank"></div>
+	
+</div>
+
+<!-- ===================收藏的商品列表 结束================== -->
+
+<!-- ********************收藏的达人******************** -->
+<div class="daRenList">
+
+	
+	<div class="daRenInfStyle">
+	<a href="daRen.html#1">
+		<div class="daRenPic"><img class="imgPortrait" src="./uploads/member/Heineken@yami.COM/55b300c4b73fc.JPG"></div>
+		<div class="daRenInf">
+			<div class="daRenName">Fragment</div>
+			<div class="daRenActInf">
+				<span>广州</span><i></i><span>5.0 星达人</span><i></i><span>22场活动</span>
+			</div>
+		</div>
+	</a>
+		<div class="values" onclick="makeConditions('daRen.html#1',this)"></div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="the_blank"></div>
+	
+	<div class="daRenInfStyle">
+	<a href="daRen.html#132">
+		<div class="daRenPic"><img class="imgPortrait" src="./uploads/member/Heineken@yami.COM/55b300c4b73fc.JPG"></div>
+		<div class="daRenInf">
+			<div class="daRenName">Fragment</div>
+			<div class="daRenActInf">
+				<span>广州</span><i></i><span>5.0 星达人</span><i></i><span>22场活动</span>
+			</div>
+		</div>
+	</a>
+		<div class="values" onclick="makeConditions('daRen.html#132',this)"></div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="the_blank"></div>
+	
+</div>
+<!-- ******************收藏的达人结束******************* -->
+<script>
+whichToshow(0);
+</script>
+<div class="the_end"></div><!-- 页面结尾 -->
+</body>
+</html>

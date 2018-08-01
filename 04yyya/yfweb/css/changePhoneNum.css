@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.header .wanc{display: inline-block; position: absolute; right: 1.5rem;top: 0; color:#888888; font-size:1.7rem;line-height: 4.5rem;}
+/*.content{background:#ccc;height:100%;padding:2rem 0;}
+/***********************************************/
+.page_changePhoneNum{background:#ffffff;}
+.page_changePhoneNum .verificationLogin { padding-top:2rem;background:#fff;width:100%; border-top:0.12rem solid #b2b2b2;}
+.page_changePhoneNum .verificationLogin .liBetweens{height:0.1rem; background:#e0e0e0; margin:0rem 1.5rem;}
+.page_changePhoneNum .verificationLogin div{font-size:1.5rem;color:#aaa;display:block;height:6rem; line-height:6rem;  padding-left:1.5rem; position:relative;}
+.page_changePhoneNum .verificationLogin div:before {content:''; width:1.6rem; height:1.6rem; left:1.8rem;/*background:url('./images/ucenter_menu_icons.png') 0 0 no-repeat;*/background-size:1.6rem auto; position:absolute; top:1.3rem; }
+.page_changePhoneNum .verificationLogin div input{font-size:1.5rem; color:#333333; width:20rem; height:2.6rem; border:none;}
+.page_changePhoneNum .verificationLogin div.list2 span{font-size:1.4rem;color:#333333;display:line-block;float:right;margin-right:1.5rem;/*padding-left:1rem;border-left:0.1rem solid #fcd74b;*/}
+/*********************************/
+
+.page_changePhoneNum input::-moz-placeholder {
+    color: #999;
+}
+
+
+
+/***********结束************/

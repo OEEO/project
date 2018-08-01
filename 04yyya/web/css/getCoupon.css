@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+/******************************/
+.page_getCoupon .content {background:#EFEFEB url(../images/k11_logo.png) no-repeat 0 0 / 36rem auto; min-height: 100%; box-sizing: border-box; padding-top: 20rem;padding-bottom: 1rem; display: none;}
+.page_getCoupon .page1 .title {font-size: 2rem; font-weight: bold; color:#A7844C; text-align: center;}
+.page_getCoupon .page1 .text {font-size: 1.5rem; margin: 2rem 3rem; color:#525252; line-height: 2.5rem; text-align: center;}
+.page_getCoupon .page1 button {width: 17rem; height:4.5rem; background: url(../images/k11_button.png) no-repeat 0.3rem 0.4rem / 16.5rem 4rem; font-size: 1.8rem; border: none; color: #fff;}
+.page_getCoupon .page1 .bottom {height: 9rem; background: url(../images/k11_bottom.png) no-repeat bottom center / 12rem auto; text-align: center; margin-top: 3rem;}
+
+.page_getCoupon .qrcode {background: #fff; display: none; width: 20rem; height:22.5rem; overflow: hidden; position: absolute; left:8rem; top:50%; margin-top: -11rem; border-radius: 0.2rem; box-shadow: 0 0 10rem rgba(0,0,0,0.5);}
+.page_getCoupon .qrcode img {width:20rem;}
+.page_getCoupon .qrcode p {margin: 0; padding: 0; line-height: 2.5rem; text-align: center; font-size: 1.3rem;}
+
+.page_getCoupon .page2 {font-size:1.8rem; color:#A7844C; text-align: center;}
+.page_getCoupon .page2 .coupons {margin:0.8rem 2rem; text-align: right;}
+.page_getCoupon .page2 .coupons .item {height:7.2rem; box-sizing: border-box; padding: 1rem 1.5rem; color:#A7844C; background:url(../images/k11_bg.png) no-repeat 0 0 / 32rem 7.2rem; margin-top: 1rem;}
+.page_getCoupon .page2 .coupons .item .left {float: left; font-size: 1.5rem; line-height: 2.6rem; text-align: left;}
+.page_getCoupon .page2 .coupons .item .right {float: right; font-size:3.6rem; line-height: 5rem;}
+.page_getCoupon .page2 .coupons button {border: none; width:18rem; height:4rem; background: url(../images/k11_button.png) no-repeat 0 0 / 18rem 4rem; color:#fff; font-size:1.8rem;margin: 1rem 0;}
+.page_getCoupon .page2 .ps {font-size:1.2rem; color:#999; margin: 2rem 3.6rem;}
+.page_getCoupon .page2 .bottom {height: 5rem; background: url(../images/k11_bottom.png) no-repeat top center / 14rem auto; text-align: center; margin-top: 3rem; padding-top:5rem;font-size: 1.2rem;color: #999;}
+
+/*******饭局列表*******/
+.page_getCoupon .page2 .pro_list{display:block;}
+.page_getCoupon .page2 .pro_list .ac_title{width:36rem; height:5rem; line-height:2.2rem; text-align:center; font-size:1.4rem; color:#333;}
+.page_getCoupon .page2 .pro_list .ac_title small {color:#ccc;}
+.page_getCoupon .page2 .pro_list>ul{width:100%;}
+.page_getCoupon .page2 .pro_list>ul>li{width:92%; margin:1rem 4% 2.8rem 4%;}
+.page_getCoupon .page2 .pro_list .pro_top{width:100%; line-height:2rem; text-align:left; color:#333333; margin-bottom:1rem;}
+.page_getCoupon .page2 .pro_list .pro_bottom{width:100%; height:8.8rem; background-color:#fff; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-shadow:0.2rem 0.2rem 0.2rem #eee;}
+.page_getCoupon .page2 .pro_list .pro_bottom .ac_img{width:13.5rem;height:8.8rem; border:none;}
+.page_getCoupon .page2 .pro_list .pro_bottom .ac_img img{width:100%; height:100%;}
+
+.page_getCoupon .page2 .pro_list .pro_bottom .ac_title{width:19.6rem;height:8.8rem;}
+.page_getCoupon .page2 .pro_list .pro_bottom .ac_title .ac_t{width:18.6rem; line-height:2rem; font-size:1.3rem; color:#333; padding-top:0.6rem; text-align:left; padding-left:0.7rem; padding-right:0.3rem;}
+.page_getCoupon .page2 .pro_list .pro_bottom .ac_title .ac_p{width:17.5rem; text-align:left; color:#462E2E; font-size:1.1rem; padding-left:2.1rem; line-height:2rem; margin-top:1.5rem; position:relative; letter-spacing:0rem;}
+.page_getCoupon .page2 .pro_list .pro_bottom .ac_title .ac_p span{display:inline-block; color:#FF9A00; font-size:1.2rem; line-height:2rem; position:absolute; right:1.2rem; top:0.1rem;}
+.page_getCoupon .page2 .pro_list .pro_bottom .ac_title .ac_p .ad{ max-width:11rem; overflow:hidden;}
+.page_getCoupon .page2 .pro_list .pro_bottom .ac_title .ac_p:before{content:''; position:absolute; top:0.45rem; left:0.8rem; width:1rem; height:1.2rem; background:no-repeat url('../images/topics_add_icon@3x.png') 0 0 / 1rem 1.2rem;}
+
+.page_getCoupon .page2 .pro_list .the_end {text-align: center;}
+.page_getCoupon .page2 .pro_list .the_end button {width:18rem; height:3rem; border:none; background: #980c10; color:#fff; border-radius: 0.2rem; margin: 1rem; font-size:1.4rem;}
+
+
+/***********结束************/

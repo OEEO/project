@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>美好日常的一万种可能</title>
+    <link href="css/crowdfunding.css?v=1.2&t=1511258170535" rel="stylesheet" />
+    <script type="text/javascript" src="../js/plugins/jquery.min.js"></script>
+    <!--<script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>-->
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+    <script src="js/public.js?v=1.1&t=1511258170535"></script>
+    <script src="https://hm.baidu.com/hm.js?783716691e606db0c3dd11a238224da2"></script>
+    <script src="js/crazyload.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        _hmt.push(['_trackPageview', 'http://yummy194.cn/h5/yami-crowdfunding.html#webbanner']);
+        var datas = {
+            title : '美好日常的一万种可能',
+            des : '你有梦想，从未像今天一样触手可及',
+            link : 'http://yummy194.cn/h5/yami-crowdfunding.html?#apptheme',
+            image : 'http://img.yummy194.cn/20170719/10a83c5ea56dceee7874a82c461fb982b383bee1.jpg'
+        };
+    </script>
+</head>
+<body>
+<div class="div">
+    <img src="img/crowdfunding/yami-1-1.jpg" data-crazy="img/crowdfunding/yami-1.jpg" alt="1" />
+</div>
+<div class="div a">
+    <img src="img/crowdfunding/2018-05-23-yami-01.jpg" alt="1" />
+    <a href="http://yummy194.cn/?page=raiseDetail&raise_id=81" class="one">查看项目</a>
+</div>
+<div class="div b">
+    <img src="img/crowdfunding/2018-05-23-yami-02.jpg" alt="1" />
+    <a href="http://yummy194.cn/?page=raiseDetail&raise_id=75" class="one">查看项目</a>
+</div>
+<div class="div c">
+    <img src="img/crowdfunding/2018-05-23-yami-03.jpg" alt="1" />
+    <a href="http://yummy194.cn/?page=raiseDetail&raise_id=69" class="one">查看项目</a>
+</div>
+<div class="div d">
+    <img src="img/crowdfunding/2018-05-23-yami-04.jpg" alt="1" />
+    <a href="http://yummy194.cn/?page=raiseDetail&raise_id=62" class="one">查看项目</a>
+</div>
+<div class="div e">
+    <img src="img/crowdfunding/2018-05-23-yami-05.jpg" alt="1" />
+    <a href="http://yummy194.cn/?page=raiseDetail&raise_id=51" class="one">查看项目</a>
+</div>
+<div class="div f">
+    <img src="img/crowdfunding/2018-05-23-yami-06.jpg" alt="1" />
+    <a href="http://yummy194.cn/?page=raiseDetail&raise_id=41" class="one">查看项目</a>
+</div>
+<div class="div g">
+    <img src="img/crowdfunding/2018-05-23-yami-07.jpg" alt="1" />
+    <a href="http://yummy194.cn/?page=raiseDetail&raise_id=32" class="one">查看项目</a>
+</div>
+<div class="div bottom">
+    <p class="bottom-text1">如果你已经开启自己的梦想故事，<br>
+    请别犹豫，立刻联系我们~<br>
+来共同实现美好日常的一万种可能！</p>
+    <a href="http://cn.mikecrm.com/rnkkVVt" class="two" id="crowdfunding">发起众筹</a>
+    <p class="bottom-text2">吖咪众筹<br>
+    美好日常的一万种可能</p>
+</div>
+</body>
+<script>
+    crazyload.init();
+    $(document).ready(function () {
+        $('#pre').click(function () {
+            alert('即将上线，敬请期待');
+        });
+    });
+
+    $(document).ready(function() {
+
+        wx.miniProgram.getEnv(function(res) {
+            if (res.miniprogram) {
+                //当前环境为小程序时
+                //跳转至小程序的相应页面
+                $('.one').click(function(e) {
+                    e.preventDefault();
+                    var raise_id = e.target.href.split('raise_id=')[1];
+                    wx.miniProgram.navigateTo({
+                          url: '/pages/raise/detail?raise_id=' + raise_id
+                    });
+                });
+                //阻击发起众筹按扭跳转
+                $('#crowdfunding').click(function(e) {
+                    e.preventDefault();
+                });
+            }
+        });
+
+    });
+</script>
+</html>

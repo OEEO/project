@@ -1,0 +1,32 @@
+<scroll-view scroll-y="true" class="awrapper" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+    <view class="pro_list">
+    <view class="product_list">
+    <block wx:for="{{tipsData}}" wx:key="activitied">
+      <view class="product_item">
+        <view class="pro_center">
+          <view class="span">{{item.catname}}</view>
+          <block wx:if="{{is_overdue == 0}}">
+            <view wx:if="{{item.sellout==1}}" class="sellout"><image src ="http://img.yummy194.cn/images/sellout.png" /></view>
+            <navigator url="../tips/detail?tips_id={{item.id}}">
+              <image src="{{item.mainpic}}"/>
+            </navigator>
+          </block>
+          <block wx:else>
+              <image src="{{item.mainpic}}"/>
+          </block>
+        </view>
+        <view class="pro_title">
+          <view class="span title_left">{{item.title}}</view>
+          <view class="span price_right">￥{{item.price}}/份</view>
+        </view>
+        <view class="pro_buttom">
+          <view wx:if="{{is_overdue == 0}}" class="span pro_time">{{item.start_time}}-{{item.end_time}}</view>
+          <view wx:else class="span pro_time">已完结</view>
+          <view class="span pro_adress">{{item.address}}</view>
+        </view>
+      </view>
+      <view class="the_blank"></view>
+    </block>
+    </view>
+  </view>
+</scroll-view>

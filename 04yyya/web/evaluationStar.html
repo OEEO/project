@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/evaluationStar.css">
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/evaluationStar.js"></script>
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">评价</div>
+	<div class="orderOperation" onclick="javascript:evaluationStarObject.submit();">提交</div>
+</div>
+
+<div class="content">
+	<div class="item">评分:</div>
+	<div class="stars"></div>
+	<textarea class="detailWords" placeholder="长度在1-500字之间,写下购买体会或使用过程中带来的帮助,可以为其它小伙伴提供参考～"></textarea>
+	<ul class="addImgs">
+		<li class="btn"></li>
+	</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,779 @@
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=B6JBZ-JLVK4-QFCUC-DFNRG-PBIP7-OTFAJ"></script>
+<!--加载文本编辑器组件-->
+<link href="__RS__/css/DeanEditor.css" rel="stylesheet">
+<script src="__RS__/js/DeanEditor.js" type="text/javascript"></script>
+<!--加载文本编辑器组件-->
+<div class="tips_add_content" style="display: flex !important;">
+    <div class="view">
+        <iframe name="viewBox"></iframe>
+    </div>
+    <form name="addRaiseForm" class="am-form editerBox">
+        <div class="am-tabs am-margin" data-am-tabs="{noSwipe: 1}">
+            <ul class="am-tabs-nav am-nav am-nav-tabs" id="menu_tile">
+                <li class="am-active"><a href="#tab1">基本信息</a></li>
+                <li><a href="#tab2">选择回报</a></li>
+                <li><a href="#tab3" name="title_1">我的自述</a></li>
+                <li><a href="#tab4" name="title_2">我的项目</a></li>
+                <li><a href="#tab5" name="title_3">为何众筹</a></li>
+                <li><a href="#tab6" name="title_4">我的回报</a></li>
+                <li><a href="#tab7" name="title_5">详情进度</a></li>
+            </ul>
+
+            <div class="am-tabs-bd">
+                <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">是否公开</div>
+                        <div class="am-u-sm-10 is_public">
+                            <div class="am-btn-group" data-am-button>
+                                <label class="am-btn am-btn-default am-btn-xs <?php if($data['is_public'])echo ' am-active';?>">
+                                    <input type="radio" name="is_public" value="1"> 公开
+                                </label>
+                                <label class="am-btn am-btn-default am-btn-xs <?php if(!$data['is_public'])echo ' am-active';?>">
+                                    <input type="radio" name="is_public" value="0"> 非公开
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">所属类别</div>
+                        <div class="am-u-sm-3">
+                            <select name="category_id">
+                                <foreach name="categorys" item="row">
+                                    <option value="{$row.id}"<?php if($row['id'] == $data['category_id'])echo ' selected'?>>{$row.name}</option>
+                                </foreach>
+                            </select>
+                        </div>
+                        <div class="am-u-sm-7"></div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            众筹标题
+                        </div>
+                        <div class="am-u-sm-4">
+                            <input type="text" name="title" class="am-input-sm" value="{$data.title}">
+                        </div>
+                        <div class="am-u-sm-6">*必填，不可重复</div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+
+                        <div class="am-u-sm-2 am-text-right">
+                            众筹总金额
+                        </div>
+                        <div class="am-u-sm-4 total">
+                            <input type="text" name="total" class="am-input-sm am-text-center" value="{$data.total}"  onkeyup="checkDecimal(this)" >
+                        </div>
+                        <div class="am-u-sm-6">*必填，必填写数字</div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">众筹标签</div>
+                        <div class="am-u-sm-6 tags">
+                            <div class="am-btn-group" data-am-button>
+                                <foreach name="tags" item="row">
+                                <label class="am-btn am-btn-default am-btn-xs<?php if(in_array($row['id'], $data['tags']))echo ' am-active';?>">
+                                    <input type="checkbox" name="tags[]" value="{$row.id}"> {$row.name}
+                                </label>
+                                </foreach>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-4">最多可以选择3个</div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            众筹时间
+                        </div>
+                        <div class="am-u-sm-10 raise_time_area">
+                            <table class="timesTable">
+                                <thead>
+                                <tr>
+                                    <th>开始时间</th>
+                                    <th>结束时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><input style="width:200px" type="text" name="start_time" value="<?=date('Y-m-d H:i', $data['start_time'])?>" data-date-format="yyyy-mm-dd hh:ii"></td>
+                                    <td><input style="width:200px" type="text" name="end_time" value="<?=date('Y-m-d H:i', $data['end_time'])?>" data-date-format="yyyy-mm-dd hh:ii"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            众筹简介(限制100个文字)
+                        </div>
+                        <div class="am-u-sm-10 raise_introduction">
+                            <!--<textarea name="raise_introduction" rows="5"  wrap="physical" cols="2" onKeyDown="textCounter(this.form.raise_introduction,$('.limit_font'),100);" onKeyUp="textCounter(this.form.raise_introduction,$('.limit_font'),100);">{$data.introduction}</textarea>-->
+                            <!--<br/>-->
+                            <!--您还可以输入<font color="red" class="limit_font">100</font>个字符-->
+                            <textarea name="raise_introduction" rows="5"  wrap="physical" cols="2" >{$data.introduction}</textarea>
+
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            活动主图
+                            <small style="display: block; margin-top: 20px; text-align: right; color:#999;">只能上传一张</small>
+                            <small style="display: block; margin-top: 20px; text-align: right; color:#999;">*注: 尺寸限制 640*420 (px)</small>
+                        </div>
+                        <div class="am-u-sm-10 pics raise_pics">
+
+                            <?php if($data.pic_id ==''): ?>
+                            <a href="javascript:void(0);" class="add" onclick="Uplodepic(this)">+</a>
+                            <?php else:?>
+                            <span>
+                                <img src="{$data.path}" data="{$data.pic_id}" id="raise_pic_show" onclick="imgEnlarge(this)">
+                                <a onclick="removePic(this)" href="javascript:void(0);">×</a>
+                            </span>
+
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-tab-panel am-fade" id="tab2">
+                    <div class="raise_area_div">
+
+                        <div class="am-g am-margin-top" >
+                            <div class="am-u-sm-12" style="font-size: 14px;"><font color="red" style="font-size: 16px;"> 注意：</font><br/>
+                                <p style="text-indent:2em;"><font color="red" style="font-size: 16px;">1、</font>筛选人数不能大于限制库存,否则会默认限制库存数为筛选人数</p>
+                                <p style="text-indent:2em;"><font color="red" style="font-size: 16px;">2、</font>类目的金额分为全额和预付，<font color="red"> 如是预付类型，请勾选复选框，输入价格，如是全额，则取消勾选复选框</font></p>
+                                <p style="text-indent:2em;"><font color="red" style="font-size: 16px;">3、</font>(1)限制库存：不能超出这个数 &nbsp;&nbsp;(2)不限定库存：不限制，在时间结束之前可随意购买。</p>
+                                <p style="text-indent:2em;"><font color="red" style="font-size: 16px;">4、</font>限购：0为不限购</p>
+                                <p style="text-indent:2em;"><font color="red" style="font-size: 16px;">5、</font>简介请不要输入HTML语句</p>
+                                <p style="text-indent:2em;"><font color="red" style="font-size: 16px;">6、</font>库存类型修改：在没有下过单的情况下修改可保存数据，但如果下过单的档位，不能更改库存类型。<font color="red">新增类目时，要注意开始时间，如果众筹已开始，库存会为已售罄状态</font> </p>
+                            </div>
+                        </div>
+                        <?php if(empty($data['raise_times'])):?>
+
+                        <div class="am-gallery-item raise_times_area item_0" style="width: 100%; border: 1px solid #dbdbdb; border-bottom: none; padding: 20px 0rem;">
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">
+                                    选择回报标题
+                                </div>
+                                <div class="am-u-sm-10 item-input raise_time_title">
+                                    <input type="hidden" name="raise_times_id">
+                                    <input type="text" name="raise_times_title" class="am-input-sm am-text-left" >
+                                </div>
+                            </div>
+                            <!--<div class="am-g am-margin-top">-->
+                                <!--<div class="am-u-sm-2 am-text-right">是否填写地址</div>-->
+                                <!--<div class="am-u-sm-4 is_address">-->
+                                    <!--<select  class="am-input-sm" name="is_address" >-->
+                                        <!--<option value="0">否</option>-->
+                                        <!--<option value="1" selected="selected" >是</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <!--<div class="am-u-sm-2 am-text-right">是否可以购买</div>-->
+                                <!--<div class="am-u-sm-4 is_buy">-->
+                                    <!--<select  class="am-input-sm" name="is_buy" >-->
+                                        <!--<option value="0">不可以</option>-->
+                                        <!--<option value="1"  selected="selected" >可以</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">是否填写地址</div>
+                                <div class="am-u-sm-10 is_address">
+                                    <div class="am-btn-group" data-am-button>
+                                        <label class="am-btn am-btn-default am-btn-xs am-active">
+                                            <input type="radio" name="is_address" value="1"> 填写
+                                        </label>
+                                        <label class="am-btn am-btn-default am-btn-xs">
+                                            <input type="radio" name="is_address" value="0"> 不填写
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">是否可以购买</div>
+                                <div class="am-u-sm-10 is_buy">
+                                    <div class="am-btn-group" data-am-button>
+                                        <label class="am-btn am-btn-default am-btn-xs am-active">
+                                            <input type="radio" name="is_buy" value="1"> 可以
+                                        </label>
+                                        <label class="am-btn am-btn-default am-btn-xs">
+                                            <input type="radio" name="is_buy" value="0"> 不可以
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">是否需要实名认证</div>
+                                <div class="am-u-sm-10 is_realname">
+                                    <div class="am-btn-group" data-am-button>
+                                        <label class="am-btn am-btn-default am-btn-xs am-active">
+                                            <input type="radio" name="is_realname" value="1"> 需要
+                                        </label>
+                                        <label class="am-btn am-btn-default am-btn-xs">
+                                            <input type="radio" name="is_realname" value="0"> 不需要
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">筛选数</div>
+                                <div class="am-u-sm-4 item-input raise_times_screen_num">
+                                    <input type="text" name="raise_times_screen_num" class="am-input-sm am-text-center" value="" >
+                                </div>
+                                <div class="am-u-sm-6 send_day">
+                                    <span>项目结束</span><input type="text" name="raise_times_send_day" class="am-input-sm am-text-center" value=""  onkeyup="checkDecimal(this)" style="width: 36px; display: inline;"><span>天后发送</span>
+                                </div>
+                            </div>
+
+                            <div class="am-g am-margin-top price_0">
+                                <div class="am-u-sm-2 am-text-right">类目单价</div>
+                                <div class="am-u-sm-2 item-input raise_times_price">
+                                    <input type="text" name="raise_times_price" class="am-input-sm am-text-center" value=""  onkeyup="checkDecimal(this)">
+                                </div>
+                                <div class="am-u-sm-2 am-text-right"><input type="checkbox" class="select_prepay"  onclick="selectPrepay(0,this)"  class="am-input-sm am-text-center">预付金额</div>
+                                <div class="am-u-sm-2 item-input raise_times_prepay">
+                                    <input type="text" name="raise_times_prepay" class="am-input-sm am-text-center" value=""  onkeyup="checkDecimal(this)">
+                                </div>
+                                <div class="am-u-sm-2 am-text-right">每人限购</div>
+                                <div class="am-u-sm-2 item-input raise_times_limit_num">
+                                    <input type="text" name="raise_times_limit_num" class="am-input-sm am-text-center" value="" placeholder="无限" >
+                                </div>
+                            </div>
+
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">目标库存</div>
+                                <div class="am-u-sm-3">
+                                    <select  class="am-input-sm" name="stock_type" >
+                                        <option value="0">请选择</option>
+                                        <!--<option value="1">定额库存</option>-->
+                                        <option value="2">限制库存</option>
+                                        <option value="3">不限定库存</option>
+                                    </select>
+                                </div>
+                                <div class="am-u-sm-4 item-input raise_times_stock">
+                                    <input type="text" name="raise_times_stock" class="am-input-sm am-text-center" value=""  onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                                </div>
+                                <div class="am-u-sm-3">&nbsp;</div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">
+                                    简介
+                                </div>
+                                <div class="am-u-sm-10 item-input raise_times_content">
+                                    <textarea name="raise_times_content" rows="5" rel="7"></textarea>
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right"></div>
+                                <div class="am-u-sm-10">
+                                    <p><button type="button" class="am-btn am-btn-xs addBtn am-btn-default" onclick="$(this).parent().parent().parent().parent().remove()">移除</button></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php else:?>
+                        <foreach name="data.raise_times" item="row" key="key">
+                        <div class="am-gallery-item raise_times_area item_{$key}" style="width: 100%; border: 1px solid #dbdbdb; border-bottom: none; padding: 20px 0rem;">
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">
+                                    类目标题
+                                </div>
+                                <div class="am-u-sm-10 item-input raise_time_title">
+                                    <input type="hidden" name="raise_times_id" value="{$row.id}">
+                                    <input type="text" name="raise_times_title" class="am-input-sm am-text-left" value="{$row.title}">
+                                </div>
+                            </div>
+                            <!--<div class="am-g am-margin-top">-->
+                                <!--<div class="am-u-sm-2 am-text-right">是否填写地址</div>-->
+                                <!--<div class="am-u-sm-4 is_address">-->
+                                    <!--<select  class="am-input-sm" name="is_address" >-->
+                                        <!--<option value="0" <?php if($row['is_address'] == 0 && $row['is_address'] != ''): ?> selected="selected" <?php endif; ?>>否</option>-->
+                                        <!--<option value="1" <?php if($row['is_address'] == 1): ?> selected="selected" <?php endif; ?>>是</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <!--<div class="am-u-sm-2 am-text-right">是否可以购买</div>-->
+                                <!--<div class="am-u-sm-4 is_buy">-->
+                                    <!--<select  class="am-input-sm" name="is_buy" >-->
+                                        <!--<option value="0" <?php if($row['is_buy'] == 0 && $row['is_buy'] != ''): ?> selected="selected" <?php endif; ?>>不可以</option>-->
+                                        <!--<option value="1" <?php if($row['is_buy'] == 1): ?> selected="selected" <?php endif; ?>>可以</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">是否填写地址</div>
+                                <div class="am-u-sm-10 is_address">
+                                    <div class="am-btn-group" data-am-button>
+                                        <label class="am-btn am-btn-default am-btn-xs<?php if($row['is_address'])echo ' am-active';?>">
+                                            <input type="radio" name="is_address" value="1"> 填写
+                                        </label>
+                                        <label class="am-btn am-btn-default am-btn-xs<?php if(!$row['is_address'])echo ' am-active';?>">
+                                            <input type="radio" name="is_address" value="0"> 不填写
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">是否可以购买</div>
+                                <div class="am-u-sm-10 is_buy">
+                                    <div class="am-btn-group" data-am-button>
+                                        <label class="am-btn am-btn-default am-btn-xs<?php if($row['is_buy'])echo ' am-active';?>">
+                                            <input type="radio" name="is_buy" value="1"> 可以
+                                        </label>
+                                        <label class="am-btn am-btn-default am-btn-xs<?php if(!$row['is_buy'])echo ' am-active';?>">
+                                            <input type="radio" name="is_buy" value="0"> 不可以
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">是否需要实名认证</div>
+                                <div class="am-u-sm-10 is_realname">
+                                    <div class="am-btn-group" data-am-button>
+                                        <label class="am-btn am-btn-default am-btn-xs<?php if($row['is_realname'])echo ' am-active';?>">
+                                            <input type="radio" name="is_realname" value="1"> 需要
+                                        </label>
+                                        <label class="am-btn am-btn-default am-btn-xs<?php if(!$row['is_realname'])echo ' am-active';?>">
+                                            <input type="radio" name="is_realname" value="0"> 不需要
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">是否付费抽奖</div>
+                                <div class="am-u-sm-10 times_type">
+                                    <div class="am-btn-group" data-am-button>
+                                        <label class="am-btn am-btn-default am-btn-xs<?php if($row['type']=='1')echo ' am-active';?>">
+                                            <input type="radio" name="times_type" value="1"> 可以
+                                        </label>
+                                        <label class="am-btn am-btn-default am-btn-xs<?php if($row['type']=='0')echo ' am-active';?>">
+                                            <input type="radio" name="times_type" value="0"> 不可以
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">是否App专属(分享抽奖)</div>
+                                <div class="am-u-sm-10 is_free">
+                                    <div class="am-btn-group" data-am-button>
+                                        <label class="am-btn am-btn-default am-btn-xs<?php if($row['is_free']=='1')echo ' am-active';?>">
+                                            <input type="radio" name="is_free" value="1"> 是
+                                        </label>
+                                        <label class="am-btn am-btn-default am-btn-xs<?php if($row['is_free']=='0')echo ' am-active';?>">
+                                            <input type="radio" name="is_free" value="0"> 不是
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">筛选数</div>
+                                <div class="am-u-sm-4 item-input raise_times_screen_num">
+                                    <input type="text" name="raise_times_screen_num" class="am-input-sm am-text-center" value="{$row.screen_num}" >
+                                </div>
+                                <div class="am-u-sm-6 send_day">
+                                    <span>项目结束</span><input type="text" name="raise_times_send_day" class="am-input-sm am-text-center" value="{$row.send_day}"  onkeyup="checkDecimal(this)" style="width: 36px; display: inline;"><span>天后发送</span>
+                                </div>
+                            </div>
+
+                            <div class="am-g am-margin-top price_{$key}">
+                                <div class="am-u-sm-2 am-text-right">类目单价</div>
+
+                                <div class="am-u-sm-2 item-input raise_times_price">
+                                    <input type="text" name="raise_times_price" class="am-input-sm am-text-center" value="{$row.price}"  onkeyup="checkDecimal(this)">
+                                </div>
+                                <div class="am-u-sm-2 am-text-right"><input type="checkbox" name="select_prepay"  onclick="selectPrepay({$key},this)"  class="am-input-sm am-text-center" <?php if($row['prepay']>0): ?> checked="checked" <?php endif; ?>>预付金额</div>
+                                <div class="am-u-sm-2 item-input raise_times_prepay">
+                                    <input type="text" name="raise_times_prepay" class="am-input-sm am-text-center" <?php if($row['prepay']<=0): ?> readonly="readonly" <?php endif; ?>  value="{$row.prepay}"  onkeyup="checkDecimal(this)">
+                                </div>
+                                <div class="am-u-sm-2 am-text-right">每人限购</div>
+                                <div class="am-u-sm-2 item-input raise_times_limit_num">
+                                    <input type="text" name="raise_times_limit_num" class="am-input-sm am-text-center" value="{$row.limit_num}" placeholder="无限">
+                                </div>
+                            </div>
+
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">目标库存</div>
+                                <div class="am-u-sm-3">
+                                    <select  class="am-input-sm" name="stock_type" >
+                                        <option value="0" <?php if($row['stock_type'] == 0 && $row['stock_type'] != ''): ?> selected="selected" <?php endif; ?>>请选择</option>
+                                        <!--<option value="1" <?php if($row['stock_type'] === 1): ?> selected="selected" <?php endif; ?>>定额库存</option>-->
+                                        <option value="2" <?php if($row['stock_type'] == 2): ?> selected="selected" <?php endif; ?>>限制库存</option>
+                                        <option value="3" <?php if($row['stock_type'] == 3): ?> selected="selected" <?php endif; ?> >不限制库存</option>
+                                    </select>
+                                </div>
+                                <div class="am-u-sm-4 item-input raise_times_stock">
+                                    <input type="text" name="raise_times_stock_num" class="am-input-sm am-text-center" value="{$row.quota}"  onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                                </div>
+                                <div class="am-u-sm-3">&nbsp;</div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">
+                                    类目简介
+                                </div>
+                                <div class="am-u-sm-10 item-input raise_times_content">
+                                    <textarea name="raise_times_content"  rows="5" rel="7">{$row.content}</textarea>
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right"></div>
+                                <div class="am-u-sm-10">
+                                    <p><button type="button" class="am-btn am-btn-xs addBtn am-btn-default" onclick="$(this).parent().parent().parent().parent().remove()">移除</button></p>
+                                </div>
+                            </div>
+                        </div>
+                        </foreach>
+                        <?php endif; ?>
+                    </div>
+                    <div class="am-g am-margin-top raise_area">
+                        <div class="am-u-sm-2 am-text-right"></div>
+                        <div class="am-u-sm-10">
+                            <p><button type="button" class="am-btn am-btn-xs addBtn am-btn-default" onclick="addRaisearea()">+ 增加 +</button></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-tab-panel am-fade" id="tab3">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">副标题：</div>
+                        <div class="am-u-sm-10">
+                            <input type="text" class="am-input-sm am-text-left" name="pidTitle_1" >
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">内容：</div>
+                        <div class="am-u-sm-10">
+                            <textarea name="content_1"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-tab-panel am-fade" id="tab4">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">副标题：</div>
+                        <div class="am-u-sm-10">
+                            <input type="text" class="am-input-sm am-text-left" name="pidTitle_2" >
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">内容：</div>
+                        <div class="am-u-sm-10">
+                            <textarea name="content_2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-tab-panel am-fade" id="tab5">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">副标题：</div>
+                        <div class="am-u-sm-10">
+                            <input type="text" class="am-input-sm am-text-left" name="pidTitle_3" >
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">内容：</div>
+                        <div class="am-u-sm-10">
+                            <textarea name="content_3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-tab-panel am-fade" id="tab6">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">副标题：</div>
+                        <div class="am-u-sm-10">
+                            <input type="text" class="am-input-sm am-text-left" name="pidTitle_4" >
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">内容：</div>
+                        <div class="am-u-sm-10">
+                            <textarea name="content_4"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-tab-panel am-fade" id="tab7">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">副标题：</div>
+                        <div class="am-u-sm-10">
+                            <input type="text" class="am-input-sm am-text-left" name="pidTitle_5" >
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">内容：</div>
+                        <div class="am-u-sm-10">
+                            <textarea name="content_5"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div id="Content" style="display: none">{$data.content}</div>
+            </div>
+        </div>
+
+        <div class="am-margin">
+            <button type="button" class="am-btn am-btn-success am-btn-sm" onclick="saveAndView()">保存并预览</button>
+            <!--<button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="tips_submit()">提交审核</button>-->
+            <button type="button" class="am-btn am-btn-default am-btn-xs" onclick="location.href='__CONTROLLER__/index.html'">返回</button>
+        </div>
+    </form>
+    <div style="clear:both;"></div>
+</div>
+
+<script type="text/javascript">
+    var member_id = '{$data.member_id}';
+    var raise_id = '{$data.id}';
+
+    $('.view iframe').attr('src', 'http://<?=WEB_DOMAIN?>/?page=raiseDetail&raise_id=' + raise_id);
+
+    $('.raise_time_area [data-date-format="yyyy-mm-dd hh:ii"]').datetimepicker();
+
+    var webEditor_1 = new DeanEditor({
+        em : 'textarea[name="content_1"]',
+        uploadURL : 'upload.html'
+    });
+    var webEditor_2 = new DeanEditor({
+        em : 'textarea[name="content_2"]',
+        uploadURL : 'upload.html'
+    });
+    var webEditor_3 = new DeanEditor({
+        em : 'textarea[name="content_3"]',
+        uploadURL : 'upload.html'
+    });
+    var webEditor_4 = new DeanEditor({
+        em : 'textarea[name="content_4"]',
+        uploadURL : 'upload.html'
+    });
+    var webEditor_5 = new DeanEditor({
+        em : 'textarea[name="content_5"]',
+        uploadURL : 'upload.html'
+    });
+
+    var webEditor = ['',webEditor_1, webEditor_2, webEditor_3, webEditor_4, webEditor_5];
+
+    var contentStr = $('#Content').html();
+    var TitleArr = $(contentStr).filter('[name^="title_item_"]');
+    var contentArr = $(contentStr).filter('[class="textContent"]');
+    var  Pidtitlevalue  ='';
+    var  Maincontent  ='';
+    $.each(TitleArr,function(n,value){
+            Pidtitlevalue = $(value).eq(0).children().eq(1).html();
+            $('input[name="pidTitle_'+(n+1)+'"]').val(Pidtitlevalue);
+    });
+    $.each(contentArr,function(n,c_value){
+            Maincontent = $(c_value).eq(0).html();
+        webEditor[n+1].InputHtml(Maincontent);
+    });
+
+
+    //保存并预览
+    function saveAndView(fn){
+        var data = {};
+        data.raise_id = raise_id;
+        data.member_id = member_id;
+        data.category_id = document.addRaiseForm.category_id.value;
+        data.title = document.addRaiseForm.title.value;
+        data.price = document.addRaiseForm.total.value;
+        data.start_time = document.addRaiseForm.start_time.value;
+        data.end_time = document.addRaiseForm.end_time.value;
+        data.introduction = document.addRaiseForm.raise_introduction.value;
+        data.pics_id = $('.raise_pics span img').attr('data');
+        data.pics_path = $('.raise_pics span img').attr('src');
+        data.is_public = $('.is_public label.am-active input').val();
+        data.submit = 0;
+//        data.content = webEditor.getHtml();
+
+        //五大栏目
+        var code_str ='';
+        $('#menu_tile li a').each(function(i){
+            if(i>1){
+                var j = i-1;
+                var MenuTitle = $(this).html();
+                var pid_title = $('input[name="pidTitle_'+j+'"]').val();
+                var contentHtml = webEditor[j].getHtml();
+                if(pid_title !== '' || contentHtml !=='' ){
+                    code_str += '<div name="title_item_'+j+'" style="margin: 3.84rem 0rem">' +
+                            '<div style="width: 7.8rem;height: 2.4rem;font-size: 1.6rem;font-weight: bold;color:#b39851;border: 0.1rem solid #b39851;border-left: 0.76rem solid #b39851;text-align:center;line-height: 2.4rem;margin: 0rem 0 1.4rem;">'+MenuTitle+'</div>' +
+                            '<div style="font-size: 1.44rem;color:#b39851;margin-bottom: 3.8rem;line-height: normal;">'+pid_title+'</div></div>' +
+                            '<div class="textContent" style="margin-bottom: 7.6rem;color: #666;">'+contentHtml+'</div>';
+
+                }
+            }
+        });
+        data.content = code_str;
+
+
+        //众筹标签
+        var tags_id = [];
+        $('.tags label.am-active input').each(function(){
+            tags_id.push(this.value);
+        });
+        data.tags_id = tags_id.join(',');
+
+
+        //众筹类目
+        data.raise_times = [];
+        $('.am-gallery-item').each(function(){
+            var raise_times = {};
+            raise_times.id = $(this).find('[name="raise_times_id"]').val();
+            raise_times.title = $(this).find('[name="raise_times_title"]').val();
+            raise_times.price = $(this).find('[name="raise_times_price"]').val();
+            raise_times.stock_num = $(this).find('[name="raise_times_stock_num"]').val();
+            raise_times.content = $(this).find('[name="raise_times_content"]').val();
+            raise_times.stock_type = $(this).find('[name="stock_type"]').val();
+            raise_times.prepay = $(this).find('[name="raise_times_prepay"]').val();
+            raise_times.limit_num = $(this).find('[name="raise_times_limit_num"]').val();
+            raise_times.screen_num = $(this).find('[name="raise_times_screen_num"]').val();
+//            raise_times.is_address = $(this).find('[name="is_address"]').val();
+//            raise_times.is_buy = $(this).find('[name="is_buy"]').val();
+
+            raise_times.is_address = $(this).find('.is_address label.am-active input').val();
+            raise_times.is_buy = $(this).find('.is_buy label.am-active input').val();
+            raise_times.is_realname = $(this).find('.is_realname label.am-active input').val();
+            raise_times.times_type = $(this).find('.times_type label.am-active input').val();
+            raise_times.is_free = $(this).find('.is_free label.am-active input').val();
+            raise_times.send_day = $(this).find('[name="raise_times_send_day"]').val();
+            raise_times.select_prepay = $(this).find('[name="select_prepay"]').val();
+            if( raise_times.prepay == ''){
+                raise_times.prepay =0;
+            }
+            if( raise_times.limit_num == ''){
+                raise_times.limit_num =0;
+            }
+            if( raise_times.stock_type == 2){
+                if(raise_times.stock_num<raise_times.screen_num){
+                    raise_times.screen_num = raise_times.stock_num;
+                }
+            }
+            data.raise_times.push(raise_times);
+        });
+
+
+        $.ajax({
+            data : data,
+            type : 'post',
+            dataType : 'json',
+            success : function(d){
+                if(d.status == 1){
+                    alert('保存成功!');
+                    $('.view iframe').attr('src','http://<?=WEB_DOMAIN?>/?page=raiseDetail&raise_id=' + raise_id);
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+
+     //类目增加
+    function addRaisearea(){
+        var i = $('.raise_times_area').length;
+        var code ='';
+        code = '<div class="am-gallery-item raise_times_area item_'+i +'" style="width: 100%; border: 1px solid #dbdbdb; border-bottom: none; padding: 20px 0rem;">';
+        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right"> 类目标题</div> ';
+        code    +='<div class="am-u-sm-10 item-input raise_time_title"> <input type="hidden" name="raise_times_id"> <input type="text" name="raise_times_title" class="am-input-sm am-text-left" > </div></div>';
+//        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right">是否填写地址</div>';
+//        code    +='<div class="am-u-sm-4 is_address"><select  class="am-input-sm" name="is_address" ><option value="0">否</option><option value="1" < selected="selected" >是</option> </select></div>';
+//        code    +='<div class="am-u-sm-2 am-text-right">是否可以购买</div>';
+//        code    +='<div class="am-u-sm-4 is_buy"><select  class="am-input-sm" name="is_buy" ><option value="0">不可以</option><option value="1" selected="selected">可以</option></select></div></div>';
+
+
+        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right">是否填写地址</div><div class="am-u-sm-10 is_address"><div class="am-btn-group" data-am-button>';
+        code    +='<label class="am-btn am-btn-default am-btn-xs am-active"><input type="radio" name="is_address" value="1"> 填写 </label><label class="am-btn am-btn-default am-btn-xs"><input type="radio" name="is_address" value="0"> 不填写</label></div></div></div>';
+
+        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right">是否可以购买</div><div class="am-u-sm-10 is_buy"><div class="am-btn-group" data-am-button>';
+        code    +='<label class="am-btn am-btn-default am-btn-xs am-active"><input type="radio" name="is_buy" value="1"> 可以</label><label class="am-btn am-btn-default am-btn-xs"><input type="radio" name="is_buy" value="0"> 不可以</label></div></div></div>';
+
+        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right">是否需要实名认证</div><div class="am-u-sm-10 is_realname"><div class="am-btn-group" data-am-button>';
+        code    +='<label class="am-btn am-btn-default am-btn-xs am-active"><input type="radio" name="is_realname" value="1"> 需要</label><label class="am-btn am-btn-default am-btn-xs"><input type="radio" name="is_realname" value="0"> 不需要</label></div></div></div>';
+
+        // 是否付费抽奖
+        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right">是否付费抽奖</div><div class="am-u-sm-10 times_type"><div class="am-btn-group" data-am-button>';
+        code    +='<label class="am-btn am-btn-default am-btn-xs"><input type="radio" name="times_type" value="1">可以</label><label class="am-btn am-btn-default am-btn-xs am-active"><input type="radio" name="times_type" value="0"> 不可以</label></div></div></div>';
+
+        // 是否App专属
+        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right">是否App专属(分享抽奖)</div><div class="am-u-sm-10 is_free"><div class="am-btn-group" data-am-button>';
+        code    +='<label class="am-btn am-btn-default am-btn-xs"><input type="radio" name="is_free" value="1">是</label><label class="am-btn am-btn-default am-btn-xs am-active"><input type="radio" name="is_free" value="0">不是</label></div></div></div>';
+
+
+        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right">筛选数</div><div class="am-u-sm-4 item-input raise_times_screen_num"><input type="text" name="raise_times_screen_num" class="am-input-sm am-text-center" value="" >';
+        code    +='</div><div class="am-u-sm-6 send_day"><span>项目结束</span><input type="text" name="raise_times_send_day" class="am-input-sm am-text-center" value=""  onkeyup="checkDecimal(this)" style="width: 36px; display: inline;"><span>天后发送</span> </div> </div>';
+        code    +='<div class="am-g am-margin-top price_'+i+'"><div class="am-u-sm-2 am-text-right">类目单价</div>';
+        code    +='<div class="am-u-sm-2 item-input raise_times_price"><input type="text" name="raise_times_price" class="am-input-sm item-input am-text-center"  onkeyup="checkDecimal(this)" ></div>';
+        code    +='<div class="am-u-sm-2 am-text-right"><input type="checkbox" class="select_prepay"  onclick="selectPrepay('+i+',this)" checked="checked"  class="am-input-sm am-text-center">预付金额</div>';
+        code    +='<div class="am-u-sm-2 item-input raise_times_prepay"><input type="text" name="raise_times_prepay" class="am-input-sm am-text-center" value=""  onkeyup="checkDecimal(this)"></div>';
+        code    +='<div class="am-u-sm-2 am-text-right">每人限购</div>';
+        code    +='<div class="am-u-sm-2 item-input raise_times_limit_num"><input type="text" name="raise_times_limit_num" class="am-input-sm am-text-center" value="" placeholder="无限"> </div></div>';
+        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right">目标库存</div>';
+        code    +='<div class="am-u-sm-3"><select  class="am-input-sm" name="stock_type" ><option value="0">请选择</option><option value="2" >限制库存</option><option value="3" >不限定库存</option></select></div>';
+        code    +='<div class="am-u-sm-4 item-input raise_times_stock"><input type="text" name="raise_times_stock_num" class="am-input-sm am-text-center" onkeyup="value=value.replace(/[^\\d]/g,\'\')" onbeforepaste="clipboardData.setData(\'text\',clipboardData.getData(\'text\').replace(/[^\\d]/g,\'\'))"></div><div class="am-u-sm-3">&nbsp;</div></div>';
+        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right">类目简介</div>';
+        code    +='<div class="am-u-sm-10 item-input raise_times_content"> <textarea name="raise_times_content" rows="5" rel="7"></textarea> </div>';
+        code    +='<div class="am-g am-margin-top"><div class="am-u-sm-2 am-text-right"></div><div class="am-u-sm-10"><p><button type="button" class="am-btn am-btn-xs addBtn am-btn-default" onclick="$(this).parent().parent().parent().parent().remove()">移除</button></p></div></div>';
+        code    +='</div>';
+        $('.raise_area_div').append(code);
+    }
+
+    //图片上传
+    function Uplodepic(em){
+        pic_upload(em, [640, 420], function(file){
+            $('.raise_pics').html('<span><img data="'+ file[0].pic_id +'" src="'+ file[0].path +'" onclick="imgEnlarge(this)"><a href="javascript:void(0);" onclick="removePic(this)">×</a></span>');
+            $('.raise_pics .add').remove();
+        }, false);
+
+    }
+
+    //图片删除
+    function removePic(em){
+        $(em).parents('span').remove();
+        $('.raise_pics').append(' <a href="javascript:void(0);" class="add" onclick="Uplodepic(this)">+</a>');
+    }
+
+    //文字限制
+    var raise_length = document.addRaiseForm.raise_introduction.value.length;
+    if(raise_length>0){
+        $('.limit_font').html(100-raise_length);
+    }
+    function textCounter(field, countfield, maxlimit) {
+    // 定义函数，传入3个参数，分别为表单的名字，表单域元素名，字符限制
+    if (field.value.length > maxlimit)
+    //如果元素区字符数大于最大字符数，按照最大字符数截断
+    field.value = field.value.substring(0, maxlimit);
+    else
+    //在表单页文本框内显示可输入的剩余字符数
+    countfield.html( maxlimit - field.value.length);
+    }
+
+    //价格输入限制
+    var record={
+        num:""
+    }
+    var checkDecimal=function(n){
+        var decimalReg=/^\d{0,8}\.{0,1}(\d{1,2})?$/;//var decimalReg=/^[-\+]?\d{0,8}\.{0,1}(\d{1,2})?$/;
+        if(n.value!=""&&decimalReg.test(n.value)){
+            record.num=n.value;
+        }else{
+            if(n.value!=""){
+                n.value=record.num;
+            }
+        }
+    }
+
+
+    //选择价格类型
+    function selectPrepay(key,em){
+//        var d = $(em).parents().parents();
+        alert($(em).parents().parents('.price_'+key).find('input[name="raise_times_prepay"]').html());
+        if($(em).is(':checked')==true){
+            alert('记得填写预付金额');
+            //当前为选中状态$("input[name='id']",$(this).parents("form:first")).attr("value")
+            $(em).parents().parents('.price_'+key).find('input[name="raise_times_prepay"]').attr('readonly',false);
+
+        }else{
+            //当前为不选中状态
+            $(em).parents().parents('.price_'+key).find('input[name="raise_times_prepay"]').attr('readonly','readonly');
+            $(em).parents().parents('.price_'+key).find('input[name="raise_times_prepay"]').val('');
+        }
+
+    }
+</script>

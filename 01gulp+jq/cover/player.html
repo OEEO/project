@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="http://mat1.gtimg.com/sports/kbsweb/favicon.ico" type="image/x-icon">
+    <title></title>
+    <link rel="stylesheet" href="../tmp/style/main.css?t={VERSION_TIME}" />
+    <!-- built style will be auto injected -->
+    <script>
+        /**
+         * 图片加载失败时调用的函数。0 -- 默认头像， 1 -- 灰色图片
+         * 例子：<img src="man.png" onerror="nofind(0)" alt="This is a man" />
+         */
+        function nofind(type) {
+            var url = type === 0
+                ? 'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/unmen.png'
+                : 'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/blank.png';
+            var img = event.srcElement;
+            img.src = url;
+            img.onerror = null;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="main">
+    <!-- built html will be auto injected -->
+        <div id="no-info-tip">暂无队员信息，<a href="http://sports.qq.com/video/djsp.htm" target="_blank">去电竞首页逛逛</a></div>
+        <div class="main-header hide">
+            <div class="main-header-wrapper">
+                <img src="" onerror="nofind(0)" alt="This is team's logo" width="300" height="300" class="logo" />
+                <div class="content">
+                    <div class="name">
+                        <p class="suptitle">--</p>
+                        <p class="subtitle">--</p>
+                    </div>
+                    <div class="summary">
+                    </div>
+                    <div class="avg_data">
+                        <div class="league_name">
+                            <img src="../src/assets/prev-icon.png" class="previous">
+                            <span></span>
+                            <img src="../src/assets/next-icon.png" class="next">
+                        </div>
+                        <div class="league_avg_data player-avg">
+                            <div class="winRate">
+                                <p class="lg">--</p>
+                                <p class="sm">胜率</p>
+                            </div>
+                            <div class="KDA">
+                                <p class="lg">--</p>
+                                <p class="sm">KDA</p>
+                            </div>
+                            <div class="DPM">
+                                <p class="lg">--</p>
+                                <p class="sm">DPM</p>
+                            </div>
+                            <div class="tuan">
+                                <p class="lg">--</p>
+                                <p class="sm">场均参团率</p>
+                            </div>
+                            <div class="kill">
+                                <p class="lg">--</p>
+                                <p class="sm">场均击杀</p>
+                            </div>
+                            <div class="CSPM">
+                                <p class="lg">--</p>
+                                <p class="sm">分均补刀</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content hide">
+            <table class="top-hero-table hide" width="1200"  cellspacing="0">
+                <!--<div class="cover"></div>-->
+                <colgroup>
+                    <col width="138" valign="center" align="center">
+                    <col width="80" valign="center" align="center">
+                    <col valign="center" align="center">
+                    <col valign="center" align="center">
+                    <col valign="center" align="center">
+                    <col valign="center" align="center">
+                    <col valign="center" align="center">
+                    <col valign="center" align="center">
+                    <col valign="center" align="center">
+                    <col valign="center" align="center">
+                </colgroup>
+                <thead>
+                    <tr height="40">
+                        <td>英雄</td>
+                        <td class="order cover" data-order="count">场次<span class="order-triangle down-order"></span></td>
+                        <td class="order" data-order="win_rate">胜率<span class="order-triangle"></span></td>
+                        <td class="order" data-order="avg_kda">KDA<span class="order-triangle"></span></td>
+                        <td class="order" data-order="max_kill">最高击杀<span class="order-triangle"></span></td>
+                        <td class="order" data-order="avg_damage_min">分均伤害<span class="order-triangle"></span></td>
+                        <td class="order" data-order="avg_damage_taken_min">分均承伤<span class="order-triangle"></span></td>
+                        <td class="order" data-order="avg_gold">分均经济<span class="order-triangle"></span></td>
+                        <td class="order" data-order="avg_tuan_rate">参团率<span class="order-triangle"></span></td>
+                        <td class="order" data-order="first_blood_rate">一血率<span class="order-triangle"></span></td>
+                    </tr>
+                </thead>
+                <tbody class="top-hero-body">
+                </tbody>
+                <tfoot>
+                    <tr height="40">
+                        <td colspan="10"><span class="down-caret"></span></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="league-nav">
+                <div>比赛记录</div>
+                <div id="collapse"></div>
+                <div id="date-picker" class="date-picker"></div>
+            </div>
+            <div id="no-list-tip">暂无比赛记录</div>
+            <div class="player-history-match hide">
+                <div class="match-title">
+                    <p class="league-name">暂无比赛记录</p>
+                    <div class="teams clearfix">
+                        <div class="left-team">
+                            <img src="" width="48" height="48" onerror="nofind()" class="logo">
+                            <div class="name"></div>
+                        </div>
+                        <div class="right-team">
+                            <div class="name"></div>
+                            <img src="" width="48" height="48" onerror="nofind()" class="logo">
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="score">-&nbsp;:&nbsp;-</p>
+                        <div style="margin-top: -4px">
+                            <span class="date"></span><span class="time"></span><span class="type"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="match-item">
+                    <div class="match-item-header">
+                        <div>
+                            <p class="bo">BO1</p>
+                            <p class="duration">--:--</p>
+                        </div>
+                        <div class="result">--</div>
+                        <a class="video" target="_blank"></a>
+                    </div>
+                    <div class="match-item-content">
+                        <div class="left-section">
+                            <div class="wrapper">
+                                <div class="hero">
+                                    <img src="" onerror="nofind()" width="80" height="80">
+                                </div>
+                                <div class="skill">
+                                    <img src="" onerror="nofind()" width="26" height="26">
+                                    <img src="" onerror="nofind()" width="26" height="26">
+                                </div>
+                                <div class="goods">
+                                    <img src="" onerror="nofind()" width="26" height="26">
+                                    <img src="" onerror="nofind()" width="26" height="26">
+                                    <img src="" onerror="nofind()" width="26" height="26">
+                                    <img src="" onerror="nofind()" width="26" height="26">
+                                    <img src="" onerror="nofind()" width="26" height="26">
+                                    <img src="" onerror="nofind()" width="26" height="26" class="last-child">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="middle-section">
+                            <div class="wrapper">
+                                <div class="info-box">
+                                    <p>--</p>
+                                    <p>KDA</p>
+                                </div>
+                                <div class="info-box">
+                                    <p>--</p>
+                                    <p>伤害</p>
+                                </div>
+                                <div class="info-box last-child">
+                                    <p>--</p>
+                                    <p>补刀</p>
+                                </div>
+                                <div class="info-box last-child-bottom">
+                                    <p>--</p>
+                                    <p>参团率</p>
+                                </div>
+                                <div class="info-box last-child-bottom">
+                                    <p>--</p>
+                                    <p>插眼</p>
+                                </div>
+                                <div class="info-box last-child last-child-bottom">
+                                    <p>--</p>
+                                    <p>经济</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-section">
+                            <table width="450">
+                                <tbody>
+                                    <tr height="24">
+                                        <th colspan="2" align="center">
+                                            <img src="" onerror="nofind()" width="24" height="24"><span>--</span>
+                                        </th>
+                                        <th colspan="2"  align="center">
+                                            <img src="" onerror="nofind()" width="24" height="24"><span>--</span>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td class="name">
+                                            <img src="" onerror="nofind()" width="22" height="22"><span>--</span>
+                                        </td>
+                                        <td  align="center">-/-/-</td>
+                                        <td class="name">
+                                            <img src="" onerror="nofind()" width="22" height="22"><span>--</span>
+                                        </td>
+                                        <td  align="center">-/-/-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="name">
+                                            <img src="" onerror="nofind()" width="22" height="22"><span>--</span>
+                                        </td>
+                                        <td  align="center">-/-/-</td>
+                                        <td class="name">
+                                            <img src="" onerror="nofind()" width="22" height="22"><span>--</span>
+                                        </td>
+                                        <td  align="center">-/-/-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="name">
+                                            <img src="" onerror="nofind()" width="22" height="22"><span>--</span>
+                                        </td>
+                                        <td  align="center">-/-/-</td>
+                                        <td class="name">
+                                            <img src="" onerror="nofind()" width="22" height="22"><span>--</span>
+                                        </td>
+                                        <td  align="center">-/-/-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="name">
+                                            <img src="" onerror="nofind()" width="22" height="22"><span>--</span>
+                                        </td>
+                                        <td  align="center">-/-/-</td>
+                                        <td class="name">
+                                            <img src="" onerror="nofind()" width="22" height="22"><span>--</span>
+                                        </td>
+                                        <td  align="center">-/-/-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="name">
+                                            <img src="" onerror="nofind()" width="22" height="22"><span>--</span>
+                                        </td>
+                                        <td  align="center">-/-/-</td>
+                                        <td class="name">
+                                            <img src="" onerror="nofind()" width="22" height="22"><span>--</span>
+                                        </td>
+                                        <td  align="center">-/-/-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="load-more hide">LOAD MORE</div>
+        </div>
+    </div>
+    <!-- built script will be auto injected -->
+    <script data-main="../src/script/js/player-introduction.js?t={VERSION_TIME}" src="../src/script/require.js"></script>
+</body>
+
+</html>

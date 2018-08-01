@@ -1,0 +1,8 @@
+@charset "utf-8";
+.header .wanc{display: inline-block; position: absolute; right: 1.5rem;top: 0; color:#b39851; font-size:1.7rem;line-height: 4.5rem;}
+/***************************************/
+.page_resume {background:#f5f5f5;}
+.page_resume .feedBack{width:32.4rem;border:none;font-size:1.4rem;font-family:"微软雅黑";color:#969696;padding:0.8rem 1.8rem;min-height:18rem;background:#fff;position:relative;}
+.page_resume  .feedBack>span{position:absolute;right:0.6rem;bottom:0.6rem;}
+.page_resume .lastNum{position:absolute;right:0.5rem;margin-top:0.8rem; color:#cccccc; font-size:1.4rem;}
+.page_resume .tie{font-size:1.6rem;color:#fff;background:#fcd74b;width:80%;margin:8rem 10%;height:4.2rem;border:none;border-radius:1rem;}

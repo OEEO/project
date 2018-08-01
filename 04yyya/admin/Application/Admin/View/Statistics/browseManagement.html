@@ -1,0 +1,72 @@
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"> </script>
+
+<form class="am-form" >
+    <span  style="float: left; line-height: 34px;">众筹ID：</span>
+    <input type="text" name="raise_id" value="{$raise_id}" class="am-input-sm am-text-left" style="width: 15%;float: left;">
+    <input type="text" class="am-form-field" name="start_time" placeholder="开始时间" id="my-startDate"  data-am-datepicker readonly required value="{$search_start_time}" style="width: 15%;float: left;" />
+    <input type="text" class="am-form-field" name="end_time" placeholder="结束时间" id="my-endDate"  data-am-datepicker readonly required value="{$search_end_time}"   style="width: 15%;float: left;"/>
+    <button type="submit" class="am-btn am-btn-success" style="margin-bottom: 1.5em;">提交</button>
+</form>
+
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">众筹ID：</div>
+    <div class="am-u-sm-8">{$data.id}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">众筹标题：</div>
+    <div class="am-u-sm-8"> {$data.title}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">浏览众筹的总数：</div>
+    <div class="am-u-sm-8"> {$data.raiseLookCount}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">注册用户的浏览众筹的总数：</div>
+    <div class="am-u-sm-8"> {$data.User_Count}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">注册用户通过吖咪WEB渠道浏览众筹页面的总数：</div>
+    <div class="am-u-sm-8"> {$data.User_YamiWebCount}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">注册用户通过吖咪APP渠道浏览众筹页面的总数：</div>
+    <div class="am-u-sm-8"> {$data.User_YamiAppCount}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">注册用户通过我有饭WEB渠道浏览众筹页面的总数：</div>
+    <div class="am-u-sm-8"> {$data.User_YoufanWebCount}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">注册用户通过我有饭APP渠道浏览众筹页面的总数：</div>
+    <div class="am-u-sm-8"> {$data.User_YoufanAppCount}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">非注册用户的浏览众筹的总数：</div>
+    <div class="am-u-sm-8">{$data.NotUser_Count} </div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">非注册用户通过吖咪WEB渠道浏览众筹页面的总数：</div>
+    <div class="am-u-sm-8">{$data.NotUser_YamiWebCount} </div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">非注册用户通过吖咪APP渠道浏览众筹页面的总数：</div>
+    <div class="am-u-sm-8"> {$data.NotUser_YamiAppCount}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">非注册用户通过我有饭WEB渠道浏览众筹页面的总数：</div>
+    <div class="am-u-sm-8"> {$data.NotUser_YoufanWebCount}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">非注册用户通过我有饭APP渠道浏览众筹页面的总数：</div>
+    <div class="am-u-sm-8"> {$data.NotUser_YoufanAppCount}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">注册用户浏览众筹页面的人数：</div>
+    <div class="am-u-sm-8"> {$data.NumCount}</div>
+</div>
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-text-right">非注册用户浏览众筹页面的人数：</div>
+    <div class="am-u-sm-8"> {$data.NotNumCount}</div>
+</div>

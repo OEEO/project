@@ -1,0 +1,182 @@
+<!--index.wxml-->
+
+<!--<view class="header"></view>-->
+
+<scroll-view scroll-y="true" class="wrapper" bindscrolltolower="loadMore">
+  <swiper class="banners" indicator-dots="true" autoplay="true" indicator-color="rgb(240,240,240)" indicator-active-color="rgb(179,152,81)">
+    <block wx:for="{{banners}}" wx:key="banners">
+      <swiper-item>
+        <view bindtap="gotoWebview" data-url="{{ item.url }}">
+          <image src="{{item.path != '' ? item.path : 'http://img.yummy194.cn/20160608/99a2e57830afb6d3071939576771a023eae18b59.jpg'}}"/>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+    <view class="raise-selector_nav">
+      <view class="raise-selector">
+        <view 
+          wx:for="{{selectorItems}}" 
+          wx:for-index="idx" 
+          wx:for-item="itemName" 
+          wx:key="key" 
+          bindtap="switchItem" 
+          data-index="{{itemName.key}}" 
+          wx:if="{{ !(status === 0 && (itemName.key === 1 || itemName.key === 2))  }}"
+          class="raise-selector-item {{cur_index === itemName.key ? 'active' : ''}}">
+          {{ itemName.name }}
+        </view>
+      </view>
+    </view>
+
+<block wx:if="{{ cur_index === 0 }}">
+  <view class="pro_list">
+    <view class="product_list">
+    <block wx:for="{{raiseData}}" wx:key="tipsData">
+      <view class="product_item">
+        <view class="pro_center">
+          <navigator url="../raise/detail?raise_id={{item.id}}">
+            <image src="{{item.path}}"/>
+          </navigator>
+        </view>
+        <navigator class="raise-base-info" url="../raise/detail?raise_id={{item.id}}">
+          <view class="raise-title">{{item.title}}</view>
+          <view class="raise-introduction">{{item.introduction}}</view>
+        </navigator>
+        <view class="raise-info">
+            <view class="raise-info_sub">
+                <view class="raise-info_sub_text">
+                    {{item.nickname}}
+                    <view class="slat-point">·</view>
+                    {{item.city_name}}
+                    <view class="slat-point">·</view>
+                    {{item.start_time}}发布
+                </view>
+            </view>
+        </view>
+        <view class="raise-progress">
+            <view class="raise-progress_line" style="width: {{item.progress}}"></view>
+        </view>
+        <view class="raise-statistics">
+            <view class="raise-statistics_item">
+                <text class="sm-text1">{{item.progressTitle}}</text>
+            </view>
+            <view class="raise-statistics_item">
+                <text class="sm-text2">{{item.buyer_num}}人已认筹</text>
+            </view>
+            <view class="raise-statistics_item">
+                <block wx:if="{{ item.isRaiseBegin }}">
+                    <text class="sm-text3">{{item.less_day}}</text>
+                </block>
+                <block wx:else>
+                    <text class="sm-text3">优先认筹中</text>
+                </block>
+            </view>
+        </view>
+      </view>
+    </block>
+    </view>
+  </view>
+</block>
+
+
+
+<block wx:if="{{ cur_index === 1 }}">
+  <view class="pro_list">
+    <view class="product_list">
+    <block wx:for="{{raiseData1}}" wx:key="tipsData">
+      <view class="product_item">
+        <view class="pro_center">
+          <navigator url="../raise/detail?raise_id={{item.id}}">
+            <image src="{{item.path}}"/>
+          </navigator>
+        </view>
+        <navigator class="raise-base-info" url="../raise/detail?raise_id={{item.id}}">
+          <view class="raise-title">{{item.title}}</view>
+          <view class="raise-introduction">{{item.introduction}}</view>
+        </navigator>
+        <view class="raise-info">
+            <view class="raise-info_sub">
+                <view class="raise-info_sub_text">{{item.nickname}}
+                    <view class="slat-point">·</view>
+                    {{item.city_name}}
+                    <view class="slat-point">·</view>
+                    {{item.start_time}}发布
+                </view>
+            </view>
+        </view>
+        <view class="raise-progress">
+            <view class="raise-progress_line" style="width: {{item.progress}}"></view>
+        </view>
+        <view class="raise-statistics">
+            <view class="raise-statistics_item">
+                <text class="sm-text1">{{item.progressTitle}}</text>
+            </view>
+            <view class="raise-statistics_item">
+                <text class="sm-text2">{{item.buyer_num}}人已认筹</text>
+            </view>
+            <view class="raise-statistics_item">
+                <text class="sm-text3">{{item.less_day}}</text>
+            </view>
+        </view>
+      </view>
+    </block>
+    </view>
+  </view>
+</block>
+
+
+
+
+<block wx:if="{{ cur_index === 2 }}">
+    <block wx:if="{{ preview === 1}}">
+        <view class="pro_list">
+            <view class="product_list">
+                <block wx:for="{{raiseData2}}" wx:key="tipsData">
+                    <view class="product_item">
+                        <view class="pro_center">
+                            <navigator url="../raise/detail?raise_id={{item.id}}">
+                                <image src="{{item.path}}"/>
+                            </navigator>
+                        </view>
+                        <navigator class="raise-base-info" url="../raise/detail?raise_id={{item.id}}">
+                        <view class="raise-title">{{item.title}}</view>
+                        <view class="raise-introduction">{{item.introduction}}</view>
+                        </navigator>
+
+                        <view class="raise-info_sub2">
+                            <view class="raise-info_sub_text">{{item.nickname}}
+                                <view class="slat-point">·</view>
+                                {{item.city_name}}
+                                <view class="slat-point">·</view>
+                                {{item.start_time}}发布
+                                <text class="raise-statistics2">上线时间待公布</text>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{ preview === 0 }}">
+        <image class="wx-icon" src="http://test.yummy194.cn/images/category_over.png"></image>
+        <view class="tips">暂时没有预告哦</view>
+    </block>
+</block>
+</scroll-view>
+
+<!--<view class="footer">
+  <navigator url="/index/index" redirect class="no1 active" hover-class="footer-hover">首页</navigator>
+  <navigator url="/message/index" redirect class="no2" hover-class="footer-hover">消息</navigator>
+  <navigator url="/order/index" redirect class="no3" hover-class="footer-hover">订单</navigator>
+  <navigator url="/ucenter/index" redirect class="no4" hover-class="footer-hover">我的</navigator>
+</view>-->
+
+<view class="city_list" bindtap="changeCity" wx:if="{{cityLayShowed}}">
+  <view class="list_name">
+    <view wx:for="{{cityArr}}" wx:key="citys" class="{{item.id == city.id ? 'yellow':''}}" data-id="{{item.id}}" bindtap="changeCityOpt">
+      {{item.name}}
+    </view>
+  </view>
+</view>

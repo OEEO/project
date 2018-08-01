@@ -1,0 +1,308 @@
+<!--日历js、css文件加载 start-->
+<!--<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.config.js"></script>
+<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.all.min.js"> </script>-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+
+<form class="am-form" method="post" onsubmit="return checkdata()">
+    <fieldset>
+
+        <div class="am-form-group">
+            <label for="CouponMember_id">发布者</label>
+            <label class="am-radio-inline">
+                <input type="radio"  value="0" name="ReleaseType" onchange="changeMember(this)" required/> 系统
+            </label>
+            <label class="am-radio-inline">
+                <input type="radio" value="1" name="ReleaseType" onchange="changeMember(this)" required/> 达人
+            </label>
+            <input type="number" class="" id="CouponMember_id" name="CouponMember_id" placeholder="请输入达人ID" required/>
+        </div>
+
+        <!--<div class="am-form-group">
+            <div>选择分类</div>
+            <label class="am-radio-inline">
+                <input type="radio"  value="0" name="CouponCategory"  required/> 营销券
+            </label>
+            <label class="am-radio-inline">
+                <input type="radio" value="1" name="CouponCategory" required/> 邀请券
+            </label>
+            <label class="am-radio-inline">
+                <input type="radio" value="2" name="CouponCategory" required/> 注册券
+            </label>
+        </div>-->
+        <input type="hidden" name="CouponCategory" value="0">
+
+        <div class="am-form-group">
+            <label for="CouponName">优惠券名称</label>
+            <input type="text" class="" id="CouponName" name="CouponName" placeholder="优惠券名称" maxlength="10" required/>
+        </div>
+
+        <div class="am-form-group">
+            <label>优惠券图片(用于显示在微信卡券)</label>
+            <a href="javascript:void(0);" class="upload_picture"></a>
+            <input type="hidden" id="url" name="url"/>
+            <input type="hidden" id="pic_id" name="pic_id"/>
+        </div>
+
+        <div class="am-form-group">
+            <div>优惠券类型</div>
+            <label class="am-radio-inline">
+                <input type="radio" value="0" name="CouponType" onchange="changeType(this)" required/> 抵价券
+            </label>
+            <label class="am-radio-inline">
+                <input type="radio" value="1" name="CouponType" onchange="changeType(this)" required/> 折扣券
+            </label>
+            <label class="am-radio-inline">
+                <input type="radio" value="2" name="CouponType" onchange="changeType(this)" required/> 礼品券
+            </label>
+        </div>
+
+        <div class="am-form-group">
+            <label for="CouponValue">优惠值</label>
+            <input type="text" class="" id="CouponValue" name="CouponValue" value="" placeholder=""/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="CouponContent">礼品券内容</label>
+            <textarea class="" rows="5" id="CouponContent" name="CouponContent"></textarea>
+            <!--<input type="text" class="" id="CouponContent" name="CouponContent" value="" placeholder=""/>-->
+        </div>
+
+        <div class="am-form-group">
+            <label for="CouponCount">子券数量上限</label>
+            <input type="number" class="" id="CouponCount" name="CouponCount" placeholder="" required/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="select_time">起止时间</label>
+            <div id="select_time">
+                <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-startDate" name="CouponStart_time"  placeholder="开始时间" required readonly="true" />
+                <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-endDate" name="CouponEnd_time"  placeholder="结束时间" required readonly="true" />
+            </div>
+            <div class="am-cf"></div>
+        </div>
+
+        <br/>
+        <div class="am-form-group">
+            <label for="CouponMin_amount">最低消费限制</label>
+            <input type="text" class="" id="CouponMin_amount" name="CouponMin_amount" placeholder="" required/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="m_tag">允许的会员标签</label>
+            <div id="m_tag">
+                <foreach name="member_tag" item="m">
+                    <label class="am-checkbox-inline">
+                        <input type="checkbox" name="member_tag[]" value="{$m.id}"> {$m.name}
+                    </label>
+                </foreach>
+                <p><input type="checkbox" id="checkedAll_member_tag" name="checkedAll_member_tag" value="1" >全选</p>
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label for="t_tag">允许的活动标签</label>
+            <div id="t_tag">
+                <foreach name="tips_tag" item="t">
+                    <label class="am-checkbox-inline">
+                        <input type="checkbox" name="tips_tag[]" value="{$t.id}"> {$t.name}
+                    </label>
+                </foreach>
+                <p><input type="checkbox" id="checkedAll_tips_tag" name="checkedAll_tips_tag" value="1" >全选</p>
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label for="g_tag">允许的商品标签</label>
+            <div id="g_tag">
+                <foreach name="goods_tag" item="g">
+                    <label class="am-checkbox-inline">
+                        <input type="checkbox" name="goods_tag[]" value="{$g.id}"> {$g.name}
+                    </label>
+                </foreach>
+                <p><input type="checkbox" id="checkedAll_goods_tag" name="checkedAll_goods_tag" value="1" >全选</p>
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label for="CouponName">备注</label>
+            <textarea name="remarks" rows="5" cols="50" ></textarea>
+        </div>
+
+
+
+        <p><button type="submit" class="am-btn am-btn-default">提交</button> <button  type="button" class="am-btn am-btn-default" onclick="history.back();">返回</button></p>
+    </fieldset>
+</form>
+
+<script src="__RS__/js/ajaxUpload.js"></script>
+<script>
+
+    //图片上传
+    $('.upload_picture').click(function(){
+        $.ajaxUpload({
+            url : '__CONTROLLER__/uploadPic.html',
+            dataType : "json",
+            success : function(d){
+                console.log(d);
+                if(d.status == 1){
+                    $('.upload_picture').html('<img src="http://img.<?=WEB_DOMAIN?>/'+ d.info.filepath + d.info.filename +'">');
+                    $('.upload_picture').next('#url').val(d.info.url);
+                    $('.upload_picture').next().next('#pic_id').val(d.info.pic_id);
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    });
+
+    function changeMember(o){
+        var value = ($(o).val());
+        $('#CouponMember_id').attr('disabled',false);
+        $('#CouponMember_id').val('');
+        if(value ==0)$('#CouponMember_id').attr('disabled',true);
+        //if(value ==1)$('#CouponMember_id').attr('placeholder','请输入达人ID');
+    }
+
+    function changeType(o){
+        var value = ($(o).val());
+        $('#CouponValue').attr('disabled',false);
+        $('#CouponContent').attr('disabled',false);
+        $('#CouponValue').val('');
+        $('#CouponContent').val('');
+        if(value == 0){
+            $('#CouponValue').attr('placeholder','请输入抵扣价格');
+            $('#CouponContent').attr('disabled',true);
+        }
+        if(value == 1){
+            $('#CouponValue').attr('placeholder','请输入折扣比例（1-100）');
+            $('#CouponContent').attr('disabled',true);
+        }
+        if(value == 2){
+            $('#CouponValue').attr('disabled',true);
+            $('#CouponValue').attr('placeholder','');
+        }
+    }
+
+    //全选用户标签
+    $('#checkedAll_member_tag').change(function(){
+        if($(this).is(':checked')){
+            $("[name^='member_tag']").prop('checked',true);
+        }else{
+            $("[name^='member_tag']").prop('checked',false);
+        }
+    })
+    //自动判断全选
+    $("[name^='member_tag']").change(function(){
+        var c = false;
+        $("[name^='member_tag']").each(function(){
+            if(!$(this).is(':checked'))c = true;
+        })
+        if(c){
+            $('#checkedAll_member_tag').prop('checked',false);
+        }else{
+            $('#checkedAll_member_tag').prop('checked',true);
+        }
+    })
+
+    //全选活动标签
+    $('#checkedAll_tips_tag').change(function(){
+        if($(this).is(':checked')){
+            $("[name^='tips_tag']").prop('checked',true);
+        }else{
+            $("[name^='tips_tag']").prop('checked',false);
+        }
+    })
+    //自动判断全选
+    $("[name^='tips_tag']").change(function(){
+        var c = false;
+        $("[name^='tips_tag']").each(function(){
+            if(!$(this).is(':checked'))c = true;
+        })
+        if(c){
+            $('#checkedAll_tips_tag').prop('checked',false);
+        }else{
+            $('#checkedAll_tips_tag').prop('checked',true);
+        }
+    })
+
+    //全选商品标签
+    $('#checkedAll_goods_tag').change(function(){
+        if($(this).is(':checked')){
+            $("[name^='goods_tag']").prop('checked',true);
+        }else{
+            $("[name^='goods_tag']").prop('checked',false);
+        }
+    })
+    //自动判断全选
+    $("[name^='goods_tag']").change(function(){
+        var c = false;
+        $("[name^='goods_tag']").each(function(){
+            if(!$(this).is(':checked'))c = true;
+        })
+        if(c){
+            $('#checkedAll_goods_tag').prop('checked',false);
+        }else{
+            $('#checkedAll_goods_tag').prop('checked',true);
+        }
+    })
+    //日历
+    $('#my-startDate').datetimepicker();
+    $('#my-endDate').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-alert');
+        $('#my-startDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                        alert('开始日期应小于结束日期！');
+                        $('#my-startDate').val("");
+                    } else {
+                        startDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    if(startDate < new Date()){
+                        alert('开始时间应大于当前时间');
+                        $('#my-startDate').val("");
+                        clicktime = 0;
+                    }
+                    $(this).datetimepicker('close');
+                });
+
+        $('#my-endDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                        alert('结束日期应大于开始日期！');
+                        $('#my-endDate').val("");
+                    } else {
+                        endDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+    });
+
+    function checkdata(){
+        //检查时间
+        if($('#my-startDate').val() == '' || $('#my-endDate').val() == ''){
+            alert('必须填时间');
+            return false;
+        }
+
+        var check =false;
+        $('#m_tag input').each(function(){
+            if($(this).is(':checked')){
+                check = true;
+            }
+        })
+        if(!check){
+            alert('必须选一个会员标签');
+        }
+        return check;
+    }
+
+</script>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/feedBack.css">
+
+<script src="js/plugins/jquery.min.js"></script>
+
+<script src="js/public.js"></script>
+<script src="js/feedBack.js"></script>
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+	<div class="title">客服中心</div>
+    <div class="wanc" onclick="javascript:feedBackObject.submit()">提交</div>
+</div>
+<div class="headerBlank"></div>
+<div class="the_blank"></div>
+
+<div class="item">
+    <a href="tel:020-23336323" class="list1">客服电话<span>020-23336323(0)</span><i class="arrowRight"></i></a>
+    <div class="Betweens"></div>
+    <a href="javascript:feedBackObject.showCode();" class="list2 weixi">客服微信<span>yami194</span><i class="arrowRight"></i></a>
+</div>
+<div class="the_blank"></div>
+<center>意见反馈</center>
+<div class="feedBack" contenteditable="true" onKeyUp="feedBackObject.sizeNum(this)"  onafterpaste="feedBackObject.sizeNum(this)" onfocus="if($(this).text()=='请输入您的意见或建议')$(this).empty();" onblur="if($(this).text()=='')$(this).append('请输入您的意见或建议');">请输入您的意见或建议</div>
+<div class="lastNum">还剩<font>255</font>字可输入</div>
+
+<div class="er_wei_ma">
+	<div class="box_t">
+    	<div class="title_top">扫一扫关注我们</div>
+		<img src="images/123.jpg" />
+	</div>
+</div>
+</body>
+</html>

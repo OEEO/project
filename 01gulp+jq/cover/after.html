@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="http://mat1.gtimg.com/sports/kbsweb/favicon.ico" type="image/x-icon">
+    <title></title>
+    <link rel="stylesheet" href="../tmp/style/main.css?t={VERSION_TIME}" />
+    <!--[if gt IE 7]>
+    <style>
+        .after-page .PART-2-header .heroes .hero {
+            filter: gray;
+        }
+        .after-page .RG-main .gift-main .gift-item {
+            filter: gray;
+        }
+        .after-page .RG-main .gift-main .gift-item.light {
+            filter: false;
+        }
+    </style>
+    <![endif]-->
+
+    <!-- built style will be auto injected -->
+    <script>
+        /**
+         * 图片加载失败时调用的函数。0 -- 默认头像， 1 -- 灰色图片
+         * 例子：<img src="man.png" onerror="nofind(0)" alt="This is a man" />
+         */
+        function nofind(type) {
+            var url = type === 0
+                ? 'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/unmen.png'
+                : 'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/blank.png';
+            var img = event.srcElement;
+            img.src = url;
+            img.onerror = null;
+        }
+    </script>
+</head>
+
+<body>
+<div id="main">
+    <!-- built html will be auto injected -->
+    <div class="after-page">
+        <div class="container">
+            <div class="PART-1">
+                <div class="PART-1-header">
+                    <div class="title"></div>
+                    <div class="lt-title">
+                        <span class="begin-time"></span>
+                        Best of
+                        <span class="bo"></span>
+                    </div>
+                </div>
+                <div class="PART-1-main">
+                    <span class="left">
+                        <img src="" alt="" class="team-logo">
+                        <span class="team-name"></span>
+                    </span>
+                    <span class="center">
+                        <span class="left-score"></span>
+                        <span>—</span>
+                        <span class="right-score"></span>
+                    </span>
+                    <span class="right">
+                        <span class="team-name"></span>
+                        <img src="" alt="" class="team-logo">
+                    </span>
+                </div>
+                <div class="playback-wrap">
+                    <a href="" class="playback" target="_blank">
+                        <img class="playback-icon" src="../src/assets/video_replay.png" alt="">
+                        <span>视频回放</span>
+                    </a>
+                </div>
+                <div class="PART-1-footer">
+                    <div class="nav match-nav">
+                    </div>
+                </div>
+            </div>
+            <div class="PART-2">
+                <div class="PART-2-header">
+                    <div class="left">
+                        <span class="line"></span>
+                        <span class="heroes bans">
+                            <img src="" alt="" class="hero">
+                            <img src="" alt="" class="hero">
+                            <img src="" alt="" class="hero">
+                            <img src="" alt="" class="hero">
+                            <img src="" alt="" class="hero">
+                        </span>
+                        <img src="" alt="" class="team-logo">
+                        <span class="team-name-wrap">
+                            <span class="team-name"></span>
+                        </span>
+                    </div>
+                    <div class="middle">
+                        <p>
+                            <span class="left-kill"></span>
+                            <img src="../src/assets/after-page-kill.png" alt="" class="kill-icon">
+                            <span class="right-kill"></span>
+                        </p>
+                        <p>
+                            <span class="time-icon"></span>
+                            <span class="time-last"></span>
+                        </p>
+                    </div>
+                    <div class="right">
+                        <span class="team-name-wrap">
+                            <span class="team-name"></span>
+                        </span>
+                        <img src="" alt="" class="team-logo">
+                        <span class="heroes bans">
+                            <img src="" alt="" class="hero">
+                            <img src="" alt="" class="hero">
+                            <img src="" alt="" class="hero">
+                            <img src="" alt="" class="hero">
+                            <img src="" alt="" class="hero">
+                        </span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="PART-2-main">
+                    <div class="nav-wrap">
+                        <div class="nav per-nav">
+                            <span class="nav-item active"><span>输出占比</span></span>
+                            <span class="nav-item"><span>承伤占比</span></span>
+                            <span class="nav-item"><span>经济占比</span></span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <ul class="percent-list">
+                            <li class="percent-item">
+                                <span class="left">
+                                    <span class="line-wrap">
+                                    <span class="num"></span>
+                                    <span class="line"></span>
+                                </span>
+                                </span>
+                                <span class="middle">
+                                    <img src="" alt="" class="left-hero">
+                                    <img src="" alt="" class="right-hero">
+                                </span>
+                                <span class="right">
+                                        <span class="line-wrap">
+                                        <span class="line"></span>
+                                        <span class="num"></span>
+                                    </span>
+                                </span>
+                            </li>
+                            <li class="percent-item">
+                                <span class="left">
+                                    <span class="line-wrap">
+                                    <span class="num"></span>
+                                    <span class="line"></span>
+                                </span>
+                                </span>
+                                <span class="middle">
+                                    <img src="" alt="" class="left-hero">
+                                    <img src="" alt="" class="right-hero">
+                                </span>
+                                <span class="right">
+                                        <span class="line-wrap">
+                                        <span class="line"></span>
+                                        <span class="num"></span>
+                                    </span>
+                                </span>
+                            </li>
+                            <li class="percent-item">
+                                <span class="left">
+                                    <span class="line-wrap">
+                                    <span class="num"></span>
+                                    <span class="line"></span>
+                                </span>
+                                </span>
+                                <span class="middle">
+                                    <img src="" alt="" class="left-hero">
+                                    <img src="" alt="" class="right-hero">
+                                </span>
+                                <span class="right">
+                                        <span class="line-wrap">
+                                        <span class="line"></span>
+                                        <span class="num"></span>
+                                    </span>
+                                </span>
+                            </li>
+                            <li class="percent-item">
+                                <span class="left">
+                                    <span class="line-wrap">
+                                    <span class="num"></span>
+                                    <span class="line"></span>
+                                </span>
+                                </span>
+                                <span class="middle">
+                                    <img src="" alt="" class="left-hero">
+                                    <img src="" alt="" class="right-hero">
+                                </span>
+                                <span class="right">
+                                        <span class="line-wrap">
+                                        <span class="line"></span>
+                                        <span class="num"></span>
+                                    </span>
+                                </span>
+                            </li>
+                            <li class="percent-item">
+                                <span class="left">
+                                    <span class="line-wrap">
+                                    <span class="num"></span>
+                                    <span class="line"></span>
+                                </span>
+                                </span>
+                                <span class="middle">
+                                    <img src="" alt="" class="left-hero">
+                                    <img src="" alt="" class="right-hero">
+                                </span>
+                                <span class="right">
+                                        <span class="line-wrap">
+                                        <span class="line"></span>
+                                        <span class="num"></span>
+                                    </span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="PART-3">
+                <div class="PART-3-nav foot-nav">
+                    <div class="KOG">
+                        <span class="nav-item active" style="width:50%;">赛后数据</span>
+                        <span class="nav-item" style="width:50%;">铭文</span>
+                    </div>
+                    <div class="LOL">
+                        <span class="nav-item active" style="width:33%;">赛后数据</span>
+                        <span class="nav-item" style="width:33%;">出装 &amp; 技能</span>
+                        <span class="nav-item" style="width:33%;">符文 &amp; 天赋</span>
+                    </div>
+                </div>
+                <div class="PART-3-main">
+                    <!--LOL和KOG赛后数据页是一样的。-->
+                    <!--LOL和KOG除赛后数据页外，其它页的头部是一样的。-->
+
+                    <!--LOL,KOG赛后数据-->
+                    <div class="slider after-data" >
+                        <div class="header">
+                            <div class="left">
+                                <span class="line"></span>
+                                <span class="summary-info">
+                                    <span class="sum-item">
+                                        <img src="../src/assets/red_big_dragon.png" alt="" class="big-dragon">
+                                        <span class="big-dragon-num sum-num">-</span>
+                                    </span>
+                                    <span class="sum-item">
+                                        <img src="../src/assets/red_lt_dragon.png" alt="" class="lt-dragon">
+                                        <span class="lt-dragon-num sum-num">-</span>
+                                    </span>
+                                    <span class="sum-item">
+                                        <img src="../src/assets/red_tower.png" alt="" class="tower">
+                                        <span class="tower-num sum-num">-</span>
+                                    </span>
+                                </span>
+                                <img src="" alt="" class="team-logo">
+                                <span class="team-name-wrap">
+                                <span class="team-name"></span>
+                            </span>
+                            </div>
+                            <div class="middle">
+                                <p>
+                                    <span class="left-golds">-</span>
+                                    <img src="../src/assets/golds_icon.png" alt="" class="golds-icon">
+                                    <span class="right-golds">-</span>
+                                </p>
+                            </div>
+                            <div class="right">
+                                <span class="team-name-wrap">
+                                    <span class="team-name"></span>
+                                </span>
+                                <img src="" alt="" class="team-logo">
+                                <span class="summary-info">
+                                <span class="sum-item">
+                                    <img src="../src/assets/blue_big_dragon.png" alt="" class="big-dragon">
+                                    <span class="big-dragon-num sum-num">-</span>
+                                </span>
+                                <span class="sum-item">
+                                    <img src="../src/assets/blue_lt_dragon.png" alt="" class="lt-dragon">
+                                    <span class="lt-dragon-num sum-num">-</span>
+                                </span>
+                                <span class="sum-item">
+                                    <img src="../src/assets/blue_tower.png" alt="" class="tower">
+                                    <span class="tower-num sum-num">-</span>
+                                </span>
+                            </span>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                        <!--left 和 right 完全一样-->
+                        <div class="left-player-table">
+                            <div class="table-head left">
+                                <img src="" alt="" class="team-logo">
+                                <span class="col1">选手</span>
+                                <span class="col2">英雄</span>
+                                <span class="col3">出装</span>
+                                <span class="col4 col4-9">KDA</span>
+                                <span class="col5 col4-9">参团率</span>
+                                <span class="col6 col4-9">输出</span>
+                                <span class="col7 col4-9">承伤</span>
+                                <span class="col8 col4-9">补兵</span>
+                                <span class="col9 col4-9">金钱</span>
+                            </div>
+                            <div class="table-body">
+                                <div class="tr one-player">
+                                    <span class="vertical-middle"></span>
+                                    <span class="col1">
+                                        <div>
+                                            <span class="player-icon">
+                                                <img src="" alt="">
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="player-name"></span>
+                                        </div>
+                                    </span>
+                                    <span class="col2">
+                                        <span class="n1-hero-wrap">
+                                            <img src="" alt="" class="n1-hero">
+                                            <span class="hero-level"></span>
+                                        </span>
+                                        <span class="hero-skills">
+                                            <img src="" alt="" class="hero-skill">
+                                            <img src="" alt="" class="hero-skill">
+                                        </span>
+                                    </span>
+                                    <span class="col3">
+                                        <span class="equips">
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col4 col4-9">
+                                        <div class="kda-num"></div>
+                                        <div class="kda-headcount"></div>
+                                    </span>
+                                    <span class="col5 col4-9">
+                                        <div class="tuan-rate"></div>
+                                    </span>
+                                    <span class="col6 col4-9">
+                                        <div class="make-damage"></div>
+                                        <div class="make-damage-per"></div>
+                                    </span>
+                                    <span class="col7 col4-9">
+                                        <div class="take-damage"></div>
+                                        <div class="take-damage-per"></div>
+                                    </span>
+                                    <span class="col8 col4-9">
+                                        <div class="last-hit"></div>
+                                        <div>
+                                            <span class="last-hit-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                    <span class="col9 col4-9">
+                                        <div class="golds"></div>
+                                        <div>
+                                            <span class="golds-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="tr one-player">
+                                    <span class="vertical-middle"></span>
+                                    <span class="col1">
+                                        <div>
+                                            <span class="player-icon">
+                                                <img src="" alt="">
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="player-name"></span>
+                                        </div>
+                                    </span>
+                                    <span class="col2">
+                                        <span class="n1-hero-wrap">
+                                            <img src="" alt="" class="n1-hero">
+                                            <span class="hero-level"></span>
+                                        </span>
+                                        <span class="hero-skills">
+                                            <img src="" alt="" class="hero-skill">
+                                            <img src="" alt="" class="hero-skill">
+                                        </span>
+                                    </span>
+                                    <span class="col3">
+                                        <span class="equips">
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col4 col4-9">
+                                        <div class="kda-num"></div>
+                                        <div class="kda-headcount"></div>
+                                    </span>
+                                    <span class="col5 col4-9">
+                                        <div class="tuan-rate"></div>
+                                    </span>
+                                    <span class="col6 col4-9">
+                                        <div class="make-damage"></div>
+                                        <div class="make-damage-per"></div>
+                                    </span>
+                                    <span class="col7 col4-9">
+                                        <div class="take-damage"></div>
+                                        <div class="take-damage-per"></div>
+                                    </span>
+                                    <span class="col8 col4-9">
+                                        <div class="last-hit"></div>
+                                        <div>
+                                            <span class="last-hit-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                    <span class="col9 col4-9">
+                                        <div class="golds"></div>
+                                        <div>
+                                            <span class="golds-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="tr one-player">
+                                    <span class="vertical-middle"></span>
+                                    <span class="col1">
+                                        <div>
+                                            <span class="player-icon">
+                                                <img src="" alt="">
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="player-name"></span>
+                                        </div>
+                                    </span>
+                                    <span class="col2">
+                                        <span class="n1-hero-wrap">
+                                            <img src="" alt="" class="n1-hero">
+                                            <span class="hero-level"></span>
+                                        </span>
+                                        <span class="hero-skills">
+                                            <img src="" alt="" class="hero-skill">
+                                            <img src="" alt="" class="hero-skill">
+                                        </span>
+                                    </span>
+                                    <span class="col3">
+                                        <span class="equips">
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col4 col4-9">
+                                        <div class="kda-num"></div>
+                                        <div class="kda-headcount"></div>
+                                    </span>
+                                    <span class="col5 col4-9">
+                                        <div class="tuan-rate"></div>
+                                    </span>
+                                    <span class="col6 col4-9">
+                                        <div class="make-damage"></div>
+                                        <div class="make-damage-per"></div>
+                                    </span>
+                                    <span class="col7 col4-9">
+                                        <div class="take-damage"></div>
+                                        <div class="take-damage-per"></div>
+                                    </span>
+                                    <span class="col8 col4-9">
+                                        <div class="last-hit"></div>
+                                        <div>
+                                            <span class="last-hit-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                    <span class="col9 col4-9">
+                                        <div class="golds"></div>
+                                        <div>
+                                            <span class="golds-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="tr one-player">
+                                    <span class="vertical-middle"></span>
+                                    <span class="col1">
+                                        <div>
+                                            <span class="player-icon">
+                                                <img src="" alt="">
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="player-name"></span>
+                                        </div>
+                                    </span>
+                                    <span class="col2">
+                                        <span class="n1-hero-wrap">
+                                            <img src="" alt="" class="n1-hero">
+                                            <span class="hero-level"></span>
+                                        </span>
+                                        <span class="hero-skills">
+                                            <img src="" alt="" class="hero-skill">
+                                            <img src="" alt="" class="hero-skill">
+                                        </span>
+                                    </span>
+                                    <span class="col3">
+                                        <span class="equips">
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col4 col4-9">
+                                        <div class="kda-num"></div>
+                                        <div class="kda-headcount"></div>
+                                    </span>
+                                    <span class="col5 col4-9">
+                                        <div class="tuan-rate"></div>
+                                    </span>
+                                    <span class="col6 col4-9">
+                                        <div class="make-damage"></div>
+                                        <div class="make-damage-per"></div>
+                                    </span>
+                                    <span class="col7 col4-9">
+                                        <div class="take-damage"></div>
+                                        <div class="take-damage-per"></div>
+                                    </span>
+                                    <span class="col8 col4-9">
+                                        <div class="last-hit"></div>
+                                        <div>
+                                            <span class="last-hit-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                    <span class="col9 col4-9">
+                                        <div class="golds"></div>
+                                        <div>
+                                            <span class="golds-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="tr one-player">
+                                    <span class="vertical-middle"></span>
+                                    <span class="col1">
+                                        <div>
+                                            <span class="player-icon">
+                                                <img src="" alt="">
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="player-name"></span>
+                                        </div>
+                                    </span>
+                                    <span class="col2">
+                                        <span class="n1-hero-wrap">
+                                            <img src="" alt="" class="n1-hero">
+                                            <span class="hero-level"></span>
+                                        </span>
+                                        <span class="hero-skills">
+                                            <img src="" alt="" class="hero-skill">
+                                            <img src="" alt="" class="hero-skill">
+                                        </span>
+                                    </span>
+                                    <span class="col3">
+                                        <span class="equips">
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col4 col4-9">
+                                        <div class="kda-num"></div>
+                                        <div class="kda-headcount"></div>
+                                    </span>
+                                    <span class="col5 col4-9">
+                                        <div class="tuan-rate"></div>
+                                    </span>
+                                    <span class="col6 col4-9">
+                                        <div class="make-damage"></div>
+                                        <div class="make-damage-per"></div>
+                                    </span>
+                                    <span class="col7 col4-9">
+                                        <div class="take-damage"></div>
+                                        <div class="take-damage-per"></div>
+                                    </span>
+                                    <span class="col8 col4-9">
+                                        <div class="last-hit"></div>
+                                        <div>
+                                            <span class="last-hit-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                    <span class="col9 col4-9">
+                                        <div class="golds"></div>
+                                        <div>
+                                            <span class="golds-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-player-table">
+                            <div class="table-head right">
+                                <img src="" alt="" class="team-logo">
+                                <span class="col1">选手</span>
+                                <span class="col2">英雄</span>
+                                <span class="col3">出装</span>
+                                <span class="col4 col4-9">KDA</span>
+                                <span class="col5 col4-9">参团率</span>
+                                <span class="col6 col4-9">输出</span>
+                                <span class="col7 col4-9">承伤</span>
+                                <span class="col8 col4-9">补兵</span>
+                                <span class="col9 col4-9">金钱</span>
+                            </div>
+                            <div class="table-body">
+                                <div class="tr one-player">
+                                    <span class="vertical-middle"></span>
+                                    <span class="col1">
+                                        <div>
+                                            <span class="player-icon">
+                                                <img src="" alt="">
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="player-name"></span>
+                                        </div>
+                                    </span>
+                                    <span class="col2">
+                                        <span class="n1-hero-wrap">
+                                            <img src="" alt="" class="n1-hero">
+                                            <span class="hero-level"></span>
+                                        </span>
+                                        <span class="hero-skills">
+                                            <img src="" alt="" class="hero-skill">
+                                            <img src="" alt="" class="hero-skill">
+                                        </span>
+                                    </span>
+                                    <span class="col3">
+                                        <span class="equips">
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col4 col4-9">
+                                        <div class="kda-num"></div>
+                                        <div class="kda-headcount"></div>
+                                    </span>
+                                    <span class="col5 col4-9">
+                                        <div class="tuan-rate"></div>
+                                    </span>
+                                    <span class="col6 col4-9">
+                                        <div class="make-damage"></div>
+                                        <div class="make-damage-per"></div>
+                                    </span>
+                                    <span class="col7 col4-9">
+                                        <div class="take-damage"></div>
+                                        <div class="take-damage-per"></div>
+                                    </span>
+                                    <span class="col8 col4-9">
+                                        <div class="last-hit"></div>
+                                        <div>
+                                            <span class="last-hit-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                    <span class="col9 col4-9">
+                                        <div class="golds"></div>
+                                        <div>
+                                            <span class="golds-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="tr one-player">
+                                    <span class="vertical-middle"></span>
+                                    <span class="col1">
+                                        <div>
+                                            <span class="player-icon">
+                                                <img src="" alt="">
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="player-name"></span>
+                                        </div>
+                                    </span>
+                                    <span class="col2">
+                                        <span class="n1-hero-wrap">
+                                            <img src="" alt="" class="n1-hero">
+                                            <span class="hero-level"></span>
+                                        </span>
+                                        <span class="hero-skills">
+                                            <img src="" alt="" class="hero-skill">
+                                            <img src="" alt="" class="hero-skill">
+                                        </span>
+                                    </span>
+                                    <span class="col3">
+                                        <span class="equips">
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col4 col4-9">
+                                        <div class="kda-num"></div>
+                                        <div class="kda-headcount"></div>
+                                    </span>
+                                    <span class="col5 col4-9">
+                                        <div class="tuan-rate"></div>
+                                    </span>
+                                    <span class="col6 col4-9">
+                                        <div class="make-damage"></div>
+                                        <div class="make-damage-per"></div>
+                                    </span>
+                                    <span class="col7 col4-9">
+                                        <div class="take-damage"></div>
+                                        <div class="take-damage-per"></div>
+                                    </span>
+                                    <span class="col8 col4-9">
+                                        <div class="last-hit"></div>
+                                        <div>
+                                            <span class="last-hit-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                    <span class="col9 col4-9">
+                                        <div class="golds"></div>
+                                        <div>
+                                            <span class="golds-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="tr one-player">
+                                    <span class="vertical-middle"></span>
+                                    <span class="col1">
+                                        <div>
+                                            <span class="player-icon">
+                                                <img src="" alt="">
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="player-name"></span>
+                                        </div>
+                                    </span>
+                                    <span class="col2">
+                                        <span class="n1-hero-wrap">
+                                            <img src="" alt="" class="n1-hero">
+                                            <span class="hero-level"></span>
+                                        </span>
+                                        <span class="hero-skills">
+                                            <img src="" alt="" class="hero-skill">
+                                            <img src="" alt="" class="hero-skill">
+                                        </span>
+                                    </span>
+                                    <span class="col3">
+                                        <span class="equips">
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col4 col4-9">
+                                        <div class="kda-num"></div>
+                                        <div class="kda-headcount"></div>
+                                    </span>
+                                    <span class="col5 col4-9">
+                                        <div class="tuan-rate"></div>
+                                    </span>
+                                    <span class="col6 col4-9">
+                                        <div class="make-damage"></div>
+                                        <div class="make-damage-per"></div>
+                                    </span>
+                                    <span class="col7 col4-9">
+                                        <div class="take-damage"></div>
+                                        <div class="take-damage-per"></div>
+                                    </span>
+                                    <span class="col8 col4-9">
+                                        <div class="last-hit"></div>
+                                        <div>
+                                            <span class="last-hit-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                    <span class="col9 col4-9">
+                                        <div class="golds"></div>
+                                        <div>
+                                            <span class="golds-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="tr one-player">
+                                    <span class="vertical-middle"></span>
+                                    <span class="col1">
+                                        <div>
+                                            <span class="player-icon">
+                                                <img src="" alt="">
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="player-name"></span>
+                                        </div>
+                                    </span>
+                                    <span class="col2">
+                                        <span class="n1-hero-wrap">
+                                            <img src="" alt="" class="n1-hero">
+                                            <span class="hero-level"></span>
+                                        </span>
+                                        <span class="hero-skills">
+                                            <img src="" alt="" class="hero-skill">
+                                            <img src="" alt="" class="hero-skill">
+                                        </span>
+                                    </span>
+                                    <span class="col3">
+                                        <span class="equips">
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col4 col4-9">
+                                        <div class="kda-num"></div>
+                                        <div class="kda-headcount"></div>
+                                    </span>
+                                    <span class="col5 col4-9">
+                                        <div class="tuan-rate"></div>
+                                    </span>
+                                    <span class="col6 col4-9">
+                                        <div class="make-damage"></div>
+                                        <div class="make-damage-per"></div>
+                                    </span>
+                                    <span class="col7 col4-9">
+                                        <div class="take-damage"></div>
+                                        <div class="take-damage-per"></div>
+                                    </span>
+                                    <span class="col8 col4-9">
+                                        <div class="last-hit"></div>
+                                        <div>
+                                            <span class="last-hit-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                    <span class="col9 col4-9">
+                                        <div class="golds"></div>
+                                        <div>
+                                            <span class="golds-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="tr one-player">
+                                    <span class="vertical-middle"></span>
+                                    <span class="col1">
+                                        <div>
+                                            <span class="player-icon">
+                                                <img src="" alt="">
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="player-name"></span>
+                                        </div>
+                                    </span>
+                                    <span class="col2">
+                                        <span class="n1-hero-wrap">
+                                            <img src="" alt="" class="n1-hero">
+                                            <span class="hero-level"></span>
+                                        </span>
+                                        <span class="hero-skills">
+                                            <img src="" alt="" class="hero-skill">
+                                            <img src="" alt="" class="hero-skill">
+                                        </span>
+                                    </span>
+                                    <span class="col3">
+                                        <span class="equips">
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                            <span class="equip-col">
+                                                <img src="" alt="" class="equip-item">
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="col4 col4-9">
+                                        <div class="kda-num"></div>
+                                        <div class="kda-headcount"></div>
+                                    </span>
+                                    <span class="col5 col4-9">
+                                        <div class="tuan-rate"></div>
+                                    </span>
+                                    <span class="col6 col4-9">
+                                        <div class="make-damage"></div>
+                                        <div class="make-damage-per"></div>
+                                    </span>
+                                    <span class="col7 col4-9">
+                                        <div class="take-damage"></div>
+                                        <div class="take-damage-per"></div>
+                                    </span>
+                                    <span class="col8 col4-9">
+                                        <div class="last-hit"></div>
+                                        <div>
+                                            <span class="last-hit-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                    <span class="col9 col4-9">
+                                        <div class="golds"></div>
+                                        <div>
+                                            <span class="golds-min"></span>
+                                            <span> / 分</span>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--LOL出装&技能-->
+                    <div class="slider equip-and-skill LOL" >
+                        <div class="header">
+                            <div class="equip-heros">
+                                <div class="left">
+                                    <span class="hero-item active">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                </div>
+                                <div class="center">
+                                    <span class="vs">VS</span>
+                                </div>
+                                <div class="right">
+                                    <span class="hero-item active">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="middle">
+                            <div class="equip-buy-time">
+                                <div class="left">
+                                    <div class="line-x1 red-line">
+                                        <span class="equip-item">
+                                            <div>
+                                                <span class="time">20:20</span>
+
+                                            </div>
+                                            <div>
+                                                <span class="red-dot"></span>
+                                            </div>
+                                            <div>
+                                                <span class="equip-imgs">
+                                                    <img src="" alt="" class="equip-img">
+                                                </span>
+                                            </div>
+
+                                        </span>
+                                    </div>
+                                    <div class="line-y1 red-line"></div>
+                                    <div class="line-x2 red-line"></div>
+                                    <div class="line-y2 red-line"></div>
+                                    <div class="line-x3 red-line"></div>
+                                </div>
+                                <div class="right">
+                                    <div class="line-x1 blue-line">
+                                        <span class="equip-item">
+                                            <div>
+                                                <span class="time">20:20</span>
+
+                                            </div>
+                                            <div>
+                                                <span class="blue-dot"></span>
+                                            </div>
+                                            <div>
+                                                <span class="equip-imgs">
+                                                    <img src="" alt="" class="equip-img">
+                                                </span>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="line-y1 blue-line"></div>
+                                    <div class="line-x2 blue-line"></div>
+                                    <div class="line-y2 blue-line"></div>
+                                    <div class="line-x3 blue-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <div class="add-skill-level">
+                                <div class="left">
+                                    <table class="level-table" border="1" bordercolor="#dcdcdc" style="border-collapse:collapse;">
+                                        <!--(tr>(td>(span.lv-box>span.lv{Lv}+span.num{15}))*18)*4-->
+                                        <tr>
+                                            <td><span class="lv-box col1"><span class="lv">Lv</span><span
+                                                    class="num">1</span></span></td>
+                                            <td><span class="lv-box col2"><span class="lv">Lv</span><span
+                                                    class="num">2</span></span></td>
+                                            <td><span class="lv-box col3"><span class="lv">Lv</span><span
+                                                    class="num">3</span></span></td>
+                                            <td><span class="lv-box col4"><span class="lv">Lv</span><span
+                                                    class="num">4</span></span></td>
+                                            <td><span class="lv-box col5"><span class="lv">Lv</span><span
+                                                    class="num">5</span></span></td>
+                                            <td><span class="lv-box col6"><span class="lv">Lv</span><span
+                                                    class="num">6</span></span></td>
+                                            <td><span class="lv-box col7"><span class="lv">Lv</span><span
+                                                    class="num">7</span></span></td>
+                                            <td><span class="lv-box col8"><span class="lv">Lv</span><span
+                                                    class="num">8</span></span></td>
+                                            <td><span class="lv-box col9"><span class="lv">Lv</span><span
+                                                    class="num">9</span></span></td>
+                                            <td><span class="lv-box col10"><span class="lv">Lv</span><span
+                                                    class="num">10</span></span></td>
+                                            <td><span class="lv-box col11"><span class="lv">Lv</span><span
+                                                    class="num">11</span></span></td>
+                                            <td><span class="lv-box col12"><span class="lv">Lv</span><span
+                                                    class="num">12</span></span></td>
+                                            <td><span class="lv-box col13"><span class="lv">Lv</span><span
+                                                    class="num">13</span></span></td>
+                                            <td><span class="lv-box col14"><span class="lv">Lv</span><span
+                                                    class="num">14</span></span></td>
+                                            <td><span class="lv-box col15"><span class="lv">Lv</span><span
+                                                    class="num">15</span></span></td>
+                                            <td><span class="lv-box col16"><span class="lv">Lv</span><span
+                                                    class="num">16</span></span></td>
+                                            <td><span class="lv-box col17"><span class="lv">Lv</span><span
+                                                    class="num">17</span></span></td>
+                                            <td><span class="lv-box col18"><span class="lv">Lv</span><span
+                                                    class="num">18</span></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="lv-box col1"><span class="lv">Lv</span><span
+                                                    class="num">1</span></span></td>
+                                            <td><span class="lv-box col2"><span class="lv">Lv</span><span
+                                                    class="num">2</span></span></td>
+                                            <td><span class="lv-box col3"><span class="lv">Lv</span><span
+                                                    class="num">3</span></span></td>
+                                            <td><span class="lv-box col4"><span class="lv">Lv</span><span
+                                                    class="num">4</span></span></td>
+                                            <td><span class="lv-box col5"><span class="lv">Lv</span><span
+                                                    class="num">5</span></span></td>
+                                            <td><span class="lv-box col6"><span class="lv">Lv</span><span
+                                                    class="num">6</span></span></td>
+                                            <td><span class="lv-box col7"><span class="lv">Lv</span><span
+                                                    class="num">7</span></span></td>
+                                            <td><span class="lv-box col8"><span class="lv">Lv</span><span
+                                                    class="num">8</span></span></td>
+                                            <td><span class="lv-box col9"><span class="lv">Lv</span><span
+                                                    class="num">9</span></span></td>
+                                            <td><span class="lv-box col10"><span class="lv">Lv</span><span
+                                                    class="num">10</span></span></td>
+                                            <td><span class="lv-box col11"><span class="lv">Lv</span><span
+                                                    class="num">11</span></span></td>
+                                            <td><span class="lv-box col12"><span class="lv">Lv</span><span
+                                                    class="num">12</span></span></td>
+                                            <td><span class="lv-box col13"><span class="lv">Lv</span><span
+                                                    class="num">13</span></span></td>
+                                            <td><span class="lv-box col14"><span class="lv">Lv</span><span
+                                                    class="num">14</span></span></td>
+                                            <td><span class="lv-box col15"><span class="lv">Lv</span><span
+                                                    class="num">15</span></span></td>
+                                            <td><span class="lv-box col16"><span class="lv">Lv</span><span
+                                                    class="num">16</span></span></td>
+                                            <td><span class="lv-box col17"><span class="lv">Lv</span><span
+                                                    class="num">17</span></span></td>
+                                            <td><span class="lv-box col18"><span class="lv">Lv</span><span
+                                                    class="num">18</span></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="lv-box col1"><span class="lv">Lv</span><span
+                                                    class="num">1</span></span></td>
+                                            <td><span class="lv-box col2"><span class="lv">Lv</span><span
+                                                    class="num">2</span></span></td>
+                                            <td><span class="lv-box col3"><span class="lv">Lv</span><span
+                                                    class="num">3</span></span></td>
+                                            <td><span class="lv-box col4"><span class="lv">Lv</span><span
+                                                    class="num">4</span></span></td>
+                                            <td><span class="lv-box col5"><span class="lv">Lv</span><span
+                                                    class="num">5</span></span></td>
+                                            <td><span class="lv-box col6"><span class="lv">Lv</span><span
+                                                    class="num">6</span></span></td>
+                                            <td><span class="lv-box col7"><span class="lv">Lv</span><span
+                                                    class="num">7</span></span></td>
+                                            <td><span class="lv-box col8"><span class="lv">Lv</span><span
+                                                    class="num">8</span></span></td>
+                                            <td><span class="lv-box col9"><span class="lv">Lv</span><span
+                                                    class="num">9</span></span></td>
+                                            <td><span class="lv-box col10"><span class="lv">Lv</span><span
+                                                    class="num">10</span></span></td>
+                                            <td><span class="lv-box col11"><span class="lv">Lv</span><span
+                                                    class="num">11</span></span></td>
+                                            <td><span class="lv-box col12"><span class="lv">Lv</span><span
+                                                    class="num">12</span></span></td>
+                                            <td><span class="lv-box col13"><span class="lv">Lv</span><span
+                                                    class="num">13</span></span></td>
+                                            <td><span class="lv-box col14"><span class="lv">Lv</span><span
+                                                    class="num">14</span></span></td>
+                                            <td><span class="lv-box col15"><span class="lv">Lv</span><span
+                                                    class="num">15</span></span></td>
+                                            <td><span class="lv-box col16"><span class="lv">Lv</span><span
+                                                    class="num">16</span></span></td>
+                                            <td><span class="lv-box col17"><span class="lv">Lv</span><span
+                                                    class="num">17</span></span></td>
+                                            <td><span class="lv-box col18"><span class="lv">Lv</span><span
+                                                    class="num">18</span></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="lv-box col1"><span class="lv">Lv</span><span
+                                                    class="num">1</span></span></td>
+                                            <td><span class="lv-box col2"><span class="lv">Lv</span><span
+                                                    class="num">2</span></span></td>
+                                            <td><span class="lv-box col3"><span class="lv">Lv</span><span
+                                                    class="num">3</span></span></td>
+                                            <td><span class="lv-box col4"><span class="lv">Lv</span><span
+                                                    class="num">4</span></span></td>
+                                            <td><span class="lv-box col5"><span class="lv">Lv</span><span
+                                                    class="num">5</span></span></td>
+                                            <td><span class="lv-box col6"><span class="lv">Lv</span><span
+                                                    class="num">6</span></span></td>
+                                            <td><span class="lv-box col7"><span class="lv">Lv</span><span
+                                                    class="num">7</span></span></td>
+                                            <td><span class="lv-box col8"><span class="lv">Lv</span><span
+                                                    class="num">8</span></span></td>
+                                            <td><span class="lv-box col9"><span class="lv">Lv</span><span
+                                                    class="num">9</span></span></td>
+                                            <td><span class="lv-box col10"><span class="lv">Lv</span><span
+                                                    class="num">10</span></span></td>
+                                            <td><span class="lv-box col11"><span class="lv">Lv</span><span
+                                                    class="num">11</span></span></td>
+                                            <td><span class="lv-box col12"><span class="lv">Lv</span><span
+                                                    class="num">12</span></span></td>
+                                            <td><span class="lv-box col13"><span class="lv">Lv</span><span
+                                                    class="num">13</span></span></td>
+                                            <td><span class="lv-box col14"><span class="lv">Lv</span><span
+                                                    class="num">14</span></span></td>
+                                            <td><span class="lv-box col15"><span class="lv">Lv</span><span
+                                                    class="num">15</span></span></td>
+                                            <td><span class="lv-box col16"><span class="lv">Lv</span><span
+                                                    class="num">16</span></span></td>
+                                            <td><span class="lv-box col17"><span class="lv">Lv</span><span
+                                                    class="num">17</span></span></td>
+                                            <td><span class="lv-box col18"><span class="lv">Lv</span><span
+                                                    class="num">18</span></span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="center">
+                                    <div class="f-l-skill">
+                                        <span class="img-wrap f-skill-img">
+                                            <img src="" alt="">
+                                            <span class="text">Q</span>
+                                        </span>
+                                        <span class="img-wrap f-skill-img">
+                                            <img src="" alt="">
+                                            <span class="text">W</span>
+                                        </span>
+                                        <span class="img-wrap f-skill-img">
+                                            <img src="" alt="">
+                                            <span class="text">E</span>
+                                        </span>
+                                        <span class="img-wrap f-skill-img">
+                                            <img src="" alt="">
+                                            <span class="text">R</span>
+                                        </span>
+                                    </div>
+                                    <div class="f-r-skill">
+                                        <span class="img-wrap f-skill-img">
+                                            <img src="" alt="">
+                                            <span class="text">Q</span>
+                                        </span>
+                                        <span class="img-wrap f-skill-img">
+                                            <img src="" alt="">
+                                            <span class="text">W</span>
+                                        </span>
+                                        <span class="img-wrap f-skill-img">
+                                            <img src="" alt="">
+                                            <span class="text">E</span>
+                                        </span>
+                                        <span class="img-wrap f-skill-img">
+                                            <img src="" alt="">
+                                            <span class="text">R</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <table class="level-table" border="1" bordercolor="#dcdcdc" style="border-collapse:collapse;">
+                                        <!--(tr>(td>(span.lv-box>span.lv{Lv}+span.num{15}))*18)*4-->
+                                        <tr>
+                                            <td><span class="lv-box col1"><span class="lv">Lv</span><span
+                                                    class="num">1</span></span></td>
+                                            <td><span class="lv-box col2"><span class="lv">Lv</span><span
+                                                    class="num">2</span></span></td>
+                                            <td><span class="lv-box col3"><span class="lv">Lv</span><span
+                                                    class="num">3</span></span></td>
+                                            <td><span class="lv-box col4"><span class="lv">Lv</span><span
+                                                    class="num">4</span></span></td>
+                                            <td><span class="lv-box col5"><span class="lv">Lv</span><span
+                                                    class="num">5</span></span></td>
+                                            <td><span class="lv-box col6"><span class="lv">Lv</span><span
+                                                    class="num">6</span></span></td>
+                                            <td><span class="lv-box col7"><span class="lv">Lv</span><span
+                                                    class="num">7</span></span></td>
+                                            <td><span class="lv-box col8"><span class="lv">Lv</span><span
+                                                    class="num">8</span></span></td>
+                                            <td><span class="lv-box col9"><span class="lv">Lv</span><span
+                                                    class="num">9</span></span></td>
+                                            <td><span class="lv-box col10"><span class="lv">Lv</span><span
+                                                    class="num">10</span></span></td>
+                                            <td><span class="lv-box col11"><span class="lv">Lv</span><span
+                                                    class="num">11</span></span></td>
+                                            <td><span class="lv-box col12"><span class="lv">Lv</span><span
+                                                    class="num">12</span></span></td>
+                                            <td><span class="lv-box col13"><span class="lv">Lv</span><span
+                                                    class="num">13</span></span></td>
+                                            <td><span class="lv-box col14"><span class="lv">Lv</span><span
+                                                    class="num">14</span></span></td>
+                                            <td><span class="lv-box col15"><span class="lv">Lv</span><span
+                                                    class="num">15</span></span></td>
+                                            <td><span class="lv-box col16"><span class="lv">Lv</span><span
+                                                    class="num">16</span></span></td>
+                                            <td><span class="lv-box col17"><span class="lv">Lv</span><span
+                                                    class="num">17</span></span></td>
+                                            <td><span class="lv-box col18"><span class="lv">Lv</span><span
+                                                    class="num">18</span></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="lv-box col1"><span class="lv">Lv</span><span
+                                                    class="num">1</span></span></td>
+                                            <td><span class="lv-box col2"><span class="lv">Lv</span><span
+                                                    class="num">2</span></span></td>
+                                            <td><span class="lv-box col3"><span class="lv">Lv</span><span
+                                                    class="num">3</span></span></td>
+                                            <td><span class="lv-box col4"><span class="lv">Lv</span><span
+                                                    class="num">4</span></span></td>
+                                            <td><span class="lv-box col5"><span class="lv">Lv</span><span
+                                                    class="num">5</span></span></td>
+                                            <td><span class="lv-box col6"><span class="lv">Lv</span><span
+                                                    class="num">6</span></span></td>
+                                            <td><span class="lv-box col7"><span class="lv">Lv</span><span
+                                                    class="num">7</span></span></td>
+                                            <td><span class="lv-box col8"><span class="lv">Lv</span><span
+                                                    class="num">8</span></span></td>
+                                            <td><span class="lv-box col9"><span class="lv">Lv</span><span
+                                                    class="num">9</span></span></td>
+                                            <td><span class="lv-box col10"><span class="lv">Lv</span><span
+                                                    class="num">10</span></span></td>
+                                            <td><span class="lv-box col11"><span class="lv">Lv</span><span
+                                                    class="num">11</span></span></td>
+                                            <td><span class="lv-box col12"><span class="lv">Lv</span><span
+                                                    class="num">12</span></span></td>
+                                            <td><span class="lv-box col13"><span class="lv">Lv</span><span
+                                                    class="num">13</span></span></td>
+                                            <td><span class="lv-box col14"><span class="lv">Lv</span><span
+                                                    class="num">14</span></span></td>
+                                            <td><span class="lv-box col15"><span class="lv">Lv</span><span
+                                                    class="num">15</span></span></td>
+                                            <td><span class="lv-box col16"><span class="lv">Lv</span><span
+                                                    class="num">16</span></span></td>
+                                            <td><span class="lv-box col17"><span class="lv">Lv</span><span
+                                                    class="num">17</span></span></td>
+                                            <td><span class="lv-box col18"><span class="lv">Lv</span><span
+                                                    class="num">18</span></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="lv-box col1"><span class="lv">Lv</span><span
+                                                    class="num">1</span></span></td>
+                                            <td><span class="lv-box col2"><span class="lv">Lv</span><span
+                                                    class="num">2</span></span></td>
+                                            <td><span class="lv-box col3"><span class="lv">Lv</span><span
+                                                    class="num">3</span></span></td>
+                                            <td><span class="lv-box col4"><span class="lv">Lv</span><span
+                                                    class="num">4</span></span></td>
+                                            <td><span class="lv-box col5"><span class="lv">Lv</span><span
+                                                    class="num">5</span></span></td>
+                                            <td><span class="lv-box col6"><span class="lv">Lv</span><span
+                                                    class="num">6</span></span></td>
+                                            <td><span class="lv-box col7"><span class="lv">Lv</span><span
+                                                    class="num">7</span></span></td>
+                                            <td><span class="lv-box col8"><span class="lv">Lv</span><span
+                                                    class="num">8</span></span></td>
+                                            <td><span class="lv-box col9"><span class="lv">Lv</span><span
+                                                    class="num">9</span></span></td>
+                                            <td><span class="lv-box col10"><span class="lv">Lv</span><span
+                                                    class="num">10</span></span></td>
+                                            <td><span class="lv-box col11"><span class="lv">Lv</span><span
+                                                    class="num">11</span></span></td>
+                                            <td><span class="lv-box col12"><span class="lv">Lv</span><span
+                                                    class="num">12</span></span></td>
+                                            <td><span class="lv-box col13"><span class="lv">Lv</span><span
+                                                    class="num">13</span></span></td>
+                                            <td><span class="lv-box col14"><span class="lv">Lv</span><span
+                                                    class="num">14</span></span></td>
+                                            <td><span class="lv-box col15"><span class="lv">Lv</span><span
+                                                    class="num">15</span></span></td>
+                                            <td><span class="lv-box col16"><span class="lv">Lv</span><span
+                                                    class="num">16</span></span></td>
+                                            <td><span class="lv-box col17"><span class="lv">Lv</span><span
+                                                    class="num">17</span></span></td>
+                                            <td><span class="lv-box col18"><span class="lv">Lv</span><span
+                                                    class="num">18</span></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="lv-box col1"><span class="lv">Lv</span><span
+                                                    class="num">1</span></span></td>
+                                            <td><span class="lv-box col2"><span class="lv">Lv</span><span
+                                                    class="num">2</span></span></td>
+                                            <td><span class="lv-box col3"><span class="lv">Lv</span><span
+                                                    class="num">3</span></span></td>
+                                            <td><span class="lv-box col4"><span class="lv">Lv</span><span
+                                                    class="num">4</span></span></td>
+                                            <td><span class="lv-box col5"><span class="lv">Lv</span><span
+                                                    class="num">5</span></span></td>
+                                            <td><span class="lv-box col6"><span class="lv">Lv</span><span
+                                                    class="num">6</span></span></td>
+                                            <td><span class="lv-box col7"><span class="lv">Lv</span><span
+                                                    class="num">7</span></span></td>
+                                            <td><span class="lv-box col8"><span class="lv">Lv</span><span
+                                                    class="num">8</span></span></td>
+                                            <td><span class="lv-box col9"><span class="lv">Lv</span><span
+                                                    class="num">9</span></span></td>
+                                            <td><span class="lv-box col10"><span class="lv">Lv</span><span
+                                                    class="num">10</span></span></td>
+                                            <td><span class="lv-box col11"><span class="lv">Lv</span><span
+                                                    class="num">11</span></span></td>
+                                            <td><span class="lv-box col12"><span class="lv">Lv</span><span
+                                                    class="num">12</span></span></td>
+                                            <td><span class="lv-box col13"><span class="lv">Lv</span><span
+                                                    class="num">13</span></span></td>
+                                            <td><span class="lv-box col14"><span class="lv">Lv</span><span
+                                                    class="num">14</span></span></td>
+                                            <td><span class="lv-box col15"><span class="lv">Lv</span><span
+                                                    class="num">15</span></span></td>
+                                            <td><span class="lv-box col16"><span class="lv">Lv</span><span
+                                                    class="num">16</span></span></td>
+                                            <td><span class="lv-box col17"><span class="lv">Lv</span><span
+                                                    class="num">17</span></span></td>
+                                            <td><span class="lv-box col18"><span class="lv">Lv</span><span
+                                                    class="num">18</span></span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--LOL符文与天赋-->
+                    <div class="slider rune-and-gift LOL" >
+                        <div class="header">
+                            <div class="equip-heros">
+                                <div class="left">
+                                    <span class="hero-item active">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                </div>
+                                <div class="center">
+                                    <span class="vs">VS</span>
+                                </div>
+                                <div class="right">
+                                    <span class="hero-item active">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="RG-main">
+                            <!--左右一样-->
+                            <div class="left">
+                                <div class="gift-head">
+                                    <img src="" alt="" class="gift-1-img">
+                                    <span class="gift-name">
+                                        <span class="gift-1-name">精密</span>
+                                        <span class="plus">+</span>
+                                        <span class="gift-2-name">坚决</span>
+                                    </span>
+                                    <img src="" alt="" class="gift-2-img">
+                                </div>
+                                <div class="gift-main">
+                                    <div class="gift-main-l">
+                                        <!--(div.gift-row>(span.gift-item>img)*4)*4-->
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                    </div>
+                                    <div class="gift-main-r">
+                                        <!--(div.gift-row>(span.gift-item>img)*4)*4-->
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="gift-head">
+                                    <img src="" alt="" class="gift-1-img">
+                                    <span class="gift-name">
+                                        <span class="gift-1-name">精密</span>
+                                        <span class="plus">+</span>
+                                        <span class="gift-2-name">坚决</span>
+                                    </span>
+                                    <img src="" alt="" class="gift-2-img">
+                                </div>
+                                <div class="gift-main">
+                                    <div class="gift-main-l">
+                                        <!--(div.gift-row>(span.gift-item>img)*4)*4-->
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                    </div>
+                                    <div class="gift-main-r">
+                                        <!--(div.gift-row>(span.gift-item>img)*4)*4-->
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                        <div class="gift-row">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                            <img src="" alt="" class="gift-item">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--KOG符文-->
+                    <div class="slider kog-rune KOG">
+                        <div class="header">
+                            <div class="equip-heros">
+                                <div class="left">
+                                    <span class="hero-item active">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                </div>
+                                <div class="center">
+                                    <span class="vs">VS</span>
+                                </div>
+                                <div class="right">
+                                    <span class="hero-item active">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                    <span class="hero-item">
+                                        <img src="" alt="" class="hero-icon">
+                                        <span class="player-icon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="player-name">ABCD</span>
+                                        <span class="hero-name">北地之狱</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kog-rune-main">
+                            <div class="left">
+                                <div class="kog-rune-list">
+                                    <div class="kog-rune-item">
+                                        <img src="" alt="" class="rune-img">
+                                        <span class="text">五级铭文：</span>
+                                        <span class="rune-name">宿命</span>
+                                        <span>*</span>
+                                        <span class="rune-count">10</span>
+                                    </div>
+                                </div>
+                                <div class="kog-desc-list">
+                                    <span class="kog-desc-item">
+                                        <span class="text">攻击</span>
+                                        <span class="num">+50</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="kog-rune-list"></div>
+                                <div class="kog-desc-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- built script will be auto injected -->
+<script data-main="../src/script/js/after.js?t={VERSION_TIME}" src="../src/script/require.js"></script>
+</body>
+
+</html>

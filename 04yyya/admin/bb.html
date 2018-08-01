@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+
+
+<body>
+  <select id="province" name="province" onchange="getCity()">
+      <option value="0">请选择省</option>
+  </select>
+  <select id="city" name="city" onchange="getPart()">
+
+  </select>
+  <select id="part" name="part">
+
+  </select>
+</body>
+</html>
+
+<script>
+    //页面加载完成执行获取省列表
+    $.ajax({
+        url: 'http://api.<?=WEB_DOMAIN?>/Member/Address/getCityList.html',
+        data: {'pid': null},
+        dataType: 'json',
+        type: 'POST',
+        success: function (d) {
+            var code = '';
+            for(i in d){
+                //alert(d[i]['id']+'---'+d[i]['nickname']);
+                code += '<option value=\"'+d[i]['id']+'\">'+d[i]['name']+'</option>';
+            }
+            $(code).appendTo('#province');
+            //window.location.reload();
+        }
+    });
+
+    function getCity(){
+        //清空列表
+        $('#city').empty();
+        $('#part').empty();
+        var province_id = $('#province').val();
+        //获取市列表
+        $.ajax({
+            url: 'http://api.<?=WEB_DOMAIN?>/Member/Address/getCityList.html',
+            data: {'pid': province_id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                var code = '<option value="0">请选择市</option>';
+                for(i in d){
+                    //alert(d[i]['id']+'---'+d[i]['nickname']);
+                    code += '<option value=\"'+d[i]['id']+'\">'+d[i]['name']+'</option>';
+                }
+                $(code).appendTo('#city');
+                //window.location.reload();
+            }
+        });
+    }
+
+    function getPart(){
+        //清空列表
+        $('#part').empty();
+        var city_id = $('#city').val();
+        //获取区列表
+        $.ajax({
+            url: 'http://api.<?=WEB_DOMAIN?>/Member/Address/getCityList.html',
+            data: {'pid': city_id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                var code = '<option value="0">请选择区</option>';
+                for(i in d){
+                    //alert(d[i]['id']+'---'+d[i]['nickname']);
+                    code += '<option value=\"'+d[i]['id']+'\">'+d[i]['name']+'</option>';
+                }
+                $(code).appendTo('#part');
+                //window.location.reload();
+            }
+        });
+    }
+</script>
+

@@ -1,0 +1,21 @@
+<scroll-view scroll-y="true" class="wrapper" bindscrolltolower="">
+    <view class="pro_list">
+        <view class="product_list">
+            <block wx:if="{{themelist.length > 0}}">
+            <block wx:for="{{themelist}}" wx:key="themelist">
+                <navigator class="list" url="detail?theme_id={{item.id}}">
+                    <image class="img" src="{{item.path}}"/>
+                    <view class="coveres">
+                        <view class="t_time">{{item.datetime}}</view>
+                        <view class="t_titl">{{item.title[0]}}</view>
+                        <view class="t_subtitl">{{item.title[1]}}</view>
+                    </view>
+                </navigator>
+            </block>
+            </block>
+            <block wx:else>
+                <view class="no_msgs"><image src="http://img.yummy194.cn/images/order_over.png" /><text>暂时没有专题</text></view>
+            </block>
+        </view>
+    </view>
+</scroll-view>

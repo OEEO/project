@@ -1,0 +1,48 @@
+<!--日历js、css文件加载 start-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+<?php if(IS_WAP):?>
+<style>
+    .datetimepicker table td{ font-size:0.14rem;}
+    #admin-offcanvas{display:none;}
+</style>
+<?php endif;?>
+
+<!--<form class="am-g">-->
+    <!--<div class="am-alert am-alert-danger" id="my-alert" style="display: none">-->
+        <!--<p>开始日期应小于结束日期！</p>-->
+    <!--</div>-->
+    <!--<input type="text" name="sn" id="search_sn" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="订单号查询" value="{$search_sn}"/>-->
+    <!--<input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="购买者查询" value="{$search_member}"/>-->
+    <!--<input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-startDate" name="start_order_time"  placeholder="下单开始时间" required readonly="true" value="{$search_start_order_time}"/>-->
+    <!--<input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-endDate" name="stop_order_time"  placeholder="下单结束时间" required readonly="true" value="{$search_stop_order_time}"/>-->
+    <!--<select id="act_status" name="act_status" style="width: 20%;">-->
+        <!--<option value="">请选择</option>-->
+        <!--<option value="0" <?php if(isset($search_act_status) && $search_act_status == 0)echo "selected='selected'";?>>未支付</option>-->
+        <!--<option value="1" <?php if($search_act_status == 1)echo "selected='selected'";?>>已付款（未参加）</option>-->
+        <!--<option value="4" <?php if($search_act_status == 4)echo "selected='selected'";?>>已付款（已完成）</option>-->
+        <!--&lt;!&ndash;<option value="3" <?php if($search_act_status == 3)echo "selected='selected'"?>>已发货（未签收）</option>-->
+        <!--<option value="4" <?php if($search_act_status == 4)echo "selected='selected'"?>>已发货（已签收）</option>&ndash;&gt;-->
+        <!--<option value="5" <?php if($search_act_status == 5)echo "selected='selected'";?>>申请退款</option>-->
+        <!--<option value="6" <?php if($search_act_status == 6)echo "selected='selected'";?>>退款申请已处理</option>-->
+        <!--<option value="7" <?php if($search_act_status == 7)echo "selected='selected'";?>>已取消</option>-->
+        <!--<option value="8" <?php if($search_act_status == 8)echo "selected='selected'";?>>系统自动操作，退款中</option>-->
+    <!--</select>-->
+    <!--<select id="citys" name="citys" style="width: 20%;">-->
+        <!--<option value="">请选择</option>-->
+        <!--<option value="224" <?php if($search_city == 224)echo "selected='selected'";?>>广州</option>-->
+        <!--<option value="234" <?php if($search_city == 234)echo "selected='selected'";?>>深圳</option>-->
+    <!--</select>-->
+    <!--<select id="status" name="status" style="width: 20%;">-->
+        <!--<option value="">请选择</option>-->
+        <!--<option value="0" <?php if(isset($search_status) && $search_status == 0)echo "selected='selected'";?>>已删除</option>-->
+        <!--<option value="1" <?php if($search_status == 1 || $status == 1)echo "selected='selected'";?>>正常</option>-->
+        <!--<option value="2" <?php if($search_status == 2)echo "selected='selected'";?>>已关闭</option>-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash;<button type="button" class="am-btn am-btn-primary" onclick="search_rest()">重置</button>&ndash;&gt;-->
+    <!--<button type="submit" class="am-btn am-btn-success">提交</button>-->
+<!--</form>-->
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}

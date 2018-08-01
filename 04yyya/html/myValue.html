@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/myValue.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/myValue.js"></script>
+
+</head>
+<body style="min-height:100%;background:#ebecf0;">
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">我的收藏</div>
+</div>
+<div class="valueMenu">
+	<div class="act show" onclick="whichToshow(0)">活动</div>
+	<div class="goods" onclick="whichToshow(1)">商品</div>
+	<div class="daRen " onclick="whichToshow(2)">达人</div>
+</div>
+<div class="the_blank"></div>
+<!-- ++++++++++++++收藏的活动++++++++++++++ -->
+<div class="tipsList">
+	<div class="noValues">
+		<img class="defaultImg" src="./images/myValues.png">
+		<p>没有收藏内容</p>
+	</div>
+<!-- --------------------- --
+	<div class="tipsInfStyle overdue">
+		<a href="tips.html#30">
+			<div class="orderListLeft">
+				<div class="orderTypeBg"></div>
+				<div class="orderType">饭局</div>
+				<img width=100% height=100% src="uploads/20151012/1.jpg">
+			</div>
+		</a>	
+			<div class="orderListRight">
+				<a href="tips.html#30">
+					<div class="orderTitle">综合咖啡体验，新手之选，走进咖啡的世界</div>
+				</a>
+					<div class="actAdd">珠江新城</div>
+					<div class="actTime">09.26&#160;周六&#160;09:30</div>	
+					<div class="actPrice">￥ 120</div>
+					<div class="values valued" onclick="makeConditions('tips.html#30',this)"></div>
+			</div>
+			<div class="clearfix"></div>
+	</div>	
+	<div class="the_blank"></div>
+<!-- --------------------- -->
+</div>
+<!-- ++++++++++++++收藏的活动 结束++++++++++++++ -->
+
+
+<!-- ====================收藏的商品列表===================== -->
+<div class="goodsList" >
+	<div class="noValues">
+		<img class="defaultImg" src="./images/myValues.png">
+		<p>没有收藏内容</p>
+	</div>
+<!-- --------------------- --
+	<div class="goodsInfStyle">
+		<a href="goodsDetail.html#30">
+			<div class="orderListLeft">
+				<img width=100% height=100% src="uploads/20151012/1.jpg">
+			</div>
+		</a>	
+			<div class="orderListRight">
+				<a href="goodsDetail.html#30">
+					<div class="orderTitle">综合咖啡体验，新手之选，走进咖啡的世界</div>
+				</a>	
+					<div class="orderPrice">￥ 120</div>
+					<div class="values valued" onclick="makeConditions('goodsDetail.html#30',this)"></div>
+			</div>
+			<div class="clearfix"></div>
+	</div>	
+	<div class="the_blank"></div>
+	
+	
+	<div class="goodsInfStyle">
+		<a href="goodsDetail.html#30">
+			<div class="orderListLeft">
+				<img width=100% height=100% src="uploads/20151012/1.jpg">
+			</div>
+		</a>	
+			<div class="orderListRight">
+				<a href="goodsDetail.html#30">
+					<div class="orderTitle">综合咖啡体验，新手之选，走进咖啡的世界</div>
+				</a>	
+					<div class="orderPrice">￥ 120</div>
+					<div class="values valued" onclick="makeConditions('goodsDetail.html#30',this)"></div>
+			</div>
+			<div class="clearfix"></div>
+	</div>
+	<div class="the_blank"></div>
+<!-- --------------------- -->
+</div>
+
+<!-- ===================收藏的商品列表 结束================== -->
+
+<!-- ********************收藏的达人******************** -->
+<div class="daRenList">
+	<div class="noValues">
+		<img class="defaultImg" src="./images/myValues.png">
+		<p>没有收藏内容</p>
+	</div>
+<!-- --------------------- --
+	<div class="daRenInfStyle">
+		<a href="daRen.html#1">
+			<div class="daRenPic"><img class="imgPortrait" src="./uploads/member/Heineken@yami.COM/55b300c4b73fc.JPG"></div>
+			<div class="daRenInf">
+				<div class="daRenName">Fragment</div>
+				<div class="daRenActInf">
+					<span>广州</span><i></i><span>5.0 星达人</span><i></i><span>22场活动</span>
+				</div>
+			</div>
+		</a>
+		<div class="values valued" onclick="makeConditions('daRen.html#1',this)"></div>
+	</div>
+	<div class="the_blank"></div>
+
+	<div class="daRenInfStyle">
+	<a href="daRen.html#132">
+		<div class="daRenPic"><img class="imgPortrait" src="./uploads/member/Heineken@yami.COM/55b300c4b73fc.JPG"></div>
+		<div class="daRenInf">
+			<div class="daRenName">Fragment</div>
+			<div class="daRenActInf">
+				<span>广州</span><i></i><span>5.0 星达人</span><i></i><span>22场活动</span>
+			</div>
+		</div>
+	</a>
+		<div class="values valued" onclick="makeConditions('daRen.html#132',this)"></div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="the_blank"></div>
+	<!-- --------------------- -->
+</div>
+<!-- ******************收藏的达人结束******************* -->
+
+<div class="the_end"></div><!-- 页面结尾 -->
+</body>
+</html>

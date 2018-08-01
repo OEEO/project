@@ -1,0 +1,42 @@
+<view class="header line">
+    <view class="title">编辑个人资料</view>
+    <view class="orderOperation" bindtap="submit">完成</view>
+</view>
+<view class="headerBlank"></view>
+<view class="border_aqi">
+	<view class="takePhotos" bindtap="tishi"><image src="{{member.path}}" data-id="{{member.pic_id}}" /><navigator url="url"></navigator></view>
+</view>
+<view class="the_blank"></view>
+<view class="userInf">
+	<view class="li">昵称<input type="text" class="nickname" value="{{member.nickname}}"  bindinput="nickname"/></view>
+	<view class="li">城市
+		<view class="citys">
+			<picker bindchange="cityChange" value="{{cindex}}" data-id="[{{city}}]" range="{{city}}">
+                <view class="select-item">
+                    {{city[cindex]}}
+                </view>
+            </picker>
+		</view>
+		<view class="provinces">
+			<picker bindchange="provinceChange" value="{{pindex}}" range="{{province}}">
+                <view class="select-item">
+                    {{province[pindex]}}
+                </view>
+            </picker>
+		</view>
+	</view>
+	<view class="li">性别
+		<view class="sexs">
+			<picker bindchange="sexChange" value="{{sexindex}}" range="{{sex}}">
+                <view class="select-item">
+                    {{sex[sexindex]}}
+                </view>
+            </picker>
+		</view>
+	</view>
+	<view class="li tel">手机号(已绑定)<view class="telephone">{{member.telephone}}</view><small>手机号码不可更改，如有特殊情况请联系客服</small></view>
+	<view class="the_blank"></view>
+	<navigator url="resume">个人简介<view class="cao"></view></navigator>
+	<view class="clearfix"></view>
+</view>
+    <view class="head_pic_box" style="display:none;"></view>

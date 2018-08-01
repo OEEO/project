@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="//mat1.gtimg.com/sports/kbsweb/favicon.ico" type="image/x-icon">
+    <title></title>
+    <link rel="stylesheet" href="../tmp/style/main.css" />
+    <!-- built style will be auto injected -->
+    <script>
+        /**
+         * 图片加载失败时调用的函数。0 -- 默认头像， 1 -- 灰色图片
+         * 例子：<img src="man.png" onerror="nofind(0)" alt="This is a man" /> 
+         */
+        function nofind(type) {
+            var url = type === 0
+                ? '//mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/unmen.png'
+                : '//mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/blank.png';
+            var img = event.srcElement;
+            img.src = url;
+            img.onerror = null;
+        }
+    </script>
+</head>
+
+<body>
+    
+    <div id="main">
+        <!-- built html will be auto injected -->
+        <div class="path-selector">
+            <div class="path-selector_row">
+                <a href="./schedule.html" class="active">赛程</a><a href="./rank-points.html" class="">排行榜</a>
+                <a id="team-collapse-selector" href="javascript:;">
+                    战队介绍
+                    <i class="path-caret"></i>
+                </a>
+                <div id="team-collapse" class="team-collapse">
+                    <div class="team-collapse-header">
+                        <span class="active" data-game="lol">英雄联盟</span>
+                        <span class="white-tag">|</span>
+                        <span data-game="kog">王者荣耀</span>
+                    </div>
+                    <div id="team-collapse-list" class="team-collapse-list"></div>
+                </div>
+            </div>
+        </div>
+        <div id="date-picker" class="date-picker"></div>
+        <div id="collapse"></div>
+        <div class="container">
+            <div class="schedule-page">
+                <div class="schedule-select-container">
+                    <div id="time-slider" class="time-slider"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- built script will be auto injected -->
+    <script data-main="../src/script/js/test.js" src="../src/script/require.js"></script>
+</body>
+
+</html>

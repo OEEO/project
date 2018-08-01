@@ -1,0 +1,87 @@
+<button type="button" id="select" class="am-btn am-btn-primary" onclick="add()">新增厨房</button>
+<button type="button" id="apply" class="am-btn am-btn-primary" onclick="index()">厨房列表</button>
+<!-- 新增banner -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="remark">
+    <div class="am-modal-dialog">
+        <form name="resetBanner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">添加备注</div>
+            <div class="am-modal-bd">
+                <input type="hidden" id="apply_id">
+                <div class="am-g am-margin-top-sm">
+                    <textarea name="remark" class="am-input-sm" id="remark_content"></textarea>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+<script>
+    $('.am-modal').appendTo('body');
+    function index(){
+        window.location = '__CONTROLLER__/kitchen.html';
+    }
+
+    function updateStatus(id){
+        $.ajax({
+            url: '__CONTROLLER__/kitchenApplyStatus.html',
+            data: {'id': id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                if (d.status == 1) {
+                    alert(d.info);
+                } else {
+                    alert(d.info);
+                }
+                window.location.reload();
+            }
+        })
+    }
+
+    function remark(id){
+        $.ajax({
+            url: '__CONTROLLER__/remark.html',
+            data: {'id': id ,'oper':0},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                $('#remark_content').val(d);
+            }
+        })
+
+        $('#apply_id').val(id);
+        $('#remark').modal({
+            relatedTarget: this,
+            closeViaDimmer : false,
+            onConfirm: function() {
+                var apply_id = $('#apply_id').val();
+                var remark = $('#remark_content').val();
+
+                $.ajax({
+                    url: '__CONTROLLER__/remark.html',
+                    data: {'id': apply_id,'remark':remark ,'oper':1},
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if (d.status == 1) {
+                            alert(d.info);
+                        } else {
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                })
+            },
+            onCancel: function(){
+                return ;
+            }
+        });
+    }
+</script>

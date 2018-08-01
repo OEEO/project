@@ -1,0 +1,120 @@
+/* 三角形 */
+.triangle(@height, @width, @color) {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: @color;
+  border-width: @height/2 @width/2;
+}
+.hide {
+  display: none;
+}
+
+.top-hero-table {
+  width: 1200px;
+  margin-top: 48px;
+  margin-bottom: 24px;
+  border-collapse:collapse;
+  font-weight: bold;
+  color: #333333;
+  tr {
+    border: solid 1px #dddddd;
+  }
+  td {
+    text-align: center;
+    font-size: 14px;
+  }
+  img {
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+  thead tr {
+    background-color: #fff;
+    .cover {
+      background-color: rgb(250, 250, 250);
+    }
+    td {
+      font-size: 16px;
+      &.order {
+        cursor: pointer;
+      }
+    }
+    .order-triangle {
+      display: inline-block;
+      vertical-align: middle;
+      &:before {
+        display: block;
+        margin: 2px;
+        .triangle(6px, 6px, #fff #fff  #ddd #fff);
+      }
+      &:after {
+        display: block;
+        margin: 2px;
+        .triangle(6px, 6px,  #ddd #fff #fff #fff);
+      }
+      &.up-order {
+        &:before {
+          border-color: #fff #fff  #000 #fff
+        }
+      }
+      &.down-order {
+        &:after {
+          border-color: #000 #fff #fff #fff
+        }
+      }
+    }
+  }
+  tbody tr {
+    height: 60px;
+    background-color: #fff8fa;
+    &.odd {
+      background-color: #fff;
+      .cover {
+        background-color: rgb(250, 250, 250);
+      }
+    }
+    .cover {
+      background-color: rgb(250, 243, 245);
+    }
+    span {
+      display: inline-block;
+      text-align: left;
+      width: 64px;
+    }
+    .kda span {
+      width: 14px;
+      text-align: center;
+    }
+    .count {
+      p:last-child {
+        margin-top: 5px;
+      }
+      span {
+        width: 50%;
+        text-align: center;
+      }
+    }
+    .text-danger {
+      color: #ff235d;
+    }
+    .text-blue {
+      color: #00aef7;
+    }
+  }
+  tfoot tr {
+    background-color: #fff;
+    cursor: pointer;
+    span {
+      display: inline-block;
+      width: 25px;
+      height: 40px;
+    }
+    .up-caret {
+      background: url("../../assets/up-caret.png") no-repeat center;
+    }
+    .down-caret {
+      background: url("../../assets/down-caret.png") no-repeat center;
+    }
+  }
+}

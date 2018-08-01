@@ -1,0 +1,382 @@
+[
+    {
+        "label": "王者荣耀",
+        "value": "kog",
+        "children": [
+            {
+                "label": "RSG",
+                "value": 5286,
+                "children": [
+                    {
+                        "label": "RSG.子冰",
+                        "value": 30244
+                    },
+                    {
+                        "label": "RSG.SEVEN",
+                        "value": 30240
+                    },
+                    {
+                        "label": "RSG.萌神",
+                        "value": 30241
+                    },
+                    {
+                        "label": "RSG.刺心",
+                        "value": 30242
+                    },
+                    {
+                        "label": "RSG.易瞳",
+                        "value": 34486
+                    },
+                    {
+                        "label": "RSG.芜神",
+                        "value": 28147
+                    },
+                    {
+                        "label": "RSG.夜月",
+                        "value": 28947
+                    }
+                ]
+            },
+            {
+                "label": "33常凯瑞",
+                "value": 6270,
+                "children": [
+                    {
+                        "label": "33常凯瑞.凯旋",
+                        "value": 34460
+                    },
+                    {
+                        "label": "33常凯瑞.七诺",
+                        "value": 34461
+                    },
+                    {
+                        "label": "33常凯瑞.三金",
+                        "value": 34462
+                    },
+                    {
+                        "label": "33常凯瑞.太子",
+                        "value": 34463
+                    },
+                    {
+                        "label": "33常凯瑞.小熊",
+                        "value": 34464
+                    },
+                    {
+                        "label": "33常凯瑞.普通人",
+                        "value": 34465
+                    },
+                    {
+                        "label": "33常凯瑞.泽华",
+                        "value": 34466
+                    }
+                ]
+            },
+            {
+                "label": "AG超玩会",
+                "value": 4457,
+                "children": [
+                    {
+                        "label": "AG超玩会.Vv",
+                        "value": 26351
+                    },
+                    {
+                        "label": "AG超玩会.梦泪",
+                        "value": 26352
+                    },
+                    {
+                        "label": "AG超玩会.兰息",
+                        "value": 26354
+                    },
+                    {
+                        "label": "AG超玩会.染安",
+                        "value": 30817
+                    },
+                    {
+                        "label": "AG超玩会.小飞",
+                        "value": 28923
+                    },
+                    {
+                        "label": "AG超玩会.莲",
+                        "value": 34458
+                    },
+                    {
+                        "label": "AG超玩会.屿秋",
+                        "value": 26431
+                    }
+                ]
+            },
+            {
+                "label": "DC",
+                "value": 6283,
+                "children": [
+                    {
+                        "label": "DC.输出",
+                        "value": 26399
+                    },
+                    {
+                        "label": "DC.包子",
+                        "value": 34468
+                    },
+                    {
+                        "label": "DC.馒头",
+                        "value": 34467
+                    },
+                    {
+                        "label": "DC.诗酒",
+                        "value": 34469
+                    },
+                    {
+                        "label": "DC.七年",
+                        "value": 34470
+                    },
+                    {
+                        "label": "DC.流离",
+                        "value": 28927
+                    },
+                    {
+                        "label": "DC.樱满集",
+                        "value": 34471
+                    }
+                ]
+            },
+            {
+                "label": "DP",
+                "value": 6272,
+                "children": [
+                    {
+                        "label": "DP.ICE",
+                        "value": 34472
+                    },
+                    {
+                        "label": "DP.浅安",
+                        "value": 34473
+                    },
+                    {
+                        "label": "DP.维森",
+                        "value": 30239
+                    },
+                    {
+                        "label": "DP.ChenAn",
+                        "value": 34474
+                    },
+                    {
+                        "label": "DP.麟羽",
+                        "value": 34475
+                    },
+                    {
+                        "label": "DP.道尔",
+                        "value": 34476
+                    },
+                    {
+                        "label": "DP.笨笨",
+                        "value": 34477
+                    }
+                ]
+            },
+            {
+                "label": "FTD",
+                "value": 6277,
+                "children": [
+                    {
+                        "label": "FTD丶无铭",
+                        "value": 34478
+                    },
+                    {
+                        "label": "FTD丶花海",
+                        "value": 34479
+                    },
+                    {
+                        "label": "FTD丶青澜",
+                        "value": 34480
+                    },
+                    {
+                        "label": "FTD丶酒孺",
+                        "value": 34481
+                    },
+                    {
+                        "label": "FTD丶谛听",
+                        "value": 34482
+                    },
+                    {
+                        "label": "FTD丶情话",
+                        "value": 34483
+                    },
+                    {
+                        "label": "FTD丶静心",
+                        "value": 34484
+                    }
+                ]
+            },
+            {
+                "label": "TBG",
+                "value": 6280,
+                "children": [
+                    {
+                        "label": "TBG.阿楠",
+                        "value": 26449
+                    },
+                    {
+                        "label": "TBG.月离",
+                        "value": 34487
+                    },
+                    {
+                        "label": "TBG.晨风",
+                        "value": 28127
+                    },
+                    {
+                        "label": "TBG.Wuz",
+                        "value": 34488
+                    },
+                    {
+                        "label": "TBG.过客",
+                        "value": 34489
+                    },
+                    {
+                        "label": "TBG.暖海",
+                        "value": 34490
+                    },
+                    {
+                        "label": "TBG.白羽",
+                        "value": 34491
+                    }
+                ]
+            },
+            {
+                "label": "TOPM",
+                "value": 6268,
+                "children": [
+                    {
+                        "label": "TOPM.小金刚",
+                        "value": 34492
+                    },
+                    {
+                        "label": "TOPM.逍遥",
+                        "value": 34493
+                    },
+                    {
+                        "label": "TOPM.心醉",
+                        "value": 28133
+                    },
+                    {
+                        "label": "TOPM.Muyu",
+                        "value": 34494
+                    },
+                    {
+                        "label": "TOPM.易峥",
+                        "value": 34495
+                    },
+                    {
+                        "label": "TOPM.蜜茶",
+                        "value": 34496
+                    },
+                    {
+                        "label": "TOPM.夏竹",
+                        "value": 34497
+                    }
+                ]
+            },
+            {
+                "label": "Ts",
+                "value": 6279,
+                "children": [
+                    {
+                        "label": "Ts.神人",
+                        "value": 30267
+                    },
+                    {
+                        "label": "Ts.鸳北",
+                        "value": 30266
+                    },
+                    {
+                        "label": "Ts.阿豆",
+                        "value": 30265
+                    },
+                    {
+                        "label": "Ts.RX",
+                        "value": 30268
+                    },
+                    {
+                        "label": "Ts.破碎",
+                        "value": 30264
+                    },
+                    {
+                        "label": "Ts.暖阳",
+                        "value": 30270
+                    },
+                    {
+                        "label": "Ts.十三",
+                        "value": 30269
+                    }
+                ]
+            },
+            {
+                "label": "WE",
+                "value": 6275,
+                "children": [
+                    {
+                        "label": "WE.762",
+                        "value": 34498
+                    },
+                    {
+                        "label": "WE.994",
+                        "value": 34499
+                    },
+                    {
+                        "label": "WE.LY",
+                        "value": 34500
+                    },
+                    {
+                        "label": "WE.十一",
+                        "value": 34501
+                    },
+                    {
+                        "label": "WE.小新",
+                        "value": 34502
+                    },
+                    {
+                        "label": "WE.七夏",
+                        "value": 34503
+                    },
+                    {
+                        "label": "WE.林一然",
+                        "value": 34504
+                    }
+                ]
+            },
+            {
+                "label": "WF.D",
+                "value": 4466,
+                "children": [
+                    {
+                        "label": "WF.D.Evildoer",
+                        "value": 26422
+                    },
+                    {
+                        "label": "WF.D.几迟",
+                        "value": 26420
+                    },
+                    {
+                        "label": "WF.D.笑煮",
+                        "value": 26346
+                    },
+                    {
+                        "label": "WF.D.天一",
+                        "value": 27871
+                    },
+                    {
+                        "label": "WF.D.Monkey",
+                        "value": 28945
+                    },
+                    {
+                        "label": "WF.D.天明",
+                        "value": 26494
+                    },
+                    {
+                        "label": "WF.D.伊莱文",
+                        "value": 34459
+                    }
+                ]
+            }
+        ]
+    }
+]

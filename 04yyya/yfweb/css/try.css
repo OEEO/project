@@ -1,0 +1,21 @@
+/* CSS Document */
+
+@charset "utf-8";
+/******************************/
+.page_try .center_body{width:100%; background:#eeeefe; position:absolute; top:4.5rem;}
+.page_try .center_body ul.activity{background:#eeeeff;}
+.page_try .center_body ul.activity>li{ width:100%;margin:0.4rem auto; padding:0.5rem; background:#fff; float:left;}
+.page_try .center_body ul.activity>li .imgPortrait{width:3.5rem;height:3.5rem; border:none; float:left;}
+.page_try .center_body ul.activity>li .imgPortrait img{width:3.5rem;height:3.5rem; border:none;}
+.page_try .center_body ul.activity>li .name{ width:15rem; margin-top:0.4rem; margin-left:0.3rem;float:left;}
+.page_try .center_body ul.activity>li .activity_name{font-size:1.2rem;margin-left:0.3rem;font-weight:800;color:#666;line-height:1.4rem; float:left;}
+.page_try .center_body ul.activity>li .activity_time{font-size:1rem; margin-top:0.6rem; margin-left:0.6rem;color:#999;line-height:0.8rem; float:left;}
+.page_try .center_body ul.activity>li .visit{width:4rem; height:2rem; line-height:2rem; color:#FFF; text-align:center;float:right; margin-top:1rem; border-radius:10%; margin-right:2rem; background:#C33;}
+.page_try .center_body ul.activity>li .activity_text{width:100%; float:left;}
+.page_try .center_body ul.activity>li .a_text{font-size:1.2rem; color:#666; padding:1rem; float:left;}
+.page_try .center_body ul.activity>li .a_img{float:left; padding:0 1.2rem;}
+.page_try .center_body ul.activity>li .a_img a{float:left; margin:0.2rem 0.2rem; width:10rem; height:10rem; overflow:hidden;}
+.page_try .center_body ul.activity>li .a_img a img{width:10rem;}
+#big_img{width:100%; height:100%; display:none; position:absolute; background:rgba(0,0,0,0.9); top:0; left:0; padding-top:50%;}
+#big_img img{width:100%; height:50%;}
+/***********结束************/

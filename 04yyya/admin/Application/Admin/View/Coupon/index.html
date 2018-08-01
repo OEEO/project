@@ -1,0 +1,244 @@
+<header class="am-topbar">
+    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li><a href="javascript:addCoupon()">添加优惠券</a></li>
+            <li><a href="javascript:couponExport()">导出优惠券</a></li>
+            <li class="am-dropdown" data-am-dropdown>
+                <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                    特殊券 <span class="am-icon-caret-down"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="javascript:registerCoupon()">修改注册券</a></li>
+                    <li><a href="javascript:inviteCoupon()">修改邀请券</a></li>
+                    <li><a href="javascript:invitedCoupon()">修改被邀请券</a></li>
+                    <li><a href="javascript:wxDefaultCoupon()">生成微信卡券（微信投放）</a></li>
+                    <li><a href="javascript:wxCustomCoupon()">生成微信卡券（官方投放）</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+<!--<button type="button" id="select" class="am-btn am-btn-primary" onclick="addCoupon()">添加优惠券</button>
+<button class="am-btn am-btn-warning" id="export_excel" onclick="couponExport()">导出Excel</button>
+<button type="button" id="register" class="am-btn am-btn-primary" onclick="registerCoupon()">修改注册券</button>
+<button type="button" id="invite" class="am-btn am-btn-primary" onclick="inviteCoupon()">修改邀请券</button>
+<button type="button" id="invited" class="am-btn am-btn-primary" onclick="invitedCoupon()">修改被邀请券</button>-->
+
+<br/>
+<form class="am-g">
+    <input type="text" name="name" id="search_name" class="am-form-field am-radius" style="width: 20%;float: left;" placeholder="优惠券名称模糊查询" value="{$search_name}"/>
+    <select id="categoryType" name="categoryType">
+        <option value="">请选择分类</option>
+        <option value="0" <?php if($categoryType != '' && $categoryType == 0)echo 'selected="selected"';?>>营销券</option>
+        <option value="4" <?php if($categoryType === 4)echo 'selected="selected"';?>>微信卡券（自定义）</option>
+    </select>
+    <button type="submit" class="am-btn am-btn-success">查找</button>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<!-- 发送券 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="sentCoupon">
+    <div class="am-modal-dialog">
+        <form name="sentCoupon" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">发送优惠券</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <input type="number" name="member_id" class="am-input-sm" id="member_id" placeholder="请输入用户ID"  required/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!--iframe-->
+<!--<div class="am-modal am-modal-prompt" tabindex="-1" id="get_user" style="width:70%">
+
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">选择用户</div>
+            <span class=" am-text-left" style="float: left;">用户ID：</span><input class=" am-text-left" type="text" name="member_id" id="selectOne" value="" style="width: 25%;float: left;" >
+            <div class=" am-text-left"style="height: 400px;" >
+                <iframe id="getUser" name="getUser" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" src="__MODULE__/member/getUser.html">
+
+                </iframe>
+
+
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>-->
+
+
+<script>
+    $('.am-modal').appendTo('body');
+    //跳转注册券界面
+    function registerCoupon(){
+        window.location = '__CONTROLLER__/registerCoupon.html';
+    }
+    //跳转邀请券界面
+    function inviteCoupon(){
+        window.location = '__CONTROLLER__/inviteCoupon.html';
+    }
+    //跳转被邀请券界面
+    function invitedCoupon(){
+        window.location = '__CONTROLLER__/invitedCoupon.html';
+    }
+
+    function addCoupon(){
+            //跳转添加系统优惠券页面
+            window.location = '__CONTROLLER__/add.html';
+    }
+    //跳转生成微信默认卡券页面
+    function  wxDefaultCoupon(){
+        window.location = '__CONTROLLER__/wxDefaultCoupon.html'
+    }
+    //跳转生成微信自定义卡券页面
+    function  wxCustomCoupon(){
+        window.location = '__CONTROLLER__/wxCustomCoupon.html'
+    }
+
+    function update(id){
+        //跳转修改页面
+        window.location = '__CONTROLLER__/update.html?id='+id;
+    }
+
+    function sentCoupon(id){
+        //发送优惠券
+        $('#sentCoupon').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var memberId = $('#member_id').val();
+                if(memberId == ''){
+                    alert('用户ID不能为空');
+                    sentCoupon(id);
+                    return;
+                }
+                $.post('__CONTROLLER__/sentCoupon.html', {'id':id, 'memberId':memberId}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        //window.location.href = window.location.href;
+                        location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            }
+        });
+    }
+
+    //iframe########################################
+    function getUser(id){
+        $('#coupon_id').val(id);
+        $('#get_user').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var memberId = $('#selectOne').val();
+
+                $.post('__CONTROLLER__/sentCoupon.html', {'id':id, 'memberId':memberId}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            }
+
+        });
+    }
+    //详细信息
+    function detail(id){
+        //跳转修改页面
+        window.location = '__CONTROLLER__/detail.html?id='+id;
+        /*$.ajax({
+            url: '__CONTROLLER__/detail.html',
+            data: {'id': id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+               $('#detail').empty();
+                $('#coupon_count').text(d.coupon_count);
+                $('#coupon_sent_count').text(d.coupon_sent_count);
+                $('#coupon_use_count').text(d.coupon_use_count);
+                var code = '<tr"><td>券号</td><td>领取人</td><td>使用时间</td></tr>';
+                for(var r in d.coupon_list){
+                    code += '<tr><td>'+d.coupon_list[r].sn+'</td><td>'+d.coupon_list[r].member_nickname+'</td><td>'+d.coupon_list[r].used_time+'</td></tr>';
+                }
+                $(code).appendTo("table");
+            }
+        });
+        $('#detailInfo').modal({
+            relatedTarget: this
+        });*/
+    }
+
+    //发布
+    function release(id){
+        $.ajax({
+            url: '__CONTROLLER__/release.html',
+            data: {'id': id , 'oper' : 1},
+            dataType: 'json',
+            type: 'POST',
+            success:function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+                window.location.href = window.location.href;
+            }
+        })
+    }
+
+    //取消发布
+    function unrelease(id){
+        $.ajax({
+            url: '__CONTROLLER__/release.html',
+            data: {'id': id , 'oper' : 0},
+            dataType: 'json',
+            type: 'POST',
+            success:function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+                window.location.href = window.location.href;
+            }
+        })
+    }
+
+    //优惠券导出
+    function couponExport(){
+        var couponName = $('#couponName').val()?$('#couponName').val():'';
+
+        window.open("__CONTROLLER__/CouponExport.html?couponName="+couponName,"_blank","width=600,height=600 ")
+
+    }
+
+
+    //iframe选择用户
+    /*function selectOne(id){
+        var coupon_id = $('#coupon_id').val();
+        var member_id = id;
+
+        $.post('__CONTROLLER__/sentCoupon.html', {'id':coupon_id, 'memberId':member_id}, function(d){
+            if(d.status == 1){
+                alert(d.info);
+                window.location.href = window.location.href;
+            }else{
+                alert(d.info);
+            }
+        }, 'json');
+    }*/
+
+
+</script>

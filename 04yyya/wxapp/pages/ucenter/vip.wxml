@@ -1,0 +1,55 @@
+<view class="container">
+    <view wx:if="{{ hasRaisePriority }}" class="raise-priority">
+        <block wx:for="{{ prioritys }}" wx:key="item.type_id">
+            <block wx:if="{{ item.order_id == '' && !item.isPriorityEnd }}" >
+                <view class="raise-item">
+                    <view class="raise-item-title">
+                        {{ item.title }}
+                    </view>
+                    <view class="raise-item-status">
+                        <text>请在 </text>
+                        <text>{{ item.end_time }}</text>
+                        <text> 前使用</text>
+                    </view>
+                    <navigator url="../raise/detail?raise_id={{item.type_id}}">
+                        <view data-raiseid="{{ item.type_id }}" class="raise-item-btn">
+                            立即使用
+                        </view>
+                    </navigator>
+                </view>
+            </block>
+            <block wx:elif="{{ item.order_id == '' && item.isPriorityEnd }}">
+                <view class="raise-item priority-nogo">
+                    <view class="raise-item-title">
+                        {{ item.title }}
+                    </view>
+                    <view class="raise-item-status">
+                        到期日 | {{ item.end_time }}
+                    </view>
+                    <navigator url="../raise/detail?raise_id={{item.type_id}}">
+                        <view data-raiseid="{{ item.type_id }}" class="raise-item-btn">
+                            <text>查看项目</text>
+                        </view>
+                    </navigator>
+                    <image src="/images/priority-overdue.png" class="img-priority-overdue" />
+                </view>
+            </block>
+            <block wx:else>
+                <view class="raise-item priority-nogo">
+                    <view class="raise-item-title">
+                        {{ item.title }}
+                    </view>
+                    <view class="raise-item-status">
+                        到期日 | {{ item.end_time }}
+                    </view>
+                    <view class="raise-item-btn btn-disable">已使用</view>
+                    <image src="/images/priority-used.png" mode="widthFix" class="img-priority-used"/>
+                </view>
+            </block>
+        </block>
+    </view>
+    <view wx:else>
+        <image class="wx-icon" src="http://test.yummy194.cn/images/category_over.png"></image>
+        <view class="tips">暂时没有优先众筹权哦</view>
+    </view>
+</view>

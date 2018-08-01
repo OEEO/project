@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* CSS Document *
+/*
+.header{background:rgba(0,0,0,0);border:none;color:#fff;}
+.header .turnBack:before,.header .turnBack:after{background:#fff;}
+*/
+
+.bodyTop .activityInfo .arrowRight{right:0.3rem; top:1.2rem;}
+/********************************************************/
+.courseOrderInf .liBetweens{width:100%;height: 2px;background: #e0e0e0;margin:0 auto;}
+
+/**页面顶部的设置**/
+.bodyTop {position:relative;}
+
+.picTop { overflow:hidden; position:relative; /*height:23.5rem;background:rgb(192,197,202);*/}
+.picTop img{width:100%;}/*头部图片*/
+.bodyTop center {margin-top:-3.75rem; position:absolute; width:100%; text-align:center;}/*用户头像*/
+
+.activityInfo{display: block;margin:3.6rem 1.8rem 0 1.8rem;/*margin:6rem 1.8rem 0 1.8rem;*/}/*活动详情的整个一块*/
+
+.activityInfo .userNm{font-size: 1.4rem; text-align:center; color: #636363;/*margin-top:0.67rem;*/}/*用户名*/
+.StarsGrade {margin:0.5rem auto 1rem auto; text-align:center;}
+.StarsGrade span{margin:0 0.1rem; width:1.2rem; height:1.2rem; display:inline-block; background:url(../images/star.png) no-repeat 0 0 / 1.2rem auto;}
+.StarsGrade span.empty{background:url(../images/star.png) no-repeat 0 -1.2rem / 1.2rem auto;}
+
+.activityInfo .activityTitle{font-size: 1.6rem; text-align:center; color:#3d3d3d;margin:0.1rem auto;width:26rem; line-height:2.4rem;}/*活动标题*/
+.activityInfo .actLastTime{margin:1.5rem auto; padding:1.4rem 0.5rem 0.5rem 0.5rem; font-size:1.2rem; color:#666; position:relative; border:solid 1px #ddd; border-radius:0.6rem; width:20rem; text-align:center;}/*剩余时间*/
+.activityInfo .actLastTime .title {width:15rem; position:absolute; top:-1rem; left:50%; margin-left:-7.5rem;}
+.activityInfo .actLastTime .title font {background:#fff;}
+.activityInfo .actLastTime span {display:inline-block; padding:0 0.2rem; background:#eaeaea;}
+.activityInfo .actLastTime .sy {margin-top:0.5rem;}
+.mtags{  text-align: center; line-height:4rem;}
+
+
+.restrict {line-height:3.5rem; padding-left:4rem; font-size:1.2rem; color:#888; border-top:solid 1px #ddd; position:relative;}
+.restrict:before {content:""; position:absolute; left:1.2rem; top:1rem; width:1.6rem; height:1.6rem; background:url(../images/tips_icon.png) no-repeat 0 0 / 1.6rem auto;}
+.times {line-height:3.5rem; padding-left:4rem; font-size:1.2rem; color:#888 !important; border-top:solid 1px #ddd; position:relative; display:block;}
+.times:before {content:""; position:absolute; left:1.2rem; top:1rem; width:1.6rem; height:1.6rem; background:url(../images/tips_icon.png) no-repeat 0 -1.6rem / 1.6rem auto;}
+.multiple:after {content:"时间节点"; position:absolute; right:1.5rem;}
+.address {line-height:2rem; height:4rem; padding:0.5rem 1.5rem 0.5rem 4rem; font-size:1.2rem; color:#888 !important; border-top:solid 1px #ddd; position:relative; display:block;}
+.address:before {content:""; position:absolute; left:1.2rem; top:1rem; width:1.6rem; height:1.6rem; background:url(../images/tips_icon.png) no-repeat 0 -3.2rem / 1.6rem auto;}
+
+/*
+.times span,.address span {position:absolute; width:1.2rem; height:1.2rem; right:0; top:1rem; -webkit-transform:rotate(142.5deg); 
+-moz-transform:rotate(142.5deg);
+-o-transform:rotate(142.5deg);}
+.times span:before,.address span:before {content:''; position:absolute; width:100%; height:0.2rem; background:#ccc;}
+.times span:after,.address span:after {content:''; position:absolute; left:0.12rem; top:0rem; width:0.2rem; height:100%; background:#ccc; -webkit-transform:rotate(-15deg);-moz-transform:rotate(-15deg); -o-transform:rotate(-15deg);}
+*/
+
+
+/*   已设置为公共样式
+.actInfoMenu{font-size:145%;color:#969696;text-align:center;margin-top:1.35rem;margin-bottom:1.687rem;}
+.actInfoMenu span{display:block;width:6res;position:relative;}
+.actInfoMenu span:before{ content:'--------------'; color:#ffe479;margin-top:50%;margin-right:1rem;}
+.actInfoMenu span:after{  content:'--------------'; color:#ffe479;margin-left:1rem;margin-top:50%;}
+*/
+.starInfo .startPicBg{margin:0 auto;margin-top:0.19rem;height:2.25rem;
+FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#b8c4cb,endColorStr=red); /*IE 6 7 8*/ 
+background: -ms-linear-gradient(top, #f1ecf0,  #fff);        /* IE 10 */
+background:-moz-linear-gradient(top, #f1ecf0,  #fff);/*火狐*/ 
+background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#f1ecf0), to(#fff));/*谷歌*/ 
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1ecf0), to(#fff));      /* Safari 4-5, Chrome 1-9*/
+background: -webkit-linear-gradient(top, #f1ecf0, #fff);   /*Safari5.1 Chrome 10+*/
+background: -o-linear-gradient(top, #f1ecf0, #fff);  /*Opera 11.10+*/
+}/*颜色渐变*/
+
+/********************************/
+
+
+/*******************页面中部的 活动描述 部分***********************/
+.starInfo img{width:100%;}
+.starInfo p{color:#969696;margin:1rem auto;font-size:1.3rem;line-height: 2rem;}
+.starInfo .contactStar>a{color:#888;display:block;width: 10rem;height:3rem;line-height:3rem;text-align: center;border:0.1rem solid #888; box-shadow:0 0 0.2rem #999; border-radius:0.8rem; margin:1.68rem auto;font-size:1.5rem; }
+/********************************/
+
+/* 明星推荐*/
+.starRecommend .starRecommendAvtivities>ul{clear:both;width:100%;}
+.starRecommend .starRecommendAvtivities>ul>li{margin:1rem 2%;border:0.1rem solid #ccc;float:left;width:44%;height:21.825rem;position: relative;}
+.starRecommend .starRecommendAvtivities>ul>li p{font-size:1.3rem;color:#585858;line-height:1.8rem;margin:1rem 0.5rem;}/*Title*/
+.starRecommend .starRecommendAvtivities>ul>li span{clear:both;font-size: 1.2rem;color:#969696;margin-left: 0.5rem;}/*Last orders*/
+.starRecommend .starRecommendAvtivities .RecommendDetailImg{width:100%;height:11.25rem;}/*设置 图片 容器 */
+.starRecommend .starRecommendAvtivities img{width:100%;height:100%;}/*图片铺满容器*/
+.starRecommend .starRecommendAvtivities>ul>li .recommendAvtivitiesPirce{font-size:1.8rem;right:0.9rem;bottom:0.6rem;color:#fad74b;position: absolute;}/*价格*/
+
+
+/**************页面底部的价格浮动标签******************/
+.priceMenuBlank{clear:both;width:100%;height:4.2rem;position:static;bottom:0;}
+.priceMenu{position:fixed;bottom:0;width:100%;border-top:#fc0 solid 0.2rem;height:4.2rem;}
+.priceMenu .price{height:4.2rem;line-height:4.2rem; color:#585858;font-size:1.6rem;background:#fff;text-align:center;float:left;width:45%;}
+.priceMenu .price .l {color:#FC0;}
+.priceMenu .price .r {font-size:1.2rem; text-decoration:line-through;}
+.priceMenu .submitBtn {height:4.2rem;line-height:4.2rem; font-size:1.8rem; color:#fff; background:#fad74b; text-align:center; float:left; width:55%;}
+/********************************/
+
+.noticList{margin:0 1.8rem;}
+.noticList>div{font-size:1.4rem;color:#9f9f9f;padding:1.2rem 0;line-height:1.8rem;}
+
+
+
+/******************************/
+.clear{clear:both;margin:0 1rem;border-bottom:0.1rem solid #e7e7e7;}
+.comments{margin:0 1.8rem;padding-top:1rem;/*border-bottom:0.1rem solid red;*/}
+.comments .imgPortrait{width:3.6rem;height:3.6rem;float:left;margin-top:0;}
+.comments .right{width:82%;float:left;margin-left:2%;}
+.comments .right .name{font-size:1.4rem;color:#585858;margin-top:0.2rem;position:relative;}
+.comments .right p{fontt-size:1.3rem;color:#969696;margin:0.8rem 0;padding:0;}
+.comments .right .name>span{font-size:1rem;color:#a3a3a3;float:right;margin-top:0.2rem;}
+.comments .right .imgList{height:5.5rem;margin-bottom:1rem;}
+.comments .right .imgList>img{width:23%;height:5.7rem;margin-right:2%;}
+/***********结束************/
+
+.questionList li{display:block;margin:auto 1.8rem;border-bottom:0.1rem solid #ddd;margin-top:1rem;}
+.questionList li .imgPortrait{width:4.27rem;height:4.27rem;margin-top:0;float:left;margin-right:1.2rem;}
+.questionList li .qUserName{font-size:1.4rem;color:#636363;float:left;margin-top:1rem;margin-bottom:0.5rem;}
+.questionList li .commitTime{font-size:1rem;color:#b8b8b8;float:right;margin-top:1.3rem;margin-right:0.4rem;}
+.questionList li .question{font-size:1.2rem;color:#969696;line-height:1.8rem;}
+.questionList li .answer{font-size:1.2rem;line-height:1.8rem;color:#969696;padding:1rem 0.8rem;padding-bottom:2.5rem;background:#f2f1f7;position:relative;margin:1rem auto;}
+.questionList li .answer span{position:absolute;right:0.8rem;bottom:0.5rem; font-size:1rem;}
+.query{display:block;font-size:1.2rem; padding:0.2rem 1rem;border:0.1rem solid #ccc;position:absolute;margin-top:-1.89rem;right:1.5rem; border-radius:0.3rem;}
+.productDetails{margin-left:2.2rem;margin-right:2.2rem;}
+
+.G_content {-webkit-filter: blur(0.25rem); -moz-filter: blur(0.25rem); -o-filter: blur(0.25rem); -ms-filter: blur(0.25rem); filter: blur(0.25rem);}
+/**************/
+.timesLay{min-height:100%;width:100%;position:fixed;top:0;z-index:9998;background:rgba(0,0,0,0.3);display:none;}
+
+.timesLay .views{width:28rem;height:60%;margin-left:3rem;text-align:center;background:#fff;position:absolute;z-index:9999;}
+
+.timesLay .views .a{font-size:1.68rem;color:#000;height:5.4rem;line-height:5.4rem;}
+.timesLay .views .b{margin:0 1.8rem;border-top:0.1rem solid #e1e1e1; text-align:center;}
+.timesLay .views .b>div{font-size:1.1rem; color:#585858; line-height:2rem;width:45%; display:inline-block;margin:1rem 2%; background:#eee;padding:0.3rem 0;}
+.timesLay .views .b>div>p{margin:0;padding:0;}
+.timesLay .closed{width:10%;position:absolute;margin-top:1.2rem;left:45%;}
+
+/* 提问框 */
+.askBox {position:fixed; width:13rem; padding:1rem; text-align:center; height:10rem; left:18rem; top:50%; margin:-5rem 0 0 -7.5rem; background:#f7f7f7; border:solid 2px #ddd; box-shadow:0 0 3px #ddd; z-index:10000;}
+.askBox textarea {width:11rem; height:5rem; text-align:left; border:solid 1px #ddd; padding:0.5rem; font-size:1.2rem;}
+.askBox button {width:5.6rem; height:2.8rem; border:solid 0.1rem #ddd; background:#fff; margin-top:1rem; font-size:1.2rem; color:#999;}
+/********************/
+.allEvaluation,.allQuestion{display:block;height:4.8rem;line-height:4.8rem;text-align:center;}

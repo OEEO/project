@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/myMsgs.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">我的消息</div>
+</div>
+<div class="the_blank"></div>
+
+<div class="content">
+<!-- ---------------消息列表部分----------------- -->
+	<div class="msgList"></div>
+<!-- -------------------------------- -->	
+</div>
+</body>
+<script>
+$('<script>').attr('src', 'js/public.js?q=' + Math.random()).appendTo('html');
+$('<script>').attr('src', 'js/member.js?q=' + Math.random()).appendTo('html');
+
+$(function(){
+	ajax('Member/Message/getList', {get:{page:1}}, function(d){
+		if(d.length > 0){
+			var code = '';
+			for(var i in d){
+				if(d[i].path){
+					var path = d[i].path;
+				}else{
+					var path = 'images/logo.png';
+				}
+				var time = d[i].datetime;
+				if(d[i].sendtime > 0)time = d[i].sendtime.timeFormat('Y-m-d H:i:s');
+				if(d[i].is_read == 0){
+					code += '<div class="item new">';
+				}else{
+					code += '<div class="item">';
+				}
+				code += '<img class="imgPortrait" src="'+ path +'" />';
+				code += '<div style="float:left;">';
+				code += '<div class="qUserName">'+ (d[i].nickname?d[i].nickname:'系统消息') +'</div>';
+				code += '<div class="commitTime">'+ time +'</div>';
+				code += '</div>';
+				code += '<div class="clearfix"></div>';
+				code += '<div class="msgDetail">'+ d[i].content +'</div>';
+				code += '</div>';
+				code += '<div class="the_blank"></div>';
+			}
+			$('.msgList').html(code);
+			
+			//将本页的消息全部转为已读消息
+			ajax('Member/Message/readed');
+		}
+	});
+});
+
+</script>
+</html>

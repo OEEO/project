@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/public.css">
+	<link rel="stylesheet" type="text/css" href="css/confirmBuy.css">
+
+	<script src="js/plugins/jquery.min.js"></script>
+	<script src="js/public.js"></script>
+	<script src="js/confirmBuy.js"></script>
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+	<div class="title">填写订单</div>
+</div>
+<div class="headerBlank"></div><!--设置空白，避免顶部菜单遮住网页内容-->
+
+<div class="pageTitleMenu">
+	<div class="Left" id="mainpic"><img></div>
+	<div class="Right">
+		<div class="title" id="title"></div>
+		<div class="price" id="price"></div>
+        <span class="piece">拼团</span>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="titlees">数量邮费</div>
+<div class="li_item">
+	<div class="copies">
+		<span>数量</span>
+		<span class="num">
+        	<div class="num_c"  onclick="confirmBuyObject.changeCopies(this,-1)">
+				<img src="./images/submitorder_quantity_reduce_btn_h@2x.png" title="减1">
+			</div>
+			<input id="num" class="b" placeholder="数量" value="1" type="number"/>
+			<div class="num_c" onclick="confirmBuyObject.changeCopies(this,1)">
+				<img src="./images/submitorder_quantity_increase_btn_h@2x.png" title="加1">
+			</div>
+        </span>
+	</div>
+	<div class="copies">
+		<span>邮费</span>
+		<span id="postage" class="pull-right">包邮</span>
+	</div>
+</div>
+
+<div class="titlees">个人信息</div>
+<div class="li_item">
+	<div class="copies">
+		<span>手机</span>
+		<span id="phone" class="pull-right default-text">无</span>
+	</div>
+	<div class="copies">
+		<span>使用优惠券</span>
+		<span id="coupon_price" class="pull-right cacet default-text">使用优惠券</span>
+		<span id="cancel_coupon" class="cancelCoupon"></span>
+	</div>
+	<div class="copies">
+		<span>收货地址</span>
+		<span id="address" class="pull-right cacet address default-text">选择地址</span>
+	</div>
+</div>
+
+
+
+<div class="titlees">支付详情</div>
+<div class="li_item add_pad">
+	<div class="copies">
+		<span>价格</span>
+		<span id="number_price" class="default-text pull-right"></span>
+	</div>
+	<div class="copies">
+		<span>邮费</span>
+		<span id="postage" class="pull-right default-text">￥0</span>
+	</div>
+	<div class="copies">
+		<span>优惠</span>
+		<span id="coupon_release_price" class="pull-right default-text">
+			￥0
+		</span>
+	</div>
+</div>
+<div class="titlees">我要留言</div>
+<div class="li_item">
+	<div class="leaveWords"><textarea class="words" placeholder="如有特别需求可以在这里留言给吖咪酱~"></textarea></div>
+	<div class="clearfix"></div>
+</div>
+<div class="titlees"></div>
+
+<div class="priceMenuBlank"></div>
+<div class="footer priceMenu">
+	<div class="goodPrice">金额：<span id="buy_price"></span>元</div>
+	<div id="submitBtn">提交订单</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<form class="am-g">
+    <sapn>选择状态</sapn>
+    <select name="is_pass" id="is_pass" style="width: 100px">
+        <option value="">请选择</option>
+        <option value="0" <?php if($is_pass == 0 && $is_pass != null)echo "selected='selected'";?>>未操作</option>
+        <option value="1" <?php if($is_pass == 1)echo "selected='selected'";?>>提款成功</option>
+        <option value="2" <?php if($is_pass == 2)echo "selected='selected'";?>>提款失败</option>
+    </select>
+
+    <button class="am-btn am-btn-warning" id="search" type="submit">搜索</button>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+<!-- 拒绝理由 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="refuse">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-g am-margin-top-sm am-text-left" >
+                <span>拒绝通过理由：</span><br/>
+                <textarea id="reason"></textarea>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+<!-- 同意提现填写备注 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="remarks">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-g am-margin-top-sm am-text-left" >
+                <span>备注：</span><br/>
+                <textarea id="remarks_text"></textarea>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.am-modal').appendTo('body');
+    function confirm_pay(id,settlement_id,allow) {
+        if(allow == 0){
+            $('textarea').empty();
+            if(window.confirm('确定要拒接提现吗？')) {
+                $('#refuse').modal({
+                    relatedTarget: this,
+                    onConfirm: function() {
+                        var reason = $('textarea').val();
+                        if(reason.length == 0 ){
+                            alert('拒绝理由不能为空');
+                        }else{
+                            $.ajax({
+                                url: '__CONTROLLER__/confirmTakeMoney.html',
+                                data: {'id': id, 'settlement_id': settlement_id, 'allow': allow, 'reason': reason},
+                                dataType: 'json',
+                                type: 'POST',
+                                success: function (d) {
+                                    if (d.status == 1) {
+                                        alert(d.info);
+
+                                    } else {
+                                        alert(d.info);
+
+                                    }
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        }else {
+            $('#remarks_text').val();
+            if(window.confirm('确定要同意提现吗？')) {
+                $('#remarks').modal({
+                    relatedTarget: this,
+                    onConfirm: function() {
+                        var remark = $('#remarks_text').val();
+                        if(remark.length == 0){
+                            alert('备注不能为空');
+                        }else{
+                            $.ajax({
+                                url: '__CONTROLLER__/confirmTakeMoney.html',
+                                data: {'id': id, 'settlement_id': settlement_id, 'allow': allow, 'remark': remark},
+                                dataType: 'json',
+                                type: 'POST',
+                                success: function (d) {
+                                    if (d.status == 1) {
+                                        alert(d.info);
+
+                                    } else {
+                                        alert(d.info);
+
+                                    }
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+
+        }
+    }
+</script>

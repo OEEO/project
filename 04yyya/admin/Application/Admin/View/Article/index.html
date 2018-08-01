@@ -1,0 +1,113 @@
+<p style="margin-left:20px;">
+    <!--<button class="am-btn am-btn-warning" id="doc-confirm-toggle">添加tip</button>-->
+    <button class="am-btn am-btn-warning" id="parameter">查看食报参数</button>
+</p>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm" style="width:600px;">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">tips添加</div>
+
+            <div class="am-g am-margin-top-sm">
+                <div class="am-u-sm-3 am-u-md-3 am-text-right">tips名称：</div>
+                <div class="am-u-sm-9 am-u-md-9 am-text-left">
+                    <input type="text" name="name" class="am-input-sm" placeholder="tips名称" required/>
+                </div>
+            </div>
+
+
+
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<div class="am-modal am-modal-confirm" tabindex="-1" id="my-parameter" style="width:600px;">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">食报参数</div>
+
+        <div class="am-g am-margin-top-sm">
+
+        </div>
+
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+<script>
+    $('.am-modal').appendTo('body');
+
+    $('#doc-confirm-toggle').on('click', function(){
+        $('#my-confirm').modal({
+            onConfirm: function() {
+            }
+        });
+    })
+
+    //食报参数框
+    $('#parameter').on('click', function(){
+        $('#my-parameter .am-margin-top-sm').empty();
+        $.ajax({
+            url: '__CONTROLLER__/parameter.html',
+            data: {'operation': 1},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                code = '';
+                for(i in d){
+                    code += '<div class="am-u-sm-3 am-u-md-3 am-text-right">' + d[i]['threshold'] + '</div>';
+                    code += '<div class="am-u-sm-9 am-u-md-9 am-text-left"><input type="text" name="' + d[i]['threshold'] + '" class="am-input-sm" placeholder="参数值" value="' + d[i]['value'] + '" required/></div>';
+                }
+                $(code).appendTo('#my-parameter .am-margin-top-sm');
+            }
+        });
+        $('#my-parameter').modal({
+            onConfirm: function() {
+                var data = new Object();
+               $('#my-parameter .am-margin-top-sm input').each(function(index){
+                   data[index] = {threshold : $(this).attr('name') , value : $(this).val()};
+               })
+                $.ajax({
+                    url: '__CONTROLLER__/parameter.html',
+                    data: {'operation' : 2 , 'data' : data },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        alert(d.info);
+                    }
+                });
+            }
+        });
+    })
+
+
+
+    function dataDelete(id){
+        if(window.confirm('确定要删除这条记录吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/delete.html',
+                data : {'id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    function showArticle(id){
+        alert('跳转文章页')
+    }
+
+    function showTips(id){
+        window.location.href='/tips/index.html?id='+id;
+    }
+</script>

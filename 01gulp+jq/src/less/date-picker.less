@@ -1,0 +1,131 @@
+@import url(./color.less);
+@import url(./text.less);
+
+.date-picker {
+    color: @defaultTextColor;
+    font-size: @defaultText;
+    display: inline-block;
+    position: relative;
+    line-height: 20px;
+    padding: 0 28px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    & .caret {
+        display: inline-block;
+        width: 9px;
+        height: 5px;
+        vertical-align: middle;
+        background: transparent url(../assets/grey-caret.png) no-repeat 100% 100%;
+        transition: transform 0.4s linear;
+        margin-left: 5px;
+    }
+
+    & .date-picker-container {
+        display: none;
+        width: 332px;
+        height: 290px;
+        background: #fff;
+        position: absolute;
+        top: 32px;
+        left: -32px;
+        box-shadow: 0 0 4px #ddd;
+        color: @defaultTextColor;
+        padding: 25px 30px;
+        box-sizing: border-box;
+        line-height: 1;
+        z-index: 10;
+        border: 1px solid #ddd \0;
+
+        & .date-picker-container_header {
+            position: relative;
+            text-align: center;
+
+            & .left-caret,
+            & .right-caret {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                width: 10px;
+                height: 6px;
+            }
+
+            & .left-caret {
+                left: 0;
+                background: transparent url(../assets/left-caret.png) no-repeat 100% 100%;
+                background-position: left center;
+                padding: 20px 20px 20px 0;
+            }
+
+            & .right-caret {
+                right: 0;
+                background: transparent url(../assets/right-caret.png) no-repeat 100% 100%;
+                background-position: right center;
+                padding: 20px 0 20px 20px;
+            }
+        }
+
+        & .date-picker-container_body {
+            margin: 24px 0 20px;
+            color: @gray;
+
+            & .date-pick-day {
+                font-size: 0;
+                & span {
+                    font-size: 14px;
+                    display: inline-block;
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    line-height: 30px;
+                    margin: 0 4px;
+                    position: relative;
+                    vertical-align: middle;
+                }
+            }
+
+            & .date-pick-date {
+                & span:hover {
+                    background: @gray;
+                    color: #fff;
+                    border-radius: 50%;
+                }
+
+                & span.active {
+                    background: @primaryTextColor;
+                    color: #fff;
+                    border-radius: 50%;
+                }
+
+                & span.able:before {
+                    content: '';
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background: @primaryTextColor;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+            }
+        }
+    }
+
+    &.active {
+        color: @primaryTextColor;
+
+        & .caret {
+            background: transparent url(../assets/primary-caret.png) no-repeat 100% 100%;
+            transform: rotate(180deg);
+        }
+
+        & .date-picker-container {
+            display: block;
+        }
+    }
+}

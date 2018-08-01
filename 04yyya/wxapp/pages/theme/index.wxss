@@ -1,0 +1,15 @@
+.userMsg {position: absolute; top: 2rpx; right: 6rpx; width:94rpx; height:90rpx; line-height: 90rpx; color: #333; background:url('http://img.yummy194.cn/images/mine.png') no-repeat center center / 38rpx;}
+
+.pageHead {height:375rpx; width:750rpx; background:#ccc;}
+
+.pro_list .product_list{width:100%; background-color:#fff;}
+.pro_list .product_list .list{width:750rpx;position:relative;}
+.pro_list .product_list .list .img{width:750rpx; display: block;}
+.pro_list .product_list .list .t_time{width:0; height:0; color:#000; font-size:25rpx; text-indent: -9999px;margin: 0 auto;border-left: 14rpx solid transparent;border-right: 14rpx solid transparent;border-bottom: 14rpx solid #b39851;margin-bottom: 5rpx;}
+.pro_list .product_list .list .t_titl{color:#000; font-size:29rpx;}
+.pro_list .product_list .list .t_subtitl{color:#aaa; font-size:25rpx;padding-top: 17rpx;}
+.coveres{padding: 40rpx 33rpx 69rpx 33rpx;text-align: center;}
+
+.product_list .no_msgs{width:750rpx; background:#f5f5f5; position:absolute; top:223rpx; left:0; right:0; bottom:0rpx;}
+.product_list .no_msgs image{width:208rpx; height:208rpx; margin:167rpx 271rpx auto 271rpx;}
+.product_list .no_msgs text{display:block; width:750rpx; font-size:25rpx; text-align:center; color:#969696; margin-top:42rpx;}

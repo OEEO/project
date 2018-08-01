@@ -1,0 +1,52 @@
+@import "../common/common.wxss";
+
+.address-list .address-item {
+    background: #fff;
+    margin-bottom: 20rpx;
+    box-shadow: 0 0 1px rgba(0,0,0,0.1);
+    position: relative;
+    padding: 30rpx 40rpx;
+    font-size: 28rpx;
+    box-sizing: border-box;
+}
+
+.address-list .address-item .address-item_info {
+    display: inline-block;
+    width: 536rpx;
+}
+
+.address-list .address-item .select-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 40rpx;
+    margin: auto;
+    width: 40rpx;
+    height: 40rpx;
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAclBMVEUAAACzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFGzmFENY+7zAAAAJXRSTlMA8TAgYMARdfVNCeSXjWhC69zYy6ykflhGPTfTw761gSkcD4IVCukvNgAAAKdJREFUKM+1ylcOwjAQRdFnJ8Qlxem9QMD73yKRJSAa55f7NZrzgD48F+AoSQCk+e2cAhAKmwKMg/S062YFbED+gg1TvQ0eZGxEJjkohNJASQUKnexhWAcCbjuyDBSM7MCZAAG3vectjvT8A7cN4tTdkf2C2z6KBATc9lU2IOC20VTDg6bGXq3ah0rpZdHwgc1xtcMH3Yheg8Knv0HZ8otEjKFkFxXmDen3DQDOPcixAAAAAElFTkSuQmCC) no-repeat 100% /100%;
+    background-size: cover;
+}
+
+.address-list .address-item .select-btn.active {
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDE2LTA4LTE4VDA5OjU2OjA1KzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxNi0wOC0xOFQxNjoxMjoyNiswODowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxNi0wOC0xOFQxNjoxMjoyNiswODowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6N0ZBRDUzRjU2NTFCMTFFNjhCRTdBNjQ5RjI4OEQ5MTciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6N0ZBRDUzRjY2NTFCMTFFNjhCRTdBNjQ5RjI4OEQ5MTciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3RkFENTNGMzY1MUIxMUU2OEJFN0E2NDlGMjg4RDkxNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3RkFENTNGNDY1MUIxMUU2OEJFN0E2NDlGMjg4RDkxNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Plwsb6AAAAMYSURBVHjavJdbSFRhEMdnj1reszSlzCBcyzByMWyDilXswcyHLIyEeit6MAIpssDAisDswcuTD/XUQxFdoNSCMukiaqYtByzQ3czCcrHS9tS6ukbNHEZK23PZ7awDv305c2b+e775vm/GdK+pBHRaLLILyUcsyBpkCT/7hgwhdqQdaUG+6wkarsPHjFQiZUiMgk8yY0WOID+Qa8hFxKEWXFB5FonUIP3IIZXk/iyG3+lnEZGBCkhHOvmfL4Lgjd49ybHMegXkIB28zkYZxXrOsVUFkMoHSAoYbykc26wkIAq5iSyH0BnFvsW5/hFQjWRD6G0j55ojgIquAhbOKmaXYlbAKSTC6CwZOaWQt6/R36MIzikLiONDxlBLXJEF63LLwDeteCDup9wkoCjAQ0bTFkcnwJbiapj2StDdcl7tsCoiAQVGJheEcEx+FkxCGHTerYIZ36Sae4HAVWmYZeeVQ9zSNHj1uAGk8Q+aO0LgHaBoUbFJ+GvSlTzdUgKpGTZw2u/AyOATXa+QgHg1D1tpPVjyj2lGSl69CdZbD4JruAfedF/V+8HiBS2P0Xc9sGqtDcyWPcrXZswyyC08LRdd36O6gJaM+gE3kqTkYG9vgEWRcZBpPQAeyQUfnR1ziy4sArburgGTSYBnt0/AzxlvIPnd9AWcWl4v7l8A95dhyNlxHBJXbphXdEflOul9eAkmpbFAa9ZJAkRtv1/Q3XoOpiYnwFp0BqLjU/4UnXk7DPTegE9vO4PZNCIJaNPjOeUZh67mavmTb95ZBWmZBXLRjQ51wcDL68Hu2jYS0Mo9nKZJX9/LImITUiHbVi5/cnt7Y7DJPZSbBEiI7r/weUQE8WkTeNwueVlmfN5gBVDTKpm4Laer8XUobkQF8yFZyODsOUCtcx0snNVTcn8dkbgAyUV/HREZXVt7kbEQJh/jHB6lrpiWohBxhSC5i2M7tOaCPmSbwcshcsw+vZORg+e8Wq7Y/6n2Wo7lCHQ29PJoRtvl8t/rpsOonq7wu5UcK+jpmLbLYW6li+eN5wnsMzFvPG/WO57/FmAAHk/QWIfYIWsAAAAASUVORK5CYII=) no-repeat 100% / 100%;
+    background-size: cover;
+}
+
+.new-btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 92rpx;
+    line-height: 92rpx;
+    border-radius: 0;
+    text-align: center;
+    font-size: 36rpx;
+    color: #B39851;
+    border: none;
+    background: #fff;
+}
+
+button[class="new-btn"]::after {
+  border: 0;
+} 

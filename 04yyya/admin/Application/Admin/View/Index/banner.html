@@ -1,0 +1,276 @@
+
+<button type="button" id="select" class="am-btn am-btn-primary" onclick="add()">新增Banner</button>
+<?php if(!isset($_GET['is_show']) || $_GET['is_show']==1):?>
+<button type="button" class="am-btn am-btn-primary" onclick="bannerList(0)">历史Banner</button>
+<?php else:?>
+<button type="button" class="am-btn am-btn-primary" onclick="bannerList(1)">返回</button>
+<?php endif;?>
+
+<!-- 更换banner -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="updateBanner">
+    <div class="am-modal-dialog">
+        <form name="resetBanner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">Banner设置</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="title" class="am-input-sm" id="title" placeholder="标题" value="" required/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <select name="citys_id">
+                        <option value="">全站通用</option>
+                        <?php foreach(C('CITY_CONFIG') as $city_id => $city_name):?>
+                        <option value="{$city_id}">{$city_name}</option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="url" class="am-input-sm" id="url" placeholder="链接跳转地址" value="" required/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="radio" name="type" class="am-input-sm" value="0" checked/><span>吖咪</span>
+                    <input type="radio" name="type" class="am-input-sm" value="1"/><span>我有饭</span>
+                    <input type="radio" name="type" class="am-input-sm" value="2"/><span>美食福利社</span>
+                    <input type="radio" name="type" class="am-input-sm" value="3"/><span>众筹</span>
+                    <input type="radio" name="type" class="am-input-sm" value="4"/><span>早餐打卡</span>
+                    <input type="radio" name="type" class="am-input-sm" value="5"/><span>食物学园</span>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="button"  class="am-button" onclick="uploadimg(this)" value="添加Banner图(640x260)"/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <img id="preview" width="150"/>
+                    <input type="hidden" name="pic_id" id="pic_id" value=""/>
+                    <!--input type="hidden" name="url" id="url" value=""/-->
+                    <input type="hidden" name="is_show" id="is_show" value="0"/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 新增banner -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="createBanner">
+    <div class="am-modal-dialog">
+        <form name="addBanner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">banner设置</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="title" class="am-input-sm" id="create_title" placeholder="标题" value="" required/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <select name="citys_id">
+                        <option value="">全站通用</option>
+                        <?php foreach(C('CITY_CONFIG') as $city_id => $city_name):?>
+                        <option value="{$city_id}">{$city_name}</option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="url" class="am-input-sm" id="create_url" placeholder="链接跳转地址" value="" required/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="radio" name="type" class="am-input-sm" value="0" checked/><span>吖咪</span>
+                    <input type="radio" name="type" class="am-input-sm" value="1"/><span>我有饭</span>
+                    <input type="radio" name="type" class="am-input-sm" value="2"/><span>美食福利社</span>
+                    <input type="radio" name="type" class="am-input-sm" value="3"/><span>众筹</span>
+                    <input type="radio" name="type" class="am-input-sm" value="4"/><span>早餐打卡</span>
+                    <input type="radio" name="type" class="am-input-sm" value="5"/><span>食物学园</span>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="button"  class="am-button" onclick="uploadimg2(this)" value="添加Banner图(640x260)"/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <img id="create_preview" width="150"/>
+                    <input type="hidden" name="pic_id" value=""/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<script src="__RS__/js/ajaxUpload.js"></script>	
+<script>
+    $('.am-modal').appendTo('body');
+
+    function uploadimg(em) {
+        pic_upload(em, [640, 260], function(file){
+            document.resetBanner.pic_id.value = file[0].pic_id;
+            $('#preview').attr('src', file[0].path);
+        }, false);
+    }
+
+    function uploadimg2(em) {
+        pic_upload(em, [640, 260], function(file){
+            document.addBanner.pic_id.value = file[0].pic_id;
+            $('#create_preview').attr('src', file[0].path);
+        }, false);
+    }
+
+    //上、下架banner
+    function checkout(id, oper){
+        $.ajax({
+            url: '__CONTROLLER__/setbanner.html',
+            data: {'id': id, 'oper': oper},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                if (d.status == 1) {
+                    alert(d.info);
+                } else {
+                    alert(d.info);
+                }
+                window.location.reload();
+            }
+        });
+    }
+
+    //上、下移banner
+    function shift(id, opers){
+        var data = {};
+        data.id =id;
+        data.opers = opers;
+        $.ajax({
+            url: '',
+            data: data,
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                if (d.status == 1) {
+                    alert(d.info);
+                } else {
+                    alert(d.info);
+                }
+                window.location.reload();
+            }
+        });
+    }
+
+
+    function add(){
+        //重置填框内的值
+        document.addBanner.title.value = '';
+        document.addBanner.pic_id.value = '';
+        document.addBanner.url.value = '';
+        document.addBanner.citys_id.value = '';
+        $('#create_preview').removeAttr('src');
+
+        $('#createBanner').modal({
+            relatedTarget: this,
+            closeViaDimmer : false,
+            onConfirm: function () {
+                var title = document.addBanner.title.value;
+                var pic_id = document.addBanner.pic_id.value;
+                var url = document.addBanner.url.value;
+                var type = document.addBanner.type.value;
+                var citys_id = document.addBanner.citys_id.value;
+
+                if(type == undefined){
+                    alert('未选择类型');
+                    return false;
+                }
+                if (title == '') {
+                    alert('标题为必填');
+                    return false;
+                }
+                if (url == '') {
+                    alert('url不能为空');
+                    return false;
+                }
+                if(pic_id == ''){
+                    alert('图片不能为空');
+                    return false;
+                }
+                $.post('__CONTROLLER__/setbanner.html', {'title': title,'pic_id': pic_id,'url': url,'type':type,'oper': 4,'citys_id':citys_id}, function (d) {
+                    if (d.status == 1) {
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    } else {
+                        alert(d.info);
+                    }
+                }, 'json');
+            },
+            onCancel: function(){
+                //alert('create');
+                return ;
+            }
+        });
+    }
+
+    //更新banner
+    function update(id,oper) {
+        //$("#updateBanner").modal("close");
+        $.ajax({
+            url: '__CONTROLLER__/setbanner.html',
+            data: {'id': id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                document.resetBanner.type.value = d.type;
+                document.resetBanner.title.value = d.title;
+                document.resetBanner.pic_id.value = d.pic_id;
+                document.resetBanner.url.value = d.url;
+                document.resetBanner.citys_id.value = d.citys_id;
+                $('#preview').attr('src',d.path);
+
+//                if(d.type==1){
+//                    $('#type1').prop('checked',true);
+//                }else{
+//                    $('#type0').prop('checked',true);
+//                }
+            }
+        });
+        $('#updateBanner').modal({
+            relatedTarget: this,
+            closeViaDimmer : false,
+            onConfirm: function() {
+                //alert(456);
+                var title = document.resetBanner.title.value;
+                var pic_id = document.resetBanner.pic_id.value;
+                var url = document.resetBanner.url.value;
+                var type = document.resetBanner.type.value;
+                var citys_id = document.resetBanner.citys_id.value;
+
+                if (title == '') {
+                    alert('标题为必填');
+                    return false;
+                }
+                if (url == '') {
+                    alert('url为空');
+                    return false;
+                }
+                if(pic_id == ''){
+                    alert('图片不能为空');
+                    return false;
+                }
+                $.post('__CONTROLLER__/setbanner.html', {'id':id,'title':title, 'pic_id':pic_id, 'url':url, 'type':type, 'oper':1, 'citys_id':citys_id}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            },
+            onCancel: function(){
+                //alert('update');
+                return ;
+            }
+        });
+    }
+
+    function bannerList(n){
+        window.location.href = '__ACTION__.html?oper=history&is_show=' + n;
+    }
+
+
+</script>

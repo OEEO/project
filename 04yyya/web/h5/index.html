@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="吖咪">
+    <meta name="keywords" content="吖咪">
+    <title>吖咪</title>
+    <!-- 载入index.css文件，用于控制页面中元素的显示样式 -->
+    <link href="css/index.css?v=2.8" rel="stylesheet" />
+    <!-- 载入jQuery核心框架 -->
+    <script type="text/javascript" src="../js/plugins/jquery.min.js"></script>
+    <script src="js/index.js?v=3.1"></script>
+</head>
+<body>
+    <div class="container index">
+        <div class="main">
+            <img class="att" src="img/1/top.png?v=1.1"/>
+            <img class="first" src="img/1/1.png?v=1.1"/>
+            <div class="input">
+                <div class="name">
+                    <input type="text" id="nickname" value=""/>
+                </div>
+                <div class="date">
+                    <input type="text" id="month" value=""/>
+                    <input type="text" id="day" value=""/>
+                </div>
+            </div>
+            <img class="two" src="img/1/2.png?v=1.1"/>
+            <div class="save" onclick="save()"></div>
+        </div>
+        <img src="img/logo.png?v=1.1" class="logo" />
+    </div>
+    <div class="container upload">
+        <div class="canvaslay"><canvas class="canvas"></canvas></div>
+        <div class="up">
+            <div class="line"><span></span></div>
+			<button onClick="rotating()"></button>
+            <input id="upload-file" type="file" onchange="upload(this.files[0])"/>
+            <img class="up-img" src="img/2/up.png?v=1.1">
+        </div>
+        <div class="button-group">
+            <img class="back" src="img/2/back.png?v=1.1" onclick="$('.container').hide();$('.index').fadeIn('fast');"/>
+            <img class="make" src="img/2/creat.png?v=1.1" onclick="create()"/>
+        </div>
+        <img src="img/logo.png?v=1.1" class="logo" />
+        <canvas class="img"></canvas>
+        <canvas class="makeimg"></canvas>
+    </div>
+</body>
+</html>

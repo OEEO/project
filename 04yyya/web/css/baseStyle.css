@@ -1,0 +1,149 @@
+/**************************** common start ****************************/
+html {font-size:10px !important;}
+html, body {width:100%; height:100%; overflow:hidden;}
+html, body, div, span, em, img, b, i, dl, dt, dd, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  vertical-align:baseline;
+}
+body{
+    font-family:"微软雅黑",Arial;
+    font-size:1.2rem;
+    color: #555;
+	letter-spacing:0.1rem;
+    -webkit-text-size-adjust:100%;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-touch-callout:none;
+}
+.clearfix:after {
+    content:'';
+    display:block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+ul {
+    list-style:none
+}
+a:link, a:visited, a:hover, a:active {
+    color: #555;
+    text-decoration:none;
+}
+input, textarea, button {
+    padding: 0;
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+    border-radius:0;
+    -webkit-appearance: none;
+    outline: none;
+}
+em,i{font-style: normal;}
+
+div[contenteditable="true"] {line-height:22px; font-size:12px;}
+div[contenteditable="true"] p {margin: 0; padding: 0;}
+
+#main {width:auto; position:absolute; top:0; left:0; bottom:0; overflow:hidden;}
+#main .wrapper {width:36rem; height:100%; border:none; float:left; display:none; overflow-x:hidden; overflow-y:auto; -webkit-overflow-scrolling:touch; position:relative;}
+#main .wrapper .headerBlank {height:4.5rem; width:100%;}
+
+/*页面头部的悬浮菜单*/
+#header {color:#000; height:4.6rem; overflow-y:hidden; position:absolute; top:0; left:0; right:0; width:100%; z-index:999; /*box-shadow:0 0 0.3rem rgba(0,0,0,0.2);*/}
+#header .header {width:36rem; height:4.5rem; float:left; position:relative; overflow:hidden; background:#fff;}
+#header .header.line {border-bottom:0.1rem solid #ccc;}
+#header .arrowRight{cursor: pointer;display:inline-block;position:absolute;right:1.8rem;top:1.5rem;width:1rem;height:1rem;border-right:0.15rem solid #636363;border-top:0.15rem solid #636363;-webkit-transform:rotate(45deg); -moz-transform:rotate(45deg);-o-transform:rotate(45deg);}/*自定义样式 ：向右的箭头 */
+
+#header .uCenter{display:inline-block;}
+#header .location{position: absolute;top: 0;left: 0.5rem; padding:0 1.5rem; font-size:1.4rem; line-height: 4.3rem;color: #333;}
+#header .location:before{content:''; display: inline-block;width: 1.4rem;height:1.3rem;vertical-align:-0.1rem;background: url(../images/row_button.png) no-repeat;background-size: 1rem 1.3rem;margin-left: -0.6rem;transition: transform 0.3s;-webkit-transition: transform 0.3s;}
+#header .location.on:after{ content:'';transform: rotate(180deg);-webkit-transform: rotate(180deg);}
+
+#yellow{color:#ffaa26;}
+
+#header .logo{width: 6.5rem;margin: 0 auto;}
+#header .logo img{height: 4.3rem;display: block;}
+
+#header .turnBack{cursor: pointer;left:1.5rem;top:1.3rem;display:block;width:2.6rem;height:2rem;position:absolute;text-align:center;}
+#header .turnBack .arrow{border-left:0.15rem solid #000;border-top:0.15rem solid #000;display:block;width:1.2rem;height:1.2rem;-webkit-transform:rotate(-45deg); -moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);position:absolute;left:0.35rem;top:0.35rem;}
+#header .title {text-align:center; font-size:1.7rem; line-height:4.5rem;}
+
+#header .uCenter{display:inline-block;width:2.1rem; height:2rem; background:url('../images/headerIconS.png') 0 0 no-repeat;background-size:2rem auto;background-position:left 83%;position:absolute;right:1.5rem; top:1.3rem;cursor: pointer;}
+
+#header .values{display:inline-block;width:2.1rem; height:2rem; background:url('../images/headerIconS.png') 0 0 no-repeat;background-size:2rem auto;background-position:left 16.6%; position:absolute;right:1.5rem; top:1.3rem;cursor: pointer;}
+
+#header .shares{display:inline-block;width:2.1rem; height:2rem; background:url('../images/course_sousuo_btn@3x.png') 0 0 no-repeat;background-size:2rem auto;background-position:left 16.6%; position:absolute;right:1.5rem; top:1.3rem;cursor: pointer;}
+
+#header .u_shares{display:inline-block;width:2.1rem; height:2rem; background:url('../images/personal_sousuo_btn@2x.png') 0 0 no-repeat;background-size:2rem auto;background-position:left 16.6%; position:absolute;right:1.5rem; top:1.3rem;cursor: pointer;}
+
+#header .valued{background-position:left top;}
+#header .share{display:inline-block;width:2.1rem; height:2rem; background:url('../images/headerIconS.png') 0 0 no-repeat;background-size:2rem auto; position:absolute; background-position:left 50%;right:1.8rem;top:1.3rem;cursor: pointer;}
+
+#header .Operation{font-size:1.3rem;color:#000;position:absolute;right:1rem;top:1.6rem;display:inline-block;}
+
+#header .msg {width:2.4rem; height:2.4rem; position:absolute; top:1.2rem; right:1.5rem; background:url('../images/message_normal@2x.png') no-repeat 0 -2.4rem / 2.4rem auto;cursor: pointer;}
+
+#header .myset {width:2.4rem; height:2.4rem; position:absolute; top:1.2rem; right:1.5rem; background:url('../images/my_setup_btn@2x.png') no-repeat 0 0.2rem / 2rem auto;cursor: pointer;}
+
+#header .new:after {content:''; width:0.7rem; height:0.7rem; position:absolute; top:0; right:-0.2rem; background:#F00; border-radius:50%;}
+
+/* 底部 */
+#footer {position:absolute; width:100%; height:4rem; bottom:0; z-index:999; overflow-y:hidden;}
+#footer .footer {width:36rem; height:100%; float:left; position:relative; overflow:hidden;}
+
+a {text-decoration:none;}
+.connErr {width:100%; height:100%; line-height:100%; text-align:center;}
+
+.loginBox ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+}
+.loginBox ::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+}
+.loginBox ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+}
+.loginBox ::-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #fff;
+}
+
+.spinner {width: 3rem; height: 3rem; position:absolute; left:50%; top:50%; margin:-1.5rem 0 0 -1.5rem; z-index:10000;}
+.container1 > div, .container2 > div, .container3 > div { width: 0.9rem; height: 0.9rem; background-color: #ffcc00; border-radius: 100%; position: absolute; -webkit-animation: bouncedelay 1.2s infinite ease-in-out; animation: bouncedelay 1.2s infinite ease-in-out; -webkit-animation-fill-mode: both; animation-fill-mode: both;}
+.spinner-container { position: absolute; width: 100%; height: 100%;}
+.container2 { -webkit-transform: rotateZ(45deg); transform: rotateZ(45deg);}
+.container3 { -webkit-transform: rotateZ(90deg); transform: rotateZ(90deg);}
+.circle1 { top: 0; left: 0; }
+.circle2 { top: 0; right: 0; }
+.circle3 { right: 0; bottom: 0; }
+.circle4 { left: 0; bottom: 0; }
+.container2 .circle1 { -webkit-animation-delay: -1.1s; animation-delay: -1.1s;}
+.container3 .circle1 { -webkit-animation-delay: -1.0s; animation-delay: -1.0s;}
+.container1 .circle2 { -webkit-animation-delay: -0.9s; animation-delay: -0.9s;}
+.container2 .circle2 { -webkit-animation-delay: -0.8s; animation-delay: -0.8s;}
+.container3 .circle2 { -webkit-animation-delay: -0.7s; animation-delay: -0.7s;}
+.container1 .circle3 { -webkit-animation-delay: -0.6s; animation-delay: -0.6s;}
+.container2 .circle3 { -webkit-animation-delay: -0.5s; animation-delay: -0.5s;}
+.container3 .circle3 { -webkit-animation-delay: -0.4s; animation-delay: -0.4s;}
+.container1 .circle4 { -webkit-animation-delay: -0.3s; animation-delay: -0.3s;}
+.container2 .circle4 { -webkit-animation-delay: -0.2s; animation-delay: -0.2s;}
+.container3 .circle4 { -webkit-animation-delay: -0.1s; animation-delay: -0.1s;}
+@-webkit-keyframes bouncedelay {
+	0%, 80%, 100% { -webkit-transform: scale(0.0) }
+	40% { -webkit-transform: scale(1.0) }
+}
+@keyframes bouncedelay {
+	0%, 80%, 100% {
+		transform: scale(0.0);
+		-webkit-transform: scale(0.0);
+	} 40% {
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+	}
+}
+
+/***************************** 返回按钮 *****************************/
+.backBtnBox {width:4.3rem; height:3.2rem; line-height:3.2rem; position:fixed; top:88%; left:2rem; background:rgba(0,0,0,0.5) url(../images/backBtn.png) center no-repeat; background-size:65% 65%; border-radius:1.8rem; box-shadow:0 0 0.2rem rgba(255,255,255,0.5); z-index:9990;}
+
+.log {width:15rem; height:15rem; position:fixed; background:rgba(255,255,255,0.5); border:solid 0.1rem solid; bottom:1rem; right:1rem; padding:0.5rem; overflow:auto;}
+/**************************** common end ****************************/
+

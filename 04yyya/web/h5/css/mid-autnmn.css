@@ -1,0 +1,62 @@
+@charset "utf-8";
+*,html,body{padding:0px;margin:0px;}
+.div{position: relative;}
+img{width: 100%;height: 100%;display: block;}
+a{width: 2.4rem;height: 0.6rem; background:rgba(0,255,0,0);position: absolute;z-index: 99;margin: auto;-webkit-tap-highlight-color: rgba(255,255,255,0);}
+
+.div2 .btn1 {
+    top: 16.7rem;
+    left: 4.2rem;
+}
+
+.div3 .btn1 {
+    top: 2.57rem;
+    left: 1rem;
+}
+
+.div3 .btn2 {
+    top: 6.41rem;
+    left: 4.1rem;
+}
+
+.div3 .btn3 {
+    top: 10.19rem;
+    left: 1.12rem;
+}
+
+.div4 .btn1 {
+    top: 11.63rem;
+    left: 3.23rem;
+}
+
+.div5 .btn1 {
+    top: 9.74rem;
+    left: 3.97rem;
+}
+
+.div5 .btn2 {
+    top: 15.16rem;
+    left: 0.82rem;
+}
+
+.div6 .btn1 {
+    top: 13.71rem;
+    left: 0;
+    right: 0;
+}
+
+.div7 .btn1 {
+    top: 9.26rem;
+    left: 0;
+    right: 0;
+}
+
+.div7 .btn2 {
+    top: 13.17rem;
+    left: 0.76rem;
+}
+
+.div8 .btn1 {
+    top: 7.5rem;
+    left: 4.2rem;
+}

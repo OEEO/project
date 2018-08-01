@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+/******************************/
+
+/*.content{background:#ccc;}*/
+.content center{padding:2rem 0;}
+.content center>div{font-size:1.5rem;}
+.content center .a{margin:0.8rem auto;}
+.content center .b{margin:0.2rem auto;}
+.content center .c{}
+.content center  .yami{width:10rem;height:auto;}
+
+.content .item {background:#ffffff; margin-top:1rem; width:100%; box-shadow:0 0 0.1rem #999;}
+
+.content .item .Betweens{height:0.1rem; background:#e0e0e0; margin:0rem 0.8rem;}
+.content a {font-size:1.5rem; display:block;height:4rem; line-height:4rem;  padding-left:1.8rem; position:relative;}
+.item .arrowRight{width:0.9rem;height:0.9rem;border-color:#636363;border-width:0.12rem;}/*右侧的 箭头 样式*/
+/*.content a:after {content:'>'; font-size:2rem;font-family:'黑体'; right:0.6rem;width:2rem;height:2rem;position:absolute; top:0.1rem;font-weight:400; color:#ccc;}*/
+.content a span{font-size:1.5rem;color:#a4a4a4;float:right;margin-right:2.6rem;}
+/*.content a:before {content:''; width:2rem; height:2rem; left:2rem;background:url('./images/ucenter_menu_icons.png') 0 0 no-repeat;background-size:2rem auto; position:absolute; top:1.2rem; }
+.content a.list1:before {background-position:0 0;}
+.content a.list2:before {background-position:0 -4rem;}
+.content a.list3:before {background-position:0 -8rem;}
+.content a.list4:before {background-position:0 -28rem;}
+.content a.list5:before {background-position:0 -26rem;}
+
+.content a:link.list1:before {background-position:0 940;}*/
+
+
+
+/***********结束************/

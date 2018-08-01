@@ -1,0 +1,53 @@
+<view class="userCenter_head">
+ <!--   <image class="bg" src="http://img.yummy194.cn/images/headtou.png"/>-->
+ <!--   <image class="bg" src="http://test.yummy194.cn/images/miniprogram_my_bg.jpg"/>-->
+  <!--  <navigator class="myset" url="setup"></navigator>-->
+    <view class="overbg"></view>
+    <view class="front">
+        <view class="imagePortrait"></view>
+<!--        <navigator class="imgPortrait" url="changeUserinfo"><image width="100%" src="{{path}}" /></navigator>-->
+        <view class="imgPortrait"><image width="100%" src="{{path}}" /></view>
+        <view class="nickname">
+          <text>{{nickname}}</text>
+          <image src="{{sexIcon}}" style="width:26rpx; margin-left: 5rpx; vertical-align: top;" mode="widthFix"></image>
+        </view>
+    </view>
+    <!--
+    <view class="my_menus">
+        <navigator class="menu_li" url="follow"><font class="faness">关注</font><font>{{follow}}</font></navigator>
+        <navigator class="menu_li"><font class="faness">粉丝</font><font>{{fans * 3}}</font></navigator>
+    </view>-->
+</view>
+<view class="userCenter_menu">
+    <view class="add_border_bian"></view>
+        <!-- <view class="add_border"></view> -->
+    <!--
+    <view class="li_item"><navigator url="zone?member_id={{member_id}}" class="list10">我的空间<i class="arrowRight"></i></navigator></view>
+    <view class="add_border"></view>
+    <view class="li_item">
+        <navigator url="myCollect" class="list12">我的收藏<i class="arrowRight"></i></navigator>
+    </view>
+    <view class="add_border"></view>
+    <view class="li_item">
+        <navigator url="myCoupon" class="list3">我的优惠券<i class="arrowRight"></i></navigator>
+    </view>
+    -->
+    <view class="li_item" bindtap="changeBorderColor">
+        <navigator url="../order/list" class="list4">我的订单<i class="arrowRight"></i></navigator>
+   <!--     <navigator url="address" class="list4">收货地址<i class="arrowRight"></i></navigator>-->
+    </view>
+        <view class="add_border {{addBorderBian}}"></view>
+    <view class="li_item" bindtap="changeBorderColor">
+        <navigator url="vip" class="list7">我的权益<i class="arrowRight"></i></navigator>
+    </view>
+    <!-- <view class="{{addBorder}}"></view> -->
+    <!--
+    <view class="add_border_bian"></view>
+    <view class="the_blank"></view>
+    <view class="add_border_bian"></view>
+    <view class="li_item">
+        <navigator url="feedBack" class="list6">客服中心<i class="arrowRight"></i></navigator>
+    </view>
+    <view class="add_border_bian"></view>
+    -->
+</view>

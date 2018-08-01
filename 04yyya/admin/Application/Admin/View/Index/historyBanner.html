@@ -1,0 +1,140 @@
+<!--button  class="am-button" onclick="uploadimg()">添加Banner图</button>
+<form class="am-form" method="get" id="banner_form">
+<input type="text" name="title" placeholder="banner标题">
+<img id="preview" src=""/>
+<input type="hidden" name="pic_id" id="pic_id" value=""/>
+<input type="hidden" name="url" id="url" value=""/>
+<input type="hidden" name="is_show" id="is_show" value="0"/-->
+<button type="button" id="select" class="am-btn am-btn-primary" onclick="nowBanner()">当前banner</button><input type="hidden" value="{$banner_count}" id="banner_c"/>
+<button type="button" id="history" class="am-btn am-btn-primary" onclick="history_banner()">历史banner</button>
+<!--button type="button" id="drop" class="am-btn am-btn-primary">不加入轮播</button>
+</form-->
+<!-- 更换banner -->
+<!--<div class="am-modal am-modal-prompt" tabindex="-1" id="updateBanner">
+    <div class="am-modal-dialog">
+        <form name="resetBanner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">banner设置</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="title" class="am-input-sm" id="title" placeholder="标题" value="" required/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="url" class="am-input-sm" id="url" placeholder="链接跳转地址" value="" required/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="button"  class="am-button" onclick="uploadimg()" value="添加Banner图"/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <img id="preview" src=""  width="150px" height="150px"/>
+                    <input type="hidden" name="pic_id" id="pic_id" value=""/>
+                    &lt;!&ndash;input type="hidden" name="url" id="url" value=""/&ndash;&gt;
+                    <input type="hidden" name="is_show" id="is_show" value="0"/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>-->
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<script src="__RS__/js/ajaxUpload.js"></script>
+<script>
+    $('.am-modal').appendTo('body');
+    //$('#add_banner_btn').click(function(){
+    /*function uploadimg() {
+        $.ajaxUpload({
+            'url': '__CONTROLLER__/banner.html',
+            'dataType': 'json',
+            'success': function (d) {
+                //console.log(d);
+                if (d.status == 1) {
+                    $('#pic_id').val(d.info.pic_id);
+                    //$('#url').val(d.info.filepath + d.info.filename);
+                    $('#preview').attr('src', 'http://img.test.yami.ren/' + d.info.filepath + d.info.filename);
+                } else {
+                    alert(d.info);
+                }
+            }
+        });
+    }*/
+    //});
+
+    /*   $('#select').click(function(){
+     $('#is_show').val('1');
+     $('#banner_form').submit();
+     })
+
+     $('#drop').click(function(){
+     $('#is_show').val('0');
+     $('#banner_form').submit();
+     })*/
+
+
+
+    //当前Banner
+    function nowBanner(){
+        window.location.href = '__CONTROLLER__/banner.html'
+    }
+
+    function checkout(id,oper){
+        //新上架banner
+        if($('#banner_c').val() >= 8){
+            alert('banner图不能超过8张');
+            return false;
+        }
+            //$.post('__CONTROLLER__/setbanner.html', {'id':id,'title':title, 'pic_id':pic_id, 'url':url,'oper':1}, function(d){
+            $.post('__CONTROLLER__/historyBanner.html', {'id':id}, function (d) {
+                if (d.status == 1) {
+                    alert(d.info);
+                    window.location.href = window.location.href;
+                } else {
+                    alert(d.info);
+                }
+            }, 'json');
+    }
+
+
+    //更新banner
+    /*function update(id,oper) {
+        $.ajax({
+            url: '__CONTROLLER__/setbanner.html',
+            data: {'id': id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                $('#title').val(d.title);
+                $('#preview').attr('src','http://img.test.yami.ren/'+d.path);
+                $('#url').val(d.url);
+                $('#pic_id').val(d.pic_id);
+            }
+        });
+        $('#updateBanner').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var title = $('#title').val();
+                var pic_id = $('#pic_id').val();
+                var url = $('#url').val();
+
+
+                $.post('__CONTROLLER__/setbanner.html', {'id':id,'title':title, 'pic_id':pic_id, 'url':url,'oper':1}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            }
+        });
+    }*/
+
+    function history_banner(){
+        window.location.href = '__CONTROLLER__/historyBanner.html';
+    }
+
+
+</script>

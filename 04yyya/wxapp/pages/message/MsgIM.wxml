@@ -1,0 +1,60 @@
+<scroll-view class="msgList" scroll-y="true" scroll-top="{{scrollTop}}" scroll-into-view="{{scrollTopID}}">
+    <block wx:for="{{msgData}}" wx:key="for-1">
+        <view class="small" wx:if="{{item.date}}">{{item.date}}</view>
+        <view class="{{item.classname}}">
+            <image class="headpic" src="{{item.path}}"/>
+            <block wx:if="{{item.type == 2}}">
+                <view class="i goods"></view>
+            </block>
+            <block wx:else>
+                <view class="i"></view>
+            </block>
+
+            <block wx:if="{{item.type == 1}}">
+                <view class="span"><image mode="widthFix" class="image" src="http://img.{{domain}}/{{item.content}}"/></view>
+            </block>
+            <block wx:elif="{{item.type == 2}}">
+                <view class="span goods">
+                    <navigator url="../tips/detail?tips_id={{item.tips.id}}">
+                        <image src="{{item.tips.path}}"/>
+                        <view>{{item.tips.title}}</view>
+                    </navigator>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="span">
+                    <block wx:for="{{item.content}}" wx:for-item="content" wx:key="for-4">
+                        <image wx:if="{{content.t == 1}}" class="faceimage" src="http://{{domain}}/images/faces/{{content.d}}.gif"/>
+                        <navigator url="{{content.d}}" wx:elif="{{content.t == 2}}">{{content.d}}</navigator>
+                        <block wx:else>{{content.d}}</block>
+                    </block>
+                </view>
+            </block>
+            <view style="clear: both;"></view>
+		</view>
+    </block>
+</scroll-view>
+<swiper class="facesBox" style="bottom:{{facePosition}}rpx;" indicator-dots="true" circular="true">
+    <block wx:for="{{faceData}}" wx:for-item="facelist" wx:key="for-2">
+    <swiper-item class="facelist">
+        <block wx:for="{{facelist}}" wx:for-item="face">
+        <view class="item" data-name="{{face.name}}" bindtap="faceInput"><image src="http://{{domain}}/images/faces/{{face.number}}.gif" mode="widthFix"/></view>
+        </block>
+    </swiper-item>
+    </block>
+</swiper>
+<view class="hs" style="bottom:{{hsPosition}}rpx;">
+	<view class="htitle">以下为您最近浏览饭局，点击即可发送</view>
+	<scroll-view class="history" scroll-y="true">
+        <view class="item" wx:for="{{goodslist}}" wx:key="for-3" wx:for-item="goods" bindtap="sendGoods" data-id="{{goods.id}}">
+            <image src="{{goods.path}}"/>
+            <view class="text">{{goods.title}}</view>
+        </view>
+    </scroll-view>
+</view>
+<view class="footer">
+	<view class="button goodslist" bindtap="goodslist"></view>
+    <input class="writer" focus="true" placeholder="您想聊点什么什么..." placeholder-style="color:#ccc" bindinput="inputText" value="{{message}}"/>
+	<view class="button facesBtn" bindtap="faceShow"></view>
+	<view class="button sendBtn" bindtap="send">发送</view>
+</view>

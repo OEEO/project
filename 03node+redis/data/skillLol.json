@@ -1,0 +1,62 @@
+[
+  {
+    "summoner_id": "SummonerBarrier",
+    "summoner_name": "屏障"
+  },
+  {
+    "summoner_id": "SummonerBoost",
+    "summoner_name": "净化"
+  },
+  {
+    "summoner_id": "SummonerClairvoyance",
+    "summoner_name": "洞察"
+  },
+  {
+    "summoner_id": "SummonerDot",
+    "summoner_name": "引燃"
+  },
+  {
+    "summoner_id": "SummonerExhaust",
+    "summoner_name": "虚弱"
+  },
+  {
+    "summoner_id": "SummonerFlash",
+    "summoner_name": "闪现"
+  },
+  {
+    "summoner_id": "SummonerHaste",
+    "summoner_name": "幽灵疾步"
+  },
+  {
+    "summoner_id": "SummonerHeal",
+    "summoner_name": "治疗术"
+  },
+  {
+    "summoner_id": "SummonerMana",
+    "summoner_name": "清晰术"
+  },
+  {
+    "summoner_id": "SummonerOdinGarrison",
+    "summoner_name": "卫戍部队"
+  },
+  {
+    "summoner_id": "SummonerPoroRecall",
+    "summoner_name": "护驾！"
+  },
+  {
+    "summoner_id": "SummonerPoroThrow",
+    "summoner_name": "魄罗投掷"
+  },
+  {
+    "summoner_id": "SummonerSmite",
+    "summoner_name": "惩戒"
+  },
+  {
+    "summoner_id": "SummonerSnowball",
+    "summoner_name": "标记"
+  },
+  {
+    "summoner_id": "SummonerTeleport",
+    "summoner_name": "传送"
+  }
+]

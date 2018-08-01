@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/withdraw.css">
+<script src="js/plugins/jquery.min.js"></script>
+<script src="js/plugins/jquery.touchwipe.min.js"></script>
+<script src="js/public.js"></script>
+<script src="js/withdraw.js"></script>
+</head>
+<body>
+<div class="header line">
+    <div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+    <div style="margin: 1.5rem 4rem;">个人中心</div>
+</div>
+<div class="headerBlank"></div>
+
+<div style="height: 5rem;">
+    <h1 style="float: left;margin: 1.5rem;color: black;">提现申请</h1>
+<!--    <a style="float: right;float: right;margin: 2.5rem 1.5rem 1.5rem;color: black;" href="javascript:jump('withdrawRecord')">提现记录</a>-->
+</div>
+<div style="height: 4.5rem;margin: 2rem 0 0 0;color: black;border-bottom: 0.1rem solid #eee;border-top: 0.1rem solid #eee;font-size: 1.3rem;">
+        <div class="wxWithdraw">微信提现</div>
+        <div class="alipayWithdraw">支付宝提现</div>
+</div>
+<!--<div style="margin: 2rem;font-size: 1.3rem;color: black;">暂时无法使用微信提现，请使用支付宝提现。</div>-->
+<div class="ali" style="display: none;">
+    <p class="p_a" style="color: #b39851;font-size: 2.2rem;font-weight: bold;letter-spacing: 0.1rem;margin: 1.5rem 0 0 2rem;">0.00</p>
+    <p style="color: black;margin: 0 0 0 2rem;font-weight: bold;font-size: 1.3rem;">可提现余额（元）</p>
+    <ul class="addressInf">
+        <li><p>提现金额</p>
+            <input class="input money" type="text" placeholder="最小提现金额为10元" /></li>
+        <li><p>收款方实名</p>
+            <input class="input realname" type="text" placeholder="请输入您的真实姓名" /></li>
+        <li><p>支付宝账号</p>
+            <input class="input alipay" type="text" placeholder="手机号/邮箱"/></li>
+    </ul>
+    <ul style="margin: 2rem;color: #A0A0A0;">
+        <li style="margin: 0 0 0.5rem 0;">1.每笔提现金额至少10元以上，最高不超过5万元。</li>
+        <li style="margin: 0 0 0.5rem 0;">2.每个吖咪账号每日提取上限为5万元；每日可无限次提现（除周末节假日之外）。</li>
+        <li style="margin: 0 0 0.5rem 0;">3.每笔提现收取0.6%手续费。手续费的计算精确到小数点后两位，四舍五入。提现手续费将从提现金额扣除。</li>
+        <li style="margin: 0 0 0.5rem 0;">4.提现申请平台核算处理后，将直接进入您提交的支付宝账号。</li>
+        <li style="margin: 0 0 0.5rem 0;">5.为保证您的资金安全，提现申请需实名验证。</li>
+        <li style="margin: 0 0 0.5rem 0;">6.周末节假日是系统升级维护时间，暂停关闭提现功能。</li>
+        <li style="margin: 0 0 0.5rem 0;">7.如需帮忙请联系客服（微信号：yami194）。</li>
+    </ul>
+</div>
+<div class="headerBlank"></div>
+<div class="headerBlank"></div>
+
+<div class="footer">
+    <div class="submit" style="text-align: center;margin:0.5rem auto;font-size: 1.3rem;background: #ff192f;color: white;width: 10rem;float: center;height: 3.2rem;line-height: 3.2rem;" onclick="withdrawObject.submit()">申请提现</div>
+</div>
+</body>
+</html>

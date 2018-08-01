@@ -1,0 +1,298 @@
+<!--日历js、css文件加载 start-->
+<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.config.js"></script>
+<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+
+<p style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" id="export_excel">导出Excel</button>
+</p>
+
+<form class="am-g">
+    <div class="am-alert am-alert-danger" id="my-alert" style="display: none">
+        <p>开始日期应小于结束日期！</p>
+    </div>
+    <!--input type="text" name="id" id="search_id" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="id查询" value="{$search_id}"/-->
+    <input type="text" name="sn" id="search_sn" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="订单号查询" value="{$search_sn}"/>
+    <input type="text" name="title" id="search_title" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="商品名查询" value="{$search_title}"/>
+    <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="购买者查询" value="{$search_member}"/>
+    <!--<input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-startDate" name="start_buy_time"  placeholder="开始时间" required readonly="true" value="{$search_start_time}"/>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-endDate" name="stop_buy_time"  placeholder="结束时间" required readonly="true" value="{$search_stop_time}"/>-->
+    <input type="text" name="telephone" id="search_telephone" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="手机号查询" value="{$search_telephone}"/>
+    <select name="act_status" id="search_act_status" style="width: 100px">
+        <option value="">请选择</option>
+        <option value="0" <?php if($search_act_status!='' && $search_act_sttus == 0)echo "selected='selected'";?>>未支付</option>
+        <option value="1" <?php if($search_act_status == 1)echo "selected='selected'";?>>未发货</option>
+        <option value="2" <?php if($search_act_status == 2)echo "selected='selected'";?>>已发货</option>
+        <option value="3" <?php if($search_act_status == 3)echo "selected='selected'";?>>已发货(未签收)</option>
+        <option value="4" <?php if($search_act_status == 4)echo "selected='selected'";?>>已发货(已签收)</option>
+        <option value="5" <?php if($search_act_status == 5)echo "selected='selected'";?>>申请退款</option>
+        <option value="6" <?php if($search_act_status == 6)echo "selected='selected'";?>>已处理退款</option>
+        <option value="7" <?php if($search_act_status == 7)echo "selected='selected'";?>>已取消</option>
+
+    </select>
+    <button type="reset" class="am-btn am-btn-primary">重置</button>
+    <button type="submit" class="am-btn am-btn-success">提交</button>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<!-- 发货信息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="shipment">
+    <div class="am-modal-dialog">
+        <form name="shipment_detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">发货信息</div>
+            <div class="">
+                <input type="hidden" id="order_id" value="">
+                <div class="am-g am-margin-top-sm" style="width: 40%">
+                    <input type="text" name="number" id="number" placeholder="物流单号" required="true"/>
+                </div>
+
+                <div class="am-g am-margin-top-sm">
+                    选择物流公司：
+                </div>
+                <div class="am-g am-margin-top" id="select_logistics_id">
+                    <div class=" am-text-center">
+                        <select name="logistics_id" data-am-selected="{btnSize: 'xs', btnWidth: '120px', maxHeight: 200}">
+                            <option value="0">请选择物流公司</option>
+                            <foreach name="logistics" item="row">
+                                <option value="{$row.id}">{$row.name}</option>
+                            </foreach>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!--回复评论-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="reply">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">商品评论</div>
+            <div class="">
+                <input type="hidden" id="comment_id" value="">
+                <table class="am-table am-table-striped am-table-hover" id="comment">
+                    <tr>
+                        <td>评论人</td>
+                        <td>星级</td>
+                        <td>评论内容</td>
+                        <td>图片</td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+<!--订单详情-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="orderDetail">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">订单详情</div>
+            <div class="am-scrollable-vertical">
+                <table class=" am-table am-table-striped am-table-hover" id="detail">
+
+                </table>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.am-modal').appendTo('body');
+    //日历
+    $('#my-startDate').datetimepicker();
+    $('#my-endDate').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-startDate');
+        $('#my-startDate').datetimepicker().
+            on('changeDate.datepicker.amui', function(event) {
+                if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                    alert('开始日期应小于结束日期！');
+                    $('#my-startDate').val("");
+                } else {
+                    startDate = new Date(event.date);
+                    clicktime = 1;
+                }
+                $(this).datetimepicker('close');
+            });
+
+        $('#my-endDate').datetimepicker().
+            on('changeDate.datepicker.amui', function(event) {
+
+                if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                    alert('结束日期应大于开始日期！');
+                    $('#my-endDate').val("");
+                } else {
+                    endDate = new Date(event.date);
+                    clicktime = 1;
+                }
+                $(this).datetimepicker('close');
+            });
+    });
+
+
+
+    //取消订单
+    function cancel(id){
+        if(window.confirm('确定要取消这条记录吗？（可以恢复）')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderCancel.html',
+                data : {'order_id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    //删除订单
+    function order_delete(id){
+        if(window.confirm('确定要删除这条记录吗？(不能恢复)')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderDelete.html',
+                data : {'order_id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    //恢复订单
+    function recovery(id){
+        if(window.confirm('确定要恢复这条订单吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderRecovery.html',
+                data : {'order_id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+
+
+    //发货
+    function shipment(id){
+        //$('#shipment').selected({btnSize: 'xs'});
+        $('#number').val('');
+        //$('#logistics_id').val('');
+        $.ajax({
+            url: '__CONTROLLER__/shipment.html',
+            data: {'id': id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                //alert(d.logistics_id);
+                if(d != null){
+                    $('#number').val(d.number);
+                    //$('#logistics_id').val(d.logistics_id);
+                }
+            }
+        });
+        $('#order_id').val(id);
+        $('#shipment').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var number = $('#number').val();
+                var logistics_id = document.shipment_detail.logistics_id.value;
+                var order_id = $('#order_id').val();
+                if(logistics_id ==0){
+                    alert('未选择物流公司');
+                    return;
+                }
+                $.post('__CONTROLLER__/shipment.html', {'id':order_id,'number':number, 'logistics_id':logistics_id}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            }
+        });
+    }
+
+    function orderDetail(id){
+        $('#detail').empty();
+        $.ajax({
+            url : '__CONTROLLER__/OrderDetail.html',
+            data : {'id' : id},
+            type : 'post',
+            success : function(d){
+                var code = '';
+                code +='<tr>';
+                code +='<td>商品名称</td>';
+                code +='<td>商品分类</td>';
+                code +='<td>商品单价</td>';
+                code +='<td>商品图片</td>';
+                code +='</tr>';
+               for(i in d){
+                   code += '<tr>';
+                   code += '<td>'+d[i].title+'</td>';
+                   code += '<td>'+d[i].category_name+'</td>';
+                   code += '<td>'+d[i].price+'</td>';
+                   code += '<td>'+d[i].pics_path+'</td>';
+                   code += '</tr>';
+               }
+                $(code).appendTo('#detail');
+            }
+        });
+        $('#orderDetail').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                return;
+            }
+        });
+    }
+
+    //导出excel
+    $('#export_excel').click(function(){
+
+        /*var search_title = $('#search_title').val();
+        var search_member = $('#search_member').val();*/
+
+
+
+        window.open("__CONTROLLER__/goodsOrderExport.html","_blank","width=1000,height=600 ")
+    })
+</script>

@@ -1,0 +1,38 @@
+<view class="address-edit">
+    <view class="address-edit-form">
+        <view class="address-edit-form_item">
+            <text>收货人姓名</text>
+            <input type="text" placeholder="请填写收货人姓名" value="{{linkman}}" data-type="linkman" bindblur="confirmInput" bindconfirm="confirmInput"/>
+        </view>
+        <view class="address-edit-form_item">
+            <text>收货人手机</text>
+            <input type="number" placeholder="请填写收货人手机" value="{{telephone}}" data-type="telephone" bindblur="confirmInput" bindconfirm="confirmInput"/>
+        </view>
+        <view class="address-edit-form_item">
+            <text>邮政编码</text>
+            <input type="number" placeholder="请填写邮政编码" value="{{ zipcode }}" data-type="zipcode" bindblur="confirmInput" bindconfirm="confirmInput"/>
+        </view>
+        <view class="address-edit-form_item">
+            <text>所在地区</text>
+            <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                <view class="picker">
+                    {{region[0]}} {{region[1]}} {{region[2]}}
+                </view>
+            </picker>
+        </view>
+        <view class="address-edit-form_item">
+            <text>详细地址</text>
+            <input type="text" placeholder="街道、楼牌号等" value="{{address}}" data-type="address" bindblur="confirmInput" bindconfirm="confirmInput"/>
+        </view>
+    </view>
+
+    <view class="address-edit-default">
+        <icon type="success" size="18" color="{{ default ? 'red' : 'gray' }}"  bindtap="changeDefault"/>
+        <text>默认地址</text>
+    </view>
+
+    <view class="bottom-btn-group">
+        <view class="border-right" wx:if="{{ id }}"  bindtap="delete">删除地址</view>
+        <view bindtap="save">保存地址</view>
+    </view>
+</view>

@@ -1,0 +1,85 @@
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<div class="am-modal am-modal-prompt" tabindex="-1" id="refuseInfo">
+    <div class="am-modal-dialog">
+        <form name="resetPass" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">拒绝退款</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="refuse_reason" class="am-input-sm" id="refuse_reason" placeholder="拒绝理由" required/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('.am-modal').appendTo('body');
+
+    function allow(id,oper){
+        if(window.confirm('确定允许退款吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/refund.html',
+                data : {'id' : id , 'oper' : oper},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    function refuse(id,oper){
+
+        $('#refuseInfo').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var reason = $('#refuse_reason').val();
+                $.ajax({
+                    url: '__CONTROLLER__/refund.html',
+                    data: {'id': id, 'oper': oper , 'reason' : reason},
+                    type: 'post',
+                    success: function (d) {
+                        if (d.status == 1) {
+                            alert(d.info);
+                            window.location.reload();
+                        } else {
+                            alert(d.info);
+                        }
+                    }
+                });
+            }
+        })
+
+            /*if(window.confirm('确定拒绝退款吗？'))
+        {
+            $.ajax({
+                url: '__CONTROLLER__/refund.html',
+                data: {'id': id, 'oper': oper},
+                type: 'post',
+                success: function (d) {
+                    if (d.status == 1) {
+                        alert(d.info);
+                        window.location.reload();
+                    } else {
+                        alert(d.info);
+                    }
+                }
+            });
+        }*/
+
+
+
+
+    }
+</script>

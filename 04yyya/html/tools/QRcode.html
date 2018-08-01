@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/a.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/a.js"></script>
+
+</head>
+<body>
+<style>
+.header .orderOperation{position:absolute;right:1rem;top:1.6rem;}
+/******************************************/
+.QRcode{min-height:100%;width:100%;position:fixed;top:0;z-index:9998;background:rgba(0,0,0,0.3);}
+.content{-webkit-filter: blur(0.25rem); /* Chrome, Opera */-moz-filter: blur(0.25rem); -o-filter: blur(0.25rem);-ms-filter: blur(0.25rem);filter: blur(0.25rem);}
+/**************/
+</style>
+<div class="header">
+	<a class="turnBack" href="javascript:parent.page.back();"></a>
+	<div class="title"></div>
+	<div class="share" onclick="javascript:alert();"></div>
+	<a class="uCenter" href="#"></a>
+	<div class="orderOperation" onclick="javascript:confirm('真的要取消订单吗？');">取消订单</div>
+</div>
+<div class="content" id="mainContent">
+	<div>
+		<img src="./images/pic2.jpg">
+		<img src="./images/pic3.jpg">
+		<img width=100% src="./images/pic4.jpg">
+	</div>
+	
+	<p class="test" style="height:1000px;"></p>
+</div>
+<!-- -------------------------------------------------- -->
+<style>
+.content{-webkit-filter: blur(0.25rem); /* Chrome, Opera */-moz-filter: blur(0.25rem); -o-filter: blur(0.25rem);-ms-filter: blur(0.25rem);filter: blur(0.25rem);}
+/**************/
+.QRcode{min-height:100%;width:100%;position:fixed;top:0;z-index:9998;background:rgba(0,0,0,0.3);}
+.QRcode .views{width:27.7rem;margin:10.6rem 4rem;text-align:center;background:#fff;position:absolute;z-index:9999;}
+.QRcode .views .a{font-size:1.68rem;color:#000;height:6.2rem;line-height:6.2rem;}
+.QRcode .views .b{font-size:1.4rem;color:#6c6c6c;height:4.2rem;line-height:4.2rem;margin:0 2rem;border-top:0.1rem solid #e1e1e1;border-bottom:0.1rem dashed #e1e1e1;}
+.QRcode .views .c{font-size:1.68rem;color:#000;margin:1.2rem 0;}
+.QRcode .views .d{margin:0 auto;margin-bottom:2rem;width:16rem;overflow:hidden;}
+.QRcode .views .d img{width:16rem;height:16rem;}
+.QRcode .views .d .dBtm{font-size:1.32rem;color:#636363;margin:1rem auto;}
+.QRcode .views .closed{width:14%;position:absolute;margin-top:1.6rem;left:43%;}
+</style>
+<script>
+$('.QRcode .views').css('margin-top',($(window).height()-$('.QRcode .views').height())/2);
+</script>
+<div class="QRcode">
+	<div class="views" >
+		<div class="a">查看消费码</div>
+		<div class="b">参加活动时请出示消费码</div>
+		<p class="c">消费码: 1234 4567</p>
+		<div class="d">
+			 <img width=100% height=100% src="./images/pic2.jpg">
+			 <div class="dBtm">左右滑动切换消费码</div>
+		</div>
+		<img class="closed"  src="./images/closed@2x.png" onclick="javascript:$('.QRcode').css('display','none');$('#mainContent').removeClass('content');">
+	</div>
+</div>
+
+<!-- ------------------------------- -->
+<script>
+	$('p').removeClass('test');
+	$('p').addClass('test');
+</script>
+
+</body>
+</html>

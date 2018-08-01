@@ -1,0 +1,59 @@
+
+<form style="margin: 20px;">
+    <div class="am-g" style="margin-bottom: 10px;">
+        <span>分类</span>
+        <select name="type" id="search_type" style="width: 100px">
+            <option value="">请选择</option>
+            <option value="0" <?php if($search_type == 0 && $search_type != '')echo "selected='selected'";?>>活动</option>
+            <option value="1" <?php if($search_type == 1)echo "selected='selected'";?>>商品</option>
+            <option value="2" <?php if($search_type == 2)echo "selected='selected'";?>>众筹</option>
+        </select>
+        <span>使用状态</span>
+        <select name="status" id="search_status" style="width: 100px">
+            <option value="">请选择</option>
+            <option value="0" <?php if($search_status == 0 && $search_status != '')echo "selected='selected'";?>>已删除</option>
+            <option value="1" <?php if($search_status == 1)echo "selected='selected'";?>>未使用</option>
+            <option value="2" <?php if($search_status == 2)echo "selected='selected'";?>>已使用</option>
+        </select>
+        <button type="submit" class="am-btn am-btn--success">提交</button>
+</form>
+
+{:W('Cate/table', [$datas, $lang, $operations, $pages, $batch])}
+<script type="text/javascript">
+    function dataDelete(id){
+        //删除数据
+        $.ajax({
+            url: '__ACTION__.html',
+            data: {'id': id,'TypeName':'dataDelete'},
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                if(d.status == 1){
+                    alert(d.info);
+                    window.location.reload();
+                }else {
+                    alert(d.info);
+                }
+            }
+        });
+    }
+    //恢复数据
+    function recovery(id){
+        $.ajax({
+            url: '__ACTION__.html',
+            data: {'id': id,'TypeName':'recovery'},
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                if(d.status == 1){
+                    alert(d.info);
+                    window.location.reload();
+                }else {
+                    alert(d.info);
+                }
+            }
+        });
+    }
+</script>

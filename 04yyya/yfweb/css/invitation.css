@@ -1,0 +1,17 @@
+@charset "utf-8";
+.wrapper.page_invitation{background: #C9E6E5;}
+.wrapper.page_invitation p{margin: 0;}
+.page_invitation .invitation .inviter{text-align: center;margin: 1.68rem auto;}
+.page_invitation .invitation .inviter img{width: 7rem;height: 7rem;border-radius: 50%;border: 0.38rem solid rgba(255, 255, 255, 0.3);}
+.page_invitation .invitation .inviter .nickname{font-size: 1.4rem;color: #333;margin-top: 0.5rem;}
+.page_invitation .invitation .inviter .nickname font{color: #3C536B;padding-right: 1rem;}
+
+.page_invitation .invitation .content{width: 27.84rem;height:36rem;display:block;margin: 0 auto;position: relative;}
+.page_invitation .invitation .content .i_text{width: 25rem; text-align: center;position: absolute;top: 0;left: 1.1rem;background: #fff;box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);-webkit-box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);}
+.page_invitation .invitation .content .i_text .ititle{height:1.44rem;margin: 0;margin: 1.62rem 0 1.22rem;background: url("../images/invitation.png") no-repeat scroll center center / 10.9rem 1.44rem;}
+.page_invitation .invitation .content .i_text p{font-size: 1.3rem;color: #333;text-align: left;padding: 0 1.5rem;}
+.page_invitation .invitation .content .i_text p.title{font-size: 1.4rem;padding: 0.5rem 1.5rem;font-weight: bold;}
+.page_invitation .invitation .content .i_text .a_img{width: 100%;height: 15rem;padding-top: 1rem;}
+.page_invitation .invitation .content .i_bg{width:27.84rem;height:19.2rem;background: url("../images/invita.png") no-repeat 0 0 / 27.84rem 19.2rem;position: absolute;bottom: 0;left: 0;}
+.page_invitation .invitation .my-enter{width: 22.08rem;height: 4.22rem; background: url("../images/in-btn.png") no-repeat 0 0 / 22.08rem 4.22rem;color: #fff;border: none;margin: 0 auto;margin-top: 1rem;display: block;cursor: pointer;font-size: 1.4rem;}
+

@@ -1,0 +1,56 @@
+
+#message {position:absolute; z-index:200; color:#333; background-color:#f7f7f7; text-align:left; border:solid 3px #ccc; padding:10px;}
+#message .inside {border:solid 1px #eee; background-color:#fff; padding:10px; text-align:left; font-size:12px;}
+#message .inside #uploadsrc{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;-webkit-text-overflow:ellipsis; font-size:10px;display: block;}
+#message .btn {border:solid 1px #ccc; background-color:#eee; padding:6px 10px 3px 10px; cursor:pointer;}
+#message .btn:hover,#message .btn:active {background-color:#ddd;}
+#overlay {background: #000;	position: absolute;	top: 0px; left: 0px; width: 100%; height: 100%;	z-index: 100; opacity:0.7 !important; filter: Alpha(Opacity=70); cursor: pointer;}
+#close {width:18px; height:15px; position:absolute; padding-top:2px; text-align:center; font-size:14px; color:#F00; border:solid 1px #F00; background-color:#FFE6E6; cursor:pointer;}
+#close:hover,#close:active {background-color:#FF8686;}
+
+#write_menu {height:26px; margin:0px; padding:2px; list-style: none; text-align:left; background-color:#FFF; border:solid 1px #ccc;}
+#write_menu .tool{width:21px; height:20px; border:solid 1px #FFF; float:left; display: block; list-style: none; margin: 0; padding: 0;}
+#write_menu .html {width:47px; text-align:center;}
+#write_menu .tool img{cursor:pointer;}
+#write_menu .tool:hover,#write_menu a:active {border:solid 1px #ccc;}
+#write_menu .tool.fontb {background: url("bb_bold.gif") no-repeat center center;}
+#write_menu .tool.fonti {background: url("bb_italic.gif") no-repeat center center;}
+#write_menu .tool.fontu {background: url("bb_underline.gif") no-repeat center center;}
+#write_menu .tool.fontsize {background: url("bb_size.gif") no-repeat center center; position: relative;}
+#write_menu .tool.fontsize .font_list {width:60px; height:auto; position:absolute; left:-2px; top:20px; background:#ddd; padding:1px; display:none;}
+#write_menu .tool.fontsize .font_list button {display:block; line-height: 20px; font-size: 12px; color: #333; margin-bottom: 1px; border: none; background: #fff; width:100%;}
+#write_menu .tool.fontsize .font_list button:hover {background: #f7f7f7;}
+#write_menu .tool.fontsize:hover .font_list {display: block;}
+#write_menu .tool.fontcolor {background: url("bb_color.gif") no-repeat center center; position: relative;}
+#write_menu .tool.fontcolor .color_list {width:200px; height:auto; position:absolute; box-shadow: 0 0 1px rgba(0, 0, 0, 0.3); left:0; top:20px; background:#fff; padding:5px; display:none;}
+#write_menu .tool.fontcolor .color_list .list {height:42px;}
+#write_menu .tool.fontcolor .color_list .list button {display:block; float: left; width: 18px; padding: 0; height: 18px; margin:0 2px 2px 0;border: none; background: #fff;}
+#write_menu .tool.fontcolor .color_list .diy {border-top:solid 1px #ddd;}
+#write_menu .tool.fontcolor .color_list ul {width:120px; float: left; margin: 3px 0; padding: 0; border-right:solid 1px #ddd;}
+#write_menu .tool.fontcolor .color_list li {margin:0; padding: 0;margin: 2px 0; line-height: 20px; list-style: none; text-align: center;}
+#write_menu .tool.fontcolor .color_list li > button {display: inline-block; width: 30px; text-align: center; color:#666; border: none; background:none;}
+#write_menu .tool.fontcolor .color_list li > em {display: inline-block; width: 40px; text-align: center; color:#666; border: solid 1px #ddd; font-style: normal;}
+#write_menu .tool.fontcolor .color_list .right {float: right; width: 70px;}
+#write_menu .tool.fontcolor .color_list .right .color_point {display: block; transition: all 0.3s; width:20px; height:20px; background: #333; margin: 10px auto;}
+#write_menu .tool.fontcolor .color_list .right > button {display: block; width:50px; height:20px; background: #fff; color:#999; border: solid 1px #ddd; border-radius: 3px; margin: 10px auto;}
+#write_menu .tool.fontcolor:hover .color_list {display: flex; flex-flow: row wrap;}
+
+#write_menu .tool.fontleft {background: url("bb_left.gif") no-repeat center center;}
+#write_menu .tool.fontcenter {background: url("bb_center.gif") no-repeat center center;}
+#write_menu .tool.fontright {background: url("bb_right.gif") no-repeat center center;}
+#write_menu .tool.fontindent {background: url("bb_indent.gif") no-repeat center center;}
+#write_menu .tool.fontoutdent {background: url("bb_outdent.gif") no-repeat center center;}
+#write_menu .tool.unorderedlist {background: url("bb_unorderedlist.gif") no-repeat center center;}
+#write_menu .tool.orderedlist {background: url("bb_orderedlist.gif") no-repeat center center;}
+#write_menu .tool.url {background: url("bb_url.gif") no-repeat center center;}
+#write_menu .tool.image {background: url("bb_image.gif") no-repeat center center;}
+#write_menu .tool.html {background: url("HTML.GIF") no-repeat center center;}
+#write_menu .tool.text {background: url("TEXT.gif") no-repeat center center;}
+
+#text {width:100%; height:462px; padding:4px; border:solid 1px #ccc; border-top:0px; overflow:auto; background-color:#FFF;}
+#htmlText {width:100%; overflow:auto; height:461px; border:solid 1px #ccc; padding:4px; border-top:0px;}
+#textDiv1,#textDiv2 {display:block; height:470px; background-color:#FFF;}
+#textDiv2 {display:none;}
+
+.font_list button:hover,.font_list button:active {background:#eee;}
+

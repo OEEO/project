@@ -1,0 +1,46 @@
+.cwrapper{background: #fff;display: block;height: 100%;}
+.item {border-bottom:solid 1rpx rgba(238, 238, 238, 1); margin: 0 31rpx; padding: 31rpx 0; width: 688rpx;display: flex;}
+.item .headpic {width:77rpx; height: 77rpx; border-radius: 50%; float: left; overflow: hidden;}
+.item .headpic image {width:77rpx; height: 77rpx;}
+
+.item .right {width:571rpx; min-height:104rpx; float:right;padding-left: 40rpx;}
+.item .right .nickname {width:571rpx; height:52rpx; display: block;}
+.item .right .nickname .names {width:292rpx; line-height:52rpx; height:52rpx; float: left; overflow: hidden; text-overflow: ellipsis;white-space: nowrap; font-size:29rpx; color:#333333; text-align:left;}
+.item .right .starGrade {float:right; margin-top:10rpx;}
+.item .right .starGrade view{margin:0 2rpx; width:29rpx; height:29rpx; display:inline-block; background:url('http://img.yummy194.cn/images/evaluate_star_icon@2x.png') no-repeat center center / 29rpx auto;}
+.item .right .starGrade view.empty{background:url(http://img.yummy194.cn/images/evaluate_star_icon_h@2x.png) no-repeat center center / 29rpx auto;}
+.item .right .report_time{text-align: left;color:#b0b0b0;font-size: 24rpx;}
+.item .right .report_time .report{float: right;}
+.item .right .report_time .rt{display: inline-block;}
+
+.item .right .context {line-height:33rpx; font-size:25rpx; color:rgba(51, 51, 51, 1); margin: 10rpx 0;}
+.item .right .bottom {height:33rpx; line-height:33rpx; color:rgba(136, 136, 136, 1); float:right;}
+.item .right .bottom .datetime {float:left; font-size:25rpx; letter-spacing:0;}
+.item .right .bottom button {float:right; border:none; background: none;}
+.item .right .pics {display: flex; flex-flow: wrap;}
+.item .right .pics image {display:inline-block; width:125rpx; height:125rpx; margin: 4rpx;object-fit: cover;}
+
+.end {text-align: center; line-height: 83rpx;}
+
+.commitQuestionBlank{clear:both;height:167rpx;}
+.commitQuestion{background:#fff; border-top:1px #ccc solid; width:750rpx; display: flex;}
+
+.tips_title{font-size:25rpx; line-height:42rpx; color:#888888; letter-spacing:0rpx;}
+.tips_hui{font-size:25rpx; line-height:42rpx; letter-spacing:0rpx;}
+.tips_hui font{color:#128875;}
+.tips_time{font-size:23rpx; letter-spacing:0; color:rgba(136, 136, 136, 1);}
+
+.commitQuestion .replyBox {display:none;box-sizing: border-box; position:relative; max-width:167rpx; height: 63rpx; line-height:58rpx; color:#bbb; padding-left: 8rpx; border:solid 2rpx #eee; overflow: hidden; text-overflow:ellipsis; white-space:nowrap;border-radius: 21rpx 0 0 21rpx; border-right:none; margin: 8rpx 0 0 17rpx;}
+.commitQuestion .replyBox:after {content:':'; position:absolute; right:2rpx; top:0; line-height:63rpx;}
+.commitQuestion .replyBox span {color:#666;}
+.commitQuestion .m_question{color:#a3a3a3; margin:8rpx 0 0 17rpx; font-size:25rpx; padding:10rpx 21rpx 10rpx 21rpx; overflow:hidden; height:63rpx; flex:6; box-sizing: border-box; border:1px solid #eee; border-radius:21rpx;}
+.commitQuestion .m_question.reply {flex:5; border-radius: 0 21rpx 21rpx 0; border-left:none; margin-left: 0;}
+
+.commitQuestion button{color:#a0a0a0;font-size:29rpx;margin:0 auto;border:none;background:none; flex:1;}
+.no_more {width:313rpx; height:31rpx; background:url(http://img.yummy194.cn/images/no_mre.png) 0 0 / 313rpx 31rpx no-repeat; margin:104rpx auto;}
+
+.content .no_msgs{width:750rpx; background:#f5f5f5; position:absolute; top:94rpx; left:0; right:0; bottom:0rpx;}
+.content .no_msgs img{width:208rpx; height:208rpx; margin:167rpx 271rpx auto 271rpx;}
+.content .no_msgs span{display:block; width:750rpx; font-size:25rpx; text-align:center; color:#969696; margin-top:42rpx;}
+
+.no_more {width:313rpx; height:31rpx; background:url(http://img.yummy194.cn/images/no_mre.png) 0 0 / 313rpx 31rpx no-repeat; margin:42rpx auto;}

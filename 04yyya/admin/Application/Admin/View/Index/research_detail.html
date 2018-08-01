@@ -1,0 +1,262 @@
+<form style="margin: 20px;" name="subjectItem">
+    <div class="am-g">
+        <div>添加题目</div>
+        <input type="text" name="subject" id="add_subject" class="am-form-field am-radius" style="width: 75%;float: left;" placeholder="添加题目" value="" />
+        <select name="option_type" class="" style="height: 34px;">
+            <option value="0">问答题</option>
+            <option value="1">选项题</option>
+        </select>
+        <button type="button" class="am-btn am-btn-success" onclick="addsubject()">添加题目</button>
+    </div>
+</form>
+
+<div class="am-g am-margin-top">
+    <div class="am-u-sm-1 am-text-left">注意：</div>
+    <div class="am-u-sm-11 am-text-left">
+        <p>1、点击题目，可修改题目，按“Enter”键确定；点击“保存题目列表”才能保存数据；“添加选项”，只有保存题目数据之后，才去添加，否则提交不了</p>
+    </div>
+</div>
+<form name="subjectTable" id="subjectTable">
+    {$code}
+    <!--{:W('Cate/table', [$datas, $lang, $operations, $pages, $batch,false])}-->
+    <button type="button" class="am-btn am-btn-primary" onclick="savesubject()">保存题目列表</button>
+</form>
+<small>注：</small>
+
+
+<!--结算-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="addOptionArea">
+    <div class="am-modal-dialog">
+        <form name="Optioncontent">
+            <div class="am-modal-hd">选项内容</div>
+            <div class="am-modal-hd">
+                <input type="text" name="subject" id="add_option_title" class="am-form-field am-radius" style="width: 75%;float: left;" placeholder="添加答案选项" value="" />
+                <button type="button" class="am-btn am-btn-success" onclick="add_optionTitle()">添加答案选项</button>
+            </div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <table id="addOption" class="am-table am-table-striped am-table-hover">
+                        <thead>
+                            <tr>
+                                <th>选项序号</th>
+                                <th>选项内容</th>
+                                <th>正确答案</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.am-modal').appendTo('body');
+    var category_id = {$category_id};
+
+
+    //上移
+    function shift_up(em) {
+        var $this = $(em);
+        var curTr = $this.parents("tr");
+        var prevTr = $this.parents("tr").prev();
+        if (prevTr.length == 0) {
+            alert("第一行,不能向上移动了");
+            return;
+        } else {
+            prevTr.before(curTr);
+            sortNumber($(em).parents().parents().parents().parents().attr('id'));//重新排序
+        }
+    }
+    //下移
+    function shift_down(em) {
+        var $this  = $(em);
+        var curTr = $this.parents("tr");
+        var nextTr = $this.parents("tr").next();
+        if(nextTr.length == 0){
+            alert("最后一行,不能向下移动了？");
+            return;
+        }else{
+            nextTr.after(curTr);
+            sortNumber($(em).parents().parents().parents().parents().attr('id'));//重新排序
+        }
+    }
+    //排序
+    $("input[name='orderNum']").bind("change",function(){
+        var $this = $(this);
+        //获得当前行
+        var curTr = $this.parents("tr");
+        var curOrderNum = $this.val();
+        //当前行同级的所有行
+        var siblingsTrs = curTr.siblings();
+        if(siblingsTrs.length >0){
+            for(var i in siblingsTrs){
+                var otherOrderNum = $(siblingsTrs[i]).children().find("input[name='orderNum']").val();
+                if(parseInt(curOrderNum) <= parseInt(otherOrderNum)){
+                    $(siblingsTrs[i]).before(curTr);
+                    sortNumber();//重新排序
+                    break;
+                }
+            }
+        }
+    });
+
+    function sortNumber(attr_id){
+        var allInput = $('#'+attr_id).find("input[name='sortNum']");
+        if(allInput.length != 0){
+            for(var i=0;i<allInput.length;i++){
+                var tempInput = allInput[i];
+                tempInput.value = i + 1;
+            }
+        }
+    }
+
+    //修改题目
+    function update(em){
+        $(em).find("input[type='text']").remove();
+        $(em).find('font').attr('style','display:none;');
+        var title = $(em).find('font').html();
+        $('<input type="text" value="'+title+'" class="am-form-field am-radius">').appendTo($(em)).keypress(function(event){
+            if(event.which == '13'){
+                var new_title = $(this).val();
+                $(em).find('font').html(new_title);
+                $(em).find('font').attr('style','display:block;');
+                $(this).remove();
+            }
+        }).focus();
+        $(em).find("input[type='text']").blur(function(){
+            $(em).find('font').attr('style','display:block;');
+            $(em).find("input[type='text']").remove();
+        });
+
+    }
+
+    //添加题目
+    function addsubject(){
+        var sortNum = $("input[name='sortNum']");
+        num = sortNum.length;
+        var subject = document.subjectItem.subject.value;
+        var option_type = document.subjectItem.option_type.value;
+        var code = '<tr>';
+            code +='<td><input name="sortNum" value="'+(num+1)+'" style="border:none; background:none; width:50px;" type="text"><input name="id" value="" type="hidden"><input name="type" value="'+option_type+'" type="hidden"><input name="category_id" value="'+category_id+'" type="hidden"></td>';
+            code +='<td><span style=" width:100%; display: block;" onclick="update(this)"><font>'+subject+'</font></span></td>';
+            code +='<td><button class="am-btn am-btn-primary am-btn-xs" type="button" onclick="shift_up(this)">上移</button><button class="am-btn am-btn-primary am-btn-xs" type="button" onclick="shift_down(this)">下移</button><button class="am-btn am-btn-warning am-btn-xs" type="button" onclick="$(this).parent().parent().remove()">删除</button></td>';
+            code +='</tr>';
+        $(code).appendTo($('#subjectTable table tbody'));
+    }
+
+    //保存题目列表数据
+    function savesubject(){
+        var data={};
+        data.subject = [];
+        $('#subjectTable table tbody tr').each(function(){
+            var subjects = {};
+            subjects.id = $(this).find('[name="id"]').val();
+            subjects.sortNum = $(this).find('[name="sortNum"]').val();
+            subjects.category_id = $(this).find('[name="category_id"]').val();
+            subjects.type = $(this).find('[name="type"]').val();
+            subjects.content = $(this).find('span font').text();
+            data.subject.push(subjects);
+        });
+        data.TypeName = 'SaveData';
+        $.ajax({
+            url:'__ACTION__.html',
+            data : data,
+            type : 'post',
+            success : function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+                window.location.reload();
+            }
+        });
+    }
+
+    //添加选项并且保存数据
+    function add_option(category_id,id){
+        $('#addOption tbody tr').remove();
+        $.ajax({
+            url:'__ACTION__.html',
+            data : {id:id,category_id:category_id,TypeName:'add_option'},
+            dataType : 'json',
+            type : 'post',
+            success : function(d) {
+                var num =0;
+                var code ='';
+                for(i in d){
+                     num = parseInt(i)+1
+                    code += '<tr>';
+                    code +='<td><input  type="text" name="sortNum" value="'+num+'" style="border:none; background:none; width:50px;"/><input name="id" value="'+d[i].id+'" type="hidden"><input name="category_id" value="'+d[i].category_id+'" type="hidden"></td>';
+                    code +='<td><span style=" width:100%; display: block;" onclick="updateOption(this)"><font>'+d[i].content+'</font></span></td>';
+                    if(d[i].type==1){
+                        code +='<td><div class="am-btn-group is_true" data-am-button><label class="am-btn am-btn-default am-btn-xs am-active"><input type="radio" name="is_true" value="1"> 正确 </label><label class="am-btn am-btn-default am-btn-xs"><input type="radio" name="is_true" value="0"> 错误</label></div></td>';
+                    }else{
+                        code +='<td><div class="am-btn-group is_true" data-am-button><label class="am-btn am-btn-default am-btn-xs"><input type="radio" name="is_true" value="1"> 正确 </label><label class="am-btn am-btn-default am-btn-xs am-active"><input type="radio" name="is_true" value="0"> 错误</label></div></td>';
+                    }
+                    code +='<td><button class="am-btn am-btn-primary am-btn-xs" type="button" onclick="shift_up(this)">上移</button><button class="am-btn am-btn-primary am-btn-xs" type="button" onclick="shift_down(this)">下移</button><button class="am-btn am-btn-warning am-btn-xs" type="button" onclick="$(this).parent().parent().remove()">删除</button></td>';
+                    code +='</tr>';
+                }
+                $(code).appendTo($('#addOption tbody'));
+                $('#addOptionArea').modal({
+                    relatedTarget: this,
+                    onConfirm: function () {
+                        var data={};
+                        data.pid = id;
+                        data.category_id = category_id;
+                        data.option = [];
+                        $('#addOption tbody tr').each(function(){
+                            var option = {};
+                            option.id = $(this).find('[name="id"]').val();
+                            option.sortNum = $(this).find('[name="sortNum"]').val();
+                            option.is_true = $(this).find('.is_true label.am-active input').val();
+                            option.content = $(this).find('span font').text();
+                            data.option.push(option);
+                        });
+                        data.TypeName = 'SaveDataOption';
+
+                        $.ajax({
+                            url:'__ACTION__.html',
+                            data : data,
+                            type : 'post',
+                            success : function(d){
+                                if(d.status == 1){
+                                    alert(d.info);
+                                }else{
+                                    alert(d.info);
+                                }
+                                window.location.reload();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+
+    //添加答案选项
+    function add_optionTitle(){
+        var sortNum = $('#addOption').find("input[name='sortNum']");
+        num = sortNum.length;
+        var optiontitle = $('#add_option_title').val();
+        var code = '<tr>';
+            code +='<td><input  type="text" name="sortNum" value="'+(num+1)+'" style="border:none; background:none; width:50px;"/><input name="id" value="" type="hidden"><input name="type" value="0" type="hidden"><input name="category_id" value="'+category_id+'" type="hidden"></td>';
+            code +='<td><span style=" width:100%; display: block;" onclick="updateOption(this)"><font>'+optiontitle+'</font></span></td>';
+            code +='<td><div class="am-btn-group is_true" data-am-button><label class="am-btn am-btn-default am-btn-xs"><input type="radio" name="is_true" value="1"> 正确 </label><label class="am-btn am-btn-default am-btn-xs  am-active"><input type="radio" name="is_true" value="0"> 错误</label></div></td>';
+            code +='<td><button class="am-btn am-btn-primary am-btn-xs" type="button" onclick="shift_up(this)">上移</button><button class="am-btn am-btn-primary am-btn-xs" type="button" onclick="shift_down(this)">下移</button><button class="am-btn am-btn-warning am-btn-xs" type="button" onclick="$(this).parent().parent().remove()">删除</button></td>';
+            code +='</tr>';
+        $(code).appendTo($('#addOption tbody'));
+    }
+
+</script>

@@ -1,0 +1,74 @@
+<!--index.wxml-->
+<view class="header">
+  <view class="location" data-id="{{city.id}}" bindtap="changeCity">{{city.name}}</view>
+  <navigator url="../search/index" class="userMsg"></navigator>
+</view>
+
+<scroll-view scroll-y="true" class="wrapper" bindscrolltolower="loadMore">
+  <swiper class="banners" indicator-dots="true" autoplay="true">
+    <block wx:for="{{banners}}" wx:key="banners">
+      <swiper-item>
+        <navigator url="{{item.url}}">
+          <image src="{{item.path != '' ? item.path : 'http://img.yummy194.cn/20160608/99a2e57830afb6d3071939576771a023eae18b59.jpg'}}"/>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="pro_list">
+    <view class="product_list">
+    <block wx:for="{{tipsData}}" wx:key="tipsData">
+      <view class="product_item">
+        <view class="pro_top">
+          <navigator url="../ucenter/zone?member_id={{item.member_id}}" class="User_Img">
+            <image class="imgPortrait" src="{{item.headpic}}"/>
+          </navigator>
+          <view class="User_Conten">
+            <view class="Contens">
+              <view class="qUserName">{{item.nickname}}</view>
+              <view class="msgDetail">
+                <view class="song_mi b_right">
+                  <view class="font">粉丝：</view>{{item.follow_num * 3}}人
+                </view>
+                <view class="song_mi">
+                  <view class="font">赏味：</view>{{item.customers}}人
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="pro_center">
+          <view class="button{{item.is_collect != 0 ? ' Collected' : ''}}" data-id="{{item.id}}" data-iscollect="{{item.is_collect}}" bindtap="setCollect"></view>
+          <view class="span">{{item.catname}}</view>
+          <navigator url="../tips/detail?tips_id={{item.id}}">
+            <image src="{{item.mainpic}}"/>
+          </navigator>
+        </view>
+        <navigator class="pro_title" url="../tips/detail?tips_id={{item.id}}">
+          <view class="span">{{item.title}}</view>
+        </navigator>
+        <navigator class="pro_buttom" url="../tips/detail?tips_id={{item.id}}">
+          <view class="span pro_time">{{item.date}}</view>
+          <view class="span pro_adress">{{item.simpleaddress}}</view>
+          <view class="span price_right"><view class="small">￥</view>{{item.price}}<view class="small">/份</view></view>
+        </navigator>
+      </view>
+    </block>
+    </view>
+  </view>
+</scroll-view>
+
+<!--<view class="footer">
+  <navigator url="/index/index" redirect class="no1 active" hover-class="footer-hover">首页</navigator>
+  <navigator url="/message/index" redirect class="no2" hover-class="footer-hover">消息</navigator>
+  <navigator url="/order/index" redirect class="no3" hover-class="footer-hover">订单</navigator>
+  <navigator url="/ucenter/index" redirect class="no4" hover-class="footer-hover">我的</navigator>
+</view>-->
+
+<view class="city_list" bindtap="changeCity" wx:if="{{cityLayShowed}}">
+  <view class="list_name">
+    <view wx:for="{{cityArr}}" wx:key="citys" class="{{item.id == city.id ? 'yellow':''}}" data-id="{{item.id}}" bindtap="changeCityOpt">
+      {{item.name}}
+    </view>
+  </view>
+</view>

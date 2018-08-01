@@ -1,0 +1,327 @@
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"> </script>
+
+<div class="wechatToolsBox">
+    <button class="am-btn am-btn-primary am-btn-xs">同步图文素材</button>
+    <select>
+        <option value="0"<if condition="$channel == 0"> selected="selected"</if>>吖咪公众号</option>
+        <option value="1"<if condition="$channel == 1"> selected="selected"</if>>我有饭公众号</option>
+    </select>
+</div>
+
+<p style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" onclick="addQrcode()">添加二维码</button>
+</p>
+
+<div id="dataBox"></div>
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages))}
+
+<!-- 编辑二维码 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="pieceBox">
+    <div class="am-modal-dialog">
+        <form name="qrcodeForm" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">编辑二维码</div>
+            <div class="am-g am-margin-top-sm" >
+                <div class="am-u-sm-3 am-u-md-3">标题</div>
+                <div class="am-u-sm-9 am-u-md-9">
+                    <input type="text" name="title" placeholder="二维码标题"/>
+                </div>
+            </div>
+            <div class="am-g am-margin-top-sm" >
+                <div class="am-u-sm-3 am-u-md-3">发送选择</div>
+                <div class="am-u-sm-9 am-u-md-9">
+                    <input type="radio" name="type" value="0" checked/> 不发送
+                    <input type="radio" name="type" value="1"/> 发送素材
+                    <input type="radio" name="type" value="2"/> 发送内容
+                </div>
+            </div>
+            <div class="am-g am-margin-top-sm selectMedia" style="display: none;">
+                <div class="am-u-sm-3 am-u-md-3">素材选择</div>
+                <div class="am-u-sm-9 am-u-md-9 mediaBox am-text-left" style="position:relative;border-left:solid 1px #ddd;">
+                    <input type="text" name="media_id" placeholder="请从列表中选择素材.." data-id="" onkeyup="selectMedia(this)" onblur="blurMedia(this)" onfocus="focusMedia(this)">
+                </div>
+            </div>
+            <div class="am-g am-margin-top-sm selectContent" style="display: none;">
+                <div class="am-u-sm-3 am-u-md-3">发送内容</div>
+                <div class="am-u-sm-9 am-u-md-9">
+                    <input type="text" name="context" placeholder="扫码后发送内容.."/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+<script src="__RS__/js/ajaxUpload.js"></script>
+<script>
+var mediaData = {};
+$.ajax({
+    url : 'qrcode.html',
+    data : {act:'getForeverList'},
+    dataType : 'json',
+    type : 'post',
+    success : function(d){
+        if(!d.info){
+            for(var i in d){
+                mediaData[d[i].media_id] = d[i].title;
+            }
+        }else{
+            console.warn(d.info);
+        }
+    }
+});
+$('.am-modal').appendTo('body');
+
+
+var isclicked = false;
+function selectMedia(em){
+    $('.mediaLayBox').empty();
+    var title = $(em).val();
+    var left = $(em).position().left;
+    var top = $(em).position().top + $(em).outerHeight() + parseInt($(em).css('margin-top'));
+    var code = '';
+    for(var i in mediaData){
+        if(title == '' || mediaData[i].indexOf(title) >= 0)
+            code += '<button type="button" data-id="'+ i +'">'+ mediaData[i] +'</button>';
+    }
+    if(code == '')code = '<p style="text-align: center; color:#999;">素材标题查询失败..</p>';
+    $('.mediaLayBox').html(code);
+    $('.mediaLayBox button').on('click', function(){
+        isclicked = true;
+        $(em).val($(this).text());
+        $(em).attr('data-id', $(this).data('id'));
+    });
+    $('.mediaLayBox').css({left:left + 'px', top:top + 'px'});
+}
+
+function blurMedia(em){
+    setTimeout(function(){
+        $('.mediaLayBox').remove();
+        if(!isclicked){
+            var media_id = $(em).data('id');
+            if(media_id == ''){
+                $(em).val('');
+            }else{
+                for(var i in mediaData){
+                    if(i == media_id){
+                        $(em).val(mediaData[i]);
+                    }
+                }
+            }
+        }
+        isclicked = false;
+    }, 500);
+}
+
+function focusMedia(em){
+    $('.mediaLayBox').remove();
+    var title = $(em).val();
+    var left = $(em).position().left;
+    var top = $(em).position().top + $(em).outerHeight() + parseInt($(em).css('margin-top'));
+    var code = '';
+    for(var i in mediaData){
+        if(title == '' || mediaData[i].indexOf(title) >= 0)
+            code += '<button type="button" data-id="'+ i +'">'+ mediaData[i] +'</button>';
+    }
+    if(code == '')code = '<p style="text-align: center; color:#999;">素材标题查询失败..</p>';
+    $('<div class="mediaLayBox">'+ code +'</div>').appendTo($(em).parent()).find('button').on('click', function(){
+        isclicked = true;
+        $(em).val($(this).text());
+        $(em).attr('data-id', $(this).data('id'));
+    });
+    $('.mediaLayBox').css({left:left + 'px', top:top + 'px'});
+}
+
+$('#dataBox').highcharts({
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: '二维码扫描数据横向对比图'
+    },
+    xAxis: {
+        categories: ['<?=join("','", $xAxis)?>'],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '用户数量(人)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y} 人</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: '新用户',
+        data: [<?=join(",", $data1)?>]
+    }, {
+        name: '老用户',
+        data: [<?=join(",", $data2)?>]
+    }, {
+        name: '注册用户',
+        data: [<?=join(",", $data3)?>]
+    }]
+});
+
+$(document.qrcodeForm.type).click(function(){
+    $('.selectMedia').hide();
+    $('.selectContent').hide();
+    if(this.value == 1){
+        $('.selectMedia').show();
+    }else if(this.value == 2){
+        $('.selectContent').show();
+    }
+});
+
+
+//二维码添加
+function addQrcode(){
+
+    document.qrcodeForm.title.value = '';
+    document.qrcodeForm.type.value = 0;
+    $(document.qrcodeForm.media_id).val('').attr('data-id', '');
+
+    $('#pieceBox').modal({
+        relatedTarget: this,
+        closeViaDimmer : false,
+        onConfirm: function() {
+            var data = {};
+            data.act = 'save';
+            data.title = document.qrcodeForm.title.value;
+            if($('.selectContent:visible').size() > 0)
+                data.context = document.qrcodeForm.context.value;
+            else if($('.selectMedia:visible').size() > 0)
+                data.media_id = $(document.qrcodeForm.media_id).data('id');
+
+            $.ajax({
+                type : 'POST',
+                dataType : 'json',
+                data : data,
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    });
+}
+
+//二维码修改
+function update(id){
+    $.ajax({
+        data : {act : 'info', qrcode_id : id},
+        type : 'POST',
+        success : function(d){
+            document.qrcodeForm.title.value = d.title;
+            document.qrcodeForm.context.value = '';
+            if(d.media_id && d.media_id != ''){
+                $('.selectContent').hide();
+                $('.selectMedia').show();
+                $(document.qrcodeForm.media_id).attr('data-id', d.media_id).val(mediaData[d.media_id]);
+                document.qrcodeForm.type.value = 1;
+            }else if(d.context && d.context != ''){
+                $('.selectContent').show();
+                $('.selectMedia').hide();
+                document.qrcodeForm.context.value = d.context;
+                document.qrcodeForm.type.value = 2;
+            }else{
+                $('.selectContent').hide();
+                $('.selectMedia').hide();
+                document.qrcodeForm.type.value = 0;
+            }
+
+            $('#pieceBox').modal({
+                relatedTarget: this,
+                closeViaDimmer : false,
+                onConfirm: function() {
+                    var data = {};
+                    data.act = 'save';
+                    data.qrcode_id = id;
+                    data.title = document.qrcodeForm.title.value;
+                    if($('.selectMedia:visible').size() > 0)
+                        data.media_id = $(document.qrcodeForm.media_id).data('id');
+                    else if($('.selectContent:visible').size() > 0)
+                        data.context = document.qrcodeForm.context.value;
+
+                    $.ajax({
+                        type : 'POST',
+                        dataType : 'json',
+                        data : data,
+                        success: function(d){
+                            if(d.status == 1){
+                                alert(d.info);
+                                window.location.reload();
+                            }else{
+                                alert(d.info);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+
+//修改状态
+function updateStatus(id, state){
+    if(confirm('确定启用/禁用该二维码吗？')){
+        $.ajax({
+            type : 'POST',
+            dataType : 'json',
+            data : {act:'status', qrcode_id:id, status:state},
+            success: function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                    window.location.reload();
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+}
+
+//删除
+function remove(id){
+    if(confirm('确定要删除该二维码吗？')){
+        $.ajax({
+            type : 'POST',
+            dataType : 'json',
+            data : {act:'delete', qrcode_id:id},
+            success: function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                    window.location.reload();
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+}
+
+function showUsers(id){
+
+}
+
+</script>

@@ -1,0 +1,275 @@
+<import src="../index/share.wxml"/>
+<template is="reportItem" data="{{isshow}}"/>
+
+<scroll-view scroll-y="true" class="wrapper" scroll-into-view="{{toView}}" bindscroll="scroll">
+    <swiper class="banners" indicator-dots="true" autoplay="true">
+        <block wx:if="{{detailData.pics_group && detailData.pics_group.length > 0}}">
+        <block wx:for="{{detailData.pics_group}}" wx:key="pics"> 
+            <swiper-item>
+                <image src="{{item}}"/>
+            </swiper-item>
+        </block>
+        </block>
+        <block wx:else>
+            <image src="http://img.yummy194.cn/images/actImg.jpg"/>
+        </block>
+    </swiper>
+    <view class="them_title them_toptitle">
+        <view class="title_t">{{detailData.title}}</view>
+        <view class="title_c"></view>
+        <view class="edges">
+            <block wx:for="{{detailData.edge}}" wx:key="edge">
+                <view class="t_b"><font>◆</font>{{item}}</view>
+            </block>
+        </view>
+    </view>
+    <view class="them_line"></view>
+    <view class="them_title">
+        <view class="ban_t"><image src="http://img.yummy194.cn/images/course_add_icon@2x.png" /></view>
+        <view class="them_add">
+            <view class="b_adress" align="center">{{detailData.address}}</view>
+            <view class="showMap" bindtap="lookmap">查看地图</view>
+        </view>
+    </view>
+    <view class="them_line"></view>
+    <view class="them_title">
+        <view align="center" class="ban_b"><image src="http://img.yummy194.cn/images/course_date_icon@2x.png" /></view>
+        <view class="b_timetext">
+            <view align="center" class="b_start">{{selectdata.start_time}}-{{selectdata.end_time}}</view>
+            <view align="center" class="b_end">报名截止时间：{{selectdata.stop_buy_time}}</view>
+            <view class="more_time" bindtap="moretime">更多时间</view>
+        </view>
+    </view>
+    <view class="them_line"></view>
+    <view class="them_pic">
+        <view class="new_idea">
+            <view class="title_b have_man">已报名<font class="entered">{{selectdata.count}}</font>人</view><view align="center" class="b_model">（{{selectdata.min_num}}人成局，最多接待{{selectdata.max_num}}人）</view>
+        </view> 
+        <block wx:if="{{selectdata.member_info.length > 0}}">
+            <view class="pices">
+                <block wx:for="{{selectdata.member_info}}" wx:key="member_info" wx:for-item="timeitem">
+                    <view class="header_pics"> 
+                        <block wx:if="{{timeitem.member_id == detailData.daRen_id}}">
+                            <image src="http://img.yummy194.cn/20160608/99a2e57830afb6d3071939576771a023eae18b59.jpg"/> 
+                        </block>
+                        <block wx:else>
+                            <image src="{{timeitem.path != '' ? timeitem.path : 'http://img.yummy194.cn/20160608/99a2e57830afb6d3071939576771a023eae18b59.jpg'}}"/> 
+                        </block>
+                        <view class="span">×{{timeitem.count}}</view>
+                        <view class="p">{{timeitem.nickname}}</view>
+                    </view>
+                    <view wx:if="{{index == 3}}" class="more_head">•••</view>
+                </block>
+            </view>
+        </block>
+    </view>
+    <view class="add_border"></view>
+    <view class="the_blank"></view>
+    
+    <view class="menues">
+        <view class="menu_lists">
+            <view class="{{changid == 0 ? 'b_yellow' : ''}}" data-menu="pic" data-id="0" bindtap="changview">HOST</view>
+            <view class="{{changid == 1 ? 'b_yellow' : ''}}" data-menu="menus" data-id="1" bindtap="changview">菜单</view>
+            <view class="{{changid == 2 ? 'b_yellow' : ''}}" data-menu="ments" data-id="2" bindtap="changview">环境</view>
+        </view>
+        <view id="pic"  class="daren_pic">
+            <view wx:if="{{detailData.cover_path != ''}}">
+                <image class="zhu_pic" src="{{detailData.cover_path}}" />
+            </view>
+            <view wx:else>
+                <image class="zhu_pic" src="http://img.yummy194.cn/images/actImg.jpg" />
+            </view>
+            <navigator class="daren_headpic" url="../ucenter/zone?member_id={{detailData.daRen_id}}">
+                <image src="{{detailData.headpic != '' ? detailData.headpic : 'http://img.yummy194.cn/images/head.jpg'}}" />
+                <view>{{detailData.nickname}}</view>
+            </navigator>
+        </view>
+        <view class="activity_list">
+            <view class="act_left">活动</view>
+            <view class="act_right">{{detailData.tips}}</view>
+            <view class="dian"></view>
+            <view class="act_left">赏味</view>
+            <view class="act_right">{{detailData.shangwei}}</view>
+            <view class="dian"></view>
+            <view class="act_left">粉丝</view>
+            <view class="act_right">{{follow_num}}</view>
+        </view>
+        <view class="followBtn">
+            <view class="follow{{is_follow == 0 ? '' : ' valued'}}" data-id="{{detailData.daRen_id}}" bindtap="follow"></view>
+        </view>
+    </view>
+    <view class="them_line"></view>
+    <view class="daren_introduction">
+        <view class="intro_pic"><image src="http://img.yummy194.cn/images/course_about_icon@2x.png" /></view>
+        <pre class="intro_content">{{detailData.introduce}}</pre>
+    </view>
+    
+    <view class="add_border"></view>
+    <view class="the_blank"></view>
+    <view class="add_border"></view>
+    
+    <view id="menus"  class="daren_menu">
+        <view class="intro_pic"><image src="http://img.yummy194.cn/images/course_menu_icon@2x.png" /></view>
+        <view class="menu_b">
+            <swiper class="banners" indicator-dots="true" autoplay="true">
+                <block wx:if="{{detailData.menu_pics_group && detailData.menu_pics_group.length > 0}}">
+                <block wx:for="{{detailData.menu_pics_group}}" wx:key="menu_pics_group">
+                <swiper-item>
+                    <!--<navigator url="{{item.url}}">-->
+                    <image src="{{item}}"/>
+                    <!--</navigator>-->
+                </swiper-item>
+                </block>
+                </block>
+                <block wx:else>
+                    <image src="http://img.yummy194.cn/images/Group 6@2x.png"/>
+                </block>
+            </swiper>
+        </view>
+        <view class="menu_es">
+            <block wx:for="{{detailData.menu}}" wx:key="menu">
+                <block wx:if="{{item.value != '' || item.value[0] != ''}}">
+                <block wx:if="{{item.name == 'Tips'}}">
+                    <view class="menu_btitle">
+                        <image src="http://img.yummy194.cn/images/tips_icon@2x.png"/>
+                        <block wx:for="{{item.value}}" wx:key="value" wx:for-item="tipitem">
+                            <text>{{tipitem}}</text>
+                        </block>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="menu_yellow">— {{item.name}} —</view>
+                    <block wx:for="{{item.value}}" wx:key="value" wx:for-item="menuitem">
+                        <view class="me_li">{{menuitem}}</view>
+                    </block>
+                </block>
+                </block>
+            </block>
+        </view>
+        
+    </view>
+    <view class="add_border"></view>
+    <view class="the_blank"></view>
+    <view class="add_border"></view>
+    
+    <view id="ments"  class="daren_ment">
+        <view align="center" class="intro_pic"><image src="http://img.yummy194.cn/images/course_enviroment_icon@2x.png" /></view>
+        <view class="picess">
+            <block wx:for="{{detailData.environment_pics_group_id}}" wx:key="environment_pics_group_id">
+                <view class="ment_b">
+                    <image src="{{item}}" />
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="add_border"></view>
+    <view class="the_blank"></view>
+    <view class="add_border"></view>
+    
+    <view class="daren_commentList">
+        <view align="center" class="intro_pic"><image src="http://img.yummy194.cn/images/course_comments_icon@2x.png" /></view>
+        <view class="commentList">
+        <block wx:if="{{detailData.comment.length > 0}}">
+        <block wx:for="{{detailData.comment}}" wx:key="comment">
+            <view class="com_list"> 
+                <view class="h_pic">  
+                    <image src="{{item.head_path != '' ? item.head_path : 'http://img.yummy194.cn/20160608/99a2e57830afb6d3071939576771a023eae18b59.jpg'}}"/>
+                </view> 
+                <view class="pic_right">  
+                    <view class="name_title">   
+                        <view class="names">{{item.nickname}}</view>    
+                        <view class="starGrade">
+                            <block wx:for="{{cinx}}" wx:key="grade">
+                                <view class="{{index > item.stars ? 'empty' : ''}}"></view>
+                            </block>
+                        </view>  
+                    </view>
+                    <view class="t_content" align="center">{{item.content}}</view>
+                    <block wx:if="{{item.pics.length > 0}}">
+                        <view class="imges" data-pics="{{item.pics}}" bindtap="checkpic">
+                            <block wx:for="{{item.pics}}" wx:for-item="j" wx:key="pics">
+                                <image src="{{j}}" data-url="{{j}}" bindtap="geturl"/>
+                            </block>
+                        </view>
+                    </block>
+                    <view class="report_time">   
+                        <view class="rt">{{item.datetime}}</view>   
+                        <view wx:if="{{item.is_report == 1}}" class="report">[已举报]</view>
+                        <view wx:else class="report" data-id="{{item.id}}" bindtap="report">[举报]</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+            <view class="more_com" align="center"><navigator class="allEvaluation" url="../comment/index?member_id={{detailData.daRen_id}}"><view>查看更多</view></navigator></view>
+            </block>
+            <block wx:else>
+            <view class="allEvaluation">暂时没有评价</view>
+        </block>
+        </view>
+    </view>
+    <view class="add_border"></view>
+    <view class="the_blank"></view>
+    <view class="add_border"></view>
+    <view class="tell">
+        <view class="must_tell">用户须知</view>
+        <view class="tell_List">
+            <block wx:for="{{detailData.notice}}" wx:key="notice">
+                <view>{{index+1}}、{{item}}</view>
+            </block>
+        </view>
+    </view>
+</scroll-view>
+<view class="timebox" hidden="{{timeshow}}">
+    <view class="p">- 距离开售还有 -</view>
+    <view class="downtime">
+        <block wx:if="{{day.length > 0}}">
+            <font>{{day[0]}}</font><font>{{day[1]}}</font>天
+        </block>
+        <block wx:if="{{hous.length > 0}}">
+        <font>{{hous[0]}}</font><font>{{hous[1]}}</font>时</block>
+        <block wx:if="{{mins.length > 0}}">
+        <font>{{mins[0]}}</font><font>{{mins[1]}}</font>分</block>
+        <block wx:if="{{secs.length > 0}}">
+        <font>{{secs[0]}}</font><font>{{secs[1]}}</font> 秒</block>
+    </view>
+</view>
+
+<view class="footer priceMenu">
+    <div class="crowdday">
+        <navigator url="../message/MsgIM" class="chat"></navigator>
+        <view class="collect{{is_collect != 0 ? ' Collected' : ''}}" bindtap="setCollect"></view>
+    </div>
+    <div class="fr">
+        <view class="price">{{detailData.price}}<font>元/份</font></view>
+        <block wx:if="{{join == true}}">
+        <view bindtap="submitOrder" class="submitBtn">JOIN</view>
+    </block>
+    <block wx:else>
+        <view class="submitBtn changcolor">JOIN</view>
+    </block>
+    </div>
+</view>
+
+<view class="Times" hidden="{{hidden}}">
+    <view class="time_list">
+    	<view class="time_title">时间表</view>
+        <view class="center_list">
+            <block wx:for="{{detailData.times}}" wx:key="times" wx:for-item="titem" wx:for-index="idx">
+            <view class="list_t">
+                <view class="t_left{{titem.none}}">   
+                    <text class="top">{{titem.start_time[0]}}{{titem.start_time[1]}}</text>   
+                    <text>{{titem.start_time[2]}}-{{titem.end_time}}{{titem.signtext}}</text>
+                </view>
+                <block wx:if="{{titem.none == ''}}">
+                    <view class="t_right{{titem.id == selectdata.id ? ' select' : ' yes'}}" data-starttime="{{titem.start_buy_time}}" data-stoptime="{{titem.stop_buy_time}}" data-stock="{{titem.stock}}" data-index="{{idx}}" bindtap="selectTime" ></view>
+                </block>
+                <block wx:else>
+                    <view class="t_right empty"></view>
+                </block>
+            </view>
+            </block>
+        </view>
+        <view class="time_but" bindtap="moretime">选择</view>
+    </view>
+</view>
+

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/check.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/check.js"></script>
+
+</head>
+<body>
+<style>
+.code{font-size:2rem;width:80%;margin-left:10%;height:4rem;margin-top:4.5rem;text-align:center;background:url('./images/delete@2x.png')no-repeat right center;}
+/*
+.code:after{content:'';width:2rem;height:1.5rem;display:inline-block;background:url('./images/delete@2x.png')no-repeat center center;}
+*/
+.botMenu{height:4rem;margin-top:5rem;width:100%;}
+.botMenu>button{font-size:1.8rem;color:#fff;height:4rem;line-height:4rem;width:44%;margin:0 3%;float:left;background:#fcd74b;border:none;border-radius:2rem;}
+.botMenu .submit{}
+.botMenu .scan{}
+</style>
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">验证消费码</div>
+</div>
+<div class="content">
+<form action="" method="post"> 
+	<input class="code" type="" name="" vlaue="">
+	<div class="botMenu">
+		<button class="submit" type="submit">验证</button>
+		<button class="scan" >扫码</button>
+	</div>
+</form>
+</div>
+</body>
+</html>

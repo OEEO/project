@@ -1,0 +1,43 @@
+.wrapper { background: #f5f5f5;}
+.allRead{font-size:25rpx;color:#585858;position:absolute;right:21rpx;top:33rpx;}
+
+.msgList {position: absolute; left:0; top:0; right:0; bottom:100rpx; width:auto; letter-spacing:0; padding:0 20rpx; font-size:28rpx;}
+.msgList .li {padding: 20rpx 0;position: relative;}
+.msgList .li image.headpic {width: 75rpx; height: 75rpx;float:left; border:solid 2rpx #eee; vertical-align: top; border-radius: 50%;}
+.msgList .li .i {width:13rpx; height:13rpx; border-top:solid 1rpx #eee;border-left:solid 1rpx #eee; position: absolute; left:102rpx; top:38rpx;transform:rotate(-45deg); background: #fff;z-index: 1;}
+.msgList .li .span {float:left; max-width:60%;overflow-x: hidden; vertical-align: top; margin-left: 31rpx; border:solid 1rpx #eee; background: #fff; border-radius: 4rpx; padding: 19rpx 20rpx 20rpx;}
+.msgList .li .span image.image {max-width:100%;vertical-align:bottom; height:auto;}
+.msgList .li .span image.faceimage {height:42rpx;width:42rpx;display:inline-block;vertical-align:middle;}
+.msgList .li.right image.headpic {float:right;}
+.msgList .li.right .span {float:right; background: #b39851; color:#fff; border:solid 1rpx #b39851; margin-left:0; margin-right: 31rpx;}
+.msgList .li.right .i {transform:rotate(135deg); background: #b39851; border-left:solid 1rpx #b39851; border-top:solid 1rpx #b39851; left:auto; right:102rpx;}
+.msgList .small {background:#ccc; color: #fff; clear:both; border-radius: 4rpx; font-size:20rpx; line-height: 38rpx; margin: 63rpx auto 20rpx auto; width: 210rpx; text-align: center;display:block;}
+.msgList .li .span navigator {color:#00f; text-decoration: underline;}
+.msgList .li .i.goods {background: #fff;border-left: 2rpx solid #eee;border-top: 2rpx solid #eee;}
+.msgList .li .span.goods {background: #fff;border: 2rpx solid #eee;}
+.msgList .li .span.goods navigator {display: flex; text-decoration: none; color: #b39851;font-size: 28rpx; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; width:375rpx; height:92rpx;overflow: hidden;}
+.msgList .li .span.goods navigator image {width:92rpx; height:92rpx; flex:none; object-fit: cover;}
+.msgList .li .span.goods navigator view {height:92rpx; line-height:46rpx; margin-left: 19rpx;}
+
+.facesBox {position: fixed; z-index: 9; left:0; right:0; overflow: hidden; height:375rpx; background: #fff; border-top:solid 2rpx #ddd; transition:all 0.5s ease;}
+.facesBox .facelist {border-collapse:collapse; width: 708rpx; position: absolute; top:17rpx; left:21rpx; transition:all 0.5s ease;}
+.facesBox .facelist .item {background: #fff; width:50rpx; height:50rpx; display: inline-block; padding:15.5rpx; box-sizing:content-box;}
+.facesBox .facelist .item image {display: inline;}
+.facesBox .facelist.left {left: -750rpx;}
+.facesBox .facelist.right {left: 750rpx;}
+
+.hs{background: #fff;left: 0; z-index: 9;position: fixed;width: 431rpx; border: 2rpx solid #eee;border-radius: 0 4rpx 4rpx 0;background:#fff; transition:all 0.5s ease;}
+.hs .htitle{color: #888;font-size: 23rpx;margin: 0;padding: 20rpx 0;text-align: center;}
+.history {width:417rpx;overflow: auto;max-height:362rpx;padding-right: 13rpx;}
+.history .item {display: flex; display: -webkit-box; display: -webkit-flex; background: #fff; border:solid 2rpx #eee; border-left:none; border-radius: 0 4rpx 4rpx 0; margin: 2rpx 0 4rpx; display: -ms-flexbox; padding: 10rpx; height:92rpx;color: #333;}
+.history .item image {width:92rpx; height:92rpx; flex:none; object-fit: cover;}
+.history .item .text {height:92rpx; font-size:25rpx; line-height:46rpx; margin-left: 8rpx; overflow: hidden;}
+
+.footer {background: #fff; border-top:solid 2rpx #eee; display: flex; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; height:98rpx; box-sizing: content-box; padding:0; position: absolute; bottom:0; left:0; right:0; z-index: 99;}
+.footer .button {width:83rpx; height:98rpx; flex:none; border:none; margin:0 10rpx;}
+.footer .button.goodslist {background: url(http://img.yummy194.cn/images/browsing_history@3x.png) no-repeat center center / auto 48rpx}
+.footer .button.facesBtn {background: url(http://img.yummy194.cn/images/emoticons@3x.png) no-repeat center center / auto 48rpx}
+/*.footer .button.imageBtn {background: url(http://img.yummy194.cn/images/picture@3x.png) no-repeat center center / auto 48rpx}*/
+.footer .button.sendBtn {background: #b39851; color:#fff; text-align:center; line-height:65rpx; border-radius: 4rpx; font-size:25rpx; width:96rpx; height:65rpx; margin:18rpx 30rpx 0 0;}
+.footer .writer {flex:auto; height:66rpx; margin:15rpx 0 0 0; padding: 0 10rpx; font-size:28rpx; overflow: hidden; border:solid 1rpx #eee; border-radius: 4rpx;}
+.footer .writer:focus {border:solid 2rpx #eee;}

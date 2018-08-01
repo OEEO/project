@@ -1,0 +1,25 @@
+@charset "utf-8";
+/******************************/
+.header .allRead{font-size:1.2rem;color:#585858;position:absolute;right:1rem;top:1.6rem;}
+/******************************/
+.addRessDetails{}
+.addRessDetails>div{/*font-size:1.4rem;color:#585858;*/min-height:4rem;line-height:4rem;border-bottom:0.1rem solid #ebecf0;position:relative;/*text-indent:1.2rem*/}
+.addRessDetails>div input{/*float:right;margin-left:5rem;*/font-size:1.5rem;color:#b2b2b2; font-family: "微软雅黑",Arial;position:absolute;left:4rem;height:4rem;width:29rem;border:none;}
+
+.addRessDetails .a{background:url('../images/mine.png') no-repeat 1.8rem center;background-size:1.6rem auto;}
+.addRessDetails .b{background:url('../images/sj.png') no-repeat 2rem center;background-size:1.15rem 1.6rem;}
+.addRessDetails .address{/*min-height:4rem;*/background:url('../images/location_24x24.png') no-repeat 1.8rem 1.2rem;background-size:1.5rem auto;}
+.addRessDetails>div  .editAddress{font-size:1.5rem;color:#b2b2b2;float:left;margin:1rem 0 0.8rem 4rem;min-height:1rem;width:29rem;border:none;line-height:1.6rem;}
+
+.addRessDetails .c{margin--top:0;background:url('../images/email.png') no-repeat 1.8rem center;background-size:1.6rem 1.1rem;}
+.addRessDetails .radioSty{font-size:1.3rem;color:#666666;text-indent:1.8rem;position:relative;}
+.addRessDetails .radioSty:after{content:'';position:absolute;right:1rem;top:1.2rem;height:1.71rem;width:1.8rem;background:url('../images/circle.png') no-repeat;background-size:1.7rem auto;}
+.addRessDetails .checked:after{background-position:bottom left;}
+/*********************************************************/
+/**底部菜单布局设置**/
+.saveEdit{font-size:1.66rem;color:#fff;;height:4rem;line-height:4rem;text-align:center;width:100%;background:#fbd74b;}
+/***************/
+</style>
+
+
+/***********结束************/

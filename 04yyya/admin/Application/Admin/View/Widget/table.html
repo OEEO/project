@@ -1,0 +1,102 @@
+{__NOLAYOUT__}
+
+<?php if(!empty($wid_data)):?>
+				<form class="am-form" action="{:U('changeStatus')}">
+					<table class="am-table am-table-striped am-table-hover">
+						<thead>
+							<tr>
+<?php if(!empty($wid_batch)):?>
+								<th class="table-check"><input type="checkbox" onClick="clickAll(this)" /></th>
+<?php endif;?>
+<?php foreach($wid_lang as $key => $val):
+	if(!empty($wid_batch) && $key == 'id')continue;
+	if(is_array($val) && !empty($val[2]))
+		echo '<th style="width:'. $val[2] .';">';
+	else
+		echo '<th>';
+	if(is_string($val))
+		echo $val . "</th>";
+	else
+		echo $val[0] . "</th>";
+	?>			
+<?php endforeach;?>
+<?php if(!empty($wid_opes)):?>
+				<th class="table-set">操作</th>
+<?php endif;?>
+							</tr>
+					</thead>
+					
+					<tbody id="content_{$wid_randCode}">
+<?php foreach($wid_data as $row):?>
+						<tr>
+	<?php if(!empty($wid_batch))echo '<td><input type="checkbox" name="id[]" value="'. $row['id'] .'" /></td>';?>
+	<?php foreach($wid_lang as $key => $val):?>
+		<?php if(!empty($wid_batch) && $key == 'id')continue;
+			if(is_string($val))
+				echo "<td>" . $row[$key] . "</td>";
+			else {
+				if(!empty($val[1]))
+					$str = str_replace('%*%', $row[$key], $val[1]);
+				else
+					$str = $row[$key]; 
+				echo "<td>" . $str . "</td>";
+			}
+		?>
+	<?php endforeach;?>
+	<?php if(!empty($wid_opes)):?>
+				{:W('Cate/tableOpes', [$wid_opes, $row])}
+	<?php endif;?>
+						</tr>
+<?php endforeach;?>
+					</tbody>
+				</table>
+
+<?php if(!empty($wid_pages) && isset($wid_pages['page_sum'])):?>
+			<div class="am-cf">
+				<div class="fl">
+<?php foreach($wid_batch as $key => $val):?>
+					<button class="am-btn am-btn-primary am-btn-xs" type="button" onclick="{$val}">{$key}</button>
+<?php endforeach;?>
+				</div>
+				<div class="am-fr">
+					<ul class="am-pagination">
+<?php
+
+if($wid_pages['page_num'] == 1){
+	echo '<li class="am-disabled"><a href="javascript:void(0);">首页</a></li>';
+	echo '<li class="am-disabled"><a href="javascript:void(0);">上一页</a></li>';
+}else{
+	echo '<li><a href="'. $wid_pages['url'] . '1">首页</a></li>';
+	echo '<li><a href="'. $wid_pages['url'] . ($wid_pages['page_num'] - 1) .'">上一页</a></li>';
+}
+
+for($i=$wid_pages['page_first']; $i<=$wid_pages['page_last']; $i++){
+	if($i == $wid_pages['page_num']){
+		echo '<li class="am-active"><a href="javascript:void(0);">'. $i .'</a>';
+	}else{
+		echo '<li><a href="'. $wid_pages['url'] . $i .'">'. $i .'</a>';
+	}
+}
+
+if($wid_pages['page_num'] == $wid_pages['page_sum']){
+	echo '<li class="am-disabled"><a href="javascript:void(0);">下一页</a>';
+	echo '<li class="am-disabled"><a href="javascript:void(0);">尾页</a>';
+}else{
+	echo '<li><a href="'. $wid_pages['url'] . ($wid_pages['page_num'] + 1) .'">下一页</a>';
+	echo '<li><a href="'. $wid_pages['url'] . ($wid_pages['page_sum']) .'">尾页</a>';
+}
+?>
+					</ul>
+				</div>
+			</div>
+<?php endif;?>
+<?php if(!empty($wid_context)):?>
+					<hr />
+					<p>注：{$wid_context}</p>
+<?php endif;?>
+				</form>
+<?php else:?>
+		<div style="text-align:center;">没有查询出对应的数据！</div>
+<?php endif;?>
+
+

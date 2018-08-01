@@ -1,0 +1,26 @@
+@charset "utf-8";
+/******************************/
+.wrapper.page_MsgsDetail{background: #f5f5f5;}
+.page_MsgsDetail .allRead{font-size:1.2rem;color:#585858;position:absolute;right:1rem;top:1.6rem;}
+/******************************/
+.page_MsgsDetail .content {margin-top:6.5rem;}
+.page_myMsgs .msgList {height:100%; letter-spacing:0;}
+.page_MsgsDetail .msgList .item{display:block; padding:0rem 1.4rem;}
+/**************/
+.page_MsgsDetail .msgList .item .timess{display:block;width:10.08rem; height:1.8rem; line-height:1.8rem; text-align:center; margin:3rem auto 0.95rem; color:#FFF; font-size:0.96rem; clear: both; background-color:#ccc; border-radius:0.2rem;}
+
+.page_MsgsDetail .msgList .item .bottom_t{width:100%; height:auto;display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;/*background:url('../images/redPoint@2x.png')no-repeat 0.4rem 2.4rem;background-size:0.58rem;*/}
+
+.page_MsgsDetail .msgList .User_Img{margin-top:0;margin-right:1.5rem;}
+.page_MsgsDetail .msgList .User_Img .imgPortrait{width:4rem;height:4rem; border:none;}
+
+.page_MsgsDetail .msgList .User_Conten{float:right;width:28.9rem; padding:0.8rem; background-color:#fff; position:relative; border-radius:0.2rem;}
+.page_MsgsDetail .msgList .User_Conten .Contens{display:block; line-height:1.8rem; font-size:1.4rem; color:#333;}
+.page_MsgsDetail .msgList .User_Conten .jiao{width:1.2rem; height:1.2rem; position:absolute; top:1.4rem; left:-0.8rem; transform: rotate(-45deg);border-left: 0.1rem solid #eee;border-top: 0.1rem solid #eee;background: #fff;}
+.page_MsgsDetail .msgList .User_Conten .User_right{display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; background-color:#FFF; margin-top:0.8rem;}
+.page_MsgsDetail .msgList .User_Conten .User_right .dayu{width:3.8rem; height:3.8rem; margin:0.5rem;}
+.page_MsgsDetail .msgList .User_Conten .User_right .t_right{width:21.3rem; height:3.8rem;margin-top: 0.5rem;}
+.page_MsgsDetail .msgList .User_Conten .User_right .t_right .titles{display:block; font-size:1.35rem; color:#b39851; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.page_MsgsDetail .msgList .User_Conten .User_right .t_right .titles_sub{display:block; font-size:1.3rem; color:#b39851; padding:0.2rem 0 0; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.page_MsgsDetail .the_blankes{width:36rem; height:5rem;}
+/***********结束***********/

@@ -1,0 +1,72 @@
+.page_webEditor.header .toolsBtn {width:2.6rem; height:2.6rem; position:absolute; border:solid 0.1rem #ddd; top:1rem; left:1.6rem; background:#f8f8f8 url(../images/editor/tools.png) no-repeat 0.5rem 0.5rem / 1.6rem 1.6rem; border-radius:50%;}
+.page_webEditor.header .complete {padding:0.4rem 0.8rem; border:solid 0.1rem #ddd; border-radius:0.5rem; background:#f8f8f8; display:block; position:absolute; top:1.1rem; right:1.6rem; color:#666;}
+
+.page_webEditor.tools {position:absolute; top:4.5rem; left:0; right:0; height:2.5rem; display:flex; border-bottom:solid 0.1rem #ddd; background:#fff;}
+.page_webEditor.tools a {flex:1; height:2.5rem; display:block; margin:0.1rem; overflow:hidden; line-height:2.5rem;}
+.page_webEditor.tools a.bold {background:url(../images/editor/bb_bold.gif) no-repeat center center / 2rem 2rem;}
+.page_webEditor.tools a.italic {background:url(../images/editor/bb_italic.gif) no-repeat center center / 2rem 2rem;}
+.page_webEditor.tools a.underline {background:url(../images/editor/bb_underline.gif) no-repeat center center / 2rem 2rem;}
+.page_webEditor.tools a.fontsize {text-align:center; flex:1 0 0.8rem; font-size:1.4rem; position:relative; text-indent:-0.5rem;}
+.page_webEditor.tools a.fontsize:after {content:'▼'; position:absolute; width:1rem; height:1rem; left:50%; top:50%; margin:-1rem 0 0 0.6rem; color:#ccc; font-size:0.8rem;}
+.page_webEditor.tools a.color {text-align:center; flex:1 0 0.8rem; font-size:1.3rem; line-height:2.5rem; position:relative; text-indent:-0.5rem;}
+.page_webEditor.tools a.color:before {content:''; position:absolute; width:1.4rem; height:0.2rem; bottom:0.3rem; left:50%; margin:0 0 0 -1rem; background:#333;}
+.page_webEditor.tools a.color:after {content:'▼'; position:absolute; width:1rem; height:1rem; left:50%; top:50%; margin:-1rem 0 0 0.6rem; color:#ccc; font-size:0.8rem;}
+.page_webEditor.tools a.bgcolor {text-align:center; flex:1 0 0.8rem; font-size:1.2rem; position:relative; text-indent:-0.5rem;}
+.page_webEditor.tools a.bgcolor span {background:#eee; vertical-align:-0.2rem;}
+.page_webEditor.tools a.bgcolor:after {content:'▼'; position:absolute; width:1rem; height:1rem; left:50%; top:50%; margin:-1rem 0 0 0.8rem; color:#ccc; font-size:0.8rem;}
+.page_webEditor.tools a.indent {background:url(../images/editor/bb_indent.gif) no-repeat center center / 2rem 2rem;}
+.page_webEditor.tools a.justifyleft {background:url(../images/editor/bb_left.gif) no-repeat center center / 2rem 2rem;}
+.page_webEditor.tools a.justifycenter {background:url(../images/editor/bb_center.gif) no-repeat center center / 2rem 2rem;}
+.page_webEditor.tools a.justifyright {background:url(../images/editor/bb_right.gif) no-repeat center center / 2rem 2rem;}
+.page_webEditor.tools a.orderedlist {background:url(../images/editor/bb_orderedlist.gif) no-repeat center center / 2rem 2rem;}
+.page_webEditor.tools a.unorderedlist {background:url(../images/editor/bb_unorderedlist.gif) no-repeat center center / 2rem 2rem;}
+.page_webEditor.tools a.lineheight {background:url(../images/editor/bb_lineheight.png) no-repeat center center / 2rem 2rem;}
+.page_webEditor.tools .laybox {position:absolute; top:2.5rem; border:solid 0.1rem #ddd; padding:1rem; background:#fff; box-shadow:0 0.1rem 0.2rem rgba(6,6,6,0.1); display:none;}
+.page_webEditor.tools .setFontsize {left:7.5rem; width:10rem; padding:0;}
+.page_webEditor.tools .setFontsize button {display:block; line-height:2.6rem; box-sizing:border-box; width:100%; font-size:1rem; background:none; border:none; border-bottom:solid 0.1rem #ddd; padding:0 0.5rem; text-align:left;}
+.page_webEditor.tools .setColor {left:50%; width:22rem; margin-left:-11rem; box-sizing:border-box;}
+.page_webEditor.tools .setColor h4 {margin:0;}
+.page_webEditor.tools .setColor .colors {display:flex; flex-flow:wrap row;}
+.page_webEditor.tools .setColor .lately {height:5.5rem; overflow:hidden;}
+.page_webEditor.tools .setColor .choose {border-top:solid 0.1rem #ddd; padding-top:0.5rem;}
+.page_webEditor.tools .setColor button {width:2rem; height:2rem; border:solid 0.1rem #ddd; margin:0.1rem; background:none;}
+.page_webEditor.tools .setColor button.empty{position:relative; overflow:hidden;}
+.page_webEditor.tools .setColor button.empty:after {content:''; position:absolute; width:3rem; height:0.2rem; background:#f00; transform:rotate(-45deg); left:-0.4rem; top:0.6rem;}
+.page_webEditor.tools .setColor .inputColor {margin:1rem 0 0 0; padding:1rem 0 0 0; border-top:solid 0.1rem #ddd; display:flex; position:relative;}
+.page_webEditor.tools .setColor .inputColor button {width:2.2rem; height:2.2rem; transition:all 0.5s;}
+.page_webEditor.tools .setColor .inputColor input[type="text"] {width:6rem; line-height:2rem; border:solid 0.1rem #ddd; padding:0 0.5rem 0 2.5rem; margin:0 0.6rem;}
+.page_webEditor.tools .setColor .inputColor:before {content:'#'; position:absolute; left:4rem; line-height:2rem; top:1.2rem;}
+.page_webEditor.tools .setColor .inputColor input[type="button"] {padding:0 1.2rem; line-height:2rem; border:solid 0.1rem #ddd; background:#ddd;}
+.page_webEditor.tools .setLineheight {right:0; width:5rem; padding:0;}
+.page_webEditor.tools .setLineheight button {display:block; line-height:2.6rem; box-sizing:border-box; width:100%; font-size:1rem; background:none; border:none; border-bottom:solid 0.1rem #ddd; padding:0 0.5rem; text-align:left;}
+
+.page_webEditor .headerBlank {height:8rem !important;}
+.page_webEditor .footerBlank {height:1.5rem; transition:height 0.5s;}
+
+.page_webEditor .editerBox {width:34rem; margin:0 auto; position:relative;}
+.page_webEditor .editerBox .title {font-size:1.4rem; line-height:2.8rem; padding:0 0.8rem; border:none; margin-top:1rem; box-sizing:border-box; width:100%;}
+.page_webEditor .editerBox .author {font-size:1.2rem; line-height:2.4rem; padding:0 0.8rem; border:none; border-bottom:solid 0.1rem #ddd; margin-top:1rem; box-sizing:border-box; width:100%;}
+.page_webEditor .editerBox .category {font-size:1.2rem; line-height:2.4rem; padding:0 0.8rem; border:none; position:absolute; top:5rem; right:0.5rem; color: #666;}
+.page_webEditor .editerBox:after {content:'▼'; position:absolute; width:1rem; height:1rem; right:0.2rem; top:5.5rem; color:#ccc; font-size:0.8rem;}
+.page_webEditor .editerBox .context {font-size:1.2rem; line-height:2.4rem; padding:0.5rem; box-sizing:border-box; width:100%; min-height:30rem; margin-top:1rem;}
+.page_webEditor .editerBox .context p {margin:0; padding:0;}
+.page_webEditor .editerBox .context img {max-width:100%;}
+.page_webEditor .editerBox .context a {text-decoration: underline; color:#00f;}
+.page_webEditor .editerBox .context embed {width:100%; height:auto;}
+
+.page_webEditor.resources {position:absolute; left:0; right:0; bottom:0; height:15rem; display:flex; padding:1rem 1.5rem 0 1.5rem; border-top:solid 0.1rem #ddd; background:#fff; transition:height 0.5s;box-sizing:border-box;}
+.page_webEditor.resources.hide {height:1.5rem;}
+.page_webEditor.resources .power {position:absolute; width:100%; height:1.5rem; top:0; left:0; text-align:center; border:none; background:none;}
+.page_webEditor.resources .power:after{content:'>'; display:inline-block; width:1.5rem; height:1.5rem; line-height:1.5rem; font-size:1.5rem; transform:scale(2,0.8) rotate(90deg); color:#ddd;}
+.page_webEditor.resources.hide .power:after {content:'<';}
+.page_webEditor.resources .pic_idBox {flex:1; flex-direction:column;}
+.page_webEditor.resources .pic_idBox > div {text-align:left !important;}
+.page_webEditor.resources .picture {height:9.2rem; width:14rem; overflow:hidden; background: #f3f3f3; border: 1px solid #ddd; color: #ddd; font-size:4rem; line-height:9.2rem; text-align: center;}
+.page_webEditor.resources .picture img {width:14rem; height:9.2rem;}
+.page_webEditor.resources .resources {flex:1; display:flex; flex-direction:column; margin:0 0 0 2.2rem;}
+.page_webEditor.resources .resources button {padding-left:4.5rem; text-align:center; line-height:2.4rem; margin:0.4rem 0 0 2rem; display:block; text-align:left; border:solid 0.1rem #ddd; border-radius:1.3rem; font-size:1.2rem;}
+.page_webEditor.resources .resources button.images {background:url(../images/editor/image.png) no-repeat 0.3rem 0.3rem / 2rem 2rem;}
+.page_webEditor.resources .resources button.resource {background:url(../images/editor/resource.png) no-repeat 0.3rem 0.3rem / 2rem 2rem;}
+.page_webEditor.resources .resources button.linkline {background:url(../images/editor/linkline.png) no-repeat 0.3rem 0.3rem / 2rem 2rem;}
+.page_webEditor.resources .resources button.video {background:url(../images/editor/video.png) no-repeat 0.3rem 0.3rem / 2rem 2rem;}
+

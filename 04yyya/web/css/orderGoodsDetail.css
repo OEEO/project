@@ -1,0 +1,60 @@
+@charset "utf-8";
+/**订单详情**/
+/***消费码部分***/
+/***************************** 活动部分***************************************/
+.page_orderGoodsDetail .orderInf{width:36rem;}
+.page_orderGoodsDetail .orderInf .actInfTitle{line-height:4rem;height:4rem;border-bottom:0.1rem solid #eee;padding:0 1rem; color:#333;}
+.page_orderGoodsDetail .orderInf .actInfTitle .actInfDaren{font-size:1.35rem;float:left;}
+.page_orderGoodsDetail .orderInf .actInfTitle .actInfconnect{font-size:1.35rem;float:right;display:inline-block;}
+
+
+.page_orderGoodsDetail .orderListLeft{float:left; width:13.98rem;height:8.88rem;/*margin-top:0.6rem;*/ overflow:hidden; position:relative;}/*图片*/
+.page_orderGoodsDetail .orderListLeft img{width:100%; height:100%;}
+
+.page_orderGoodsDetail .orderListRight{float:left;width:21.2rem;margin-top:0.8rem; margin-left:0.8rem;}/*右侧信息列表*/
+.page_orderGoodsDetail .orderTitle{font-size:1.5rem;color:#333;height:4.6rem;line-height:2.3rem;overflow:hidden;}/*右 商品标题*/
+.page_orderGoodsDetail .t_b{width:36rem; height:2.8rem;line-height:2.8rem;color:#a6a6a6; padding-top:0.7rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_orderGoodsDetail .orderListRight .number{font-size:1.3rem; margin-right:1rem;}
+.page_orderGoodsDetail .orderListRight .number font{font-size:1.2rem;color:#b39851;}
+
+.page_orderGoodsDetail .total{font-size:1.3rem;width:12rem; overflow:hidden;}
+.page_orderGoodsDetail .total font{font-size:1.2rem;color:#b39851;margin-right:0.5rem;}
+.page_orderGoodsDetail .status{font-size:1.3rem;}
+.page_orderGoodsDetail .center_boeder{width:0.1rem; height:1.4rem; background:#C4C4C4; margin-top:0.8rem; margin-right:1rem;}
+
+/**收货地址等的相关布局设置**/
+.page_orderGoodsDetail .orderDetail{text-indent:0.4rem;}
+.page_orderGoodsDetail .orderDetail li{font-size:1.4rem;margin:0 1.6rem;color:#575757;font-family:'宋体'; min-height:4.6rem;line-height:4.6rem;border-top:0.1rem solid #f0f0f0;}
+.page_orderGoodsDetail .orderDetail li span{font-size:1.4rem;color:#343434;margin:1rem 0.6rem 0 0;text-indent:0;max-width:22rem;line-height:2.6rem;box-sizing:border-box;float:right;min-height:2.6rem;}
+.page_orderGoodsDetail .orderDetail li .add_color{color:#b39851;}
+.page_orderGoodsDetail .orderDetail .split {height:0.8rem; background: #f5f5f5;}
+.page_orderGoodsDetail .orderDetail .orderAddress span{display:inline-block;margin:1.2rem 0;height:auto;text-align:right;line-height:1.8rem;width:70%; font-size:1.3rem;}
+.page_orderGoodsDetail .liuyan{width:34rem; min-height:6.8rem; padding:1rem; border-top:0.1rem solid #eee; border-bottom:0.1rem solid #eee; color:#343434; font-size:1.3rem;}
+.page_orderGoodsDetail .refund{width:36rem; height:5rem; color:#b39851; font-size:1.6rem; line-height:5rem; text-align:center; border-top:0.1rem solid #e1e1e1; display:none;}
+
+/**页面底部涉及联系客服部分布局**/
+.page_orderGoodsDetail .orderDetailBottom{font-size:1.2rem;color:#bdbec2;background:#ebecf0;line-height:2.2rem;display:block;padding-top:0.4rem;padding-bottom:2.6rem;padding-left:1.8rem;}
+.page_orderGoodsDetail .orderDetailBottom .services{background:url('../images/phone2_normal@2x.png')no-repeat left center;text-indent:2rem;background-size:1.1rem 1.1rem;}
+
+/**底部菜单布局设置**/
+.page_orderGoodsDetail .bottomBlank{clear:both; height:8rem; background:#f5f5f5;}
+.page_orderGoodsDetail .priceMenu {height:4rem; width:100%; bottom:0; display:none;}
+.page_orderGoodsDetail.orderBottom {height:4.7rem;line-height:4.7rem;float:left;width:50%;text-align:center;}
+.page_orderGoodsDetail.orderBottom {width:100%;background:#b39851;font-size:1.8rem; color:#fff;}
+.page_orderGoodsDetail.orderBottom2 {font-size:1.8rem; background:#b39851; color:#fff; display:none; line-height:4rem; text-align:center;}
+.page_orderGoodsDetail.empty {visibility:hidden;}
+/***************/
+
+/*评价*/
+.page_orderGoodsDetail .commentList{width:33rem; border-top:0.1rem solid #eee; border-bottom:0.1rem solid #eee; margin:0 auto; display:none;}
+.page_orderGoodsDetail .commentList .com_list{width:33rem; border-bottom:0.1rem solid #eee; padding:2rem 0; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_orderGoodsDetail .commentList .no_border_bottom{ border-bottom:none;}
+.page_orderGoodsDetail .commentList .com_list .h_pic{width:4.3rem;}
+.page_orderGoodsDetail .commentList .com_list .h_pic img{width:4rem; height:4rem; border-radius:50%; margin-right:0.3rem; margin-top:1.2rem;}
+.page_orderGoodsDetail .commentList .com_list .pic_right{width:28.5rem;}
+.page_orderGoodsDetail .commentList .com_list .pic_right .name_title{width:28.5rem; height:2.5rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_orderGoodsDetail .commentList .com_list .pic_right .name_title .names{width:14rem; line-height:4rem; font-size:1.4rem; color:#333333; text-align:left;}
+.page_orderGoodsDetail .commentList .com_list .pic_right .name_title span{display:inline-block; letter-spacing:0rem; line-height:4rem; color:#b0b0b0;}
+.page_orderGoodsDetail .commentList .com_list .pic_right .t_content{width:28.5rem; text-align:left; line-height:2rem;  color:#333333; letter-spacing:0rem; font-size:1.2rem;}
+.page_orderGoodsDetail .commentList .com_list .pic_right .imges{width:28.5rem;}
+.page_orderGoodsDetail .commentList .com_list .pic_right .imges img{width:6.6rem; height:6.6rem; margin-right:1.5rem;}

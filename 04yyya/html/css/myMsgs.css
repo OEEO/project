@@ -1,0 +1,21 @@
+@charset "utf-8";
+/******************************/
+.header {position:fixed;}
+.header .allRead{font-size:1.2rem;color:#585858;position:absolute;right:1rem;top:1.6rem;}
+/******************************/
+.content {margin-top:4.5rem;}
+.msgList{height:100%;}
+.msgList .item{display:block;position:relative;padding:0.8rem 1.8rem;/*background:url('../images/redPoint@2x.png')no-repeat 0.4rem 2.4rem;background-size:0.58rem;*/}
+.msgList .new:before{content:'';display:inline-block;position:absolute;left:0.5rem;top:2.4rem;width: 0.6rem;height: 0.6rem;background-color: #f72f31;
+-webkit-border-radius:50%; border-radius:50%;}
+/**************/
+.msgList .imgPortrait{float:left;width:3.6rem;height:3.6rem;margin-top:0;;margin-right:1.2rem;}
+
+
+.msgList .qUserName{font-size:1.4rem;color:#636363;margin-top:0.5rem;}
+.msgList .commitTime{font-size:1.2rem;color:#b8b8b8;margin-top:0.2rem;}
+
+.msgDetail{font-size:1.2rem;line-height:1.6rem;letter-spacing:0.12rem;color:#969696;/*padding:1rem 0.8rem;background:#f2f1f7;*/position:relative;margin:0.6rem auto;}
+
+
+/***********结束***********/

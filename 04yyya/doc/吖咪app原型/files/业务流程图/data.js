@@ -1,0 +1,87 @@
+﻿$axure.loadCurrentPage({
+  "url":"业务流程图.html",
+  "generationDate":new Date(1453949372149.98),
+  "isCanvasEnabled":false,
+  "variables":["OnLoadVariable",
+"search_text",
+"tab_text",
+"search_entrance",
+"search_result",
+"class_entrance",
+"dinner_entrance",
+"master_entrance",
+"near_entrance",
+"hot_entrance",
+"map_entrance",
+"classtable_entrance",
+"phonenum_entrance",
+"coupon_entrance",
+"order_class",
+"labelsClick",
+"modelChoose"],
+  "page":{
+    "packageId":"45406a1c5f9e4d30b2f629b899aab243",
+    "type":"Axure:Page",
+    "name":"业务流程图",
+    "notes":{
+},
+    "style":{
+      "baseStyle":"627587b6038d43cca051c114ac41ad32",
+      "pageAlignment":"near",
+      "fill":{
+        "fillType":"solid",
+        "color":0xFFF9F9F9},
+      "image":null,
+      "imageHorizontalAlignment":"near",
+      "imageVerticalAlignment":"near",
+      "imageRepeat":"auto",
+      "favicon":null,
+      "sketchFactor":"0",
+      "colorStyle":"appliedColor",
+      "fontName":"Applied Font",
+      "borderWidth":"0"},
+    "adaptiveStyles":{
+},
+    "interactionMap":{
+},
+    "diagram":{
+      "objects":[{
+          "id":"6f7e600fef084c99ac6fed0aab713e84",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":103,
+              "y":29},
+            "size":{
+              "width":677,
+              "height":1391}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"0983bf9ef9704bf9a7e1086c7a91694c",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":103,
+                  "y":29},
+                "size":{
+                  "width":677,
+                  "height":1391}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/业务流程图/u0.png"}}]}},
+  "masters":{
+},
+  "objectPaths":{
+    "6f7e600fef084c99ac6fed0aab713e84":{
+      "scriptId":"u0"},
+    "0983bf9ef9704bf9a7e1086c7a91694c":{
+      "scriptId":"u1"}}});

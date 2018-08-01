@@ -1,0 +1,23 @@
+<view class="content">
+	<view class="center">
+		<image class="yami" src="http://m.yami.ren/images/yummy-logo.png"/>
+        <view class="a">版本2.1</view>
+	</view>
+    
+	<view class="item">
+    	<view class="center_border"></view>
+		<navigator url="" class="list3">平台介绍<i class="arrowRight"></i><view class="dayu"></view></navigator>
+	</view>
+    <view class="center_border"></view>
+	
+	<view class="item">
+    	<view class="center_border"></view>
+        <view class="list2 weixi">地 址<text>广州市天河区天河软件园</text></view>
+	</view>
+	<view class="center_border"></view>
+    
+    <view class="center smaill_font">
+		<view class="b">Copyright©2016</view>
+		<view class="c">广州吖咪网络科技有限公司</view>
+	</view>
+</view>

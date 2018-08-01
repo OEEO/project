@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/goodsDetail.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+
+<script>
+$(window).scroll(function(){
+	/********************判断滚动位置是否到了 .filterMenu 的位置************************/
+	if($(this).scrollTop()+$('.header').height()>$('.picTop').height()){
+		$('.header').removeClass("changeStyle");
+		}
+	if($(this).scrollTop()+$('.header').height()<$('.picTop').height()){
+		$('.header').addClass("changeStyle");
+		}	
+});
+</script>
+</head>
+<body style="min-height:100%;background:#ebecf0;">
+<div class="header  changeStyle">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">商品详情</div>
+	<div class="values" onclick="makeConditions('','.header .values')"></div>
+	<div class="share" onclick="javascript:alert();"></div>
+</div>
+<div class="goodsInf">
+	<div class="picTop">
+		<img width=100% class="mainGoodsPic" src="">
+		<center><img class="imgPortrait" src="./images/defaultPic.jpg"/></center>
+	</div> 
+	<div style="text-align:center;">
+		<div class="proTit"></div>
+		<div class="starsGrade"></div>
+		<div class="goodsTitle"></div>
+		<div class="mtags"></div>
+	<style>
+
+	</style>	
+		<div class="actLastTime">
+			<div class="title"><font>年终限时折扣 </font></div>
+			<font class="w"></font><span class="h"></span><span class="i"></span><span class="s"></span>
+	<!--		<span>01:12:27</span>-->
+			<div class="sy">促销剩余<span></span>份</div>
+		</div>
+		
+		
+<!--		<div class="priceLine">
+			<span class="newP">￥200.00</span>
+			<span class="oldP">￥600.00</span>
+			<i>运费￥12元</i>
+		</div>-->
+		<div class="sumTable">
+			<div class="cell">运费￥12.00</div>
+			<div class="cell">剩余 8 件</div>
+			<div class="cell">月销 52 件</div>
+		</div>
+	</div>
+</div>	
+	<div class="the_blank"></div>
+	<!-- ---------------------------------------页面头部结束--------------------------------------------- -->
+
+	<!-- ---------------------------------------商品详情开始--------------------------------------------- -->
+<div class="goodsDetailsInf">	
+	<div class="actInfoMenu"><span>商品详情</span></div>
+	<div class="productDetails">
+	
+	</div>
+</div>	
+	<div class="the_blank"></div>
+	<!-- ---------------------------------------商品详情结束--------------------------------------------- -->
+	
+	<!-- --------------------------↓↓↓ 评价列表 ↓↓↓------------------------------ -->
+<div class="goodsEvaluationList">	
+	<div class="actInfoMenu">
+		<span>评价</span>
+	</div>
+	<div class="commentList">
+	<!-- -------------------------- --
+
+		<div class="comments">
+			<img class="imgPortrait" src="http://yummy194.cn/uploads/member/18689315230/55473b5e088ad.jpg">
+			<div class="right">
+				<div class="name">何六二<span>2016.01.19 10:40</span></div>
+				<div class="starsGrade"></div>
+			</div>
+			<div class="clearfix"></div>
+			<p>灌灌灌灌灌</p>
+			<div class="imgList" style="overflow:hidden;"><img src="./images/s1.jpg"><img src="./images/s1.jpg"><img src="./images/s1.jpg"><img src="./images/s1.jpg"><img src="./images/s1.jpg"></div>
+		</div>
+		<!-- ------------------------- --
+		<div class="comments">
+			<img class="imgPortrait" src="http://yummy194.cn/uploads/member/18689315230/55473b5e088ad.jpg">
+			<div class="right">
+				<div class="name">何六二</div>
+				<div class="starsGrade">2016-01-19 10:40:54</div>
+			</div>
+			<div class="clearfix"></div>
+			<p>灌灌灌灌灌</p>
+			<div class="imgList" style="overflow:hidden;"><img src="./images/s1.jpg"><img src="./images/s1.jpg"><img src="./images/s1.jpg"><img src="./images/s1.jpg"><img src="./images/s1.jpg"></div>
+		</div>
+		
+		<a href="javascript:parent.page.jump('evaluationList.html#4254')" class="allEvaluation">查看所有评论</a>
+<!-- ----------------------------------- -->
+
+	</div>
+	<!--<a href="javascript:parent.page.jump('evaluationList.html#4254')" class="allEvaluation">查看所有评论</a>-->
+</div>
+
+	<!-- -------------------------------------------------------- -->
+
+	<!-- --------------------------↓↓↓答疑列表↓↓↓------------------------------ --
+<div class="the_blank"></div>	
+<div class="questionAndAnswer">
+	<div class="actInfoMenu">
+		<span>答疑</span>
+		<div class="query" onclick="javascript:window.location.href(parent.page.jump('q&a.html#4212'))">提问</div>
+	</div>
+
+	<div class="questionItem">
+		<img class="imgPortrait" src="uploads/member/Heineken@yami.COM/55b300c4b73fc.JPG" />
+		<div style="float:left;width:78%">
+			<div class="qUserName">用户名</div>
+			<div class="commitTime">2015.12.31</div>
+		</div>
+		<div class="question">用户问题哈哈哈哈哈哈哈哈问题哈哈哈哈哈哈哈用户问题哈哈哈哈哈哈哈</div>
+		<div class="clearfix"></div>
+		<div class="answer">回答用户问题回答回答用户问题回答用户问题回答用户问题回答用户问题回答用户问题<span>2015.12.31</span></div>
+	</div>	
+	
+	<div class="questionItem">
+		<img class="imgPortrait" src="uploads/member/Heineken@yami.COM/55b300c4b73fc.JPG" />
+		<div style="float:left;width:78%">
+			<div class="qUserName">用户名</div>
+			<div class="commitTime">2015.12.31</div>
+		</div>
+		<div class="question">用户问题哈哈哈哈哈哈哈哈问题哈哈哈哈哈哈哈用户问题哈哈哈哈哈哈哈</div>
+		<div class="clearfix"></div>
+		<div class="answer">回答用户问题回答回答用户问题回答用户问题回答用户问题回答用户问题回答用户问题<span>2015.12.31</span></div>
+	</div>	
+	<a href="javascript:parent.page.jump('q&a.html#4212')" class="allQuestion" onClick="javascript:alert();">查看所有提问</a>
+</div>
+<!-- --------------------------↓↓↓答疑列表↑↑↑------------------------------ -->
+<div class = "priceMenuBlank"></div>
+<div class = "priceMenu">
+	<div class="price"><del></del></div>
+	<div onclick="submitOrder()">提交订单</div>
+</div>
+</body>
+<script>$('<script>').attr('src', 'js/goodsDetail.js?q='+Math.random()).appendTo('html');</script>
+</html>
+

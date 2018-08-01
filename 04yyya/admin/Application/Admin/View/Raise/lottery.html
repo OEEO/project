@@ -1,0 +1,219 @@
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=B6JBZ-JLVK4-QFCUC-DFNRG-PBIP7-OTFAJ"></script>
+<!--加载文本编辑器组件-->
+<link href="__RS__/css/DeanEditor.css" rel="stylesheet">
+<script src="__RS__/js/DeanEditor.js" type="text/javascript"></script>
+<!--加载文本编辑器组件-->
+
+<div class="tips_add_content" style="display: flex !important;">
+    <div class="view">
+        <iframe name="viewBox"></iframe>
+    </div>
+    <div class="editerBox">
+        <div class="am-g am-margin-top">
+            <label class="am-u-sm-2 am-form-label">大盘指数来源交易日</label>
+            <div class="am-u-sm-10">
+                <input type="text" id="trade_date" class="am-form-control" placeholder="例如：2017-07-06" value="{$trade_date}"/>
+            </div>
+        </div>
+        <div class="am-g am-margin-top">
+            <label class="am-u-sm-2 am-form-label">上证指数</label>
+            <div class="am-u-sm-10">
+                <input type="number" id="data-sh" class="am-form-control" placeholder="例如：123456" value="{$sh}"/>
+            </div>
+        </div>
+        <div class="am-g am-margin-top">
+            <label class="am-u-sm-2 am-form-label">深证指数</label>
+            <div class="am-u-sm-10">
+                <input type="text" id="data-sz" class="am-form-control" placeholder="例如：1234567" value="{$sz}"/>
+            </div>
+        </div>
+        <form name="lotteryRaiseForm" class="am-form">
+            <div class="am-tabs am-margin" data-am-tabs="{noSwipe: 1}">
+                <ul class="am-tabs-nav am-nav am-nav-tabs" id="menu_tile">
+                    <foreach name="raise_times" item="row" key="key" >
+                        <li class="<?php if($key == 0)echo ' am-active';?>"><a href="#tab{$key}">{$row['title']}</a></li>
+                    </foreach>
+                </ul>
+
+                <div class="am-tabs-bd">
+                    <foreach name="raise_times" item="row" key="key">
+                        <div class="am-tab-panel am-fade <?php if($key == 0)echo ' am-active am-in';?>" id="tab{$key}" data-time="{$row['id']}">
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">中奖码</div>
+                                <div class="am-u-sm-10"><input id="lucky_num" type="text" disabled value="{$row['lucky_num']}"></div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">标题</div>
+                                <div class="am-u-sm-10"><input type="text" disabled value="{$row['title']}"></div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">众筹档位描述</div>
+                                <div class="am-u-sm-10">
+                                    <textarea data-lottery-desc="{$row['id']}" disabled name="raise_lucky_desc" rows="5" rel="7">{$row['content']}</textarea>
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">基准</div>
+                                <div class="am-u-sm-10"><input type="number" data-base-x="{$row['id']}" value="{$row['base_x']}"></div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">开奖个数</div>
+                                <div class="am-u-sm-10"><input type="number" data-num-x="{$row['id']}" value="{$row['num']}"></div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">抽奖人数</div>
+                                <div class="am-u-sm-10"><input type="number" disabled data-men="{$row['id']}" value="{$row['participator']}"></div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-sm-2 am-text-right">档位认筹人数</div>
+                                <div class="am-u-sm-10"><input type="number" disabled value="{$row['count']}"></div>
+                            </div>
+                            <!--<div class="am-g am-margin-top">-->
+                                <!--<div class="am-u-sm-2 am-text-right">开奖过程使用的数据</div>-->
+                                <!--<div class="am-u-sm-10">-->
+                                    <!--<textarea data-lottery-info="{$row['id']}" name="raise_lucky_info" rows="5" rel="7">{$row['lucky_info']}</textarea>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="am-g am-margin-top am-text-right">
+                                <a href="javascript:;" class="am-btn am-btn-success" data-save-time="{$row['id']}">保存并预览</a>
+                                <a href="javascript:;" class="am-btn am-btn-primary" data-lottery-time="{$row['id']}">开奖</a>
+                                <a href="javascript:;" class="am-btn am-btn-warning" data-lottery-poke="{$row['id']}">模拟开奖</a>
+                            </div>
+                        </div>
+                    </foreach>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('[data-save-time]').click(function () {
+            var times_id = $(this).data('save-time');
+            var desc = $('[data-lottery-desc="' + times_id + '"]').val();
+//            var info = $('[data-lottery-info="' + times_id + '"]').val();
+            var trade_date = $('#trade_date').val();
+            var sh = $('#data-sh').val();
+            var sz = $('#data-sz').val();
+            var baseX = $('[data-base-x="' + times_id + '"]').val();
+            var num = $('[data-num-x="' + times_id + '"]').val();
+
+            if (baseX > $('[data-men="' + times_id + '"]').val()) {
+                alert('基准不能大于抽奖人数');
+                return;
+            }
+
+            if (baseX == 0 && num > 0) {
+                alert('当开多个奖时，基准不能为0');
+                return;
+            }
+
+            lotterySaveOrRun(times_id, num, trade_date, sh, sz, baseX, 'save', function (e, d) {
+                if (e) {
+                    alert(e);
+                } else {
+                    alert(d.info);
+                    preview(times_id);
+                }
+            });
+        });
+
+        $('[data-lottery-time]').click(function () {
+            var times_id = $(this).data('lottery-time');
+            var desc = $('[data-lottery-desc="' + times_id + '"]').val();
+//            var info = $('[data-lottery-info="' + times_id + '"]').val();
+            var trade_date = $('#trade_date').val();
+            var sh = $('#data-sh').val();
+            var sz = $('#data-sz').val();
+            var baseX = $('[data-base-x="' + times_id + '"]').val();
+            var num = $('[data-num-x="' + times_id + '"]').val();
+
+            if (baseX > $('[data-men="' + times_id + '"]').val()) {
+                alert('基准不能大于抽奖人数');
+                return;
+            }
+
+            if (baseX == 0 && num > 0) {
+                alert('当开多个奖时，基准不能为0');
+                return;
+            }
+
+            lotterySaveOrRun(times_id, num, trade_date, sh, sz, baseX, 'run', function (e, d) {
+                if (e) {
+                    alert(e);
+                } else {
+                    alert(d.info);
+                    Array.isArray(d.msg) && $('#lucky_num').val(d.msg.join(','));
+                    preview(times_id);
+                }
+            });
+        });
+
+        $('[data-lottery-poke]').click(function () {
+            var times_id = $(this).data('lottery-poke');
+            var desc = $('[data-lottery-desc="' + times_id + '"]').val();
+//            var info = $('[data-lottery-info="' + times_id + '"]').val();
+            var trade_date = $('#trade_date').val();
+            var sh = $('#data-sh').val();
+            var sz = $('#data-sz').val();
+            var baseX = $('[data-base-x="' + times_id + '"]').val();
+            var num = $('[data-num-x="' + times_id + '"]').val();
+
+            if (baseX > $('[data-men="' + times_id + '"]').val()) {
+                alert('基准不能大于抽奖人数');
+                return;
+            }
+
+            if (baseX == 0 && num > 0) {
+                alert('当开多个奖时，基准不能为0');
+                return;
+            }
+
+            lotterySaveOrRun(times_id, num, trade_date, sh, sz, baseX, 'poke', function (e, d) {
+                if (e) {
+                    alert(e);
+                } else {
+                    alert('模拟出抽奖码是：' + d.info);
+//                    Array.isArray(d.msg) && $('#lucky_num').val(d.msg.join(','));
+                }
+            });
+        });
+
+        function preview(times_id) {
+            var raise_id = location.search.match(/(\?|&)raise_id=([^&]*)(&|$)/i);
+            raise_id ? raise_id = raise_id[2] : null;
+            if (!raise_id) {
+                alert('预览失败');
+            } else {
+                $('iframe').attr('src', 'http://<?=WEB_DOMAIN?>?page=choice-lotteryResult&raise_id=' + raise_id + '&times_id=' + times_id);
+            }
+        }
+
+        function lotterySaveOrRun(times_id, num, trade_date, sh, sz, baseX, action, callback) {
+            $.ajax({
+                type: 'post',
+                data: {
+                    times_id: times_id,
+                    num: num,
+                    trade_date: trade_date,
+                    sh: sh,
+                    sz: sz,
+                    action: action,
+                    baseX: baseX
+                },
+                timeout: 5000,
+                complete: function () {
+
+                }
+            }).done(function (d) {
+                callback(null, d);
+            }).fail(function (xhr, x, e) {
+                callback(e)
+            });
+        }
+    });
+</script>

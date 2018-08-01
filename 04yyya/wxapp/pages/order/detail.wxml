@@ -1,0 +1,121 @@
+<scroll-view scroll-y="{{is_scroll}}">
+<!-- 顶部线 -->
+<view style="position: fixed; top:0; left: 0; height:0; border-top: 1rpx solid #eee; width: 100%; z-index: 1000" ></view>
+<!-- 顶部线 -->
+<view class="raise-order">
+    <view class="raise-order-progress">
+        <view class="raise-progress">
+            <view class="raise-progress_line" style="width: {{progress}}">
+                <view class="raise-progress_point"></view>
+                <text class="raise-progress_text">{{ progressTitle }}</text>
+            </view>
+        </view>
+        <view class="raise-statistics">
+            <view class="raise-statistics_item">
+                <text class="sm-text">已认筹(￥)</text>
+                <text class="bg-text">{{ totaled }}</text>
+            </view>
+            <view class="raise-statistics_item">
+                <text class="sm-text">认筹人数</text>
+                <text class="bg-text">{{ count }}</text>
+            </view>
+            <view class="raise-statistics_item">
+                <text class="sm-text">剩余天数</text>
+                <text class="bg-text">{{ less_day }}</text>
+            </view>
+        </view>
+    </view>
+    <view class="raise-order-detail">
+        <view class="co1">
+            <image class="raise-order-detail_img" src="{{path}}" />
+            <view class="raise-order-detail_info">
+                <view class="text28">
+                    <text class="raise-order-detail_title">{{title}}</text>
+                    <text class="fr">￥{{price}}</text>
+                </view>
+                <view class="text-gray text24">
+                    <text class="raise-order-detail_title">{{raise_times_title}}</text>
+                    <text class="fr">X {{order_wares_count}}</text>
+                </view>
+                <view class="text-yellow text24">
+                    <text>支持：￥{{total_price}}</text>
+                    <text class="fr">{{status_title}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="clearfix raise-order-detail_footer">
+        <!--
+            <navigator class="fr btn btn-yellow" url="../raise/detail?raise_id={{id}}">
+                查看回报
+            </navigator>-->
+            <view class="fr btn btn-yellow" bindtap="showAgreement">查看回报</view>
+        </view>
+    </view>
+
+<block wx:if="{{ lottery != '' }}">
+    <view class="raise-lottery text24">
+        <text class="text-gray">抽奖码</text>
+        <text class="text-yellow lucky-num">{{lottery.lucky_num}}</text>
+        <text class="text-gray lucky-status">{{ lottery.lucky_status === '-1' ? '未中奖' : (lottery.lucky_status === '0' ? '未开奖' : '已中奖') }}</text>
+        <!--<text class="text-yellow fr" bindtap="gotoLottery">抽奖细则</text>-->
+        <navigator url="lottery" class="text-yellow fr"><text >抽奖细则</text></navigator>
+    </view>
+</block>
+
+    <view class="raise-order-info text24">
+        <view class="raise-order-info_item">
+            <text class="text-gray">订单编号</text>
+            <text class="fr">{{sn}}</text>
+        </view>
+        <view class="raise-order-info_item">
+            <text class="text-gray">下单时间</text>
+            <text class="fr">{{create_time_title}}</text>
+        </view>
+        <view class="raise-order-info_item">
+            <text class="text-gray">微信号</text>
+            <text class="fr">{{weixincode}}</text>
+        </view>
+        <view class="raise-order-info_item">
+            <text class="text-gray">收货地址</text>
+            <view class="fr text-right raise-order-info_address">
+                <view></view>
+                <view></view>
+                <view>{{address}}</view>
+            </view>
+        </view>
+        <view class="clearfix">
+            <navigator url="refund" class="fr text24 text-decoration" >退款说明</navigator>
+        </view>
+    </view>
+    <view class="raise-order-step" wx:if="{{step > 0}}">
+        <view class="step-item {{(step === '1' || step === '2') ? 'active' : ''}}">
+            <view class="step-item-block">
+                <text>阶段一：{{ step > 2 ? '（已完成）' : '（进行中）' }}</text>
+                <text class="fr">预付金 ￥{{prepay}}</text>
+            </view>
+        </view>
+        <view class="step-item {{(step > 2 ) ? 'active' : ''}}">
+            <view class="step-item-block">
+                <text>阶段二：{{ step_title }}</text>
+                <text class="fr">尾款 ￥{{retainage}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="text-right text32 raise-order-pay_price">
+        <text class="text-gray">实付金额：</text>
+        <text class="text-yellow">￥{{pay_price}}</text>
+    </view>
+    <button class="submit-btn" wx:if="{{ act_status === '0' }}" data-order-id="{{order_id}}" bindtap="submit">立即付款</button>
+</view>
+
+
+
+
+<view class="agreement_pages" wx:if="{{agreement}}">
+	<view class="user_agreement">
+		<view class="bg">回报详情</view>
+		<text class="content">{{raise_times_content}}</text>
+		<view class="knowe" bindtap="hideAgreement">知道了</view>
+	</view>
+</view>
+</scroll-view>

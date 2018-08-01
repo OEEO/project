@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+body {background:#eee;}
+
+.calendar {width:100%; background:#fff; padding:5rem 0.5rem 0.5rem 0.5rem; border-bottom:solid 0.1rem #ddd; box-shadow:0 0 1rem #999;}
+.calendar td {font-size:1.4rem; text-align:center; line-height:3.6rem; position:relative;}
+.calendar td.now {color: #fdb74b;}
+.calendar td.clicked:before {content:''; position:absolute; width:3rem; height:3rem; border-radius:50%; border:solid 0.1rem #fbd74b; left:50%; top:50%; margin:-1.6rem 0 0 -1.6rem;}
+
+.tipslist {background:#fff; margin-top:1rem; box-shadow:0 0 1rem #999; padding:1.8rem; padding-right:1rem;}
+.tipslist .tips {padding-left:1.6rem; position:relative; height:15rem;}
+.tipslist .tips:before {content:''; width:0.2rem; background:#ddd; position:absolute; left:0; top:0.5rem; bottom:0;}
+.tipslist .tips .top {font-size:1rem; line-height:1.5rem; height:2rem;}
+.tipslist .tips .top:before {width:1.5rem; height:1.5rem; content:''; position:absolute; left:-0.65rem; top:0; background:#fff url(../images/time2.png) no-repeat; background-size:1.5rem 1.5rem;}
+.tipslist .tips .center {margin-top:0.5rem; height:8rem;}
+.tipslist .tips .center .pic {width:12rem; height:7.5rem; overflow:hidden; float:left;}
+.tipslist .tips .center .pic img {width:100%;}
+.tipslist .tips .center .right {float:left; margin-left:0.8rem; width:17rem; line-height:2rem;}
+.tipslist .tips .center .right .t {line-height:1.8rem; height:3.6rem;}
+.tipslist .tips .center .right .c {position:relative; font-size:1.6rem;}
+.tipslist .tips .center .right .b {position:relative; padding-left:1.8rem;}
+.tipslist .tips .center .right .b:before {content:''; position:absolute; left:0; top:0.4rem; width:1.5rem; height:1.5rem; background:url(../images/location_20x20.png) no-repeat; background-size:1.5rem 1.5rem;}
+.tipslist .tips .bottom {height:3rem; border-bottom:solid 0.1rem #ddd;}
+.tipslist .tips .bottom a {padding:0 0.6rem; line-height:2.2rem; border:solid 0.1rem #ddd; border-radius:0.5rem; font-size:1.1rem; margin-right:0.5rem;}
+
+@-webkit-keyframes gogogo {
+    0% {letter-spacing: 1rem;}
+    50% {letter-spacing: 2rem;}
+    100% {letter-spacing: 1rem;}
+}
+.tipslist .loading, .tipslist .the_end {text-align:center; line-height:3rem; -webkit-animation:gogogo 2s infinite linear;}

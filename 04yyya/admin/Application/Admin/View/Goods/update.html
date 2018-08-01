@@ -1,0 +1,530 @@
+<!--加载文本编辑器组件-->
+<link href="__RS__/jeditor/images/admin.css" rel="stylesheet" type="text/css" />
+<!--<SCRIPT src="__RS__/jeditor/function/jquery.js" type="text/javascript"></SCRIPT>-->
+<script src="__RS__/jeditor/function/WebEdit.js" type="text/javascript"></script>
+<!--加载文本编辑器组件-->
+
+<form class="am-form" method="post" onsubmit="return setcontent()">
+    <fieldset>
+        <input type="hidden" name="goods_id" value="{$data.goods_id}">
+        <div class="am-form-group">
+            <label for="userId">发起用户</label>
+            <!--<input type="number" class="" id="userId" name="userId" placeholder="请输入用户ID" value="{$data.member_id}" required/>-->
+            <button type="button" id="add_member" class="am-btn am-btn-primary" onclick="addMember()">选择用户</button>
+            <span id="member_nickname">昵称：{$data.member_nickname} ---- ID:{$data.member_id}</span>
+            <input type="hidden" class="" id="userId" name="userId" value="{$data.member_id}" required/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="goodsName">商品名称</label>
+            <input type="text" class="" id="goodsName" name="goodsName" placeholder="" value="{$data.title}" style="width:35%;" required/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="goodsPrice">商品价格</label>
+            <input type="number" class="" id="goodsPrice" name="goodsPrice" placeholder="" value="{$data.price}" style="width:35%;" required/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="goodsStocks">商品库存</label>
+            <input type="number" class="" id="goodsStocks" name="goodsStocks" placeholder="" value="{$data.stocks}" style="width:35%;" required/>
+        </div>
+
+        <div class="am-form-group">
+            <label for="text">商品描述</label>
+            <div class="webediter" style="width: 50%">
+                <ul id="write_menu">
+                    <li><img src="__RS__/jeditor/images/bb_bold.gif" border="0" alt="加粗" onclick="fontb();" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_italic.gif" border="0" alt="斜体" onclick="fonti();" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_underline.gif" border="0" alt="下划线" onclick="fontu();" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_family.gif" border="0" alt="字体" onmouseover="$('#fontfamily').fadeIn('fast');" onmouseout="$('#fontfamily').hide();" />
+                        <ul id="fontfamily" class="font_list" onmouseover="$(this).show();" onmouseout="$(this).hide();">
+                            <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontFamily('宋体')">宋体</a></li>
+                            <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontFamily('黑体')">黑体</a></li>
+                            <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontFamily('仿宋')">仿宋</a></li>
+                            <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontFamily('楷体')">楷体</a></li>
+                        </ul></li>
+                    <li><img src="__RS__/jeditor/images/bb_size.gif" border="0" alt="字号" onmouseover="$('#fontsize').fadeIn('fast');" onmouseout="$('#fontsize').hide();" />
+                        <ul id="fontsize" class="font_list" onmouseover="$(this).show();" onmouseout="$(this).hide();">
+                            <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontSize(6)">超大</a></li>
+                            <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontSize(4)">大号</a></li>
+                            <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontSize(2)">中号</a></li>
+                            <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontSize(0)">小号</a></li>
+                        </ul></li>
+                    <li><img src="__RS__/jeditor/images/bb_color.gif" border="0" alt="字体色彩" onmouseover="$('#fontcolor').fadeIn('fast');" onmouseout="$('#fontcolor').hide();" />
+                        <ul id="fontcolor" class="font_list" style="width:48px;" onmouseover="$(this).show();" onmouseout="$(this).hide();">
+                            <li style="width:14px;height:14px; background-color:#000;"><a href="javascript:void(0);" onclick="FontColor('#000000')"></a></li>
+                            <li style="width:14px;height:14px; background-color:#999;"><a href="javascript:void(0);" onclick="FontColor('#999999')"></a></li>
+                            <li style="width:14px;height:14px; background-color:#f00;"><a href="javascript:void(0);" onclick="FontColor('#ff0000')"></a></li>
+                            <li style="width:14px;height:14px; background-color:#f60;"><a href="javascript:void(0);" onclick="FontColor('#ff6600')"></a></li>
+                            <li style="width:14px;height:14px; background-color:#fc0;"><a href="javascript:void(0);" onclick="FontColor('#ffcc00')"></a></li>
+                            <li style="width:14px;height:14px; background-color:#390;"><a href="javascript:void(0);" onclick="FontColor('#339900')"></a></li>
+                            <li style="width:14px;height:14px; background-color:#0cf;"><a href="javascript:void(0);" onclick="FontColor('#00ccff')"></a></li>
+                            <li style="width:14px;height:14px; background-color:#03f;"><a href="javascript:void(0);" onclick="FontColor('#0033ff')"></a></li>
+                            <li style="width:14px;height:14px; background-color:#f0f;"><a href="javascript:void(0);" onclick="FontColor('#ff00ff')"></a></li>
+                        </ul></li>
+                    <li><img src="__RS__/jeditor/images/bb_left.gif" border="0" alt="左对齐" onclick="fontleft()" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_center.gif" border="0" alt="居中" onclick="fontcenter()" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_right.gif" border="0" alt="右对齐" onclick="fontright()" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_indent.gif" border="0" alt="向里缩进" onclick="indent()" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_outdent.gif" border="0" alt="向外缩进" onclick="outdent()" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_unorderedlist.gif" border="0" alt="无序列表" onclick="unorderList();" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_orderedlist.gif" border="0" alt="有序列表" onclick="orderList();" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_url.gif" border="0" alt="加入链接" onclick="lineto();" /></li>
+                    <li><img src="__RS__/jeditor/images/bb_image.gif" border="0" alt="插入图片" onclick="image();" /></li>
+                    <li class="html"><img id="changeText" src="__RS__/jeditor/images/HTML.gif" border="0" alt="查看源码" onclick="change_write();" /></li>
+                </ul>
+                <div id="textDiv1">
+                    <div id="text" contenteditable="true">{$data.goods_sub_content}</div>
+                </div>
+                <div id="textDiv2">
+                    <textarea id="htmlText" name="content"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label >商品主图</label>
+            <input type="button" class=""  name="goodsPic" onclick="upload(this)" value="上传图片" required/>
+            <img src="http://img.test.yami.ren/{$data.pics_path}" id="preview" height="100px" width="100px"  required/>
+            <input type="hidden" id="pic_id" name="pic_id" value="{$data.pic_id}" required/>
+        </div>
+        <div></div>
+
+
+        <if condition="$data.has_sec_pics eq 1">
+            <foreach name="data.sec_pics" item="sec_pics">
+                <div class="am-form-group">
+                <label >商品副图</label>
+                <input type="button" class=""  name="goods_sPic" onclick="upload(this)" value="上传图片" />
+                <img src="http://img.test.yami.ren/{$sec_pics.pic_path}" id="" height="100px" width="100px" required/>
+                <input  type="hidden" name="goods_sPic[]" value="{$sec_pics.pic_id}" required/>
+                </div>
+                <div class="am-btn am-btn-warning" onclick="deletepic(this)">取消幅图</div>
+            </foreach>
+        <else/>
+        </if>
+
+
+        <button type="button"  class="am-btn am-btn-primary" onclick="addpic(this)">添加幅图</button>
+
+      <!--<foreach name="data.all_tags" item="tag">
+        <div class="am-form-group" >
+            <label for="label">商品标签</label>
+            <select id="label" name="label[]" style="width: 200px">
+                <option value="">请选择</option>
+                <foreach name="goods_label" item="label">
+                    <eq name="tag.tag_id"  value="$label.id">
+                        <option value="{$label.id}" selected="selected">{$label.name}</option>
+                        <else/>
+                        <option value="{$label.id}" >{$label.name}</option>
+                    </eq>
+                </foreach>
+            </select>
+            <div onclick="deletelabel(this)">取消</div>
+            <span class="am-form-caret"></span>
+        </div>
+      </foreach>-->
+        <div class="am-form-group">
+            <label for="official_tag">官方商品标签</label>
+            <div id="official_tag">
+
+                <!--<foreach name="official_goods_label" item="o">-->
+                    <!--<foreach name="official_goods_label" item="o">
+                        <label class="am-checkbox-inline">
+                            <input type="checkbox" name="official_label[]" value="{$o.id}"> {$o.name}
+                        </label>
+                    </foreach>-->
+                    <!--<foreach name="data.all_tags" item="tag">
+                        <eq name="tag.tag_id"  value="$o.id">
+                            <input type="checkbox" name="official_label[]" value="{$o.id}" checked>{$o.name}
+                            <else/>
+                            <input type="checkbox" name="official_label[]" value="{$o.id}">{$o.name}
+                        </eq>
+                    </foreach>-->
+                <!--</foreach>-->
+                    <?php foreach($official_goods_label as $o){ ?>
+                    <?php if(in_array($o['id'],$my_tags_id)){?>
+                    <?php echo '<input type="checkbox" name="official_label[]" value="'.$o['id'].'" checked>'.$o['name'];?>
+                    <?php }else{?>
+                    <?php echo '<input type="checkbox" name="official_label[]" value="'.$o['id'].'">'.$o['name'];?>
+                    <?php }?>
+                    <?php }?>
+
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="normal_tag">普通商品标签</label>
+            <div id="normal_tag">
+                <!--<foreach name="goods_label" item="g">-->
+
+                    <!--<foreach name="data.all_tags" item="tag">-->
+                        <!--<label class="am-checkbox-inline">
+                            <input type="checkbox" name="label[]" value="{$g.id}"> {$g.name}
+                        </label>-->
+                        <!--<eq name="tag.tag_id"  value="$g.id">
+                            <input type="checkbox" name="label[]" value="{$g.id}" checked>{$g.name}</option>
+                            <else/>
+                            <input type="checkbox" name="label[]" value="{$g.id}">{$g.name}</option>
+                        </eq>-->
+                <!--</foreach>-->
+                <!--</foreach>-->
+                    <?php foreach($goods_label as $g){?>
+                        <?php if(in_array($g['id'],$my_tags_id)){?>
+                        <?php echo '<input type="checkbox" name="label[]" value="'.$g['id'].'" checked>'.$g['name'];?>
+                        <?php }else{?>
+                        <?php echo '<input type="checkbox" name="label[]" value="'.$g['id'].'">'.$g['name'];?>
+                        <?php }?>
+                    <?php }?>
+
+            </div>
+        </div>
+
+
+        <!--<button type="button"  class="am-btn am-btn-primary" onclick="addlabel(this)">添加标签</button>-->
+        <!--<div class="am-form-group">
+            <label for="label2">商品标签2</label>
+            <select id="label2" name="label2">
+                <option value="">请选择</option>
+                <foreach name="goods_label" item="label">
+                    <option value="{$label.id}">{$label.name}</option>
+                </foreach>
+            </select>
+            <span class="am-form-caret"></span>
+        </div>
+
+        <div class="am-form-group">
+            <label for="label3">商品标签3</label>
+            <select id="label3" name="label3">
+                <option value="">请选择</option>
+                <foreach name="goods_label" item="label">
+                    <option value="{$label.id}">{$label.name}</option>
+                </foreach>
+            </select>
+            <span class="am-form-caret"></span>
+        </div>-->
+
+    <foreach name="data.goods_attr.attr" item="attr" key="key1">
+        <!--隐藏商品属性-->
+        <div class="am-form-group" style="display:none;border: 2px solid red;border-radius: 10px 10px">
+            <label for="attr_type">商品属性</label>
+            <p></p>
+            <!--如果attr_id有值则save该条记录，否则add记录-->
+            <input type="hidden" name="attr_[{$key1}][attr_id]" value="{$attr.id}"/>
+            <select id="attr_type" name="attr_[{$key1}][type]" style="width: 20%;display: inline;">
+                <option value="">请选择</option>
+                <eq name="attr.type"  value="0">
+                    <option value="0" selected="selected">单选属性</option>
+                    <else/>
+                    <option value="0" >单选属性</option>
+                </eq>
+                <eq name="attr.type"  value="1">
+                    <option value="1" selected="selected">多选属性</option>
+                     <else/>
+                    <option value="1">多选属性</option>
+                </eq>
+                <eq name="attr.type"  value="2">
+                    <option value="2" selected="selected">规格属性</option>
+                    <else/>
+                    <option value="2">规格属性</option>
+                 </eq>
+                <eq name="attr.type"  value="2">
+                    <option value="3" selected="selected">关联商品</option>
+                    <else/>
+                    <option value="3">关联商品</option>
+                </eq>
+            </select>
+            <span class="am-form-caret"></span>
+            <input type="text" class="" id="attr_name" style="width: 20%;display: inline;" name="attr_[{$key1}][detail][attr_name]" placeholder="属性名" value="{$attr.name}" required/>
+
+
+    <foreach name="data.goods_attr.option" item="option" key="key2">
+        <eq name="option.pid"  value="$attr.id">
+            <input type="hidden" name="attr_[{$key1}][option_id][{$key2}]" value="{$option.id}"/>
+            <div  class="am-g" style="border:2px solid green;border-radius: 10px 10px;">
+            <input type="text" class="am-u-sm-3" id="attr_value" name="attr_[{$key1}][detail][attr_value][]" placeholder="选项值" value="{$option.value}" style="width: 200px;float: left;" required/>
+            <input type="text" class="am-u-sm-3" id="attr_premium" name="attr_[{$key1}][detail][attr_premium][]" value="{$option.premium}" style="width: 200px;float: left;" placeholder="溢价" />
+            <input type="button" class="am-u-sm-3"  onclick="upload(this)" value="上传图片" style="float: left;width: 100px;" required/>
+            <img src="http://img.test.yami.ren/{$option.pic_path}" class="am-u-sm-3" height="50px" width="50px" style="float: left;" required/>
+            <input type="hidden" name="attr_[{$key1}][detail][attr_picid][]" value="{$option.pic_id}" required/>
+            <div class="am-btn am-btn-warning" onclick="deleteoption(this)">取消选项</div>
+            </div>
+            <else/>
+        </eq>
+    </foreach>
+            <div class="am-btn am-btn-success" onclick="addoption(this,'{$key1}')">添加选项</div>
+            <p><div class="am-btn am-btn-warning" onclick="deleteattr(this)">取消属性</div></p>
+        </div>
+    </foreach>
+
+    <div class="am-btn am-btn-success" style="display: none" onclick="addattr(this)">添加属性</div>
+
+        <!--<div class="am-radio">
+            <label>
+                <input type="radio" name="is_pass" value="1" checked>
+                审核通过
+            </label>
+        </div>
+
+        <div class="am-radio">
+            <label>
+                <input type="radio" name="is_pass" value="2">
+                审核不通过
+            </label>
+        </div>-->
+
+        <p><button type="submit" class="am-btn am-btn-default" >提交</button> <button  type="button" class="am-btn am-btn-default" onclick="history.back();">返回</button></p>
+    </fieldset>
+</form>
+
+
+
+<!--选择用户弹窗-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="selectUser">
+    <div class="am-modal-dialog">
+        <form name="resetBanner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">选择用户</div>
+            <div class="am-modal-bd">
+
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="member_id" id="mid" placeholder="会员ID">
+                    <input type="text" name="" class="am-input-sm" id="search_member" placeholder="昵称查找" value="" required/>
+
+                    <div class="am-scrollable-vertical" id="getUser" style="display: none;height: 200px">
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="attr_num" style="display: none">{$attr_num}</div>
+<script>
+
+    $('.am-modal').appendTo('body');
+
+    //昵称模糊查询（选择用户）
+    $('#search_member').keyup(function(){
+        $('#getUser').empty();
+        var search_key = $('#search_member').val();
+
+        $.ajax({
+            url: '__CONTROLLER__/getUser.html',
+            data: {'search_key': search_key , 'oper':1},
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                var code = '';
+                for(i in d){
+                    //alert(d[i]['id']+'---'+d[i]['nickname']);
+                    code += '<div onclick="choose('+d[i]['id']+',this)"><a href="#">'+d[i]['nickname']+'</a></div>';
+                }
+                $(code).appendTo('#getUser');
+                $('#getUser').show();
+                //window.location.reload();
+            }
+        });
+    })
+    //点击选择用户
+    function choose(id,e){
+        $('#mid').val(id);
+        $('#search_member').val($(e).children().html());
+        $('#getUser').hide();
+    }
+    //选择用户弹窗
+    function addMember(){
+        $('#search_member').val('');
+        $('#mid').val('');
+        $('#selectUser').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var member_id = $('#mid').val();
+                if(member_id==''){
+                    alert('未选择目标用户');
+                    return;
+                }
+                $('#userId').val(member_id);
+                $.ajax({
+                    url: '__CONTROLLER__/getUser.html',
+                    data: {'search_key': member_id , 'oper':2},
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        $('#member_nickname').html('昵称：'+d+'-----ID：'+member_id);
+                    }
+                });
+            },
+            onCancel: function(){
+                //alert('update');
+                return ;
+            }
+        });
+    }
+
+    //var label_num = $('#tags_num').html();
+    var add_time = 0;
+    var attr_num = $('#attr_num').html();
+    var option_num = 0;
+
+    //生成标签列表
+    /*function addlabel(e){
+        if(label_num >= 3){
+            alert('只允许3个标签');
+            return false;
+        }
+        var code = '';
+
+        code += '<div class="am-form-group" id="label_m">';           //id="label_m_label_num";
+        code += '<label for="label">商品标签</label>';  //商品标签_label_num
+        code += '<select id="label" name="label[]">';     //select id="label_label_num"
+        code += '<option value="">请选择</option>';
+        code += '<foreach name="goods_label" item="label">';
+        code += '<option value="{$label.id}">{$label.name}</option>';
+        code += '</foreach>';
+        code += '</select>';
+        code += '<div onclick="deletelabel(this)">取消</div>';
+        code += '<span class="am-form-caret"></span>';
+        code += '</div>';
+
+        $(e).before(code);
+
+        label_num++;
+        //add_time++;
+    }*/
+
+    //删除标签列表
+    /*function deletelabel(e){
+        if(label_num <= 1){
+            alert('至少1个标签');
+            return false;
+        }
+        $(e).parent().remove();
+        label_num--;
+    }*/
+
+    //添加选项
+    function addoption(e,attr_num){
+        var code = '';
+        code += '<div  class="am-g" style="border:2px solid green; border-radius: 10px 10px;">';
+        code += '<input type="text" class="am-u-sm-3" id="attr_value" name="attr_['+attr_num+'][detail][attr_value][]" placeholder="选项值" style="width: 20%;display: inline;" required/>';
+        code += '<input type="text" class="am-u-sm-3" id="attr_premium" name="attr_['+attr_num+'][detail][attr_premium][]" style="width: 20%;display: inline;" placeholder="溢价" />';
+        code += '<input type="button" class="am-u-sm-3"  onclick="upload(this)" value="上传图片" style="float: left;width: 100px;" required/>';
+        code += '<img src="" class="am-u-sm-3" height="50px" width="50px" style="float: left;" required/>';
+        code += '<input type="hidden" name="attr_['+attr_num+'][detail][attr_picid][]" value="" required/>';
+        code += '<div class="am-btn am-btn-warning" onclick="deleteoption(this)" >取消选项</div>'
+        code += '</div>';
+
+        $(e).before(code);
+        option_num++;
+    }
+
+    //取消选项
+    function deleteoption(e){
+        $(e).parent().remove();
+        //$(e).remove();
+    }
+
+    //添加属性
+    function addattr(e){
+        var now_attr_num = attr_num;
+        var code = '';
+        code += '<div class="am-form-group" id="attr_'+attr_num+'" style="border: 5px solid red; border-radius: 10px 10px;">';
+        code += '<label for="attr_type">商品属性</label>';
+        code += '<p></p>';
+        code += '<select id="attr_type" class="" name="attr_['+attr_num+'][type]" style="width: 20%;display: inline;">';
+        code += '<option value="">请选择</option>';
+        code += '<option value="0">单选属性</option>';
+        code += '<option value="1">多选属性</option>';
+        code += '<option value="2">规格属性</option>';
+        code += '<option value="3">关联商品</option>';
+        code += '</select>';
+        code += '<input type="text" class="" id="attr_name" name="attr_['+attr_num+'][detail][attr_name]" placeholder="属性名" style="width: 20%;display: inline;" required/>';
+        code += '<span class="am-g"></span>';
+        code += '<div class="am-btn am-btn-success" onclick="addoption(this,'+now_attr_num+')">添加选项</div>';
+        code += '<div class="am-btn am-btn-warning" onclick="deleteattr(this)">取消属性</div>';
+        code += '</div>';
+
+        $(e).before(code);
+        attr_num++;
+    }
+
+    //取消属性
+    function deleteattr(e){
+        $(e).parent().remove();
+        //$('#attr_'+num).remove();
+        //$()
+    }
+    //上传图片
+    function upload(e) {
+        $.ajaxUpload({
+            'url': '__CONTROLLER__/update.html',
+            'dataType': 'json',
+            'success': function (d) {
+                if (d.status == 1) {
+                    $(e).next().next().val(d.info.pic_id);
+                    $(e).next().next().html(d.info.pic_id);
+                    $(e).next().attr('src','http://img.test.yami.ren/' + d.info.filepath + d.info.filename);
+                    $(e).next().html('http://img.test.yami.ren/' + d.info.filepath + d.info.filename);
+                } else {
+                    alert(d.info);
+                }
+            }
+        });
+    }
+
+    //添加幅图
+    function addpic(e){
+        var code = '';
+        code += '<div class="am-form-group">';
+        code += '<label >商品副图</label>';
+        code += '<input type="button" class="" id="" name="goods_sPic" onclick="upload(this)" value="上传图片" required/>';
+        code += '<img src="" id="preview" height="100px" width="100px" required/>';
+        code += '<input type="hidden" name="goods_sPic[]" value="" required/>';
+        code += '</div>';
+        code += '<div class="am-btn am-btn-warning" onclick="deletepic(this)">取消幅图</div>';
+        $(e).before(code);
+    }
+
+    //取消附图
+    function deletepic(e){
+        $(e).prev().remove();
+        $(e).remove();
+    }
+    //文本编辑器上传图片
+    $('#uploadBtn').click(function(){
+        upload(e);
+    })
+
+    //转移文本编辑器的值&检查图片是否上传
+    function setcontent(){
+        var pic_pass = true;
+
+        $('img').each(function(){
+            if($(this).attr('src') == ''){
+                alert('请补全图片');
+                pic_pass = false;
+            }
+        });
+        if(pic_pass == false){
+            return false;
+        }
+
+        if($('#goodsStocks').val() <= 0){
+            alert('库存必须大于0');
+            return false;
+        }
+
+        var text = $('#text').html();
+        $('#htmlText').html(text);
+    }
+
+</script>

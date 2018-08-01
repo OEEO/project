@@ -1,0 +1,44 @@
+/**************************** common start ****************************/
+html {font-size:10px !important;}
+html, body {width:100%; height:100%;}
+html, body, div, span, em, img, b, i, dl, dt, dd, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  vertical-align:baseline;
+}
+body{
+    font-family:"微软雅黑",Arial;
+    font-size:1.2rem;
+    color: #555;
+	letter-spacing:1px;
+    -webkit-text-size-adjust:100%;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-touch-callout:none;
+}
+.clearfix:after {
+    content:'';
+    display:block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+ul {
+    list-style:none
+}
+a:link, a:visited, a:hover, a:active {
+    color: #555;
+    text-decoration:none;
+}
+input, textarea, button {
+    padding: 0;
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+    border-radius:0;
+    -webkit-appearance: none;
+    outline: none;
+}
+em,i{font-style: normal;}
+/**************************** common end ****************************/
+

@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* 明星达人页面布局 */
+.header{position:fixed;top:0;}
+/***************页面的头部布局*****************/	
+.body_top{display:block;margin-left: auto; margin-right: auto;position:relative;}
+.pic_top{width:100%;}
+
+.starPortrait{width:6rem;margin:0 auto;margin-top:-3.5rem;overflow:hidden;}/*用户头像*/
+.starPortrait .imgPortrait{width:5.5rem;height:5.5rem;}
+.activityInfo{display: block;width: 90%;margin: 0 auto;}
+.activityInfo li{text-align:center;margin: 0 auto;}
+.activityInfo .userNm{font-size: 130%;color:#646464;}/*用户名*/
+
+.StarsGrade{margin-top: 0.5rem;display:block;}
+.StarsGrade li{padding:0 0.1rem;display: inline-block;}/*星级评价*/
+.StarsGrade li img{width:1.2rem;height:1.2rem;}/*星级评价*/
+
+.aboutTheActivity{margin-top: 1rem;width:80%;display: inline-block;}
+.aboutTheActivity>li{font-size:110%;height:1.4rem;line-height:1.4rem;color:#b4b4b4;float:left;display:inline-block;}
+.aboutTheActivity>li:nth-child(1){width:20%;}/**广州**/			
+.aboutTheActivity>li:nth-child(2){width:34%;border-left:0.1rem solid #989898;border-right:0.1rem solid #989898;} /**22场活动**/
+.aboutTheActivity>li:nth-child(3){width:44%;}/**622人参加过**/
+
+.userIntruct{font-size:110%;color:#969696;margin:1rem auto;width: 90%;line-height: 2,4rem;}
+
+
+/************************************/	
+

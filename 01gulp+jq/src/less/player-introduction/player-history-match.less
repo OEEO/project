@@ -1,0 +1,273 @@
+/* 三角形 */
+.triangle(@height, @width, @color) {
+  content: '';
+  display: inline-block;
+  vertical-align: top;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: @color;
+  border-width: @height/2 @width/2;
+}
+
+.league-nav {
+  box-sizing: border-box;
+  width: 1200px;
+  height: 60px;
+  line-height: 60px;
+  margin: 12px auto;
+  border: 1px solid #cbcbcb;
+  padding: 0 60px;
+  background: #fff;
+  color: #303030;
+  font-size: 16px;
+  &>div {
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
+  }
+  #date-picker,
+  #collapse {
+    float: right;
+    line-height: 60px;
+  }
+}
+
+.player-history-match {
+  width: 1200px;
+  border: 1px solid #cbcbcb;
+  background: #fff;
+  color: #333333;
+  font-weight: bold;
+  margin: 12px auto;
+  .match-title {
+    height: 80px;
+    margin: 15px 0;
+    text-align: center;
+    background: url("../../assets/match-header.png") no-repeat center center;
+    .league-name {
+      display: inline-block;
+      font-size: 18px;
+    }
+    .teams {
+      margin-top: -5px;
+      font-size: 0;
+      .logo {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        background-color: #fff;
+      }
+      .name {
+        display: inline-block;
+        height: 48px;
+        width: 142px;
+        font-size: 16px;
+        text-align: center;
+        line-height: 48px;
+        vertical-align: top;
+        color: #fff;
+      }
+      .left-team {
+        display: inline-block;
+        width: 50%;
+        text-align: left;
+        .logo {
+          margin-left: 346px;
+        }
+        .name {
+          margin-left: -16px;
+        }
+      }
+      .right-team {
+        display: inline-block;
+        width: 50%;
+        text-align: right;
+        .logo {
+          margin-right: 346px;
+        }
+        .name {
+          margin-right: -16px;
+        }
+      }
+    }
+    .info {
+      margin-top: -48px;
+      .score {
+        height: 48px;
+        line-height: 48px;
+        font-size: 24px;
+      }
+      span {
+        padding: 0 7px;
+        font-size: 14px;
+      }
+    }
+  }
+  .match-item {
+    height: 220px;
+    td {
+      letter-spacing: 1px;
+    }
+    .match-item-header {
+      position: relative;
+      height: 40px;
+      background: url("../../assets/player-bo-header.png");
+      font-size: 0;
+      color: #ffffff;
+      div {
+        display: inline-block;
+        line-height: 40px;
+        vertical-align: top;
+        text-align: center;
+      }
+      div:first-child {
+        margin-left: 60px;
+        line-height: 20px;
+        text-align: left;
+        p {
+          height: 20px;
+          font-size: 16px;
+          &:first-child {
+            line-height: 28px;
+          }
+        }
+        .duration {
+          display: inline-block;
+          width: 40px;
+          font-size: 12px;
+          padding-left: 16px;
+        }
+      }
+      .result {
+        width: 48px;
+        font-size: 16px;
+      }
+      .video {
+        display: inline-block;
+        width: 34px;
+        height: 20px;
+        position: absolute;
+        right: 63px;
+        top: 10px;
+        background: url("../../assets/camera-icon.png");
+        cursor: pointer;
+      }
+    }
+    .match-item-content {
+      height: 180px;
+      &>div {
+        float: left;
+        height: 100%;
+      }
+      .left-section {
+        width: 25.3%;
+        .wrapper {
+          width: 186px;
+          height: 124px;
+          margin: 28px auto;
+          font-size: 0;
+          .hero,
+          .skill {
+            display: inline-block;
+          }
+          .hero {
+            margin-left: 49px;
+          }
+          .skill {
+            img {
+              display: block;
+              margin: 5px;
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+          }
+          .goods {
+            margin-top: 18px;
+            img {
+              margin-right: 6px;
+              &:last-child {
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+      .middle-section {
+        width: 32.2%;
+        .wrapper {
+          width: 326px;
+          height: 100%;
+          box-sizing: border-box;
+          margin: 0 auto;
+          padding-top: 28px;
+          padding-bottom: 28px;
+          font-size: 0;
+          .info-box {
+            display: inline-block;
+            width: 102px;
+            height: 50px;
+            background: url("../../assets/info-box.png") no-repeat center;
+            margin-right: 10px;
+            margin-bottom: 26px;
+            text-align: center;
+            p:first-child {
+              line-height: 27px;
+              font-size: 18px;
+              color: #fff;
+            }
+            p:last-child {
+              line-height: 23px;
+              font-size: 12px;
+              font-weight: normal;
+            }
+          }
+        }
+      }
+      .right-section {
+        width: 42.5%;
+        box-sizing: border-box;
+        padding-top: 8px;
+        vertical-align: middle;
+        table {
+          border-collapse:collapse;
+        }
+        img {
+          display: inline-block;
+          padding-right: 10px;
+          vertical-align: top;
+        }
+        .name {
+          padding-left: 64px;
+
+          & span {
+            display: inline-block;
+            width: 65px;
+            letter-spacing: 0;
+            overflow: hidden;
+            vertical-align: middle;
+          }
+        }
+        th {
+          padding-left: 64px;
+        }
+      }
+    }
+  }
+}
+
+.load-more {
+  margin-top: -13px;
+  margin-bottom: 60px;
+  width: 1200px;
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  background-color: #ffffff;
+  border: solid 1px #cdcdcd;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  cursor: pointer;
+}

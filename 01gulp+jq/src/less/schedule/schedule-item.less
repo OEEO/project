@@ -1,0 +1,161 @@
+@import url(../color.less);
+
+.schedule-item {
+    display: table;
+    vertical-align: middle;
+    height: 130px;
+    width: 100%;
+    // padding: 0 60px;
+    box-sizing: border-box;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+
+    &.not-start {
+        background: #f5fcff;
+    }
+
+    & a {
+        text-decoration: none;
+    }
+
+    & > div {
+        display: table-cell;
+        vertical-align: middle;
+
+        &.schedule-item_column_1 {
+            width: 180px;
+            text-align: center;
+        }
+
+        &.schedule-item_column_2 {
+            width: 94px;
+        }
+
+        &.schedule-item_column_3 {
+            width: 240px;
+            text-align: center;
+        }
+
+        &.schedule-item_column_4 {
+            width: 200px;
+        }
+
+        &.schedule-item_column_5 {
+            width: 72px;
+            text-align: center;
+            font-size: 0;
+            color: @pink;
+
+            & > span {
+                font-size: 30px;    
+            }
+        }
+
+        &.schedule-item_column_6 {
+            width: 200px;
+            text-align: right;
+        }
+
+        &.schedule-item_column_7 {
+            width: 182px;
+            text-align: center;
+        }
+
+        & a {
+            text-decoration: none;
+        }
+    }
+
+    & .schedule-live-tag {
+        vertical-align: middle;
+        display: inline-block;
+        width: 60px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 15px;
+        background: @disabledColor;
+        font-size: 14px;
+        
+        &.active {
+            background: @pink;
+            color: #fff;
+        }
+    }
+
+    & .schedule-time-info {
+        & > span {
+            display: block;
+            text-align: center;
+        }
+        
+        & .schedule-item-info_time {
+            font-size: 20px;
+            
+        }
+    }
+
+    & .left-team,
+    & .right-team {
+        box-sizing: border-box;
+        & > a,
+        & > img {
+            vertical-align: middle;
+        }
+
+        & > a {
+            color: #000;
+            font-size: 18px;
+
+            &:hover {
+                color: @primaryTextColor;
+            }
+        }
+
+        & .schedule-item_logo {
+            display: inline-block;
+            width: 64px;
+            height: 64px;
+        }
+    }
+
+    & .left-team {
+        & img {
+            margin: 0 15px 0 38px;
+        }
+        
+    }
+
+    & .right-team {
+        & img {
+            margin: 0 38px 0 15px;
+        }
+    }
+
+    
+
+    & .schdule-btn-group {
+        & .schedule-btn {
+            display: block;
+            width: 84px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            color: @primaryTextColor;
+            border: 1px solid @primaryTextColor;
+            border-radius: 12px;
+            margin: 5px 0;
+
+            &.pink-btn {
+                border: 1px solid transparent;
+                background: @pink;
+                color: #fff;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

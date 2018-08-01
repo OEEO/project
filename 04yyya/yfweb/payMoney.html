@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/payMoney.css">
+
+<script src="js/plugins/jquery.min.js"></script>
+<script src="js/public.js"></script>
+<script src="js/payMoney.js"></script>
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+	<div class="title">订单付款</div>
+</div>
+<div class="headerBlank"></div><!--设置空白，避免顶部菜单遮住网页内容-->
+<div class="timeout">
+	<div class="top">剩余时间</div>
+	<div class="times"></div>
+</div>
+<div class="the_blank"></div>
+<div class="aboutPay">
+	<div class="total">支付金额:<span>0元</span></div>
+	<!--<div class="radioSty" onclick="radioStyle(this,'.radioSty')">支付宝<span style="width:23.5rem"></span></div>-->
+	<div class="radioSty checked" onclick="radioStyle(this,'.radioSty')">微信<span style="width:25rem"></span></div>
+	<!--<div class="radioSty" onclick="radioStyle(this,'.radioSty')">其他方式<span style="width:22rem"></span></div>--><!-- 一个字 1.5rem-->
+</div>
+<div class="the_blank"></div>
+
+<div class="bottomBlank"></div>
+<a class="footer goodsOrderBottom" href="javascript:payMoneyObject.submitPay();">确认支付</a>
+</body>
+</html>

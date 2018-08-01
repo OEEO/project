@@ -1,0 +1,98 @@
+<scroll-view scroll-y="true" class="owrapper" bindscrolltolower="loadMore">
+<view class="status_check">
+	<view data-statu="" data-current="0"  class="statu {{currentTab==0 ? 'add_hei' : ''}}" bindtap="status"><text>全部</text></view>
+    <view data-statu="0" data-current="1" class="statu {{currentTab==1 ? 'add_hei' : ''}}" bindtap="status"><text>待付款</text></view>
+    <view data-statu="1" data-current="2" class="statu {{currentTab==2 ? 'add_hei' : ''}}" bindtap="status"><text>待参加</text></view>
+    <view data-statu="2" data-current="3" class="statu {{currentTab==3 ? 'add_hei' : ''}}" bindtap="status"><text>待评价</text></view>
+</view>
+<view class="the_blank"></view>
+<view class="content">
+	<block wx:if="{{orderlist.length > 0 }}">
+		<block wx:for="{{orderlist}}" wx:key="orderlist">
+			<view class="li">
+				<navigator class="top" url="../order/detail?order_id={{item.id}}">
+					<view class="left">			
+						<view class="type">{{item.catname}}</view>			
+						<image src="{{item.path}}"/>		
+					</view>
+					<view class="right">
+						<view class="t">{{item.title}}</view>	
+						<view class="c" wx:if="{{item.type != 0}}">邮费：￥{{item.postage}}</view>
+						<view class="c" wx:if="{{item.type == 0 && item.start_time}}">{{item.start_time}}-{{item.end_time}}</view>	
+						<view class="b">				
+							<view class="l">{{item.count}}份</view>
+							<view class="cc"></view>				
+							<view class="r">总价：<font class="caodan">￥</font><font>{{item.price}}</font></view>			
+						</view>		
+					</view>
+				</navigator>
+				<view class="bottom">
+					<view class="status">{{item.statu}}</view>
+					<block wx:if="{{item.type == 0}}">
+						<view wx:if="{{item.act_status == 0}}">
+							<view data-id="{{item.id}}" bindtap="wxpay" class="btn">立即付款</view>
+							<view data-id="{{item.id}}" bindtap="cancelOrder" class="btn">取消订单</view>
+						</view>
+						<view wx:elif="{{item.act_status == 1}}">
+							<view data-id="{{item.id}}" bindtap="showCode" class="btn">我的消费码</view>
+						</view>
+						<view wx:elif="{{(item.act_status == 2 || item.act_status == 3) && item.comment_id == null}}">
+							<navigator data-id="{{item.id}}" url="../comment/evaluation?order_id={{item.id}}" class="btn">待评论</navigator>
+						</view>
+						<view wx:elif="{{item.act_status == 5}}">
+							<view data-id="{{item.id}}" bindtap="cancelRefund" class="btn">取消退款</view>
+						</view>
+					</block>
+					<block wx:else>
+						<view wx:if="{{item.act_status == 0}}">
+							<view data-id="{{item.id}}" bindtap="wxpay" class="btn">立即付款</view>
+							<view data-id="{{item.id}}" bindtap="cancelOrder" class="btn">取消订单</view>
+						</view>
+						<view wx:if="{{item.act_status == 1}}">
+							<view data-id="{{item.id}}" bindtap="modifyOrder" class="btn">修改备注</view>
+						</view>
+						<view wx:if="{{item.act_status == 2}}">
+							<view data-id="{{item.id}}" bindtap="logistics" class="btn">查看物流</view>
+						</view>
+						<view wx:if="{{item.act_status == 3}}">
+							<view data-id="{{item.id}}" bindtap="ConfirmReceipt" class="btn">确认收货</view>
+						</view>
+						<view wx:if="{{item.act_status == 4}}">
+							<navigator class="btn" url="../comment/evaluation?order_id={{item.id}}">待评论</navigator>
+						</view>
+						<view wx:if="{{item.act_status == 5}}">
+							<view data-id="{{item.id}}" bindtap="cancelRefund" class="btn">取消退款</view>
+						</view>
+					</block>
+				</view>
+			</view>
+		</block>
+	</block>
+	<block wx:else>
+		<view class="no_msgs"><image src="http://img.yummy194.cn/images/order_over.png" /><text>抱歉！您还没有相关的订单！</text></view>
+	</block>
+</view>
+</scroll-view>
+<view class="QRcode" hidden="{{hide}}" bindtap="hideCode">
+	<view class="views">
+		<view class="d">
+			<swiper class="codeswiper"
+  autoplay="{{autoplay}}" duration="500" bindchange="changenum">
+				<block wx:for="{{getcode}}" wx:key="code">
+					<swiper-item>
+					<view class="p">{{item}}</view>
+					<view class="codeimg">
+						<canvas canvas-id="mycanvas{{index}}"/>
+					</view>
+					</swiper-item>
+				</block>
+			</swiper>
+			
+			<view class="num">{{current + 1}}/{{getcode.length}}</view>
+		</view>
+        <!--<view class="L_niu"></view>
+        <view class="R_niu"></view>-->
+        
+		<view class="dBtm">左右滑动切换消费码</view>
+	</view>
+</view>

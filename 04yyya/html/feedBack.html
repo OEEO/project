@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/feedBack.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/feedBack.js"></script>
+<script>
+function sizeNum(em){
+	var sizeLength = $(em).text().length;
+	if(sizeLength>150){
+		var content =  $(em).text().substr(0,150);
+		$(em).empty().append(content);
+		sizeLength = $(em).text().length;
+		}
+	$('.lastNum').empty().append(150-sizeLength);
+	}
+</script>
+</head>
+<body  style="min-height:100%;background:#ebecf0;">
+<style>
+/*********************onfocus="if($('.feedBack').text()=='邮政编码'){}" onblur="if ($('.feedBack').text()==''){alert('恢复');"} ******************************/
+.feedBack{font-size:1.2rem;color:#969696;padding:0.8rem 1.8rem;min-height:8rem;background:#fff;position:relative;}
+.feedBack>span{position:absolute;right:0.6rem;bottom:0.6rem;}
+.lastNum{position:absolute;right:0.5rem;margin-top:-1.8rem;}
+</style>
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">意见反馈</div>
+	<div class="orderOperation" onclick="javascript:confirm('真的要提交吗？');">提交</div>
+<!--	<div class="share" onclick="javascript:alert();"></div>
+	<a class="uCenter" href="#"></a>-->
+</div>
+<div class="the_blank"></div>
+<div class="feedBack" contenteditable="true" onKeyUp="sizeNum(this)"  onafterpaste="sizeNum(this)" onfocus="if($(this).text()=='请输入您的意见或建议')$(this).empty();" onblur="	if($(this).text()=='')$(this).append('请输入您的意见或建议');">请输入您的意见或建议</div>
+<div class="lastNum">150</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.page_orderRefund {background:#f5f5f5;}
+.page_orderRefund .orderOperation{font-size:1.6rem;position:absolute;right:1.6rem;top:1.3rem;color:#b39851;}
+
+.page_orderRefund .body {margin-top: 5.7rem; font-size:1.4rem;}
+.page_orderRefund .body .title {line-height:4.5rem; color:#999; font-size:1.4rem; padding:0 2rem;}
+.page_orderRefund .body .content {line-height:4.5rem; min-height:4.5rem; background:#fff; font-size:1.4rem; padding:0 2rem; border-bottom:solid 0.1rem #eee; border-top:solid 0.1rem #eee; color:#343434;}
+.page_orderRefund .body .no_border_top{ border-top:none;}
+.page_orderRefund .body .content .left_title {float:left; line-height:4.5rem; padding-right:0.5rem;}
+.page_orderRefund .body .content .ps {float:left; font-size:1.2rem; color:#888888; letter-spacing:0rem;}
+.page_orderRefund .body .content .price {float:right; font-size:1.4rem; color:#b39851;}
+.page_orderRefund .body .content .right_t {float:right; line-height:4.5rem;}
+.page_orderRefund .body .content textarea {line-height:3rem; border:none; font-size:1.4rem; height:10rem; width:32rem; margin:0.5rem 0; overflow:hidden;}
+

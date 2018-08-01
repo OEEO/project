@@ -1,0 +1,25 @@
+
+.page_specialTips.header{height:4.5rem;position:fixed;top:0;width:100%;}
+
+/**********活动列表**************/
+.page_specialTips .userHeadImg .imgPortrait{width: 3rem;height: 3rem;border-radius: 50%;margin-left:1rem;float:left;margin-top:0.6rem;border:none;}/*用户头像*/
+.page_specialTips .userHeadImg .userHeadName{margin-left:0.8rem;float:left;margin-top:1.2rem;font-size: 1.6rem;}/*主持者 名字*/
+
+.page_specialTips .actImgLink{margin-top:0.2rem;display:block;position:relative;}/*活动图片*/
+/*.actImgLink img{margin-top:-2rem;}/*活动宣传图（大图）*/
+.page_specialTips .orderLast{color:#fff;font-size:1.2rem;background:rgba(0,0,0,0.26);width:10rem;height:2.5rem;line-height: 2.5rem; text-align:center; position:absolute;top:0;right:0;z-index:1;}/*剩余 190 份*/
+
+.page_specialTips .actBottom{margin:0.8rem 1.2rem;position:relative;}
+.page_specialTips .actBottom .actTitle{color:#3d3d3d;font-size:1.5rem;font-weight:500;}/*活动标题*/
+
+.page_specialTips .actAdd{color:#a3a3a3;margin:0.8rem auto;padding-left:1.4rem;min-width:16rem; overflow:hidden;float:left;background:url('../images/location_20x20.png')no-repeat left center;background-size:1rem;}/*活动地点*/
+
+.page_specialTips .bottom {height:3rem;}
+.page_specialTips .actTime{color:#a3a3a3;margin:0.8rem auto;margin-left:1.5rem;text-indent:1.4rem;float:left;background:url('../images/time2.png')no-repeat left center;background-size:1rem;}/*活动时间*/
+
+.page_specialTips .mtags{font-size:1.2rem; margin-top:1rem; float:left;}
+
+.page_specialTips .actPrice{font-size: 2.4rem; float:right;color:#f7d557; margin-right:1rem;}/*活动价格*/
+
+
+.page_specialTips .the_end {line-height:2rem; clear:both; text-align:center;}

@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+.content .questionList{background:#fff;}
+.questionList li{display:block;margin:auto 1.8rem;border-bottom:0.1rem solid #ddd;margin-top:1rem;}
+
+.questionList li .imgPortrait{width:4.27rem;height:4.27rem;margin-top:0;float:left;margin-right:1.2rem;}
+
+
+.questionList li .qUserName{font-size:120%;color:#636363;float:left;margin-top:1rem;margin-bottom:0.5rem;}
+.questionList li .commitTime{font-size:100%;color:#b8b8b8;float:right;margin-top:1.3rem;margin-right:0.4rem;}
+
+.questionList li .m_question{font-size:110%;color:#969696;line-height:150%;}
+
+
+.questionList li .answer{font-size:110%;line-height:150%;color:#969696;padding:1rem 0.8rem;padding-bottom:2.5rem;background:#f2f1f7;position:relative;margin:1rem auto;}
+.questionList li .answer span{position:absolute;right:0.8rem;bottom:0.1rem}
+
+.query{font-size:60%;padding:0rem 0.5rem;border:0.1rem solid #585858;position:absolute;margin-top:-1.89rem;right:2.2rem;}
+.productDetails{margin-left:2.2rem;margin-right:2.2rem;}
+.allQuestion{height:3.6rem;line-height:3.6rem;text-align:center;}
+
+.commitQuestionBlank{clear:both;height:8rem;}
+.commitQuestion{background:#fff;position:fixed;bottom:0;min-height:2.4rem;border-top:0.1rem #ccc solid;padding:0.8rem;width:100%;}
+
+.commitQuestion .m_question{color:#a3a3a3;font-size:1.2rem;padding:0.6rem 1rem; min-height:1.7rem; float:left;width:28rem;border:0.1rem solid #eee;border-radius:1rem;}
+.commitQuestion button{color:#a0a0a0;font-size:1.4rem;text-align:left;position:absolute;bottom:1rem;margin-left:0.8rem;height:2.4rem;border:none;background:rgba(0,0,0,0);}

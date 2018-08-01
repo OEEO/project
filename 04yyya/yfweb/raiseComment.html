@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/raiseComment.css">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/plugins/jquery.touchwipe.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/raiseComment.js"></script>
+</head>
+<body>
+<div class="header line">
+    <div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+    <div class="title">评论</div>
+</div>
+<div class="headerBlank"></div>
+<div class="risk-warning">
+    <div class="risktitle">风险提示</div>
+    <div class="risktext">
+        <p>为了您的个人安全，请不要直接留下您的相关联系方式。您可以通过吖咪的官方客服联系发起人。官方客服微信号：yami194        官方客服热线：020-23336323</p>
+    </div>
+</div>
+<div class="the_blank"></div>
+<div class="commentlist"></div>
+<div class="headerBlank"></div>
+<div class="footer cbtns">
+    <div class="commentbtn">
+        <div class="conmenticon"><img src="images/comment@2x.png" onclick="raiseCommentObject.reply(this)"/></div>
+        <a href="javascript:jump('raiseReturn', {raise_id:raiseCommentObject.raise_id})" class="submitBtn">支持TA</a>
+    </div>
+    <div class="commentask">
+        <input type="text" class="ask" onfocus="raiseCommentObject.myfocu()"  placeholder="你可以询问或者表达支持"/>
+        <a href="javascript:void(0)" onclick="raiseCommentObject.submitq()" class="complete">完成</a>
+    </div>
+</div>
+<!--<div class="footer commentask">-->
+    <!---->
+<!--</div>-->
+</body>
+</html>

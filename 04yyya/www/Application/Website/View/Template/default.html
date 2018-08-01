@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="{$resource}css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="{$resource}css/public.css">
+<link rel="stylesheet" type="text/css" href="{$resource}css/tips.css">
+<script src="{$resource}js/plugins/jquery.min.js"></script>
+<script>
+$('html').attr('style', 'font-size:' + 10 * ($(window).width() / 360) +'px !important');
+$(window).resize(function(){
+	$('html').attr('style', 'font-size:' + 10 * ($(window).width() / 360) +'px !important');
+});
+
+String.prototype.pathFormat = function(){
+	var path = this.toString();
+	if(path.substr(0,1) == '/')path = path.substr(1);
+	if(path.indexOf('uploads/') >= 0){
+		path = 'http://yummy194.cn/' + path;
+	}else if(path.indexOf('http://') == -1){
+		path = 'http://img.m.yami.ren/' + path;
+	}
+	return path;
+}
+
+//头部主图图片
+var mainpic = "{$mainpic}";
+//人物肖像图片
+var headpic = "{$headpic}";
+
+$(function(){
+	if(mainpic != '')
+		$('.bodyTop .picTop').html('<img src="' + mainpic.pathFormat() + '">');
+	$('.bodyTop .picTop').click(function(){
+		sendCommand(2, null, [640, 420]);
+	});
+	$('.bodyTop .imgPortrait').attr('src', headpic.pathFormat());
+	
+	$('.content picture').click(function(){
+		var place = $(this).attr('data');
+		var size = $(this).attr('size');
+		console.log(size);
+		sendCommand(1, place, size.split('_'));
+	});
+	$('.content text').click(function(){
+		var place = $(this).attr('data');
+		var size = $(this).attr('size');
+		sendCommand(0, place, size);
+	});
+});
+
+function createPlaceCode(){
+	var char = ['1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','w','v','u','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+	var str = '';
+	for(var i=0; i<8; i++){
+		str += char[Math.floor(Math.random() * char.length)];
+	}
+	return str;
+}
+
+//添加图片描述
+function addPicture(){
+	var place = createPlaceCode();
+	$('<picture class="public_img" data="'+ place +'" size="640_420"><a href="javascript:void(0);" onclick="removePlace(this)">×</a></picture>').appendTo('.content').click(function(){
+		var place = $(this).attr('data');
+		var size = $(this).attr('size');
+		sendCommand(1, place, size.split('_'));
+	});
+}
+
+//添加文字描述
+function addText(){
+	var place = createPlaceCode();
+	$('<text class="public_txt" data="'+ place +'" size="200"><a href="javascript:void(0);" onclick="removePlace(this)">×</a></text>').appendTo('.content').click(function(){
+		var place = $(this).attr('data');
+		var size = $(this).attr('size');
+		sendCommand(0, place, size);
+	});
+}
+
+//删除资源
+function removePlace(em){
+	var place = $(em).parent().attr('data');
+	sendCommand(-1, place);
+}
+
+
+var command = {
+	type : null,
+	place : null,
+	size : [640, 420]
+};
+
+//接收命令返回
+function getCommandBack(content){
+	$('.overlay').fadeOut('fast');
+	if(content != 'null'){
+		var type = command.type;
+		var place = command.place;
+		switch(type){
+			case -1:
+				$('[data="'+ place +'"]').remove();
+				break;
+			case 0:
+				var html = $('[data="'+ place +'"]').html();
+				$('[data="'+ place +'"]').html(content);
+				if(html.indexOf('removePlace(this)') > 0)$('[data="'+ place +'"]').append('<a href="javascript:void(0);" onclick="removePlace(this)">×</a>');
+				break;
+			case 1:
+				var html = $('[data="'+ place +'"]').html();
+				$('[data="'+ place +'"]').html('<img src="'+ content.pathFormat() +'">');
+				if(html.indexOf('removePlace(this)') > 0)$('[data="'+ place +'"]').append('<a href="javascript:void(0);" onclick="removePlace(this)">×</a>');
+				break;
+			case 2:
+				$('.picTop').html('<img src="'+ content.pathFormat() +'">');
+				break;
+		}
+	}
+	command.type = null;
+	command.place = null;
+}
+</script>
+<style>
+
+html,body {width:100%; height:100%; overflow-y: scroll;}
+.public_img {height:20rem; margin-top:1.5rem; display:block; overflow:hidden; position:relative; background:rgb(192,197,202);}
+.public_txt {min-height:9.2rem; margin-top:1.5rem; display:block; position:relative; background:#fff; border:dashed 0.2rem rgb(192,197,202);}
+.picTop {height:21rem; display:block; background:rgb(192,197,202); overflow:hidden; position:relative;}
+.picTop img {width:100%; height:100%;}
+.picTop:after,.public_img:after,.public_txt:after {content:'编辑封面图'; width:7rem; line-height:7rem; text-align:center; font-size:1.1rem; border-radius:3.5rem; position:absolute; left:50%; top:50%; margin:-3.5rem 0 0 -3.5rem; background:rgba(0,0,0,0.36); color:#fff;}
+.public_img:after {content:"编辑图片";}
+.public_txt:after {content:"编辑文字"; background:none; color:rgb(192,197,202);}
+.public_img a, .public_txt a {position:absolute; width:2rem; height:2rem; border-radius:50%; font-size:1.4rem; line-height:1.8rem; text-align:center; color:#fff; background:rgba(0,0,0,0.36); right:0.3rem; top:0.3rem;}
+
+.contactStar {margin:2rem 0; height:4rem;}
+.contactStar button {width:14rem; float:left; background:#fff; line-height:4rem; padding:0 0 0 2.5rem; border:solid 0.1rem #333; color:#333; position:relative;}
+.contactStar button:after {content:"+"; position:absolute; left:2.5rem; top:1.4rem; width:1.5rem; height:1.5rem; border:solid 0.1rem #333; border-radius:50%; text-align:center; line-height:1.2rem;}
+.contactStar button:last-child {float:right;}
+
+.overlay {width:100%; height:100%; position:fixed; background:rgba(0,0,0,0.4); z-index:9999; display:none; top:0;}
+</style>
+</head>
+<body>
+<div class="bodyTop">
+	<div class="picTop"></div>
+	<center><img class="imgPortrait" src="{$resource}images/portrait.jpg" /></center>
+	<div class="activityInfo">
+		<div class="userNm">{$nickname}</div>
+		<div class="StarsGrade"><span></span><span></span><span></span><span></span><span></span></div>
+		<div class="activityTitle">{$title}</div>
+		<div class="tags">
+			<foreach name="$tags" item="tag"><span>{$tag}</span></foreach>
+		</div>
+		<div class="restrict"><span>{$min_num}</span>-<span>{$restrict_num}</span>人成局</div>
+		<a href="javascript:void(0);" class="times">{$stime} ~ {$etime}<span></span></a>
+		<a href="javascript:void(0);" class="address">{$address}<span></span></a>
+	</div>
+</div>
+<div class="the_blank" style="height:1.5rem;margin-top:0rem;background:#ebecf0;"></div>
+<!-- ---------------------------------------------------------------- -->
+<div class="starInfo">
+	<div class="actInfoMenu">
+		<span>活动描述</span>
+	</div>
+	<div style="margin:0 2.2rem;">
+		<div class="content">
+			{$content}
+		</div>
+		<div class="contactStar">
+			<button onClick="addPicture()">添加图片</button>
+			<button onClick="addText()">添加文字</button>
+		</div>
+	</div>
+</div>
+<div class="overlay"></div>
+</body>
+<script>
+//模拟iOS通信（临时）
+//$('<script>').attr('src', 'http://admin.yummy.com/Resource/admin/js/ajaxUpload.js?q=' + Math.random()).appendTo('html');
+//发送命令到iOS
+function sendCommand(type, place, size){
+	var place = place||'null';
+	//var token = window.location.href.split('token=')[1];
+	if(command.type != null || command.place != null)return;
+	command.type = type;
+	command.place = place;
+	command.size = size;
+	if(typeof(size) == 'object'){
+		size = size.join('_');
+	}else{
+		size = size||'null';
+	}
+	window.location = 'command:' + type + '&' + place + '&' + size;
+	$('.overlay').fadeIn('fast');
+	/*if(type == 1 || type == 2){
+		console.log(size);
+		$.ajaxUpload({
+			'dataType' : 'json',
+			'url' : 'resourceSave.html?token=' + token,
+			'data' : {'type':type, 'place':place, 'size':size.join('_')},
+			'success' : function(d){
+				if(d.status == 1){
+					getCommandBack(d.info);
+				}else{
+					alert(d.info);
+				}
+			}
+		});
+	}else if(type == 0){
+		var text = window.prompt('输入文字：');
+		if(text != ''){
+			$.post('resourceSave.html?token=' + token, {'place':place, 'type':type, 'text':text, 'size':size}, function(d){
+				if(d.status == 1){
+					getCommandBack(text);
+				}else{
+					alert(d.info);
+				}
+			}, 'json');
+		}
+	}else if(type == -1){
+		$.post('resourceSave.html?token=' + token, {'place':place, 'type':type}, function(d){
+			if(d.status == 1){
+				getCommandBack();
+			}else{
+				alert(d.info);
+			}
+		}, 'json');
+	}*/
+}
+</script>
+</html>

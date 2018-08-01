@@ -1,0 +1,102 @@
+<!--日历js、css文件加载 start-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+
+<p class="mobile_none" style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" id="export_excel">导出Excel</button>
+</p>
+<form class="am-g">
+    <select name="status" id="search_status">
+        <option value="1" <?php if($search_status == 1)echo 'selected = "selected"'; ?>>正常状态</option>
+        <option value="2" <?php if($search_status == 2)echo 'selected = "selected"'; ?>>删除状态</option>
+    </select>
+    <input type="text" name="nickname" id="search_nickname" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="分享者查询" value="{$search_nickname}"/>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-startDate" name="start_time"  placeholder="开始时间" required readonly="true" value="{$search_start_time}"/>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-endDate" name="stop_time"  placeholder="结束时间" required readonly="true" value="{$search_stop_time}"/>
+    <input type="submit" value="查询"/>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<script>
+    $('.am-modal').appendTo('body');
+    //日历
+    $('#my-startDate').datetimepicker();
+    $('#my-endDate').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-alert');
+        $('#my-startDate').datetimepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                alert('开始日期应小于结束日期！');
+                $('#my-startDate').val("");
+            } else {
+                startDate = new Date(event.date);
+                clicktime = 1;
+            }
+            $(this).datetimepicker('close');
+        });
+
+        $('#my-endDate').datetimepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                alert('结束日期应大于开始日期！');
+                $('#my-endDate').val("");
+            } else {
+                endDate = new Date(event.date);
+                clicktime = 1;
+            }
+            $(this).datetimepicker('close');
+        });
+    });
+    function DelSign(id){
+        if(confirm('确定删除该记录吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/operate.html',
+                type : 'POST',
+                dataType : 'json',
+                data : {'id' : id,'oper':1},
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+    function JoinSign(id){
+        if(confirm('确定恢复该记录吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/operate.html',
+                type : 'POST',
+                dataType : 'json',
+                data : {'id' : id,'oper':2},
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+    //导出excel
+    $('#export_excel').click(function(){
+        var search_nickname = $('#search_nickname').val();
+        var search_status = $('#search_status').val();
+        var search_start_time = $('#my-startDate').val();
+        var search_stop_time = $('#my-endDate').val();
+
+        window.open("__CONTROLLER__/SignExport.html?nickname="+search_nickname+"&start_time="+search_start_time+"&stop_time="+search_stop_time+"&status="+search_status,"_blank","width=1000,height=600 ")
+    });
+
+</script>

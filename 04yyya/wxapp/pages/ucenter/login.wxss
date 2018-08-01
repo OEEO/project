@@ -1,0 +1,46 @@
+.Introductory_pages{width:750rpx; height:100%; background:rgba(0,0,0,0.8); position:fixed; left:0; top:0; z-index:999;}
+.Introductory_pages .xxniu{display:block; width:29rpx; height:29rpx; background:url(http://img.yummy194.cn/images/bounced_close_btn@2x.png) no-repeat; background-size:29rpx 29rpx; position:absolute; right:104rpx; top:198rpx;}
+.Introductory_pages .ziliao{width:542rpx; height:760rpx; margin-top:260rpx; margin-left:104rpx;}
+.Introductory_pages .ziliao .bg{width:542rpx; height:667rpx; background:url(http://img.yummy194.cn/images/bounced@2x.png) no-repeat; background-size:542rpx 667rpx; background-color:#FFF;}
+.Introductory_pages .ziliao .bg p{display:inline-block; text-align:center; font-size:31rpx; color:#5D5D5D; width:100%; margin:17rpx 0; letter-spacing:0rpx;}
+.Introductory_pages .ziliao .bg p.ttil{margin-top:271rpx; font-size:38rpx; color:#000;}
+.Introductory_pages .ziliao .bottom{display:block;width:542rpx; height:94rpx; background:url(http://img.yummy194.cn/images/bounced_succesful_btn_h@2x.png) no-repeat; background-size:542rpx 94rpx;}
+
+.agreement_pages{width:750rpx; height:100%; background:rgba(0,0,0,0.8); position:absolute; left:0; top:0; z-index:999;}
+.agreement_pages .user_agreement{width:688rpx; margin:167rpx auto 0rpx auto; background:#fff; border-radius:10rpx; height:75%; overflow:hidden; display: flex; flex-flow: column nowrap; position:relative;}
+.agreement_pages .user_agreement .bg{width:688rpx; line-height:125rpx; height:125rpx; text-align:center; font-size:33rpx; color:#b39851; margin:0 auto; position:absolute; top:0rpx; left:0rpx;}
+.agreement_pages .user_agreement .content{width:583rpx; font-size:28rpx; line-height:40rpx; color:#888888; letter-spacing:0rpx; padding:21rpx 52rpx; overflow:auto; padding-top:0rpx; position:absolute; top:125rpx; left:0rpx; bottom:100rpx; right:0rpx;}
+.agreement_pages .user_agreement .knowe{display:block;width:100%; height:100rpx; border-radius:0 0 10rpx 10rpx; text-align:center; font-size:33rpx; line-height:100rpx; color:#fff; background:#b39851; position:absolute; left:0rpx; bottom:0rpx;}
+page {background: white;}
+.loginBox {width:750rpx; height:100%; min-height:1000rpx; overflow-x:hidden;overflow-y: auto; position:relative; /*background:#f0c552 url(http://img.yummy194.cn/images/loginb.jpg) no-repeat center center / 100% auto;*/}
+.loginBox label {width:542rpx;display:block; position:relative; height:88rpx;border-radius: 6rpx;background: rgba(255, 255, 255, 0.8);}
+.loginBox label.vode{margin:40rpx 0;}
+.loginBox .tel_icon {background:url(http://img.yummy194.cn/images/login_btn_icon.jpg) no-repeat 0 -150rpx / 50rpx auto; height: 50rpx;position: absolute;width: 50rpx; top:10rpx; left:17rpx; display:none;}
+.loginBox .pwd_icon {background:url(http://img.yummy194.cn/images/login_btn_icon.jpg) no-repeat 0 -200rpx / 50rpx auto; height: 50rpx;position: absolute;width: 50rpx; top:10rpx; left:17rpx;}
+.loginBox .ver_icon {background:url(http://img.yummy194.cn/images/login_btn_icon.jpg) no-repeat 0 -250rpx / 50rpx auto; height: 50rpx;position: absolute;width: 50rpx; top:10rpx; left:17rpx; display:none;}
+.disabled {color:#ddd !important; background:#f7f7f7 !important;}
+
+/* 按钮组 */
+.loginBox .logo_img{width:200rpx; height:115rpx; background:url(http://img.yummy194.cn/images/login_logo@3x.png) no-repeat; background-size:100% auto; margin:0 auto; position:absolute; top:83rpx; left:275rpx;}
+/* 短信登录 */
+.loginBox .dx_box {padding:42rpx 104rpx; width:542rpx; position:absolute; left:0; top:250rpx;}
+.loginBox .dx_box input {display:block;}
+.loginBox .dx_box .telephone,.loginBox .dx_box .verifycode {font-size:31rpx; padding:21rpx 21rpx; border:none; background:none; border-radius: 6rpx 6rpx; color:#333;border-bottom: 1rpx solid #ccc;}
+.loginBox .dx_box .telephone{width: 500rpx;}
+.loginBox .dx_box .verifycode{width: 280rpx;}
+.loginBox .dx_box .sendcode {width:200rpx; text-align:center; position:absolute;height:63rpx; line-height:63rpx; right:13rpx; top:13rpx; color:#fff; font-size:25rpx;background: #b39851;border-radius: 6rpx 6rpx;}
+.loginBox .dx_box .sending {background: #ccc;}
+.loginBox .dx_box .submit {width:100%; height:88rpx; line-height: 88rpx; color:#fff;  border:none; background:#b39851; border-radius:6rpx 6rpx;font-size: 31rpx;}
+.loginBox .dx_box .submit.loading {background: #ccc;}
+.loginBox .dx_box .bottom {margin-top:25rpx; font-size:29rpx;}
+.loginBox .dx_box .bottom .wx {float:left; color:#fff;}
+.loginBox .dx_box .bottom .pw {float:right; color:#fff;}
+.loginBox .dx_box .agreement{width:542rpx; line-height:63rpx; text-align:center; font-size:25rpx; color:#b39851; letter-spacing:0rpx; margin-top:21rpx;}
+.loginBox .dx_box .agreement font{text-decoration:underline;}
+
+.loginBox .bb{width:542rpx; line-height:52rpx; color:#fff; text-align:center; position:absolute; bottom:250rpx; left:104rpx; font-size:29rpx; letter-spacing:0rpx;}
+.loginBox .weixin_log{width:113rpx; height:135rpx; color:#fff; text-align:center; position:absolute; top:750rpx; left:318rpx; font-size:25rpx; letter-spacing:0rpx;}
+.loginBox .weixin_log image{width:88rpx; height:88rpx; margin:0 13rpx;}
+
+.placeholder {color: #ccc;}
+.closeicon{position:absolute;top:25rpx;right:25rpx;}

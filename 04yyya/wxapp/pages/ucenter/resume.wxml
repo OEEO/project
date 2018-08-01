@@ -1,0 +1,5 @@
+<form bindsubmit="formSubmit">
+	<textarea class="intro" name="intro" maxlength="400" placeholder="请输入您的个人简介" placeholder-style="color:#ccc;" value="{{introduce !='' ? introduce : ''}}"></textarea>
+	<!--<view class="lastNum">还剩{{num}}字可输入</view>-->
+	<button formType="submit" class="wanc">完成</button>
+</form>

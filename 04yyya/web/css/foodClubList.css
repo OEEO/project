@@ -1,0 +1,97 @@
+@charset "utf-8";
+.page_foodClubList.wrapper {background-color:#f5f5f5;}
+/**********设置图片轮播 默认占用的高度*******8*/
+.page_foodClubList .bodyHead {height:14.6rem; width:36rem; background:#fff;}
+.page_foodClubList .pro_list{display:block; margin-top:1.4rem;background: #fff;}
+.page_foodClubList .list_title {height:5.3rem; text-align: left;padding:0 1.58rem;}
+.page_foodClubList .course .list_title,.page_foodClubList .activited .list_title{border-bottom: 0.1rem solid #eee;}
+.page_foodClubList .list_title span{display:inline;font-size: 1.5rem;line-height: 5.3rem;color: #333;}
+.page_foodClubList .list_title span small{font-size: 0.96rem;color: #ccc;}
+.page_foodClubList .list_title a{color: #888;float: right;font-size: 1.152rem;height: 1.5rem;padding:1.8rem 0;}
+.page_foodClubList .list_title a .more{width: 0.4rem;height: 0.8rem;background:no-repeat url('../images/more.png') 0 0 / 100% 100%;vertical-align: inherit;display: inline-block;margin-left: 0.5rem;  }
+.page_foodClubList .pro_list>ul{width:100%;}
+.page_foodClubList .pro_list>ul>li{width:100%; background-color:#fff; border-bottom:0.1rem solid #eeeeee;}
+.page_foodClubList .pro_list .pro_top{width:34rem; height:4.5rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; padding:1rem; border-bottom:0.1rem solid #eeeeee;}
+.page_foodClubList .pro_list .User_Img{margin-top:0.2rem;margin-right:1.2rem;}
+.page_foodClubList .pro_list .User_Img .imgPortrait{width:4.2rem;height:4.2rem; border:none;}
+
+.page_foodClubList .pro_list .User_Conten{width:29rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_foodClubList .pro_list .User_Conten .Contens{width:75%;letter-spacing:0rem; padding-top:0.2rem;}
+.page_foodClubList .pro_list .User_Conten .Contens .qUserName{font-size:1.5rem;color:#414141;}
+.page_foodClubList .pro_list .User_Conten .Contens .msgDetail{font-size:1.2rem;line-height:1.2rem;letter-spacing:0rem;color:#333333;margin:0.6rem auto;}
+.page_foodClubList .pro_list .User_Conten .Contens .msgDetail .song_mi{float:left;}
+.page_foodClubList .pro_list .User_Conten .Contens .msgDetail .b_right{padding-right:0.8rem; margin-right:0.8rem; border-right:0.1rem solid #8e8e8e;}
+.page_foodClubList .pro_list .User_Conten .Contens .msgDetail font{color:#8e8e8e;}
+.page_foodClubList .pro_list .User_Conten .User_right button {width:4.2rem; height: 2.6rem; margin-top:0.95rem; border:none; background:url(../images/homepage_follow_btn@2x.png) no-repeat 0 0 / 4.2rem 2.6rem; margin-left:1.2rem;}
+.page_foodClubList .pro_list .User_Conten .User_right button.valued {background:url(../images/homepage_follow_btn_pre@2x.png) no-repeat 0 0 / 4.2rem 2.6rem;}
+
+.page_foodClubList .pro_list .pro_center{width:100%; height:23.6rem; overflow:hidden; position:relative;}
+.page_foodClubList .pro_list .pro_center .sellout{width:12rem; height:12rem; position:absolute; top:5.8rem; left:12rem;}
+.page_foodClubList .pro_list .pro_center .sellout img{width:12rem; height:12rem;}
+.page_foodClubList .pro_list .pro_center img{width:100%;}
+.page_foodClubList .pro_list .pro_center span{width:5.6rem; height:2.1rem; line-height:2.1rem; font-size:1.1rem; color:#FFF; text-align:center; background:url(../images/class.png)  0 0 / 5.6rem 2.1rem no-repeat; position:absolute;top:2.2rem; left:0rem;}
+.page_foodClubList .pro_list .pro_center button {width:2rem; height: 2rem; border:none; background:url(../images/soll.png) no-repeat 0 0 / 2rem auto; position:absolute; right:2.5rem; top:1.5rem;}
+.page_foodClubList .pro_list .pro_center button.Collected {background:url(../images/solled.png) no-repeat 0 0 / 2rem auto;}
+
+.page_foodClubList .pro_list .pro_title{width:33rem; margin:0rem auto; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; position:relative;}
+.page_foodClubList .pro_list .pro_title .title_left{width:33rem; max-height:4rem; line-height:2rem; font-size:1.5rem; color:#414141; margin:1.5rem 0rem 0.8rem; letter-spacing:0rem; display:inline-block; overflow:hidden; word-break: normal; word-break: normal; text-overflow:ellipsis;}
+.page_foodClubList .pro_list .pro_title .title_left img{width:3.2rem; height:1.77rem; vertical-align:sub;}
+
+.page_foodClubList .pro_list .pro_buttom{width:33rem; margin:0rem auto; font-size:1.2rem; color:#8c8c8c; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_foodClubList .pro_list .pro_buttom .pro_time,.page_foodClubList .food .b .pro_time{width:14.5rem; height:2rem; padding:0.5rem 0rem; line-height:2rem; text-indent:2.2rem; position:relative; display:inline-block; letter-spacing:0rem;}
+.page_foodClubList .pro_list .pro_buttom .pro_time:before,.page_foodClubList .food .b .pro_time:before{content:''; position:absolute; top:0.6rem; left:0rem; width:1.8rem; height:1.8rem; background:no-repeat url('../images/pro_time2.png') 0 0 / 1.8rem 1.8rem;}
+.page_foodClubList .pro_list .pro_buttom .pro_num,.page_foodClubList .food .b .pro_num{width:11rem; height:2rem; padding:0.5rem 0rem; line-height:2rem; text-indent:2.2rem; position:relative; display:inline-block; letter-spacing:0rem;}
+.page_foodClubList .pro_list .pro_buttom .pro_num:before,.page_foodClubList .food .b .pro_num:before{content:''; position:absolute; top:0.6rem; left:0rem; width:1.8rem; height:1.8rem; background:no-repeat url('../images/pro_time.png') 0 0 / 1.8rem 1.8rem;}
+.page_foodClubList .pro_list .pro_buttom .pro_adress,.page_foodClubList .food .b .pro_adress{width:13rem; padding:0.5rem 0rem;  height:2rem; line-height:2rem; text-indent:2.2rem; position:relative; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:inline-block;}
+.page_foodClubList .pro_list .pro_buttom .pro_adress:before,.page_foodClubList .food .b .pro_adress:before{content:''; position:absolute; top:0.6rem; left:0rem; width:1.8rem; height:1.8rem; background:no-repeat url('../images/adress.png') 0 0 / 1.8rem 1.8rem;}
+.page_foodClubList .pro_list .pro_buttom .price_right{line-height:2.2rem; font-size:1.6rem; color:#ffa315; font-weight:600; display:inline-block;padding: 0.5rem 0rem;width:9rem; text-align: right;}
+.page_foodClubList .pro_list .p_banner {overflow: hidden; display: block; margin-bottom:1.4rem;}
+.page_foodClubList .pro_list .p_banner img {width:100%;}
+.page_foodClubList .pro_list > ul > li.the_end {text-align: center; border-bottom:none; display:block; width:100%; height:3.5rem; background:#f5f5f5; margin-bottom:0rem; padding-top:1rem;}
+.page_foodClubList .no_more {width:15rem; height:3rem; background:url(../images/no_mre.png) 0 0 / 100% 100% no-repeat; margin:0 auto;}
+.page_foodClubList .no_msgs {text-align: center;padding: 1.5rem 0;}
+.page_foodClubList .no_msgs img{width:10rem; height:10rem; margin:8rem 13rem auto 13rem;}
+.page_foodClubList .no_msgs span{display:block; width:36rem; font-size:1.2rem; text-align:center; color:#969696; margin-top:2rem;}
+
+.page_foodClubList .pro_list {padding:0;}
+.page_foodClubList .pro_list .goods_item {display:block; margin-bottom:1rem; background: #fff;}
+.page_foodClubList .pro_list .goods_item img {width:36rem;}
+.page_foodClubList .pro_list .goods_item .title {font-size:1.5rem; line-height:2rem; overflow:hidden; padding: 0.5rem 1rem; max-height:4rem;}
+.page_foodClubList .pro_list .goods_item .bottom {height:2rem;margin:0 1rem;padding:0 0 1.2rem;border-bottom:0.1rem solid #eee;}
+.page_foodClubList .pro_list .goods_item .bottom span {padding: 0 0.8rem;display: inline-block; font-size:1.2rem; line-height:2rem; margin-left: 0.6rem; color:#999; background: #f3f3f3; border-radius: 0.2rem;}
+.page_foodClubList .pro_list .goods_item .bottom .left {line-height:2rem; float: left;}
+.page_foodClubList .pro_list .goods_item .bottom .left font {color:#ffa315;}
+.page_foodClubList .pro_list .goods_item .bottom .price {color:#ffa315; font-size:1.8rem; float: right;}
+
+/********商品列表********/
+.page_foodClubList .food {margin-top:1.4rem; background: #fff; overflow: hidden;}
+.page_foodClubList .food .plist {width:34rem; margin: 0 1rem; height:22.5rem; overflow: hidden;}
+.page_foodClubList .food .list {height:22.5rem;}
+.page_foodClubList .food .list .item {height:22rem; width:26rem; margin:0 0.4rem; position: relative; float: left;}
+.page_foodClubList .food .list .item img {width:26rem;}
+.page_foodClubList .food .list .item .bottom {position: absolute; width:25rem; left:0; right:0; bottom:0; background: #fff; padding: 0.5rem;}
+.page_foodClubList .food .list .item .bottom .t {font-size:1.4rem;color: #2e2e35; line-height:2rem; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.page_foodClubList .food .list .item .bottom .b {height:2rem; margin-top: 0.8rem;color: #7a7b87;}
+.page_foodClubList .food .list .item .bottom .b span {float: left;}
+.page_foodClubList .food .list .item .bottom .b span.post {padding: 0 0.8rem; font-size:1.2rem; line-height:2rem; margin-top: 0.1rem; color:#999; background: #f3f3f3; border-radius: 0.2rem;}
+.page_foodClubList .food .list .item .bottom .b span.left {line-height:2rem;}
+.page_foodClubList .food .list .item .bottom .b span.left font {color:#ffa315;}
+.page_foodClubList .food .list .item .bottom .b .price {color:#ffa315; font-size:1.4rem; float: right;font-weight: bold;}
+.page_foodClubList .food .list .item button {width:2rem; height: 2rem; border:none; background:url(../images/soll.png) no-repeat 0 0 / 2rem 2rem; position:absolute; right:1.5rem; top:1.5rem;}
+.page_foodClubList .food .list .item button.Collected {background:url(../images/solled.png) no-repeat 0 0 / 2rem 2rem;}
+.page_foodClubList .food .b .pro_num{padding:0;}
+.page_foodClubList .food .b .pro_adress{width: 8rem;padding: 0;}
+.page_foodClubList .food .b .pro_time{width: 12rem;padding: 0;}
+.page_foodClubList .food .b .pro_num:before,.page_foodClubList .food .b .pro_adress:before,.page_foodClubList .food .b .pro_time:before{top:0;}
+/*厨房+*/
+.page_foodClubList .food.kitchen_list .plist,.page_foodClubList .food.kitchen_list .list{height: 31rem;}
+.page_foodClubList .food.kitchen_list .list .item{height:30.88rem;width: 25rem;}
+.page_foodClubList .food.kitchen_list .item img {width: 25rem;height: 24.5rem;}
+.page_foodClubList .food.kitchen_list .list .item .bottom{width: 24rem;}
+.page_foodClubList .food.kitchen_list a .category {background: #010101 none repeat scroll 0 0;border-radius: 0.3rem;height: 2.2rem;left: 1.2rem;line-height: 2.2rem;padding: 0 0.5rem;position: absolute;text-align: center;top: 2rem;color: #fff;}
+.page_foodClubList .food.kitchen_list .bottom .t .title {width: 13rem;display: inline-block;float: left;font-size: 1.536rem;text-align: left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; }
+.page_foodClubList .food.kitchen_list .bottom .t .size{color: #D49B1F;font-size: 1.152rem;float: right; }
+.page_foodClubList .food.kitchen_list a .icons {width: 25rem;height:3.8rem;text-align: center;background:url(../images/cover.png) no-repeat 0 0 / 25rem 3.8rem;position: absolute;bottom: 6.3rem;left: auto;  }
+.page_foodClubList .food.kitchen_list a .icons span {display:inline-block; width:2.1rem; height:2.2rem; margin:0.8rem 0;}
+.page_foodClubList .food.kitchen_list a .icons span img{width:2.1rem; height:auto;}
+.page_foodClubList .foodbanner{width: 36rem;}

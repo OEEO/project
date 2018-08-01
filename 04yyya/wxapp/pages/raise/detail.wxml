@@ -1,0 +1,136 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="raise-detail" bindscroll="scroll" scroll-y="true" bindscroll="scroll">
+  <block wx:if="{{video_url}}">
+    <video class="raise_video" src="{{video_url}}" poster="{{path}}" controls></video>
+  </block>
+  <block wx:else>
+    <image src="{{path}}" class="raise_image"/>
+  </block>
+  <!-- 众筹简介等 -->
+  <view class="raise-info">
+    <image class="raise_mem_img" src="{{headpath}}" binderror="nofind"></image>
+    <view class="raise-info_sub">
+      <text class="raise-info_sub_nickname">{{nickname}}</text>
+      <view class="raise-info_sub_text">{{ city_name }}
+        <view class="slat-point">·</view>
+        {{ time }}
+      </view>
+    </view>
+  </view>
+  <view class="raise-base-info">
+    <text class="raise-title">{{ title }}</text>
+    <text class="raise-introduction">{{ introduction }}</text>
+    <!-- progress -->
+    <block wx:if="{{ status !== 0 && status !== -1 }}">
+        <view class="raise-progress-box">
+            <view class="raise-progress">
+                <view class="raise-progress_line" style="width: {{progress}}">
+                <view class="raise-progress_point"></view>
+                <text class="raise-progress_text">{{ progressTitle }}</text>
+                </view>
+            </view>
+            <view class="raise-target-box">
+                <text class="raise-target">目标金额（¥）{{total}}</text>
+            </view>
+        </view>
+        <view class="raise-statistics-box">
+            <view class="raise-statistics">
+                <view class="raise-statistics_item">
+                    <text class="sm-text">已认筹(￥)</text>
+                    <text class="bg-text">{{ totaled }}</text>
+                </view>
+                <view class="raise-statistics_item">
+                    <text class="sm-text">认筹人数</text>
+                    <text class="bg-text">{{ sum }}</text>
+                </view>
+                <view class="raise-statistics_item">
+                    <text class="sm-text">剩余天数</text>
+                    <text class="bg-text">{{ less_day }}</text>
+                </view>
+            </view>
+        </view>
+    </block>
+  </view>
+  <!-- 众筹功能区 -->
+  <view class="raise-detail-block">
+    <view class="raise-selector_nav">
+      <view class="raise-selector">
+        <view
+          wx:for="{{selectorItems}}"
+          wx:for-index="idx"
+          wx:for-item="itemName"
+          wx:key="key"
+          bindtap="switchItem"
+          data-index="{{itemName.key}}"
+          wx:if="{{ !(status === 0 && (itemName.key === 1 || itemName.key === 2))  }}"
+          class="raise-selector-item {{cur_index === itemName.key ? 'active' : ''}}">
+          {{ itemName.name }}
+        </view>
+      </view>
+    </view>
+    <scroll-view class="raise-content">
+      <block wx:if="{{ cur_index === 0 }}">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </block>
+      <block wx:elif="{{ cur_index === 1 }}">
+        <template is="wxParse" data="{{wxParseData:awards.nodes}}" />
+      </block>
+      <view wx:elif="{{ cur_index === 2 }}" class="concact-content">
+        <view>
+          <view class="wxParse-p text-center">
+            <text>关于项目的详细信息，或有任何问题 \n
+          欢迎添加小助理咨询</text>
+          </view>
+          <view class="tips">小助理微信号：yami194</view>
+          <image class="wx-icon" src="../../images/wx_icon.png"></image>
+          <button class="copy-btn" bindtap="copyWX">点击复制微信号</button>
+        </view>
+      </view>
+      <view wx:elif="{{ cur_index === 3 }}" class="riskTips-content">
+        <view class="raise-tag">关于项目</view>
+        <view class="wxParse-p">
+          该项目须在{{ end_time }} 前达到{{ total }}元目标金额才算成功，否则已支持订单将取消；订单取消时已支付金额将自动退还到您的个人账号。
+        </view>
+        <view class="raise-tag">什么是众筹?</view>
+        <view class="wxParse-p">
+          人们不是在这里购买已经存在的商品——我们是在参与创意。实现创意并不总是那么容易，一些项目会完成得很精彩，还有一些会遇到想不到的问题————但请对它们保持耐心。
+        </view>
+        <view class="wxParse-p">
+          发起者对他们的项目负责。一旦你支持一个项目，你需要相信发起者可以很好的完成他的工作。你可以对发起者做一点研究，了解他们的经验、名声。支持者也要判断什么是值得支持的项目。一些项目并不会按照计划进行，所以众筹的项目发起者在这里详细记录他们的计划进展，但是没有事情是可以保证。当您支持一个项目，您需要记住这点。
+        </view>
+        <view class="raise-tag">如何找到我们?</view>
+        <view class="wxParse-p line-p">
+          <text>官方客服微信号：yami194</text>
+          <text>客服热线：020-23336323</text>
+          <text>官方邮箱：service@yami.ren</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 倒计时 -->
+  <view class="raise-count-down" wx:if="{{ status === 0 && is_preview != 1}}">
+    <text class="bg">{{ countDown[0] }}</text>
+    <text class="sm">天</text>
+    <text class="bg">{{ countDown[1] }}</text>
+    <text class="sm">时</text>
+    <text class="bg">{{ countDown[2] }}</text>
+    <text class="sm">分</text>
+    <text class="bg">{{ countDown[3] }}</text>
+    <text class="sm">秒</text>
+    <button class="star-btn" bindtap="changeCollect">
+      {{ isCollect === '0' ? '关注' : '取消关注' }}
+    </button>
+  </view>
+  <view  wx:if="{{ is_preview == 1 }}">
+    <view class="raise-standby-btn {{ isCollect == 1 ? 'disabled' : 'actived' }}" bindtap="changeCollect">
+       <!-- {{ status_title }} -->
+      {{ isCollect === '0' ? '关注' : '取消关注' }}
+    </view>
+  </view>
+  <view  wx:if="{{ is_preview != 1 && is_preview != -1 }}">
+    <view class="raise-standby-btn {{ status === 2 ? 'disabled' : 'actived' }}" bindtap="gotoReturnPage">
+        {{ status_title }}
+    </view>
+  </view>
+</view>

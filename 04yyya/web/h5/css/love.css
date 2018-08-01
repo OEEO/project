@@ -1,0 +1,19 @@
+@charset "utf-8";
+*,html,body{padding:0px;margin:0px;}
+.div{position: relative;}
+img{width: 100%;height: 100%;display: block;}
+a{width: 2.08rem;height: 0.75rem; background:rgba(0,255,0,0);position: absolute;z-index: 99;}
+.o .one{top: 12.78rem;right: 1.75rem}
+.o .two{bottom: 2.1rem;right: 1.78rem}
+
+.s .one{top: 8.58rem;right: 1.78rem}
+.s .two{bottom: 4.35rem;right: 1.80rem}
+
+.t .one{top: 8.52rem;right: 1.80rem;}
+.t .two{bottom: 0.35rem;right: 1.78rem;}
+
+.f .one{top: 9.88rem;right: 2rem}
+.f .two{bottom:1.98rem;right: 2.06rem}
+
+.l .one{top: 8.46rem;right: 1.82rem;}
+.l .two{bottom: 1.75rem;right: 1.80rem;}

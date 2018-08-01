@@ -1,0 +1,163 @@
+@import url(./color.less);
+.path-selector {
+    background: #f0f0f0;
+    // margin-bottom: 35px;
+    background: #fff;
+    height: 120px;
+
+    & .path-selector_row {
+        width: 1200px;
+        margin: auto;
+        position: relative;
+
+        & > a {
+            padding: 50px 0 20px;
+            line-height: 1;
+            font-size: 24px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 80px;
+            text-decoration: none;
+            color: @grey;
+            position: relative;
+
+            &.active {
+                &:before {
+                    content: '';
+                    width: 100%;
+                    height: 6px;
+                    background: @pink;
+                    position: absolute;
+                    bottom: 0;
+                    transform: skew(-45deg);
+                }
+            }
+        }
+    }
+
+    & .path-caret {
+        display: inline-block;
+        width: 11px;
+        height: 7px;
+        background: transparent url(../assets/caret.png) no-repeat 100% / 100%;
+        background-size: 100% 100%;
+        margin-left: 7px;
+    }
+
+    & .team-collapse {
+        display: none;
+        position: absolute;
+        top: 120px;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 100;
+        box-shadow: 0 0 10px #ddd;
+
+        & .team-collapse-header {
+            position: relative;
+            color: #6b8098;
+            font-size: 20px;
+            width: 100%;
+            background: #47556c;
+            padding: 0 25px;
+            height: 48px;
+            line-height: 48px;
+            box-sizing: border-box;
+
+            & span {
+               margin-right: 10px;
+
+               &.white-tag {
+                   color: #fff;
+               }
+
+               &:hover {
+                   cursor: pointer;
+               }
+            }
+
+            & .active {
+                color: #fff;
+            }
+
+            &:before {
+                content: '';
+                width: 0;
+                height: 0;
+                border-bottom: 16px solid #47556c;
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+                position: absolute;
+                top: -16px;
+                left: 346px;
+            }
+        }
+    }
+
+    & .team-collapse-wrap {
+        width: 100%;
+        background: #fff;
+
+        & .team-collapse-wrap_header {
+            background: #f0f0f0;
+            width: 100%;
+            height: 36px;
+
+            & .pink-block {
+                display: inline-block;
+                width: 170px;
+                height: 36px;
+                background: transparent url(..//assets/pink-block.png) no-repeat 100% 100%;
+                background-size: 100% 100%;
+                line-height: 36px;
+                color: #fff;
+                padding: 0 25px;
+                box-sizing: border-box;
+            }
+
+            & .group-name {
+                // vertical-align: middle;
+            }
+
+            & .star {
+                display: inline-block;
+                width: 21px;
+                height: 20px;
+                background: transparent url(../assets/star.png) no-repeat 100% 100%;
+                line-height: 1;
+                vertical-align: text-top;
+                margin-right: 12px;
+            }
+        }
+
+        & .team-collapse-wrap_body {
+            width: 100%;
+            font-size: 0;
+
+            & .team-item {
+                width: 200px;
+                display: inline-block;
+                vertical-align: top;
+                font-size: 16px;
+                color: #272727;
+                padding: 10px 15px;
+                box-sizing: border-box;
+                text-decoration: none;
+
+
+                & img {
+                    display: inline-block;
+                    width: 60px;
+                    height: 60px;
+                    vertical-align: middle;
+                }
+
+                & span {
+                    vertical-align: middle;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}

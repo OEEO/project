@@ -1,0 +1,317 @@
+<style>
+.setting input {width:100%; text-align: center;}
+.imgBox {background-color: #eee; outline: none; border: 1px solid #ddd; margin:0 5px 5px 0; display: inline-block; height: 80px; width: 80px; overflow: hidden;}
+.imgBox img {object-fit: cover; width: 80px; height:80px;}
+.imgAdd:before {content:'+';}
+.imgAdd.uploading:before {content:''; width:100%;height:100%;display:inline-block; background:#fff url(__RS__/images/loading.gif) no-repeat center center / 25% auto;}
+.imgAdd {color: #ccc; font-family: arial; font-size: 32px; line-height: 80px; text-align: center;}
+.bg_pic {background-position: center; background-size: cover;}
+
+.diybox {background-color:#ffffff; overflow: hidden;margin-left:20px; position: relative; width:360px; height:540px; border:solid 1px #ddd; background-position: center top; background-repeat: no-repeat;}
+.diybox img {position: absolute; left:0; right:0;}
+.diybox .userbox {border:solid 1px #ddd;background:#eee;position: absolute;}
+
+.setting ul,.setting li {list-style: none; margin:10px 0 !important; padding: 0 !important;}
+.setting li div {padding: 0;}
+.diybox font {border:dashed 1px #ddd; position: absolute;}
+.diybox font span {background: #ccc; position: absolute; right:-10px; top:-10px; width:20px; height:20px; line-height: 20px; text-align: center; color:#fff; border-radius: 50%; vertical-align: middle;}
+
+.am-u-sm-2 {padding: 0 0.5rem;}
+</style>
+
+<?php if(!isset($_GET['act'])):?>
+<a type="button" id="select" class="am-btn am-btn-primary" href="DIYImage.html?act=add">添加DIY模板</a>
+
+<br/>
+
+{:W('Cate/table', array($datalist, $lang, $operations))}
+
+<script>
+$('.am-modal').appendTo('body');
+
+function del(id){
+    $.post('DIYImage.html?act=del', {diy_id:id}, function(d){
+        alert(d.info);
+        if(d.status == 1){
+            location.reload(true);
+        }
+    }, 'json');
+}
+</script>
+
+<?php elseif($_GET['act'] == 'add' || $_GET['act'] == 'update'):?>
+
+<form name="boxsetting" class="am-form setting am-fl" style="padding-top:20px;">
+    <div class="am-margin am-g">
+        <div class="am-u-sm-4 am-text-right">模板标题:</div>
+        <div class="am-u-sm-6"><input type="text" name="title" maxlength="50" placeholder="模板标题.." value="{$title}"></div>
+        <div class="am-u-sm-2"></div>
+    </div>
+    <div class="am-margin am-g">
+        <div class="am-u-sm-4 am-text-right">背景色码:</div>
+        <div class="am-u-sm-3"><input type="text" name="bg_color" placeholder="#FFFFFF" value="#{$bg_color}"></div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-margin am-g">
+        <div class="am-u-sm-4 am-text-right">背景图片:</div>
+        <div class="am-u-sm-8">
+            <a href="javascript:void(0);" class="imgBox imgAdd bg_pic" <?php if($bg_path):?>style="background-image:url({$bg_path});"<?php endif;?>></a>
+            <input type="hidden" name="bg_pic_id" value="{$bg_pic_id}">
+        </div>
+    </div>
+    <div class="am-margin am-g">
+        <div class="am-u-sm-4 am-text-right">DIY占位区域:</div>
+        <div class="am-u-sm-2"><input type="text" name="boxwidth" class="am-input-sm" placeholder="宽度" value="{$box_width}"></div>
+        <div class="am-u-sm-2"><input type="text" name="boxheight" class="am-input-sm" placeholder="高度" value="{$box_height}"></div>
+        <div class="am-u-sm-4"><button type="button" class="am-btn userboxBtn">插入/移除</button></div>
+    </div>
+    <div class="am-margin am-g">
+        <div class="am-u-sm-4 am-text-right">自定义文本:</div>
+        <ul class="am-u-sm-8 datatext">
+            <li class="am-g addtext">
+                <div class="am-u-sm-4"><input type="text" class="fontsize" placeholder="字体大小.."></div>
+                <div class="am-u-sm-4"><input type="text" class="fontcolor" placeholder="色码.."></div>
+                <div class="am-u-sm-4"><button type="button" class="am-btn textAddBtn">+</button></div>
+            </li>
+        </ul>
+    </div>
+    <div class="am-margin am-g">
+        <div class="am-u-sm-4 am-text-right">自定义元素:</div>
+        <div class="am-u-sm-8">
+            <a href="javascript:void(0);" class="imgBox imgAdd item_pic"></a>
+        </div>
+    </div>
+    <div class="am-margin am-g">
+        <div class="am-u-sm-4 am-text-right"></div>
+        <div class="am-u-sm-8"><input type="submit" class="am-btn am-btn-success" value="保存DIY模板"></div>
+    </div>
+</form>
+<div class="diybox am-fl" <?php if($bg_path):?>style="background-image:url({$bg_path});background-size:<?=$bg_width/750*360?>px auto;"<?php endif;?>></div>
+
+<script>
+var depth = 1;
+var diy_id = "<?=I('get.diy_id', 0)?>";
+
+$(function(){
+    <?php if($box_depth)echo "depth = Math.max(" . $box_depth . ", depth) + 1;";?>
+    <?php if($box_depth)echo "inputBox(".$box_depth.",[".$box_pos."]);";?>
+    <?php if(isset($datas) && !empty($datas)):?>
+    <?php foreach($datas as $row):?>
+    var file = JSON.parse('<?=json_encode($row)?>');
+    inputPic(file, [file.pos[0] / 750 * 360, file.pos[1] / 750 * 360]);
+    depth = Math.max(file.depth, depth) + 1;
+    <?php endforeach;?>
+    <?php endif;?>
+    <?php if(isset($textdatas) && !empty($textdatas)):?>
+    var textdata = JSON.parse('<?=$textdatas?>');
+    for(var i in textdata){
+        var text = textdata[i];
+        addText(text.pos, text.name, text.fontsize, text.fontcolor);
+        depth = Math.max(text.pos[2], depth) + 1;
+    }
+    <?php endif;?>
+});
+
+function inputPic(file, pos){
+    pos = pos||[0,0];
+    var box = $('<a href="javascript:void(0);" class="imgBox"></a>');
+    $('<img>').attr({
+        'data-id':file.pic_id,
+        'src':file.path
+    }).load(function(){
+        $(this).attr('data-width', this.width);
+        $(this).attr('data-height', this.height);
+        $(this).attr('data-depth', file.depth);
+        $('.item_pic').before(box.append(this));
+        box.click();
+    });
+    box.click(function(){
+        var img = $(this).children('img');
+        var pic_id = img.data('id');
+        if($('.diybox img[data-id="'+ pic_id +'"]').length > 0){
+            $('.diybox img[data-id="'+ pic_id +'"]').remove();
+            $(this).find('img').removeAttr('data-depth');
+        }else{
+            var dp = img.data('depth') || depth++;
+            var width = img.data('width') / 750 * 360;
+            var height = img.data('height') / 750 * 360;
+            $('<img>').width(width).height(height)
+                .attr('src', img.attr('src'))
+                .attr('data-id', pic_id)
+                .css({
+                    left : pos[0],
+                    top : pos[1],
+                    zIndex : dp
+                }).appendTo('.diybox')
+                .drag({
+                    parent : '.diybox',
+                    start : function(em, pos){},
+                    move : function(em, pos){},
+                    moveout : function(em){
+                        em.remove();
+                    },
+                    end : function(em, pos){}
+                });
+        }
+    });
+}
+
+$('.addtext button').on('click', addText);
+
+function addText(pos, name, fontsize, fontcolor){
+    var pos = pos || [0, 0, depth ++];
+    var name = name || 'text_' + Math.round(Math.random()*10000);
+    var fontsize = parseInt(fontsize || $('.addtext .fontsize').val());
+    var fontcolor = fontcolor || $('.addtext .fontcolor').val();
+
+    var r = 36 / 75;
+    var textEm = $('<font>'+ name +'</font>').css({
+        left : pos[0] * r + 'px',
+        top : pos[1] * r + 'px',
+        zIndex : pos[2],
+        fontSize : fontsize * r + 'px',
+        color : fontcolor
+    }).attr({
+        'data-name' : name,
+        'data-fontsize' : fontsize,
+        'data-color' : fontcolor
+    }).appendTo('.diybox').drag({
+        parent : '.diybox',
+        start : function(em, pos){},
+        move : function(em, pos){},
+        moveout : function(em){
+            em.remove();
+        },
+        end : function(em, pos){}
+    });
+
+    var text = $('.addtext').clone(true).removeClass('addtext');
+    $('.addtext').before(text);
+    text.find('.fontsize').val(fontsize).on('keyup', function(){
+        textEm.css('fontSize', parseInt(this.value) * r + 'px').attr('data-fontsize', parseInt(this.value));
+    });
+    text.find('.fontcolor').val(fontcolor).on('keyup', function(){
+        textEm.css('color', this.value).attr('data-color', fontcolor);
+    });
+    text.find('button').text('-').off('click').on('click', function(){
+        textEm.remove();
+        text.remove();
+    });
+}
+
+function inputBox(depth, pos){
+    pos = pos||[0,0];
+    var boxEm = $('<div>').width($(document.boxsetting.boxwidth).val()/750*360).height($(document.boxsetting.boxheight).val()/750*360);
+    boxEm.addClass('userbox');
+    boxEm.css({left:pos[0]/750*360,top:pos[1]/750*360,'z-index':depth});
+    boxEm.appendTo('.diybox');
+    boxEm.drag({
+        parent : '.diybox',
+        start : function(em, pos){},
+        move : function(em, pos){},
+        moveout : function(em){
+            em.remove();
+        },
+        end : function(em, pos){}
+    });
+}
+
+$(document.boxsetting.bg_color).change(function(){
+    $('.diybox').css('background-color', $(this).val());
+});
+$('.bg_pic').click(function(){
+    if($(this).hasClass('uploading'))return false;
+    pic_upload(this, [750,0], function(files){
+        var file = files[0];
+        $('<img>').attr('src', file.path).load(function(){
+            var width = this.width / 750 * 360;
+            $('.bg_pic').css('background-image', 'url('+file.path+')');
+            $('.diybox').css({
+                'background-image' : 'url('+file.path+')',
+                'background-size' : width+'px auto'
+            });
+        });
+        $(document.boxsetting.bg_pic_id).val(file.pic_id);
+    }, false);
+});
+$('.item_pic').click(function(){
+    if($(this).hasClass('uploading'))return false;
+    png_upload(this, function(files){
+        for(var i in files){
+            var file = files[i];
+            inputPic(file);
+        }
+    });
+});
+$('.userboxBtn').click(function(){
+    if($('.diybox .userbox').length > 0){
+        $('.diybox .userbox').remove();
+    }else{
+        inputBox(depth++);
+    }
+});
+
+$(document.boxsetting).submit(function(){
+    if(document.boxsetting.title.value == ''){
+        alert('请输入标题!');
+        return false;
+    }
+    if(document.boxsetting.bg_color.value == ''){
+        alert('请输入背景色码!');
+        return false;
+    }
+    if(document.boxsetting.bg_pic_id.value == ''){
+        alert('请添加背景图片!');
+        return false;
+    }
+    if($('.diybox > .userbox').length == 0){
+        alert('请添加用户DIY区域!');
+        return false;
+    }
+    var data = {};
+    if(diy_id != 0)data.diy_id = diy_id;
+    data.title = document.boxsetting.title.value;
+    data.bg_color = document.boxsetting.bg_color.value.replace('#', '');
+    data.bg_pic_id = document.boxsetting.bg_pic_id.value;
+    data.box_size = document.boxsetting.boxwidth.value+','+document.boxsetting.boxheight.value;
+    var left = Math.round($('.diybox .userbox').position().left / 360 * 750);
+    var top = Math.round($('.diybox .userbox').position().top / 360 * 750);
+    data.box_pos = left +','+ top;
+    data.box_depth = parseInt($('.diybox .userbox').css('z-index'));
+
+    data.textdatas = [];
+    $('.diybox font').each(function(){
+        var r = 75 / 36;
+        var left = Math.round($(this).position().left * r);
+        var top = Math.round($(this).position().top * r);
+        var zindex = parseInt($(this).css('z-index'));
+        data.textdatas.push({
+            pos : [left, top, zindex],
+            name : $(this).data('name'),
+            fontsize : $(this).data('fontsize'),
+            fontcolor : $(this).data('color')
+        });
+    });
+
+    data.datas = [];
+    $('.diybox img').each(function(){
+        var left = Math.round($(this).position().left / 360 * 750);
+        var top = Math.round($(this).position().top / 360 * 750);
+        data.datas.push({
+            pic_id : $(this).data('id'),
+            pos : [left, top],
+            depth : parseInt($(this).css('z-index'))
+        });
+    });
+
+    $.post('?act=save', data, function(d){
+        if(d.status == 1 && /^\d+$/.test(d.info)){
+            diy_id = d.info;
+            alert('模板添加成功!');
+        }else
+            alert(d.info);
+    }, 'json');
+    return false;
+});
+</script>
+<?php endif;?>

@@ -1,0 +1,79 @@
+@charset "utf-8";
+/**订单详情**/
+/**顶部菜单部分**/
+.header{position:relative;}
+/***消费码部分***/
+.consumerCode .consumptionStatusTop{margin-top:0.5rem;height:2.6rem;line-height:2.6rem;}
+.consumerCode .consumptionStatusTop .consumptionStatusLeft{font-size:1.4rem;color:#9b9b9b;float:left;}
+.consumerCode .consumptionStatusTop .consumptionStatusRight{font-size:0.9rem;color:#585858;float:right;height:1.8rem;line-height:1.8rem;padding:0 0.8rem;border:#585858 solid 0.1rem;}
+
+.consumerCode{margin:0 1.8rem;}
+.consumerCodeList{margin-top:0.6rem;line-height:2.6rem;}
+.consumerCodeList li{color:#585858;font-size:1.3rem;}
+.consumerCodeList li span{font-size:1.3rem;float:right;margin-right:0.4rem;}
+.consumerCode .consumerCodeInf{font-size:1.4rem;color:#9b9b9b;height:4.4rem;line-height:4.4rem;margin-top:1rem;border-top:0.1rem solid #ccc;}
+.consumerCode .consumerCodeInf .consumerCodeInfDate{font-size:1.35rem;float:right;color:#585858;margin-right:0.4rem;}
+
+/***************************** 活动部分***************************************/
+.orderInf .actInfTitle{line-height:4rem;height:4rem;border-bottom:0.1rem solid #e1e1e1;margin:auto 1rem;padding:0 0.8rem;}
+.orderInf .actInfTitle .actInfDaren{font-size:1.35rem;float:left;}
+.orderInf .actInfTitle .actInfconnect{font-size:1.3rem;float:right;display:inline-block;}
+
+
+.orderListLeft{float:left;width:11.38rem;height:7.28rem;margin:0.8rem;margin-left:1.8rem;/*margin-top:0.6rem;*/}/*图片*/
+.orderListLeft .orderTypeBg{line-height:2rem;height:2rem;width:4.5rem;position:absolute;background:rgba(0,0,0,0.5);}/*订单分类 饭局、商品 等 的背景*/
+.orderListLeft .orderType{font-size:1.2rem;color:#fff;line-height:2rem;height:2rem;width:4.5rem;position:absolute;text-align:center;}/*订单分类 饭局、商品 等*/
+
+.orderListRight{float:left;width:20rem;margin-top:0.8rem;}/*右侧信息列表*/
+.orderTitle{font-size:1.4rem;color:#636363;height:4rem;overflow:hidden;/*white-space:nowrap;text-overflow:ellipsis;*/}/*右 商品标题*/
+.orderTime{font-size:1.35rem;color:#a6a6a6;margin-top:0.2rem;}/*右 时间、邮费等*/
+.orders{font-size:1.3rem;color:#594943;float:left;}/*右 商品 量*/
+.status{font-size:1.3rem;color:#d41a49;float:right;margin-right:0.6rem;}/*右 合计*/
+.goodsBetweens{background:#ccc;margin:0 1rem;height:0.15rem;}/*商品与状态之间的横线 */
+
+/***/
+
+/**收货地址等的相关布局设置**/
+.orderDetail{margin:0 1.4rem;text-indent:0.4rem;}
+.orderDetail li{font-size:1.4rem;color:#a8a8a8;font-family:'宋体';/*font-weight:600;*/height:4.6rem;line-height:4.6rem;border-top:0.1rem solid #f0f0f0;}
+.orderDetail li span{font-size:1.3rem;color:#585858;margin-right:0.6rem;text-indent:0;line-height:4.6rem;float:right;height:4.6rem;}
+.orderDetail .orderAddress span,.orderDetail .leaveWords span{display:inline-block;margin:1.2rem 0;height:auto;text-align:left;line-height:1.8rem;width:70%;}
+/****/
+
+
+/**页面底部涉及联系客服部分布局**/
+.orderDetailBottom{font-size:1.2rem;color:#bdbec2;background:#ebecf0;line-height:2.2rem;display:block;padding-top:0.4rem;padding-bottom:2.6rem;padding-left:1.8rem;}
+.orderDetailBottom .services{background:url('../images/phone2_normal@2x.png')no-repeat left center;text-indent:2rem;background-size:1.1rem 1.1rem;}
+
+/**底部菜单布局设置**/
+.bottomBlank{clear:both;height:4.5rem;background:#ccc;}
+.orderBottom{height:4.5rem;width:100%;position:fixed;bottom:0;}
+.orderBottom>div{height:4.5rem;line-height:4.5rem;float:left;width:50%;text-align:center;}
+.orderBottom .left{font-size:1.3rem;width:45%;background:#fff;}
+.orderBottom .left span i{font-size:1.6rem;}
+.orderBottom .right{width:55%;background:#fbd74b;}
+.orderBottom .right a{font-size:1.6rem;color:#fff;}
+/***************/
+
+.content{-webkit-filter: blur(0.25rem); /* Chrome, Opera */-moz-filter: blur(0.25rem); -o-filter: blur(0.25rem);-ms-filter: blur(0.25rem);filter: blur(0.25rem);}
+/**************/
+.QRcode{min-height:100%;width:100%;position:fixed;top:0;z-index:9998;background:rgba(0,0,0,0.3);display:none;}
+.QRcode .views{width:28rem;margin-left:3rem;text-align:center;background:#fff;position:absolute;z-index:9999;}
+.QRcode .views .a{font-size:1.68rem;color:#000;height:5.4rem;line-height:5.4rem;}
+.QRcode .views .b{font-size:1.4rem;color:#6c6c6c;height:4.2rem;line-height:4.2rem;margin:0 2rem;border-top:0.1rem solid #e1e1e1;border-bottom:0.2rem dashed #e1e1e1;}
+.QRcode .views .c{font-size:1.68rem;color:#000;margin:1.2rem 0;}
+.QRcode .views .d{margin:0 auto;margin-bottom:2rem;width:16rem;overflow:hidden;}
+.QRcode .views .d img{width:16rem;height:16rem;}
+.QRcode .views .d .dBtm{font-size:1.32rem;color:#636363;margin:1rem auto;}
+.QRcode .closed{width:10%;position:absolute;margin-top:1.2rem;left:45%;}
+
+/*
+.timesLay .views{width:28rem;height:60%;margin-left:3rem;text-align:center;background:#fff;position:absolute;z-index:9999;}
+
+.timesLay .views .a{font-size:1.68rem;color:#000;height:5.4rem;line-height:5.4rem;}
+.timesLay .views .b{margin:0 1.8rem;border-top:0.1rem solid #e1e1e1; text-align:center;}
+.timesLay .views .b>div{font-size:1.1rem; color:#585858; line-height:2rem;width:45%; display:inline-block;margin:1rem 2%; background:#eee;padding:0.3rem 0;}
+.timesLay .views .b>div>p{margin:0;padding:0;}
+.timesLay .closed{width:10%;position:absolute;margin-top:1.2rem;left:45%;}
+
+*/

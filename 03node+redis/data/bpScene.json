@@ -1,0 +1,57 @@
+[
+    {
+        "label": "BP状态码",
+        "value": "scene",
+        "children": [
+            {
+                "label": "左队Ban1",
+                "value": "BAN_1"
+            }, {
+                "label": "右队Ban1",
+                "value": "BAN_2"
+            }, {
+                "label": "左队Ban2",
+                "value": "BAN_3"
+            }, {
+                "label": "右队Ban2",
+                "value": "BAN_4"
+            }, {
+                "label": "左队Pick1",
+                "value": "PICK_1"
+            }, {
+                "label": "右队Pick1，Pick2",
+                "value": "PICK_2"
+            }, {
+                "label": "左队Pick2，Pick3",
+                "value": "PICK_3"
+            }, {
+                "label": "右队Pick3",
+                "value": "PICK_4"
+            }, {
+                "label": "右队Ban3",
+                "value": "BAN_5"
+            }, {
+                "label": "左队Ban3",
+                "value": "BAN_6"
+            }, {
+                "label": "右队Ban4",
+                "value": "BAN_7"
+            }, {
+                "label": "左队Ban4",
+                "value": "BAN_8"
+            }, {
+                "label": "右队Pick4",
+                "value": "PICK_5"
+            }, {
+                "label": "左队Pick4，Pick5",
+                "value": "PICK_6"
+            }, {
+                "label": "右队Pick5",
+                "value": "PICK_7"
+            }, {
+                "label": "最后调整（40s）",
+                "value": "LAST_ADJUST"
+            }
+        ]
+    }
+]

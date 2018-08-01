@@ -1,0 +1,100 @@
+@charset "utf-8";
+.page_confirmEnrolling {background:#f5f5f5;}
+/***********************************************************************/
+.page_confirmEnrolling .pageTitleMenu {background:#fff; margin: 0.5rem 1rem; padding: 0.5rem; box-shadow: 0 0 0.1rem #ccc; border-radius: 2%}
+
+.page_confirmEnrolling .pageTitleMenu .title_top{width:36rem; height:8rem; border-top:0.1rem solid #b2b2b2;}
+
+.page_confirmEnrolling .pageTitleMenu .Left {float:left;width:12rem;height:8rem; overflow: hidden;}/*设置活动图片的容器*/
+.page_confirmEnrolling .pageTitleMenu .Left img{width: 100%;height:8rem;}/*设置图片铺满容器*/
+
+.page_confirmEnrolling .pageTitleMenu .Right{height:7rem;float:right;display: block;width:20.5rem; padding-top:0.8rem;}
+.page_confirmEnrolling .pageTitleMenu .Right .title{height:4rem;line-height:2rem;font-size:1.5rem;color:#333;overflow: hidden;}
+.page_confirmEnrolling .pageTitleMenu .Right .price{font-size:1.4rem;color:#888888;margin-top:0.5rem;display: inline;}
+.page_confirmEnrolling .pageTitleMenu .Right .limit{float: right;}
+.page_confirmEnrolling .pageTitleMenu .Right font{font-size:1.5rem;color:#b39851;}
+
+.page_confirmEnrolling .li_item .cao_dan{color:#8c8c8c;font-size:1.4rem; width:34rem;height:5rem;line-height:5rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; overflow:hidden;}
+.page_confirmEnrolling .li_item .cao_dan .buy_st{width:50%; color:#888888; font-size:1.4rem;height:5rem;line-height:5rem; text-align:center;}
+.page_confirmEnrolling .li_item .cao_dan .add_bg{color:#fff; background-color:#b39851;}
+.page_confirmEnrolling .kill_all .kill_bottom{display:block; width:35rem; line-height:2.5rem; text-align:right; padding-right:1rem; text-decoration:-moz-anchor-decoration; color:#888888; font-size:1.2rem;}
+
+.page_confirmEnrolling .li_item .buy_cao{color:#8c8c8c; font-size:1.3rem; line-height:4.5rem; width:34rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_confirmEnrolling .li_item .buy_cao.div{line-height:4.5rem;}
+.page_confirmEnrolling .li_item .buy_cao .buy_cao_title{width:15.5rem; text-align:left; padding-left:1.5rem;}
+.page_confirmEnrolling .li_item .buy_cao .buy_cao_num{width:15.5rem; text-align:right; padding-right:1.5rem;}
+
+/****************************************************/
+.page_confirmEnrolling .li_item .copies{color:#8c8c8c;font-size:1.3rem;height:5rem;line-height:5rem;margin:0 0.2rem;}
+.page_confirmEnrolling .li_item .up{width:auto; hdisplay:inline-block;}
+.page_confirmEnrolling .copies .num{width:100%; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_confirmEnrolling .copies .num_c{ width:2rem; height:2rem; padding:1.5rem;}
+.page_confirmEnrolling .copies .num img{float:left;width:2rem;height:auto;}
+.page_confirmEnrolling .li_item .copies .b{font-size:1.6rem;color:#b39851;float:left;height:5rem;line-height:5rem;width:23.6rem;text-align:center; border-left:0.1rem solid #f5f5f5; border-right:0.1rem solid #f5f5f5;}
+
+.page_confirmEnrolling .acttime{margin:0 1.2rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_confirmEnrolling .acttime span{display:inline-block; width:67%; text-align:center; font-size:1.4rem; color:#333; text-align:left; padding:1rem 0rem; border-right:0.1rem solid #f5f5f5;}
+.page_confirmEnrolling .acttime div{font-size:1rem; color:rgb(89,73,67); padding:0.6rem 0; width:30%; margin:0.5rem 1.5%; margin-bottom:0; display:inline-block;text-align:center; background:rgb(243,243,243);}
+.page_confirmEnrolling .acttime div p{margin:0;height:1.5rem;margin-top:0;}
+.page_confirmEnrolling .acttime div.pass {background:rgb(248,249,250); color:rgb(193,195,198);}
+.page_confirmEnrolling .acttime div.choose {background:rgb(250,215,75); color:#fff;}
+
+/********************************************/
+#number_price,#coupon_price{color:#333;}
+#telephone{ color:#888;}
+.page_confirmEnrolling .titlees {width:100%; height:5rem; line-height:6rem; text-align:center; color:#333; font-size:1.4rem;}
+.page_confirmEnrolling .li_item {width:34rem; background:#ffffff; margin:0 auto; border-radius:2%; border-bottom:0.1rem solid #e2e6e7; /*box-shadow:0 0 0.1rem #ccc;*/ overflow:hidden;position:relative;}
+
+.page_confirmEnrolling .li_item .freight{font-size:1.3rem;color:#6b6b6b;height:3.8rem;line-height:3.8rem;text-indent:1.6rem;}/*运费*/
+.page_confirmEnrolling .li_item .freight span{float:right;margin-right:1.2rem;}
+.page_confirmEnrolling .li_item .liBetweens{height:0.1rem; background:#e0e0e0; margin:0rem 0.8rem;}
+.page_confirmEnrolling .li_item a {font-size:1.3rem;color:#8c8c8c;display:block;height:4rem; line-height:4rem;  padding-left:1.8rem; position:relative;}
+.page_confirmEnrolling .li_item .coupon {border-bottom:none; margin-right:3rem;}
+.page_confirmEnrolling .li_item .coupon.use {padding-right:0;}
+.page_confirmEnrolling .li_item .coupon span{color:#fbd74b;}
+.page_confirmEnrolling .li_item .cancelCoupon {position:absolute; border:none; background:none; right:1rem; bottom:0; line-height:3.5rem; width:4rem; font-size:1.6rem; font-family:'宋体'; text-align:center;}
+.page_confirmEnrolling .li_item a span{float:right;}
+.page_confirmEnrolling .add_pad {width:30rem; padding:0 1.8rem;}
+.page_confirmEnrolling .add_pad a{border-bottom:0.1rem solid #eeeeee; padding-left:0rem;}
+.page_confirmEnrolling .li_item a .off{width:4rem; height:2.5rem; background:url(../images/submitorder_switch_c@2x.png) 0 0 / 4rem 2.5rem no-repeat; margin-top:1rem; margin-right:1.5rem;}
+
+.page_confirmEnrolling .li_item a .up{width:4rem; height:2.5rem; background:url(../images/submitorder_switch_o@2x.png) 0 0 / 4rem 2.5rem no-repeat; margin-top:1rem; margin-right:1.5rem;}
+
+.page_confirmEnrolling .li_item a.isOR{display:none;}
+.page_confirmEnrolling .li_item .center_border{width:31.6rem; margin-left:1.2rem; border-top:0.1rem solid #eeeeee; display:none;}
+
+.page_confirmEnrolling .li_item .leaveWords{font-size:1.3rem;color:#6b6b6b;min-height:10rem;line-height:4rem;text-indent:1.8rem;}
+.page_confirmEnrolling .li_item .leaveWords .words{font-size:1.2rem; text-indent:0 !important; color:#a3a3a3; min-height:6.5rem; width:31rem; float:right; border-radius:0.2rem; line-height:1.6rem; padding:1.5rem; border:none; overflow: hidden;}
+
+.page_confirmEnrolling .li_item .more_time{width:32.5%; color:#b39851; text-align:right; font-size:1.3rem; padding:1rem 0rem; padding-right:0.88rem;background: rgba(0, 0, 0, 0) url("../images/course_more_icon@2x.png") no-repeat scroll right center / 0.48rem 0.96rem;}
+/**************************/
+.page_confirmEnrolling .contactCustomerService{width:8rem;margin:2rem auto;background:url('../images/phone2_normal@2x.png')no-repeat left center;text-indent:2rem;background-size:1.1rem 1.1rem;display:block;}/*联系客服*/
+
+/********************************************/
+.page_confirmEnrolling .priceMenuBlank{height:5rem; background:none;}
+
+.page_confirmEnrolling.priceMenu{text-align:center; background:#fff;border-top: 0.1rem solid #eee;}
+.page_confirmEnrolling.priceMenu .goodPrice{font-size:1.5rem; color:#b39851; float:left; width:52%; line-height:4.7rem;}
+.page_confirmEnrolling.priceMenu #submitBtn{font-size:1.5rem; color:#fff; float:left; width:43%; background:#b39851; margin-top:0.7rem; border-radius:0.2rem; height:3.168rem; line-height:3.168rem;}
+
+
+.page_confirmEnrolling .Times{width:36rem; height:100%; background:rgba(0, 0, 0,0.5); position:absolute; top:0; left:0; z-index:999; display:none;}
+.page_confirmEnrolling .Times .xxniu{ display:block; width:1.8rem; height:1.8rem; background:url(../images/course_timelist_close_btn@2x.png) 0 0 / 1.8rem 1.8rem no-repeat; position:absolute; top:13rem; left:27.5rem; border-radius:50%;}
+
+.page_confirmEnrolling .Times .center_list{width:24rem; overflow:auto; max-height:24rem;}
+.page_confirmEnrolling .Times .time_list{width:24rem; margin:15rem auto auto auto; background:#FFF; border-radius:2%; overflow:hidden;}
+.page_confirmEnrolling .Times .time_list .time_title{width:100%; line-height:4rem; text-align:center; color:#333; font-size:1.5rem;}
+.page_confirmEnrolling .Times .time_list .list_t{width:100%; height:6rem; border-top:0.1rem solid #d8d8d8;}
+.page_confirmEnrolling .Times .time_list .list_t .t_left{width:80%; height:6rem; float:left;}
+.page_confirmEnrolling .Times .time_list .list_t .t_left span{width:100%; height:3rem; line-height:3rem; padding-left:1rem; color:#333; font-size:1.1rem;}
+.page_confirmEnrolling .Times .time_list .list_t .t_left span.top{font-size:1.3rem;}
+.page_confirmEnrolling .Times .time_list .list_t .t_right{width:20%; height:6rem; float:left;}
+.page_confirmEnrolling .Times .time_list .list_t .yes{background:url(../images/course_timelist_choose_btn@2x.png) 1.2rem 2.5rem/ 1.6rem 1.6rem no-repeat;}
+.page_confirmEnrolling .Times .time_list .list_t .empty{background:url(../images/course_timelist_nochoose_btn@2x.png) 1.2rem 2.5rem/ 1.6rem 1.6rem no-repeat;}
+.page_confirmEnrolling .Times .time_list .list_t .select{background:url(../images/course_timelist_selected_btn@2x.png) 1.2rem 2.5rem/ 1.6rem 1.6rem no-repeat;}
+.page_confirmEnrolling .Times .time_list .time_but{width:100%; height:3.5rem; line-height:3.5rem; text-align:center; background:#b39851; font-size:1.5rem; color:#FFF;}
+
+.page_confirmEnrolling .Times .time_list .list_t .t_left.none span{color:#d8d8d8;}
+
+
+

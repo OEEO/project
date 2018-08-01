@@ -1,0 +1,440 @@
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+
+<p style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" id="addTheme-toggle">添加专题</button>
+    </p>
+
+<form class="am-g">
+    <input type="text" name="title" id="search_title" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="专题模糊搜索" value="{$search_title}"/>
+    <select name="type">
+        <option value="">选择分类</option>
+        <option value="0" <?php if($search_type == 0 && $search_type !== '')echo 'selected = "selected"'; ?>>普通专题</option>
+        <option value="1" <?php if($search_type == 1)echo 'selected = "selected"'; ?>>精选专题</option>
+    </select>
+    <select name="is_show">
+        <option value="1" <?php if($search_is_show == 1)echo 'selected = "selected"'; ?>>上架中</option>
+        <option value="0" <?php if($search_is_show == 0)echo 'selected = "selected"'; ?>>下架中</option>
+    </select>
+    <input type="submit" value="查询"/>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<!-- 新建专题 -->
+<div class="am-modal am-modal-confirm themeEditBox" tabindex="-1" id="addTheme">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">专题添加</div>
+        <form name="add" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-scrollable-vertical" style="height: 500px;">
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        专题名称：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <input type="text" name="name" class="am-input-sm" placeholder="专题名称" required/>
+                        <font color="#f00">如果需要添加专题副标题，请把专题名称和副标题以“|”隔开。格式如下：“专题名称|专题副标题”</font>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        所属城市：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <select name="citys_id">
+                            <option value="">通用</option>
+                            <?php foreach($citys as $id => $val):?>
+                            <option value="{$id}">{$val}</option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        专题内容：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <div name="content" class="am-input-sm" contenteditable="true" style="min-height:120px; border:solid 1px #ddd; padding:8px;"></div>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="radio" name="type" class="am-input-sm type"  value="0" checked/>
+                    <span>吖咪普通</span>
+                    <input type="radio" name="type" class="am-input-sm type"  value="1"/>
+                    <span>吖咪精选</span>
+                    <input type="radio" name="type" class="am-input-sm type"  value="2"/>
+                    <span>我有饭普通</span>
+                    <input type="radio" name="type" class="am-input-sm type"  value="3"/>
+                    <span>我有饭精选</span>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        url地址：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <select class="url_type">
+                            <option value="0" selected>无关联</option>
+                            <option value="1">url关联</option>
+                            <option value="2">分类关联</option>
+                        </select>
+                        <input name="url" rows="3" class="url" style="display: none;" placeholder="http://....">
+                        <select name="select_url" class="select_url" style="display: none;">
+                            <foreach name="category" item="row">
+                                <option value="{$row.id}">{$row.name}</option>
+                            </foreach>
+                        </select>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        专题主图：<br><small>精选:640x140<br>普通:640x420</small>
+                    </div>
+                    <div class="am-g am-margin-top-sm am-text-left">
+                        <button type="button" onclick="uploadimg(this)" class="am-btn am-btn-default">选择图片</button>
+                        <img class="pic_id"/>
+                    </div>
+                </div>
+                <hr/>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        专题图组：<br><small>统一尺寸: 640 x 420</small>
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left pics">
+                        <a href="javascript:void(0);" type="button" onclick="addPicture(this)" class="add">+</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 修改专题 -->
+<div class="am-modal am-modal-prompt themeEditBox" tabindex="-1" id="modifyTheme">
+    <div class="am-modal-dialog">
+        <form name="modifyTheme" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">修改专题</div>
+            <div class="am-scrollable-vertical" style="height: 500px;">
+                <input type="hidden" name="theme_id" value="">
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        专题名称：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <input type="text" name="name" class="am-input-sm"   placeholder="专题名称" required/>
+                        <font color="#f00">如果需要添加专题副标题，请把专题名称和副标题以“|”隔开。格式如下：“专题名称|专题副标题”</font>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        所属城市：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <select name="citys_id">
+                            <option value="">通用</option>
+                            <?php foreach($citys as $id => $val):?>
+                            <option value="{$id}">{$val}</option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        专题内容：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <div name="content" class="am-input-sm" contenteditable="true" style="min-height:120px; border:solid 1px #ddd; padding:8px;"></div>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="radio" name="type" class="am-input-sm"  value="0" checked/>
+                    <span>吖咪普通</span>
+                    <input type="radio" name="type" class="am-input-sm"  value="1"/>
+                    <span>吖咪精选</span>
+                    <input type="radio" name="type" class="am-input-sm"  value="2"/>
+                    <span>我有饭普通</span>
+                    <input type="radio" name="type" class="am-input-sm"  value="3"/>
+                    <span>我有饭精选</span>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        url地址：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <select class="url_type">
+                            <option value="0">无关联</option>
+                            <option value="1">url关联</option>
+                            <option value="2">分类关联</option>
+                        </select>
+                        <input type="text" name="url" class="url" style="display: none;" placeholder="http://...."/>
+                        <select name="select_url" class="select_url">
+                            <foreach name="category" item="row" style="display: none;">
+                                <option value="{$row.id}">{$row.name}</option>
+                            </foreach>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        专题主图：<br><small>精选:640x140<br>普通:640x420</small>
+                    </div>
+                    <div class="am-g am-margin-top-sm am-text-left">
+                        <button type="button" onclick="uploadimg(this)" class="am-btn am-btn-default">选择图片</button>
+                        <img class="pic_id"/>
+                    </div>
+                </div>
+                <hr/>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        专题图组：<br><small>统一尺寸: 640 x 420</small>
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left pics">
+                        <a href="javascript:void(0);" type="button" onclick="addPicture(this)" class="add">+</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+<script src="__RS__/js/ajaxUpload.js"></script>
+<script>
+    $('.am-modal').appendTo('body');
+
+    //当更换类型时作出相应变动
+    $("[name='type']").change(function(){
+        var em = $(this).parents('.themeEditBox');
+        em.find('.pic_id').val('');
+        em.find('.url').val('');
+    });
+
+    $('.url_type').change(function(){
+        var em = $(this).parent();
+        if($(this).val() == 0){
+            em.find('.select_url').hide();
+            em.find('.url').hide();
+        }
+        if($(this).val() == 1){
+            em.find('.select_url').hide();
+            em.find('.url').show();
+        }
+        if($(this).val() == 2){
+            em.find('.select_url').show();
+            em.find('.url').hide();
+        }
+    });
+
+    /*新建主题上传图片*/
+    function uploadimg(em) {
+        if($(em).parents('.themeEditBox').attr('id') == 'addTheme'){
+            var pm = document.add;
+        }else{
+            var pm = document.modifyTheme;
+        }
+        if(pm.type.value % 2 == 0){
+            var size = [640, 420];
+        }else{
+            var size = [640, 140];
+        }
+        pic_upload(em, size, function(file){
+            $(em).next('img').attr('src', file[0].path).attr('pic_id', file[0].pic_id).width(size[0]/10).height(size[1]/10);
+        }, false);
+    }
+
+    function addPicture(em){
+        pic_upload(em, [640, 420], function(file){
+            var code = '';
+            for(var i in file){
+                code += '<span><img src="'+ file[i].path +'" pic_id='+ file[i].pic_id +'><a href="javascript:void(0);" onclick="$(this).parent().remove()">×</a></span>';
+            }
+            $(em).before(code);
+        });
+    }
+
+    //专题添加
+    $('#addTheme-toggle').on('click', function(){
+        $('#addTheme').modal({
+            relatedTarget: this,
+            closeViaDimmer : false,
+            onConfirm: function() {
+                var pm = $('#addTheme');
+                if(document.add.name.value.length <= 0){
+                    alert('专题名必填！');
+                    return;
+                }
+
+                var data = {};
+                data.title = document.add.name.value;
+                data.pic_id = pm.find('.pic_id').attr('pic_id');
+                data.type = document.add.type.value;
+                if(pm.find('.url_type').val() == 0)data.url = null;
+                if(pm.find('.url_type').val() == 1)data.url = document.add.url.value;
+                if(pm.find('.url_type').val() == 2)data.url = document.add.select_url.value;
+                if((pm.find('.url_type').val() == 1 || pm.find('.url_type').val() == 2) && (data.url == null || typeof(data.url)==undefined)){
+                    alert('url必填');
+                    return;
+                }
+                data.content = pm.find("[name='content']").html();
+                data.group = [];
+                pm.find('.pics img').each(function(){
+                    data.group.push($(this).attr('pic_id'));
+                });
+
+                $.ajax({
+                    url : '__CONTROLLER__/editTheme.html',
+                    type : 'POST',
+                    dataType : 'json',
+                    data : data,
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                            window.location.href = window.location.href;
+                        }else{
+                            alert(d.info);
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+    //专题修改
+    function resettheme(id){
+        $.ajax({
+            url : '__CONTROLLER__/editTheme.html',
+            data : {'id' : id},
+            type : 'get',
+            success : function(d){
+                var pm = $('#modifyTheme');
+
+                document.modifyTheme.theme_id.value = id;
+                document.modifyTheme.name.value = d.title;
+                if(d.citys_id != null)document.modifyTheme.citys_id.value = d.citys_id;
+                pm.find('.pic_id').attr('pic_id', d.pic_id).attr('src', d.path);
+                pm.find("[name='content']").html(d.content);
+
+                var code = '';
+                var file = d.group_path;
+                for(var i in file){
+                    code += '<span><img src="'+ file[i].path +'" pic_id='+ file[i].id +'><a href="javascript:void(0);" onclick="$(this).parent().remove()">×</a></span>';
+                }
+                pm.find('.pics span').remove();
+                pm.find('.pics').prepend(code);
+
+                document.modifyTheme.type.value = d.type;
+                if(d.type % 2 == 1){
+                    pm.find('.pic_id').width(64).height(14);
+                }else{
+                    pm.find('.pic_id').width(64).height(42);
+                }
+
+                if(d.url.length == 0){
+                    pm.find('.url_type').val(0);
+                    pm.find('.select_url').hide();
+                    pm.find('.url').hide();
+                }else{
+                    var reg = /^\d+$/;
+                    if(reg.test(d.url)){
+                        pm.find('.url').hide();
+                        pm.find('.select_url').show().val(d.url);
+                        pm.find('.url_type').val(2);
+                    }else{
+                        pm.find('.url').val(d.url).show();
+                        pm.find('.select_url').hide();
+                        pm.find('.url_type').val(1);
+                    }
+                }
+
+                $('#modifyTheme').modal({
+                    closeViaDimmer : false,
+                    relatedTarget: this,
+                    onConfirm: function() {
+                        var pm = $('#modifyTheme');
+                        var data = {};
+                        data.id = document.modifyTheme.theme_id.value;
+                        data.type = document.modifyTheme.type.value;
+                        data.title = document.modifyTheme.name.value;
+                        data.citys_id = document.modifyTheme.citys_id.value;
+                        if(pm.find('.url_type').val() == 0)data.url = null;
+                        if(pm.find('.url_type').val() == 1)data.url = document.modifyTheme.url.value;
+                        if(pm.find('.url_type').val() == 2)data.url = document.modifyTheme.select_url.value;
+                        if((pm.find('.url_type').val() == 1 || pm.find('.url_type').val() == 2) && (data.url == null || typeof(data.url)==undefined)){
+                            alert('url必填');
+                            return;
+                        }
+
+                        data.pic_id =  pm.find('.pic_id').attr('pic_id');
+                        data.content = pm.find("[name='content']").html();
+
+                        data.group = [];
+                        pm.find('.pics img').each(function(){
+                            data.group.push($(this).attr('pic_id'));
+                        });
+
+                        $.ajax({
+                            url : '__CONTROLLER__/editTheme.html',
+                            type : 'POST',
+                            dataType : 'json',
+                            data : data,
+                            success: function(d){
+                                if(d.status == 1){
+                                    alert(d.info);
+                                    window.location.href = window.location.href;
+                                }else{
+                                    alert(d.info);
+                                }
+                            }
+                        });
+                    }
+                });
+
+
+            }
+        });
+    }
+
+    function setTheme(id, sort){
+        $.ajax({
+            url : '__CONTROLLER__/setTheme.html',
+            type : 'POST',
+            dataType : 'json',
+            data : {theme_id:id, sort:sort},
+            success: function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                    window.location.reload();
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+
+    function deletetheme(id){
+        if(confirm('确定删除专题吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/deletetheme.html',
+                type : 'POST',
+                dataType : 'json',
+                data : {'id' : id},
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+</script>

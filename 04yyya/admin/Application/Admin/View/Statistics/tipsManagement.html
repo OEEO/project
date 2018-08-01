@@ -1,0 +1,73 @@
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"> </script>
+    <div id="Usercontainer" style="width:100%;height:400px; margin:0px auto 20px;"></div>
+
+<script>
+    $(document).ready(function() {
+        var title = {
+            text: '活动曲线图'
+        };
+        var chart = {
+            type: 'spline',
+            reflow: true
+        };
+        var subtitle = {
+            text: ''
+        };
+        var xAxis = {
+            title: {
+                text: ''
+            },
+            categories: ['<?=join("','",$datehight) ?>']
+        };
+        var yAxis = {
+            title: {
+                text: '各参数数量'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        };
+
+        var tooltip = {
+            shared: true,
+            crosshairs: true
+        }
+        var series =  [
+            {
+                name: '新增活动总数',
+                data: [<?=join(",", $tipsCount) ?>]
+            },
+            {
+                name: '成局数',
+                data: [<?=join(",", $gameTipscount) ?>]
+            },
+            {
+                name:'未成局数',
+                data: [<?=join(",", $notgameTipscount) ?>]
+            },
+            {
+                name:'公开活动数',
+                data: [<?=join(",", $publictipsCount) ?>]
+            },
+            {
+                name:'未公开活动数',
+                data: [<?=join(",", $nopublictipsCount) ?>]
+            }
+        ];
+
+        var json = {};
+        json.chart = chart;
+        json.title = title;
+        json.subtitle = subtitle;
+        json.xAxis = xAxis;
+        json.yAxis = yAxis;
+        json.tooltip = tooltip;
+        json.series = series;
+
+        $('#Usercontainer').highcharts(json);
+    });
+</script>

@@ -1,0 +1,37 @@
+.owrapper{height: 100%;display: block;}
+.status_check {width:750rpx; height:90rpx; line-height:90rpx; border-bottom:2rpx solid #eee; background:#fff; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.status_check view{display:inline-block; width:25%; text-align:center; font-size:26rpx; color:#888;}
+.status_check view.add_hei{color:#b39851;}
+.statu.add_hei text{line-height:85rpx; border-bottom: 4rpx solid #b39851 !important;display: inline-block;}
+.content {background:#f5f5f5;}
+
+.content .li {padding:0 31rpx; margin-bottom:25rpx; background:#fff; border-bottom:1rpx solid #eee;}
+.content .top {display:block; height:157rpx; border-bottom:solid 2rpx #eee; padding:31rpx 0;}
+.content .top .left {float:left; width:240rpx; overflow:hidden; position:relative;}
+.content .top .left .type {width:120rpx; height:49rpx; position:absolute; font-size:24rpx; left:0; top:15rpx; background:url(http://img.yummy194.cn/images/class.png) 0 0 / 120rpx 49rpx no-repeat; color:#fff; text-align:center;line-height:49rpx;}
+.content .top .left image {width:240rpx; height:157rpx;}
+.content .top .right {width:427rpx; height:157rpx; float:right; line-height:33rpx;position: relative;}
+.content .top .right .t {height:67rpx; font-size:29rpx; color:#333333; overflow:hidden;}
+.content .top .right .c {height:33rpx; color:#a6a6a6; font-size:25rpx; margin:25rpx auto;}
+.content .top .right .b {color:#b39851; font-size:25rpx;position: absolute;bottom: 0;left: 0;display: flex;height: 42rpx;line-height: 42rpx;}
+.content .top .right .b .l {display:inline;line-height:54rpx;}
+.content .top .right .b .cc {display:inline; border-right:2rpx solid #666666; height:25rpx; margin:13rpx 21rpx;}
+.content .top .right .b .r {display:inline;}
+.content .top .right .b .r font{color:#b39851; font-size:38rpx;}
+.content .top .right .b .r font.caodan{font-size:25rpx;}
+
+.content .bottom {height:94rpx;}
+.content .bottom .status {float:left; line-height:94rpx; font-size:24rpx; color:#888888;}
+.content .bottom .btn {float:right; line-height:60rpx; margin-top:15rpx; border-radius:4rpx; padding:0 21rpx; text-align:center; border:solid 1px #b39851; color:#b39851; margin-left:10rpx; font-size:24rpx;}
+
+.mask{-webkit-filter: blur(5rpx); -o-filter: blur(5rpx);-ms-filter: blur(5rpx);filter: blur(5rpx);}
+
+
+
+.content .no_msgs{width:750rpx; background:#f5f5f5; position:absolute; top:223rpx; left:0; right:0; bottom:0rpx;}
+.content .no_msgs image{width:208rpx; height:208rpx; margin:167rpx 271rpx auto 271rpx;}
+.content .no_msgs text{display:block; width:750rpx; font-size:25rpx; text-align:center; color:#969696; margin-top:42rpx;}
+
+.no_more {width:165rpx; height:47rpx; background:url(http://img.yummy194.cn/images/no_mre.png) 0 0 / 100% 100% no-repeat; margin:0 auto;}
+
+.loading {width:52rpx; height:52rpx;}

@@ -1,0 +1,57 @@
+.admin-content {display: flex; flex-flow: column; bottom:30px; position: fixed;}
+.admin-content > div:first-child {flex:none;}
+.admin-content > div:last-child {display:none;}
+
+button.powerBtn {position: absolute; top:20px; right:10px;}
+button.powerBtn.off {display: none;}
+
+.messaging {width:100%; height:100%; display: flex; flex:auto; overflow: hidden; border:solid 1px #ddd;}
+ul,li {list-style: none; margin: 0; padding: 0;}
+hr {border:none; height:1px; background: #ddd;}
+.messaging .main {height:100%; flex:auto; display: flex; flex-flow: column;}
+.messaging .main .top {height:40px; flex:none; border-bottom:solid 1px #ddd; overflow-y: visible; white-space: nowrap;}
+.messaging .main .top li {display: inline-block; border-radius: 4px; margin: 3px 0 0 5px; position: relative; background: #eee; line-height: 32px; padding: 0 3px;}
+.messaging .main .top li img {width:25px; height:25px; border-radius: 50%; vertical-align: middle;}
+.messaging .main .top li span {max-width:100px; height:25px; vertical-align: middle; line-height: 25px; overflow: hidden; display: inline-block; white-space: nowrap; text-overflow: ellipsis;}
+.messaging .main .top li.new:before {content: ''; width:6px; height:6px; background: #f33; position: absolute; left:4px; top:6px; border-radius: 50%;}
+
+.messaging .main .top li a {color:#ccc;}
+.messaging .main .top li a:hover {color:#999;}
+.messaging .main .top li.now {border:solid 1px #ddd; border-bottom: solid #fff 1px; background: #fff; height:37px; border-radius: 4px 4px 0 0;}
+
+.messaging .main .scene {flex:auto; background: #fefefe;overflow-y: auto;}
+.messaging .main .scene ul {padding: 10px; display: none;}
+.messaging .main .scene ul.now {display: block;}
+.messaging .main .scene ul li {padding: 5px 0;}
+.messaging .main .scene ul li > img {width: 36px; height: 36px;float:left; border:solid 1px #eee; vertical-align: top; border-radius: 50%;}
+.messaging .main .scene ul li > span {float:left; position: relative; max-width:60%; vertical-align: top; margin-left: 15px; border:solid 1px #eee; background: #fff; border-radius: 8px; padding: 8px; line-height: 18px;}
+.messaging .main .scene ul li > span:before {content: ''; width:10px; height:10px; border-top:solid 1px #eee;border-left:solid 1px #eee; position: absolute; left:-5px; top:12px;transform:rotate(-45deg); background: #fff;}
+.messaging .main .scene ul li > span img {max-width:100%;}
+.messaging .main .scene ul li.right > img {float:right;}
+.messaging .main .scene ul li.right > span {float:right; margin-left:0;background: linear-gradient(#bbf383, #a4ed5c); border:solid 0.1rem #88d462; margin-right: 15px;}
+.messaging .main .scene ul li.right > span:before {transform:rotate(135deg);background: linear-gradient(#bbf383, #a4ed5c); border-left:solid 0.1rem #88d462; border-top:solid 0.1rem #88d462; left:auto; right:-5px;}
+.messaging .main .scene ul small {background:none; color: #999; display: block; font-size: 80%; line-height: 22px; margin: 15px auto 10px; padding: 0 10px; text-align: center; width: 130px;}
+.messaging .main .scene ul li > span a.goods {display: flex; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; height:4.4rem;}
+.messaging .main .scene ul li > span a.goods img {width:44px; height:4.4rem; flex:none; object-fit: cover;}
+.messaging .main .scene ul li > span a.goods div {height:44px; line-height:2.2rem; margin-left: 0.6rem;}
+
+.messaging .main .editor {flex:none; display: flex; flex-flow: column; position: relative; height:120px; border-top:solid 1px #ddd;}
+.messaging .main .editor .tools {flex: none; height:30px; line-height: 30px;}
+.messaging .main .editor .tools button {display: inline-block; border: none; width: 25px; height:25px; margin-left: 10px; background: url(../images/face.png) no-repeat 0 0 / auto 25px;}
+.messaging .main .editor .tools button.image {background-position: right 0;}
+.messaging .main .editor .writer {flex:auto; outline: none; color:#999; padding: 0 8px; overflow: auto; line-height:18px;}
+.messaging .main .editor .facelist {position: absolute; display: none; flex:none; top:-271px; left:-1px; border-collapse:collapse;}
+.messaging .main .editor .facelist td {width:22px; height:22px; background: #fff; border: solid 1px #eee; padding: 2px; box-sizing: content-box;}
+.messaging .main .editor .facelist td img {width:22px; height:22px;}
+
+.messaging .sidebar {width:200px; background: #fff; flex:none; display: flex; flex-flow: column; height:100%; border-left:solid 1px #ddd;}
+.messaging .sidebar ul {flex:1; padding: 10px 6px; overflow-y: auto;}
+.messaging .sidebar ul.wx {border-bottom:solid 1px #ddd;}
+.messaging .sidebar ul li {height:34px; padding: 5px; border-radius: 5px; position: relative; display: flex; line-height: 38px; cursor: pointer;}
+.messaging .sidebar ul li img {width:24px; height:24px; flex: none; vertical-align: middle; border-radius: 50%;}
+.messaging .sidebar ul li span {flex:auto; margin-left: 4px; height:24px; line-height: 24px; vertical-align: middle; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.messaging .sidebar ul li:hover {background: #f8f8f8;}
+.messaging .sidebar ul li.new:before {content: ''; width:6px; height:6px; background: #f33; position: absolute; left:4px; top:6px; border-radius: 50%;}
+.messaging .sidebar ul li.offline {-webkit-filter: grayscale(100%); -moz-filter: grayscale(1); color:#ccc; -ms-filter: grayscale(100%); -o-filter: grayscale(100%);  filter: grayscale(100%); filter: gray;}
+.messaging .sidebar ul a {color:#aaa;}
+

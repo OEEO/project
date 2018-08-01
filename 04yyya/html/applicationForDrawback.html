@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/applicationForDrawback.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/applicationForDrawback.js"></script>
+</head>
+<body style="min-height:100%;background:#ebecf0;">
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">申请退款</div>
+	<div class="mSubmit" onclick="javascript:alert();">提交</div>
+</div>
+
+<!-- ---------两行注释h线之间是本页 工具部分------------ -->
+<style>
+.header{border-bottom:0.1rem solid #a1a1a1;}
+.mSubmit{height:1.8rem;line-height:1.8rem;position:absolute;right:1rem;top:1.35rem;}
+/****************************************************/
+.drawBack{text-indent:1.8rem;}
+.drawBack .menuItem{font-size:1.5rem;color:#a6a6a6;height:3.2rem;line-height:3.2rem;/*background:#e9e9e9;*/}
+.drawBack .menuItemDetail{font-size:1.5rem;color:#636363;height:3.8rem;line-height:3.8rem;background:#fff;}
+.drawBack .menuItemDetail>span{float:right;color:#cfcfda;}
+.drawBack .detailWords{padding:0 1.8rem;font-size:1.45rem;color:#989898;padding-top:0.8rem;/*width:100%;*/min-height:8rem;background:#fff;text-indent:0rem;}
+.drawBack .lastNum{position:absolute;right:0.5rem;margin-top:-1.8rem;}
+/********************************************/
+/*.detailWords{font-size:1.5rem;color:#989898;padding-top:0.8rem;width:100%;min-height:8rem;background:#fff;text-indent:1.6rem;}*/
+</style>
+<script>
+function sizeNum(em){
+	var sizeLength = $(em).text().length;
+	if(sizeLength>150){
+		var content =  $(em).text().substr(0,150);
+		$(em).empty().append(content);
+		sizeLength = $(em).text().length;
+		}
+	$('.lastNum').empty().append(150-sizeLength);
+	}
+</script>
+<div class="drawBack">
+	<div class="menuItem">退款金额</div>
+	<div class="menuItemDetail">200元<span>退款不会退还优惠券</span></div>
+	<div class="menuItem">退款方式</div>
+	<div class="menuItemDetail">退款到原支付方</div>
+	<div class="menuItem">退款原因（必填）</div>
+
+	<!-- ---------两行注释h线之间是本页 工具部分------------ -->
+	<div class="detailWords" onKeyUp="sizeNum(this)" onafterpaste="sizeNum(this)"  contenteditable="true" onfocus="if($(this).text()=='请输退款原因')$(this).empty();" onblur="	if($(this).text()=='')$(this).append('请输退款原因');">请输退款原因</div>
+	<div class="lastNum">150</div>
+	<!--<textarea class="detailWords" onfocus="if(value=='请输退款原因'){value=''}" onblur="if (value ==''){value='请输退款原因'}">请输退款原因</textarea>-->
+<!-- --------------------- --	.append('<span>150</span>')-->
+</div> 
+</body>
+</html>

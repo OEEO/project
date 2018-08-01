@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+/***********商品页面订单详情***************
+
+/******页面头部布局*****/
+.header{position:relative;height:4.5rem;}
+
+/***物流查询部分 布局设置***/
+.logisticsQuery{font-size:110%;color:#a8a9a8;/*text-indent:2.4rem;*/padding-left:3.6rem;height:3.2rem;line-height:3.2rem;background:#ebecf0;display:block;position:relative;}
+.logisticsQuery:before{content:'';background:url('../images/search.png') no-repeat 0 center;background-size:1.4rem auto;width:1.4rem;height:1.4rem;position:absolute;left:1.8rem;margin-top:0.9rem;}
+.logisticsQuery .arrowRight{top:1rem;border-color:#a8a9a8;}
+
+/***************************** 活动部分***************************************/
+
+/*****************商品图片及订单信息*****************/
+
+.orderInf .actInfTitle{line-height:4rem;height:4rem;margin:auto 1rem;padding:0 0.8rem;border-bottom:0.1rem solid #e1e1e1;}
+.orderInf .actInfTitle .actInfDaren{font-size:1.5rem;float:left;}
+.orderInf .actInfTitle .actInfconnect{font-size:1.4rem;float:right;display:inline-block;}
+
+.orderListLeft{float:left;width:11.38rem;height:7.28rem;margin:0.8rem;margin-left:1.8rem;/*margin-top:0.6rem;margin-left:1rem;*/}/*图片*/
+.orderListLeft .orderTypeBg{line-height:2rem;height:2rem;width:4.5rem;position:absolute;background:rgba(0,0,0,0.5);}/*订单分类 饭局、商品 等 的背景*/
+.orderListLeft .orderType{font-size:1.2rem;color:#fff;line-height:2rem;height:2rem;width:4.5rem;position:absolute;text-align:center;}/*订单分类 饭局、商品 等*/
+
+.orderListRight{float:left;width:20rem;margin-top:1rem;}/*右侧信息列表*/
+.orderTitle{font-size:1.5rem;color:#636363;height:4rem;overflow:hidden;/*white-space:nowrap;text-overflow:ellipsis;*/}/*右 商品标题*/
+.orderPrice{font-size:1.45rem;color:#a6a6a6;margin-top:0.6rem;}/*右 时间、邮费等*/
+.orderStatus{font-size:110%;color:#d41a49;float:right;margin-right:1.2rem;margin-top:-1rem;}/*右 状态 待收货等*/
+/**********************************/
+/**收货地址等的相关布局设置**/
+.receiptDetail{margin:0 1.4rem;text-indent:0.8rem;}
+.receiptDetail li{font-size:125%;color:#a8a8a8;font-family:'宋体';/*font-weight:600;*/height:4.2rem;line-height:4.2rem;border-bottom:0.1rem solid #f0f0f0;}
+.receiptDetail li div{font-size:90%;color:#585858;margin-right:0.6rem;text-indent:0;line-height:4.2rem;float:right;height:4.2rem;}
+.receiptDetail li .receiptAddress,.receiptDetail .leaveWords div{margin:0;height:auto;text-align:left;padding-top:0.6rem;line-height:1.8rem;width:70%;}
+.receiptDetail li .receiptAddress:after{  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;}
+.receiptDetail .leaveWords{border:0;}
+/****/
+
+/**页面底部涉及联系客服部分布局**/
+.orderDetailBottom,.orderDetailBottom a{font-size:108%;color:#bdbec2;background:#ebecf0;line-height:2.2rem;display:block;padding-top:0.4rem;padding-bottom:2.6rem;padding-left:2.2rem;}
+.orderDetailBottom .services{padding:0;background:url('../images/phone2_normal@2x.png')no-repeat left center;text-indent:2rem;background-size:1.1rem 1.1rem;}
+
+/****/
+
+/**底部菜单布局设置**/
+.bottomBlank{clear:both;height:4.5rem;background:#ccc;}
+.goodsOrderBottom{font-size:150%;color:#fff;;height:4.5rem;line-height:4.5rem;text-align:center;width:100%;position:fixed;bottom:0;background:#fbd74b;}
+/***************/
+
+
+
+

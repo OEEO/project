@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/goodsDetail.css">
+
+<script src="js/plugins/jquery.min.js"></script>
+<script src="js/public.js"></script>
+<script src="js/goodsDetail.js"></script>
+</head>
+<body>
+<div class="header changeStyle">
+	<div class="turnBack" onclick="goodsDetailObject.back()"><div class="arrow"></div></div>
+</div>
+<div id="mainContent">
+	<div class="bodyTop"></div>
+	<div class="them_title">
+		<!--<a href="javascript:void(0);" class="share"></a>-->
+		<!--<a href="javascript:void(0);" class="collect"></a>-->
+		<p class="title_t"></p>
+		<div class="data">剩余 <i>7</i> 份 <span>国内包邮</span></div>
+		<ul class="edges"></ul>
+		<div class="pieceBox"><span>拼</span>&nbsp;&nbsp;<font class="count"></font>人成团&nbsp;&nbsp;限时<font class="limit_time"></font>小时&nbsp;&nbsp;每人限购<font class="limit_num"></font>份<button>拼团规则</button></div>
+	</div>
+
+	<div id="goods_content" class="goods_content goods_detail_content"></div>
+	<div class="goods_content">
+		<div class="title attr">商品规格</div>
+		<table class="attr_list"></table>
+	</div>
+
+	<div class="goods_content">
+		<!--<a href="javascript:void(0);" class="more">查看详情 &gt;</a>-->
+
+		<a href="javascript:void(0);" class="darenDetail">
+			<img>
+			<div class="right">
+				<div class="t"></div>
+				<div class="b"></div>
+			</div>
+		</a>
+
+		<div class="title tell">贴心提示</div>
+		<ul class="tell_List"></ul>
+	</div>
+
+	<div class="daren_commentList">
+		<div class="title">买家评价</div>
+		<div class="commentList"></div>
+	</div>
+
+	<!--
+	<div class="recommend">
+		<div class="title">猜你喜欢</div>
+		<div class="tips_list"></div>
+	</div>
+	-->
+
+	<div class="priceMenuBlank"></div>
+	<div class="footer priceMenu">
+		<div class="btn-group">
+			<a href="javascript:;" data-btn="chat">
+				<img src="images/chat@2x.png" alt="">
+			</a>
+			<a href="javascript:;" data-btn="like">
+				<span class="follow-img"></span>
+			</a>
+			<a href="javascript:;" data-btn="share">
+				<img class="sm-img" src="images/course-detail-page_share1@2x.png" alt="">
+			</a>
+		</div>
+		<div class="fr">
+			<div class="submitLeft"><i id="price"></i><span>元/份</span></div>
+			<div class="submitBtn">JOIN</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+

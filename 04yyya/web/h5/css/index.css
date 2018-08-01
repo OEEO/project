@@ -1,0 +1,283 @@
+@charset "utf-8";
+/**************************** common start ****************************/
+html {font-size:100px;}
+html, body {width:100%; height:100%; overflow:hidden;}
+html, body, div, span, em, img, b, i, dl, dt, dd, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section,p,h1,h2,h3,h4,h5,h6 {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  vertical-align:baseline;
+}
+body{
+    font-family:"微软雅黑",Arial;
+    color: #fff;
+	letter-spacing:1px;
+    -webkit-text-size-adjust:100%;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-touch-callout:none;
+    background:url(../img/bg.jpg?v=1.1) top center;
+}
+.clearfix:after {
+    content:'';
+    display:block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+ul {
+    list-style:none
+}
+a:link, a:visited, a:hover, a:active {
+    color: #555;
+    text-decoration:none;
+}
+input, textarea, button {
+    padding: 0;
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+    border-radius:0;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+/*垂直水平居中样式*/
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/*主体*/
+.img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: rgba(0,0,0,0.8);
+}
+.container{
+    margin: 0 auto;
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    left:0;top:0;right:0;bottom:0;
+}
+.container.index{
+    display: block;
+}
+.yellow{
+    background-image: none;
+    background-color: #fedc00;
+}
+.logo{
+    width: 1.06rem;
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    margin-left: -0.53rem;
+}
+.main{
+    width: 6.25rem;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+.main .att{
+    width: 6.25rem;
+    height: 1.12rem;
+    padding: 0.4rem 0;
+}
+.main .first,.main .two{
+    width: 1.7rem;
+    height: 1.7rem;
+    float: right;
+    padding-right: 0.7rem;
+}
+.main .input{
+    width: 5.45rem;
+    height: 1.38rem;
+    margin: 0.5rem 0 0.65rem 0;
+    display: inline-block;
+}
+.main .input .name{
+    width: 100%;
+    height: 0.58rem;
+    position: relative;
+    padding-bottom: 0.2rem;
+    background: url(../img/1/name.png?v=1.1) no-repeat 0 0 / 100% auto;
+}
+.main .input input{
+    background: transparent;
+    border: none;
+    text-align: center;
+	font-size:0.3rem;
+}
+.main .input .name input[type="text"]{
+    height: 0.51rem;
+    position: absolute;
+    right: 0.22rem;
+    top: 0.15rem;
+    width: 2.5rem;
+    text-align: center;
+}
+.main .input .date{
+    width: 100%;
+    height: 0.78rem;
+    position: relative;
+    background-image: url(../img/1/date.png?v=1.1);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.main .input .date input:first-child{
+    height: 0.58rem;
+    left: 2.56rem;
+    position: absolute;
+    top: 0.08rem;
+    width: 0.58rem;
+}
+.main .input .date input:last-child{
+    height: 0.58rem;
+    right: 1.02rem;
+    position: absolute;
+    top: 0.08rem;
+    width: 0.58rem;
+}
+.main .save{
+    width: 3.9rem;
+    height: 0.96rem;
+    margin-top: 0.5rem;
+    background-image: url(../img/1/upload.png?v=1.1);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+/*第二page*/
+.up{
+    width: 4.5rem;
+    height: 2.4rem;
+    display: block;
+    margin:6.8rem 1.5rem 0.2rem;
+    text-align: center;
+    position: absolute;
+}
+.up button {position:absolute; width:0.45rem; height:0.45rem; border:none; background:url(../img/2/rotating.png?v=1.1) no-repeat center center / 0.45rem auto;
+left:50%; top:0.35rem; margin-left:2rem;}
+.canvaslay {
+    width: 6.4rem;
+    height: 6.4rem;
+    left:0;
+    top:0;
+    border-style: solid;
+    border-color: #fff;
+    border-width:0.2rem 0.6rem 10rem 0.6rem;
+    position: absolute;
+}
+.up .line {
+    width:3rem;
+    height:0.14rem;
+    border:solid 0.06rem #333;
+    position: relative;
+    display: block;
+    margin: 0.48rem 0;
+    background: #fff;
+}
+.up .line span {position: absolute; width:0.3rem; height: 0.34rem; border: solid 0.06rem #333; left: 0; top:-0.14rem; background: #fff;}
+.up .up-img{
+    width: 3.8rem;
+    height: 0.85rem;
+}
+.up input[type="file"]{
+    width: 3.8rem;
+    height: 0.85rem;
+    position: absolute;
+    left:50%;
+    margin-left:-1.9rem;
+    top: 1.35rem;
+    opacity: 0;
+}
+.button-group{
+    width: 100%;
+    display: block;
+    position: absolute;
+    text-align: center;
+    bottom:1.5rem;
+}
+.button-group .back{
+    width: 1.86rem;
+    height: 0.96rem;
+}
+.button-group .make{
+    width: 3.9rem;
+    height: 0.96rem;
+    padding-left: 0.1rem;
+}
+.button-group img{
+    display: inline;
+    padding-left: 0.25rem;
+}
+/*第三个页面*/
+.show-img{
+    width: 100%;
+    height: 6.8rem;
+    display: block;
+    text-align: center;
+    position: relative;
+}
+.show-img .top-img{
+    width: 2.94rem;
+    height: 1.32rem;
+    position: absolute;
+    top: 0.05rem;
+    left: 0.2rem;
+    z-index: 2;
+}
+.show-img .bottom-img{
+    width: 2.52rem;
+    height: 2rem;
+    position: absolute;
+    bottom: 0.86rem;
+    right: 0.2rem;
+    z-index: 2;
+}
+.show-img .input-bg{
+    width: 4.86rem;
+    height: 0.86rem;
+    line-height: 0.9rem;
+    background-image: url(../img/3/namebg.png?v=1.1);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 0;
+    right: 0.3rem;
+    color: #fff;
+    text-align: center;
+}
+.show-img .main-img{
+    width: 6.24rem;
+    height: 6.24rem;
+    margin-top: 0.2rem;
+    vertical-align: middle;
+}
+.zodiac{
+    width: 100%;
+    display: block;
+    margin:0.1rem 0 0.4rem 0.5rem;
+}
+.zodiac img{
+    max-width: 100%;
+    height: 0.7rem;
+}
+.code{
+    width: 6.26rem;
+    height: 1.6rem;
+    position: absolute;
+    bottom: 0.2rem;
+    left: 50%;
+    margin-left: -3.13rem;
+}
+
+.layBox {position:absolute; left:0; right:0; top:0; bottom:0; background:rgba(0,0,0,0.3); z-index:999;}
+.layBox .contentBox {padding:0 0.2rem; color:#333; text-align:center; line-height:0.8rem; font-size:0.4rem; background:#fff; border-radius:0.1rem; position:absolute; left:50%; top:50%; margin:-0.4rem 0 0 -2.62rem;}
+

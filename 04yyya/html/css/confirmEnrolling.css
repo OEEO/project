@@ -1,0 +1,51 @@
+@charset "utf-8";
+body>div{background:#fff;}
+/***********************************************************************/
+.pageTitleMenu .Left {float:left;margin:0.8rem;margin-left:1.8rem;width:11.38rem;height:7.29rem;}/*设置活动图片的容器*/
+.pageTitleMenu .Left img{/*visibility:hidden;*/width: 100%;max-height:100%;}/*设置图片铺满容器*/
+
+.pageTitleMenu .Right{height:7.29rem;margin:0.82rem 0 0 0;float:left;display: block;width:20rem;}
+.pageTitleMenu .Right .title{height:4rem;line-height:2rem;font-size:1.5rem;color:#585858;}
+.pageTitleMenu .Right .price{font-size:2.2rem;color:#fbd74a;margin-top:0.8rem;}
+
+/*.pageTitleMenu .copies{color:#6b6b6b;border-top:0.1rem solid #efefef;font-size:1.4rem;height:4rem;line-height:4rem;margin:0 1.2rem;text-indent:0.6rem;margin-top:1rem;}/*与时间选择 的间隔距离*
+.copies .num{margin-top:0.6rem;display:inline-block;float:right;}
+.copies .num img{float:left;margin-top:0.35rem;width:1.8rem;height:auto;}
+.pageTitleMenu .copies input{font-size:1.6rem;color:#fbd74b;float:left;height:2.5rem;width:4rem;border:0.16rem solid #fbd74b;border-radius:1.2rem;margin:0 1.2rem;text-align:center;}
+.pageTitleMenu .copies .b{font-size:1.6rem;color:#fbd74b;float:left;height:2.5rem;line-height:2.5rem;min-width:4rem;border:0.16rem solid #fbd74b;border-radius:1.2rem;margin:0 1.2rem;text-align:center;}*/
+/****************************************************/
+.pageTitleMenu .copies{color:#6b6b6b;border-top:0.1rem solid #efefef;font-size:1.4rem;height:4rem;line-height:4rem;margin:0 1.2rem;padding:0 0.6rem;}
+.copies .num{margin-top:0.6rem;display:inline-block;float:right;}
+.copies .num img{float:left;margin-top:0.35rem;width:1.8rem;height:auto;}
+/*.buyingInfo .copies input{font-size:1.6rem;color:#fbd74b;float:left;height:2.5rem;width:4rem;border:0.16rem solid #fbd74b;border-radius:1.2rem;margin:0 1.2rem;text-align:center;}*/
+.pageTitleMenu .copies .b{font-size:1.6rem;color:#fbd74b;float:left;height:2.5rem;line-height:2.5rem;min-width:4rem;border:0.16rem solid #fbd74b;border-radius:1.2rem;margin:0 1.2rem;text-align:center;}
+
+
+.acttime{border-top:0.1rem solid #efefef;margin:0 1.2rem; padding:1rem 0;}
+.acttime div{font-size:1rem;color:rgb(89,73,67);padding:0.6rem 0;;width:30%;margin:0.5rem 1.5%;margin-bottom:0; display:inline-block;text-align:center;background:rgb(243,243,243);}
+.acttime div p{margin:0;height:1.5rem;margin-top:0;}
+.acttime div.pass {background:rgb(248,249,250); color:rgb(193,195,198);}
+.acttime div.choose {background:rgb(250,215,75); color:#fff;}
+
+/********************************************/
+.li_item {background:#ffffff; margin-top:1.2rem; width:100%; box-shadow:0 0 0.1rem #999;}
+.li_item .freight{font-size:1.4rem;color:#6b6b6b;height:3.8rem;line-height:3.8rem;text-indent:1.6rem;}/*运费*/
+.li_item .freight span{float:right;margin-right:1.2rem;}
+.li_item .liBetweens{height:0.1rem; background:#e0e0e0; margin:0rem 0.8rem;}
+.li_item a {font-size:1.4rem;color:#6b6b6b;display:block;height:4rem; line-height:4rem;  padding-left:1.8rem; position:relative;}
+.li_item .coupon span{color:#fbd74b;}
+.li_item a span{float:right;margin-right:3.6rem;}
+
+.li_item .leaveWords{font-size:1.4rem;color:#6b6b6b;min-height:4rem;line-height:4rem;text-indent:1.8rem;}
+.li_item .leaveWords .words{font-size:1.3rem;color:#a3a3a3;min-height:5rem;width:28rem;float:right;margin-top:1.2rem;margin-right:1.2rem;border:solid 1px #ddd; border-radius:0.3rem;margin-bottom:0.8rem;line-height:1.6rem; padding:0.5rem; text-indent:none;}
+/**************************/
+.contactCustomerService{width:8rem;margin:2rem auto;background:url('../images/phone2_normal@2x.png')no-repeat left center;text-indent:2rem;background-size:1.1rem 1.1rem;}/*联系客服*/
+/********************************************/
+.priceMenuBlank{height:4rem; background:none;}
+.priceMenu{height:4rem;line-height:4rem;text-align:center;width:100%;position:fixed;bottom:0;}
+.priceMenu .goodPrice{font-size:1.8rem;color:#2c111a;float:left;width:48%;background:#fff;}
+.priceMenu .goodPrice>small{font-size:1rem;}
+.priceMenu a{font-size:1.8rem;color:#fff;float:left;width:52%;background:#fcd74b;}
+/*************************************************************/
+
+/***********结束************/

@@ -1,0 +1,549 @@
+<!--日历插件-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+
+<button type="button" id="daren_add" class="am-btn am-btn-success" onclick="addDaren()">+ 达人添加 +</button>
+<button type="button" id="darenExport" class="am-btn am-btn-warning" onclick="darenExport()">达人导出</button>
+<button type="button" id="request_list" class="am-btn am-btn-primary" onclick="request_list()">申请列表</button>
+<p><span>达人数量：{$daren_count}</span>&nbsp;&nbsp;<span>美食达人数量：{$food_daren_count}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>主厨达人数量：{$cooker_daren_count}</span></p>
+<br/>
+<form class="am-g">
+    <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 20%;float: left;" placeholder="达人名称模糊查询" value="{$search_member}"/>
+    <input type="text" name="telephone" id="search_telephone" class="am-form-field am-radius" style="width: 20%;float: left;" placeholder="手机号模糊查询" value="{$search_telephone}"/>
+    <select name="tag" id="tag">
+        <option value="">请选择标签类型</option>
+        <foreach name="tag_list" item="row">
+            <eq name="row.id" value="$search_tag">
+                <option value="{$row.id}" selected="selected">{$row.name}</option>
+                <else/>
+                <option value="{$row.id}">{$row.name}</option>
+            </eq>
+        </foreach>
+    </select>
+    <button type="submit" class="am-btn am-btn-success">查找</button>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+<!-- 详细信息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="detailInfo">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">详细信息</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <input type="hidden" id="mid" value="">
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <span class="am-u-sm-3 am-u-md-3">头像(320x320):</span>&nbsp;&nbsp;<img id="path" class="add" alt="点击上传图片" width="100px" height="100px"/>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <span class="am-u-sm-3 am-u-md-3">背景(640x488):</span>&nbsp;&nbsp;<img id="cover" class="add" alt="点击上传图片" width="200px" height="100px"/>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <span class="am-u-sm-3 am-u-md-3">昵称:</span>&nbsp;&nbsp;<input type="text" id="nickname"/>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">手机号:</span>&nbsp;&nbsp;<input type="text" id="telephone"/>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">真实姓名:</span>&nbsp;&nbsp;<input type="text" id="surname"/>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">性别:</span>&nbsp;&nbsp;<input type="radio" name="sex" value="0">未设定<input type="radio" name="sex" value="1">男<input type="radio" name="sex" value="2">女
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">出生日期:</span>&nbsp;&nbsp;<input style="width:200px;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd" id="birth"  placeholder="开始时间" readonly="true" value=""/>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">年龄段:</span>&nbsp;&nbsp;<input type="text" id="age"/>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">职业:</span>&nbsp;&nbsp;<input type="text" id="job"/>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">简介:</span>&nbsp;&nbsp;<textarea id="signature" style="min-height:120px; border:solid 1px #ddd; padding:8px;"></textarea>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 达人标签 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="member_tags">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">身份管理</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <input type="hidden" name="member_id" id="member_id" value="">
+
+                <div class="am-form-group">
+                    <label for="label">身份</label>
+                    <div id="label">
+
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 设置银行卡 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="set_banner">
+    <div class="am-modal-dialog">
+        <form name="set_banner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">设置银行卡</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 200px;">
+                <input type="hidden" name="member_id" value="">
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <div class="am-u-sm-3 am-u-md-3">真实姓名:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" style="width: 150px;" name="name"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">开户行:</div>
+                    <div class="am-u-sm-9 am-u-md-9">
+                        <select name="bank_id">
+                            <option value="">请选择银行卡</option>
+                            <?php foreach($banks as $bank):?>
+                            <option value="{$bank.id}">{$bank.name}</option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">银行卡号:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" name="number"/></div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 添加达人 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="addDaren">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">添加达人</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <input type="hidden" id="memberId" value="">
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <div class="am-u-sm-3 am-u-md-3">头像(320x320):</div>
+                    <div class="am-u-sm-9 am-u-md-9"><img id="add_path" class="add" alt="点击上传图片" width="100px" height="100px"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <div class="am-u-sm-3 am-u-md-3">背景(640x488):</div>
+                    <div class="am-u-sm-9 am-u-md-9"><img id="add_cover" class="add" alt="点击上传图片" width="200px" height="100px"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <div class="am-u-sm-3 am-u-md-3">昵称:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" id="add_nickname"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">手机号:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" id="add_telephone"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">真实姓名:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" id="add_surname"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">性别:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="radio" name="sex" value="0">未设定<input type="radio" name="sex" value="1">男<input type="radio" name="sex" value="2">女</div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">出生日期:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input style="width:200px;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd" id="add_birth"  placeholder="开始时间" readonly="true" value=""/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">所属城市:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><select id="city_id"><option value="224">广州</option><option value="234">深圳</option></select></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">年龄段:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" id="add_age"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">职业:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" id="add_job"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">简介:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><textarea id="add_signature" style="min-height:120px; border:solid 1px #ddd; padding:8px;"></textarea></div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.am-modal').appendTo('body');
+    function daren_list(){
+        window.location = '__CONTROLLER__/index';
+    }
+    function request_list(){
+        window.location = '__CONTROLLER__/request';
+    }
+    function darenExport(){
+        window.location = '__CONTROLLER__/DarenExport';
+    }
+
+    //查询栏日历
+    $('#birth').datepicker();
+    $('#add_birth').datepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-alert');
+        $('#birth').datepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            startDate = new Date(event.date);
+            $(this).datepicker('close');
+        });
+        $('#add_birth').datepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            startDate = new Date(event.date);
+            $(this).datepicker('close');
+        });
+    });
+
+    //详细信息
+    function detailInfo(id){
+
+        $.ajax({
+            url: '__CONTROLLER__/getDarenInfo.html',
+            data: {'member_id': id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                $('#mid').val(id);
+                $('#path').attr('src', d.info.path).on('error', function(){
+                    this.src = '';
+                });
+                $('#path').attr('data', d.info.pic_id);
+                $('#cover').attr('src', d.info.cover_path);
+                $('#cover').attr('data', d.info.cover_pic_id);
+                $('#nickname').val(d.info.nickname);
+                $('#telephone').val(d.info.telephone);
+                $('#surname').val(d.info.surname);
+                //$('#sex').val(d.info.sex);
+                $('#birth').val(d.info.birth);
+                $('#age').val(d.info.age);
+                $('#job').val(d.info.job);
+                $('#signature').val(d.info.signature);
+                //匹配性别
+                $('[name=sex]').each(function(){
+                    if($(this).val()==d.info.sex){
+                        $(this).attr('checked','checked');
+                    }
+                })
+            }
+        });
+        $('#detailInfo').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data = {};
+                data.memberId = $('#mid').val();
+                data.nickname = $('#nickname').val();
+                data.telephone = $('#telephone').val();
+                data.surname = $('#surname').val();
+
+                data.birth = $('#birth').val();
+                data.age = $('#age').val();
+                data.job = $('#job').val();
+                data.signature = $('#signature').val();
+                data.pic_id = $('#path').attr('data');
+                data.cover_pic_id = $('#cover').attr('data');
+
+                $('[name=sex]').each(function(){
+                    if($(this).is(':checked')){
+                        data.sex = $(this).val();
+                    }
+                })
+
+                $.ajax({
+                    url: '__CONTROLLER__/modifyDarenInfo.html',
+                    data: {'data': data},
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        alert(d.info);
+                    }
+                });
+            }
+        });
+    }
+
+    //设置银行卡
+    function setBank(member_id){
+        document.set_banner.member_id.value = member_id;
+        document.set_banner.bank_id.value = '';
+        document.set_banner.name.value = '';
+        document.set_banner.number.value = '';
+        $.ajax({
+            url : '__CONTROLLER__/setBank.html',
+            dataType : 'json',
+            type : 'post',
+            data : {member_id:member_id},
+            success : function(d){
+                if(d.info){
+                    alert(d.info);
+                    return;
+                }
+                if(d.id){
+                    document.set_banner.bank_id.value = d.bank_id;
+                    document.set_banner.name.value = d.name;
+                    document.set_banner.number.value = d.number;
+                }
+                $('#set_banner').modal({
+                    onConfirm: function() {
+                        var data = {};
+                        data.member_id = document.set_banner.member_id.value;
+                        data.bank_id = document.set_banner.bank_id.value;
+                        data.name = document.set_banner.name.value;
+                        data.number = document.set_banner.number.value;
+
+                        for(var i in data){
+                            if(data[i] == ''){
+                                alert('请填写完整信息!');
+                                return;
+                            }
+                        }
+
+                        $.ajax({
+                            url: '__CONTROLLER__/setBank.html',
+                            data: data,
+                            dataType: 'json',
+                            type: 'POST',
+                            success: function (d) {
+                                alert(d.info);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+
+    //添加达人
+    function addDaren(){
+
+        $('#addDaren').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data = {};
+                data.memberId = $('#add_memberId').val();
+                data.nickname = $('#add_nickname').val();
+                data.telephone = $('#add_telephone').val();
+                data.surname = $('#add_surname').val();
+
+                data.birth = $('#add_birth').val();
+                data.age = $('#add_age').val();
+                data.job = $('#add_job').val();
+                data.signature = $('#add_signature').val();
+                data.pic_id = $('#add_path').attr('data');
+                data.cover_pic_id = $('#add_cover').attr('data');
+                data.city_id = $('#city_id').val();
+
+                $('[name=sex]').each(function(){
+                    if($(this).is(':checked')){
+                        data.sex = $(this).val();
+                    }
+                })
+
+                $.ajax({
+                    url: '__CONTROLLER__/addDaren.html',
+                    data: {'data': data},
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        alert(d.info);
+                    }
+                });
+            }
+        });
+    }
+
+    //删除系统标签
+    function deleteLabel(id){
+        //获取该达人的系统标签
+        $.ajax({
+            url: '__CONTROLLER__/deleteLabel.html',
+            data: {'member_id': id,'oper':1},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                $('#label').empty();
+                var code = '';
+                for(i in d.all){
+                    var check = false;
+                    for(k in d.my){
+                        if(d.my[k].tag_id==d.all[i].id)check = true;
+                    }
+                    if(check){
+                        code += '<input type="checkbox" name="official_label[]" checked value="'+d.all[i].id+'" disabled><span>'+d.all[i].name+'</span>';
+                    }else{
+                        code += '<input type="checkbox" name="official_label[]" value="'+d.all[i].id+'" disabled><span>'+d.all[i].name+'</span>';
+                    }
+                }
+                $(code).appendTo('#label');
+            }
+        });
+
+        $('#member_tags').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var member_id = id;
+                var label_id = [];
+                $('#label input').not("input:checked").each(function(){
+                    if(/^\d+$/.test(this.value))label_id.push(this.value);
+                });
+                $.ajax({
+                    url : '__CONTROLLER__/deleteLabel.html',
+                    data : {'member_id' : member_id,'label_id' : label_id , 'oper' : 2},
+                    dataType : 'json',
+                    type : 'POST',
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    }
+
+    function set_star(member_id,oper){
+        $.ajax({
+            url : '__CONTROLLER__/set_star.html',
+            data : {'member_id' : member_id, 'oper' : oper},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+                window.location.reload();
+            }
+        });
+    }
+
+    $('#path').click(function(){
+        pic_upload(this, [320,320], function(files){
+            for(var i in files) {
+                $('#path').attr("src", files[i].path);
+                $('#path').attr("data", files[i].pic_id);
+            }
+        });
+    });
+    $('#cover').click(function(){
+        pic_upload(this, [640,488], function(files){
+            for(var i in files) {
+                $('#cover').attr("src", files[i].path);
+                $('#cover').attr("data", files[i].pic_id);
+            }
+        });
+    });
+
+    $('#add_path').click(function(){
+        pic_upload(this, [320,320], function(files){
+            for(var i in files) {
+                $('#add_path').attr("src", files[i].path);
+                $('#add_path').attr("data", files[i].pic_id);
+            }
+        });
+    });
+    $('#add_cover').click(function(){
+        pic_upload(this, [640,488], function(files){
+            for(var i in files) {
+                $('#add_cover').attr("src", files[i].path);
+                $('#add_cover').attr("data", files[i].pic_id);
+            }
+        });
+    });
+
+    /*//撤销美食达人
+     function not_star(id){
+     if(confirm('确定撤销美食达人吗?')){
+     $.ajax({
+     url: '__CONTROLLER__/Star.html',
+     data: {'id': id , 'oper' : 0},
+     dataType: 'json',
+     type: 'POST',
+     success: function (d) {
+     if (d.status == 1) {
+     alert(d.info);
+     window.location.href = window.location.href;
+     }else{
+     alert(d.info);
+     }
+     }
+     });
+     }
+     }
+
+
+     //撤销主厨达人
+     function not_cooker(id){
+     if(confirm('确定撤销主厨达人吗?')){
+     $.ajax({
+     url: '__CONTROLLER__/cooker.html',
+     data: {'id': id , 'oper' : 0},
+     dataType: 'json',
+     type: 'POST',
+     success: function (d) {
+     if (d.status == 1) {
+     alert(d.info);
+     window.location.href = window.location.href;
+     }else{
+     alert(d.info);
+     }
+     }
+     });
+     }
+     }
+
+
+     //撤销美食主厨达人
+     function not_starCooker(id){
+     if(confirm('确定撤销美食主厨达人吗?')){
+     $.ajax({
+     url: '__CONTROLLER__/starCooker.html',
+     data: {'id': id , 'oper' : 0},
+     dataType: 'json',
+     type: 'POST',
+     success: function (d) {
+     if (d.status == 1) {
+     alert(d.info);
+     window.location.href = window.location.href;
+     }else{
+     alert(d.info);
+     }
+     }
+     });
+     }
+     }*/
+
+</script>

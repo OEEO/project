@@ -1,0 +1,234 @@
+<p style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" id="doc-confirm-toggle" onclick="history.go(-1)">返回</button>
+    <button class="am-btn am-btn-warning" id="createCouponSn" onclick="createCouponSn({$couponID})">生成子券</button>
+    <if condition="$category eq 4">
+        <button class="am-btn am-btn-warning" id="couponSent" onclick="couponSent()">批量发券</button>
+    </if>
+    <button class="am-btn am-btn-warning" id="export_excel" onclick="couponSnExport({$couponID})">导出Excel</button>
+</p>
+<form class="am-g">
+    <input type="text" name="sn" id="search_title" class="am-form-field am-radius" style="width: 20%;float: left;" placeholder="券码搜索" value="{$search_sn}"/>
+
+    <input type="hidden" name="id" value="{$couponID}">
+    <input type="submit" value="查询"/>
+</form>
+已生成:<span id ='all_count'>{$all_count}</span>&nbsp;&nbsp;
+已用数:<span id ='used'>{$used_count}</span>
+上限<sapn id="couponCount">{$couponCount}</sapn>
+{:W('Cate/table', array($datas, $lang, $operations, $pages))}
+
+<!-- 生成子券 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="createCoupon">
+    <div class="am-modal-dialog">
+        <form name="resetBanner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">生成子券</div>
+            <div class="am-modal-bd">
+
+                <div class="am-g am-margin-top-sm">
+                    <input type="number" name="coupon_num" class="am-input-sm" id="coupon_num" placeholder="生成数量" value="" required/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 批量发券 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="batch_tx">
+    <div class="am-modal-dialog">
+        <form name="batch_tx" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">批量发送</br><span style="color: red;font-size: 15px">(一个微信号每月只能收到4次批量发送信息)</span></div>
+            <div class="am-modal-bd">
+                <input type="hidden" name="cardId" id="cardId" value="{$cardId}">
+                <div class="am-form-group">
+                    <select name="group" id="select_group">
+
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 发送子券 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="sentCoupon">
+    <div class="am-modal-dialog">
+        <form name="resetBanner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">发送子券</div>
+            <div class="am-modal-bd">
+
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="telephone" id="telephone" placeholder="会员手机号码">
+                    <input type="hidden" name="member_id" id="mid" placeholder="会员ID">
+                    <input type="text" name="" class="am-input-sm" id="search_member" placeholder="昵称查找手机号码" value="" required/>
+
+                    <div class="am-scrollable-vertical" id="getUser" style="display: none;height: 200px">
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.am-modal').appendTo('body');
+
+    //昵称模糊查询（发送子券）
+    $('#search_member').keyup(function(){
+        $('#getUser').empty();
+        var search_key = $(this).val();
+
+        $.ajax({
+            url: '__CONTROLLER__/getUser.html',
+            data: {'search_key': search_key},
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                var code = '';
+                for(i in d){
+                    //alert(d[i]['id']+'---'+d[i]['nickname']);
+                    code += '<div class="item'+d[i]['id']+'" onclick="choose('+d[i]['id']+','+d[i]['telephone']+',this)"><a href="#">'+d[i]['nickname']+'</a>&nbsp;&nbsp;<a href="#">'+d[i]['telephone']+'</a></div>';
+                }
+                $(code).appendTo('#getUser');
+                $('#getUser').show();
+                //window.location.reload();
+            }
+        });
+    })
+    //点击选择用户（发送子券）
+    function choose(id,telephone,e){
+        $('#mid').val(id);
+        $('#telephone').val(telephone);
+        $('#search_member').val($(e).children().html());
+        $('#getUser').hide();
+    }
+
+    function createCouponSn(couponID){
+        $('#createCoupon').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var all_count = parseInt($('#all_count').html());
+                var coupon_num = parseInt($('#coupon_num').val());
+                var limit = parseInt($('#couponCount').html());
+                //alert(coupon_num+'---'+all_count+'---'+limit);
+                if(coupon_num<0){
+                    alert('生成数量不能为负数');
+                    return;
+                }
+                if(coupon_num+all_count > limit){
+                    alert('数量超过上限');
+                    return;
+                }
+                $.post('__CONTROLLER__/createCoupon.html', {'couponID':couponID,'coupon_num':coupon_num}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            },
+            onCancel: function(){
+                //alert('update');
+                return ;
+            }
+        });
+    }
+
+    function sentCoupon(sn){
+        $('#mid').val('');
+        $('#telephone').val('');
+        $('#search_member').val('');
+        $('#sentCoupon').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var member_id = $('#mid').val();
+                var telephone = $('#telephone').val();
+                if(telephone==''){
+                    alert('未选择目标用户');
+                    return;
+                }
+                if(telephone==''){
+                    alert('未选择目标用户');
+                    return;
+                }
+                //alert(member_id+'---'+sn);return;
+                $.post('__CONTROLLER__/sentCoupon.html', {'sn':sn,'telephone':telephone}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            },
+            onCancel: function(){
+                //alert('update');
+                return ;
+            }
+        });
+    }
+
+    //群发微信卡券
+    function couponSent(){
+        var all_count = $('#all_count').text();
+        if(all_count < 2){
+            alert('至少生成两张子券才能批量发送');
+            return false;
+        }
+
+        $.ajax({
+            url: '__CONTROLLER__/sentWxCoupon.html',
+            data: {'type' : 'search'},
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                $('#select_group').empty();
+                var code = '<option value="0">请选择分组</option>';
+                for(i in d){
+                    code += '<option value="'+d[i]['id']+'">'+d[i]['name']+'----人数'+d[i]['number']+'</option>'
+                }
+                $(code).appendTo('#select_group');
+            }
+        });
+
+        $('#batch_tx').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var tag_id = $('#select_group').val();
+                var cardId = $('#cardId').val();
+
+                $.post('__CONTROLLER__/sentWxCoupon.html', {'cardId':cardId , 'group':tag_id , 'type': 'sent'}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            },
+            onCancel: function(){
+                return ;
+            }
+        });
+    }
+
+    //优惠券导出
+    function couponSnExport(id){
+        window.open("__CONTROLLER__/CouponSnExport.html?couponId="+id,"_blank","width=600,height=600 ")
+    }
+</script>

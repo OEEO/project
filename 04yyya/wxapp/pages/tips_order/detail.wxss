@@ -1,0 +1,81 @@
+.header{background: #fff;}
+.wrapper{background: #fff;top: 96rpx;}
+.orderOperation{position:absolute; right:21rpx; top:33rpx;}
+/***消费码部分***/
+.the_blankt{background:#f5f5f5 none repeat scroll 0 0; clear: both; height: 31rpx; margin: 0; padding: 0 31rpx; border-bottom:1px solid #eee;}
+.the_blankc{background:#f5f5f5 none repeat scroll 0 0; clear: both; height: 31rpx; margin: 0; padding: 0 31rpx;  border-bottom:1px solid #eee; border-top:1px solid #eee;}
+.the_blankb{background:#f5f5f5 none repeat scroll 0 0; clear: both; height: 79rpx; margin: 0; padding: 0 31rpx;  border-top:1px solid #eee; line-height:79rpx; font-size:29rpx; color:#333;}
+
+.consumerCode .consumptionStatusTop{width:688rpx; margin:0 auto;height:79rpx;line-height:79rpx; border-bottom:solid 1px #f0f0f0;}
+.consumerCode .consumptionStatusTop .consumptionStatusLeft{font-size:29rpx;color:#343434;float:left;}
+.consumerCode .consumptionStatusTop .consumptionStatusRight{font-size:29rpx;color:#b39851;float:right;height:79rpx;line-height:79rpx;}
+
+.consumerCodeList{margin-top:10rpx; margin-bottom:10rpx; line-height:54rpx;}
+.consumerCodeList{width:688rpx; height:63rpx;line-height:63rpx; color:#343434;font-size:27rpx; margin:0 auto;}
+.consumerCodeList .span{font-size:27rpx;float:right;display: flex;text-align: right;}
+.consumerCodeList .span .ni{max-width: 192rpx;display: inline-block;overflow:hidden;text-overflow:ellipsis; white-space:nowrap;}
+.consumerCodeList .span .yz{color: #333;}
+.consumerCodeList text{text-decoration: line-through;}
+.consumerCode .consumerCodeInf{font-size:29rpx;color:#9b9b9b;height:92rpx;line-height:92rpx;margin-top:21rpx;border-top:1px solid #ccc;}
+.consumerCode .consumerCodeInf .consumerCodeInfDate{font-size:28rpx;float:right;color:#585858;margin-right:8rpx;}
+
+.orderInf{width:688rpx;margin: 0 auto;}
+.orderInf .actInfTitle{line-height:83rpx;height:83rpx;border-bottom:1px solid #eee;padding:0; color:#333;}
+.orderInf .actInfTitle .actInfDaren{font-size:28rpx;float:left;}
+.orderInf .actInfTitle .actInfconnect{font-size:28rpx;float:right;display:inline-block;}
+
+
+.orderListLeft{float:left; width:291rpx;height:185rpx;overflow:hidden; position:relative;}
+.orderListLeft image{width:100%; height:100%;}
+
+.orderListRight{float:left;width:376rpx;margin-top:17rpx; margin-left:17rpx;}
+.orderTitle{font-size:29rpx;color:#333;height:83rpx;overflow:hidden;}
+.t_b{height:42rpx; line-height: 42rpx; margin-top:15rpx; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.orderListRight .number{font-size:27rpx;color:#b39851; margin-right:21rpx;}
+.orderListRight .number font{font-size:25rpx;color:#b39851;}
+
+.total{font-size:27rpx;color:#333; overflow:hidden;}
+.total font{font-size:27rpx;color:#b39851;margin-right:10rpx;}
+.status{font-size:27rpx;flex: 1;text-align: right;}
+.center_boeder{width:2rpx; height:29rpx; background:#C4C4C4; margin-top:5rpx; margin-right:21rpx;}
+
+.orderDetail{margin:0 31rpx;}
+.orderDetail view:first-child{border: none !important;}
+.orderDetail view{font-size:29rpx;color:#575757;font-family:'宋体';height:96rpx;line-height:96rpx;border-top:1rpx solid #f0f0f0;}
+.orderDetail view text{font-size:29rpx;color:#343434;text-indent:0;line-height:96rpx;float:right;height:96rpx;}
+.orderDetail view .add_color{color:#b39851;}
+.orderDetail .orderAddress text{display:inline-block;margin:25rpx 0;height:auto;text-align:right;line-height:38rpx;width:70%; font-size:27rpx;}
+.liuyan{width:708rpx; min-height:142rpx; padding:21rpx 31rpx; border-top:1px solid #eee; border-bottom:1px solid #eee; color:#343434; font-size:27rpx;}
+.refund{width:750rpx; height:104rpx; color:#FF9A00; font-size:33rpx; line-height:104rpx; text-align:center; border-top:1px solid #e1e1e1; display:none;}
+
+.orderDetailBottom{font-size:25rpx;color:#bdbec2;background:#ebecf0;line-height:46rpx;display:block;padding-top:8rpx;padding-bottom:54rpx;padding-left:38rpx;}
+.orderDetailBottom .services{background:url('http://img.yummy194.cn/images/phone2_normal@2x.png')no-repeat left center;text-indent:42rpx;background-size:23rpx 23rpx;}
+
+.bottomBlank{clear:both; height:98rpx; background:#f5f5f5;}
+.priceMenu {height:94rpx; width:100%; bottom:0;}
+.orderBottom {height:94rpx;line-height:94rpx;float:left;width:50%;text-align:center;}
+.orderBottom {width:100%;background:#b39851;font-size:30rpx; color:#fff;}
+.orderBottom2 {font-size:30rpx; background:#b39851; color:#fff; display:none; line-height:94rpx; text-align:center;}
+.empty {visibility:hidden;}
+.orderBottom .sbtn{display: flex;text-align: center;width: 100%;}
+.orderBottom .sbtn view{flex: 1;position: relative;line-height: 92rpx;}
+.orderBottom .sbtn view font{display: inline-block;position: absolute;left: 131rpx;top: auto;}
+.orderBottom .sbtn i.sl{margin: 29rpx 0;height: 30rpx;width: 2rpx;display: inline-block;background: #fff;}
+.orderBottom .sbtn view i{width: 30rpx;height: 30rpx;display: inline-block;position: absolute;top: 29rpx;left: 90rpx;}
+.orderBottom .sharefriend .sicon{background: url(http://img.yummy194.cn/images/order_share@2x.png) no-repeat left center / 30rpx 30rpx;}
+.orderBottom .sendinvite .iicon{background: url(http://img.yummy194.cn/images/order_invite@2x.png) no-repeat left center / 30rpx 30rpx;}
+/***************/
+
+.mask{-webkit-filter: blur(5rpx);filter: blur(5rpx);}
+.commentList{width:688rpx; border-top:1px solid #eee; border-bottom:1px solid #eee; margin:0 auto;}
+.commentList .com_list{width:688rpx; border-bottom:1px solid #eee; padding:42rpx 0; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.commentList .no_border_bottom{ border-bottom:none;}
+.commentList .com_list .h_pic{width:90rpx;}
+.commentList .com_list .h_pic image{width:83rpx; height:83rpx; border-radius:50%; margin-right:6rpx; margin-top:25rpx;}
+.commentList .com_list .pic_right{width:594rpx;}
+.commentList .com_list .pic_right .name_title{width:594rpx; height:52rpx; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.commentList .com_list .pic_right .name_title .names{width:333rpx; height:83rpx;line-height:83rpx; font-size:29rpx; color:#333333; text-align:left;overflow: hidden;text-overflow: ellipsis; white-space: nowrap;}
+.commentList .com_list .pic_right .name_title text{display:inline-block; letter-spacing:0rpx; height:83rpx;line-height:83rpx; color:#b0b0b0;font-size:25rpx;}
+.commentList .com_list .pic_right .t_content{width:594rpx; text-align:left; line-height:42rpx;  color:#333333; letter-spacing:0rpx; font-size:25rpx;padding-top:20rpx;}
+.commentList .com_list .pic_right .imges{width:594rpx;}
+.commentList .com_list .pic_right .imges image{width:138rpx; height:138rpx; margin-right:31rpx;}

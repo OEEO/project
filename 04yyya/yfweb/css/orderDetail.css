@@ -1,0 +1,110 @@
+@charset "utf-8";
+/**订单详情**/
+/**顶部菜单部分**/
+.page_orderDetail .orderOperation{position:absolute; right:1rem; top:1.6rem;}
+/***消费码部分***/
+.page_orderDetail .the_blankt{background:#f5f5f5 none repeat scroll 0 0; clear: both; height: 1.5rem; margin: 0; padding: 0 1.5rem; border-bottom:0.1rem solid #eee;}
+.page_orderDetail .the_blankc{background:#f5f5f5 none repeat scroll 0 0; clear: both; height: 1.5rem; margin: 0; padding: 0 1.5rem;  border-bottom:0.1rem solid #eee; border-top:0.1rem solid #eee;}
+.page_orderDetail .the_blankb{background:#f5f5f5 none repeat scroll 0 0; clear: both; height: 3.8rem; margin: 0; padding: 0 1.5rem;  border-top:0.1rem solid #eee; line-height:3.8rem; font-size:1.4rem; color:#333;}
+
+.page_orderDetail .consumerCode .consumptionStatusTop{width:33rem; margin:0 auto;height:3.8rem;line-height:3.8rem; border-bottom:solid 0.1rem #f0f0f0;}
+.page_orderDetail .consumerCode .consumptionStatusTop .consumptionStatusLeft{font-size:1.4rem;color:#343434;float:left;}
+.page_orderDetail .consumerCode .consumptionStatusTop .consumptionStatusRight{font-size:1.4rem;color:#b39851;float:right;height:3.8rem;line-height:3.8rem;}
+
+.page_orderDetail .consumerCode{display:none;}
+.page_orderDetail .consumerCodeList{margin-top:0.5rem; margin-bottom:0.5rem; line-height:2.6rem;}
+.page_orderDetail .consumerCodeList li{width:33rem; height:3rem; line-height:3rem; color:#343434;font-size:1.3rem; margin:0 auto;}
+.page_orderDetail .consumerCodeList li span{font-size:1.3rem;float:right;display: flex;text-align: right;}
+.page_orderDetail .consumerCodeList li span .ni{max-width: 9.2rem;display: inline-block;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.page_orderDetail .consumerCodeList li span .yz{color: #333;}
+.page_orderDetail .consumerCode .consumerCodeInf{font-size:1.4rem;color:#9b9b9b;height:4.4rem;line-height:4.4rem;margin-top:1rem;border-top:0.1rem solid #ccc;}
+.page_orderDetail .consumerCode .consumerCodeInf .consumerCodeInfDate{font-size:1.35rem;float:right;color:#585858;margin-right:0.4rem;}
+
+/***************************** 活动部分***************************************/
+.page_orderDetail .orderInf{width:33rem;margin: 0 auto;}
+.page_orderDetail .orderInf .actInfTitle{line-height:4rem;height:4rem;border-bottom:0.1rem solid #eee;padding:0; color:#333;}
+.page_orderDetail .orderInf .actInfTitle .actInfDaren{font-size:1.35rem;float:left;}
+.page_orderDetail .orderInf .actInfTitle .actInfconnect{font-size:1.35rem;float:right;display:inline-block;}
+
+
+.page_orderDetail .orderListLeft{float:left; width:13.98rem;height:8.88rem;/*margin-top:0.6rem;*/ overflow:hidden; position:relative;}/*图片*/
+.page_orderDetail .orderListLeft img{width:100%; height:100%;}
+
+.page_orderDetail .orderListRight{float:left;width:18.05rem;margin-top:0.8rem; margin-left:0.8rem;}/*右侧信息列表*/
+.page_orderDetail .orderTitle{font-size:1.4rem;color:#333;height:4rem;overflow:hidden;/*white-space:nowrap;text-overflow:ellipsis;*/}/*右 商品标题*/
+.page_orderDetail .t_b{height:2rem; line-height: 2rem; margin-top:0.7rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_orderDetail .orderListRight .number{font-size:1.3rem;color:#b39851; margin-right:1rem;}
+.page_orderDetail .orderListRight .number font{font-size:1.2rem;color:#b39851;}
+
+.page_orderDetail .total{font-size:1.3rem;color:#333; overflow:hidden;}
+.page_orderDetail .total font{font-size:1.3rem;color:#b39851;margin-right:0.5rem;}
+.page_orderDetail .status{font-size:1.3rem;flex: 1;text-align: right;}
+.page_orderDetail .center_boeder{width:0.1rem; height:1.4rem; background:#C4C4C4; margin-top:0.25rem; margin-right:1rem;}
+
+/**收货地址等的相关布局设置**/
+.orderDetail{margin:0 1.5rem;}
+.orderDetail li:first-child{border: none !important;}
+.orderDetail li{font-size:1.4rem;color:#575757;font-family:'宋体';/*font-weight:600;*/height:4.6rem;line-height:4.6rem;border-top:0.1rem solid #f0f0f0;}
+.orderDetail li span{font-size:1.4rem;color:#343434;text-indent:0;line-height:4.6rem;float:right;height:4.6rem;}
+.orderDetail li .add_color{color:#b39851;}
+.orderDetail .orderAddress span{display:inline-block;margin:1.2rem 0;height:auto;text-align:right;line-height:1.8rem;width:70%; font-size:1.3rem;}
+.page_orderDetail .liuyan{width:34rem; min-height:6.8rem; padding:1rem 1.5rem; border-top:0.1rem solid #eee; border-bottom:0.1rem solid #eee; color:#343434; font-size:1.3rem;}
+.page_orderDetail .refund{width:36rem; height:5rem; color:#FF9A00; font-size:1.6rem; line-height:5rem; text-align:center; border-top:0.1rem solid #e1e1e1; display:none;}
+
+/**页面底部涉及联系客服部分布局**/
+.page_orderDetail .orderDetailBottom{font-size:1.2rem;color:#bdbec2;background:#ebecf0;line-height:2.2rem;display:block;padding-top:0.4rem;padding-bottom:2.6rem;padding-left:1.8rem;}
+.page_orderDetail .orderDetailBottom .services{background:url('../images/phone2_normal@2x.png')no-repeat left center;text-indent:2rem;background-size:1.1rem 1.1rem;}
+
+/**底部菜单布局设置**/
+.page_orderDetail .bottomBlank{clear:both; height:4.7rem; background:#f5f5f5;}
+.page_orderDetail .priceMenu {height:4.7rem; width:100%; bottom:0; display:none;}
+.page_orderDetail.orderBottom {height:4.7rem;line-height:4.7rem;float:left;width:50%;text-align:center;}
+.page_orderDetail.orderBottom {width:100%;background:#b39851;font-size:1.44rem; color:#fff;}
+.page_orderDetail.orderBottom2 {font-size:1.44rem; background:#b39851; color:#fff; display:none; line-height:4.5rem; text-align:center;}
+.page_orderDetail.empty {visibility:hidden;}
+.page_orderDetail.orderBottom .sbtn{display: flex;text-align: center;width: 100%;}
+.page_orderDetail.orderBottom span{flex: 1;position: relative;line-height: 4.8rem;height: 4.7rem;}
+.page_orderDetail.orderBottom span font{display: inline-block;position: absolute;left: 6.3rem;top: auto;}
+.page_orderDetail.orderBottom i.sl{margin: 1.6rem 0;height: 1.45rem;width: 0.1rem;display: inline-block;background: #fff;}
+.page_orderDetail.orderBottom span i{width: 1.45rem;height: 1.45rem;display: inline-block;position: absolute;top: 1.6rem;left: 4.3rem;}
+.page_orderDetail.orderBottom .sharefriend .sicon{background: url(../images/order_share@2x.png) no-repeat left center / 1.44rem 1.44rem;}
+.page_orderDetail.orderBottom .sendinvite .iicon{background: url(../images/order_invite@2x.png) no-repeat left center / 1.44rem 1.44rem;}
+/***************/
+
+.page_orderDetail .mask{-webkit-filter: blur(0.25rem); /* Chrome, Opera */-moz-filter: blur(0.25rem); -o-filter: blur(0.25rem);-ms-filter: blur(0.25rem);filter: blur(0.25rem);}
+/**************/
+.page_orderDetail .QRcode{min-height:100%;width:100%;position:fixed;top:0;z-index:9990;background:rgba(0,0,0,0.3);display:none;}
+.page_orderDetail .QRcode .views{width:28rem; height:34.5rem; margin-left:4rem;text-align:center;background:#fff;position:relative;z-index:9999;}
+.page_orderDetail .QRcode .views .a{font-size:1.68rem;color:#000;height:5.4rem;line-height:5.4rem;}
+.page_orderDetail .QRcode .views .b{font-size:1.4rem;color:#6c6c6c;height:4.2rem;line-height:4.2rem;margin:0 2rem;border-top:0.1rem solid #e1e1e1;border-bottom:0.1rem dashed #e1e1e1;}
+.page_orderDetail .QRcode .views .c{font-size:1.68rem;color:#000;margin:1.2rem 0;}
+.page_orderDetail .QRcode .views .d{margin:0 auto; height:27rem; overflow:hidden; position:relative;}
+.page_orderDetail .QRcode .views .d ul{position:absolute; height:27rem; margin-bottom:2rem; display:block;}
+.page_orderDetail .QRcode .views .d ul li {float:left; width:28rem; text-align:center; list-style:none;}
+.page_orderDetail .QRcode .views .d ul li p{font-size:2.2rem; color:#000; width:28rem; text-align:center; padding-top:2.5rem; padding-bottom:1.2rem; margin:0;}
+.page_orderDetail .QRcode .views .d span{width:16rem; height:16rem; display:inline-block;}
+.page_orderDetail .QRcode .views .d span canvas{width: 100%;}
+
+.page_orderDetail .QRcode .views .L_niu{width:3.5rem; height:3.5rem; background:url(../images/check-code_last_unselect@2x.png) 0 0 / 3.5rem 3.5rem; position:absolute; top:12.4rem; left:1.2rem;}
+.page_orderDetail .QRcode .views .L_y{background:url(../images/check-code_last_unselect@2x.png) 0 0 / 3.5rem 3.5rem;}
+.page_orderDetail .QRcode .views .R_niu{width:3.5rem; height:3.5rem; background:url(../images/check-code_next_unselect@2x.png) 0 0 / 3.5rem 3.5rem; position:absolute; top:12.4rem; right:1.2rem;}
+.page_orderDetail .QRcode .views .R_y{background:url(../images/check-code_next_unselect@2x.png) 0 0 / 3.5rem 3.5rem;}
+
+.page_orderDetail .QRcode .views .num{font-size:1.8rem;color:#b39851;margin:1rem auto; margin-bottom:0.4rem; width:28rem; position:absolute; left:0; top:24rem;}
+.page_orderDetail .QRcode .views .dBtm{font-size:1.4rem;color:#cccccc;margin:1.6rem auto;}
+.page_orderDetail .QRcode .closed{width:10%;position:absolute;margin-top:1.2rem;left:45%;}
+
+/*评价*/
+.page_orderDetail .commentList{width:33rem; border-top:0.1rem solid #eee; border-bottom:0.1rem solid #eee; margin:0 auto; display:none;}
+.page_orderDetail .commentList .com_list{width:33rem; border-bottom:0.1rem solid #eee; padding:2rem 0; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_orderDetail .commentList .no_border_bottom{ border-bottom:none;}
+.page_orderDetail .commentList .com_list .h_pic{width:4.3rem;}
+.page_orderDetail .commentList .com_list .h_pic img{width:4rem; height:4rem; border-radius:50%; margin-right:0.3rem; margin-top:1.2rem;}
+.page_orderDetail .commentList .com_list .pic_right{width:28.5rem;}
+.page_orderDetail .commentList .com_list .pic_right .name_title{width:28.5rem; height:2.5rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_orderDetail .commentList .com_list .pic_right .name_title .names{width:16rem; height:4rem;line-height:4rem; font-size:1.4rem; color:#333333; text-align:left;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.page_orderDetail .commentList .com_list .pic_right .name_title span{display:inline-block; letter-spacing:0rem; height:4rem;line-height:4rem; color:#b0b0b0;}
+.page_orderDetail .commentList .com_list .pic_right .t_content{width:28.5rem; text-align:left; line-height:2rem;  color:#333333; letter-spacing:0rem; font-size:1.2rem;}
+.page_orderDetail .commentList .com_list .pic_right .imges{width:28.5rem;}
+.page_orderDetail .commentList .com_list .pic_right .imges img{width:6.6rem; height:6.6rem; margin-right:1.5rem;object-fit: cover;}
+

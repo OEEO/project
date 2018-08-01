@@ -1,0 +1,221 @@
+@import '../common/common.wxss';
+page {
+    overflow-y: hidden;
+}
+scroll-view {
+    height: 100%;
+}
+.raise-order {
+    padding-bottom: 108rpx;
+}
+
+.raise-order-progress {
+    background: #fff;
+    padding: 82rpx 0 52rpx;
+    margin-bottom: 20rpx;
+}
+
+.raise-progress {
+    /* padding: 0 40rpx; */
+    width: 670rpx;
+	height: 6rpx;
+    background-color: rgba(179, 152, 81, 0.3);
+    border-radius: 3rpx;
+    margin: auto;
+}
+
+.raise-progress .raise-progress_line {
+    height: 100%;
+    border-radius: 3rpx;
+    opacity: 1;
+    background: #b39851;
+    position: relative;
+    overflow: none !important;
+}
+
+.raise-progress .raise-progress_point {
+    opacity: 1;
+    display: inline-block;
+    position: absolute;
+    width: 16rpx;
+    height: 16rpx;
+    border-radius: 50%;
+    background: #b39851;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translate3d(50%, 0, 0);
+    overflow: visible !important;
+}
+
+.raise-progress .raise-progress_text {
+    position: absolute;
+    right: 0;
+    top: -46rpx;
+    font-size: 24rpx;
+    color: #b39851;
+    transform: translate3d(50%, 0, 0);
+    overflow: visible;
+}
+
+.raise-statistics {
+    display: flex;
+    margin: 20rpx auto 0;
+}
+
+.raise-statistics .raise-statistics_item {
+    flex: 1;
+    text-align: center;
+    overflow: hidden;
+}
+
+.raise-statistics .raise-statistics_item > text {
+    display: block;
+    line-height: 1;
+}
+
+.raise-statistics .raise-statistics_item > text.sm-text {
+    font-size: 20rpx;
+    color: #999;
+}
+
+.raise-statistics .raise-statistics_item > text.bg-text {
+    font-size: 32rpx;
+    color: #333;
+    margin-top: 32rpx;
+}
+
+/**/
+.raise-order-detail {
+    background: #fff;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+}
+
+.raise-order-detail .co1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 35rpx 0;
+    border-bottom: 1rpx solid #eee;
+}
+
+.raise-order-detail .raise-order-detail_img {
+    width: 256rpx;
+    height: 157rpx;
+    margin-right: 24rpx;    
+    /* display: inline-block; */
+}
+
+.raise-order-detail .raise-order-detail_info {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 157rpx;
+    vertical-align: top;
+    flex: 1;
+    /* float: right; */
+}
+
+.raise-order-detail .raise-order-detail_title {
+    max-width: 300rpx;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.raise-order-detail .raise-order-detail_footer {
+    padding: 15rpx 0;
+}
+
+.raise-order-info {
+    background: #fff;
+    padding: 30rpx 40rpx;
+    margin-bottom: 20rpx;
+}
+
+.raise-order-info .raise-order-info_item {
+    padding-bottom: 30rpx;
+    border-bottom: 1rpx solid #eee;
+    margin-bottom: 30rpx;
+}
+
+.raise-order-info .raise-order-info_address {
+    max-width: 480rpx;
+}
+
+.step-item {
+    box-sizing: border-box;
+    border-left: 6rpx solid transparent;
+    padding-left: 8rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    color: #a0a0a0;
+    background: #fcfcfc;
+    margin-bottom: 20rpx;
+}
+
+.step-item-block {
+    box-sizing: border-box;
+    padding-left: 26rpx;
+    padding-right: 40rpx;
+    border-left: 2rpx solid transparent;
+}
+
+.step-item.active {
+    background: #fbf9f4;
+    color: #b39851;   
+    border-left: 6rpx solid #b39851; 
+}
+
+.step-item.active .step-item-block {
+    border-left: 2rpx solid #b39851;
+}
+
+.raise-order-pay_price {
+    box-sizing: border-box;
+    padding: 0 40rpx;
+    margin-bottom: 108rpx;
+}
+
+.submit-btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #fff;
+    background: #b39851;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    font-size: 36rpx;
+}
+
+.raise-lottery {
+    padding: 30rpx 40rpx;
+    background: #fff;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+}
+
+.raise-lottery .lucky-num {
+    margin-left: 50rpx;
+}
+
+.raise-lottery .lucky-status {
+    margin-left: 10px;
+}
+
+
+.agreement_pages{width:750rpx; height:100%; background:rgba(0,0,0,0.8); position:absolute; left:0; top:0; z-index:999;}
+.agreement_pages .user_agreement{width:600rpx; margin:167rpx auto 0rpx auto; background:#fff; border-radius:10rpx; /*height:75%; */height:580rpx;overflow:hidden; display: flex; flex-flow: column nowrap; position:relative;}
+.agreement_pages .user_agreement .bg{width:600rpx; line-height:125rpx; height:125rpx; text-align:center; font-size:33rpx; color:#b39851; margin:0 auto; position:absolute; top:0rpx; left:0rpx;}
+.agreement_pages .user_agreement .content{width:500rpx; font-size:28rpx; line-height:40rpx; color:#888888; letter-spacing:0rpx; padding:21rpx 52rpx; overflow:auto; padding-top:0rpx; position:absolute; top:125rpx; left:0rpx; bottom:100rpx; right:0rpx;}
+.agreement_pages .user_agreement .knowe{display:block;width:100%; height:100rpx; border-radius:0 0 10rpx 10rpx; text-align:center; font-size:33rpx; line-height:100rpx; color:#fff; background:#b39851; position:absolute; left:0rpx; bottom:0rpx;}
+

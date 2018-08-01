@@ -1,0 +1,783 @@
+<!--日历插件-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+
+<button type="button" id="member_add" class="am-btn am-btn-success" onclick="addHost()">+ Host添加 +</button>
+<button type="button" id="memberExport" class="am-btn am-btn-warning" onclick="HostExport()">Host导出</button>
+<p><span>达人数量：{$daren_count}</span></p>
+<br/>
+<form class="am-g">
+    <input type="text" name="member_id" id="search_member_id" class="am-form-field am-radius" style="width: 20%;float: left;" placeholder="达人ID查询" value="{$search_member_id}"/>
+    <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 20%;float: left;" placeholder="达人名称模糊查询" value="{$search_member}"/>
+    <input type="text" name="telephone" id="search_telephone" class="am-form-field am-radius" style="width: 20%;float: left;" placeholder="手机号模糊查询" value="{$search_telephone}"/>
+    <button type="submit" class="am-btn am-btn-success">查找</button>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+<!-- HOST详细信息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="Hostinfo">
+    <div class="am-modal-dialog">
+        <form name="Hostinfo" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">详细信息</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <input type="hidden" name="member_id" id="member_id" value="">
+                <!--<div class="am-g am-margin-top-sm am-text-left" >-->
+                    <!--<span class="am-u-sm-3 am-u-md-3">头像(320x320):</span>&nbsp;&nbsp;<img id="path" class="add" alt="点击上传图片" width="100px" height="100px"/>-->
+                <!--</div>-->
+                <!--<div class="am-g am-margin-top-sm am-text-left" >-->
+                    <!--<span class="am-u-sm-3 am-u-md-3">背景(640x488):</span>&nbsp;&nbsp;<img id="cover" class="add" alt="点击上传图片" width="200px" height="100px"/>-->
+                <!--</div>-->
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">真实姓名:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" id="realname" name="realname"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">性别:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="radio" name="sex" value="0">未设定<input type="radio" name="sex" value="1">男<input type="radio" name="sex" value="2">女</div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">身份证:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" name="identity" id="identity"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">开户行:</div>
+                    <div class="am-u-sm-9 am-u-md-9">
+                        <select name="bank_id">
+                            <option value="">请选择银行卡</option>
+                            <?php foreach($banks as $bank):?>
+                            <option value="{$bank.id}">{$bank.name}</option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">银行卡号:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" name="number" id="number"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">联系电话:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" name="contact" id="contact"/></div>
+                </div>
+                <!--<div class="am-g am-margin-top">
+                    <div class="am-u-sm-3 am-u-md-3">
+                        健康证
+                    </div>
+                    <div id="update-host-headlth" class="am-u-sm-9 am-u-md-9 pics health_pics">
+                        <span><img width="100" data-health-pic="" src="" onclick="imgEnlarge(this)"></span>
+                    </div>
+                 </div>-->
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-9 am-u-md-9"><font color="#f00">温馨提示：</font> 我们将以此信息为准与您结算活动款项，请确认填写无误。</div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- 添加Host -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="addHost">
+    <div class="am-modal-dialog">
+        <form name="adddetail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">添加HOST</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <input type="hidden" id="memberId" value="">
+                <!--<div class="am-g am-margin-top-sm am-text-left" >-->
+                    <!--<div class="am-u-sm-3 am-u-md-3">头像(320x320):</div>-->
+                    <!--<div class="am-u-sm-9 am-u-md-9"><img id="add_path" class="add" alt="点击上传图片" width="100px" height="100px"/></div>-->
+                <!--</div>-->
+                <!--<div class="am-g am-margin-top-sm am-text-left" >-->
+                    <!--<div class="am-u-sm-3 am-u-md-3">背景(640x488):</div>-->
+                    <!--<div class="am-u-sm-9 am-u-md-9"><img id="add_cover" class="add" alt="点击上传图片" width="200px" height="100px"/></div>-->
+                <!--</div>-->
+
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <div class="am-u-sm-3 am-u-md-3">用户ID:</div>
+                    <div class="am-u-sm-9 am-u-md-9">
+                        <div>
+                            <input type="text" name="add_member_id" id="add_member_id" placeholder="会员ID" style="width: 70px; float:left;">
+                            <input type="text" id="serach_member_id" placeholder="昵称查找会员ID" value="" required style="width: 100px; float:left; margin: 0rem 15px;"/>
+                            <div id="check_member_id" onclick="checkMember_id()" style="width: 40px; height:30px; text-align: center; border:1px solid #dbdbdb; float: left; line-height: 30px;" >检测</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <div class="am-u-sm-3 am-u-md-3"></div>
+                    <div class="am-u-sm-9 am-u-md-9">
+
+                        <div class="am-scrollable-vertical" id="getMember" style="display: none;height: 200px">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">真实姓名:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text"  name="add_realname"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">性别:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="radio" name="add_sex" value="0">未设定<input type="radio" name="add_sex" value="1">男<input type="radio" name="add_sex" value="2">女</div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">身份证:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" name="add_identity"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">开户行:</div>
+                    <div class="am-u-sm-9 am-u-md-9">
+                        <select name="add_bank_id">
+                            <option value="">请选择银行卡</option>
+                            <?php foreach($banks as $bank):?>
+                            <option value="{$bank.id}">{$bank.name}</option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-3 am-u-md-3">银行卡号:</div>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" name="add_number"  /></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">联系电话:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text" name="add_contact"/></div>
+                </div>
+                <!--<div class="am-g am-margin-top">
+                    <div class="am-u-sm-3 am-u-md-3">
+                        健康证
+                    </div>
+                    <div id="add-host-headlth" class="am-u-sm-9 am-u-md-9 pics health_pics">
+                        <a href="javascript:void(0);" class="add" onclick="UplodeHealthPic('#add-host-headlth')">+</a>
+                    </div>
+                 </div>-->
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-9 am-u-md-9"><font color="#f00">温馨提示：</font> 我们将以此信息为准与您结算活动款项，请确认填写无误。</div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- host的头像图片 -->
+
+<!-- 修改头像 -->
+<div class="am-modal am-modal-prompt themeEditBox" tabindex="-1" id="modifyPic">
+    <div class="am-modal-dialog">
+        <form name="modifyPic" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">修改头像</div>
+            <div class="am-scrollable-vertical" style="height: 200px;">
+                <input type="hidden" name="member_id" value="">
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-2 am-u-md-2 am-text-right">头像： </div>
+                    <div class="am-u-sm-10 am-u-md-10 am-text-left"><div class="HeadPic" id="HeadPic" style="width: 100px;"></div></div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-12 am-u-md-12 am-text-left">注：可以直接点击图片替换</div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- host的背景图片 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="updateBg">
+    <div class="am-modal-dialog">
+        <form name="updateBgarea" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">上传背景图片</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 200px;">
+                <input type="hidden"  name="member_id" value="">
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <div class="am-u-sm-3 am-u-md-3" style="text-align: center;">头像(640x480):</div>
+                    <div class="am-u-sm-9 am-u-md-9"><img id="cover_pic_id" class="add" alt="点击上传图片" width="200px" height="100px"/></div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- 详细信息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="signaturedetail">
+    <div class="am-modal-dialog">
+        <form name="signaturearea" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">详细信息</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 200px;">
+                <input type="hidden" name="member_id" value="">
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">简介:</span>&nbsp;&nbsp;<textarea id="signature" name="signature" style="min-height:120px; border:solid 1px #ddd; padding:8px;"></textarea>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- 添加host的支付方式 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="createPay">
+    <div class="am-modal-dialog">
+        <form name="addPay" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">host的支付方式</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="title" class="am-input-sm" id="code" placeholder="账号" value="" required/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="title" class="am-input-sm" id="name" placeholder="对应账号真实姓名" value="" required/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="radio" name="type" class="am-input-sm" value="0" checked/><span>支付宝</span>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.am-modal').appendTo('body');
+    function daren_list(){
+        window.location = '__CONTROLLER__/index';
+    }
+    function request_list(){
+        window.location = '__CONTROLLER__/request';
+    }
+
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-alert');
+        $('#birth').datepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            startDate = new Date(event.date);
+            $(this).datepicker('close');
+        });
+        $('#add_birth').datepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            startDate = new Date(event.date);
+            $(this).datepicker('close');
+        });
+    });
+
+    //获取会员的id。和联系电话
+    $('#serach_member_id').keyup(function(){
+        $('#getMember').empty();
+        var search_key = $(this).val();
+
+        $.ajax({
+            url: '',
+            data: {'search_key': search_key},
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                var code = '';
+                for(i in d){
+                    //alert(d[i]['id']+'---'+d[i]['nickname']);
+                    code += '<div class="item'+d[i]['id']+'" onclick="choose('+d[i]['id']+','+d[i]['telephone']+',this)"><a href="#">'+d[i]['id']+'</a>&nbsp;&nbsp;<a href="#">'+d[i]['telephone']+'</a>&nbsp;&nbsp;<a href="#">'+d[i]['nickname']+'</a></div>';
+                }
+
+                $(code).appendTo('#getMember');
+                $('#getMember').show();
+                //window.location.reload();
+            }
+        });
+    })
+
+    //检测会员是否成为Host
+    function checkMember_id(){
+        var data ={};
+        data.member_id = document.adddetail.add_member_id.value;
+        data.typeName = 'checkmember_id';
+        if(!member_id){
+            alert('请填写会员ID');
+            return;
+
+        }
+        $.ajax({
+            url: '',
+            data: data,
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                if(d.info == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+
+    }
+
+    //点击选择用户
+    function choose(id,contact,e){
+//        $('#add_member_id').val($(e).children().html());
+        document.adddetail.add_member_id.value = id;
+        document.adddetail.add_contact.value = contact;
+        $('#getMember').hide();
+    }
+
+    //HOST详细信息
+    function detailInfo(id){
+        document.Hostinfo.member_id.value =id;
+        document.Hostinfo.realname.value = '';
+        document.Hostinfo.identity.value = '';
+        document.Hostinfo.number.value = '';
+        document.Hostinfo.contact.value = '';
+        document.Hostinfo.sex.value = '';
+        document.Hostinfo.bank_id.value = '';
+
+        $.ajax({
+            url: '__CONTROLLER__/getHostInfo.html',
+            data: {'member_id': id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                if(d.info){
+                    alert(d.info);
+                    return;
+                }
+                if(d.id) {
+                    document.Hostinfo.member_id.value = d.id;
+                    document.Hostinfo.realname.value = d.realname;
+                    document.Hostinfo.identity.value = d.identity;
+                    document.Hostinfo.number.value = d.bank_number;
+                    document.Hostinfo.contact.value =  d.contact;
+                    document.Hostinfo.sex.value = d.sex;
+                    document.Hostinfo.bank_id.value =  d.bank_id;
+                    // console.log(d);
+
+                    $('#update-host-headlth img').data('health-pic', d.health_pic_id);
+                    $('#update-host-headlth img').attr('src', d.health_pic);
+                }
+                $('#Hostinfo').modal({
+                    onConfirm: function() {
+                        var data = {};
+                        data.member_id = document.Hostinfo.member_id.value;
+                        data.identity = document.Hostinfo.identity.value;
+                        data.number = document.Hostinfo.number.value;
+                        data.contact = document.Hostinfo.contact.value;
+                        data.realname = document.Hostinfo.realname.value;
+                        data.sex = document.Hostinfo.sex.value;
+                        data.bank_id = document.Hostinfo.bank_id.value;
+                        if(document.Hostinfo.member_id.value =='' ){
+                            alert('会员ID不能为空')
+                            return
+                        }
+                        if( document.Hostinfo.bank_id.value ==''){
+                            alert('所属银行不能为空')
+                            return
+                        }
+                        if(document.Hostinfo.number.value =='' ){
+                            alert('银行卡号不能为空')
+                            return
+                        }
+                        if(document.Hostinfo.contact.value ==''){
+                            alert('联系电话不能为空')
+                            return
+                        }
+                        if(document.Hostinfo.realname.value =='' ){
+                            alert('真实姓名不能为空')
+                            return
+                        }
+                        if( document.Hostinfo.sex.value =='' ){
+                            alert('性别不能为空')
+                            return
+                        }
+
+
+
+
+                        $.ajax({
+                            url: '__CONTROLLER__/HostUpdate.html',
+                            data: data,
+                            dataType: 'json',
+                            type: 'POST',
+                            success: function (d) {
+                                alert(d.info);;
+                                window.location.href = window.location.href;
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    //添加host
+    function addHost(){
+        $('#addHost').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data = {};
+                data.add_member_id = document.adddetail.add_member_id.value;
+                data.add_number = document.adddetail.add_number.value;
+                data.add_contact = document.adddetail.add_contact.value;
+                data.add_identity = document.adddetail.add_identity.value;
+                data.add_realname = document.adddetail.add_realname.value;
+                data.add_sex = document.adddetail.add_sex.value;
+                data.add_bank_id = document.adddetail.add_bank_id.value;
+                //data.health_pic_id = $('[data-health-pic]') ? $('[data-health-pic]').data('health-pic') : -1;
+                if(document.adddetail.add_member_id.value =='' ){
+                    alert('会员ID不能为空')
+                    return
+                }
+                if( document.adddetail.add_bank_id.value ==''){
+                    alert('所属银行不能为空')
+                    return
+                }
+                if(document.adddetail.add_number.value =='' ){
+                    alert('银行卡号不能为空')
+                    return
+                }
+                if(document.adddetail.add_contact.value ==''){
+                    alert('联系电话不能为空')
+                    return
+                }
+                if(document.adddetail.add_realname.value =='' ){
+                    alert('真实姓名不能为空')
+                    return
+                }
+                if( document.adddetail.add_sex.value =='' ){
+                    alert('性别不能为空')
+                    return
+                }
+                $.ajax({
+                    url: '__CONTROLLER__/AddHost.html',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                            window.location.href = window.location.href;
+                        }else{
+                            alert(d.info);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+
+    //图片上传
+    function Uplodepic(em){
+        pic_upload(em, [320, 320], function(file){
+            $('#HeadPic').html('<span><img data="'+ file[0].pic_id +'" src="'+ file[0].path +'"   width="100px" height="100px"onclick="Uplodepic(this)"><a href="javascript:void(0);" onclick="removePic(this)">×</a></span>');
+            $('#HeadPic .add').remove();
+        }, false);
+
+    }
+    //图片删除
+    function removePic(em){
+        $(em).parents('span').remove();
+        $('.HeadPic').append(' <a href="javascript:void(0);" class="add" onclick="Uplodepic(this)">+</a>');
+    }
+    //修改头像
+    function UpdateHeadPic(id){
+        $.ajax({
+            url: '__CONTROLLER__/UpdateHeadPic.html',
+            data:{'member_id':id,'typeName':'getHeadPic'},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                if(d.status !=0 && d.path !=''&& d.pic_id !=''&& d.pic_id !=null){
+                    code = ' <span><img id="headpic_show" onclick="Uplodepic(this)"   data="'+ d.pic_id +'" src="'+ d.path +'" width="100px" height="100px"><a onclick="removePic(this)" href="javascript:void(0);">×</a></span>'
+                }else{
+                    code = '<a href="javascript:void(0);" class="add" onclick="Uplodepic(this)">+</a>'
+                }
+                $('#HeadPic').append(code);
+            }
+        });
+
+        $('#modifyPic').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data={};
+                data.pic_id = $('#HeadPic span img').attr('data');
+                data.member_id = id;
+                data.typeName = 'PostHeadPic';
+
+                $.ajax({
+                    url: '__CONTROLLER__/UpdateHeadPic.html',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.href = window.location.href;
+                    }
+                });
+            }
+        });
+
+    }
+
+    //修改host头像(报废)
+    function updatetutor(id){
+        $.ajax({
+            url: '__CONTROLLER__/UpdateHostTutor.html',
+            data: {'member_id': id,'typeName':'get_tutorImg'},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                document.updatetutorarea.member_id.value=id;
+                $('#tutor_path').attr('src', d.path).on('error', function(){
+                    this.src = '';
+                });
+                $('#tutor_path').attr('data', d.pic_id);
+            }
+        });
+        $('#updatetutor').modal({
+            relatedTarget: this,
+            onConfirm: function () {
+                var data = {};
+                data.member_id = document.updatetutorarea.member_id.value;
+                data.pic_id = $('#tutor_path').attr('data');
+                data.typeName = 'updatetutor';
+
+                $.ajax({
+                    url: '__CONTROLLER__/UpdateHostTutor.html',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                            window.location.href = window.location.href;
+                        }else{
+                            alert(d.info);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+
+    //修改host背景图
+    function updateBg(id){
+        $.ajax({
+            url: '__CONTROLLER__/UpdateHostBg.html',
+            data: {'member_id': id,'typeName':'get_Bg'},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                document.updateBgarea.member_id.value=id;
+                $('#cover_pic_id').attr('src', d.path).on('error', function(){
+                    this.src = '';
+                });
+                $('#cover_pic_id').attr('data', d.pic_id);
+            }
+        });
+        $('#updateBg').modal({
+            relatedTarget: this,
+            onConfirm: function () {
+                var data = {};
+                data.member_id = document.updateBgarea.member_id.value;
+                data.cover_pic_id = $('#cover_pic_id').attr('data');
+                data.typeName = 'updateBg';
+
+                $.ajax({
+                    url: '__CONTROLLER__/UpdateHostBg.html',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                            window.location.href = window.location.href;
+                        }else{
+                            alert(d.info);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    //查看修改简介
+    function check_synopsis(id){
+        $.ajax({
+            url: '__CONTROLLER__/check_synopsis.html',
+            data: {'member_id': id,'typeName':'check_synopsis'},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                document.signaturearea.member_id.value=id;
+                document.signaturearea.signature.value= d;
+            }
+        });
+        $('#signaturedetail').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data = {};
+                data.typeName = 'Update_synopsis';
+                data.member_id = document.signaturearea.member_id.value;
+                data.signature = document.signaturearea.signature.value;
+                $.ajax({
+                    url: '__CONTROLLER__/check_synopsis.html',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                       window.location.href = window.location.href;
+                    }
+                });
+            }
+        });
+    }
+
+    //host支付方式
+    function HostPay(id){
+        $.ajax({
+            url: '__CONTROLLER__/host_pay.html',
+            data:{'member_id':id,'typeName':'checkhostpay'},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                if(d.status == 0){
+                    alert(d.info);
+                }else {
+                    document.addPay.code.value= d.code;
+                    document.addPay.name.value= d.name;
+                    document.addPay.type.value= d.type;
+                }
+            }
+        });
+
+        $('#createPay').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data={};
+                data.code = document.addPay.code.value;
+                data.name = document.addPay.name.value;
+                data.type = document.addPay.type.value;
+                data.member_id = id;
+                data.typeName = 'updatehostpay';
+
+                $.ajax({
+                    url: '__CONTROLLER__/host_pay.html',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.href = window.location.href;
+                    }
+                });
+            }
+        });
+
+    }
+    function set_star(member_id,oper){
+        $.ajax({
+            url : '__CONTROLLER__/set_star.html',
+            data : {'member_id' : member_id, 'oper' : oper},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+                window.location.reload();
+            }
+        });
+    }
+
+    //审核是否通过实名认证
+    function Auditing(id){
+        $.ajax({
+            url : '__CONTROLLER__/host_auditing',
+            data : { 'id' : id},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+               window.location.reload();
+            }
+        });
+
+
+    }
+
+    $('#cover_pic_id').click(function(){
+        pic_upload(this, [640, 480], function (files) {
+            for (var i in files) {
+                $('#cover_pic_id').attr("src", files[i].path);
+                $('#cover_pic_id').attr("data", files[i].pic_id);
+            }
+        });
+    });
+
+    //导出excel
+
+    $('#memberExport').click(function(){
+        var search_telephone = $('#search_telephone').val();
+        var search_member = $('#search_member').val();
+        var search_member_id = $('#search_member_id').val();
+
+        window.open("__CONTROLLER__/HostExport.html?member="+search_member+"&telephone="+search_telephone+"&member_id="+search_member_id,"_blank","width=1000,height=600 ")
+    });
+
+    // 上传健康证
+    function UplodeHealthPic(target) {
+        pic_upload(this, [640, 480], function (file) {
+            $(target).html('<span><img width="100" data-health-pic="'+ file[0].pic_id +'" src="'+ file[0].path +'" onclick="imgEnlarge(this)"><a class="removeBtn" href="javascript:void(0);" onclick="removeHealthPic(this, \'' + target + '\')">×</a></span>');
+            $(target + ' .add').remove();
+        }, false);
+    }
+
+    function removeHealthPic(em, target) {
+        $(em).parents('span').remove();
+        $('.health_pics').append(' <a href="javascript:void(0);" class="add" onclick="UplodeHealthPic(' + target + ')">+</a>');
+    }
+
+</script>

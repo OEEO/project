@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+/*.content{background:#ccc;height:100%;padding:2rem 0;}
+/***********************************************/
+.verificationLogin {margin-top:4rem;background:#fff;width:100%;}
+.verificationLogin .liBetweens{height:0.1rem; background:#e0e0e0; margin:0rem 0.8rem;}
+.verificationLogin div{font-size:1.5rem;color:#aaa;display:block;height:4rem; line-height:4rem;  padding-left:4.6rem; position:relative;}
+.verificationLogin div:before {content:''; width:1.6rem; height:1.6rem; left:1.8rem;/*background:url('./images/ucenter_menu_icons.png') 0 0 no-repeat;*/background-size:1.6rem auto; position:absolute; top:1.3rem; }
+.verificationLogin div input{position: absolute;left:11.2rem;top:0.8rem;font-size:1.5rem;color:#989898;width:14rem;height:2.6rem;border:none;}
+.verificationLogin div.list2 span{font-size:1.3rem;color:#fbb74b;display:line-block;float:right;margin-right:1.5rem;/*padding-left:1rem;border-left:0.1rem solid #fcd74b;*/}
+.verificationLogin div.list1:before {background:url('../images/mobile_selected@2x.png') 0 0 no-repeat;background-size:1.6rem auto;/*background-position:0 0;*/}
+.verificationLogin div.list2:before {background:url('../images/verification code_selected@2x.png') 0 0 no-repeat;background-size:1.6rem auto;/*background-position:0 13.5%;*/}
+.verificationLogin div.list3:before {background:url('../images/password_selected@2x.png') 0 0 no-repeat;background-size:1.6rem auto;/*background-position:0 26.8%;*/}
+/*********************************/
+.tie{font-size:1.6rem;color:#fff;background:#fcd74b;width:80%;margin:8rem 10%;height:4.2rem;border:none;border-radius:1rem;}
+
+
+
+
+
+/***********结束************/

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="http://mat1.gtimg.com/sports/kbsweb/favicon.ico" type="image/x-icon">
+    <title></title>
+    <link rel="stylesheet" href="../tmp/style/main.css?t={VERSION_TIME}" />
+    <script src="../public/excanvas.js"></script>
+    <!--[if gt IE 7]>
+    <style>
+        .before-page .part2-main .heroes .ban img {
+            filter: gray;
+        }
+    </style>
+    <![endif]-->
+    <!-- built style will be auto injected -->
+    <script>
+        /**
+         * 图片加载失败时调用的函数。0 -- 默认头像， 1 -- 灰色图片
+         * 例子：<img src="man.png" onerror="nofind(0)" alt="This is a man" />
+         */
+        function nofind(type) {
+            var url = type === 0 ?
+                'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/unmen.png' :
+                'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/blank.png';
+            var img = event.srcElement;
+            img.src = url;
+            img.onerror = null;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <!-- built html will be auto injected -->
+        <div class="before-page">
+            <div class="container">
+                <div class="part1">
+                    <div class="header part1-header">
+                        <div class="title"></div>
+                        <div class="lt-title">
+                            <span class="begin-time"></span>
+                            Best of
+                            <span class="bo"></span>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <div class="vs">
+                            <div class="left">
+                                <img src="" alt="" class="team-logo">
+                                <span class="team-name"></span>
+                            </div>
+                            <div class="middle">
+                                <span>—</span>
+                                <span> VS </span>
+                                <span>—</span>
+                            </div>
+                            <div class="right">
+                                <span class="team-name"></span>
+                                <img src="" alt="" class="team-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="part2">
+                    <div class="header part2-header">
+                        <div class="left">
+                            <span class="line"></span>
+                            <img src="" alt="" class="team-logo">
+                            <span class="team-name-wrap">
+                                <span class="team-name"></span>
+                            </span>
+                        </div>
+                        <div class="middle">
+                            <p class="bold-text">赛季表现</p>
+                            <p>最近20场表现</p>
+                        </div>
+                        <div class="right">
+                            <span class="team-name-wrap">
+                                <span class="team-name"></span>
+                            </span>
+                            <img src="" alt="" class="team-logo">
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="main part2-main">
+                        <div class="left">
+                            <div class="win-per-num"></div>
+                            <div class="game-result-wrap">
+                                <div class="win-and-lose">
+                                    <span class="win"></span>胜
+                                    <span class="lose"></span>负
+                                </div>
+                                <div class="win-streak"></div>
+                            </div>
+                            <div class="heroes">
+                                <div class="heroes-wrap ban">
+                                    <span class="title">Ban</span>
+                                    <!--在js中插入-->
+                                    <!--<span class="img-wrap hero" v-for="ban in leftTeam.bans">-->
+                                    <!--<img :src="ban.url" alt="ban">-->
+                                    <!--</span>-->
+                                </div>
+                                <div class="heroes-wrap pick">
+                                    <span class="title">Pick</span>
+                                    <!--在js中插入-->
+                                    <!--<span class="img-wrap hero" v-for="pick in leftTeam.picks">-->
+                                    <!--<img :src="pick.url" alt="pick">-->
+                                    <!--</span>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vertical-middle"></div>
+                        <div class="middle">
+                            <ul class="avgs">
+                                <!--在js中插入-->
+                                <!--<li v-for="avg in avgs">-->
+                                <!--<span class="left-text">-->
+                                <!--<p v-for="text in avg.leftText">{{ text }}</p>-->
+                                <!--</span>-->
+                                <!--<span class="lines-wrap">-->
+                                <!--<span class="red-line" :style="{width: 350 * avg.leftPer + 'px' }"></span>-->
+                                <!--<span class="blue-line" :style="{width: 350 * avg.rightPer + 'px'}"></span>-->
+                                <!--</span>-->
+                                <!--<span class="middle-text">-->
+                                <!--{{ avg.middleText }}-->
+                                <!--</span>-->
+                                <!--<span class="right-text">-->
+                                <!--<p v-for="text in avg.rightText">{{ text }}</p>-->
+                                <!--</span>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <div class="win-per-num"></div>
+                            <div class="game-result-wrap">
+                                <div class="win-and-lose">
+                                    <span class="win"></span>胜
+                                    <span class="lose"></span>负
+                                </div>
+                                <div class="win-streak"></div>
+                            </div>
+                            <div class="heroes">
+                                <div class="heroes-wrap ban">
+                                    <span class="title">Ban</span>
+                                    <!--在js中插入-->
+                                    <!--<span class="img-wrap hero" v-for="ban in rightTeam.bans">-->
+                                    <!--<img :src="ban.url" alt="ban">-->
+                                    <!--</span>-->
+                                </div>
+                                <div class="heroes-wrap pick">
+                                    <span class="title">Pick</span>
+                                    <!--在js中插入-->
+                                    <!--<span class="img-wrap hero" v-for="pick in rightTeam.picks">-->
+                                    <!--<img :src="pick.url" alt="pick">-->
+                                    <!--</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer part2-footer">
+                        <div class="header">
+                            <div class="title battle-record-title">
+                                <span class="left red-text">
+                                    <span class="team-name"></span>
+                                    <span class="win"></span>胜
+                                </span>
+                                <span class="middle-text">交战记录</span>
+                                <span class="right blue-text">
+                                    <span class="win"></span>胜
+                                    <span class="team-name"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="main">
+                            <ul class="battle-record-content">
+                                <!--在js里插入-->
+                                <!--<li v-for="item in lastBattleRecord" v-if="lastBattleRecord.length > 0">-->
+                                <!--<span class="game-time">{{ item.timeF }}</span>-->
+                                <!--<span class="game-name">{{ item.league }}</span>-->
+                                <!--<span class="game-result">-->
+                                <!--<span class="left-team-name">{{ item.left_name }}</span>-->
+                                <!--<span class="left-team-score">{{ item.left_score }}</span>-->
+                                <!--<span class="colon">:</span>-->
+                                <!--<span class="right-team-score">{{ item.right_name }}</span>-->
+                                <!--<span class="right-team-name">{{ item.right_score }}</span>-->
+                                <!--</span>-->
+                                <!--<span class="game-detail" @click="goToGameDetail(item.id)">-->
+                                <!--<a href="javascript:void(0)">比赛详情</a>-->
+                                <!--</span>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="part3">
+                    <div class="header part3-header">
+                        <div class="left">
+                            <span class="line"></span>
+                            <img src="" alt="" class="team-logo">
+                            <span class="team-name-wrap">
+                                <span class="team-name"></span>
+                            </span>
+                        </div>
+                        <div class="middle">
+                            <p class="bold-text">对队数据</p>
+                            <p>最近20场表现</p>
+                        </div>
+                        <div class="right">
+                            <span class="team-name-wrap">
+                                <span class="team-name"></span>
+                            </span>
+                            <img src="" alt="" class="team-logo">
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="main part3-main">
+                        <div class="play-position">
+                            <span class="nav-item active">上单</span>
+                            <span class="nav-item">打野</span>
+                            <span class="nav-item child3">中单</span>
+                            <span class="nav-item child4">ADC</span>
+                            <span class="nav-item last-child">辅助</span>
+                        </div>
+                        <div class="player-data">
+                            <div class="header player-data-h">
+                                <div class="left">
+                                    <!--在js中插入-->
+                                    <!--<span-->
+                                    <!--class="img-wrap player-little-icon"-->
+                                    <!--v-for="(player, index) in playerData[curTabIndex].left"-->
+                                    <!--@click="curLeftPlayerIndex = index">-->
+                                    <!--<img :src="player.img">-->
+                                    <!--</span>-->
+                                </div>
+                                <div class="right">
+                                    <!--在js中插入-->
+                                    <!--<span class="img-wrap player-little-icon" v-for="player in playerData[curTabIndex].right">-->
+                                    <!--<img :src="player.img">-->
+                                    <!--</span>-->
+                                </div>
+                            </div>
+                            <div class="main player-data-m">
+                                <div class="left">
+                                    <span class="player-big-icon">
+                                        <img src="" alt="">
+                                    </span>
+                                    <span class="player-name">
+                                        <p class="en"></p>
+                                    </span>
+                                </div>
+                                <div class="middle">VS</div>
+                                <div class="right">
+                                    <span class="player-name"></span>
+                                    <span class="player-big-icon">
+                                        <img src="" alt="">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="footer player-data-f">
+                                <span class="left">
+                                    <span class="per-circle-item-wrap">
+                                        <canvas class="per-circle-item" id="per-circle-1" width="86" height="86"></canvas>
+                                        <span class="num red-text">0</span>
+                                        <span class="desc">胜率</span>
+                                    </span>
+                                    <span class="per-circle-item-wrap">
+                                        <canvas class="per-circle-item" id="per-circle-2" width="86" height="86"></canvas>
+                                        <span class="num red-text">0</span>
+                                        <span class="desc">场均KDA</span>
+                                    </span>
+                                </span>
+                                <span class="middle">
+                                    <canvas class="radar-map" id="radar-map" width="260" height="260"></canvas>
+                                </span>
+                                <span class="right">
+                                    <span class="per-circle-item-wrap">
+                                        <canvas class="per-circle-item" id="per-circle-3" width="86" height="86"></canvas>
+                                        <span class="num blue-text">0</span>
+                                        <span class="desc">胜率</span>
+                                    </span>
+                                    <span class="per-circle-item-wrap">
+                                        <canvas class="per-circle-item" id="per-circle-4" width="86" height="86"></canvas>
+                                        <span class="num blue-text">0</span>
+                                        <span class="desc">场均KDA</span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer part3-footer">
+                        <div class="percent-wrap">
+                            <ul class="footer-percent-ul">
+                                <!--在js中插入-->
+                                <!--<li v-for="item in curPlayerDataPer">-->
+                                <!--<span class="left">-->
+                                <!--<span class="line-wrap">-->
+                                <!--<span class="num">{{ item.leftNum }}</span>-->
+                                <!--<span class="line" :style="{width: item.leftPer / 100 * lineMaxWidth + 'px'}"></span>-->
+                                <!--</span>-->
+                                <!--</span>-->
+                                <!--<span class="middle">{{ item.title }}</span>-->
+                                <!--<span class="right">-->
+                                <!--<span class="line-wrap">-->
+                                <!--<span class="line" :style="{width: item.rightPer / 100 * lineMaxWidth + 'px'}"></span>-->
+                                <!--<span class="num">{{ item.rightNum }}</span>-->
+                                <!--</span>-->
+                                <!--</span>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- built script will be auto injected -->
+    <script data-main="../src/script/js/before.js?t={VERSION_TIME}" src="../src/script/require.js"></script>
+</body>
+
+</html>

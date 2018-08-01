@@ -1,0 +1,26 @@
+.page_payMoney .timeout{height:16rem;}
+.page_payMoney .timeout .top {color:#999; margin:1rem 0 0 1rem;}
+.page_payMoney .timeout .times {color:#b39851; padding-left:5rem; font-size:4rem; text-align:center; margin-top:4rem; font-weight:none;}
+.page_payMoney .timeout .none {background:none; padding:0; color:#b39851;}
+
+/**底部菜单布局设置**/
+.page_payMoney .bottomBlank{clear:both;height:4.5rem;}
+.page_payMoney.goodsOrderBottom{font-size:1.6rem; color:#fff; height:4rem; line-height:4rem; display:block; text-align:center; width:100%; bottom:0; background:#b39851;}
+/***************/
+.page_payMoney .aboutPay{margin-left:1rem;text-indent:0.8rem;/*padding-left:0.8rem;*/}
+.page_payMoney .aboutPay>div{font-size:1.4rem;color:#585858; height:4rem;line-height:4rem;}
+.page_payMoney .aboutPay .total{border-bottom:0.1rem solid #ccc;}
+/*.aboutPay .total>span{}*/
+.page_payMoney .aboutPay .radioSty{/*text-indent:3rem;*/height:4rem;line-height:4rem;/*background:url('./images/chooseAdd.png') no-repeat left center;background-size:2rem auto;border-top:0.1rem solid #cef;border-bottom:0.1rem solid #cef;*/}
+
+.page_payMoney .aboutPay .choosed{float:right;height:1.6rem;width:auto;margin-top:1.2rem;margin-right:1.2rem;}
+
+/*************自定义单选框******************/
+.page_payMoney .radioSty{position:relative;}
+.page_payMoney .radioSty:after{width:1.8rem;height:1.78rem;top:1.2rem;position:absolute;right:1.8rem; content:'';cursor: pointer;display:inline-block;background-image: url('../images/circle.png');background-size:100% auto;}
+
+.page_payMoney .checked:after {background-position: left bottom;}
+/**************自定义单选框结束**************/
+
+/*.radioSty img{margin:0 2rem;}*/
+.page_payMoney .radioSty span{display:inline-block;float:right;margin-top:1.9rem;height:0.2rem;background:url('../images/dashed.png') repeat-x;;margin-right:5rem;margin-left:1rem;}

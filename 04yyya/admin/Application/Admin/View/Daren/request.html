@@ -1,0 +1,199 @@
+<button type="button" id="daren_list" class="am-btn am-btn-primary" onclick="daren_list()">达人列表</button>
+<button type="button" id="request_list" class="am-btn am-btn-primary" onclick="request_list()">申请列表</button>
+<br/>
+<form class="am-g">
+    <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 20%;float: left;" placeholder="达人名称模糊查询" value="{$search_member}"/>
+    <button type="submit" class="am-btn am-btn-success">查找</button>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+<!-- 详细信息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="detailInfo">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">详细信息</div>
+            <div class="am-scrollable-vertical am-text-left items" style="height: 400px;">
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 拒绝 理由 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="refuse">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">详细信息</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <div class="am-g am-margin-top-sm am-text-left" >
+                    <span>拒绝理由：</span><br/>
+                    <textarea id="reason"></textarea>
+                </div>
+
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.am-modal').appendTo('body');
+    function daren_list(){
+        window.location = '__CONTROLLER__/index';
+    }
+    function request_list(){
+        window.location = '__CONTROLLER__/request';
+    }
+
+    //详细信息
+    function detailInfo(apply_id){
+        $.ajax({
+            url: '__CONTROLLER__/applyDetail',
+            data: {'apply_id': apply_id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                if(d.info){
+                    alert(d.info);
+                    return;
+                }
+                var code = '';
+                for(var i in d){
+                    code += '<div class="am-g am-margin-top-sm am-text-left" >';
+                    code += '<div class="am-u-sm-5 am-u-md-5">'+ d[i].question +':</div>';
+                    code += '<div class="am-u-sm-7 am-u-md-7">'+ d[i].answer +'</div>';
+                    code += '</div>';
+                }
+                $('.items').html(code);
+            }
+        });
+        $('#detailInfo').modal({
+            relatedTarget: this
+        });
+    }
+
+    //通过达人
+    function pass(id,category_id){
+        if(confirm('确定成为达人?')) {
+            $.ajax({
+                url: '__CONTROLLER__/vip.html',
+                data: {'id': id , 'category_id' : category_id, 'oper': 1},
+                dataType: 'json',
+                type: 'POST',
+                success: function (d) {
+                    if (d.status == 1) {
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    } else {
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    //拒绝达人
+    function refuse(id,category_id){
+        if(confirm('确定拒绝达人?')){
+            var c = false;
+            //拒绝理由
+            $('#refuse').modal({
+                relatedTarget: this,
+                onConfirm: function() {
+                    var reason = $('textarea').val();
+                    if(reason == null){
+                        alert('拒绝理由不能为空');
+                        c = false;
+                    }
+                    c = true;
+
+                    //alert(reason+'---'+c);
+                    if(c == true){
+                        $.ajax({
+                            url: '__CONTROLLER__/vip.html',
+                            data: {'id': id , 'reason' : reason, 'oper' : 0},
+                            dataType: 'json',
+                            type: 'POST',
+                            success: function (d) {
+                                if (d.status == 1) {
+                                    alert(d.info);
+                                    window.location.href = window.location.href;
+                                }else{
+                                    alert(d.info);
+                                }
+                            }
+                        });
+                    }
+                }
+            })
+
+        }
+    }
+
+    //美食达人
+    function star(id){
+        if(confirm('确定成为美食达人吗?')){
+            $.ajax({
+                url: '__CONTROLLER__/Star.html',
+                data: {'id': id , 'oper' : 1},
+                dataType: 'json',
+                type: 'POST',
+                success: function (d) {
+                    if (d.status == 1) {
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+
+    //主厨达人
+    function cooker(id){
+        if(confirm('确定成为主厨达人吗?')){
+            $.ajax({
+                url: '__CONTROLLER__/cooker.html',
+                data: {'id': id , 'oper' : 1},
+                dataType: 'json',
+                type: 'POST',
+                success: function (d) {
+                    if (d.status == 1) {
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+
+    //美食主厨达人
+    function starCooker(id){
+        if(confirm('确定成为美食主厨达人吗?')){
+            $.ajax({
+                url: '__CONTROLLER__/starCooker.html',
+                data: {'id': id , 'oper' : 1},
+                dataType: 'json',
+                type: 'POST',
+                success: function (d) {
+                    if (d.status == 1) {
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+
+</script>

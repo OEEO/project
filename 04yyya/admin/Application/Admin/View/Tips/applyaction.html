@@ -1,0 +1,1038 @@
+<!--日历js、css文件加载 start-->
+<!--<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.config.js"></script>
+<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.all.min.js"> </script>-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+
+{:W('Cate/table', [$datas, $lang, $operations, $pages, $batch])}
+
+<!-- 预览 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="preview">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">预览</div>
+            <p></p>
+            <iframe height="640px" width="360px"></iframe>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 拒绝理由 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="refuse">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-g am-margin-top-sm am-text-left" >
+                <span>拒绝通过理由：</span><br/>
+                <input type="checkbox" value="0"><span>活动分类不正确</span>
+                <input type="checkbox" value="1"><span>活动标签不正确</span>
+                <input type="checkbox" value="2"><span>图片有第三方水印</span>
+                <input type="checkbox" value="3"><span>活动标题或小标题有极限词</span>
+                <textarea id="reason"></textarea>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 历史促销 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="marketingHistory">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">历史促销</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <table class="am-table am-table-striped am-table-hover" id="marketingH">
+                </table>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 标签修改 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="tips_tags">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">活动标签</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <input type="hidden" name="tips_id" id="tips_id" value="">
+                <div class="am-form-group">
+                    <label for="official_tag">官方活动标签</label>
+                    <div id="official_tag">
+
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="normal_tag">普通活动标签</label>
+                    <div id="normal_tag">
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 加入专题 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="joinTheme">
+    <div class="am-modal-dialog">
+        <form name="changeGroup" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-g am-margin-top" id="groupSelect">
+                <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                    选择专题：
+                </div>
+                <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                    <select name="theme_id" data-am-selected="{btnSize: 'xs'}">
+                        <foreach name="themes" item="row">
+                            <option value="{$row.id}">{$row.title}</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!--购买模式-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="buyModel">
+    <div class="am-modal-dialog">
+        <form name="buyModel">
+            <div class="am-modal-hd">购买模式</div>
+            <div class="am-modal-bd">
+                <div style="width:300px; margin: auto; text-align: left">
+                    <input type="radio" name="buy_model" value="0">下单减库存&nbsp;&nbsp;
+                    支付限时<input type="text" name="limit_time" placeholder="限制时间" value="10" style="width: 50px; text-align: center;"/>分钟(不能低于5分钟)
+                </div>
+                <div style="width:300px; margin:20px auto; padding: 20px 0; border-top:solid 1px #ddd; text-align: left;">
+                    <input type="radio" name="buy_model" value="1">支付减库存
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!--设置抢购-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="marketingInfo">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator >
+            <div class="am-modal-hd">促销信息</div>
+            <div class=""style="height: 400px;">
+                <div class="am-g am-margin-top-sm" >
+                    <input type="text" name="title" id="title" placeholder="促销标题" required="true"/>
+                </div>
+                <div class="am-g am-margin-top-sm" >
+                    <input type="number" name="price" id="price" placeholder="促销价格" required="true"/>
+                    <input type="hidden" name="o_price" id="o_price" value="">
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input style="width: 35%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="start_time" name="start_time"  placeholder="开始时间" required readonly="true" required="true"/>
+                    <input style="width: 35%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="end_time" name="end_time"  placeholder="结束时间" required readonly="true" required="true"/>
+                </div>
+                <div class="am-g am-margin-top-sm" >
+                    <input type="text" name="limit" id="limit" placeholder="限购数量，0为不限" required="true"/>
+                </div>
+                <div class="am-g am-margin-top-sm" >
+                    <div class="am-form-group">
+                        <label for="allow_coupon">允许使用优惠券</label>
+                        <select id="allow_coupon">
+                            <option value="0">否</option>
+                            <option value="1">是</option>
+                        </select>
+                        <span class="am-form-caret"></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 查看操作日志 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="showlogs">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">日志</strong> / <small>活动修改日志</small></div>
+            <div class="am-fr am-cf">
+                <input id="starttime" type="text" class="am-input-sm am-text-center" placeholder="开始时间" />
+                <input id="endtime" type="text" class="am-input-sm am-text-center" placeholder="结束时间" />
+            </div>
+            <div style="clear:both"></div>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <div class="am-g error-log">
+                <div class="am-u-sm-12 am-u-sm-centered">
+                    <pre class="am-pre-scrollable am-text-left"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 查看发布者信息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="checkmemberInfo">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">申请公开活动</strong> / <small>查看发布者信息</small></div>
+        </div>
+        <div class="am-modal-bd">
+            <div class="am-g error-log">
+                <div class="am-u-sm-12 am-u-sm-centered">
+                    <pre class="am-pre-scrollable am-text-left"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $('.am-modal').appendTo('body');
+
+    //跳转详情页面
+    function detail(id){
+        window.location.href = '__CONTROLLER__/detail?'+id;
+    }
+
+    function preview(id){
+        var url = 'http://<?=WEB_DOMAIN?>/?page=tipsDetail&tips_id='+id;
+        $('iframe').attr('src',url);
+        $('#preview p').html('网址:http://<?=WEB_DOMAIN?>/?page=choice-tipsDetail&tips_id=' + id);
+        $('#preview').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+
+            }
+        });
+    }
+
+    function dataDelete(id){
+        if(window.confirm('确定要删除这条记录吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/delete.html',
+                data : {'id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+    //判断申请非公开活动（id：活动id ，oper：1通过 0拒绝 2下架 3上架 4提交审核）
+    function checkApply(id, oper){
+        var reason = null;  //拒绝理由
+
+        if(oper == 0){
+            c = false;
+            $('#refuse').modal({
+                relatedTarget: this,
+                onConfirm: function() {
+                    var reason = $('textarea').val();
+                    var select_reason = [];
+                    $('#refuse input').each(function(){
+                        if($(this).is(':checked'))select_reason.push($(this).val());
+                    })
+                    if(reason.length == 0 && select_reason.length==0){
+                        alert('拒绝理由不能为空');
+                    }else{
+                        $.ajax({
+                            url : '__CONTROLLER__/checkapply.html',
+                            data : {'id' : id ,'oper' : oper , 'reason' : reason , 'select_reason':select_reason},
+                            dataType : 'json',
+                            type : 'POST',
+                            success: function(d){
+
+                                if(d.status == 1){
+                                    alert(d.info);
+                                }else{
+                                    alert(d.info);
+                                }
+                                window.location.reload();
+                            }
+                        });
+                    }
+                }
+            });
+        }
+        if(oper == 1){ //审核通过
+            $.ajax({
+                url : '__CONTROLLER__/checkapply.html',
+                data : {'id' : id ,'oper' : oper , 'reason' : reason},
+                dataType : 'json',
+                type : 'POST',
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                    }else{
+                        alert(d.info);
+                    }
+                    window.location.reload();
+                }
+            });
+        }
+
+    }
+    //审核活动（id：活动id ，oper：1通过 0拒绝 2下架 3上架 4提交审核）
+    function checkout(id, oper){
+        var reason = null;  //拒绝理由
+
+        if(oper == 0){
+            c = false;
+            $('#refuse').modal({
+                relatedTarget: this,
+                onConfirm: function() {
+                    var reason = $('textarea').val();
+                    var select_reason = [];
+                    $('#refuse input').each(function(){
+                        if($(this).is(':checked'))select_reason.push($(this).val());
+                    })
+                    if(reason.length == 0 && select_reason.length==0){
+                        alert('拒绝理由不能为空');
+                    }else{
+                        $.ajax({
+                            url : '__CONTROLLER__/checkout.html',
+                            data : {'id' : id ,'oper' : oper , 'reason' : reason , 'select_reason':select_reason},
+                            dataType : 'json',
+                            type : 'POST',
+                            success: function(d){
+                                if(d.status == 1){
+                                    alert(d.info);
+                                }else{
+                                    alert(d.info);
+                                }
+                                window.location.reload();
+                            }
+                        });
+                    }
+                }
+            });
+        }
+        if(oper == 1){ //审核通过
+            $.ajax({
+                url : '__CONTROLLER__/checkout.html',
+                data : {'id' : id ,'oper' : oper , 'reason' : reason},
+                dataType : 'json',
+                type : 'POST',
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                    }else{
+                        alert(d.info);
+                    }
+                    window.location.reload();
+                }
+            });
+        }
+        if(oper == 2){ //下架活动
+            $.ajax({
+                url : '__CONTROLLER__/online.html',
+                data : {'id' : id ,'status' : 0},
+                dataType : 'json',
+                type : 'POST',
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+        if(oper == 3){ //上架活动
+            $.ajax({
+                url : '__CONTROLLER__/checkout.html',
+                data : {'id' : id ,'oper' : 1 },
+                dataType : 'json',
+                type : 'POST',
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+        if(oper == 4){
+            $.post('add.html', {tips_id:id, submit:1}, function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                    window.location.reload();
+                }else{
+                    alert(d.info);
+                }
+            }, 'json');
+        }
+    }
+
+
+    //查询栏日历
+    $('#my-startDate').datetimepicker();
+    $('#my-endDate').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-alert');
+        $('#my-startDate').datetimepicker().
+            on('changeDate.datepicker.amui', function(event) {
+                if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                    alert('开始日期应小于结束日期！');
+                    $('#my-startDate').val("");
+                } else {
+                    startDate = new Date(event.date);
+                    clicktime = 1;
+                }
+                $(this).datetimepicker('close');
+            });
+
+        $('#my-endDate').datetimepicker().
+            on('changeDate.datepicker.amui', function(event) {
+                if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                    alert('结束日期应大于开始日期！');
+                    $('#my-endDate').val("");
+                } else {
+                    endDate = new Date(event.date);
+                    clicktime = 1;
+                }
+                $(this).datetimepicker('close');
+            });
+    });
+
+
+    //加入运营专题
+    function joinTheme()
+    {
+        $('#joinTheme').selected({btnSize: 'xs'});
+        $('#joinTheme').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var theme_id = document.changeGroup.theme_id.value;
+                var tips_ids = [];
+                $('tr input:checked').each(function(){
+                    if(/^\d+$/.test(this.value))tips_ids.push(this.value);
+                });
+               // alert(tips_ids);return;
+                $.post('__CONTROLLER__/joinTheme.html', {'id':theme_id, 'tips_ids':tips_ids}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            }
+        });
+    }
+
+    //修改标签
+    function tips_tags(id){
+        $('#tips_id').val(id);
+        $('#official_tag').empty();
+        $('#normal_tag').empty();
+        $.ajax({
+            url : '__CONTROLLER__/getTipsTags.html',
+            data : {'id' : id },
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                var code_official = '';
+                var code = '';
+                for(i in d.official_tips_tags){
+                    var check = false;
+                    for(k in d.my_official){
+                        if(d.my_official[k]==d.official_tips_tags[i].id)check = true;
+                    }
+                    if(check){
+                        code_official += '<input type="checkbox" name="official_label[]" checked value="'+d.official_tips_tags[i].id+'"><span>'+d.official_tips_tags[i].name+'</span> &nbsp;';
+                    }else{
+                        code_official += '<input type="checkbox" name="official_label[]" value="'+d.official_tips_tags[i].id+'"><span>'+d.official_tips_tags[i].name+'</span> &nbsp;';
+                    }
+                }
+                for(j in d.tips_tags){
+                    var check = false;
+                    for(l in d.my_label){
+                        if(d.my_label[l]==d.tips_tags[j].id)check = true;
+                    }
+                    if(check){
+                        code += '<input type="checkbox" name="label[]" checked value="'+d.tips_tags[j].id+'"><span>'+d.tips_tags[j].name+'</span> &nbsp;';
+                    }else{
+                        code += '<input type="checkbox" name="label[]" value="'+d.tips_tags[j].id+'"><span>'+d.tips_tags[j].name+'</span> &nbsp;';
+                    }
+                }
+                $(code_official).appendTo('#official_tag');
+                $(code).appendTo('#normal_tag');
+            }
+        });
+        $('#tips_tags').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var tips_id = $('#tips_id').val();
+                var official_tag_ids = [];
+                $('#official_tag input:checked').each(function(){
+                    if(/^\d+$/.test(this.value))official_tag_ids.push(this.value);
+                });
+                var tag_ids = [];
+                $('#normal_tag input:checked').each(function(){
+                    if(/^\d+$/.test(this.value))tag_ids.push(this.value);
+                });
+
+                $.ajax({
+                    url : '__CONTROLLER__/getTipsTags.html',
+                    data : {'tips_id' : tips_id,'official_tag_ids' : official_tag_ids , 'tag_ids' : tag_ids },
+                    dataType : 'json',
+                    type : 'POST',
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                });
+
+            }
+        });
+    }
+
+    //批量置顶
+    function setAllTop(){
+        var tips_ids = [];
+        $('tr input:checked').each(function(){
+            if(/^\d+$/.test(this.value))tips_ids.push(this.value);
+        });
+
+        $.post('__CONTROLLER__/setAllTop.html', {'tips_ids':tips_ids}, function(d){
+            if(d.status == 1){
+                alert(d.info);
+                window.location.href = window.location.href;
+            }else{
+                alert(d.info);
+            }
+        }, 'json');
+    }
+    //批量撤销置顶
+    function setAllNotTop(){
+        var tips_ids = [];
+        $('tr input:checked').each(function(){
+            if(/^\d+$/.test(this.value))tips_ids.push(this.value);
+        });
+
+        $.post('__CONTROLLER__/setAllTop.html', {'tips_ids':tips_ids, type:0}, function(d){
+            if(d.status == 1){
+                alert(d.info);
+                window.location.href = window.location.href;
+            }else{
+                alert(d.info);
+            }
+        }, 'json');
+    }
+
+    //批量移除专题
+    function outTheme(){
+        //var theme_id = document.changeGroup.theme_id.value;
+        var tips_ids = [];
+        $('tr input:checked').each(function(){
+            if(/^\d+$/.test(this.value))tips_ids.push(this.value);
+        });
+        //alert(goods_ids);
+        $.post('__CONTROLLER__/outTheme.html', {'tips_ids':tips_ids}, function(d){
+            if(d.status == 1){
+                alert(d.info);
+                window.location.href = window.location.href;
+            }else{
+                alert(d.info);
+            }
+        }, 'json');
+    }
+
+    //单项置顶or取消置顶
+    function setTop(id,oper){
+        if(oper == 0){
+            //取消置顶
+            $.post('__CONTROLLER__/setTop.html', {'tips_id':id , 'oper':oper}, function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                    window.location.href = window.location.href;
+                }else{
+                    alert(d.info);
+                }
+            }, 'json');
+        }
+        if(oper == 1){
+            //设为置顶
+            $.post('__CONTROLLER__/setTop.html', {'tips_id':id , 'oper':oper}, function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                    window.location.href = window.location.href;
+                }else{
+                    alert(d.info);
+                }
+            }, 'json');
+        }
+    }
+
+    //分期查看
+    function showTimes(tips_id) {
+        $('.timesBox').remove();
+        $.ajax({
+            url : '__CONTROLLER__/showTimes.html',
+            data : {'tips_id' : tips_id },
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                //alert(d.min_num);
+                var code = '<thead><tr>';
+                code += '<th>期数</th>';
+                code += '<th>开始时间</th>';
+                code += '<th>结束时间</th>';
+                code += '<th>成局人数</th>';
+                code += '<th>库存</th>';
+                code += '<th>开始购买时间</th>';
+                code += '<th>截止购买时间</th>';
+                code += '<th>每人限购</th>';
+                code += '<th>删除</th>';
+                code += '</tr></thead><tbody>';
+                for(var r in d.times){
+                    code += '<tr>';
+                    code += '<td><input style="width:30px" type="text" name="times['+ r +'][phase]" value="'+d.times[r]['phase']+'"><input type="hidden" name="times['+ r +'][id]" value="'+ d.times[r]['id'] +'"><input type="hidden" name="times['+ r +'][tips_id]" value="'+ tips_id +'"></td>';
+                    code += '<td><input style="width:130px" type="text" name="times['+ r +'][start_time]" value="'+d.times[r]['start_time']+'" data-date-format="yyyy-mm-dd hh:ii"></td>';
+                    code += '<td><input style="width:130px" type="text" name="times['+ r +'][end_time]" value="'+d.times[r]['end_time']+'" data-date-format="yyyy-mm-dd hh:ii"></td>';
+                    code += '<td class="num"><input style="width:30px" type="text" name="times['+ r +'][min_num]" value="'+d.times[r]['min_num']+'"> - <input style="width:30px" type="text" name="times['+ r +'][max_num]" value="'+d.times[r]['max_num']+'"></td>';
+                    code += '<td><input style="width:40px" type="text" name="times['+ r +'][stock]" value="'+d.times[r]['stock']+'"></td>';
+                    code += '<td><input style="width:130px" type="text" name="times['+ r +'][start_buy_time]" value="'+d.times[r]['start_buy_time']+'" placeholder="默认上架时间.." data-date-format="yyyy-mm-dd hh:ii"></td>';
+                    code += '<td><input style="width:130px" type="text" name="times['+ r +'][stop_buy_time]" value="'+d.times[r]['stop_buy_time']+'" placeholder="默认开始购买时间.." data-date-format="yyyy-mm-dd hh:ii"></td>';
+                    code += '<td><input style="width:30px" type="text" name="times['+ r +'][limit_num]" value="'+d.times[r]['limit_num']+'" placeholder="无限"></td>';
+                    code += '<td><button type="button" class="am-btn am-btn-xs am-btn-link" onclick="$(this).parent().parent().remove()">删除</button></td>';
+                    code += '</tr>';
+                }
+                var code = '<tr class="timesBox"><td colspan="11"><form><table class="timesTable">'+ code +'</tbody></table></form><p align="center"><button type="button" class="am-btn am-btn-xs addBtn am-btn-default">+ 增加 +</button><button type="button" class="am-btn am-btn-xs saveBtn am-btn-success">提交保存</button></p></td></tr>';
+                var em = $('input[value="'+ tips_id +'"]').parents('tr');
+                var ob = $(code);
+                em.after(ob);
+                ob.find('[data-date-format="yyyy-mm-dd hh:ii"]').datetimepicker();
+                ob.find('.addBtn').click(function(){
+                    r ++;
+                    var phase = r + 1;
+                    var min_num = ob.find('.num:last input')[0].value;
+                    var max_num = ob.find('.num:last input')[1].value;
+                    var code = '<tr>';
+                    code += '<td><input style="width:30px" type="text" name="times['+ r +'][phase]" value="'+phase+'"><input type="hidden" name="times['+ r +'][id]" value=""><input type="hidden" name="times['+ r +'][tips_id]" value="'+ tips_id +'"></td>';
+                    code += '<td><input style="width:130px" type="text" name="times['+ r +'][start_time]" value="" data-date-format="yyyy-mm-dd hh:ii"></td>';
+                    code += '<td><input style="width:130px" type="text" name="times['+ r +'][end_time]" value="" data-date-format="yyyy-mm-dd hh:ii"></td>';
+                    code += '<td class="num"><input style="width:30px" type="text" name="times['+ r +'][min_num]" value="'+min_num+'"> - <input style="width:30px" type="text" name="times['+ r +'][max_num]" value="'+max_num+'"></td>';
+                    code += '<td><input style="width:40px" type="text" name="times['+ r +'][stock]" value="'+max_num+'"></td>';
+                    code += '<td><input style="width:130px" type="text" name="times['+ r +'][start_buy_time]" value="" placeholder="默认上架时间.." data-date-format="yyyy-mm-dd hh:ii"></td>';
+                    code += '<td><input style="width:130px" type="text" name="times['+ r +'][stop_buy_time]" value="" placeholder="默认开始购买时间.." data-date-format="yyyy-mm-dd hh:ii"></td>';
+                    code += '<td><input style="width:30px" type="text" name="times['+ r +'][limit_num]" value="" placeholder="无限"></td>';
+                    code += '<td><button type="button" class="am-btn am-btn-xs am-btn-link" onclick="$(this).parent().parent().remove()">删除</button></td>';
+                    code += '</tr>';
+                    $(code).appendTo(ob.find('tbody')).find('[data-date-format="yyyy-mm-dd hh:ii"]').datetimepicker();
+                });
+                ob.find('.saveBtn').click(function(){
+                    var jsonData = ob.find("form").serializeArray();
+                    $.ajax({
+                        url:'saveTimes.html',
+                        type:'post',
+                        data:jsonData,
+                        dataType:'json',
+                        success:function(d){
+                            if(d.status == 1){
+                                alert('保存成功!');
+                            }else{
+                                alert(d.info);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    }
+/*#########################################*/
+    //促销日历
+    $('#start_time').datetimepicker();
+    $('#end_time').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-alert');
+        $('#start_time').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                        alert('开始日期应小于结束日期！');
+                        $('#start_time').val("");
+                    } else {
+                        startDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    if(startDate < new Date()){
+                        alert('开始时间应大于当前时间');
+                        $('#start_time').val("");
+                        clicktime = 0;
+                    }
+                    $(this).datetimepicker('close');
+                });
+
+        $('#end_time').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                        alert('结束日期应大于开始日期！');
+                        $('#end_time').val("");
+                    } else {
+                        endDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+    });
+
+
+    //促销价格限制
+    $('#price').change(function(){
+        if(parseFloat($('#o_price').val())<parseFloat($('#price').val())){
+            alert('折扣价不能高于原价');
+            $('#price').val('');
+        }
+    })
+
+
+    //设置促销
+    function addMarketing(id){
+        $('#price').val('');
+        $('#start_time').val('');
+        $('#end_time').val('');
+        $('#title').val('');
+        //获取原价
+        $.ajax({
+            url : '__CONTROLLER__/Marketing.html',
+            data : {'id' : id,'status' : 2},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                //alert(d);
+                $('#o_price').val(d);
+                $('#price').attr('placeholder','促销价(原价：'+d+')');
+            }
+        });
+
+        $('#marketingInfo').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var price = $('#price').val();
+                var start_time = $('#start_time').val();
+                var end_time = $('#end_time').val();
+                var title = $('#title').val();
+                var allow_coupon = $('#allow_coupon').val();
+                var limit = $('#limit').val();
+
+                if(price == ''){
+                    alert('价格不能为空');
+                    return false;
+                }
+                if(start_time == ''){
+                    alert('未设置开始时间');
+                    return false;
+                }
+                if(end_time == ''){
+                    alert('未设置结束时间');
+                    return false;
+                }
+                if(title == ''){
+                    alert('未设置标题');
+                    return false;
+                }
+                if(limit == ''){
+                    alert('未设置限购');
+                    return false;
+                }
+                $.ajax({
+                    url : '__CONTROLLER__/Marketing.html',
+                    data : {'id' : id,'status' : 1,'price' : price,'title' : title,'start_time' : start_time,'end_time' : end_time ,'allow_coupon' : allow_coupon ,'limit' :limit},
+                    dataType : 'json',
+                    type : 'POST',
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    }
+
+    //终止促销
+    function cancelMarketing(id){
+        if(confirm('是否终止促销')){
+            $.ajax({
+                url : '__CONTROLLER__/Marketing.html',
+                data : {'id' : id,'status' : 0},
+                dataType : 'json',
+                type : 'POST',
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                    }else{
+                        alert(d.info);
+                    }
+                    window.location.reload();
+                }
+            });
+        }
+    }
+    //历史促销
+    function marketingHistory(id){
+        $('#marketingH').empty();
+        //获取原价
+        $.ajax({
+            url : '__CONTROLLER__/Marketing.html',
+            data : {'id' : id,'status' : 3},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                var code = '<tr><td>促销标题</td><td>促销价格</td><td>开始时间</td><td>结束时间</td><td>限购</td><td>允许优惠券</td></tr>';
+                for(i in d) {
+                    code += '<tr>';
+                    code += '<td>' + d[i]['title'] + '</td>';
+                    code += '<td>' + d[i]['price'] + '</td>';
+                    code += '<td>' + d[i]['start_time'] + '</td>';
+                    code += '<td>' + d[i]['end_time'] + '</td>';
+                    code += '<td>' + d[i]['num'] + '</td>';
+                    code += '<td>' + d[i]['allow_coupon'] + '</td>';
+                    code += '</tr>';
+                }
+                $(code).appendTo('#marketingH');
+            }
+        });
+
+        $('#marketingHistory').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+
+            }
+        });
+    }
+
+    function checkdata(){
+        var price = $('#price').val();
+        var start_time = $('#start_time').val();
+        var end_time = $('#end_time').val();
+        var title = $('#title').val();
+        var allow_coupon = $('#allow_coupon').val();
+        var limit = $('#limit').val();
+
+        if(price == null){
+            alert('价格不能为空');
+            return false;
+        }
+        if(start_time == null){
+            alert('未设置开始时间');
+            return false;
+        }
+        if(end_time == null){
+            alert('未设置结束时间');
+            return false;
+        }
+        if(title == null){
+            alert('未设置标题');
+            return false;
+        }
+        if(limit == null){
+            alert('未设置限购');
+            return false;
+        }
+        return true;
+    }
+
+    //复制活动
+    function copyTips(tips_id){
+        if(window.confirm('确定要复制这一期活动吗?')){
+            $.post('__CONTROLLER__/copyTips.html', {'tips_id':tips_id}, function(d){
+                if(d.status == 1){
+                    location.href = 'modify.html?tips_id=' + tips_id;
+                }else{
+                    alert(d.info);
+                }
+            }, 'json');
+        }
+    }
+
+    //清空搜索框
+    function search_rest(){
+        $('#search_title').val('');
+        $('#search_member').val('');
+        $('#my-startDate').val('');
+        $('#my-endDate').val('');
+        $("select option:selected").prop("selected", false);
+    }
+
+    //导出Excel
+    function exportExcel(){
+        var search_title = $('#search_title').val();
+        var search_member = $('#search_member').val();
+        var search_startdate = $('#my-startDate').val();
+        var search_enddate = $('#my-endDate').val();
+        var search_category = $('#search_category').val();
+        var search_citys = $('#search_citys').val();
+        var search_theme = $('#search_theme').val();
+        var search_tag = $('#search_tag').val();
+        var search_is_pass = $('#search_is_pass').val();
+
+        window.open("__CONTROLLER__/CourseExport.html?title="+search_title+"&member="+search_member+"&start_buy_time="+search_startdate+"&stop_buy_time="+search_enddate+"&category="+search_category+"&citys="+search_citys+"&theme="+search_theme+"&tag="+search_tag,"_blank","width=1000,height=600 ")
+    }
+
+    //日志
+    var tips_id,stime,etime;
+    function showLogs(id, starttime, endtime){
+        tips_id = id;
+        var dt = {};
+        dt.id = tips_id;
+        if(starttime){
+            stime = starttime;
+            dt.starttime = starttime;
+        }
+        if(endtime){
+            etime = endtime;
+            dt.endtime = endtime;
+        }
+
+        $.ajax({
+            url : '__CONTROLLER__/showlogs.html',
+            data : dt,
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                if(d.status == 1){
+                    var code = '';
+                    for(i in d.info){
+                        if(i >= d.info.length - 1)
+                            code += '<span class="am-text-success">['+ d.info[i].datetime +']</span> '+ d.info[i].username +' 创建活动!<br />';
+                        else
+                            code += '<span class="am-text-success">['+ d.info[i].datetime +']</span> '+ d.info[i].username +' 修改过活动!<br />';
+                    }
+                    $('#showlogs pre').html(code);
+                    $('#showlogs').modal('open');
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+
+    //查看发布者的信息
+    function  memberMessage(member_id){
+        $.ajax({
+            url : '__ACTION__.html',
+            data : {member_id:member_id},
+            dataType : 'json',
+            type : 'POST',
+            success : function(d){
+                if(d.status !=0) {
+                    var code = '';
+                    code += '<p style="text-align: center">发布者 ' + d.nickname + ' 的个人信息</p>';
+                    code += '<p style="text-align: left">昵称：' + d.nickname + '&nbsp;&nbsp;性别：' + d.member_info_sex + '</p>';
+                    code += '<p style="text-align: left">注册时间：' + d.register_time + '</p>';
+                    code += '<p style="text-align: left">手机号码：' + d.telephone + '</p>';
+                    code += '<p style="text-align: left">出生年日月：' + d.birth + '</p>';
+                    code += '<p style="text-align: left">身份证号码：' + d.identity + '</p>';
+                    code += '<p style="text-align: left">真实姓名：' + d.member_real_name + '</p>';
+                    code += '<p style="text-align: left">银行卡号：' + d.bank_number + '</p>';
+                    code += '<p style="text-align: left">银行卡所属：' + d.bank_name + '</p>';
+
+                    //code += '<span class="am-text-success">['+ d.info[i].datetime +']</span> <span class="am-text-danger">['+ d.info[i].pname +' / '+ d.info[i].name +']</span>[GET：'+ d.info[i].gt +'][POST：'+ d.info[i].pt +']<br />';
+                    $('#checkmemberInfo pre').html(code);
+                    $('#checkmemberInfo').modal('open');
+                }else{
+                    alert(d.info);
+                }
+
+            }
+        });
+
+    }
+
+    //购买模式
+    function buyModel(id){
+        $('#buyModel').attr('tips_id', id);
+        $.ajax({
+            url : 'buyModel.html',
+            data : {tips_id:id},
+            dataType : 'json',
+            type : 'POST',
+            success : function(d){
+                if(d.info){
+                    alert(d.info);
+                    return;
+                }
+                if(d.limit_time > 0){
+                    document.buyModel.buy_model.value = 0;
+                    document.buyModel.limit_time.value = d.limit_time / 60;
+                }else{
+                    document.buyModel.buy_model.value = 1;
+                }
+                $('#buyModel').modal({
+                    relatedTarget: this,
+                    onConfirm: function() {
+                        var data = {tips_id : $('#buyModel').attr('tips_id')};
+                        if(document.buyModel.buy_model.value == 0){
+                            if(document.buyModel.limit_time.value < 5){
+                                alert('支付限时不能低于5分钟!');
+                                return;
+                            }
+                            data.limit_time = document.buyModel.limit_time.value * 60;
+                        }else{
+                            data.limit_time = 0;
+                        }
+                        $.ajax({
+                            url : 'buyModel.html',
+                            data : data,
+                            dataType : 'json',
+                            type : 'POST',
+                            success: function(d){
+                                if(d.status == 1){
+                                    alert(d.info);
+                                    window.location.reload();
+                                }else{
+                                    alert(d.info);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+</script>

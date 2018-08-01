@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{$pagetitle}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="icon" type="image/png" href="__AMUI__/i/favicon.png">
+    <link rel="stylesheet" href="__AMUI__/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="__RS__/css/admin.css">
+
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="__AMUI__/js/polyfill/rem.min.js"></script>
+    <script src="__AMUI__/js/polyfill/respond.min.js"></script>
+    <script src="__AMUI__/js/amazeui.legacy.js"></script>
+    <![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="__AMUI__/js/jquery.min.js"></script>
+    <script src="__AMUI__/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+    以获得更好的体验！</p>
+<![endif]-->
+
+
+
+<!-- sidebar start -->
+
+<!-- sidebar end -->
+
+<!-- content start -->
+<div class="admin-content" style="left: 5px;top: 3px;">
+
+    <form class="am-g">
+        <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 200px;float: left;" placeholder="会员名称查询" value="{$search_member}"/>
+        <button type="submit" class="am-btn am-btn-success">查找</button>
+    </form>
+    {:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+    <script>
+        $('.am-modal').appendTo('body');
+    </script>
+</div>
+<!-- content end -->
+<input type="hidden" id="select_one_val" name="select_one" value="">
+
+<script src="__AMUI__/js/app.js"></script>
+<script src="__RS__/js/main.js"></script>
+
+<script>
+    function selectOne(id){
+        //$('#select_one_val').val(id);
+        $(window.parent.document).find("#selectOne").val(id);
+    }
+</script>
+
+</body>
+</html>

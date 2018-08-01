@@ -1,0 +1,61 @@
+@charset "utf-8";
+.wrapper.page_raiseList{background: #f5f5f5;}
+/**********设置图片轮播 默认占用的高度*******8*/
+.page_raiseList .pageHead {height:14.6rem; width:36rem; background:#fff;}
+/***************/
+.page_raiseList .items{width: 33rem;display: block;margin: 0 auto;background: #fff;padding:0 1.5rem;}
+.page_raiseList .items .raiseimg{width: 100%;height: 21.6rem;padding: 1.92rem 0;display: block;}
+.page_raiseList .items .raise-city {
+    display: inline-flex;
+    align-items:center;
+    -webkit-align-items:center;
+    box-align:center;
+    -moz-box-align:center;
+    -webkit-box-align:center;
+    line-height: 1.3rem;
+    color: #333;
+    width: 5rem;
+}
+.page_raiseList .items .raise-city img {vertical-align: middle;height: 1.3rem;margin-right: 0.5rem;}
+.page_raiseList .items .items-top{
+    font-size: 1.2rem;color: #888;position: relative;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ 
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Chrome */ 
+    display: flex;
+    -webkit-justify-content:space-between;
+    justify-content:space-between;
+    -moz-box-pack:space-between;
+    -webkit--moz-box-pack:space-between;
+    box-pack:space-between;
+    align-items:center;
+    -webkit-align-items:center;
+    box-align:center;
+    -moz-box-align:center;
+    -webkit-box-align:center;
+}
+.page_raiseList .items .items-top .status{width:5.82rem;background: url("../images/label@2x.png") no-repeat left center / 5.82rem auto; color: #fff;display: inline-block;text-align: left;padding-left: 0.5rem;}
+.page_raiseList .items .items-top .name,.page_raiseList .raiseitem .items .items-top .address{display: inline-block;padding-left: 1.8rem;position: relative;line-height: 1.8rem;}
+
+.page_raiseList .items .items-top .name:before,.page_raiseList .raiseitem .items .items-top .address:before{content: '';height: 1.3rem;width: 1.3rem;position: absolute;left: 0;top:0.2rem;}
+.page_raiseList .items .items-top .name:before{background: url("../images/person@2x.png") no-repeat left center / 1.15rem auto;}
+.page_raiseList .items .items-top .address:before{background: url("../images/location@2x.png") no-repeat left center / 1.3rem auto;}
+.page_raiseList .items .raise-title{font-size: 1.82rem;color: #333;padding: 1.25rem 0 1rem;font-weight: bold;}
+.page_raiseList .items .dec{margin: 0;font-size: 1.4rem;line-height: 1.92rem;color: #aaa;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp:5;-webkit-box-orient: vertical;text-align: justify;}
+.page_raiseList .no_msgs {text-align: center;}
+.page_raiseList .no_msgs img{width:10rem; height:10rem; margin:8rem 13rem auto 13rem;}
+.page_raiseList .no_msgs span{display:block; width:36rem; font-size:1.2rem; text-align:center; color:#969696; margin-top:2rem;}
+
+.page_raiseList .shell{width: 100%;height: 2.88rem;position:relative;}
+.page_raiseList .shell .stone{width: 2.88rem;height: 2.88rem;position: absolute;top: 0;left: -3%;background: url("../images/ellipse@2x.png") no-repeat 0 0 / 2.88rem 2.88rem;}
+.page_raiseList .c_line{height: 0.5rem;width: 100%;position:relative;display: block;background: rgba(179, 152, 81, 0.3); border-radius: 0.25rem;top: 0.96rem;left: 0;}
+.page_raiseList .c_line span{position: absolute;left: 0;width: 0%;height: 100%;background: #b39851;border-radius: 0.25rem;max-width: 100%;}
+.page_raiseList .sublist{width: 100%;font-size: 1.2rem;color: #b39851;display: block;padding-bottom: 1.5rem;}
+.page_raiseList .sublist span{display: inline-block;width: 10.4rem;text-align: center;}
+.page_raiseList .sublist span:last-child{text-align: right;float: right;}
+.page_raiseList .sublist span:first-child{text-align: left;}
+
+.page_raiseList .the_end {text-align: center; border-bottom:none; display:block; width:100%; background:#f5f5f5; margin-bottom:0rem; padding-top:1.48rem;padding-bottom:1.4rem;}
+.page_raiseList .the_end button {width:18rem; height:3rem; border:none; background: #980c10; color:#fff; border-radius: 0.2rem; margin: 1rem; font-size:1.2rem;}
+.page_raiseList .the_end .no_more {width: 9.696rem; height: 1.44rem; background:url(../images/no_mre.png) 0 0 / 100% 100% no-repeat; margin:0 auto;}

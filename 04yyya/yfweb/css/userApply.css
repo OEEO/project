@@ -1,0 +1,38 @@
+@charset "utf-8";
+.inputitem ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ccc;
+}
+.inputitem ::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #ccc;
+}
+.inputitem ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #ccc;
+}
+.inputitem ::-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #ccc;
+}
+/**********设置图片轮播 默认占用的高度*******8*/
+.page_userApply .pageHead {height:14.6rem; width:36rem; background:#fff;}
+.page_userApply .pageHead img{width: 100%;height: 100%;}
+/***************/
+.page_userApply .inputlist{width: 33rem;background:#fff;position:relative;display:block;margin: 0 auto;}
+.page_userApply .inputlist .topbox{width: 100%;border:0.1rem solid #b39851;border-radius: 0.4rem;margin: 1.92rem 0 2.88rem;}
+.page_userApply .inputlist .topbox .boxtitle{background:#b39851;padding:1rem 1.2rem;color: #fff;font-size: 1.7rem;text-align: justify;line-height: 2rem;}
+.page_userApply .inputlist .topbox .boxtitle small{display: block;margin-top: 1rem;}
+.page_userApply .inputlist .topbox .boxtext{padding:1.5rem 1.2rem 1.5rem 0.4rem;}
+.page_userApply .inputlist .topbox .boxtext p,.page_userApply .inputlist .topbox .boxtext div{margin: 0;font-size: 1.45rem;color: #b39851;text-align: justify;}
+.page_userApply .inputlist .topbox .boxtext div{margin-top: 1rem !important;}
+.page_userApply .inputlist .topbox .boxtext div:first-child{margin-top: 0rem !important;}
+.page_userApply .inputlist .topbox .boxtext p{padding-left: 0.8rem;}
+.page_userApply .inputlist .inputitem{font-size: 1.45rem;color: #888;}
+.page_userApply .inputlist .inputitem input,.page_userApply .inputlist .inputitem select{width: 30.6rem;border-radius: 0.4rem;border:none;background:#F8F6EF;padding: 1.2rem 1.2rem;margin-bottom: 1.92rem;font-size: 1.45rem;color: #888;}
+.page_userApply .inputlist .inputitem select{width: 33rem;padding: 1.2rem 1rem;color: #ccc;appearance:none;-moz-appearance:none;-webkit-appearance:none;background: #f8f6ef url("../images/triangle.png") no-repeat scroll 30rem center / 1.15rem auto;}
+.page_userApply .inputlist .inputitem label{margin: 0.96rem 1.2rem;display: block;}
+.page_userApply .inputlist .inputitem textarea{width: 30.6rem;height: 9.6rem;padding: 1.2rem 1.2rem;border: none;background:#F8F6EF;font-size: 1.45rem;color: #888;}
+.page_userApply .inputlist .ending{width:100%;margin: 2.88rem 0 3.65rem;}
+.page_userApply .inputlist .ending h3{font-size: 1.45rem;font-weight: normal;padding: 0;margin: 0;}
+.page_userApply .inputlist .ending p{padding-top: 0.8rem;color: #888;font-size: 1.15rem;margin: 0;}
+.page_userApply .inputlist .submit{width: 100%;height: 4.22rem;line-height:4.22rem;text-align:center;background: #b39851;border-radius: 0.4rem;color: #fff;font-size: 1.45rem;border: none;margin: 2.88rem auto;}
+.page_userApply .inputlist .topbox .boxtext p font{padding-left: 6.5rem;}
+.page_userApply .inputlist .topbox .boxtext p.b{line-height: 4rem;}
+.page_userApply .tips{font-size: 1.3rem;color: #aaa;margin: 2.88rem 1.2rem;}

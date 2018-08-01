@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/daRen.css">
+
+<script src="js/plugins/jquery.min.js"></script>
+<script src="js/daRen.js"></script>
+</head>
+<body>
+<div class="header changeStyle">
+	<div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+	<div class="title">个人空间</div>
+	<div class="u_shares"></div>
+</div>
+
+<div class="userCenter_body">
+	<div class="userCenter_head">
+		<img class="bg"><!-- 图片背景模糊处理 -->
+		<!--<div class="overbg"></div>-->
+		<div class="front">
+			<div class="imgPortrait"><img width="100%"></div>
+			<div id="nickname" class="name">Dandy L</div>
+			<div id="signature" class="user_introduce" style="display:none;">
+            	<span>活动：</span><span class="activity_num">0</span><span class="center_null"></span><span>赏味：</span><span class="shanwei">0</span>
+            </div>
+		</div>
+	</div>
+    <div class="menus_li"></div>
+    <div class="followBtn"><button></button></div>
+    <div class="them_line"></div>
+    <div class="text_intro">
+    	<div class="title_intro">HOST简介</div>
+        <pre class="intro_content"></pre>
+        <div class="check_all">展开全文</div>
+    </div>
+    <div class="the_blank"></div>
+    <div class="m_lies">
+    	<div class="lies" onclick="javascript:jump('activitied',{is_overdue:0, member_id:daRenObject.member_id});">
+        	<div class="lies_left">即将开始的活动</div>
+            <div class="number_r activiting">0</div>
+            <div class="lies_right"></div>
+        </div>
+        <div class="lies" onclick="javascript:jump('activitied',{is_overdue:1, member_id:daRenObject.member_id});">
+        	<div class="lies_left">举办过的活动</div>
+            <div class="number_r activitied">0</div>
+            <div class="lies_right"></div>
+        </div>
+        <div class="lies last_lies" onclick="javascript:jump('commentList', {member_id:daRenObject.member_id});">
+        	<div class="lies_left">用户评价</div>
+            <div class="number_r commentss">0</div>
+            <div class="lies_right"></div>
+        </div>
+    </div>
+    <div class="the_blank"></div>
+    <div class="center_title">最新饭局</div>
+    <div class="pro_list">
+    	<ul class="product_list"></ul>
+    </div>
+    <div class="bottom_null"></div>
+</div>
+</body>
+</html>

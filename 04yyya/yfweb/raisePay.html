@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/raisePay.css">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/plugins/jquery.touchwipe.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/raisePay.js"></script>
+</head>
+<body>
+<div class="header line">
+    <div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+    <div class="title">支付</div>
+</div>
+<div class="headerBlank"></div>
+<div class="raiseitem same">
+    <p>选择的回报</p>
+    <div class="itemcontext">
+        <span class="title"></span>
+        <span class="money"></span>
+    </div>
+</div>
+<div class="the_blank"></div>
+<div class="shop_address same">
+    <p>收货地址</p>
+    <div class="address">
+        <span class="add">请选择收货地址</span>
+        <span class="arrowRight"></span>
+    </div>
+</div>
+<div class="the_blank"></div>
+<div class="wx_num same">
+    <p>微信号 (非昵称)</p>
+    <div class="wxinput">
+        <input class="wxcode" type="text" placeholder="请填写微信号"/>
+    </div>
+</div>
+<div class="the_blank"></div>
+<div class="certification same">
+    <p>实名认证</p>
+    <div class="cbox">
+        <span class="name_id">请填写姓名、身份证号</span>
+        <span class="arrowRight"></span>
+    </div>
+</div>
+<!--<div class="the_blank"></div>-->
+<!--<div class="payment">-->
+    <!--<div class="way">-->
+        <!--<span>支付方式</span>-->
+        <!--<a onclick="javascript:raisePayObject.explain()" href="javascript:void(0)">限额说明</a>-->
+    <!--</div>-->
+    <!--<div class="paytype">-->
+        <!--<a class="wx" href="javascript:void(0);">-->
+            <!--<span class="text">微信支付<small>(金额不超过2000可用)</small></span>-->
+            <!--<span class="selected on"></span>-->
+        <!--</a>-->
+        <!--<a class="alipay" href="javascript:void(0);">-->
+            <!--<span class="text">支付宝</span>-->
+            <!--<span class="selected"></span>-->
+        <!--</a>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="the_blank"></div>
+<div class="stage">
+    <ul class="stageitem"></ul>
+</div>
+<div class="headerBlank"></div>
+<div class="footer payMenu">
+    <div class="paymoney">实际金额：<font name="money">99</font>元</div>
+    <a href="javascript:void(0)" class="submitBtn">支付</a>
+</div>
+</body>
+</html>

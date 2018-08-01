@@ -1,0 +1,288 @@
+
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+
+<p style="margin-left:20px;">
+	<button class="am-btn am-btn-warning" id="doc-confirm-toggle" onclick="addAdmin()">添加用户</button>
+</p>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<!-- 新建管理员 -->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm" style="position:fixed;top: 200px;">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">管理员添加</div>
+    <form name="add" class="am-form am-modal-bd" data-am-validator>
+		<div class="am-g am-margin-top-sm">
+			<div class="am-u-sm-4 am-u-md-4 am-text-right">
+				管理员名称：
+			</div>
+			<div class="am-u-sm-8 am-u-md-8 am-text-left">
+				<input type="text" name="username" class="am-input-sm" placeholder="管理员名称（企业邮箱账号）" required/>
+			</div>
+		</div>
+        <div class="am-g am-margin-top-sm">
+            <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                企业邮箱：
+            </div>
+            <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                <input type="text" name="email" class="am-input-sm" id="doc-vld-email-2" placeholder="企业邮箱账号" required/>
+            </div>
+        </div>
+        <div class="am-g am-margin-top-sm">
+            <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                联系电话：
+            </div>
+            <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                <input type="text" name="telephone" class="am-input-sm" placeholder="联系电话" required/>
+            </div>
+        </div>
+		<div class="am-g am-margin-top-sm">
+			<div class="am-u-sm-4 am-u-md-4 am-text-right">
+				管理员密码：
+			</div>
+			<div class="am-u-sm-8 am-u-md-8 am-text-left">
+				<input type="password" name="password" class="am-input-sm" id="doc-vld-pwd-1" placeholder="输入8位以上的密码" minlength="8" required/>
+			</div>
+		</div>
+		<div class="am-g am-margin-top-sm">
+			<div class="am-u-sm-4 am-u-md-4 am-text-right">
+				再次输入密码：
+			</div>
+			<div class="am-u-sm-8 am-u-md-8 am-text-left">
+				<input type="password" name="password2" class="am-input-sm" placeholder="请与上面输入的值一致" data-equal-to="#doc-vld-pwd-1" required/>
+			</div>
+		</div>
+		<div class="am-g am-margin-top" id="groupSelect">
+			<div class="am-u-sm-4 am-u-md-4 am-text-right">
+				选择管理员组：
+			</div>
+			<div class="am-u-sm-8 am-u-md-8 am-text-left">
+				<select name="group_id" data-am-selected="{btnSize: 'xs', btnWidth: '120px}">
+					<option value="0">请选择管理员组</option>
+	<foreach name="groups" item="row">
+					<option value="{$row.id}">{$row.name}</option>
+	</foreach>
+				</select>
+			</div>
+		</div>
+    </form>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+    </div>
+  </div>
+</div>
+
+<!-- 修改密码 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="resetPass">
+  <div class="am-modal-dialog">
+	  <form name="resetPass" class="am-form am-modal-bd" data-am-validator>
+		<div class="am-modal-hd">修改密码</div>
+		<div class="am-modal-bd">
+			<div class="am-g am-margin-top-sm">
+				<input type="password" name="password" class="am-input-sm" id="doc-vld-pwd-5" placeholder="输入8-30位的密码" minlength="8" required/>
+			</div>
+			<div class="am-g am-margin-top-sm">
+				<input type="password" name="password2" class="am-input-sm" placeholder="请与上面输入的值一致" data-equal-to="#doc-vld-pwd-5" required/>
+			</div>
+		</div>
+	</form>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+    </div>
+  </div>
+</div>
+
+<!-- 切换管理组 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="changeGroup">
+  <div class="am-modal-dialog">
+	  <form name="changeGroup" class="am-form am-modal-bd" data-am-validator>
+		<div class="am-g am-margin-top" id="groupSelect01">
+			<div class="am-u-sm-4 am-u-md-4 am-text-right">
+				选择管理员组：
+			</div>
+			<div class="am-u-sm-8 am-u-md-8 am-text-left">
+				<select name="group_id" data-am-selected="{btnSize: 'xs',maxHeight: 150}">
+	<foreach name="groups" item="row">
+					<option value="{$row.id}">{$row.name}</option>
+	</foreach>
+				</select>
+			</div>
+		</div>
+	</form>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+    </div>
+  </div>
+</div>
+
+<!-- 查看操作日志 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="showlogs">
+  <div class="am-modal-dialog">
+  	<div class="am-modal-hd">
+	  <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">日志</strong> / <small>管理员操作日志</small></div>
+	  <div class="am-fr am-cf">
+		  <input id="starttime" type="text" class="am-input-sm am-text-center" placeholder="开始时间" />
+		  <input id="endtime" type="text" class="am-input-sm am-text-center" placeholder="结束时间" />
+	  </div>
+	  <div style="clear:both"></div>
+      <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+    </div>
+	<div class="am-modal-bd">
+		<div class="am-g error-log">
+		  <div class="am-u-sm-12 am-u-sm-centered">
+			<pre class="am-pre-scrollable am-text-left"></pre>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+
+<script>
+$('.am-modal').appendTo('body');
+
+$('#starttime, #endtime').datetimepicker({'format':'yyyy-mm-dd hh:ii:ss'});
+$('#starttime').on('changeDate.datepicker.amui', function(){
+	if(this.value != '')
+		showLogs(user_id, this.value, etime);
+});
+$('#endtime').on('changeDate.datepicker.amui', function(){
+	if(this.value != '')
+		showLogs(user_id, stime, this.value);
+});
+
+var user_id,stime,etime;
+function showLogs(id, starttime, endtime){
+	user_id = id;
+	var dt = {};
+	dt.id = user_id;
+	if(starttime){
+		stime = starttime;
+		dt.starttime = starttime;
+	}
+	if(endtime){
+		etime = endtime;
+		dt.endtime = endtime;
+	}
+
+	$.ajax({
+		url : '__CONTROLLER__/showlogs.html',
+		data : dt,
+		dataType : 'json',
+		type : 'POST',
+		success: function(d){
+			if(d.status == 1){
+				var code = '';
+				for(i in d.info){
+					code += '<span class="am-text-success">['+ d.info[i].datetime +']</span> <span class="am-text-danger">['+ d.info[i].pname +' / '+ d.info[i].name +']</span>[GET：'+ d.info[i].gt +'][POST：'+ d.info[i].pt +']<br />';
+				}
+				$('#showlogs pre').html(code);
+				$('#showlogs').modal('open');
+			}else{
+				alert(d.info);
+			}
+		}
+	});
+}
+
+//新增用户
+function addAdmin(){
+	$('#my-confirm').modal({
+		relatedTarget: this,
+		onConfirm: function() {
+			var data={};
+			var username = document.add.username.value;
+			var email = document.add.email.value;
+			var telephone = document.add.telephone.value;
+			var password = document.add.password.value;
+			var password2 = document.add.password2.value;
+			var group_id = document.add.group_id.value;
+			if(password.length>7 && password2>7 && password ==password2){
+				data['password'] = password;
+			}else{
+				alert('密码长度不够或者密码和确认密码不一致！');
+			}
+          //对电子邮件的验证
+         var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@yami.ren$/;
+			if(!myreg.test(username) || !myreg.test(email))
+			{
+				alert('提示\n\n请输入有效的E_mail！');
+			}
+
+			$.post('__CONTROLLER__/add.html', {'username':username,'email':email,'telephone':telephone,'password':password,'group_id':group_id}, function(d){
+				if(d.status == 1){
+					alert(d.info);
+					window.location.href = window.location.href;
+				}else{
+					alert(d.info);
+				}
+			}, 'json');
+		}
+	});
+}
+//密码修改
+function resetPassword(id){
+	$('#resetPass').modal({
+		relatedTarget: this,
+		onConfirm: function() {
+			var pass1 = $('#resetPass').find(':password').eq(0).val();
+			var pass2 = $('#resetPass').find(':password').eq(1).val();
+			if(pass1 != pass2){
+				alert('二次密码输出不正确！');
+				return;
+			}
+
+			$.post('__CONTROLLER__/resetPass.html', {'id':id, 'password':pass1}, function(d){
+				if(d.status == 1){
+					alert(d.info);
+					window.location.href = window.location.href;
+				}else{
+					alert(d.info);
+				}
+			}, 'json');
+		}
+	});
+}
+
+//切换管理组
+function changeGroups(id,group_id){
+	document.changeGroup.group_id.value = group_id;
+	$(document.changeGroup.group_id).selected({btnSize: 'xs'});
+	$('#changeGroup').modal({
+		relatedTarget: this,
+		onConfirm: function() {
+			var group_id = document.changeGroup.group_id.value;
+					
+			$.post('__CONTROLLER__/changeGroup.html', {'id':id, 'group_id':group_id}, function(d){
+				if(d.status == 1){
+					alert(d.info);
+					window.location.href = window.location.href;
+				}else{
+					alert(d.info);
+				}
+			}, 'json');
+		}
+	});
+}
+
+//单条删除
+function dataDelete(id){
+	if(window.confirm('确定要删除这条记录吗？')){
+		$.ajax({
+			url : '__CONTROLLER__/delete.html',
+			data : {'id' : id},
+			type : 'post',
+			success : function(d){
+				if(d.status == 1){
+					alert(d.info);
+					window.location.reload();
+				}else{
+					alert(d.info);
+				}
+			}
+		});
+	}
+}
+</script>

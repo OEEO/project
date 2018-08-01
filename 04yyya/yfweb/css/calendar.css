@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+.page_calendar {background:#eee;}
+
+.page_calendar .calendar {width:100%; background:#fff; padding:5rem 0.5rem 0.5rem 0.5rem; border-bottom:solid 0.1rem #ddd; box-shadow:0 0 1rem #999;}
+.page_calendar .calendar td {font-size:1.4rem; text-align:center; line-height:3.6rem; position:relative;}
+.page_calendar .calendar td.now {color: #fdb74b;}
+.page_calendar .calendar td.clicked:before {content:''; position:absolute; width:3rem; height:3rem; border-radius:50%; border:solid 0.1rem #fbd74b; left:50%; top:50%; margin:-1.6rem 0 0 -1.6rem;}
+.page_calendar .calendar td.passed {background:#f7f7f7; color:#eee;}
+
+.page_calendar .tipslist {background:#fff; margin-top:1rem; box-shadow:0 0 1rem #999; padding:1.8rem; padding-right:1rem;}
+.page_calendar .tipslist .tips {padding-left:1.6rem; position:relative; height:15rem;}
+.page_calendar .tipslist .tips:before {content:''; width:0.2rem; background:#ddd; position:absolute; left:0; top:0.5rem; bottom:0;}
+.page_calendar .tipslist .tips .top {font-size:1rem; line-height:1.5rem; height:2rem;}
+.page_calendar .tipslist .tips .top:before {width:1.5rem; height:1.5rem; content:''; position:absolute; left:-0.65rem; top:0; background:#fff url(../images/time2.png) no-repeat; background-size:1.5rem 1.5rem;}
+.page_calendar .tipslist .tips .center {margin-top:0.5rem; height:8rem;}
+.page_calendar .tipslist .tips .center .pic {width:12rem; height:7.5rem; overflow:hidden; float:left;}
+.page_calendar .tipslist .tips .center .pic img {width:100%;}
+.page_calendar .tipslist .tips .center .right {float:left; margin-left:0.8rem; width:17rem; line-height:2rem;}
+.page_calendar .tipslist .tips .center .right .t {line-height:1.8rem; height:3.6rem; overflow:hidden;}
+.page_calendar .tipslist .tips .center .right .c {position:relative; font-size:1.6rem;}
+.page_calendar .tipslist .tips .center .right .b {position:relative; padding-left:1.8rem;}
+.page_calendar .tipslist .tips .center .right .b:before {content:''; position:absolute; left:0; top:0.4rem; width:1.5rem; height:1.5rem; background:url(../images/location_20x20.png) no-repeat; background-size:1.5rem 1.5rem;}
+.page_calendar .tipslist .tips .bottom {height:3rem; border-bottom:solid 0.1rem #ddd;}
+.page_calendar .tipslist .tips .bottom a {padding:0 0.6rem; line-height:2.2rem; border:solid 0.1rem #ddd; border-radius:0.5rem; font-size:1.1rem; margin-right:0.5rem;}
+
+.page_calendar .tipslist .loading, .page_calendar .tipslist .the_end {text-align:center; line-height:3rem;}

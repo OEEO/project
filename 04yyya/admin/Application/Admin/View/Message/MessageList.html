@@ -1,0 +1,499 @@
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+
+<p style="margin-left:20px;">
+    <!--<button class="am-btn am-btn-warning" id="export_excel" onclick="newMessage()">单条消息</button>-->
+    <!--<button class="am-btn am-btn-success" id="export_Mass" onclick="newMass()">群发消息</button>-->
+    <button class="am-btn am-btn-warning" id="website_excel" onclick="website_Message()">发送站内消息</button>
+</p>
+
+<!-- 新建单条消息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="newMessage">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd">
+            <div class="am-modal-hd">新建消息</div>
+            <div class="am-form-group">
+                <label for="message_type">消息类型</label>
+                <div id="normal_tag">
+                    <select id="message_type">
+                        <option value="0">普通消息</option>
+                        <option value="4">活动推送消息</option>
+                        <option value="5">专题推送消息</option>
+                    </select>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="content">消息内容</label>
+                <textarea id="content"></textarea>
+            </div>
+            <div class="am-form-group" name="about">
+                <label for="about">关联ID</label>
+                <div id="about">
+                    <input type="text" id="type_id" value="" placeholder="活动或专题ID">
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="send_option">发送选项</label>
+                <div id="send_option">
+                    <input type="checkbox" name="sms" value="1"><span>短信</span>
+                    <input type="checkbox" name="wx" value="1"><span>微信</span>
+                    <input type="checkbox" name="mail" value="1"><span>邮件</span>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="send_option">发送时间</label>
+                <div id="send_time">
+                    <input type="checkbox" name="rightNow" value="1" ><span>立刻发送</span>
+                    <br/>
+                    <input  type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="sendTime" name="start_time"  placeholder="开始时间" required  value=""/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 新建群发消息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="newMass">
+    <div class="am-modal-dialog">
+        <form name="Massdetail" class="am-form am-modal-bd">
+            <div class="am-modal-hd">新建消息</div>
+            <div class="am-form-group">
+                <label for="message_type">消息类型</label>
+                <div id="Massnormal_tag">
+                    <select id="Massmessage_type">
+                        <option value="0">普通消息</option>
+                        <option value="4">活动推送消息</option>
+                        <option value="5">专题推送消息</option>
+                    </select>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="content">消息内容</label>
+                <textarea id="Masscontent"></textarea>
+            </div>
+            <div class="am-form-group" name="Massabout">
+                <label for="about">关联ID</label>
+                <div id="Massabout">
+                    <input type="text" id="Masstype_id" value="" placeholder="活动或专题ID">
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="send_option">发送选项</label>
+                <div id="Masssend_option">
+                    <input type="checkbox" name="sms" value="1"><span>短信</span>
+                    <input type="checkbox" name="wx" value="1"><span>微信</span>
+                    <input type="checkbox" name="mail" value="1"><span>邮件</span>
+                    <input type="checkbox" name="Mass" value="1" checked="checked" disabled="disabled"><span>群发</span>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="send_option">发送时间</label>
+                <div id="Masssend_time">
+                    <input type="checkbox" name="MassrightNow" value="1" ><span>立刻发送</span>
+                    <br/>
+                    <input  type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="MasssendTime" name="start_time"  placeholder="开始时间" required  value=""/>
+
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="Masseffective_option">有效时间</label>
+                <div id="Masseffective_time">
+                    <input  type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="MasseffectiveTime" name="effectivetime"  placeholder="有效时间" required  value=""/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 发送消息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="sendMessage">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd">
+            <div class="am-modal-hd">发送消息</div>
+            <div class="" id="messgeInfo"></div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="member_id" id="mid" placeholder="会员ID">
+                    <input type="text" name="" class="am-input-sm" id="search_member" placeholder="昵称查找" value="" required/>
+
+                    <div class="am-scrollable-vertical" id="getUser" style="display: none;height: 200px">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 新建站内消息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="website_Message">
+    <div class="am-modal-dialog">
+        <form name="website_detail" class="am-form am-modal-bd">
+            <div class="am-modal-hd">新建消息</div>
+            <div class="am-form-group">
+                <label for="message_type">消息类型</label>
+                <div id="web_normal_tag">
+                    <select id="web_message_type">
+                        <option value="0">普通消息</option>
+                        <option value="4">活动推送消息</option>
+                        <option value="5">专题推送消息</option>
+                    </select>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="content">消息内容</label>
+                <textarea id="web_content"></textarea>
+            </div>
+            <div class="am-form-group" name="web_about">
+                <label for="about">关联ID</label>
+                <div id="web_about">
+                    <input type="text" id="web_type_id" value="" placeholder="活动或专题ID">
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="send_option">发送选项</label>
+                <div id="web_send_option">
+                    <input type="checkbox" name="isMass" value="1"><span>群发</span>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="send_option">发送时间</label>
+                <div id="web_send_time">
+                    <input type="checkbox" name="web_rightNow" value="1" ><span>立刻发送</span>
+                    <br/>
+                    <input  type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="web_sendTime" name="start_time"  placeholder="开始时间" required  value=""/>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="Masseffective_option">有效时间</label>
+                <div id="web_effective_time">
+                    <input  type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="web_effectiveTime" name="effectivetime"  placeholder="有效时间" required  value=""/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+<script>
+    $('.am-modal').appendTo('body');
+    //日历
+    $('#sendTime').datetimepicker();
+    $('#MasssendTime').datetimepicker();
+    $('#MasseffectiveTime').datetimepicker();
+    $('#web_sendTime').datetimepicker();
+    $('#web_effectiveTime').datetimepicker();
+    $(function() {
+        var startDate = new Date();
+        var MasssendDate = new Date();
+        var MasseffectiveDate = new Date();
+        var web_sendDate = new Date();
+        var web_effectiveDate = new Date();
+        //var $alert = $('#my-alert');
+        $('#sendTime').datetimepicker().
+            on('changeDate.datepicker.amui', function(event) {
+                startDate = new Date(event.date);
+                if(startDate < new Date()){
+                    alert('发送时间应大于当前时间');
+                    $('#sendTime').val("");
+                }
+                $(this).datetimepicker('close');
+            });
+        $('#MasssendTime').datetimepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            MasssendDate = new Date(event.date);
+            if(MasssendDate < new Date()){
+                alert('发送时间应大于当前时间');
+                $('#MasssendTime').val("");
+            }
+            $(this).datetimepicker('close');
+        });
+        $('#MasseffectiveTime').datetimepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            MasseffectiveDate = new Date(event.date);
+            if(MasseffectiveDate < new Date()){
+                alert('发送时间应大于当前时间');
+                $('#MasseffectiveDate').val("");
+            }
+            $(this).datetimepicker('close');
+        });
+        $('#web_sendTime').datetimepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            web_sendDate = new Date(event.date);
+            if(web_sendDate < new Date()){
+                alert('发送时间应大于当前时间');
+                $('#web_sendTime').val("");
+            }
+            $(this).datetimepicker('close');
+        });
+        $('#web_effectiveTime').datetimepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            web_effectiveDate = new Date(event.date);
+            if(web_effectiveDate < new Date()){
+                alert('发送时间应大于当前时间');
+                $('#web_effectiveDate').val("");
+            }
+            $(this).datetimepicker('close');
+        });
+    });
+
+    //单条消息
+    function newMessage(){
+        if($('#message_type').val()==0)$("[name='about']").hide();
+        if($('[name="rightNow"]').is(':checked'))$('#sendTime').hide();
+        $('#newMessage').selected({btnSize: 'xs'});
+        $('#newMessage').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var member_id = null;
+                var type = $('#message_type').val();
+                var type_id = $('#type_id').val()==0?null:$('#type_id').val();
+                var content = $('#content').val();
+                var sms_send = $('[name="sms"]').is(':checked')?1:0;
+                var wx_send = $('[name="wx"]').is(':checked')?1:0;
+                var mail_send = $('[name="mail"]').is(':checked')?1:0;
+                var isMass = 0;
+                var sendtime = $('[name="rightNow"]').is(':checked')?0:$('#sendTime').val();
+
+                $.ajax({
+                    url : '__CONTROLLER__/addMessage.html',
+                    data : {'member_id':member_id,'type':type,'type_id':type_id,'content':content,'sms_send':sms_send,'wx_send':wx_send,'mail_send':mail_send,'isMass':isMass,'sendtime':sendtime},
+                    dataType : 'json',
+                    type : 'POST',
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    }
+
+    //只发站内消息
+    function website_Message(){
+//        alert($('#web_message_type').val());
+        if($('#web_message_type').val()==0)$("[name='web_about']").hide();
+        if($('[name="web_rightNow"]').is(':checked'))$('#web_sendTime').hide();
+        $('#website_Message').selected({btnSize: 'xs'});
+        $('#website_Message').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var member_id = null;
+                var type = $('#web_message_type').val();
+                var type_id = $('#web_type_id').val()==0?null:$('#web_type_id').val();
+                var content = $('#web_content').val();
+                var sms_send = 0;
+                var wx_send = 0;
+                var mail_send = 0;
+                var isMass = $('[name="isMass"]').is(':checked')?1:0;
+                var sendtime = $('[name="web_rightNow"]').is(':checked')?0:$('#web_sendTime').val();
+                var effectivetime = $('#web_effectiveTime').val();
+
+                $.ajax({
+                    url : '__CONTROLLER__/addMessage.html',
+                    data : {'member_id':member_id,'type':type,'type_id':type_id,'content':content,'sms_send':sms_send,'wx_send':wx_send,'mail_send':mail_send,'isMass':isMass,'sendtime':sendtime,'effectivetime':effectivetime},
+                    dataType : 'json',
+                    type : 'POST',
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    }
+
+    //群发信息
+    function newMass(){
+        if($('#Massmessage_type').val()==0)$("[name='Massabout']").hide();
+        if($('[name="MassrightNow"]').is(':checked'))$('#MasssendTime').hide();
+        $('#newMass').selected({btnSize: 'xs'});
+        $('#newMass').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var member_id = null;
+                var type = $('#Massmessage_type').val();
+                var type_id = $('#Masstype_id').val()==0?null:$('#Masstype_id').val();
+                var content = $('#Masscontent').val();
+                var sms_send = $('[name="sms"]').is(':checked')?1:0;
+                var wx_send = $('[name="wx"]').is(':checked')?1:0;
+                var mail_send = $('[name="mail"]').is(':checked')?1:0;
+                var isMass = $('[name="Mass"]').is(':checked')?1:0;
+                var sendtime = $('[name="rightNow"]').is(':checked')?0:$('#MasssendTime').val();
+                var effectivetime = $('#MasseffectiveTime').val();
+
+                $.ajax({
+                    url : '__CONTROLLER__/addMessage.html',
+                    data : {'member_id':member_id,'type':type,'type_id':type_id,'content':content,'sms_send':sms_send,'wx_send':wx_send,'mail_send':mail_send,'isMass':isMass,'sendtime':sendtime,'effectivetime':effectivetime},
+                    dataType : 'json',
+                    type : 'POST',
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    }
+
+    function messageDelete(id){
+        if(confirm('是否要删除该条消息')){
+            $.ajax({
+                url : '__CONTROLLER__/deleteMessage.html',
+                data : {'id':id},
+                dataType : 'json',
+                type : 'POST',
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                    }else{
+                        alert(d.info);
+                    }
+                    window.location.reload();
+                }
+            });
+        }
+
+    }
+
+    function messageSend(id){
+        /*$.ajax({
+            url : '__CONTROLLER__/MessageInfo.html',
+            data : {'id':id},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                alert(d);
+            }
+        });*/
+        $('#sendMessage').selected({btnSize: 'xs'});
+        $('#sendMessage').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var member_id =$('#mid').val();
+
+                $.ajax({
+                    url : '__CONTROLLER__/sendMessage.html',
+                    data : {'member_id':member_id , 'message_id':id},
+                    dataType : 'json',
+                    type : 'POST',
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    }
+
+    //昵称模糊查询
+    $('#search_member').keyup(function(){
+        $('#getUser').empty();
+        var search_key = $(this).val();
+
+        $.ajax({
+            url: '/Coupon/getUser.html',
+            data: {'search_key': search_key},
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                var code = '';
+                for(i in d){
+                    //alert(d[i]['id']+'---'+d[i]['nickname']);
+                    code += '<div onclick="choose('+d[i]['id']+',this)"><a href="#">'+d[i]['nickname']+'</a></div>';
+                }
+                $(code).appendTo('#getUser');
+                $('#getUser').show();
+                //window.location.reload();
+            }
+        });
+    })
+    //点击选择用户
+    function choose(id,e){
+        $('#mid').val(id);
+        $('#search_member').val($(e).children().html());
+        $('#getUser').hide();
+    }
+
+
+    $("[name='rightNow']").change(function(){
+        if($(this).is(':checked')){
+            $('#sendTime').hide();
+        }else{
+            $('#sendTime').show();
+        }
+    })
+
+    $("#message_type").change(function(){
+        if($('#message_type').val()==0){
+            $("[name='about']").hide();
+        }else{
+            $("[name='about']").show();
+        }
+    })
+    $("[name='MassrightNow']").change(function(){
+        if($(this).is(':checked')){
+            $('#MasssendTime').hide();
+        }else{
+            $('#MasssendTime').show();
+        }
+    })
+
+    $("#Massmessage_type").change(function(){
+        if($('#Massmessage_type').val()==0){
+            $("[name='Massabout']").hide();
+        }else{
+            $("[name='Massabout']").show();
+        }
+    })
+    $("[name='web_rightNow']").change(function(){
+        if($(this).is(':checked')){
+            $('#web_sendTime').hide();
+        }else{
+            $('#web_sendTime').show();
+        }
+    })
+
+    $("#web_message_type").change(function(){
+        if($('#web_message_type').val()==0){
+            $("[name='web_about']").hide();
+        }else{
+            $("[name='web_about']").show();
+        }
+    })
+
+</script>

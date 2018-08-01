@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/raiseDetail.css">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/plugins/jquery.touchwipe.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/raiseDetail.js"></script>
+</head>
+<body>
+<div class="header line">
+    <div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+    <div class="title"></div>
+    <a class="userMsg" href="javascript:jump('ucenter')"></a>
+</div>
+<div class="headerBlank"></div>
+<div class="r_detail">
+    <div class="c_list">
+        <p><span>认筹总额</span><span>目标金额</span></p>
+        <p><span>￥<font name="totaled"></font></span><span>￥<font name="total"></font></span></p>
+        <div class="shell">
+            <i class="stone"></i>
+            <div class="c_line">
+                <span></span>
+            </div>
+        </div>
+        <div class="sublist">
+            <span><font name="percent"></font>%</span>
+            <span><font name="sum"></font>人认筹</span>
+            <span name="days"></span>
+        </div>
+    </div>
+    <div class="the_blank"></div>
+    <div class="detail">
+        <div class="subdec">
+            <div class="subdec-top">
+                <div class="head-pic">
+                    <img class="headimg" src=""/>
+                    <div class="time"><span class="nickname"></span><span class="c_time"></span></div>
+                </div>
+                <h1></h1>
+                <div class="c_video"></div>
+            </div>
+            <div class="status_check">
+                <a href="javascript:void(0);" class="statu add_hei" data="title_item_1"><span>我的自述</span></a>
+                <a href="javascript:void(0);" class="statu" data="title_item_2"><span>我的项目</span></a>
+                <a href="javascript:void(0);" class="statu" data="title_item_3"><span>为何众筹</span></a>
+                <a href="javascript:void(0);" class="statu" data="title_item_4"><span>我的回报</span></a>
+                <a href="javascript:void(0);" class="statu" data="title_item_5"><span>详情进度</span></a>
+            </div>
+            <table style="margin: 0 auto;"><tr><td class="dec"></td></tr></table>
+        </div>
+    </div>
+</div>
+<div class="headerBlank"></div>
+<div class="footer crowdMenu">
+    <div class="crowdday">
+        <img src="images/q@2x.png" class="qa" onclick="javascript:window.location.href='http://mp.weixin.qq.com/s/tF9IZ6EdVonKGL-t3uIJ8A'"/>
+        <img src="images/comment@2x.png" onclick="javascript:jump('raiseComment', {raise_id:raiseDetailObject.raise_id})" class="info"/>
+        <img src="images/raiseshare@2x.png" class="shares"/>
+    </div>
+    <div class="fr">
+        <div class="subleft">
+            <span class="lt"><font name="sum">105</font>人已认筹</span>
+            <span class="lb" name="days">已结束</span>
+        </div>
+        <div class="substop">
+            优先认筹
+        </div>
+        <div class="ready">
+            即将开始
+        </div>
+        <a href="javascript:jump('raiseReturn', {raise_id:raiseDetailObject.raise_id})" class="submitBtn">支持TA</a>
+    </div>
+</div>
+<div class="fixed fixed_top">
+    <div class="statusbox">
+        <div class="status_check">
+            <a href="javascript:void(0);" class="statu add_hei" data="title_item_1"><span>我的自述</span></a>
+            <a href="javascript:void(0);" class="statu" data="title_item_2"><span>我的项目</span></a>
+            <a href="javascript:void(0);" class="statu" data="title_item_3"><span>为何众筹</span></a>
+            <a href="javascript:void(0);" class="statu" data="title_item_4"><span>我的回报</span></a>
+            <a href="javascript:void(0);" class="statu" data="title_item_5"><span>详情进度</span></a>
+        </div>
+    </div>
+</div>
+<div class="fixed fixed_bottom">
+    <div class="timebox">
+        <div class="boxleft">
+            <p>- 距离开售还有 -</p>
+            <div class="downtime">
+                <font>0</font><font>0</font>天<font>0</font><font>0</font>时<font>0</font><font>0</font>分<font>0</font><font>0</font> 秒
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="remider"><i></i>开启提醒</a>
+    </div>
+</div>
+</body>
+</html>

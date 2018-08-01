@@ -1,0 +1,94 @@
+<!--日历js、css文件加载 start-->
+<!--<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.config.js"></script>
+<script type="text/javascript" src="__RS__/ueditor/utf8-php/ueditor.all.min.js"> </script>-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+
+
+{:W('Cate/table', [$datas, $lang, $operations, $pages, $batch])}
+
+
+<!-- 众筹反馈回复 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="feedback">
+    <div class="am-modal-dialog">
+        <form name="feedback_form" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">反馈回复</div>
+            <input type="hidden" id="feedback_id">
+            <div class="am-modal-bd am-scrollable-vertical am-text-left">
+                <div class="am-g am-margin-top-sm">
+                    <textarea name="refund_reason" class="am-input-sm" id="answer" placeholder="回复内容"></textarea>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $('.am-modal').appendTo('body');
+
+    //删除评论
+    function delete_comment(id){
+        if(window.confirm('确定要删除这条评论吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/raise_comment_del.html',
+                data : {'id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    //回复反馈
+    function  reply_answer(id) {
+        $.ajax({
+            url: '__CONTROLLER__/raise_reply.html',
+            data: {'id': id,'typename':'check_reply'},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                $('#answer').val(d.info);
+                $('#feedback_id').val(id);
+
+                $('#feedback').modal({
+                    relatedTarget: this,
+                    onConfirm: function () {
+                        var data ={};
+                        data.id =$('#feedback_id').val();
+                        data.answer =$('#answer').val();
+                        data.typename = 'answer_reply';
+                        $.ajax({
+                            url : '__CONTROLLER__/raise_reply.html',
+                            data : data,
+                            dataType : 'json',
+                            type : 'POST',
+                            success: function(e){
+                                if(e.status == 1){
+                                    alert(e.info);
+                                }else{
+                                    alert(e.info);
+                                }
+                                window.location.reload();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+
+
+</script>

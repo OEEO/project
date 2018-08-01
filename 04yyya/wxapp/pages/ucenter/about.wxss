@@ -1,0 +1,15 @@
+.content .center{padding:83rpx 0 0rpx;text-align: center;}
+.content .center view{font-size:31rpx;}
+.content .center .a{margin:50rpx auto 50rpx auto; color:#BBBBBB;}
+.content .center .b{margin:4rpx auto; color:#333;}
+.content .center .c{color:#333;}
+.content .center .yami{width: 261rpx;height:150rpx;}
+.content .item {background:#ffffff; margin-top:21rpx; width:100%;}
+.content .item .Betweens{height:2rpx; margin-left:33rpx; border-top:solid #eeeeee 1px;}
+.content .item navigator .dayu{width:17rpx; height:29rpx; background:url(http://img.yummy194.cn/images/my_next_icon@3x.png) 0 0 / 17rpx 29rpx no-repeat; float:right; position:absolute; right:42rpx; top:35rpx;}
+.content navigator,.content .list2 {font-size:31rpx; display:block;height:104rpx; line-height:104rpx;  padding-left:38rpx; position:relative; color:#333;}
+.item .arrowRight{width:19rpx;height:19rpx;border-color:#636363;border-width:3rpx;}
+.content navigator text,.content .list2 text{font-size:29rpx;color:#888888;float:right;margin-right:33rpx;}
+.center_border{border-bottom:1px solid #eee;}
+.content .smaill_font>div{font-size:25rpx; color:#CCC;}
+.content .smaill_font{padding-top:292rpx; padding-bottom:42rpx;}

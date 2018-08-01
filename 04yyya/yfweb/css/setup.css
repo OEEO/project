@@ -1,0 +1,26 @@
+@charset "utf-8";
+/******************************/
+.page_setup{ background:#f5f5f5;}
+.page_setup .settingMenu {padding:0;width:100%;background:#ccc;}
+.page_setup .settingMenu .menuItem {background:#ffffff;/* margin-top:1rem;*/ width:100%;}
+.page_setup .settingMenu .menuItem .itemBetweens{height:0.1rem; background:#eeeeee; margin-left:1.5rem;}
+.page_setup .settingMenu a {font-size:1.3rem; display:block;height:5rem; line-height:5rem;  padding-left:5.5rem; position:relative; color:#333333;}
+.page_setup .settingMenu a .arrowRight{content:''; width:1.152rem; height:1.152rem; right:2.5rem;background:url('../images/next@2x.png') 0 0 / 1.152rem 1.152rem no-repeat; position:absolute; top:1.924rem;}/*右侧的箭头*/
+
+/**页面底部菜单选项 设置**/
+.page_setup .pageBottom{width:33rem; border-radius:0.2rem; margin:0 auto; height:4rem;line-height:4rem; text-align:center; background:#f5f5f5; -moz-box-shadow:0rem 0rem 0.15rem #b39851; -webkit-box-shadow:0rem 0rem 0.15rem #b39851; box-shadow:0rem 0rem 0.15rem #b39851; margin-top:4rem;position:absolute;bottom: 4rem;left: 1.5rem;}
+.page_setup .pageBottom a{display:block;color:#b39851;font-size:1.3rem;}
+/***/
+
+.page_setup .settingMenu a.list1:before {content:''; width:1.5rem; height:1.5rem; left:1.8rem;background:url('../images/9@2x.png') 0 0 no-repeat;background-size:1.5rem auto; position:absolute; top:1.8rem;}
+.page_setup .settingMenu a.list2:before {content:''; width:1.5rem; height:1.5rem; left:1.8rem;background:url('../images/10@2x.png') 0 0 no-repeat;background-size:1.5rem auto; position:absolute; top:1.8rem;}
+.page_setup .settingMenu a.list3:before {content:''; width:2rem; height:2.5rem; left:1.8rem;background:url('../images/8@2x_19.png') 0 0.6rem no-repeat;background-size:2rem auto; position:absolute; top:1rem;}
+.page_setup .settingMenu a.list4:before {content:''; width:1.5rem; height:1.5rem; left:1.8rem;background:url('../images/8@2x.png') 0 0 no-repeat;background-size:1.5rem auto; position:absolute; top:1.8rem;}
+.page_setup .settingMenu a.list5:before {content:''; width:1.5rem; height:1.6rem; left:1.8rem;background:url('../images/shipping-address@2x.png') 0 0 no-repeat;background-size:1.5rem auto; position:absolute; top:1.8rem;}
+/*****公众号二维码*****/
+.page_setup .er_wei_ma{display:none; width:100%; height:100%; background:rgba(0,0,0,0.6); position:fixed; top:0rem; left:0rem; z-index:999;}
+.page_setup .er_wei_ma .box_t{width:24rem; height:28rem; margin:0 auto; background:#FFF; margin-top:12rem;}
+.page_setup .er_wei_ma .box_t .title_top{text-align:center; line-height:4rem; font-size:1.6rem; color:#000;}
+.page_setup .er_wei_ma .box_t img{width:24rem; height:24rem;}
+.page_setup .center_border{border-bottom:0.1rem solid #eee;}
+/***********结束************/

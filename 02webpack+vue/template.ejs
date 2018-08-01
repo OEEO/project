@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="http://mat1.gtimg.com/sports/kbsweb/favicon.ico" type="image/x-icon">
+    <title></title>
+    <script>
+        function nofind(type) {
+            var url = type === 0
+                ? 'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/unmen.png'
+                : 'http://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/static/blank.png';
+            var img = event.srcElement;
+            img.src = url;
+            img.onerror = null;    
+        }
+    </script>
+    <!--<link rel="stylesheet" href="//mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/style/normolize.css?t=1509511940266">-->
+    <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link href="<%=htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+    <% } %>
+</head>
+
+<body>
+<div id="app"></div>
+<script charset="utf-8" src="https://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/scripts/vue.min.js"></script>
+<script charset="utf-8" src="https://mat1.gtimg.com/sports/sportAppWeb/douyuthirdparty/scripts/vue-router.min.js"></script>
+
+<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+<script charset="UTF-8" type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+<% } %>
+</body>
+
+</html>

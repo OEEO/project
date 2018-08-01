@@ -1,0 +1,24 @@
+@charset "utf-8";
+*,html,body{padding:0px;margin:0px;}
+.div{position: relative;}
+img{width: 100%;height: 100%;display: block;}
+a{width: 1.85rem;height: 1.03rem; background:rgba(0,255,0,0);position: absolute;z-index: 99;}
+.o .one{top: 7.65rem;left: 1.33rem}
+.o .two{bottom: 8.65rem;right: 1.35rem}
+.o .there{bottom: -0.1rem;right: 1.26rem}
+
+.s .one{top: 8.1rem;left: 1.25rem}
+.s .two{bottom: 6.73rem;right: 1.24rem}
+
+.t .one{top: 6.3rem;left: 1.33rem;}
+.t .two{bottom: 11.85rem;right: 1.55rem;}
+.t .there{bottom: 2.6rem;left: 1.25rem}
+
+.f .one{top: 4.65rem;right: 1.56rem}
+.f .two{top:9.18rem;left: 1.24rem}
+.f .there{bottom: 7.68rem;right: 1.56rem}
+.f .four{bottom: 5.33rem;right: 1.5rem}
+
+.l .one{top: 0.56rem;left: 1.22rem;}
+.l .two{top: 3rem;left: 0.62rem;}
+.l .there{bottom: 3.96rem;right: 1.32rem}

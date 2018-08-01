@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/tips.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+</head>
+<style>
+.header{position:fixed;top:0;}
+</style>
+<script>
+	$(window).scroll(function(){
+		/********************判断滚动位置是否到了 .filterMenu 的位置************************/
+		/*
+		if($(this).scrollTop()+$('.header').height()==$('.picTop').height()){
+			$('.header').addClass("hf");
+			}
+			
+		if($(this).scrollTop()+$('.header').height()<$('.picTop').height()){
+			$('.header').removeClass("hf");
+			}
+			
+		*/
+		if($(this).scrollTop()+$('.header').height()>$('.picTop').height()){
+			$('.header').removeClass("changeStyle");
+			}
+		if($(this).scrollTop()+$('.header').height()<$('.picTop').height()){
+			$('.header').addClass("changeStyle");
+			}
+			
+			
+	});
+</script>
+<body>
+<div class="header changeStyle">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">活动详情</div>
+	<div class="values" onclick="makeConditions('','.header .values')"></div>
+	<div class="share" onclick="javascript:alert();"></div>
+<!--	<a class="uCenter" href="ucenter.html"></a>-->
+</div>
+
+<div id="mainContent">	
+	<div class="bodyTop">
+		<div class="picTop"></div>
+		<center><img class="imgPortrait" src="images/portrait.jpg" /></center>
+		<div class="activityInfo">
+			<div class="userNm"></div>
+			<div class="StarsGrade"></div>
+			<div class="activityTitle"></div>
+			<div class="mtags"></div>
+			<div class="actLastTime">
+				<div class="title"><font></font></div>
+				<font class="w"></font><span class="h"></span>:<span class="i"></span>:<span class="s"></span>
+				<div class="sy">剩余<span></span>份</div>
+			</div>
+			<div class="restrict"><span class="min_num">3</span class="restrict_num">-<span>10</span>人成局</div>
+			<a href="javascript:showTimes();" class="times"></a>
+			<a href="javascript:void(0);" class="address"></a>
+		</div>
+	</div>
+	<div class="the_blank"></div>
+	<!-- ---------------------------------------------------------------- -->
+	<div class="starInfo">
+		<div class="actInfoMenu">
+			<span>活动描述</span>
+		</div>
+		<div style="margin:0 1.8rem;">
+			<div class="content"></div>
+			<div class="contactStar"><a href="tel:400-888-6633">联系达人</a></div>
+		</div>
+	</div>
+	<div class="the_blank"></div>
+		<div class="notic">
+			<div class="actInfoMenu">
+				<span>须知</span>
+			</div>
+			<div class="noticList">
+				<div>1、每场截止报名时间为活动开始前<span class="stop_buy_time"></span>小时，不接受临时加入和现场付款；</div>
+				<div>2、食材须提前准备，如需退款请提前与达人协商确认。每场截止退款时间为活动开始前12小时；</div>
+				<div>3、每场活动<span class="min_num"></span>人成局，如未达到规定举办的人数，我们会协调达人进行退款；</div>
+				<div>4、无特别说明情况下，活动费用为单人单次费用。除亲子活动外，暂不接受12岁以下的小朋友报名；</div>
+				<div>5、活动现场产生的额外费用，需自行与达人协商解决；</div>
+				<div>6、如需开具发票，请咨询活动方；</div>
+				<div>7、如需其他咨询，请添加客服微信号：yummy194</div>
+			</div>
+		</div>
+		<div class="the_blank"></div>
+		<div class="actInfoMenu">
+			<span>评价</span>
+		</div>
+		<div class="commentList">
+<!--<a href="javascript:parent.page.jump(\'evaluationList.html#'+goods_id+'#tips\')" class="allEvaluation">查看所有评论</a>-->
+		</div>
+		
+		<div class="the_blank"></div>
+		
+		<div class="questionAndAnswer">
+			<div class="actInfoMenu">
+				<span>答疑</span>
+				<!--<a class="query" onclick="javascript:parent.page.jump('q&a.html#4212')">提问</a>-->
+			</div>
+			<ul class="questionList">
+			<!--<a href="javascript:parent.page.jump('q&a.html#4212')" class="allQuestion">查看所有提问</a>-->
+			</ul>
+			
+		</div>
+	<div class="priceMenuBlank"></div>
+	<div class="priceMenu">
+		<div class="price"></div>
+		<a href="javascript:submitOrder();" class="submitBtn">立即购买</a>
+	</div>
+</div>
+
+<div class="timesLay">
+	<div class="views" >
+		<div class="a">查看活动时间</div>
+		<div class="b"></div>
+		<div class="clearfix"></div>
+	</div>
+	<img class="closed"  src="./images/closed@2x.png" onclick="hideCode();">
+</div>
+</body>
+<script>
+$('<script>').attr('src', 'js/public.js?q=' + Math.random()).appendTo('html');
+$('<script>').attr('src', 'js/tips.js?q=' + Math.random()).appendTo('html');
+</script>
+</html>

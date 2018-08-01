@@ -1,0 +1,679 @@
+<!--日历js、css文件加载 start-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+<p class="mobile_none" style="margin-left:20px;">
+    <button type="button" id="member_add" class="am-btn am-btn-success" onclick="addMember()">+ 会员添加 +</button>
+    <button class="am-btn am-btn-warning" id="export_excel">导出Excel</button>
+</p>
+<form class="am-g">
+    <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 20%;float: left;" placeholder="会员名称查询" value="{$search_member}"/>
+    <input type="text" name="telephone" id="search_telephone" class="am-form-field am-radius" style="width: 20%;float: left;" placeholder="电话号码查询" value="{$search_telephone}"/>
+    <select name="status" id="search_status">
+        <option value="">请选择</option>
+        <option value="0" <?php if($search_status === 0)echo "selected='selected'";?>>已删除</option>
+        <option value="1" <?php if($search_status === 1)echo "selected='selected'";?>>已启用</option>
+        <option value="2" <?php if($search_status === 2)echo "selected='selected'";?>>已禁用</option>
+    </select>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-startDate" name="start_time"  placeholder="开始时间" required readonly="true" value="{$search_start_time}"/>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-endDate" name="stop_time"  placeholder="结束时间" required readonly="true" value="{$search_stop_time}"/>
+    <button type="reset" class="am-btn am-btn-primary" onclick="search_rest()">重置</button>
+    <button type="submit" class="am-btn am-btn-success">查找</button>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+
+<!-- 修改密码 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="resetPassarea">
+    <div class="am-modal-dialog">
+        <form name="resetPassarea" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">修改密码</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <input type="password" name="password" class="am-input-sm" id="doc-vld-pwd-5" placeholder="输入8-30位的密码" minlength="8" required/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <input type="password" name="password2" class="am-input-sm" placeholder="请与上面输入的值一致" data-equal-to="#doc-vld-pwd-5" required/>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 标签修改 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="member_tags">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">会员标签</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px;">
+                <input type="hidden" name="member_id" id="member_id" value="">
+
+                <div class="am-form-group">
+                    <label for="official_tag">官方会员标签</label>
+                    <div id="official_tag">
+
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="normal_tag">普通会员标签</label>
+                    <div id="normal_tag">
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 修改手机号码 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="UpdatePhone">
+    <div class="am-modal-dialog">
+        <form name="UpdatePhoneArea" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">修改手机号</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 100px;">
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">手机号码:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text"  name="telephone"/></div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 修改昵称 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="UpdateNickname">
+    <div class="am-modal-dialog">
+        <form name="UpdateNicknameArea" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">修改昵称</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 100px;">
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">昵称:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text"  name="nickname"/></div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+<!-- 添加会员 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="Add_Member">
+    <div class="am-modal-dialog">
+        <form name="Add_Memberarea" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">添加会员</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 150px;">
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">昵称:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text"  name="nickname"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">手机号码:</span>
+                    <div class="am-u-sm-9 am-u-md-9"><input type="text"  name="telephone"/></div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <span class="am-u-sm-3 am-u-md-3">选择城市:</span>
+                    <div class="am-u-sm-9 am-u-md-9">
+
+                        <select class="select" name="citys_id">
+                            <foreach name="citys" key="id" item="name">
+                                <option value="{$id}">{$name}</option>
+                            </foreach>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 修改头像 -->
+<div class="am-modal am-modal-prompt themeEditBox" tabindex="-1" id="modifyPic">
+    <div class="am-modal-dialog">
+        <form name="modifyPic" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">修改头像</div>
+            <div class="am-scrollable-vertical" style="height: 200px;">
+                <input type="hidden" name="member_id" value="">
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-2 am-u-md-2 am-text-right">头像： </div>
+                    <div class="am-u-sm-10 am-u-md-10 am-text-left"><div class="HeadPic" id="HeadPic" style="width: 100px;"></div></div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-12 am-u-md-12 am-text-left">注：可以直接点击图片替换</div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+<!-- 推送信息 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="pushMessage">
+    <div class="am-modal-dialog">
+        <form name="pushMessageArea" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">信息内容</div>
+            <div class="am-scrollable-vertical am-text-left"style="height: 400px; width: 500px;">
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-2 am-u-md-2" style="padding: 0rem;">信息内容:</div>
+                    <div class="am-u-sm-10 am-u-md-10">
+                        <input type="hidden"  name="member_ids" value=""/>
+                        <textarea cols="3" rows="3" name="message"></textarea>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left">
+                    <div class="am-u-sm-2 am-u-md-2" style="padding: 0rem;">关联内容:</div>
+                    <div class="am-u-sm-10 am-u-md-10">
+                        <select name="relation">
+                            <option value="">无关联</option>
+                            <option value="0">活动</option>
+                            <option value="1">商品</option>
+                            <option value="2">众筹</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm am-text-left" id="search_title" style="display: none;">
+                    <div class="am-u-sm-2 am-u-md-2" style="padding: 0rem;">关联标题ID</div>
+                    <div class="am-u-sm-10 am-u-md-10" >
+                        <div class="am-g am-margin-top-sm am-text-left">
+                            <div class="am-u-sm-12 am-u-md-12">
+                                <input type="text" name="title_id" id="mid"  placeholder="Title_ID" style="width: 20%;float: left">
+                                <input type="text" name=""  id="search_ac" placeholder="标题查找" value="" style="width: 80%;float: left" required/>
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top-sm am-text-left">
+                            <div class="am-u-sm-12 am-u-md-12">
+                                <div id="getTitle" style="display: none; height: 200px; overflow:auto;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+<script>
+    $('.am-modal').appendTo('body');
+
+
+    //图片上传
+    function Uplodepic(em){
+        pic_upload(em, [320, 320], function(file){
+            $('#HeadPic').html('<span><img data="'+ file[0].pic_id +'" src="'+ file[0].path +'"   width="100px" height="100px"onclick="Uplodepic(this)"><a href="javascript:void(0);" onclick="removePic(this)">×</a></span>');
+            $('#HeadPic .add').remove();
+        }, false);
+
+    }
+    //图片删除
+    function removePic(em){
+        $(em).parents('span').remove();
+        $('.HeadPic').append(' <a href="javascript:void(0);" class="add" onclick="Uplodepic(this)">+</a>');
+    }
+    //修改头像
+    function UpdateHeadPic(id){
+        $.ajax({
+            url: '__CONTROLLER__/UpdateHeadPic.html',
+            data:{'member_id':id,'typeName':'getHeadPic'},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                if(d.status !=0 && d.path !=''&& d.pic_id !=''&& d.pic_id !=null){
+                    code = ' <span><img id="headpic_show" onclick="Uplodepic(this)"   data="'+ d.pic_id +'" src="'+ d.path +'" width="100px" height="100px"><a onclick="removePic(this)" href="javascript:void(0);">×</a></span>'
+                }else{
+                    code = '<a href="javascript:void(0);" class="add" onclick="Uplodepic(this)">+</a>'
+                }
+                $('#HeadPic').append(code);
+            }
+        });
+
+        $('#modifyPic').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data={};
+                data.pic_id = $('#HeadPic span img').attr('data');
+                data.member_id = id;
+                data.typeName = 'PostHeadPic';
+
+                $.ajax({
+                    url: '__CONTROLLER__/UpdateHeadPic.html',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.href = window.location.href;
+                    }
+                });
+            }
+        });
+
+    }
+
+    //修改手机号码
+    function UpdatePhone(id){
+        $.ajax({
+            url: '__CONTROLLER__/UpdatePhone.html',
+            data:{'member_id':id,'typeName':'getPhone'},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                   document.UpdatePhoneArea.telephone.value = d[0].telephone;
+            }
+        });
+
+        $('#UpdatePhone').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data={};
+                data.telephone = document.UpdatePhoneArea.telephone.value;
+                data.member_id = id;
+
+                $.ajax({
+                    url: '__CONTROLLER__/UpdatePhone.html',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.href = window.location.href;
+                    }
+                });
+            }
+        });
+    }
+
+    //修改昵称
+    function UpdateNickname(id){
+
+        $.ajax({
+            url: '__CONTROLLER__/UpdateNickname.html',
+            data:{'member_id':id,'typeName':'getNickname'},
+            dataType: 'json',
+            type: 'POST',
+            success: function (nickname) {
+                document.UpdateNicknameArea.nickname.value = nickname;
+            }
+        });
+
+        $('#UpdateNickname').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data={};
+                data.nickname = document.UpdateNicknameArea.nickname.value;
+                data.member_id = id;
+
+                $.ajax({
+                    url: '__CONTROLLER__/UpdateNickname.html',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.href = window.location.href;
+                    }
+                });
+            }
+        });
+    }
+
+    //会员添加
+    function addMember(id){
+        $('#Add_Member').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data={};
+                data.functiontype = 'add_user';
+                data.nickname = document.Add_Memberarea.nickname.value;
+                data.telephone = document.Add_Memberarea.telephone.value;
+                data.citys_id = document.Add_Memberarea.citys_id.value;
+
+                $.ajax({
+                    url: '',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.href = window.location.href;
+                    }
+                });
+            }
+        });
+    }
+
+    //密码修改
+    function resetpass(id){
+        $('#resetPassarea').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var pass1 = $('#resetPassarea').find(':password').eq(0).val();
+                var pass2 = $('#resetPassarea').find(':password').eq(1).val();
+                if(pass1 != pass2){
+                    alert('二次密码输出不正确！');
+                    return;
+                }
+
+                $.post('__CONTROLLER__/updatepsw.html', {'id':id, 'password':pass1}, function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.href = window.location.href;
+                    }else{
+                        alert(d.info);
+                    }
+                }, 'json');
+            }
+        });
+    }
+
+    function disable(id){
+        $.ajax({
+            url : '__CONTROLLER__/changeStatus.html',
+            data : {'id' : id , 'status' : 2},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+                window.location.reload();
+            }
+        });
+    }
+
+    function able(id){
+        $.ajax({
+            url : '__CONTROLLER__/changeStatus.html',
+            data : {'id' : id , 'status' : 1},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+                window.location.reload();
+            }
+        });
+    }
+
+    //日历
+    $('#my-startDate').datetimepicker();
+    $('#my-endDate').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-alert');
+        $('#my-startDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                        alert('开始日期应小于结束日期！');
+                        $('#my-startDate').val("");
+                    } else {
+                        startDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+
+    $('#my-endDate').datetimepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                alert('结束日期应大于开始日期！');
+                $('#my-endDate').val("");
+            } else {
+                endDate = new Date(event.date);
+                clicktime = 1;
+            }
+            $(this).datetimepicker('close');
+        });
+    });
+
+    //修改标签
+    function member_tags(id){
+        $('#member_id').val(id);
+        $('#official_tag').empty();
+        $('#normal_tag').empty();
+        $.ajax({
+            url : '__CONTROLLER__/getMemberTags.html',
+            data : {'id' : id },
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                var code_official = '';
+                var code = '';
+                for(i in d.official_member_tags){
+                    var check = false;
+                    for(k in d.my_official){
+                        if(d.my_official[k]==d.official_member_tags[i].id)check = true;
+                    }
+                    if(check){
+                        code_official += '<input type="checkbox" name="official_label[]" checked value="'+d.official_member_tags[i].id+'"><span>'+d.official_member_tags[i].name+'</span>';
+                    }else{
+                        code_official += '<input type="checkbox" name="official_label[]" value="'+d.official_member_tags[i].id+'"><span>'+d.official_member_tags[i].name+'</span>';
+                    }
+                }
+                for(j in d.member_tags){
+                    var check = false;
+                    for(l in d.my_label){
+                        if(d.my_label[l]==d.member_tags[j].id)check = true;
+                    }
+                    if(check){
+                        code += '<input type="checkbox" name="label[]" checked value="'+d.member_tags[j].id+'"><span>'+d.member_tags[j].name+'</span>';
+                    }else{
+                        code += '<input type="checkbox" name="label[]" value="'+d.member_tags[j].id+'"><span>'+d.member_tags[j].name+'</span>';
+                    }
+                }
+                $(code_official).appendTo('#official_tag');
+                $(code).appendTo('#normal_tag');
+            }
+        });
+        $('#member_tags').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var member_id = $('#member_id').val();
+                var official_tag_ids = [];
+                $('#official_tag input:checked').each(function(){
+                    if(/^\d+$/.test(this.value))official_tag_ids.push(this.value);
+                });
+                var tag_ids = [];
+                $('#normal_tag input:checked').each(function(){
+                    if(/^\d+$/.test(this.value))tag_ids.push(this.value);
+                });
+                $.ajax({
+                    url : '__CONTROLLER__/getMemberTags.html',
+                    data : {'member_id' : member_id,'official_tag_ids' : official_tag_ids , 'tag_ids' : tag_ids},
+                    dataType : 'json',
+                    type : 'POST',
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                });
+
+            }
+        });
+    }
+
+    function search_rest(){
+        $('#search_member').val('');
+        $('#search_telephone').val('');
+        $('#my-startDate').val('');
+        $('#my-endDate').val('');
+        $("select option:selected").prop("selected", false);
+
+    }
+
+    //搜索模糊标题//昵称模糊查询
+    $('#search_ac').keyup(function(){
+        $('#getTitle').empty();
+        $('#mid').val();
+        var search_key = $(this).val();
+        var type = $('select[name="relation"]').val();
+        $.ajax({
+            url: '__CONTROLLER__/GetTitle.html',
+            data: {'search_key': search_key},
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                if(d.status == 0){
+                    alert(d.info);
+                    return;
+                }else {
+                    var code = '<table class="am-table am-table-striped am-table-hover table-main">';
+                    code += '  <thead>';
+                    code += '    <tr>';
+                    code += '        <th class="table-id">ID</th><th class="table-title">达人昵称</th><th class="table-type">标题</th>';
+                    code += '    </tr>';
+                    code += '  </thead>';
+                    code += '  <tbody>';
+                    for(i in d){
+                        code += '    <tr>';
+                        code += '      <td>'+ d[i].title_id +'</td>';
+                        code += '      <td>'+ d[i].nickname +'</td>';
+                        code += '      <td><a href="javascript:choose('+d[i].title_id+')">'+ d[i].title +'</a></td>';
+                        code += '    </tr>';
+                    }
+                    code += '  </tbody>';
+                    code += '</table>';
+                    $(code).appendTo('#getTitle');
+                    $('#getTitle').show();
+                }
+            }
+        });
+    })
+    //选择标题
+    function choose(id){
+        $('#mid').val(id);
+        $('#getTitle').hide();
+        $('#search_ac').val('');
+
+    }
+    //关联类型显隐
+    $('select[name="relation"]').change(function(){
+        alert($(this).val())
+        if($(this).val() == 0){
+            $('#search_title').show();
+            $('#search_ac').val('');
+            $('#mid').val('');
+        }
+        if($(this).val() == 1){
+            $('#search_title').show();
+            $('#search_ac').val('');
+            $('#mid').val('');
+        }
+        if($(this).val() == 2){
+            $('#search_title').show();
+            $('#search_ac').val('');
+            $('#mid').val('');
+        }
+        if($(this).val() == ''){
+            $('#search_ac').val('');
+            $('#mid').val('');
+            $('#search_title').hide();
+        }
+    });
+    //推送信息
+    function PushMessage(){
+        $('#search_title').hide();
+        $('select[name="relation"]').val('');
+        $('#mid').val('');
+        $('#search_title').hide();
+        var member_ids = [];
+        $('tr input:checked').each(function(){
+            if(/^\d+$/.test(this.value))member_ids.push(this.value);
+        });
+        $('#pushMessage').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+                var data = {};
+                data.member_ids = member_ids;
+                data.type = document.pushMessageArea.relation.value;
+                data.title_id = $('#mid').val();
+                data.message = document.pushMessageArea.message.value;
+                data.pushType = 'MemberIdType';
+                $.ajax({
+                    url: '__CONTROLLER__/PushIOSMessage.html',
+                    data:data,
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        if(d.status == 1) {
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.href = window.location.href;
+                    }
+                });
+            }
+        })
+
+    }
+
+    //导出excel
+    $('#export_excel').click(function(){
+        var search_telephone = $('#search_telephone').val();
+        var search_member = $('#search_member').val();
+        var search_status = $('#search_status').val();
+        var search_startdate = $('#my-startDate').val();
+        var search_enddate = $('#my-endDate').val();
+
+        window.open("__CONTROLLER__/MemberExport.html?member="+search_member+"&telephone="+search_telephone+"&status="+search_status+"&start_time="+search_startdate+"&stop_time="+search_enddate,"_blank","width=1000,height=600 ")
+    });
+
+    function addWhiteList(id){
+        $.post('whitelist.html', {id:id, action:'add'}, function(d){
+            alert(d.info);
+        }, 'json');
+    }
+</script>

@@ -1,0 +1,31 @@
+@charset "utf-8";
+.page_kitchenDetail .bg_top{width:36rem; height:35rem;}
+.page_kitchenDetail .bg_top img{width:36rem; height:35rem;}
+
+.page_kitchenDetail .title_top{width:34rem; margin:0 auto; text-align:center;}
+.page_kitchenDetail .title_top .title_t{width:34rem; height:4.5rem; line-height:5.5rem; font-size:1.5rem; font-weight:600; color:#333;}
+.page_kitchenDetail .title_top .title_cont{width:34rem; line-height:1.8rem; padding-bottom:4rem; font-size:1.4rem; color:#565656; border-bottom:0.1rem solid #d8d8d8;}
+
+.page_kitchenDetail .adress{width:36rem; text-align:center;}
+.page_kitchenDetail .adress .ad_t{width:36rem; line-height:3rem; font-size:1.5rem; font-weight:600; color:#333; padding-top:1rem;}
+.page_kitchenDetail .adress .ad_De{width:36rem; line-height:3rem; font-size:1.4rem; color:#333; padding-bottom:1rem;}
+.page_kitchenDetail .adress .ad_tu{width:36rem; height:21.5rem;}
+
+.page_kitchenDetail .shech{width:34rem; margin:0 auto; text-align:center;}
+.page_kitchenDetail .shech .s_t{width:34rem; line-height:6rem; font-size:1.5rem; font-weight:600; color:#333;}
+.page_kitchenDetail .shech .zooles{width:34rem; height:15rem; border-bottom:0.1rem solid #d8d8d8; border-top:0.1rem solid #d8d8d8; padding-top:1.5rem;}
+.page_kitchenDetail .shech .zooles a{display:inline-block; margin:0rem; width:8.5rem; height:8rem; float:left;}
+.page_kitchenDetail .shech .zooles a img{width:3rem; height:3rem;}
+
+.page_kitchenDetail .box_n{width:34rem; margin:0 auto; text-align:center; padding:1rem; padding-bottom:3rem;}
+.page_kitchenDetail .box_center{ border-bottom:0.1rem solid #d8d8d8; border-top:0.1rem solid #d8d8d8;}
+.page_kitchenDetail .box_n .box_t{width:32rem; line-height:6rem; font-size:1.5rem; font-weight:600; color:#333;}
+.page_kitchenDetail .box_n .box_c{width:32rem; font-size:1.3rem; line-height:2rem;}
+
+.page_kitchenDetail .add_top_border{ border-top:0.1rem solid #d8d8d8;}
+
+.page_kitchenDetail .title_cate{ line-height:2rem; color:#888888; font-size:1.2rem; text-align:center; padding-bottom:0.5rem;}
+
+.page_kitchenDetail .bot_but{width:36rem; text-align:center; line-height:4rem; font-size:1.5rem; background-color:#b39851; color:#fff; margin-top:3rem;}
+
+.page_kitchenDetail .no_t{color:#ccc;}

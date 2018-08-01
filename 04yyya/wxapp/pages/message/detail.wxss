@@ -1,0 +1,19 @@
+.msgList {height:100%; letter-spacing:0;background: #fff;}
+.msgList .item{display:block; padding:0rpx 29rpx;background: #fff;}
+/**************/
+.msgList .item .timess{display:block;width:250rpx; height:38rpx; line-height:38rpx; text-align:center; margin:42rpx 208rpx; color:#FFF; font-size:21rpx; padding:0 10rpx; background-color:#ccc; border-radius:8rpx;}
+
+.msgList .item .bottom_t{width:100%;display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+
+.msgList .User_Img{margin-top:0;margin-right:31rpx;}
+.msgList .User_Img .imgPortrait{width:83rpx;height:83rpx; border:none;border-radius: 50%;display: inline-block;overflow: hidden;}
+
+.msgList .User_Conten{float:right;width:602rpx; padding:17rpx; background-color:#F5F5F5; position:relative; border-radius:8rpx;}
+.msgList .User_Conten .Contens{display:block; line-height:38rpx; font-size:29rpx; color:#333;}
+.msgList .User_Conten .jiao{width:25rpx; height:35rpx; position:absolute; top:25rpx; left:-24rpx; background:url(http://img.yummy194.cn/images/-customer-service_triangle@2x.png) 0 0 / 25rpx 35rpx;}
+.msgList .User_Conten .User_right{display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; background-color:#FFF; margin-top:17rpx;}
+.msgList .User_Conten .User_right .dayu{width:79rpx; height:79rpx; margin:10rpx;}
+.msgList .User_Conten .User_right .t_right{width:444rpx; height:auto;}
+.msgList .User_Conten .User_right .t_right .titles{display:block; font-size:27rpx; color:#333; line-height:38rpx; padding:4rpx 0rpx; overflow:hidden;}
+.msgList .User_Conten .User_right .t_right .titles_sub{display:block; font-size:25rpx; color:#888888; line-height:33rpx; padding:4rpx 0rpx;overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.the_blankes{width:750rpx; height:104rpx;background: #fff;}

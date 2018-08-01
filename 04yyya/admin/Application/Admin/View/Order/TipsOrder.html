@@ -1,0 +1,346 @@
+<!--日历js、css文件加载 start-->
+<script type="text/javascript" src="__AMUI__/js/amazeui.datetimepicker.min.js"> </script>
+<link href="__AMUI__/css/amazeui.datetimepicker.css" rel="stylesheet">
+<!--日历js、css文件加载 end-->
+<?php if(IS_WAP):?>
+<style>
+    .datetimepicker table td{ font-size:0.14rem;}
+    #admin-offcanvas{display:none;}
+</style>
+<?php endif;?>
+<p class="mobile_none" style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" id="export_excel">导出Excel</button>
+    <button class="am-btn am-btn-warning" id="export_excel_old">（旧）导出Excel</button>
+</p>
+
+<form class="am-g">
+    <div class="am-alert am-alert-danger" id="my-alert" style="display: none">
+        <p>开始日期应小于结束日期！</p>
+    </div>
+    <input type="text" name="sn" id="search_sn" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="订单号查询" value="{$search_sn}"/>
+    <input type="text" name="check_code" id="check_code" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="消费码" value="{$check_code}"/>
+    <input type="text" name="title" id="search_title" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="活动名模糊查询" value="{$search_title}"/>
+    <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="购买者查询" value="{$search_member}"/>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-startDate" name="start_order_time"  placeholder="下单开始时间" required readonly="true" value="{$search_start_order_time}"/>
+    <input style="width: 15%;float: left;" type="text" class="am-form-field" data-date-format="yyyy-mm-dd hh:ii" id="my-endDate" name="stop_order_time"  placeholder="下单结束时间" required readonly="true" value="{$search_stop_order_time}"/>
+    <select id="act_status" name="act_status" style="width: 20%;">
+        <option value="">请选择</option>
+        <option value="0" <?php if(isset($search_act_status) && $search_act_status == 0)echo "selected='selected'";?>>未支付</option>
+        <option value="1" <?php if($search_act_status == 1)echo "selected='selected'";?>>已付款（未参加）</option>
+        <option value="4" <?php if($search_act_status == 4)echo "selected='selected'";?>>已付款（已完成）</option>
+        <!--<option value="3" <?php if($search_act_status == 3)echo "selected='selected'"?>>已发货（未签收）</option>
+        <option value="4" <?php if($search_act_status == 4)echo "selected='selected'"?>>已发货（已签收）</option>-->
+        <option value="5" <?php if($search_act_status == 5)echo "selected='selected'";?>>申请退款</option>
+        <option value="6" <?php if($search_act_status == 6)echo "selected='selected'";?>>退款申请已处理</option>
+        <option value="7" <?php if($search_act_status == 7)echo "selected='selected'";?>>已取消</option>
+        <option value="8" <?php if($search_act_status == 8)echo "selected='selected'";?>>系统自动操作，退款中</option>
+    </select>
+    <select id="citys" name="citys" style="width: 20%;">
+        <option value="">请选择</option>
+        <option value="224" <?php if($search_city == 224)echo "selected='selected'";?>>广州</option>
+        <option value="234" <?php if($search_city == 234)echo "selected='selected'";?>>深圳</option>
+    </select>
+    <select id="status" name="status" style="width: 20%;">
+        <option value="">请选择</option>
+        <option value="0" <?php if(isset($search_status) && $search_status == 0)echo "selected='selected'";?>>已删除</option>
+        <option value="1" <?php if($search_status == 1 || $status == 1)echo "selected='selected'";?>>正常</option>
+        <option value="2" <?php if($search_status == 2)echo "selected='selected'";?>>已关闭</option>
+    </select>
+
+    <!--<button type="button" class="am-btn am-btn-primary" onclick="search_rest()">重置</button>-->
+    <button type="submit" class="am-btn am-btn-success">提交</button>
+</form>
+
+<!-- 快照 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="snapshot">
+    <div class="am-modal-dialog">
+        <form name="resetBanner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">快照</div>
+            <div class="am-modal-bd am-scrollable-vertical am-text-left">
+
+                <div class="am-g am-margin-top-sm" id="snapshotData">
+
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 退款申请 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="refund">
+    <div class="am-modal-dialog">
+        <form name="refund" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">退款申请</div>
+            <input type="hidden" id="refund_id">
+            <div class="am-modal-bd am-scrollable-vertical am-text-left">
+                <div class="am-g am-margin-top-sm">
+                    <input type="text" name="refund_money" class="am-input-sm" id="refund_money" placeholder="退款金额"/>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <textarea name="refund_reason" class="am-input-sm" id="refund_reason" placeholder="退款理由"></textarea>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+
+
+
+<script>
+    $('.am-modal').appendTo('body');
+    //日历
+    $('#my-startDate').datetimepicker();
+    $('#my-endDate').datetimepicker();
+    $('#create-startDate').datetimepicker();
+    $('#create-endDate').datetimepicker();
+
+    var clicktime = 0;          //clicktime判断是否第一次次点击开始时间按钮，如果是则不与结束日期判断
+    var clicktimes = 0;
+    $(function() {
+        var startDate = new Date();
+        var endDate = new Date();
+        //var $alert = $('#my-startDate');
+        $('#my-startDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                        alert('开始日期应小于结束日期！');
+                        $('#my-startDate').val("");
+                    } else {
+                        startDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+
+        $('#my-endDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+
+                    if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                        alert('结束日期应大于开始日期！');
+                        $('#my-endDate').val("");
+                    } else {
+                        endDate = new Date(event.date);
+                        clicktime = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+        $('#create-startDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+                    if (event.date.valueOf() > endDate.valueOf() && clicktime != 0) {
+                        alert('开始日期应小于结束日期！');
+                        $('#create-startDate').val("");
+                    } else {
+                        startDate = new Date(event.date);
+                        clicktimes = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+
+        $('#create-endDate').datetimepicker().
+                on('changeDate.datepicker.amui', function(event) {
+
+                    if (event.date.valueOf() < startDate.valueOf() && clicktime != 0) {
+                        alert('结束日期应大于开始日期！');
+                        $('#create-endDate').val("");
+                    } else {
+                        endDate = new Date(event.date);
+                        clicktimes = 1;
+                    }
+                    $(this).datetimepicker('close');
+                });
+    });
+
+
+    function OrderRefund(id,price){
+        if(window.confirm('确定要申请退款吗？')){
+            $('#refund_money').val(price);
+            $('#refund_id').val(id);
+            var id = $('#refund_id').val();
+            $('#refund').modal({
+                relatedTarget: this,
+                onConfirm: function () {
+                    var data = {};
+                    data.typename = 'Tips_Refund';
+                    data.order_id = $('#refund_id').val();
+                    data.money = $('#refund_money').val();
+                    data.cause = $('#refund_reason').val();
+                    data.is_allow = 0;
+                    $.ajax({
+                        url : '__CONTROLLER__/OrderRefund.html',
+                        data : {'data' : data},
+                        type : 'post',
+                        success : function(d){
+                            if(d.status == 1){
+                                alert(d.info);
+                                window.location.reload();
+                            }else{
+                                alert(d.info);
+                            }
+                        },
+                        error: function(err) {
+                            alert('出现一点问题，正在刷新页面');
+                            location.reload();
+                        }
+                    });
+                }
+            })
+        }
+    }
+
+    //取消订单
+    function cancel(id){
+        if(window.confirm('确定要取消这条记录吗？（可以恢复）')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderCancel.html',
+                data : {'order_id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    //删除订单
+    function order_delete(id){
+        if(window.confirm('确定要删除这条记录吗？(不能恢复)')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderDelete.html',
+                data : {'order_id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    //恢复订单
+    function recovery(id){
+        if(window.confirm('确定要恢复这条订单吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderRecovery.html',
+                data : {'order_id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+
+    function check(id){
+        if(window.confirm('确定要进行验票吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/OrderCheck.html',
+                data : {'id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+
+
+        }
+    }
+
+    function snapshot(id){
+        $.ajax({
+            url : '__CONTROLLER__/snapshot.html',
+            data : {'id' : id,'typename':'TipSnapshot'},
+            type: 'post',
+            success: function (d) {
+                if (d.status == 1) {
+                    $('#snapshotData').empty();
+                    var code='';
+                    code += '<span class="am-u-sm-4">标题：</span><span class="am-u-sm-8">'+ d.info.tips_title+'</span>';
+                    code += '<span class="am-u-sm-4">亮点：</span><span class="am-u-sm-8">'+ d.info.tips_edges+'</span>';
+                    code += '<span class="am-u-sm-4">期数：</span><span class="am-u-sm-8">'+ d.info.tips_phase+'</span>';
+                    code += '<span class="am-u-sm-4">分类：</span><span class="am-u-sm-8">'+ d.info.tips_category+'</span>';
+                    code += '<span class="am-u-sm-4">地址：</span><span class="am-u-sm-8">'+ d.info.tips_address+'</span>';
+                    code += '<span class="am-u-sm-4">价格：</span><span class="am-u-sm-8">'+ d.info.tips_price+'</span>';
+                    for(i in d.info.tips_menu){
+                        code += '<span class="am-u-sm-4">'+d.info.tips_menu[i].food_type+'：</span><span class="am-u-sm-8">'+d.info.tips_menu[i].food_name+'</span>';
+                    }
+                    code += '<span class="am-u-sm-4">是否包场：</span><span class="am-u-sm-8">'+ d.info.is_book+'</span>';
+                    code += '<span class="am-u-sm-4">优惠券ID：</span><span class="am-u-sm-8">'+ d.info.member_coupon_id+'</span>';
+                    code += '<span class="am-u-sm-4">下单时间：</span><span class="am-u-sm-8">'+ d.info.datetime+'</span>'
+
+                    $('#snapshotData').append(code);
+
+                }else{
+                    alert('查看失败');
+                }
+            }
+        });
+        $('#snapshot').modal({
+            relatedTarget: this,
+            onConfirm: function () {
+
+            }
+        })
+    }
+
+   function search_rest(){
+       $('input').val('');
+       $("select option:selected").prop("selected", false);
+   }
+
+    //导出excel
+    $('#export_excel').click(function(){
+        var search_sn = $('#search_sn').val();
+        var search_title = $('#search_title').val();
+        var search_member = $('#search_member').val();
+        var search_start_order_time = $('#my-startDate').val();
+        var search_stop_order_time = $('#my-endDate').val();
+        var search_act_status = $('#act_status').val();
+        var city = $('#citys').val();
+        var status = $('#status').val();
+
+        window.open("__CONTROLLER__/TipsOrderExport.html?sn="+search_sn+"&title="+search_title+"&member="+search_member+"&start_order_time="+search_start_order_time+"&stop_order_time="+search_stop_order_time+"&act_status="+search_act_status+"&city="+city+"&status="+status,"_blank","width=1000,height=600 ")
+    })
+    //导出excel(旧)
+    $('#export_excel_old').click(function(){
+        var search_sn = $('#search_sn').val();
+        var search_title = $('#search_title').val();
+        var search_member = $('#search_member').val();
+        var search_start_order_time = $('#my-startDate').val();
+        var search_stop_order_time = $('#my-endDate').val();
+        var search_act_status = $('#act_status').val();
+        var city = $('#citys').val();
+        var status = $('#status').val();
+
+        window.open("__CONTROLLER__/TipsOrderExport_old.html?sn="+search_sn+"&title="+search_title+"&member="+search_member+"&start_order_time="+search_start_order_time+"&stop_order_time="+search_stop_order_time+"&act_status="+search_act_status+"&city="+city+"&status="+status,"_blank","width=1000,height=600 ")
+    })
+</script>

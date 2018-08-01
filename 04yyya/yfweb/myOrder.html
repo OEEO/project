@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/public.css">
+	<link rel="stylesheet" type="text/css" href="css/myOrder.css">
+
+	<script src="js/plugins/jquery.min.js"></script>
+	<script src="js/public.js"></script>
+	<script src="js/myOrder.js"></script>
+
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+	<div class="title">我报名的活动</div>
+	<!--<a class="msg" href="javascript:jump('myMsgs')"></a>-->
+</div>
+<div class="headerBlank"></div><!--设置空白，避免顶部菜单遮住网页内容-->
+<div class="status_check">
+	<a href="javascript:void(0);" class="statu add_hei"><span>全部</span></a>
+	<a href="javascript:void(0);" act_status="0" class="statu"><span>待付款</span></a>
+	<a href="javascript:void(0);" act_status="1" class="statu"><span>待参加</span></a>
+	<a href="javascript:void(0);" act_status="2" class="statu"><span>待评价</span></a>
+</div>
+<div class="the_blank"></div>
+<ul class="content"></ul>
+<center><img class="loading" src="images/loading@2x.png" /></center>
+<div class="QRcode" onclick="myOrderObject.hideCode();">
+	<div class="views">
+		<!--<div class="a">查看消费码</div>
+		<div class="b">参加活动时请出示消费码</div>-->
+		<div class="d"></div>
+		<div class="L_niu"></div>
+		<div class="R_niu"></div>
+
+		<div class="dBtm">左右滑动切换消费码</div>
+	</div>
+	<!--<img class="closed" src="./images/closed@2x.png" onclick="myOrderObject.hideCode();">-->
+</div>
+<script src="js/member.js"></script>
+<script src="js/plugins/jquery.qrcode-0.12.0.min.js"></script>
+</body>
+</html>

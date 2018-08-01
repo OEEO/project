@@ -1,0 +1,17 @@
+<!-- 实名认证 -->
+<view class="container">
+<!-- 顶部线 -->
+<view style="position: fixed; top:0; left: 0; height:0; border-top: 1rpx solid #eee; width: 100%;"></view>
+<!-- 顶部线 -->
+  <view>
+    <view class="form-item">
+      <view class="left">真实姓名：</view>
+      <input placeholder="请输入身份证上的名字" class="right" value="{{ surname }}" bindinput="changeInput" data-id="surname"></input>
+    </view>
+    <view class="form-item">
+      <view class="left">身份证号：</view>
+      <input placeholder="请输入身份证号码" class="right" value="{{ identity }}" bindinput="changeInput" data-id="identity"></input>
+    </view> 
+    <button class="confirm-btn" bindtap="toCertificate">{{ hasBeingCertificate ? '修改实名认证' : '提交实名认证' }}</button>   
+  </view>
+</view>

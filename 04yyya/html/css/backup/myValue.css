@@ -1,0 +1,57 @@
+@charset "utf-8";
+/******************************/
+
+/*******************************/
+.valueMenu{height:4rem;/*border-bottom:0.1rem solid #ebecf0;*/}
+.valueMenu>div{font-size:1.5rem;color:#969696;width:33%;float:left;margin:1rem 0;height:2rem;line-height:2rem;text-align:center;}
+.valueMenu .act{color:#fcd74b;}
+.valueMenu .goods{border-left:0.1rem solid #fcd74b;border-right:0.1rem solid #fcd74b;}
+.goodsList,.daRenList{display:none;}
+/*******************************/
+
+/**********活动列表**************/
+.actlist .userHeadImg .imgPortrait{width: 3rem;height: 3rem;border-radius: 50%;margin-left:1rem;float:left;margin-top:0.6rem;border:none;}/*用户头像*/
+.actlist .userHeadImg .userHeadName{margin-left:0.8rem;float:left;margin-top:1.2rem;font-size: 1.5rem;}/*主持者 名字*/
+
+.actlist .actImgLink{margin-top:0.2rem;display:block;position:relative;}/*活动图片*/
+/*.actImgLink img{margin-top:-2rem;}/*活动宣传图（大图）*/
+.actlist .orderLast{color:#fff;font-size:105%;background:rgba(0,0,0,0.26);width:10rem;height:2.5rem;line-height: 2.5rem; text-align:center; position:absolute;top:0;right:0;z-index:1;}/*剩余 190 份*/
+
+.actlist .actBottom{margin:0.8rem 0.8rem;position:relative;}
+.actlist .actBottom .actTitle{color:#3d3d3d;font-size:1.3rem;font-weight:500;}/*活动标题*/
+
+.actlist .actAdd{color:#a3a3a3;margin:0.8rem auto;text-indent:1.4rem;float:left;background:url('../images/location_20x20.png')no-repeat left center;background-size:1rem;}/*活动地点*/
+
+
+.actlist .actTime{color:#a3a3a3;margin:0.8rem auto;margin-left:1.5rem;text-indent:1.4rem;float:left;background:url('../images/time2.png')no-repeat left center;background-size:1rem;}/*活动时间*/
+
+.actlist .mtags{font-size:1.2rem;}
+
+.actlist .actPrice{font-size:3rem;bottom:0.5rem;right:0.6rem;position: absolute;color:#f7d557;}/*活动价格*/
+.actlist .actPrice>i{font-size: 60%;}/* "元" 的格式百分比是相对于活动价格的百分*/
+
+/***********结束************/
+
+/* ====================收藏的商品列表===================== */
+
+.goodsList .orderListLeft{float:left;width:11.38rem;height:7.28rem;margin:0.8rem;margin-left:1.8rem;/*margin-top:0.6rem;*/}/*图片*/
+
+/*.goodsList .orderListLeft .orderTypeBg{line-height:2rem;height:2rem;width:4.5rem;position:absolute;background:rgba(0,0,0,0.5);}/*订单分类 饭局、商品 等 的背景*
+.goodsList .orderListLeft .orderType{font-size:1.1rem;color:#fff;line-height:2rem;height:2rem;width:4.5rem;position:absolute;text-align:center;}/*订单分类 饭局、商品 等*/
+
+.goodsList .orderListRight{float:left;width:20rem;height:7.28rem;margin-top:0.82rem;position:relative;}/*右侧信息列表*/
+.goodsList .orderListRight .orderTitle{font-size:1.4rem;color:#636363;height:4rem;overflow:hidden;/*white-space:nowrap;text-overflow:ellipsis;*/}/*右 商品标题*/
+/* ===================收藏的商品列表 结束================== */
+
+
+
+/* ********************收藏的达人******************** */
+.daRenInfStyle{padding:0.6rem 1.8rem;position:relative;}
+.daRenInfStyle .daRenPic{float:left;}
+.daRenInfStyle .daRenPic .imgPortrait{width:4.8rem;height:auto;border:none;} 
+.daRenInfStyle .daRenInf{float:left;margin-left:1.2rem;}
+.daRenInfStyle .daRenInf .daRenName{font-size:1.4rem;color:#585858;margin-top:0.6rem;}
+.daRenInfStyle .daRenInf .daRenActInf{font-size:1.2rem;color:#a3a3a3;margin-top:0.4rem;}
+.daRenInfStyle .daRenInf .daRenActInf {}
+.daRenInfStyle .daRenInf .daRenActInf i{margin:0 0.6rem;display:inline-block;width:0.1rem;height:1rem;border-left:0.1rem solid #acacac;}
+/* ******************收藏的达人结束******************* */

@@ -1,0 +1,599 @@
+<link href="__RS__/css/customer.css" rel="stylesheet">
+
+<button class="am-btn am-btn-danger powerBtn off" onclick="power(0)">关闭客服系统</button>
+<button class="am-btn am-btn-success powerBtn on" onclick="power(1)">开启客服系统</button>
+
+<div class="messaging">
+    <div class="main">
+        <ul class="top"></ul>
+        <div class="scene"></div>
+        <div class="editor">
+            <div class="tools">
+                <button class="faces" onclick="faces.show()"></button>
+                <button class="image" onclick="msgScene.sendPic()"></button>
+            </div>
+            <div class="writer" contenteditable="true"></div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <ul class="im">
+            <p>站内即时通信:<small style="float: right; color:#bbb;">在线 <span>0</span> 人</small></p>
+            <?php if(!empty($im)):?>
+            <?php foreach($im as $row):?>
+            <li class="<?=($row['hasnew']?'new':'')?>" data="{$row.from_id}" onclick="msgScene.start('{$row.from_id}')">
+                <img src="{$row['path']}">
+                <span>{$row['nickname']}</span>
+            </li>
+            <?php endforeach;?>
+            <?php endif;?>
+            <!--<hr>-->
+            <!--<a href="javascript:void(0)">加载历史消息..</a>-->
+        </ul>
+    </div>
+</div>
+
+<!-- 预览 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="preview">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">预览</div>
+            <p></p>
+            <iframe height="640px" width="360px"></iframe>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<script>
+var ws = null, p, xx = null;
+var data = [];
+var adminpath = '__RS__/images/head.jpg';
+var is_active = true;
+var title = '';
+
+//商品预览
+$('.am-modal').appendTo('body');
+function preview(id, type){
+    type = type || 0;
+    switch (parseInt(type)){
+        case 0:
+            var url = 'http://<?=WEB_DOMAIN?>/?page=tipsDetail&tips_id='+id;
+            break;
+        case 1:
+            var url = 'http://<?=WEB_DOMAIN?>/?page=goodsDetail&goods_id='+id;
+            break;
+        case 2:
+            var url = 'http://<?=WEB_DOMAIN?>/?page=raiseDetail&raise_id='+id;
+            break;
+    }
+    $('iframe').attr('src',url);
+    $('#preview p').html(url);
+    $('#preview').modal({
+        relatedTarget: this,
+        onConfirm: function() {
+
+        }
+    });
+}
+
+var selection; //申明range 对象
+if (window.getSelection) {
+    //主流的浏览器，包括mozilla，chrome，safari
+    selection = window.getSelection();
+} else if (document.selection) {
+    selection = document.selection.createRange();//IE浏览器下的处理，如果要获取内容，需要在selection 对象上加上text 属性
+}
+
+$(function(){
+    title = document.title;
+    ws = new WebSocket('ws://ws.<?=WEB_DOMAIN?>/?skey={$ws.key}');
+    ws.addEventListener('open', function(d){
+        console.info('Websocket连接成功！');
+        //心跳包保持连接
+        p = setInterval(function(){
+            if(ws !== null)ws.send(0);
+            else clearInterval(p);
+        }, 10000);
+        var data = {from_id : []};
+        $('.messaging .im li').each(function(){
+            data.from_id.push($(this).attr('data'));
+        });
+        send(data, 'online');
+    });
+    ws.addEventListener('message', function(d){
+        if(d.data == 0)return;
+        try {
+            var d = eval('('+ d.data +')');
+            console.log(d);
+            var act = d.act;
+            var from_id = d.from_id||'';
+            if(typeof(callback[act]) == 'function')callback[act](d.data, from_id);
+        }catch(ev){
+            if(callback['auto'])
+                callback['auto'](d);
+            else
+                console.warn(ev);
+        }
+    });
+    ws.addEventListener('close', function(d){
+        ws = null;
+        console.info('Websocket连接断开！');
+    });
+
+    $('.messaging .writer').on('keydown', function(event){
+        if(event.which == 13){
+            msgScene.send();
+            return false;
+        }
+    });
+
+    window.onblur = function(){
+        is_active = false;
+    }
+    window.onfocus = function(){
+        is_active = true;
+        clearInterval(xx);
+        xx = null;
+        document.title = title;
+    }
+});
+
+//回调函数对象
+var callback = {
+    //注册创建函数
+    create : function(d, from_id){
+        var em = $('.messaging .sidebar li[data="'+ from_id +'"]');
+        if(em.size() == 0)return;
+        var path = em.find('img').attr('src');
+        var nickname = em.find('span').text();
+        //加入聊天栏
+        var code = '<li data="'+ from_id +'">';
+        code += '    <img src="'+ path +'">';
+        code += '    <span>'+ nickname +'</span>';
+        code += '    <a href="javascript:void(0);">×</a>';
+        code += '</li>';
+        var h = $(code).appendTo('.messaging .main .top');
+        h.click(function(){
+            msgScene.tab(from_id);
+        });
+        h.find('a').click(function(){
+            msgScene.close(from_id);
+        });
+
+        //创建场景
+        var code = '<ul data="'+ from_id +'">';
+        var pretime = 0;
+        for(var i in d){
+            if(d[i].datetime > pretime + 300)
+                code += '<small>'+ d[i].datetime.toString().timeFormat('Y-m-d H:i') +'</small>';
+            pretime = d[i].datetime;
+            if(d[i].from_id == 'admin'){
+                code += '<li class="right" datetime="'+ d[i].datetime +'">';
+                code += '    <img src="'+ adminpath +'">';
+            }else{
+                code += '<li datetime="'+ d[i].datetime +'">';
+                code += '    <img src="'+ path +'">';
+            }
+            if(d[i].type == 1){
+                code += '    <span><img src="http://img.<?=WEB_DOMAIN?>/'+ d[i].content +'"></span>';
+            }else if(d[i].type == 2){
+                var types = ['饭局', '商品', '众筹'];
+                var data = d[i].content;
+                if(typeof(data) != 'object')data = JSON.parse(data);
+                var content = '<a class="goods" href="javascript:preview('+ data.id +', '+ data.type +');">';
+                content += '<img src="'+ data.path +'">';
+                content += '<div>['+ types[parseInt(data.type)] +']' + data.title + '</div>';
+                content += '</a>';
+                code += '    <span>'+ content +'</span>';
+            }else{
+                code += '    <span>'+ faces.decode(d[i].content) +'</span>';
+            }
+            code += '    <div style="clear: both;"></div>';
+            code += '</li>';
+        }
+        code += '</ul>';
+        $('.messaging .main .scene').append(code);
+
+        h.click();
+    },
+    add : function(d, from_id){
+        if(!is_active){
+            if(xx == null){
+                var str = '【您有新的客服消息,等待处理..】';
+                xx = setInterval(function(){
+                    if(document.title == title){
+                        document.title = str;
+                    }else{
+                        document.title = title;
+                    }
+                }, 300);
+            }
+        }
+        var em = $('.messaging .main .top li[data="'+ from_id +'"]');
+        if(em.size() == 0 || !em.hasClass('now')){
+            em.addClass('new');
+            $('.messaging .sidebar li[data="'+ from_id +'"]').addClass('new').removeClass('offline');
+        }
+        if(em.size() > 0){
+            var path = em.find('img').attr('src');
+            var code = '';
+            if(d.from_id == 'admin'){
+                code += '<li class="right">';
+                code += '    <img src="'+ adminpath +'">';
+            }else{
+                code += '<li>';
+                code += '    <img src="'+ path +'">';
+            }
+            if(d.type == 1){
+                code += '    <span><img src="http://img.<?=WEB_DOMAIN?>/'+ d.content +'"></span>';
+            }else if(d.type == 2){
+                var types = ['饭局', '商品', '众筹'];
+                var data = d.content;
+                if(typeof(data) != 'object')data = JSON.parse(data);
+                var content = '<a class="goods" href="javascript:preview('+ data.id +', '+ data.type +');">';
+                content += '<img src="'+ data.path +'">';
+                content += '<div>['+ types[parseInt(data.type)] +']' + data.title + '</div>';
+                content += '</a>';
+                code += '    <span>'+ content +'</span>';
+            }else{
+                code += '    <span>'+ faces.decode(d.content) +'</span>';
+            }
+            code += '    <div style="clear: both;"></div>';
+            code += '</li>';
+            $('.messaging .main .scene ul[data="'+ from_id +'"]').append(code);
+            $('.messaging .scene').scrollTop($('.messaging .scene')[0].scrollHeight);
+        }
+        if($('.messaging .sidebar li[data="'+ from_id +'"]').size() == 0){
+            $.post('getCustomInfo.html', {from_id: from_id}, function(dt){
+                var code = '<li class="new" data="'+ from_id +'" onclick="msgScene.start(\''+ from_id +'\')">';
+                code += '<img src="'+ dt.path +'">';
+                code += '<span>'+ dt.nickname +'</span>';
+                code += '</li>';
+                $('.messaging .sidebar .im p').after(code);
+            });
+        }
+    },
+    imCount : function(d){
+        $('.messaging .sidebar .im small span').text(d);
+    },
+    online : function(d){
+        $('.messaging .sidebar .im li').addClass('offline');
+        for(var i in d){
+            //先在列表中查找是否存在
+            var em = $('.messaging .sidebar .im li[data="'+ d[i] +'"]');
+            if(em.size() > 0){
+                em.removeClass('offline');
+            }
+        }
+    },
+    power : function(n){
+        if(n){
+            $('button.powerBtn.on').hide();
+            $('button.powerBtn.off').show();
+        }else{
+            $('button.powerBtn.off').hide();
+            $('button.powerBtn.on').show();
+        }
+    }
+};
+
+var msgScene = {
+    //开始进行聊天
+    start : function(from_id){
+        if($('.messaging .main .top li[data="'+ from_id +'"]').size() > 0){
+            this.tab(from_id);
+            return;
+        }
+        var em = $('.messaging .sidebar li[data="'+ from_id +'"]');
+        if(em.size() == 0)return;
+        send({to_id:from_id}, 'create');
+    },
+    //切换聊天场景
+    tab : function(from_id){
+        $('.messaging .main .top li').removeClass('now');
+        $('.messaging .main .top li[data="'+ from_id +'"]').addClass('now').removeClass('new');
+        $('.messaging .sidebar li[data="'+ from_id +'"]').removeClass('new');
+        $('.messaging .main .scene ul').removeClass('now');
+        $('.messaging .main .scene ul[data="'+ from_id +'"]').addClass('now');
+        $('.messaging .writer').focus();
+        $('.messaging .scene').scrollTop($('.messaging .scene')[0].scrollHeight);
+    },
+    //关闭聊天场景
+    close : function(from_id){
+        $('.messaging .main .top li[data="'+ from_id +'"]').remove();
+        $('.messaging .main .scene ul[data="'+ from_id +'"]').remove();
+        if($('.messaging .main .top li.now').size() == 0){
+            $('.messaging .main .top li:eq(0)').addClass('now');
+            $('.messaging .main .scene ul:eq(0)').addClass('now');
+        }
+    },
+    //发送聊天消息
+    send : function(){
+        var em = $('.messaging .main .top li.now');
+        if(em.size() > 0){
+            if($('.messaging .sidebar .ui li[data="'+ em.attr('data') +'"]').hasClass('offline')){
+                alert('目标已下线无法发送消息!');
+                return;
+            }
+            var to_id = em.attr('data');
+            var msg = $('.messaging .writer').html();
+            var type = 0;
+            if(msg == ''){
+                alert('不能发送空消息!');
+                return;
+            }
+            //将表情转换为字符
+            msg = faces.encode(msg);
+            msg = msg.replace(/<[^>]+?>/gm, "");
+            msg = msg.replace(/&amp;/gm, '&');
+            msg = msg.replace(/&nbsp;/gm, ' ');
+            msg = msg.replace(/^http:\/\/.+?page=(\w*-){0,}(\w+)\&\w+_id=(\d+)$/, function(){
+                var pages = {tipsDetail:0, goodsDetail:1, raiseDetail:2};
+                var page = pages[arguments[2]];
+                var id = arguments[3];
+                type = 2;
+                return page + '-' + id;
+            });
+            if(type == 0){
+                msg = msg.replace(/http:\/\/[A-Za-z0-9\-_&=\/\.\:\#\?]+/gm, function(url){
+                    return '<a href="'+url+'" target="_blank">'+url+'</a>';
+                });
+            }
+            if(msg.length > 300){
+                alert('消息字数不能过三百!');
+                return;
+            }
+            $('.messaging .writer').empty();
+            send({to_id:to_id, msg:msg, type:type}, 'add');
+        }
+    },
+    //发送图片
+    sendPic : function(){
+        var em = $('.messaging .main .top li.now');
+        if(em.size() > 0){
+            if($('.messaging .sidebar .ui li[data="'+ em.attr('data') +'"]').hasClass('offline')){
+                alert('目标已下线无法发送消息!');
+                return;
+            }
+
+            pic_upload($('.messaging .image')[0], [640, 0], function(d){
+                var to_id = em.attr('data');
+                var file = d[0];
+                var path = file.path;
+                path = path.replace('http://img.<?=WEB_DOMAIN?>/', '');
+                send({to_id:to_id, msg:path, type:1}, 'add');
+            }, false);
+        }
+    }
+};
+
+//ws发送消息
+function send(data, act){
+    if(ws == null){
+        console.warn('Websocket没有连接，无法进行操作！');
+    }else{
+        if(act){
+            var d = {};
+            d['data'] = data||'';
+            d['act'] = act;
+            d = JSON.stringify(d);
+            console.log(d);
+            ws.send(d);
+        }else{
+            ws.send(data);
+        }
+    }
+};
+
+//显示表情
+var faces = {
+    data : [
+        ["/::)", "微笑"],
+        ["/::~", "伤心"],
+        ["/::B", "美女"],
+        ["/::|", "发呆"],
+        ["/:8-)", "墨镜"],
+        ["/::<", "哭"],
+        ["/::$", "羞"],
+        ["/::X", "哑"],
+        ["/::Z", "睡"],
+        ["/::'(", "哭"],
+        ["/::-|", "囧"],
+        ["/::@", "怒"],
+        ["/::P", "调皮"],
+        ["/::D", "笑"],
+        ["/::O", "惊讶"],
+        ["/::(", "难过"],
+        ["/::+", "酷"],
+        ["/:--b", "汗"],
+        ["/::Q", "抓狂"],
+        ["/::T", "吐"],
+        ["/:,@P", "笑"],
+        ["/:,@-D", "快乐"],
+        ["/::d", "奇"],
+        ["/:,@o", "傲"],
+        ["/::g", "饿"],
+        ["/:|-)", "累"],
+        ["/::!", "吓"],
+        ["/::L", "汗"],
+        ["/::>", "高兴"],
+        ["/::,@", "闲"],
+        ["/:,@f", "努力"],
+        ["/::-S", "骂"],
+        ["/:?", "疑问"],
+        ["/:,@x", "秘密"],
+        ["/:,@@", "乱"],
+        ["/::8", "疯"],
+        ["/:,@!", "哀"],
+        ["/:!!!", "鬼"],
+        ["/:xx", "打击"],
+        ["/:bye", "bye"],
+        ["/:wipe", "汗"],
+        ["/:dig", "抠"],
+        ["/:handclap", "鼓掌"],
+        ["/:&-(", "糟糕"],
+        ["/:B-)", "恶搞"],
+        ["/:<@", "什么"],
+        ["/:@>", "什么"],
+        ["/::-O", "累"],
+        ["/:>-|", "看"],
+        ["/:P-(", "难过"],
+        ["/::'|", "难过"],
+        ["/:X-)", "坏"],
+        ["/::*", "亲"],
+        ["/:@x", "吓"],
+        ["/:8*", "可怜"],
+        ["/:pd", "刀"],
+        ["/:<W>", "水果"],
+        ["/:beer", "酒"],
+        ["/:basketb", "篮球"],
+        ["/:oo", "乒乓"],
+        ["/:coffee", "咖啡"],
+        ["/:eat", "美食"],
+        ["/:pig", "动物"],
+        ["/:rose", "鲜花"],
+        ["/:fade", "枯"],
+        ["/:showlove", "唇"],
+        ["/:heart", "爱"],
+        ["/:break", "分手"],
+        ["/:cake", "生日"],
+        ["/:li", "电"],
+        ["/:bome", "炸弹"],
+        ["/:kn", "刀子"],
+        ["/:footb", "足球"],
+        ["/:ladybug", "瓢虫"],
+        ["/:shit", "翔"],
+        ["/:moon", "月亮"],
+        ["/:sun", "太阳"],
+        ["/:gift", "礼物"],
+        ["/:hug", "抱抱"],
+        ["/:strong", "拇指"],
+        ["/:weak", "贬低"],
+        ["/:share", "握手"],
+        ["/:v", "剪刀手"],
+        ["/:@)", "抱拳"],
+        ["/:jj", "勾引"],
+        ["/:@@", "拳头"],
+        ["/:bad", "小拇指"],
+        ["/:lvu", "拇指八"],
+        ["/:no", "食指"],
+        ["/:ok", "ok"],
+        ["/:love", "情侣"],
+        ["/:<L>", "爱心"],
+        ["/:jump", "蹦哒"],
+        ["/:shake", "颤抖"],
+        ["/:<O>", "怄气"],
+        ["/:circle", "跳舞"],
+        ["/:kotow", "发呆"],
+        ["/:turn", "背着"],
+        ["/:skip", "伸手"],
+        ["/:oY", "耍帅"]
+    ],
+    create : function(){
+        var code = '<table class="facelist">';
+        var n = 100;
+        for(var i = 0; i < 10; i++){
+            code += '<tr>';
+            for(var j = 0; j < 10; j++){
+                code += '<td onclick="faces.input('+ n +')"><img src="__RS__/images/wechat/'+ n +'.gif" alt="'+ this.data[n-100][1] +'"></td>';
+                n ++;
+            }
+            code += '</tr>';
+        }
+        code += '</table>';
+        $(code).prependTo('.messaging .editor');
+    },
+    show : function(){
+        $('.facelist').fadeToggle('fast');
+    },
+    input : function(n){
+        if(selection.containsNode($('.messaging .writer')[0], true)){
+            var img = $('<img>').attr('src', '__RS__/images/wechat/'+ n +'.gif').attr('data', this.data[n-100][0]);
+            selection.getRangeAt(0).collapse(false);
+            selection.getRangeAt(0).insertNode(img[0]);
+            selection.getRangeAt(0).collapse(false);
+            $('.facelist').fadeOut('fast');
+        }
+    },
+    //转换文本中的图片为表情符号
+    encode : function(content){
+        return content.replace(/<img.+?data="(.+?)".*?>/gm, '$1');
+    },
+    //转换文本中的表情符号为图片
+    decode : function(content){
+        for(var i in this.data){
+            var arr = this.data[i][0].split('');
+            var str = '';
+            for(var j in arr){
+                if(arr[j] == '/' || arr[j] == '?' || arr[j] == '.' || arr[j] == '[' || arr[j] == ']' || arr[j] == '(' || arr[j] == ')' || arr[j] == '{' || arr[j] == '}' || arr[j] == '+' || arr[j] == '*' || arr[j] == '-' || arr[j] == '|')
+                    str += '\\' + arr[j];
+                else
+                    str += arr[j];
+            }
+            content = content.replace(new RegExp(str, 'gm'), '<img src="__RS__/images/wechat/'+ (parseInt(i)+100) +'.gif" data="'+ this.data[i][0] +'">');
+        }
+        return content;
+    }
+};
+faces.create();
+
+function loadMemberList(page){
+    page = page||1;
+}
+
+
+//限制粘贴纯文本
+$('[contenteditable]').each(function() {
+    // 干掉IE http之类地址自动加链接
+    try {
+        document.execCommand("AutoUrlDetect", false, false);
+    } catch (e) {}
+
+    $(this).on('paste', function(e) {
+        e.preventDefault();
+        var text = null;
+
+        if(window.clipboardData && clipboardData.setData) {
+            // IE
+            text = window.clipboardData.getData('text');
+        } else {
+            text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('在这里输入文本');
+        }
+        if (document.body.createTextRange) {
+            if (document.selection) {
+                textRange = document.selection.createRange();
+            } else if (window.getSelection) {
+                sel = window.getSelection();
+                var range = sel.getRangeAt(0);
+                // 创建临时元素，使得TextRange可以移动到正确的位置
+                var tempEl = document.createElement("span");
+                tempEl.innerHTML = "&#FEFF;";
+                range.deleteContents();
+                range.insertNode(tempEl);
+                textRange = document.body.createTextRange();
+                textRange.moveToElementText(tempEl);
+                tempEl.parentNode.removeChild(tempEl);
+            }
+            textRange.text = text;
+            textRange.collapse(false);
+            textRange.select();
+        } else {
+            // Chrome之类浏览器
+            document.execCommand("insertText", false, text);
+        }
+    });
+});
+
+function power(n){
+    if(n){
+        $('button.powerBtn.on').hide();
+        $('button.powerBtn.off').show();
+    }else{
+        $('button.powerBtn.off').hide();
+        $('button.powerBtn.on').show();
+    }
+    send(n, 'power');
+}
+</script>

@@ -1,0 +1,23 @@
+.allRead{font-size:25rpx;color:#585858;position:absolute;right:21rpx;top:33rpx;}
+.msgList {letter-spacing:0;background: #fff; padding-top:15rpx;}
+.msgList .item{position:relative;padding:17rpx 0rpx 17rpx 38rpx; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.msgList .User_Img{margin-top:-2rpx;margin-right:25rpx; position:relative;}
+.msgList .User_Img .imgPortrait{width:81rpx;height:81rpx; border:none;border-radius: 50%;display: inline-block;overflow: hidden;}
+.msgList .User_Img .num_img{width:29rpx;height:29rpx; line-height:29rpx; display:block; font-size:21rpx; text-align:center; color:#FFF; background-color:#ff3f3f; position:absolute; right:-6rpx; top:-4rpx; border-radius:50%;}
+
+.msgList .User_Conten{float:right;width:604rpx; padding-top:5rpx; padding-bottom:13rpx; border-bottom:solid #DDD 1rpx;}
+.msgList .User_Conten .Contens{float:left; width:458rpx;}
+.msgList .User_Conten .Contens .qUserName{font-size:31rpx;color:#414141;}
+.msgList .User_Conten .Contens .msgDetail{font-size:25rpx; width:100%; height:33rpx; line-height:33rpx;letter-spacing:2rpx;color:#B8B7B7; overflow: hidden; text-overflow:ellipsis;white-space:nowrap;position:relative;margin:8rpx auto;}
+.msgList .User_Conten .Contens .msgDetail view{display:inline-block; overflow:hidden;}
+.msgList .User_Conten .Contens .msgDetail .one_title{width:438rpx; overflow: hidden; text-overflow:ellipsis;white-space:nowrap;}
+.msgList .User_Conten .commitTime{font-size:27rpx;color:#B8B7B7; margin-top:46rpx; margin-right:25rpx; float:right;}
+
+.msgList .User_Conten .User_right{float:right; padding:15rpx 29rpx;}
+.msgList .User_Conten .User_right .dayu{width:19rpx; height:31rpx;}
+
+.msgList .no_msgs{width:750rpx; position:absolute; top:94rpx; left:0rpx; right:0rpx; bottom:0rpx; background:#f5f5f5;}
+.msgList .no_msgs image{width:208rpx; height:208rpx; margin:167rpx 271rpx auto 271rpx;}
+.msgList .no_msgs view{display:block; width:750rpx; font-size:25rpx; text-align:center; color:#969696; margin-top:42rpx;}
+
+.msgList .the_end{background:#fff none repeat scroll 0 0;clear: both;height: 25rpx;margin: 0;padding: 0;}

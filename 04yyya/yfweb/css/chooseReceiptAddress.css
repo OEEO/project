@@ -1,0 +1,35 @@
+@charset "utf-8";
+.page_chooseReceiptAddress {background:#ebecf0;}
+.page_chooseReceiptAddress .aboutConsignee{border-bottom:0.1rem solid #ececec;background:#fff;}
+.page_chooseReceiptAddress .aboutConsignee .section{width:16%;height:5rem;float:left;}
+.page_chooseReceiptAddress .radioS{margin:0 auto;margin-top:4.7rem;width:1.8rem;height:1.7rem;cursor: pointer;background:url('../images/circle.png') no-repeat;background-size:1.75rem auto;}
+.page_chooseReceiptAddress .checked{background-position: left bottom;}
+
+.page_chooseReceiptAddress .aboutConsignee .choiceConsignee{width:82%;float:left;}
+
+.page_chooseReceiptAddress .choiceConsignee .Consignee div,.choiceConsignee .ConsigneeAdd div{margin:0.6rem 0;font-size:1.2rem;color:#969696;float:left;border-right:0.1rem solid #ececec;}
+.page_chooseReceiptAddress .choiceConsignee p{margin:0;margin-top:0.4rem;padding:0;font-size:1.5rem;color:#8f8f8f;}/*是收货人信息 对应的信息样式设置*/
+
+.page_chooseReceiptAddress .choiceConsignee .Consignee{height:5rem;border-bottom:0.1rem solid #ececec;}/*收货人、手机 邮编 的整体样式*/
+
+.page_chooseReceiptAddress .choiceConsignee .Consignee .consigneeName{width:24%;}/*收货人样式设置*/
+.page_chooseReceiptAddress .choiceConsignee .Consignee .consigneePhone{padding:0 5%;width:38%;}/*手机和手机号的样式设置*/
+.page_chooseReceiptAddress .choiceConsignee .Consignee .consigneeZipCode{padding:0 4%;width:19%;border:none;}/*邮政编码的样式设置*/
+.page_chooseReceiptAddress .choiceConsignee .ConsigneeAdd div{border:none;}/**去掉地址后的border */
+
+
+/*.content .selected{border:0.2rem dashed #ff5500;}/*地址的选中 样式*/
+
+.page_chooseReceiptAddress .ConsigneeList .editConsigneeInf{height:3.5rem;display:block;}/*编辑、删除 的整个模块样式设置*/
+.page_chooseReceiptAddress .ConsigneeList .hide{display:none;}
+.page_chooseReceiptAddress .editConsigneeInf div{height:2rem;width:33%;text-align:center;padding:0.8rem 0;float:left;background:#fff;}/*编辑、删除 的整个模块样式设置*/
+.page_chooseReceiptAddress .editConsigneeInf div img{height:1.2rem;width:auto;}/*编辑、删除 的图片样式设置*/
+.page_chooseReceiptAddress .editConsigneeInf div  a,.editConsigneeInf div span{font-size:1.2rem;color:#585858;margin-left:1.2rem;}/*编辑、删除 字体样式设置*/
+
+.page_chooseReceiptAddress .editConsigneeInf .setAsDefault{font-size:1.2rem;color:#585858;width:34%;line-height:2rem;}
+/**页面底部菜单选项 设置**/
+.page_chooseReceiptAddress .bottomBlank{clear:both;height:4.2rem;}
+.page_chooseReceiptAddress .pageBottom{position:fixed;bottom:0;width:100%;height:4.2rem;line-height:4.2rem;text-align:center;background:#fcd74b;}
+.page_chooseReceiptAddress .pageBottom a{display:block;color:#fff;font-size:1.6rem;}
+.page_chooseReceiptAddress .pageBottom a:before{content:'';display:inline-block;width:1.4rem;height:1.4rem;background:url('../images/add@2x.png');background-size:100%;position:absolute;margin-left:-2rem;top:1.45rem}
+/***/

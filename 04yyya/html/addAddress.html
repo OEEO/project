@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/editAddress.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/addAddress.js"></script>
+
+</head>
+<body style="min-height:100%;background:#ebecf0;">
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">新增收货地址</div>
+</div>
+
+<div class="addRessDetails">
+	<div class="a" ><input type="text" name="" value="收货人" onfocus="if(value=='收货人'){value='';$(this).addClass('aa');}" onblur="if (value ==''){value='收货人';$(this).removeClass('aa');}" ></div>
+	<div class="b" ><input type="text" name="" value="手机号码" onfocus="if(value=='手机号码'){value='';$(this).addClass('bb');}" onblur="if (value ==''){value='手机号码';$(this).removeClass('bb');}" ></div>
+	<div class="add">
+		<div class="chooseAddInf">
+		 <select id="province" name="province" onChange="getCity();">
+			  <option value="0">请选择省</option>
+		  </select>
+		  <select id="city" name="city" onChange="getPart();">
+			   <option value="0">请选择市</option>
+		  </select>
+		  <select id="part" name="area" >
+				  <option value="0">请选择区/县</option>
+		  </select>
+		</div>
+		<div class="editAddress" contenteditable="true" onfocus="if($(this).text()=='详细地址'){$(this).empty();$(this).addClass('address');}" onblur="	if($(this).text()==''){$(this).append('详细地址');$(this).removeClass('address')}">详细地址</div>
+		<div class="clearfix"></div>
+	</div>
+<!--	<div class="address"><textarea type="text" name="" onfocus="if(value=='收货地址'){value=''}" onblur="if (value ==''){value='收货地址'}" >收货地址</textarea></div>-->
+	<div class="c" ><input type="text" name="" value="邮政编码" onfocus="if(value=='邮政编码'){value='';$(this).addClass('cc');}" onblur="if (value ==''){value='邮政编码';$(this).removeClass('cc');}" ></div>
+	<div class="radioSty" onclick="showOrHide(this)">设为默认地址<i class="radioS"></i></div>
+</div>
+<div class="the_blank"></div>
+<div class="saveEdit" onclick="addAddress();">保存</div>
+</body>
+</html>

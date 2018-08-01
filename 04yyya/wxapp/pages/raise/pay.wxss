@@ -1,0 +1,328 @@
+@import "../common/common.wxss";
+
+.raise-pay {
+    padding: 36rpx 40rpx;
+    background: #fff;
+    min-height: 100vh;
+}
+
+.raise-tag_title {
+    color: #b39851;
+    margin: 0 0 36rpx;
+    font-size: 24rpx;
+}
+
+.itemcontext {
+    color: #333;
+    font-size: 28rpx;
+}
+
+.fr {
+    float: right;
+}
+
+.raiseitem:not(:last-child) {
+    margin: 0 auto 30rpx;
+}
+
+.itemcontext{
+  position: relative
+}
+
+/* 箭头 */
+.raiseitem .caret_right{
+  position: absolute;
+  right: 0;
+  width: 17rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.raise-pay .raise-add-minus {
+    float: right;
+    display: inline-flex;
+    align-items: center;
+}
+
+.raise-pay .raise-add-minus image {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.raise-pay .raise-add-minus text {
+    width: 60rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #333;
+}
+
+.raise-pay .underline-text {
+    border-bottom: 1px solid #ddd;
+    padding: 0 0 18rpx;
+}
+
+.raise-pay .underline-text image {
+    width: 17rpx;
+    height: 30rpx;
+    float: right;
+}
+
+.raise-pay-block {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 92rpx;
+    border-top: 1px solid #ddd;
+    background: #fff;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+}
+
+.raise-pay-block text {
+    color: #b39851;
+    line-height: 92rpx;
+    font-size: 24rpx;
+}
+
+.raise-pay-block button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 40rpx;
+    margin: auto;
+    height: 62rpx;
+    line-height: 62rpx;
+    text-align: center;
+    color: #fff;
+    background: #e64340;
+    border: none;
+    border-radius: 0;
+    font-size: 24rpx;
+}
+
+.raise-order-step {
+    margin: 30rpx -40rpx 0;
+}
+
+.step-item {
+    box-sizing: border-box;
+    border-left: 6rpx solid transparent;
+    padding-left: 8rpx;
+    font-size: 32rpx;
+    color: #a0a0a0;
+}
+
+.step-item-block {
+    box-sizing: border-box;
+    padding: 20rpx 26rpx 20rpx 40rpx;
+    border-left: 2rpx solid transparent;
+}
+
+.step-item-block > .money {
+    margin-top: 20rpx;
+}
+
+.step-item.active {
+    background: #fbf9f4;
+    border-left: 6rpx solid #b39851;
+}
+
+.step-item.active .step-item-block {
+    border-left: 2rpx solid #b39851;
+}
+.text-gray{
+    color: #999999;
+}
+
+
+
+  /* 弹出框公共样式 */
+
+  .modal-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      font-size: 28rpx;
+      display: flex;
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(50, 50, 50, 0.3);
+  }
+  .modal-header{
+    text-align: center;
+  }
+  .modal-content{
+    line-height: 36rpx;
+    margin-top: 17rpx;
+  }
+  .modal-footer{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .modal-confirm{
+    padding: 0;
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 30rpx;
+    text-align: center;
+    background-color: #b39851;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+  }
+   .modal-confirm[disabled]{
+      background-color: #cbcbcb;
+      color: #fff;
+  }
+  .modal-confirm::after{
+      border: none;
+  }
+    .modal::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        background-color: transparent;
+    }
+
+    .modal-cancel-icon {
+        position: absolute;
+        top: 24rpx;
+        right: 24rpx;
+        z-index: 100;
+    }
+
+
+  /* 实名认证-弹出框样式 */
+  .certification-modal {
+      position: relative;
+      width: 600rpx;
+      height: 820rpx;
+      border-radius: 4rpx;
+      background-color: #fff;
+      padding: 80rpx 45rpx 0 45rpx;
+      box-sizing: border-box;
+  }
+
+  .certification-modal .input{
+    border: 1rpx solid #eee;
+    border-radius: 4rpx;
+  }
+
+  .certification-modal label{
+      display: block;
+      margin-bottom: 18rpx;
+  }
+  .certification-modal .input{
+      margin-bottom: 40rpx;
+      padding: 20rpx;
+  }
+  .certification-modal .imgCode-input {
+      display: inline-block;
+      width: 180rpx;
+      vertical-align: middle;
+      margin-bottom: 0;
+  }
+  .certification-modal .imgCode-img{
+      display: inline-block;
+      width: 220rpx;
+      height: 90rpx;
+      vertical-align: middle;
+      margin-left: 50rpx;
+  }
+
+
+  .certification-modal .imgCode-label label{
+    display: inline-block;
+  }
+  .certification-modal .imgCode-label label:nth-child(2){
+    font-size: 24rpx;
+    color: #ccc;
+    margin-left: 200rpx;
+}
+
+  /* 支付-弹出框样式 */
+
+  .pay-modal {
+      position: relative;
+      width: 600rpx;
+      height: 600rpx;
+      border-radius: 4rpx;
+      background-color: #fff;
+      padding: 72rpx 60rpx 0;
+      box-sizing: border-box;
+      color: #999;
+  }
+  .fontSize20{
+      font-size: 20rpx;
+  }
+
+  .pay-amount{
+    text-align: center;
+  }
+  .payStyle{
+    margin-top: 60rpx;
+  }
+  .payStyle-title{
+      margin-bottom: 36rpx;
+      font-size: 24rpx;
+  }
+  .payStyle-item{
+      position: relative;
+      padding: 36rpx 0;
+      border-top: 1rpx solid #eee;
+      border-bottom: 1rpx solid #eee;
+      height: 44rpx;
+      display: flex;
+      align-items: center;
+  }
+  .payStyle-item .success-icon{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .pay-lastTime{
+      margin-top: 60rpx;
+      text-align: center;
+  }
+
+  /* 同意协议-弹出框样式 */
+  .agreement-modal{
+    position: relative;
+    width: 600rpx;
+    height: 644rpx;
+    border-radius: 4rpx;
+    background-color: #fff;
+    padding: 108rpx 40rpx 0;
+    box-sizing: border-box;
+  }
+  .agreement-title{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 108rpx;
+      line-height: 108rpx;
+      font-size: 36rpx;
+      text-align: center;
+  }
+  .agreement-content{
+    height: 360rpx;
+    font-size: 22rpx;
+    line-height: 36rpx;
+  }
+  .agreement-agree{
+      background-color: #fff;
+      height: 88rpx;
+      line-height: 88rpx;
+      padding-left: 40rpx;
+  }
+
+

@@ -1,0 +1,85 @@
+@import url(../color.less);
+
+.main-header {
+    .main-header-wrapper {
+        width: 1200px;
+        margin: 0 auto;
+        padding: 50px 60px;
+        box-sizing: border-box;
+        .logo {
+            float: left;
+            width: 300px;
+            height: 300px;
+        }
+        .content {
+            float: right;
+            vertical-align: top;
+            width: 711px;
+            height: 300px;
+            color: rgb(39, 39, 39);
+            .name {
+                text-align: justifyLeft;
+                font-weight: bold;
+                .suptitle {
+                    font-size: 30px;
+                }
+                .subtitle {
+                    margin-top: 10px;
+                    font-size: 16px;
+                }
+            }
+            .summary {
+                height: 104px;
+                font-size: 14px;
+                line-height: 30px;
+                vertical-align: top;
+            }
+            .avg_data {
+                margin-top: 16px;
+                .league_name {
+                    border-top: 1px solid #333333;
+                    padding: 9px 50px;
+                    height: 20px;
+                    text-align: center;
+                    line-height: 20px;
+                    font-size: 16px;
+                    color: #333;
+                    .previous {
+                        float: left;
+                        cursor: pointer;
+                    }
+                    .next {
+                        float: right;
+                        cursor: pointer;
+                    }
+                }
+                .league_avg_data {
+                    border-top: 1px solid #333333;
+                    &.player-avg>div{
+                        width: 16.6%;
+                    }
+                    &.team-avg>div{
+                        width: 14.28%;
+                    }
+                    div {
+                        float: left;
+                        text-align: center;
+                        color: #333;
+                        .lg {
+                            font-size: 24px;
+                            font-weight: bold;
+                            margin-top: 23px;
+                            margin-bottom: 14px;
+                            .detail {
+                                font-size: 14px;
+                            }
+                        }
+                        .sm {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

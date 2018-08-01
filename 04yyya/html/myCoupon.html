@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/myCoupon.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+</head>
+<body style="min-height:100%;background:#ebecf0;">
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">我的优惠券</div>
+</div>
+<div class="content"></div>
+</body>
+
+<!--
+<style>
+.couponBottomBlank{height:4rem;}
+.couponBottom{height:4rem;line-height:4rem;width:100%;position:fixed;bottom:0;z-index:2;}
+.couponBottom>a{float:left;width:49.5%;color:#fff;display:inline-block;background:#fcd74b;text-align:center;}
+.couponBottom>a:nth-child(1){margin-right:1%;}
+</style>
+<div class="couponBottomBlank"></div>
+<div class="couponBottom">
+	<a href="">优惠码兑换</a>
+	<a href="">二维码兑换</a>
+</div>-->
+<script>$('<script>').attr('src', 'js/myCoupon.js?q=' + Math.random()).appendTo('body');</script>
+</html>

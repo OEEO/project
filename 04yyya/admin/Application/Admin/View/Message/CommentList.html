@@ -1,0 +1,91 @@
+<?php if(empty($_GET['report'])):?>
+<a href="__ACTION__.html?report=1" class="am-btn am-btn-primary">被举报的评论列表</a>
+
+<form style="margin: 20px;">
+    <input type="text" name="title" id="search_title" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="活动名称搜索" value="{$search_title}"/>
+    <input type="text" name="nickname" id="search_nickname" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="评论者搜索" value="{$search_nickname}"/>
+    <input type="text" name="content" id="search_content" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="内容搜索" value="{$search_content}"/>
+    <select name="status" id="search_status" style="float: left">
+        <option value="">选择显示状态</option>
+        <option value="0" <?php if($search_status != '' && $search_status=='0')echo 'selected';?>>隐藏状态</option>
+        <option value="1" <?php if($search_status=='1')echo 'selected';?>>显示状态</option>
+    </select>
+    <button type="submit" class="am-btn am-btn--success">提交</button>
+</form>
+<?php else:?>
+<a href="__ACTION__.html" class="am-btn am-btn-danger">返回</a>
+<?php endif;?>
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<script>
+/*$('.am-modal').appendTo('body');
+//日历
+$('#sendTime').datetimepicker();
+$(function() {
+    var startDate = new Date();
+    //var $alert = $('#my-alert');
+    $('#sendTime').datetimepicker().
+        on('changeDate.datepicker.amui', function(event) {
+            startDate = new Date(event.date);
+            if(startDate < new Date()){
+                alert('发送时间应大于当前时间');
+                $('#sendTime').val("");
+            }
+            $(this).datetimepicker('close');
+        });
+});*/
+
+//设为已处理
+function setup(id, em){
+    $.post('setFeedback.html', {id:id}, function(d){
+        alert(d.info);
+        if(d.status == 1){
+            $(em).remove();
+        }
+    }, 'json');
+}
+
+function deleteComment(id){
+    if(confirm('是否要删除该条评论')){
+        $.ajax({
+            url : '__CONTROLLER__/deleteComment.html',
+            data : {'id':id},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+                window.location.reload();
+            }
+        });
+    }
+}
+
+function hideComment(id,status){
+    if(status == 1)
+        var str = '是否要显示该条评论';
+    else
+        var str = '是否要隐藏该条评论';
+    if(confirm(str)){
+        $.ajax({
+            url : '__CONTROLLER__/hideComment.html',
+            data : {'id':id,'status':status},
+            dataType : 'json',
+            type : 'POST',
+            success: function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                }else{
+                    alert(d.info);
+                }
+                window.location.reload();
+            }
+        });
+    }
+}
+
+</script>

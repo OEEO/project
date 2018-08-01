@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/receiveVIP.css">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/plugins/jquery.touchwipe.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/receiveVIP.js"></script>
+</head>
+<body>
+<div class="receivebox">
+    <div class="centerbox">
+        <div class="vipbeform">
+            <p class="title-bar">优先认筹权</p>
+            <p class="title"></p>
+            <p class="intro">限量席位<br>请及时领取优先认购权并激活</p>
+            <form class="vipform" name="vipform">
+                <label><input type="text" name="phone" class="phone" placeholder="请输入手机号"/></label>
+                <label class="codeinput">
+                    <input type="text" name="code" class="code" placeholder="请输入验证码"/>
+                    <a class="sendcode" href="javascript:void(0);">获取验证码</a>
+                </label>
+                <input class="vipsubmit" value="领取并激活优先认筹权" type="submit">
+                <p class="remine">输入手机号领取权益，优先内部认购</p>
+            </form>
+        </div>
+        
+        <div class="vipafter">
+            <img src="../images/vipbtn.png" class="vipbtn">
+            <p class="alert-title">恭喜你，获得项目</p>
+            <p class="stall_title">预约成为VIP共建人</p>
+            <p class="alert-title">优先认筹权，您可以在项目正式上线前提前进行认筹。</p>
+            <a href="javascript:receiveVIPObject.tourl()" class="usebtn">查看项目</a>
+        </div>
+
+        <div class="novip">
+            <img src="../images/raise_icon.png" class="novipbtn">
+            <p>优先认筹名额已被领取完毕</p>
+            <p>如需优先认筹</p>
+            <p>请联系项目发起人</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

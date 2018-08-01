@@ -1,0 +1,64 @@
+
+<form style="margin: 20px;" name="add_category">
+<div class="am-g" style="margin-bottom: 10px;">
+    <span style="display: block; float:left; line-height: 34px; margin-right: 10px;">添加主题</span>
+    <input type="text" name="category"  class="am-form-field am-radius" style="width: 80%;float: left;" placeholder="添加主题" >
+    <button type="button" class="am-btn am-btn-success" onclick="AddCategory();">添加</button>
+</div>
+</form>
+<div style="color: #f00;">注：点击主题标题，可修改主题标题，按“Enter”键确定方可保存数据</div>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+<script type="text/javascript">
+    $('.am-modal').appendTo('body');
+
+    //添加主题
+    function AddCategory(){
+        var data = {};
+        data.name = document.add_category.category.value;
+        data.postType = 'addSearch';
+        $.ajax({
+            data : data,
+            type : 'post',
+            success : function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                    window.location.reload();
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+    function updateSearch(e,id){
+        $(e).find("input[type='text']").remove();
+        $(e).find('font').attr('style','display:none;');
+        var title = $(e).find('font').html();
+        $('<input type="text" value="'+title+'">').appendTo($(e)).keypress(function(event){
+            if(event.which == '13'){
+                var data = {};
+                data.title =  $(this).val();
+                data.id = id;
+                data.postType = 'UpdateSearch';
+                $.ajax({
+                    url:'__ACTION__.html',
+                    data : data,
+                    type : 'post',
+                    success : function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                        }else{
+                            alert(d.info);
+                        }
+                        window.location.reload();
+                    }
+                });
+            }
+        }).focus();
+        $(e).find("input[type='text']").blur(function(){
+            $(e).find('font').attr('style','display:block;');
+            $(e).find("input[type='text']").remove();
+        });
+    }
+</script>

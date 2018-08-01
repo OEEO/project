@@ -1,0 +1,430 @@
+<div class="wechatToolsBox">
+    <button class="am-btn am-btn-primary am-btn-xs">同步图文素材</button>
+    <select>
+        <option value="0"<if condition="$channel == 0"> selected="selected"</if>>吖咪公众号</option>
+        <option value="1"<if condition="$channel == 1"> selected="selected"</if>>我有饭公众号</option>
+    </select>
+</div>
+
+<div class="am-form autoReply">
+    <div class="am-g am-margin-top reply">
+        <div class="am-u-sm-2 am-text-right"><label style="line-height:38px;">关注后自动回复: </label></div>
+        <div class="am-u-sm-4"><select name="reply_type" onchange="change_type(this, this.value)"><option value="0">文本消息</option><option value="1">图文消息</option></select></div>
+        <div class="am-u-sm-6"><input type="text" name="reply_content" class="am-input-sm" value="" placeholder="填写回复内容.."></div>
+    </div>
+
+    <div class="am-g am-margin-top keyreply">
+        <div class="am-u-sm-2 am-text-right"><label style="line-height:38px;">关键字自动回复: </label></div>
+        <div class="am-u-sm-10" style="border: solid 1px #ddd; padding: 20px;">
+            <p><button class="am-btn am-btn-success" onclick="addItem(this)"> + 新增规则 + </button></p>
+            <div class="item default">
+                <div class="top"><b>规则: </b>默认回复[未匹配到任何关键字时回复]<button class="am-btn am-btn-xs am-btn-success am-align-right" onclick="useThis(this)">启用</button></div>
+                <div class="context">
+                    <div class="am-g">
+                        <div class="am-u-sm-4">
+                            <select name="reply_type" onchange="change_type(this, this.value)"><option value="0">文本消息</option><option value="1">图文消息</option></select>
+                        </div>
+                        <div class="am-u-sm-8">
+                            <input type="text" name="reply_content" class="am-input-sm" value="" placeholder="填写回复内容..">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-g am-margin-top">
+        <div class="am-u-sm-2">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class="am-u-sm-10">
+            <button class="am-btn am-btn-primary am-btn-xs" onclick="save()">保存并启用</button>
+        </div>
+    </div>
+</div>
+
+<script>
+var mediaData = {};
+$.ajax({
+    url : 'qrcode.html',
+    data : {act:'getForeverList'},
+    dataType : 'json',
+    type : 'post',
+    success : function(d){
+        if(!d.info){
+            for(var i in d){
+                mediaData[d[i].media_id] = d[i].title;
+            }
+            getdata();
+        }else{
+            console.warn(d.info);
+        }
+    }
+});
+function getdata(){
+    $.ajax({
+        type : 'post',
+        data : {act:'getdata'},
+        dataType : 'json',
+        success : function(d){
+            for(var i in d){
+                if(d[i].name == 'autoreply'){
+                    //关注后自动回复
+                    if(d[i].contents[0].media_id && d[i].contents[0].media_id != ''){
+                        $('.reply [name="reply_type"]').val(1).change();
+                        var media_id = d[i].contents[0].media_id;
+                        (function xx(){
+                            if($('.reply [name="reply_content"]').is('input')){
+                                $('.reply [name="reply_content"]').attr('data-id', media_id).val(mediaData[media_id]);
+                            }else
+                                setTimeout(xx, 300);
+                        })();
+                    }else if(d[i].contents[0].text && d[i].contents[0].text != ''){
+                        $('.reply [name="reply_type"]').val(0);
+                        $('.reply [name="reply_content"]').val(d[i].contents[0].text);
+                    }else{
+                        $('.reply [name="reply_type"]').val(0);
+                        $('.reply [name="reply_content"]').val('');
+                    }
+                }else if(d[i].name == 'default'){
+                    //关键字默认回复
+                    if(d[i].status == 1)
+                        $('.default .top button').removeClass('am-btn-success').addClass('am-btn-warning').text('禁用');
+                    else
+                        $('.default .top button').removeClass('am-btn-warning').addClass('am-btn-success').text('启用');
+                    if(d[i].contents[0].media_id && d[i].contents[0].media_id != ''){
+                        $('.default [name="reply_type"]').val(1).change();
+                        var media_id = d[i].contents[0].media_id;
+                        (function xx(){
+                            if($('.default [name="reply_content"]').is('input')){
+                                $('.default [name="reply_content"]').attr('data-id', media_id).val(mediaData[media_id]);
+                            }else
+                                setTimeout(xx, 300);
+                        })();
+                    }else if(d[i].contents[0].text && d[i].contents[0].text != ''){
+                        $('.default [name="reply_type"]').val(0);
+                        $('.default [name="reply_content"]').val(d[i].contents[0].text);
+                    }else{
+                        $('.default [name="reply_type"]').val(0);
+                        $('.default [name="reply_content"]').val('');
+                    }
+                }else{
+                    //关键字回复
+                    $('.keyreply p button').click();
+                    var $em = $('.keyreply .item:first');
+                    $em.find('.top input').val(d[i].name);
+                    if(d[i].status == 1)
+                        $em.find('.top button:not(.am-btn-default)').removeClass('am-btn-success').addClass('am-btn-warning').text('禁用');
+                    else
+                        $em.find('.top button:not(.am-btn-default)').removeClass('am-btn-warning').addClass('am-btn-success').text('启用');
+
+                    $em.find('fieldset:first span').remove();
+                    for(var j in d[i].keys){
+                        var key = d[i].keys[j];
+                        if(key.match == 1)
+                            var code = '<span class="accurate">';
+                        else
+                            var code = '<span>';
+                        code += '<font>'+ key.keyword +'</font>';
+                        code += '<a href="javascript:void(0);" onclick="$(this).parent().remove()">×</a>';
+                        code += '</span>';
+                        $(code).appendTo($em.find('fieldset:first')).click(function(){
+                            if($(this).hasClass('accurate'))
+                                $(this).removeClass('accurate');
+                            else
+                                $(this).addClass('accurate');
+                        });
+                    }
+
+                    $em.find('legend select').val(d[i].send_type);
+                    $em.find('fieldset:last .am-g').remove();
+                    for(var j in d[i].contents){
+                        var content = d[i].contents[j];
+                        $em.find('fieldset:last legend button').click();
+                        var $div = $em.find('fieldset:last .am-g:last');
+                        if(content.media_id && content.media_id != ''){
+                            $div.find('[name="reply_type"]').val(1).change();
+                            var media_id = content.media_id;
+                            (function xx(){
+                                if($div.find('[name="reply_content"]').is('input')){
+                                    $div.find('[name="reply_content"]').attr('data-id', media_id).val(mediaData[media_id]);
+                                }else
+                                    setTimeout(xx, 300);
+                            })();
+                        }else if(content.text && content.text != ''){
+                            $div.find('[name="reply_type"]').val(0);
+                            $div.find('[name="reply_content"]').val(content.text);
+                        }else{
+                            $div.find('[name="reply_type"]').val(0);
+                            $div.find('[name="reply_content"]').val('');
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+var isclicked = false;
+function selectMedia(em){
+    $('.mediaLayBox').empty();
+    var title = $(em).val();
+    var left = $(em).position().left;
+    var top = $(em).position().top + $(em).outerHeight() + parseInt($(em).css('margin-top'));
+    var code = '';
+    for(var i in mediaData){
+        if(title == '' || mediaData[i].indexOf(title) >= 0)
+            code += '<button type="button" data-id="'+ i +'">'+ mediaData[i] +'</button>';
+    }
+    if(code == '')code = '<p style="text-align: center; color:#999;">素材标题查询失败..</p>';
+    $('.mediaLayBox').html(code);
+    $('.mediaLayBox button').on('click', function(){
+        isclicked = true;
+        $(em).val($(this).text());
+        $(em).attr('data-id', $(this).data('id'));
+    });
+    $('.mediaLayBox').css({left:left + 'px', top:top + 'px'});
+}
+
+function blurMedia(em){
+    setTimeout(function(){
+        $('.mediaLayBox').remove();
+        if(!isclicked){
+            var media_id = $(em).data('id');
+            if(media_id == ''){
+                $(em).val('');
+            }else{
+                for(var i in mediaData){
+                    if(i == media_id){
+                        $(em).val(mediaData[i]);
+                    }
+                }
+            }
+        }
+        isclicked = false;
+    }, 500);
+}
+
+function focusMedia(em){
+    $('.mediaLayBox').remove();
+    var title = $(em).val();
+    var left = $(em).position().left;
+    var top = $(em).position().top + $(em).outerHeight() + parseInt($(em).css('margin-top'));
+    var code = '';
+    for(var i in mediaData){
+        if(title == '' || mediaData[i].indexOf(title) >= 0)
+            code += '<button type="button" data-id="'+ i +'">'+ mediaData[i] +'</button>';
+    }
+    if(code == '')code = '<p style="text-align: center; color:#999;">素材标题查询失败..</p>';
+    $('<div class="mediaLayBox">'+ code +'</div>').appendTo($(em).parent()).find('button').on('click', function(){
+        isclicked = true;
+        $(em).val($(this).text());
+        $(em).attr('data-id', $(this).data('id'));
+    });
+    $('.mediaLayBox').css({left:left + 'px', top:top + 'px'});
+}
+
+function change_type(em, n){
+    var $em = $(em).parent().next();
+    $em.empty();
+    if(n == 0){
+        $em.html('<input type="text" name="reply_content" class="am-input-sm" value="" placeholder="填写回复内容..">');
+    }else{
+        $em.html('<input type="text" name="reply_content" class="am-input-sm selectmedia" placeholder="请从列表中选择素材.." data-id="" onkeyup="selectMedia(this)" onblur="blurMedia(this)" onfocus="focusMedia(this)">');
+    }
+}
+
+//启用/禁用规则
+function useThis(em){
+    if($(em).text() == '启用'){
+        $(em).text('禁用').removeClass('am-btn-success').addClass('am-btn-warning');
+    }else{
+        $(em).text('启用').removeClass('am-btn-warning').addClass('am-btn-success');
+    }
+}
+
+//添加关键字
+function addKeyword(em){
+    var keyword = $(em).next().val();
+    $(em).next().val('');
+    if(keyword == '' || keyword.length > 10){
+        alert('不能为空或超过10个字');
+        return;
+    }
+    if($('.keyreply span').find(':contains(' + keyword + ')').size() > 0){
+        alert('该关键字已经被设置过了!');
+        return;
+    }
+    $('<span><font>'+ keyword +'</font><a href="javascript:void(0);" onclick="$(this).parent().remove()">×</a></span>').appendTo($(em).parents('fieldset')).click(function(){
+        if($(this).hasClass('accurate'))
+            $(this).removeClass('accurate');
+        else
+            $(this).addClass('accurate');
+    });
+}
+
+//添加回复内容
+function addContent(em){
+    var code = '<div class="am-g">';
+    code += '<div class="am-u-sm-4">';
+    code += '<select name="reply_type" onchange="change_type(this, this.value)"><option value="0">文本消息</option><option value="1">图文消息</option></select>';
+    code += '</div>';
+    code += '<div class="am-u-sm-7">';
+    code += '<input type="text" name="reply_content" class="am-input-sm" value="" placeholder="填写回复内容..">';
+    code += '</div>';
+    code += '<div class="am-u-sm-1 am-text-center">';
+    code += '<button class="am-btn am-btn-default am-align-right" onclick="if($(this).parents(\'fieldset\').find(\'.am-g\').size() > 1)$(this).parent().parent().remove()">移除</button>';
+    code += '</div>';
+    code += '</div>';
+    $(em).parents('fieldset').append(code);
+}
+
+//添加规则
+function addItem(em){
+    var code = '<div class="item">';
+    code += '<div class="top"><b>规则：</b><input type="text" style="width:120px; display: inline-block; padding:6px;" placeholder="规则名.."> <button class="am-btn am-btn-xs am-btn-default am-align-right" onclick="$(this).parents(\'.item\').remove()">移除</button> <button class="am-btn am-btn-xs am-btn-success am-align-right" onclick="useThis(this)">启用</button></div>';
+    code += '<div class="context">';
+    code += '<fieldset>';
+    code += '<legend>关键字：';
+    code += '<small>注: ★ 代表精确匹配，☆ 代表模糊匹配，点击关键字切换匹配模式</small>';
+    code += '<button class="am-btn am-btn-xs am-btn-default am-align-right" style="margin: 0; margin-right:10px;" onclick="addKeyword(this)">添加</button>';
+    code += '<input type="text" class="am-align-right" style="width: 100px; display: inline-block; margin: 0;line-height: 29px; padding: 0 8px;" placeholder="关键字..">';
+    code += '</legend>';
+    code += '</fieldset>';
+    code += '<fieldset>';
+    code += '<legend>';
+    code += '回复内容：';
+    code += '<select class="am-align-right" style="margin: 0; width: 120px; height:31px; padding: 0 5px;">';
+    code += '<option value="0">全部回复</option>';
+    code += '<option value="1">随机回复</option>';
+    code += '<option value="2">单用户依次回复</option>';
+    code += '</select>';
+    code += '<button class="am-btn am-btn-xs am-btn-default am-align-right" style="margin: 0; margin-right:10px;" onclick="addContent(this)">+ 添加回复项目 +</button>';
+    code += '</legend>';
+    code += '<div class="am-g">';
+    code += '<div class="am-u-sm-4">';
+    code += '<select name="reply_type" onchange="change_type(this, this.value)"><option value="0">文本消息</option><option value="1">图文消息</option></select>';
+    code += '</div>';
+    code += '<div class="am-u-sm-7">';
+    code += '<input type="text" name="reply_content" class="am-input-sm" value="" placeholder="填写回复内容..">';
+    code += '</div>';
+    code += '<div class="am-u-sm-1 am-text-center">';
+    code += '<button class="am-btn am-btn-default am-align-right" onclick="if($(this).parents(\'fieldset\').find(\'.am-g\').size() > 1)$(this).parent().parent().remove()">移除</button>';
+    code += '</div>';
+    code += '</div>';
+    code += '</fieldset>';
+    code += '</div>';
+    code += '</div>';
+
+    $(em).parent().after(code);
+}
+
+function table(){
+    this.name = 'autoreply';
+    this.keys = [];
+    this.contents = [];
+    this.status = 0;
+    this.send_type = 0;
+}
+
+//保存
+function save(){
+    var data = [],submit = 1;
+
+    //关注后的自动回复
+    var d = new table();
+    d.status = 1;
+    var content = $('.reply [name="reply_content"]');
+    if(content.val() != ''){
+        if(!content.hasClass('selectmedia')){
+            d.contents = [{text:content.val(), status:1}];
+        }else{
+            d.contents = [{media_id:content.data('id'), status:1}];
+        }
+    }else{
+        d.status = 0;
+    }
+    data.push(d);
+
+    //默认回复
+    var d = new table();
+    d.name = 'default';
+    if($('.default .top button').hasClass('am-btn-warning'))d.status = 1;
+    var content = $('.default [name="reply_content"]');
+    if(content.val() != ''){
+        if(!content.hasClass('selectmedia')){
+            d.contents = [{text:content.val(), status:1}];
+        }else{
+            d.contents = [{media_id:content.data('id'), status:1}];
+        }
+    }else{
+        d.status = 0;
+    }
+    data.push(d);
+
+    //关键字回复
+    $('.keyreply .item').not('.default').each(function(){
+        var d = new table();
+        var $em = $(this);
+        d.name = $em.find('.top input').val();
+        $em.find('span').each(function(){
+            d.keys.push({
+                keyword : $(this).find('font').text(),
+                match : $(this).hasClass('accurate') ? 1 : 0
+            });
+        });
+        $em.find('[name="reply_content"]').each(function(){
+            var val = $(this).val();
+            if(val == '')return;
+            if(!$(this).hasClass('selectmedia')){
+                d.contents.push({
+                    text : val,
+                    status : 1
+                });
+            }else{
+                d.contents.push({
+                    media_id : $(this).data('id'),
+                    status : 1
+                });
+            }
+        });
+        if($em.find('.top button').hasClass('am-btn-warning'))d.status = 1;
+        d.send_type = $em.find('legend select').val();
+
+        if(d.name == ''){
+            alert('规则名不能为空!');
+            submit = 0;
+            $em.find('.top input').focus();
+            return false;
+        }
+
+        if(d.keys == []){
+            alert('关键字不能为空!');
+            submit = 0;
+            return false;
+        }
+
+        if(d.contents == []){
+            alert('回复内容不能为空!');
+            submit = 0;
+            return false;
+        }
+        data.push(d);
+    });
+
+    if(submit){
+        $.ajax({
+            data:{act:'save', data:data},
+            dataType:'JSON',
+            type:'post',
+            success:function(d){
+                if(d.status == 1){
+                    alert(d.info);
+                    location.reload();
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+}
+</script>

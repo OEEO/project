@@ -1,0 +1,16 @@
+{
+    "apps": [
+        {
+            "name": "ocr-web-admin",
+            "max_memory_restart": "500M",
+            "script": "./bin/www.js",
+            "out_file": "~/logs/ocr.log",
+            "error_file": "~/logs/ocr.error.log",
+            "exec_mode": "fork",
+            "env": {
+                "NODE_ENV": "production",
+                "PORT": "8077"
+            }
+        }
+    ]
+}

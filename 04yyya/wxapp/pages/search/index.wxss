@@ -1,0 +1,9 @@
+.searchbox{margin: 0 31rpx;width: 688rpx;height: 100%;background: #f5f5f5;}
+.search{margin: 40rpx 0 60rpx; display: block;}
+.search input{width: 487rpx;padding: 15rpx 19rpx;color: #333;font-size: 28rpx;background: #fff;display: inline-block;
+    border:none;}
+.search .search_icon{width: 140rpx;height: 78rpx;line-height: 78rpx;color: #fff;background: #b39851;float: right;text-align: center;font-size: 28rpx;}
+.hot{color: #b39851;font-size: 26rpx;text-align: left;margin-bottom: 40rpx;}
+
+.searchlist{display: flex;flex-flow: row wrap;-webkit-flex-flow: row wrap;justify-content:space-between;}
+.searchlist text{border: 2rpx solid #eee;border-radius: 4rpx;height: 60rpx;line-height: 60rpx;width: 220rpx;color: #888;font-size: 28rpx;margin-bottom: 13rpx;background: #fff;text-align: center;overflow: hidden;}

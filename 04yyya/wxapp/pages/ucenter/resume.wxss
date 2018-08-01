@@ -1,0 +1,3 @@
+.intro{width:688rpx;font-size:29rpx;color:#333;padding:17rpx 31rpx;min-height:375rpx;background:#fff;position:relative;  border-bottom:1rpx solid #eee; border-top:1rpx solid #eee;}
+.wanc{background: #b39851;border-radius: 4rpx;color: #fff;height: 83rpx;line-height: 83rpx;margin: 63rpx auto 0;text-align: center;width: 688rpx;}
+.lastNum {color: #cccccc;font-size: 29rpx;margin-top: 17rpx;right: 10rpx;position:absolute;}

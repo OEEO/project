@@ -1,0 +1,18 @@
+
+<p style="margin-left:20px;">
+    <button class="am-btn am-btn-warning" id="export_excel" onclick="exportExcel()">导出Excel</button>
+</p>
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+<script type="text/javascript">
+
+    var category_id = <?php echo $category_id;?>;
+    //导出Excel
+    function exportExcel(){
+        var category_id = <?php echo $category_id;?>;
+
+        window.open("__CONTROLLER__/ResearchExport.html?category_id="+category_id,"_blank","width=1000,height=600 ")
+    }
+</script>

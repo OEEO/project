@@ -1,0 +1,17 @@
+<view class="item">
+    <view class="list1" bindtap="calling">客服电话<text>020-23336323(0)</text></view>
+    <view class="Betweens"></view>
+    <view bindtap="showCode" class="list2 weixi">客服微信<text>yami194</text><i class="arrowRight"></i></view>
+</view>
+<view class="the_blank"></view>
+<view class="center">意见反馈</view>
+<form bindsubmit="formSubmit">
+	<textarea class="feedBack" name="feed" maxlength="255" placeholder="请输入您的意见或建议" placeholder-style="color:#ccc;"></textarea>
+	<button formType="submit" class="wanc">提交反馈</button>
+</form>
+<view class="er_wei_ma" hidden="{{hidden}}" bindtap="showCode">
+	<view class="box_t">
+    	<view class="title_top">扫一扫关注我们</view>
+		<image src="http://img.yummy194.cn/images/123.jpg" />
+	</view>
+</view>

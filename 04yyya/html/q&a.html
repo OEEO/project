@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/q&a.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/q&a.js"></script>
+</head>
+<body style="min-height:100%;background:#ebecf0;">
+
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">活动答疑</div>
+</div>
+<div class="content">
+</div>
+<div class="commitQuestionBlank"></div>
+<div class="commitQuestion">
+	<div id="" class="m_question" contenteditable="true" onKeyUp="whetherNull(this);" onfocus="if($(this).text()=='我要提问')$(this).empty();" onblur="if($(this).text()==''){$(this).empty();$(this).append('我要提问');}whetherNull(this);">我要提问</div>
+	<button type="submit">发送</button>
+</div>
+</body>
+</html>

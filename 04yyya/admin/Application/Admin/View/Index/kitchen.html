@@ -1,0 +1,62 @@
+
+<button type="button" id="select" class="am-btn am-btn-primary" onclick="add()">新增厨房</button>
+<button type="button" id="apply" class="am-btn am-btn-primary" onclick="apply()">申请列表</button>
+<button type="button" id="export" class="am-btn am-btn-primary" onclick="exportExcel()">列表导出</button>
+
+<form style="margin: 20px;">
+    <div class="am-g" style="margin-bottom: 10px;">
+        <sapn>公开状态</sapn>
+        <select name="status" id="search_status" style="width: 100px">
+            <option value="0" <?php if($search_status != '' && $search_status == 0)echo "selected='selected'";?>>删除</option>
+            <option value="1" <?php if($search_status == 1)echo "selected='selected'";?>>公开</option>
+            <option value="2" <?php if($search_status == 2)echo "selected='selected'";?>>非公开</option>
+        </select>
+
+        <button type="submit" class="am-btn am-btn--success">提交</button>
+    </div>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages))}
+<div class="am-modal" id="getline" style="background: #fff; font-size:12px;"></div>
+<script>
+    $('.am-modal').appendTo('body');
+
+    function getline(id){
+        $('#getline').text('http://<?=WEB_DOMAIN?>/?page=choice-kitchen-kitchenList-kitchenDetail&id=' + id);
+        $('#getline').modal();
+    }
+    //添加厨房页面
+    function add(){
+        window.location = '__CONTROLLER__/kitchenAdd.html';
+    }
+    function apply(){
+        window.location = '__CONTROLLER__/kitchenApply.html';
+    }
+    function ModifyKitchen(id){
+        window.location = '__CONTROLLER__/kitchenModify.html?id='+id;
+    }
+    function kitchenDelete(id){
+        if(confirm('是否确定删除该厨房')){
+            $.ajax({
+                url: '__CONTROLLER__/kitchenDelete.html',
+                data: {'id': id },
+                dataType: 'json',
+                type: 'POST',
+                success: function (d) {
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+    //导出Excel
+    function exportExcel(){
+        var search_status = $('#search_status').val();
+
+        window.open("__CONTROLLER__/kitchenExport.html?status="+search_status,"_blank","width=1000,height=600 ")
+    }
+
+</script>

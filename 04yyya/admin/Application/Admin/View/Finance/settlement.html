@@ -1,0 +1,338 @@
+
+<button type="button" class="am-btn am-btn-primary" onclick="goto(0)">活动结算列表</button>
+<button type="button" class="am-btn am-btn-primary" onclick="goto(1)">商品结算列表</button>
+
+<form>
+    <input type="hidden" name="type" value="<?=I('get.type', 0)?>">
+    <input type="text" name="title" value="<?=I('get.title', '')?>">
+    <input type="submit" value="提交筛选">
+</form>
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<!--自动结算-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="settleBox">
+    <div class="am-modal-dialog">
+        <form name="settle">
+            <div class="am-modal-hd">财务结算</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <font color="red"> 提交申请支付宝结算，再有相关处理结算申请的管理员同意支付宝结算</font>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        当前状态：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        【应结算:￥<span id="settlement0"></span>】
+                        【未结算:￥<span id="settlement1"></span>】
+                        【已结算:￥<span id="settlement2"></span>】
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        结算金额：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="type" value="0">
+                        <input type="text" name="amount" class="am-input-sm" placeholder="结算金额(单位:元).." value="" required/>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        结算银行卡：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left ">
+                        <p>账号类型: <font color="red" id="bankname"></font></p>
+                        <p>认证姓名: <font color="red"  id="name"></font></p>
+                        <p>账号: <font color="red"  id="number"></font></p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!--手动结算-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="settleManualBox">
+    <div class="am-modal-dialog">
+        <form name="settleManual">
+            <div class="am-modal-hd">财务结算</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        当前状态：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        【应结算:￥<span id="settlement_0"></span>】
+                        【未结算:￥<span id="settlement_1"></span>】
+                        【已结算:￥<span id="settlement_2"></span>】
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        结算金额：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <input type="hidden" name="m_id" value="">
+                        <input type="hidden" name="m_type" value="0">
+                        <input type="text" name="m_amount" class="am-input-sm" placeholder="结算金额(单位:元).." value="" required/>
+                    </div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        结算银行卡：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <p>开户行: <span id="m_bankname"></span></p>
+                        <p>开户人: <span id="m_name"></span></p>
+                        <p>银行卡号: <span id="m_number"></span></p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!--可修改短信内容的结算-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="Updatecontent">
+    <div class="am-modal-dialog">
+        <form name="Ucontent">
+            <div class="am-modal-hd">短信内容</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-4 am-u-md-4 am-text-right">
+                        短信内容：
+                    </div>
+                    <div class="am-u-sm-8 am-u-md-8 am-text-left">
+                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="type" value="0">
+                        <input type="hidden" name="telephone" value="">
+                        <textarea name="message" id="messageC" ></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+<script>
+
+$('.am-modal').appendTo('body');
+
+function goto(type){
+    window.location.href = '__ACTION__.html?type=' + type;
+}
+
+function showOrders(id, type, em){
+    if($(em).parents('tr').next().hasClass('timesBox')){
+        $(em).parents('tr').next().remove();
+        return;
+    }
+    var data = {};
+    data.type = type;
+    if(type == 0)
+        data.times_id = id;
+    else
+        data.goods_id = id;
+
+    $.ajax({
+        url: '__CONTROLLER__/showOrders.html',
+        data: data,
+        dataType: 'json',
+        type: 'POST',
+        success: function (d) {
+            if(d.info){
+                alert(d.info);
+                return;
+            }
+            var code = '<thead><tr>';
+            code += '<th>订单号</th>';
+            code += '<th>平台订单号</th>';
+            code += '<th>客户手机</th>';
+            code += '<th>实付金额</th>';
+            code += '<th>份数</th>';
+            code += '<th>优惠金额</th>';
+            code += '<th>购买渠道</th>';
+            code += '<th>支付平台</th>';
+            code += '<th>下单时间</th>';
+            code += '</tr></thead><tbody>';
+            for(var i in d){
+                code += '<tr>';
+                code += '<td>'+ d[i].sn +'</td>';
+                code += '<td>'+ d[i].trade_no +'</td>';
+                code += '<td>'+ d[i].telephone +'</td>';
+                code += '<td>'+ d[i].price +'</td>';
+                code += '<td>'+ d[i].count +'</td>';
+                code += '<td>'+ d[i].coupon_value +'</td>';
+                code += '<td>'+ d[i].channel +'</td>';
+                code += '<td>'+ d[i].pay_type +'</td>';
+                code += '<td>'+ d[i].create_time +'</td>';
+                code += '</tr>';
+            }
+            var code = '<tr class="timesBox"><td colspan="<?=(!isset($_GET["type"]) || $_GET["type"]==0 ? 12:11)?>"><table class="timesTable">'+ code +'</tbody></table></td></tr>';
+            var ob = $(code);
+            $(em).parents('tr').after(ob);
+        }
+    });
+}
+
+function setSettle(id, type){
+    if(window.confirm('确定要自动结算？(支付宝结算)')) {
+        document.settle.id.value = id;
+        document.settle.type.value = type;
+        document.Ucontent.id.value = id;
+        document.Ucontent.type.value = type;
+        $.ajax({
+            url: 'settleAutomatic.html',
+            data: {id: id, type: type},
+            dataType: 'json',
+            type: 'post',
+            success: function (d) {
+                if (d.info) {
+                    alert(d.info);
+                    return;
+                }
+                $('#settlement0').text(d.settlement);
+                $('#settlement1').text(d.settlement - d.settlemented);
+                $('#settlement2').text(d.settlemented);
+                document.settle.amount.value = d.settlement - d.settlemented;
+                $('#bankname').text(d.bankname);
+                $('#name').text(d.name);
+                $('#number').text(d.number);
+
+                $('#settleBox').modal({
+                    relatedTarget: this,
+                    onConfirm: function () {
+                        var amount = document.settle.amount.value;
+
+                        if (amount <= 0 || amount > (d.settlement - d.settlemented)) {
+                            alert('请填写正确的数值!');
+
+                        } else {
+                            var data = {};
+                            data.id = document.settle.id.value;
+                            data.type = document.settle.type.value;
+                            data.money = amount;
+
+                            $.ajax({
+                                url: 'settleAutomatic.html',
+                                data: data,
+                                dataType: 'json',
+                                type: 'post',
+                                success: function (d) {
+                                    if (d.status == 1) {
+                                        alert(d.info);
+                                    } else {
+                                        alert(d.info);
+                                    }
+                                    window.location.reload();
+//                                document.Ucontent.telephone.value = d.telephone;
+//                                document.Ucontent.message.value = d.content;
+//                                $('#Updatecontent').modal({
+//                                    relatedTarget: this,
+//                                    onConfirm: function () {
+//                                        var data = {};
+//                                        data.id = document.Ucontent.id.value;
+//                                        data.type = document.Ucontent.type.value;
+//                                        data.telephone = document.Ucontent.telephone.value;
+//                                        data.message = document.Ucontent.message.value;
+//                                        $.ajax({
+//                                            url: 'settle.html',
+//                                            data: data,
+//                                            dataType: 'json',
+//                                            type: 'post',
+//                                            success: function (d) {
+//                                                if (d.status == 1) {
+//                                                    alert(d.info);
+//                                                    window.location.reload();
+//                                                } else {
+//                                                    alert(d.info);
+//                                                }
+//                                            }
+//                                        });
+//                                    }
+//
+//                                });
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    }
+}
+
+function settle_Manual(id, type){
+    if(window.confirm('确定要手动结算？(自行使用第三方平台支付)')) {
+        document.settleManual.m_id.value = id;
+        document.settleManual.m_type.value = type;
+        $.ajax({
+            url: 'settleManual.html',
+            data: {id: id, type: type},
+            dataType: 'json',
+            type: 'post',
+            success: function (d) {
+                if (d.info) {
+                    alert(d.info);
+                    return;
+                }
+                $('#settlement_0').text(d.settlement);
+                $('#settlement_1').text(d.settlement - d.settlemented);
+                $('#settlement_2').text(d.settlemented);
+                document.settleManual.m_amount.value = d.settlement - d.settlemented;
+                $('#m_bankname').text(d.bankname);
+                $('#m_name').text(d.name);
+                $('#m_number').text(d.number);
+
+                $('#settleManualBox').modal({
+                    relatedTarget: this,
+                    onConfirm: function () {
+                        var amount = document.settleManual.m_amount.value;
+
+                        if (amount <= 0 || amount > (d.settlement - d.settlemented)) {
+                            alert('请填写正确的数值!');
+
+                        } else {
+                            var data = {};
+                            data.id = document.settleManual.m_id.value;
+                            data.type = document.settleManual.m_type.value;
+                            data.money = amount;
+
+                            $.ajax({
+                                url: 'settleManual.html',
+                                data: data,
+                                dataType: 'json',
+                                type: 'post',
+                                success: function (d) {
+                                    if (d.status == 1) {
+                                        alert(d.info);
+                                    } else {
+                                        alert(d.info);
+                                    }
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    }
+}
+
+
+</script>

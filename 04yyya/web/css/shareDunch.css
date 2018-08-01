@@ -1,0 +1,26 @@
+.page_shareDunch.wrapper{background: #f9f8f6;}
+.page_shareDunch .nopunch{width: 36rem;height: auto;display: none;}
+.page_shareDunch .punch_head .symbolbg{background: #fff;}
+.page_shareDunch .punch_head .symbol{width: 23.184rem;height: 10.08rem;display: block;margin: 0 auto;padding: 1.92rem 0 0.96rem;}
+.page_shareDunch .punch_head .punch_time{font-size: 1.44rem;color: #333;text-align: center;padding: 0 0 1.92rem;margin: 0;}
+.page_shareDunch .punch_head .intro{padding:0 2.88rem;}
+.page_shareDunch .punch_head .intro .ileft{margin: 1.155rem 0;position: relative;height: 3.84rem;}
+.page_shareDunch .punch_head .intro .ileft .headimg{width: 3.84rem;height: 3.84rem;border-radius: 50%;position: absolute;left: 0;top: 0;}
+.page_shareDunch .punch_head .intro .ileft .punch_user{font-size: 1.53rem;color: #333;font-weight:bold;width: 24rem;height: 3.84rem;padding-left: 5.76rem;display: inline-block;line-height: 1.8rem;}
+
+.page_shareDunch .punch_content{width:36rem;padding-top: 1.5rem;position: relative;}
+.page_shareDunch .punch_content span{width: 0.75rem;height: 1.5rem;background: #f9f8f6;position: absolute;top: 2.1rem;}
+.page_shareDunch .punch_content span.g1{left: 0rem;border-radius: 0 0.75rem 0.75rem 0;}
+.page_shareDunch .punch_content span.g2{right: 0rem;border-radius: 0.75rem 0 0 0.75rem;}
+.page_shareDunch .punch_content .punch_item{border-radius: 0.2rem;background: #fff;margin: 0 auto;width: 33rem;display: block;margin-bottom: 1.5rem;position: relative;}
+.page_shareDunch .punch_content .punch_item .item_head{padding: 0 1.92rem;font-size: 1rem;color: #ccc;height: 2.88rem;line-height: 2.88rem;border-bottom: dotted 0.1rem #f9f8f6;position: relative;}
+.page_shareDunch .punch_content .punch_item .item_context{color: #888;font-size: 1.44rem;padding:0 1.1rem;}
+.page_shareDunch .punch_content .punch_item .item_context .itemtitle{padding: 1.92rem 0 0.96rem;}
+.page_shareDunch .punch_content .punch_item .item_head .iteml i{background: url("../images/punch_date.png") no-repeat left center / 100% 100%;width: 1.152rem;height: 1.152rem;display: inline-block;margin-right: 0.96rem;vertical-align: sub;}
+.page_shareDunch .punch_content .punch_item .item_context img{width: 30.72rem;max-height: 30.72rem;display: block;padding-bottom: 1.1rem;object-fit:cover;}
+.page_shareDunch.footer{background: #ffdc00;color: #40220f;font-size: 1.44rem; text-align: center;line-height: 4.7rem;}
+/*****公众号二维码*****/
+#alertBox.page_shareDunch.puncherror {background:#fff; padding:0;}
+#alertBox.page_shareDunch.puncherror .context {padding:1rem; margin:0;}
+#alertBox.page_shareDunch.puncherror .context .title_top {text-align:center; font-size:1.2rem; color:#555;}
+#alertBox.page_shareDunch.puncherror .context img {width:20rem; height:20rem;}

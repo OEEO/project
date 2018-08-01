@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+.header {background:rgba(0,0,0,0);border:none;}
+.header .turnBack{color:#fff;}
+
+.userCenter_body {background:#f3f3f3;}	
+
+.userCenter_head{overflow:hidden;width:100%;height:100%;min-height:20rem;position:absolute;}
+.userCenter_head_bg_img{width:100%;z-index:0;min-height:20rem;position:absolute; -webkit-filter: blur(0.7rem); /* Chrome, Opera */-moz-filter: blur(0.7rem); -o-filter: blur(0.7rem);-ms-filter: blur(0.7rem);filter: blur(0.7rem);}
+
+
+.userCenter_head_bg{overflow:hidden;z-index:1;background-color:#111;width:100%;min-height:20rem;height:100%;position:absolute;filter: Alpha(Opacity=30);-moz-opacity:0.33;/* Moz + FF 透明度*/ opacity: 0.3; /* 支持CSS3的浏览器（FF 1.5也支持）透明度*/}
+.userCenter_head_front{z-index:2;top:26%;width:90%;left:5%;right:5%;position:absolute;}
+.imgPortrait{width: 8rem;height: 8rem;border:0.3rem #fd9900 solid;margin-bottom:0.2rem;border-radius: 60%;background: #F4F3F1;padding: 0.2rem;display: inline-block;overflow:hidden;}
+
+.userCenter_head_front .name{font-weight:bolder;font-size:139%;margin-top:0.5rem;color:white;line-height:2.4rem;}
+.user_introduce{font-size:100%;margin-top:0.5rem;width:100%;height:4rem;position:relative;text-align:center;color:white;line-height:2rem;}
+
+.userCenter_menu {margin-top:1rem;padding:0;width:100%;}
+/*  .userCenter_menu a{display:block;}*/
+.userCenter_menu .li_item {background:#ffffff; margin-top:1rem; width:100%; box-shadow:0 0 0.1rem #999;}
+
+.userCenter_menu .li_item .liBetweens{height:0.1rem; background:#e0e0e0; margin:rem 10.5rem;}
+.userCenter_menu a {font-size:125%;color:#ccc;display:block;height:4rem; line-height:4rem;  padding-left:6rem; position:relative;}
+.userCenter_menu a:before {content:''; width:2rem; height:2rem; left:2rem;background:url('../images/ucenter_menu_icons.png') 0 0 no-repeat;background-size:2rem auto; position:absolute; top:1.2rem; }
+.userCenter_menu a:after {content:'>'; font-family:'黑体'; right:2rem;width:2rem;height:2rem;position:absolute; top:0.3rem;font-weight:bolder; color:#ccc;}
+.userCenter_menu a.list1:before {background-position:0 0;}
+.userCenter_menu a.list2:before {background-position:0 13.5%;}
+.userCenter_menu a.list3:before {background-position:0 26.8%;}
+.userCenter_menu a.list4:before {background-position:0 40.3%;}
+.userCenter_menu a.list5:before {background-position:0 53.5%;}
+.userCenter_menu a.list6:before {background-position:0 67%;}
+.userCenter_menu a.list7:before {background-position:0 80.5%;}
+.userCenter_menu a.list8:before {background-position:0 94%;}
+
+.userCenter_menu a:link.list1:before {background-position:0 940;}
+
+/*.userCenter_menu a.list2:before {background-position:0 13.5%;}
+.userCenter_menu a.list3:before {background-position:0 26.8%;}
+.userCenter_menu a.list4:before {background-position:0 40.3%;}
+.userCenter_menu a.list5:before {background-position:0 53.5%;}
+.userCenter_menu a.list6:before {background-position:0 67%;}
+.userCenter_menu a.list7:before {background-position:0 80.5%;}
+.userCenter_menu a.list8:before {background-position:0 94%;}
+
+a:link, a:visited, a:hover, a:active
+*/

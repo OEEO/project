@@ -1,0 +1,15 @@
+
+{:W('Cate/table', array($datas, $lang, $operations))}
+
+<script>
+$('.am-modal').appendTo('body');
+
+function moveout(id, em){
+    $.post('whitelist.html', {id:id, action:'del'}, function(d){
+        if(d.status == 1){
+            $(em).parents('tr').remove();
+        }
+        alert(d.info);
+    }, 'json');
+}
+</script>

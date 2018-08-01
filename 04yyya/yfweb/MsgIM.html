@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/MsgIM.css">
+<script src="js/plugins/jquery.min.js"></script>
+<script src="js/public.js"></script>
+<script src="js/MsgIM.js"></script>
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:page.back(page.reload);"><div class="arrow"></div></div>
+	<div class="title">在线客服</div>
+</div>
+
+<div class="content">
+	<ul class="msgList"></ul>
+</div>
+<div class="the_blankes"></div>
+<div class="facesBox"><div class="dian"><span class="now"></span><span></span><span></span></div></div>
+<div class="history"></div>
+<div class="footer">
+	<button class="goodslist"></button>
+	<div class="writer" contenteditable="true"></div>
+	<button class="facesBtn"></button>
+	<button class="imageBtn"></button>
+	<button class="sendBtn">发送</button>
+</div>
+<input id="myMsgImUploadBtn" type="file" onchange="MsgIMObject.change(this)" multiple style="visibility: hidden">
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/changePhoneNum.css">
+
+<script src="js/plugins/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/changePhoneNum.js"></script>
+
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+	<div class="title">更换手机</div>
+    <div class="wanc" onClick="changePhoneNumObject.bind()">完成</div>
+</div>
+
+<div class="headerBlank"></div>
+<div class="verificationLogin">
+	<div class="list1"><input class="telephone" placeholder="请输入新的绑定手机号"></div>
+	<p class="liBetweens"></p>
+	<div class="list2"><input type="text" class="verifycode" placeholder="请输入验证码"><span class="sendcode" onclick="changePhoneNumObject.sendcode()">获取验证码</span></div>
+    <p class="liBetweens"></p>
+</div>
+<!-- --------------------- -->	
+</body>
+</html>

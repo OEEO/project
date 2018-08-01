@@ -1,0 +1,14 @@
+.wrapper{bottom: 0;}
+.content {position: relative;}
+.content .item {display: block; height: 240rpx; background: #fff; padding: 29rpx; box-shadow: 0 0 4rpx rgba(0,0,0,0.2); box-sizing: border-box;}
+.content .item .left {width:225rpx; height:175rpx; float: left; overflow: hidden; position: relative;}
+.content .item .left img {height:175rpx;}
+.content .item .category {position: absolute;height: 48rpx;overflow: hidden; background: url(http://img.yummy194.cn/images/collect_icon@1x.png) no-repeat 0 0 / 92rpx 48rpx; left:0; bottom:0; width:92rpx; padding-left:17rpx; font-size: 25rpx; color:#fff; line-height:48rpx;}
+
+.content .item .right {width: 446rpx; height:175rpx; float: right;}
+.content .item .right .t {height:88rpx; line-height: 44rpx; font-size: 29rpx; overflow: hidden;}
+.content .item .right .c {line-height: 44rpx; color:#999; height: 44rpx;font-size: 25rpx;}
+.content .item .right .b .span {display: inline-block; padding:0 13rpx; margin-left:17rpx; line-height: 42rpx; font-size:25rpx; background: #eee; border-radius: 8rpx;}
+.content .item .right .b {line-height: 44rpx; color:#999;font-size: 25rpx;}
+
+.content .btn {border:none; background: none; color: #b39851; position: absolute; right:29rpx; margin-top: -45rpx;font-size:26rpx;}

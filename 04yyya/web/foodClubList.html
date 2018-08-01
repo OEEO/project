@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/foodClub.css">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/plugins/jquery.touchwipe.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/foodClub.js"></script>
+</head>
+<body>
+<div class="header line">
+    <div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+    <div class="title">美食福利社</div>
+</div>
+    <div class="headerBlank"></div>
+    <div class="bodyHead"></div>
+    <!-- 课程列表开始 -->
+    <div class="pro_list course">
+        <div class="list_title"><span>课程<small>•courses</small></span><a href="javascript:jump('category', {category:2});">更多<i class="more"></i></a></div>
+        <ul class="product_list"></ul>
+    </div>
+    <!-- 活动列表开始 -->
+    <div class="pro_list activited">
+        <div class="list_title"><span>活动<small>•activity</small></span><a href="javascript:jump('category', {category:3});">更多<i class="more"></i></a></div>
+        <ul class="product_list"></ul>
+    </div>
+    <!-- 私房菜列表开始 -->
+    <div class="food homedisk_list">
+        <img class="foodbanner" src="images/foodbanner.png" />
+        <div class="list_title"><span>私房菜<small>•home disk</small></span><a href="javascript:jump('category', {category:-1});">更多<i class="more"></i></a></div>
+        <div class="plist"><div class="list"></div></div>
+    </div>
+    <!-- 厨房+列表开始 -->
+    <div class="food kitchen_list">
+        <div class="list_title"><span>厨房+<small>•kitchen</small></span><a href="javascript:jump('kitchenList');">更多<i class="more"></i></a></div>
+        <ul class="product_list"></ul>
+        <div class="plist"><div class="list"></div></div>
+    </div>
+    <!-- 商品列表开始 -->
+    <div class="pro_list goods">
+        <div class="list_title"><span>商品<small>•goods</small></span></div>
+        <div class="product_list"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<view class="raise-return"  style="{{ hiddenRiskTipsModal ? '' : 'height:100vh; overflow: hidden;' }}">
+    <view class="raise-return_header">
+        <view bindtap="riskTipsModalToggle">
+          <text>风险提示</text>
+          <image src="../../images/rise.png" />
+        </view>
+    </view>
+    <view class="raise-return_list">
+        <view class="raise-return_item" wx:for="{{ times }}" wx:for-item="item" wx:key="times_id">
+            <view class="l_title">
+                <text class="money">{{ item.price }}</text>
+                <text class="info">认筹{{ item.count }}人/{{ item.cal_count }}</text>
+            </view>
+            <view class="l_con">
+                <view class="raise-return-title">{{ item.title }}</view>
+                <text class="raise-return-content">{{ item.cal_content }}</text>
+            </view>
+            <view class="l_foot">
+                <text>项目结束{{ item.send_day }}天后发送</text>
+                <view 
+                    class="raise-return-nav_btn {{ item.status === 2 ? 'disabled' : '' }}" 
+                    data-status="{{item.status}}" data-times-id="{{item.times_id}}" data-times-price="{{item.price}}" 
+                    bindtap="gotoPayPage">
+                    {{ item.cal_status }}
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 风险提示对话框 -->
+     <view class="risk-tips-modal-wrap" wx:if="{{hiddenRiskTipsModal === false}}" >
+      <view class="risk-tips-modal">
+        <view class='risk-tips-modal-cancel-icon' bindtap="riskTipsModalToggle">
+          <icon type="cancel" color="#aaa" size="24"></icon>
+        </view>      
+        <scroll-view scroll-y class="risk-tips-modal-body" >
+          <view class='risk-tips-modal-header'>风险提示</view>
+          <view class='risk-tips-modal-content'>
+            <!-- 内容-->
+            <view class="raise-tag">关于项目</view>
+            <view class="wxParse-p">
+              该项目须在{{ end_time }}前达到{{ total }}元目标金额才算成功，否则已支持订单将取消；订单取消时已支付金额将自动退还到您的个人账号。
+            </view>
+            <view class="raise-tag">什么是众筹?</view>
+            <view class="wxParse-p">
+              人们不是在这里购买已经存在的商品——我们是在参与创意。实现创意并不总是那么容易，一些项目会完成得很精彩，还有一些会遇到想不到的问题————但请对它们保持耐心。
+            </view>
+            <view class="wxParse-p">
+              发起者对他们的项目负责。一旦你支持一个项目，你需要相信发起者可以很好的完成他的工作。你可以对发起者做一点研究，了解他们的经验、名声。支持者也要判断什么是值得支持的项目。一些项目并不会按照计划进行，所以众筹的项目发起者在这里详细记录他们的计划进展，但是没有事情是可以保证。当您支持一个项目，您需要记住这点。
+            </view>
+            <view class="raise-tag">如何找到我们?</view>
+            <view class="wxParse-p line-p">
+            <text>官方客服微信号：yami194</text>
+            <text>客服热线：020-23336323</text>
+            <text>官方邮箱：service@yami.ren</text>
+            </view>
+          </view>             
+        </scroll-view>
+        <view class='risk-tips-modal-confirm' bindtap="riskTipsModalToggle">知道了</view>  
+      </view>
+    </view> 
+</view>

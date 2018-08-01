@@ -1,0 +1,45 @@
+@charset "utf-8";
+.wrapper.page_invitationInfo{background: url("../images/bg.jpg") no-repeat 0 0 / 36rem auto;}
+.wrapper.page_invitationInfo p{margin: 0;}
+.page_invitationInfo .invitebox{width:25rem;padding-top: 11rem;margin: 0 auto;text-align: center;}
+.page_invitationInfo .headpic{border: 0.25rem solid rgba(255, 255, 255, 0.8);border-radius: 50%;height: 6rem; width: 6rem; }
+.page_invitationInfo .invitebox .intro {color: #b39851;font-size: 1.4rem;}
+.page_invitationInfo .invitebox .s {color: #333;font-size: 1.4rem;padding: 0.6rem 0 1.8rem;}
+.page_invitationInfo .invitebox .nickname{font-size: 1.2rem;padding-bottom: 0.8rem;padding-top: 0.2rem;}
+.page_invitationInfo .invitebox .invitebtns a{width: 7rem;text-align: center;color: #fff; border-radius: 0.2rem 0.2rem;background: #b39851;font-size: 1.3rem;display: inline-block;padding: 0.2rem 0;}
+.page_invitationInfo .invitebox .invitemap{margin-left: 0.6rem;}
+.page_invitationInfo .invitebox .ma{padding: 1rem 0;color: #b39851;font-size: 1.4rem;}
+.page_invitationInfo .invitebox .ma .ienter{width: 0.624rem;height: 1.252rem;display: inline-block;background: url("../images/ienter@2x.png") no-repeat 0 0 / 0.624rem auto;margin-left: 0.5rem;vertical-align: middle;}
+
+/*菜单弹出框*/
+
+#dialogBox.menuBox,#dialogBox.codeBox{margin-left: -14rem;background: none;border-radius: 0;padding:0;line-height: 1.8rem;}
+#dialogBox.menuBox .sbox,#dialogBox.codeBox .sbox{width: 28rem; max-height:30rem;border-radius: 0.2rem 0.2rem 0.5rem 0.5rem;}
+#dialogBox.codeBox .context{padding: 4.8rem 4.8rem 2rem; }
+#dialogBox.menuBox .context{padding:0 1.92rem 1.92rem;}
+
+#dialogBox.menuBox .context .menu_yellow{color:#b39851; font-size:1.3rem; letter-spacing:0rem;}
+#dialogBox.menuBox .context .me_li{color:#888; font-size:1.2rem; letter-spacing:0rem; padding:0rem 4rem;}
+#dialogBox.menuBox .context .menu_btitle{margin: 0 1.5rem;padding-top: 1.6rem;}
+#dialogBox.menuBox .context .menu_btitle span{display:inline-block; color:#b39851; font-size:1.152rem; letter-spacing:0rem; position:relative; position:relative;}#dialogBox.menuBox .context .menus .menu_btitle img{display:block; width:1.776rem; height:1.776rem;padding-bottom: 0.9rem;}
+
+#dialogBox.menuBox .context .menus{max-height: 20rem;overflow: auto;}
+#dialogBox.menuBox .context .menus .mtitle{font-size: 1.4rem;color: #b39851;}
+#dialogBox.menuBox .context .menus h5{margin: 0;padding: 0;}
+#dialogBox.menuBox .context .menus .h{}
+#dialogBox.menuBox .context .menus p{}
+#dialogBox.menuBox .context .dai{font-size: 1.3rem; color: #b39851;display: flex;justify-content: center;}
+#dialogBox.menuBox .context .tips-icon{width:1.776rem;background: url("../images/tips_icon@2x.png") no-repeat center center / 1.776rem 1.776rem;margin-right: 0.3rem;}
+
+
+#dialogBox.menuBox .btns::after,#dialogBox.codeBox .btns::after{display: none;}
+
+#dialogBox.menuBox .btns,#dialogBox.codeBox .btns{padding:0;background: #b39851;width: 28rem;border-radius: 0 0 0.2rem 0.2rem;}
+
+#dialogBox.menuBox .btns button.closeBtn,#dialogBox.codeBox .btns button.closeBtn{color: #fff;}
+
+#dialogBox.menuBox .btns button,#dialogBox.codeBox .btns button{height: 3.9rem;}
+#dialogBox.codeBox .view span{width: 16rem;height: 16rem; margin:0 auto;display: block;}
+#dialogBox.codeBox .view p{line-height:3rem; text-align: center; color:#b39851;}
+
+

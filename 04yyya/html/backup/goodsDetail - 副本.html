@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<title>商品详情</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<style>
+/************************ 商品详情 ************************/
+.proImg{position: relative;}
+.proImg img{width: 100%;display: block;}
+.actImg .index_btn,.proImg .index_btn{position: absolute;top: 10px;width: 34px;height: 34px;text-indent: -999px;overflow: hidden;right: 49px;background: url(../images/index_btn.png) no-repeat;background-size: 34px auto;}
+.actImg .share_btn,.proImg .share_btn{position: absolute;top: 10px;right: 10px;width: 34px;height: 34px;text-indent: -999px;overflow: hidden;background: url(../images/share_btn.png) no-repeat;background-size: 34px auto;}
+.proDesc{padding: 0 15px 65px;overflow: hidden;}
+.proTit{font-size: 18px;margin: 10px 0;  margin-top: 25px;}
+.rest{height: 24px;line-height: 24px;padding-left: 20px;background: url(../images/time2.png) no-repeat left center;background-size: 13px auto;color: #666;}
+.rest span{margin-left: 10px;color: #ffcc00;}
+.priceLine{font-size: 0;padding: 5px 0 15px;border-bottom: 1px solid #dbdbdb;}
+.priceLine .newP{font-size: 24px;color: #fc7508;}
+.priceLine .oldP{font-size: 12px;color: #999;margin-left: 5px;text-decoration: line-through;}
+.priceLine i{display: inline-block;width: 62px;height: 21px;line-height: 21px;text-align: center;font-size: 12px;color: #fff;background: #ccc;margin-left: 8px;}
+.sumTable{display: table;width: 100%;border-bottom: 1px solid #dbdbdb;height: 32px;line-height: 32px;padding: 0 5px;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.sumTable .cell{font-size: 12px;color: #666;display: table-cell;width: 37%;}
+.sumTable .cell span{color: #999;}
+.sumTable .cell:first-child{width: 26%;}
+.sumTable .cell:nth-child(2){text-align: center;}
+.sumTable .cell:last-child{text-align: right;}
+.proDesc_content img{width: 100%;}
+.proDesc .shop_list{margin: 0 -20px;}
+
+</style>
+</head>
+<body>
+<div class="content">
+
+	<div class="proImg">
+		<img src="" />
+		<a href="#" class="index_btn">首页</a>
+		<a href="javascript:;" class="share_btn" id="share_btn">分享</a>
+		<div class="leader"><a href="#"><img src="" alt=""></a></div>
+	</div>
+	
+<div class="proDesc">
+    <div class="proTit"></div>
+    <div class="rest">剩余时间<span id="lastBidTime"></span></div>
+    <div class="priceLine">
+        <span class="newP">￥200元</span>
+        <span class="oldP">￥600元</span>
+        <i>运费￥12元></i>
+     <!--   <?php //if($model["quota"]!=0){?><i>限购<?php echo $model["quota"]?>件</i><?php }?>-->
+    </div>
+    <div class="sumTable">
+        <div class="cell">剩余：<span>8</span>件</div>
+        <div class="cell">本期已售：<span>52</span></div>
+        <div class="cell">历史销量：<span>260</span></div>
+    </div>
+    <div class="proDesc_content">
+        <?php echo $model["description"]?>
+    </div>
+    <?php if($relTips){?>
+        <div class="descTit">相关活动</div>
+        <ul class="shop_list clearfix">
+            <?php foreach((array)$relTips as $key=>$tips){?>
+                <li>
+                    <div class="inner">
+                        <div class="imgbox"><a href="<?php echo $this->createUrl('person/tips',array('id'=>$tips['id'])) ?>"><img src="<?php echo $tips['album'] ?>" /></a></div>
+                        <div class="name" data-url="<?php echo $this->createUrl('person/tips',array('id'=>$tips['id'])) ?>"><?php echo $tips['title'] ?></div>
+                        <div class="shop_table">
+                            <div class="cell"><?php echo $tips['timeDiff'] ?></div>
+                            <div class="cell" style="width:10%;"></div>
+                        </div>
+                        <div class="shop_table">
+                            <div class="cell"><?php echo $tips['stock']==0?"已售罄":"剩余".$tips["stock"]."份" ?></div>
+                            <div class="cell"><span class="nowPrice"><?php echo sprintf("%.1f", ($tips['price'])) ?>元</span></div>
+                        </div>
+                    </div>
+                </li>
+
+            <?php }?>
+        </ul>
+    <?php }?>
+    <div class="descBtn" style="border-top:1px solid #dbdbdb;">
+        <div class="cell"><a href="<?php echo $this->createUrl('person/panicBuying')?>"><i></i>更多商品</a></div>
+        <div class="cell"><a href="javascript:void(0)" id="share_btn"><i></i>分享给好友</a></div>
+    </div>
+</div>
+<?php if($model["can_buy"] == "Y" && $model["surplus_stock"]>0){?>
+    <div class="actBottom">
+        <div class="cell"><span class="price"><?php echo $model["discount_price"] ?><em>元</em></span></div>
+        <div class="cell"><a href="javascript:void(0)" onclick="selNumNextFn()">立即购买</a></div>
+    </div>
+<?php }elseif($model["surplus_stock"]==0){?>
+    <div class="actBottom" style="padding: 0px;">
+        <div class="canNotBuy">已售罄</div>
+    </div>
+<?php }elseif($model["can_buy"]=="N"){?>
+    <div class="actBottom" style="padding: 0px;">
+        <div class="canNotBuy">未开放购买</div>
+    </div>
+<?php }?>
+<div id="mask"></div>
+
+<?php $this->renderPartial('/_include/footer')?>
+
+</div>
+</body>
+</html>

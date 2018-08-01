@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/goodsDetail.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/specialTips.js"></script>
+
+</head>
+<body>
+<style>
+.header{height:4.5rem;/*position:fixed;*/top:0;width:100%;border-bottom: 0.1rem solid #ddd;}
+
+.filterMenu{clear:both;height:3.6rem;margin:0;position:relative; border-bottom: 0.1rem solid #ccc;}
+.filterMenu>span{font-size:129%;margin-top:0.8rem;padding-right:4%;padding-left:3%;border-right:0.1rem solid #f7d557;height:2.2rem;color:#969696;display:inline-block;float: left;width:17%;text-align: center;background:url('./images/pulldown_L_normal@2x.png')no-repeat 80% 50%;background-size:0.6rem 0.4rem;}
+
+.img_item{position:absolute;top:4.2rem;min-height: 40rem;z-index:9;width:100%;visibility:hidden;display:none;}
+.img_item_bg{height:50rem;width:100%;position:absolute;z-index:10;/*background:#91918f; */background:#ccc; filter: Alpha(Opacity=75);  -moz-opacity:0.75; /* Moz + FF 透明度20%*/  opacity: 0.75; /* 支持CSS3的浏览器（FF 1.5也支持）透明度20%*/  }
+
+.triangle-up {top:0.7rem;margin-left:10.5%;z-index:999; /*css 绘制三角形*/    width: 0;  height: 0;  position: absolute;  border-left: 0.7rem solid transparent;  border-right:0.7rem solid transparent;  border-bottom: 0.9rem solid #fff;/*数值越大，三角形越高*/  clear: both;  }
+.nav_1,.nav_2,.nav_3,.nav_4{font-size:114%;padding:1.5rem 0;top:1.5rem;visibility:hidden;z-index:20;width:100%;position:absolute;background:rgba(255,255,255,1);}
+.nav_1 .mtags>span{margin-left:6%;margin-right:6%;width:19%;margin-bottom:1.5rem;height:2rem;line-height:2rem;float:left;text-align: center;display: inline-block;border-radius:1.5rem;}
+.nav_1 .mtags>span a{font-size:114%;color:#636363;}
+.nav_2>a,.nav_3>a,.nav_4>a{color:#636363;height:3rem;line-height:3rem;margin-bottom:1.5rem;text-align: center;display: block;float:left;width:25%;}
+
+</style>
+<div class="header">
+	<a class="turnBack" href="javascript:parent.page.back();"></a>
+	<div class="title">专题活动</div>
+	<div class="share" onclick="javascript:alert();"></div>
+	<a class="uCenter" href="#"></a>
+</div>
+<div class="filterMenu">
+		<span onclick="ChangeSelectMenuStyle(this,0)">标签</span>
+		<span onclick="ChangeSelectMenuStyle(this,1)">时间</span>
+		<span onclick="ChangeSelectMenuStyle(this,2)">区域</span>
+		<span style="border:none;" onclick="ChangeSelectMenuStyle(this,3);">价格</span>
+	<div class="clearfix"></div>
+	 <div class="img_item">
+        <div class="img_item_bg"></div>
+        <div class="triangle-up"></div>
+		<div class="nav_1">
+			<div class="mtags">
+				<span><a href="">饭局</a></span>
+				<span><a href="">松饼</a></span>
+				<span><a href="">糕点</a></span>
+				<span><a href="">饭局</a></span>
+				<span><a href="">松饼</a></span>
+				<span><a href="">糕点</a></span>
+			</div>
+		</div>
+		<div class="nav_2">
+				<a href="javascript:loadtips({page:1, week:null})">全部</a>
+				<a href="javascript:loadtips({page:1, week:1})">周一</a>
+				<a href="javascript:loadtips({page:1, week:2})">周二</a>
+				<a href="javascript:loadtips({page:1, week:3})">周三</a>
+				<a href="javascript:loadtips({page:1, week:4})">周四</a>
+				<a href="javascript:loadtips({page:1, week:5})">周五</a>
+				<a href="javascript:loadtips({page:1, week:6})">周六</a>
+				<a href="javascript:loadtips({page:1, week:0})">周日</a>
+		</div>
+		<div class="nav_3">
+			<a href="">区域</a>
+		</div>
+		<div class="nav_4">
+				<a href="javascript:loadtips({page:1, price:null})">全部</a>
+				<a href="javascript:loadtips({page:1, price:'0-300'})">0-300元</a>
+				<a href="javascript:loadtips({page:1, price:'300-600'})">300-600元</a>
+				<a href="javascript:loadtips({page:1, price:'600-'})">600以上</a>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<div class="content">
+	<img src="./images/actImg.jpg"></br>
+	<img src="./images/actImg.jpg"></br>
+	
+</div>
+<script>
+$(function(){
+/***************************************************************************************/
+	$('.img_item').css("height",screen.height);
+	var _top;
+	setTimeout(function (){   	
+		_top = $('.filterMenu').offset().top;
+		console.log("更新后的 Top 值"+_top);
+		console.log("筛选菜单的高度"+$('.filterMenu').height());
+	}, 1000);
+
+	/*屏幕滚动事件*/	
+	var cloneExist= 0;
+	$(window).scroll(function(){
+		console.log("筛选菜单的高度"+$('.filterMenu').height());
+		/********************判断滚动位置是否到了 .filterMenu 的位置************************/
+		if($(this).scrollTop()+$('.header').height()+2>_top&&_top){
+			if(!cloneExist){
+				var newfilterMenu = $('.filterMenu').clone(true,true).attr('id', 'filterMenu');
+				newfilterMenu.appendTo('body');
+				newfilterMenu.css({"border-bottom":"1px solid #ccc","position":"fixed","background":"#fff","width":"100%","top":$('.header').height(),"z-index":"998"})
+				cloneExist=1;
+			}
+		}else{
+			$('#filterMenu').remove();
+			cloneExist = 0;
+		}
+		console.log("筛选菜单的高度"+$('.filterMenu').height());
+		/*************判断添加的克隆菜单是否存在，从而决定 img_item 的显示位置*******************/							  
+		if(document.getElementById('filterMenu')&&cloneExist){//如果存在		
+			$('.img_item').css({"position":"fixed","top":$('.filterMenu').height()+$('.header').height()}).show();
+		}else{//如果不存在
+			$('.img_item').css({"position":"absolute","top":$('.filterMenu').height()}).hide();
+		}
+		
+		//滚动加载内容
+		if($(this).scrollTop() + $(this).height() > $(document).height() - 10 && !winScrollSock){
+			winScrollSock = true;
+			loadtips({page:Math.ceil($('#actList li').size() / 5 + 1)});
+		}
+	});
+/*屏幕滚动事件结束*/	
+
+	$('.ui-loader').remove();
+	
+});
+var winScrollSock = false;
+
+/*****************************************************************************************************/
+var preLiNum = -1;//值 -1 表示 隐藏
+function ChangeSelectMenuStyle(obj,num){	
+	var lis = $(obj).parent().children('span');
+		/*****************如果  筛选菜单的子菜单为显示状态，禁止 滚动事件******************/
+	var	whether_same = preLiNum;
+		preLiNum = num;
+		if(whether_same!=num||preLiNum==-1) {
+			
+			$('.img_item').css({"visibility":"visible","display":"block"});
+			$('.nav_1').css("visibility", "hidden");
+			$('.nav_2').css("visibility", "hidden");
+			$('.nav_3').css("visibility", "hidden");
+			$('.nav_4').css("visibility", "hidden");
+			lis.css("color", "#7d7d7d");
+			lis.css({"background":"url('images/pulldown_L_normal@2x.png')no-repeat 80% 50%","background-size":"0.6rem 0.4rem"});
+			lis.eq(num).css("color", "#fcd41a");
+			var triangle_up_left = 10.5+num*25+'%';
+			$('.triangle-up').css("margin-left",triangle_up_left);
+			lis.eq(num).css({"background":"url('images/pulldown_L_selected@2x.png')no-repeat 80% 50%","background-size":"0.6rem 0.4rem"});
+			switch (num) {
+				case 0:
+					$('.nav_1').css("visibility", "visible");
+					break;
+				case 1:
+					$('.nav_2').css("visibility", "visible");
+					break;
+				case 2:
+					$('.nav_3').css("visibility", "visible");
+					break;
+				case 3:
+					$('.nav_4').css("visibility", "visible");
+					break;
+				default:
+					break;
+					 }
+		}else{
+			$('.img_item').css({"visibility":"hidden","display":"none"});
+			$('.nav_1').css("visibility", "hidden");
+			$('.nav_2').css("visibility", "hidden");
+			$('.nav_3').css("visibility", "hidden");
+			$('.nav_4').css("visibility", "hidden");
+			lis.css("color", "#7d7d7d");
+			lis.eq(num).css({"background":"url('images/pulldown_L_normal@2x.png')no-repeat 80% 50%","background-size":"0.6rem 0.4rem"});
+			preLiNum =-1;
+		}
+	}//自定义函数结束
+/*****************************************************************************************************/
+$(document).click(function(){//系统的点击事件
+	if($('.img_item').css('visibility')=="visible"){
+		
+	//**判断点击的是否是标签外的空白部分，是的话，隐藏 标签列表**
+		$('.img_item_bg').click(function(e){
+			var _filterMenu;
+			if(document.getElementById('filterMenu')){
+				_filterMenu = $(document.getElementById('filterMenu'));
+			}else{_filterMenu =  $('.filterMenu'); }
+			var lis =_filterMenu.children('span');
+			console.log(lis);
+			$('.img_item').css({"visibility":"hidden","display":"none"});
+			$('.nav_1').css("visibility", "hidden");
+			$('.nav_2').css("visibility", "hidden");
+			$('.nav_3').css("visibility", "hidden");
+			$('.nav_4').css("visibility", "hidden");
+			lis.css({"color":"#7d7d7d","background":"url('images/pulldown_L_normal@2x.png')no-repeat 80% 50%","background-size":"0.6rem 0.4rem"}); 
+		});
+		
+		document.documentElement.style.overflow='hidden';
+		//	document.body.style.overflow='hidden';//因为绝对定位 不占用文档高度，会导致子菜单不显示 
+		document.ontouchmove = function(e){ e.preventDefault(); } //文档禁止 touchmove事件
+		 
+	}else{
+		document.documentElement.style.overflow='visible';
+/*		document.body.style.overflow='visible';*/
+		document.ontouchmove = function(e){  }; //文档允许 touchmove事件
+		preLiNum = -1;
+	}
+});
+
+/************************************/
+
+</script>
+</body>
+</html>

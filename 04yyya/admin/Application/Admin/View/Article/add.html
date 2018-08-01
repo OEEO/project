@@ -1,0 +1,134 @@
+<!--加载文本编辑器组件-->
+<link href="__RS__/jeditor/images/admin.css" rel="stylesheet" type="text/css" />
+<SCRIPT src="__RS__/jeditor/function/jquery.js" type="text/javascript"></SCRIPT>
+<script src="__RS__/jeditor/function/WebEdit.js" type="text/javascript"></script>
+<!--加载文本编辑器组件-->
+
+
+<p style="margin-left:20px;">
+    <!--button class="am-btn am-btn-warning" id="doc-confirm-toggle">添加文章</button-->
+</p>
+
+
+<!-- 添加文章 -->
+<form name="add" class="am-form am-modal-bd"  method="post"  enctype="multipart/form-data" onsubmit="return setcontent()">
+<!--div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm"-->
+    <div class="am-g">
+        <div class="am-u-sm-2  am-text-right">
+            标题：
+        </div>
+        <div class=" am-u-sm-10 am-text-left">
+            <input type="text" name="title" class="am-input-sm" placeholder="点击添加" required />
+        </div>
+    </div>
+
+    <div class="am-g">
+        <div class="am-u-sm-2  am-text-right">
+            内容：
+        </div>
+        <div class=" am-u-sm-10 am-text-left">
+            <div class="am-form-group">
+                <div class="webediter">
+                    <ul id="write_menu">
+                        <li><img src="__RS__/jeditor/images/bb_bold.gif" border="0" alt="加粗" onclick="fontb();" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_italic.gif" border="0" alt="斜体" onclick="fonti();" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_underline.gif" border="0" alt="下划线" onclick="fontu();" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_family.gif" border="0" alt="字体" onmouseover="$('#fontfamily').fadeIn('fast');" onmouseout="$('#fontfamily').hide();" />
+                            <ul id="fontfamily" class="font_list" onmouseover="$(this).show();" onmouseout="$(this).hide();">
+                                <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontFamily('宋体')">宋体</a></li>
+                                <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontFamily('黑体')">黑体</a></li>
+                                <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontFamily('仿宋')">仿宋</a></li>
+                                <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontFamily('楷体')">楷体</a></li>
+                            </ul></li>
+                        <li><img src="__RS__/jeditor/images/bb_size.gif" border="0" alt="字号" onmouseover="$('#fontsize').fadeIn('fast');" onmouseout="$('#fontsize').hide();" />
+                            <ul id="fontsize" class="font_list" onmouseover="$(this).show();" onmouseout="$(this).hide();">
+                                <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontSize(6)">超大</a></li>
+                                <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontSize(4)">大号</a></li>
+                                <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontSize(2)">中号</a></li>
+                                <li style="width:40px;height:14px;"><a href="javascript:;" onclick="FontSize(0)">小号</a></li>
+                            </ul></li>
+                        <li><img src="__RS__/jeditor/images/bb_color.gif" border="0" alt="字体色彩" onmouseover="$('#fontcolor').fadeIn('fast');" onmouseout="$('#fontcolor').hide();" />
+                            <ul id="fontcolor" class="font_list" style="width:48px;" onmouseover="$(this).show();" onmouseout="$(this).hide();">
+                                <li style="width:14px;height:14px; background-color:#000;"><a href="javascript:void(0);" onclick="FontColor('#000000')"></a></li>
+                                <li style="width:14px;height:14px; background-color:#999;"><a href="javascript:void(0);" onclick="FontColor('#999999')"></a></li>
+                                <li style="width:14px;height:14px; background-color:#f00;"><a href="javascript:void(0);" onclick="FontColor('#ff0000')"></a></li>
+                                <li style="width:14px;height:14px; background-color:#f60;"><a href="javascript:void(0);" onclick="FontColor('#ff6600')"></a></li>
+                                <li style="width:14px;height:14px; background-color:#fc0;"><a href="javascript:void(0);" onclick="FontColor('#ffcc00')"></a></li>
+                                <li style="width:14px;height:14px; background-color:#390;"><a href="javascript:void(0);" onclick="FontColor('#339900')"></a></li>
+                                <li style="width:14px;height:14px; background-color:#0cf;"><a href="javascript:void(0);" onclick="FontColor('#00ccff')"></a></li>
+                                <li style="width:14px;height:14px; background-color:#03f;"><a href="javascript:void(0);" onclick="FontColor('#0033ff')"></a></li>
+                                <li style="width:14px;height:14px; background-color:#f0f;"><a href="javascript:void(0);" onclick="FontColor('#ff00ff')"></a></li>
+                            </ul></li>
+                        <li><img src="__RS__/jeditor/images/bb_left.gif" border="0" alt="左对齐" onclick="fontleft()" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_center.gif" border="0" alt="居中" onclick="fontcenter()" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_right.gif" border="0" alt="右对齐" onclick="fontright()" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_indent.gif" border="0" alt="向里缩进" onclick="indent()" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_outdent.gif" border="0" alt="向外缩进" onclick="outdent()" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_unorderedlist.gif" border="0" alt="无序列表" onclick="unorderList();" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_orderedlist.gif" border="0" alt="有序列表" onclick="orderList();" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_url.gif" border="0" alt="加入链接" onclick="lineto();" /></li>
+                        <li><img src="__RS__/jeditor/images/bb_image.gif" border="0" alt="插入图片" onclick="image();" /></li>
+                        <li class="html"><img id="changeText" src="__RS__/jeditor/images/HTML.gif" border="0" alt="查看源码" onclick="change_write();" /></li>
+                    </ul>
+                    <div id="textDiv1" style="text-align: left">
+                        <div id="text" contenteditable="true"></div>
+                    </div>
+                    <div id="textDiv2">
+                        <textarea id="htmlText" name="content"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="am-g">
+        <div class="am-u-sm-2  am-text-right">
+            封面图：
+        </div>
+        <div class=" am-u-sm-10 am-text-left">
+            <input type="button" class="" id="" name="cover" onclick="upload(this)" value="上传图片" required/>
+            <img src="" id="preview" height="100px" width="100px" required/>
+            <input type="hidden" name="pic_id" value=""/>
+        </div>
+    </div>
+
+
+    <br/><br/>
+    <p><button type="submit" class="am-btn am-btn-default">提交</button></p>
+
+    <br/><br/>
+</form>
+<!--加载图片上传类-->
+<script src="__RS__/js/ajaxUpload.js"></script>
+<script>
+    function upload(e) {
+        $.ajaxUpload({
+            'url': '__CONTROLLER__/add.html',
+            'dataType': 'json',
+            'success': function (d) {
+                if (d.status == 1) {
+                    $(e).next().next().val(d.info.pic_id);
+                    $(e).next().next().html(d.info.pic_id);
+                    $(e).next().attr('src','http://img.test.yami.ren/' + d.info.filepath + d.info.filename);
+                    $(e).next().html('http://img.test.yami.ren/' + d.info.filepath + d.info.filename);
+                } else {
+                    alert(d.info);
+                }
+            }
+        });
+    }
+
+    //文本编辑器上传图片
+    $('#uploadBtn').click(function(){
+        upload(e);
+    })
+
+    function setcontent() {
+        var text = $('#text').html();
+        $('#htmlText').html(text);
+    }
+
+
+
+</script>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="js/public.js"></script>
+<style>
+/*p {background:#639;}*/
+</style>
+</head>
+<body>
+<!-- ------------------------------------------------------------------------- -->
+<div class="titleMenu">
+    <div class="turnBack"><a href="javascript:parent.page.back();"><img height="100%" src="images/arrow-left.png"></a></div>
+    <!-- 返回按钮-->
+	<div class="titleMenuTitle">活动详情 </div>
+<!--    <div class="turnBack"><a href="javascript:parent.page.back();" style="color:#fff;font-size:24px;font-weight:600;">&#60;</a></div>-->
+   	<div class="rightMenu"><a href="ucenter.html"><img height="100%" src="images/mine.png"></a></div>
+   	<!--页面右侧菜单 -->
+</div>
+<!-- -->
+<!--<div class="testMenu">
+
+    <div class="testturnBack"><a href="javascript:parent.page.back();"><img height="100%" src="images/arrow-left.png"></a></div>
+	<div class="testMenuTitle">活动详情 </div>
+   	<div class="testrightMenu"><a href="ucenter.html"><img height="100%" src="images/mine.png"></a></div>
+	<div class="testrightMenu2"><a href="ucenter.html"><img height="100%" src="images/mine.png"></a></div>
+</div>-->
+<style>
+	.testMenu{top:20px;height:25px;line-height:25px;position:absolute;width:100%;}
+	.testturnBack{height:100%;left:15px;position:absolute;}
+	.testMenuTitle{font-size:18px;text-align:center;}
+	.testMenu a{height:inherit;}
+	.testrightMenu{top:5%;height:90%;right:10px;position:absolute;}
+	.testrightMenu2{top:5%;height:90%;right:35px;position:absolute;}
+</style>
+
+<div class="body_top">
+    <img class="pic_top" src="uploads/20151012/561ba6858a844.jpg">
+    <center><div class="imgPortrait"><img width="100%" src="uploads/member/Heineken@yami.COM/55b300c4b73fc.JPG" /></div></center>
+    <div>
+        <ul class="activityInfo">
+			<li class="userNm">Sammi</li>
+            <li>
+                <ul class="StarsGrade">
+					<li><img src="images/star_on.png"></li>
+					<li><img src="images/star_on.png"></li>
+					<li><img src="images/star_on.png"></li>
+					<li><img src="images/star_on.png"></li>
+					<li><img src="images/star.png"></li>
+				</ul>
+            </li>
+            <li class="activityIntroduction">习主席法国津巴布韦南非行国津巴布韦南非行漫评字经</li>
+            <li class="userIntroduction">剩余时间 <i>23:59:00</i></li>
+            <li>
+				 <div class="tags" >
+					 <ul>
+						 <li>饭局</li>
+						 <li>松饼</li>
+						 <li>糕点</li>
+					 </ul>
+                 </div>
+             </li>
+             <div class="courseOrderInf">
+                <ul>
+       				 <div class="liBetweens"></div>
+                     <li><a href=""><img src="images/remain_24x24@2x.png"><small>剩余30份</small></a></li>
+       				 <div class="liBetweens"></div>
+                     <li><a href=""><img src="images/time2.png"><small>09.01 - 09.20</small><i>&#62;</i><span>课程表</span></a></li>
+       				 <div class="liBetweens"></div>
+                     <li class="courseAddress">
+					 	<a href=""><img src="images/location_24x24.png">
+							<small>广州越秀区五羊新城广州越秀区五羊新城广州越秀区五羊新城</small>
+							<i>&#62;</i>	
+					 	</a>
+					</li>
+                 </ul>
+              </div>
+        </ul>
+	</div>
+</div>
+<style>
+    .clear{clear: both;}
+    .courseOrderInf .liBetweens{width:100%;height: 2px;background: #e0e0e0;margin:0 auto;}
+    .body_top{display:block;margin-left: auto; margin-right: auto;}
+    .pic_top{width:100%;}
+    .imgPortrait{margin-top:-35px;width:65px;height:65px;border:3px solid #fdeb7b;border-radius: 50%;display: inline-block;overflow:hidden;}/*用户头像*/
+    .StarsGrade{margin-top:6px;}
+    .StarsGrade li{padding:0 3px;display: inline-block;}/*星级评价*/
+    .StarsGrade li img{width:14px;height:14px;}/*星级评价*/
+    .activityInfo{display: block;width: 90%;margin: 0 auto;}
+    .activityInfo li{text-align:center;margin: 0 auto;}
+    .activityInfo .userNm{font-size: 18px;color: #636363;margin-top: 5px;}/*用户名*/
+    .activityInfo .activityIntroduction{font-size: 18px;color:#3d3d3d;margin-top:15px;width:85%;font-weight: 500;}/*活动介绍*/
+    .activityInfo .userIntroduction{margin-top:15px;font-size: 16px;color:#b8b8b8;}/*用户介绍*/
+
+    .tags>ul{margin:0 auto;margin-top:15px;height:29px;width:100%;text-align: center;}/*活动的标签*/
+    /*.activitiesTags>ul>li{font-size:12px;color:#a8a8a8;margin-right:5px;height:18px;line-height:18px;text-align:center;width:35px;display:inline-block;background:url('images/add/images/tag_bg.png') no-repeat;background-size: 100% 100%;}*/
+
+    .activityInfo .courseOrderInf>ul{margin-top:1px;}
+    .activityInfo .courseOrderInf>ul>li{font-size:16px;color:#969696;margin:0 10px;text-align: left;height:45px;line-height:45px;display: block;}
+    .activityInfo .courseOrderInf>ul>li a{color:#969696;display: block;}
+    .activityInfo .courseOrderInf>ul>li a>small{font-size:16px;margin-left:10px;}
+    .activityInfo .courseOrderInf>ul>li span{float: right;margin-right: 2%;}/*课程表*/
+    .activityInfo .courseOrderInf>ul>li img{margin-top:12px;width: 16px;height: 16px;}
+    .activityInfo .courseOrderInf>ul>li i{float: right;margin-right: 2%;}
+    .activityInfo .courseOrderInf>ul .courseAddress{height:60px;line-height: 22px;}
+</style>
+<div class="the_blank" style="height:15px;margin-top:15px;background:#ebecf0;"></div>
+<!-- ---------------------------------------------------------------- -->
+<div class="starInfo">
+    <div class="starInfoMenu">
+        <ul>
+			<li>达人</li>
+			<li>菜单</li>
+			<li>须知</li>
+        </ul>
+    </div>
+    <div class="startPicBg" style="margin:2px auto;height:40px;background: url('images/startPicBg.png')repeat-x;background-size:auto 100%;"></div>
+    <div style="width:90%;margin:0 auto;">
+		<div class="startPic"><img src="uploads/20151012/561ba6858a844.jpg"></div>
+		<p>li本来用于做列表的，正如P用于段落，当然你用DIV通过定义CSS也完全可以模拟出li、p等标签。
+	正如你所说"用DIV基本上什么都能实现了"，试下如果去了CSS样式你的网页是什么样子的。列表用LI，即使没有CSS支持，还是列表的形式。</p>
+		 <div class="startPicShow"><img src="uploads/20151012/561ba6858a844.jpg"></div>
+		 <div class="contactStar">联系达人</div>
+     </div>
+</div>
+<style>
+    .starInfo {margin:0 auto;width:100%;}
+    .starInfo img{width:100%;}
+    .starInfo .starInfoMenu>ul{height:50px;margin:0 auto;width:100%;}
+    .starInfo .starInfoMenu>ul>li{color:#969696;font-size:20px;height:50px;line-height:50px;float:left;text-align:center;margin:0 7%;width:19%;font-weight:500;}
+    .starInfo p{color:#969696;margin:10px auto;font-size: 16px;line-height: 28px;}
+    .starInfo .contactStar{color:#3d3d3d;display:block;width: 140px;height: 40px;line-height: 40px;text-align: center;border:2px solid #404040;margin:30px auto;font-size: 20px; }
+
+    /*
+    .starInfo .starInfoMenu>ul{width:100%;}
+    .starInfo .starInfoMenu>ul>li{width:100%;}*/
+</style>
+<script>
+var screenWidth = $(window).width();
+var myWidth = screenWidth+'px';
+$('.titleMenu').css("width",myWidth);
+
+    var starInfoMenuLis = $('.starInfoMenu>ul').find('li');
+    starInfoMenuLis.eq(0).css({"border-bottom":"3px solid #f9cc1e","color":"#f9cc1e"});
+    starInfoMenuLis.click(function(){
+         starInfoMenuLis.css({"border-bottom":"none","color":"#969696"});
+
+        starInfoMenuLis.eq($(this).index()).css({"border-bottom":"3px solid #f9cc1e","color":"#f9cc1e"});
+       // starInfoMenuLis.eq($(this).index()).slide().css("border-bottom","none");
+    });
+    $('.contactStar').click(function(){
+    $('.contactStar').css("color","#f9cc1e");
+    });
+</script>
+<div class="the_blank" style="height:15px;margin-top:15px;background:#ebecf0;"></div>
+<!-- ---------------------------------------------------------------- -->
+<div class="starRecommend">
+	<div class="item_title">
+		<a href=""><img src="images/yellowline.png"/><span>达人推荐</span><img src="images/yellowline.png"/></a>
+	</div>
+	<div class="starRecommendAvtivities">
+		<ul>
+			<li>
+				<div class="RecommendDetailImg"><img src="uploads/20151012/561ba6858a844.jpg"></div>
+					<p class="RecommendDetail">
+					相关活动相关活动相关活关活动相关活动相关活关活动相关活关活动相关活相关活动关活动相关活关活动相关活动相关活关活动相关活动相关活关活动相
+					</p>
+					<span>剩余15份</span>
+					<div class="recommendAvtivitiesPirce">29.80<small>元</small></div>
+			</li>
+			
+			<li>
+				<div class="RecommendDetailImg"><img src="uploads/20151012/561ba6858a844.jpg"></div>
+					<p class="RecommendDetail">
+					相关活动相关活动相关活关活动相关活动相关活关活动相关活关活动相关活相关活动关活动相关活关活动相关活动相关活关活动相关活动相关活关活动相
+					</p>
+					<span>剩余15份</span>
+					<div class="recommendAvtivitiesPirce">29.80<small>元</small></div>
+			</li>
+			
+			<li>
+				<div class="RecommendDetailImg"><img src="uploads/20151012/561ba6858a844.jpg"></div>
+					<p class="RecommendDetail">
+					相关活动相关活动相关活关活动相关活动相关活关活动相关活关活动相关活相关活动关活动相关活关活动相关活动相关活关活动相关活动相关活关活动相
+					</p>
+					<span>剩余15份</span>
+					<div class="recommendAvtivitiesPirce">29.80<small>元</small></div>
+			</li>
+
+		</ul>
+	</div>
+</div>
+<div class="the_blank" style="height:15px;margin-top:15px;background:#ebecf0;"></div>
+
+<div class = "priceMenuBlank"></div>
+<div class = "priceMenu">
+	<ul>
+		<li>175 <small>元</small></li>
+		<li><a href="confirmBuy.html">提交订单</a></li>
+	</ul>
+</div>
+
+
+<style>
+.priceMenuBlank{clear:both;width:100%;height:38px;position:static;bottom:0;}
+.priceMenu{position:fixed;bottom:0;width:100%;}
+.priceMenu>ul{height:100%;width:100%;}
+.priceMenu>ul>li:nth-child(1){color:#585858;font-size:18px;background:#fff;text-align:center;float:left;width:45%;height:38px;line-height:38px;}
+.priceMenu>ul>li:nth-child(1) small{font-size:12px;}
+.priceMenu>ul>li:nth-child(2) a{font-size:18px;color:#fff;background:#fad74b;text-align:center;float:left;width:55%;height:38px;line-height:38px;}
+/*
+     .item_title {margin-top:10px;}
+     .item_title p{}
+     .item_title img{margin: -2px auto;}
+     */
+     .starRecommend{margin:0 auto;width:96%;}
+
+     .starRecommend .starRecommendAvtivities>ul{clear:both;width:100%;}
+     .starRecommend .starRecommendAvtivities>ul>li{margin:15px 2%;margin-top:0;border:1px solid #ccc;float:left;width:45%;position: relative;}
+     .starRecommend .starRecommendAvtivities>ul>li p{font-size:16px;color:#585858;overflow:hidden;line-height:20px;height:40px;margin:10px auto;margin-bottom:20px;width:96%;}
+     .starRecommend .starRecommendAvtivities>ul>li span{clear:both;font-size: 14px;color:#969696;margin-left: 2%;}
+    /* .starRecommend .starRecommendAvtivities .RecommendDetailImg{}/*设置 图片 容器 */
+     .starRecommend .starRecommendAvtivities img{width:100%;}/*图片铺满容器*/
+     .starRecommend .starRecommendAvtivities>ul>li .recommendAvtivitiesPirce{font-size:24px;right:5px;bottom:10px;color:#fad74b;position: absolute;}
+
+</style>
+<script>
+    var screenWidth = $(window).width();/*获取设备宽度*/
+    //var testWidth = $('.RecommendDetailImg>img').width();
+    var liHeight = $('.RecommendDetailImg>img').width()*0.66+140+'px';
+    //$('.starRecommendAvtivities>ul>li').css("height",screenWidth*0.65+'px');
+    $('.starRecommendAvtivities>ul>li').css("height",liHeight);
+
+</script>
+
+<!-- ----------------------------------------------------------------------------- -->
+</body>
+</html>

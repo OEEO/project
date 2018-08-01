@@ -1,0 +1,19 @@
+@charset "utf-8";
+/******************************/
+.page_abc {background:#f5f5f5;}
+.page_abc .content center{padding:4rem 0 0rem;}
+.page_abc .content center>div{font-size:1.5rem;}
+.page_abc .content center .a{margin:2.4rem auto 2.4rem auto; color:#BBBBBB;}
+.page_abc .content center .b{margin:0.2rem auto; color:#333;}
+.page_abc .content center .c{color:#333;}
+.page_abc .content center .yami{width:10rem;height:auto;}
+.page_abc .content .item {background:#ffffff; margin-top:1rem; width:100%;}
+.page_abc .content .item .Betweens{height:0.1rem; margin-left:1.6rem; border-top:solid #eeeeee 0.1rem;}
+.page_abc .content .item a .dayu{width:0.8rem; height:1.4rem; background:url(../images/my_next_icon@3x.png) 0 0 / 0.8rem 1.4rem no-repeat; float:right; position:absolute; right:2rem; top:1.7rem;}
+.page_abc .content a {font-size:1.5rem; display:block;height:5rem; line-height:5rem;  padding-left:1.8rem; position:relative; color:#333;}
+.page_abc .item .arrowRight{width:0.9rem;height:0.9rem;border-color:#636363;border-width:0.12rem;}/*右侧的 箭头 样式*/
+.page_abc .content a span{font-size:1.4rem;color:#888888;float:right;margin-right:1.6rem;}
+.page_abc .center_border{border-bottom:0.1rem solid #eee;}
+.page_abc .content center.smaill_font>div{font-size:1.2rem; color:#CCC;}
+.page_abc .content center.smaill_font{padding-top:14rem; padding-bottom:2rem;}
+/***********结束************/

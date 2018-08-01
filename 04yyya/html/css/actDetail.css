@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*页面头部的悬浮菜单*/
+.header {background:#fff;}
+.header a {font-size:2.4rem; font-weight:bold; position:absolute; left:1rem; top:0.5rem;}
+.header .title {text-align:center; font-size:2rem; line-height:4.5rem;}
+/**/
+
+.courseOrderInf .liBetweens{width:100%;height: 2px;background: #e0e0e0;margin:0 auto;}
+
+/**页面顶部的设置**/
+.picTop img{width:100%;height:25.875rem;}/*头部图片*/
+.imgPortrait{/*display:block;margin:0 auto;*/margin-top:-3.75rem;width:6.75rem;height:6.75rem;border-radius: 50%;overflow:hidden;border:0.3rem solid #fdeb7b;}/*用户头像*/
+	
+.activityInfo{display: block;width: 90%;margin: 0 auto;}/*活动详情的整个一块*/
+.activityInfo li{text-align:center;margin: 0 auto;}
+
+.activityInfo .userNm{font-size: 1.45rem;color: #636363;/*margin-top:0.67rem;*/}/*用户名*/
+.StarsGrade{margin-top:0.1rem;}/*星级评价*/
+.StarsGrade li{padding:0 0.1rem;display: inline-block;}/*星级评价*/
+.StarsGrade li img{width:1rem;height:1rem;}/*星级评价 的星星  */
+
+.activityInfo .activityTitle{font-size: 1.45rem;color:#3d3d3d;margin-top:0.1rem;width:85%;font-weight: 500;line-height:2rem;}/*活动标题*/
+.activityInfo .activityIntro{clor:#ccc;margin-top:0.1rem;}/*活动简介*/
+.activityInfo .actLastTime{margin-top:0.5rem;font-size: 1.25rem;color:#b8b8b8;}/*剩余时间*/
+
+/*.tags>ul{width:100%;text-align: center;}/*活动的标签*/
+
+.activityInfo .courseOrderInf>ul{margin-top:1px;}/*活动信息列表*/
+.activityInfo .courseOrderInf>ul>li{font-size:1.25rem;color:#969696;margin:0 10px;text-align: left;height:4.4rem;line-height:4.4rem;display: block;}
+.activityInfo .courseOrderInf>ul>li a{margin-left:2.5rem;color:#969696;}/*活动信息字体颜色*/
+.activityInfo .courseOrderInf>ul>li span{float: right;margin-right: 2rem;}/*课程表*/
+.activityInfo .courseOrderInf>ul>li span:after{content:'>';position:absolute; font-family:'黑体';width:0.5rem;height:0.5rem;float: right;margin-left: 1rem;}/*箭头*/
+.activityInfo .courseOrderInf>ul>li img{position:absolute;margin-top:1.5rem;width: 1.4rem;height: 1.4rem;}/*活动信息左侧图标*/
+.activityInfo .courseOrderInf>ul .courseAddress{height:5rem;line-height: 2rem;}
+.activityInfo .courseOrderInf>ul .courseAddress a{display:block;margin-top:1rem;width:85%;}
+.activityInfo .courseOrderInf>ul .courseAddress span{margin-top:-2.6rem;}
+/**活动详情结束**/
+
+/**************页面中部的三个点击菜单 部分******************/
+.starInfo {margin:0 auto;width:100%;}
+.starInfo img{width:100%;}
+.starInfo .starInfoMenu>ul{height:4rem;margin:0 auto;width:100%;}
+.starInfo .starInfoMenu>ul>li{color:#969696;font-size:1.6rem;height:4rem;line-height:4rem;float:left;text-align:center;margin:0 7%;width:19%;font-weight:500;}
+.starInfo .startPicBg{margin:0 auto;margin-top:0.19rem;height:2.25rem;
+FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#b8c4cb,endColorStr=red); /*IE 6 7 8*/ 
+background: -ms-linear-gradient(top, #f1ecf0,  #fff);        /* IE 10 */
+background:-moz-linear-gradient(top, #f1ecf0,  #fff);/*火狐*/ 
+background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#f1ecf0), to(#fff));/*谷歌*/ 
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1ecf0), to(#fff));      /* Safari 4-5, Chrome 1-9*/
+background: -webkit-linear-gradient(top, #f1ecf0, #fff);   /*Safari5.1 Chrome 10+*/
+background: -o-linear-gradient(top, #f1ecf0, #fff);  /*Opera 11.10+*/
+}/*颜色渐变*/
+
+.starInfo p{color:#969696;margin:1rem auto;font-size:1.3rem;line-height: 2.2rem;}
+.starInfo .contactStar>a{color:#3d3d3d;display:block;width: 10.125rem;height:3.375rem;line-height: 3.375rem;text-align: center;border:0.2rem solid #404040;margin:1.68rem auto;font-size: 1.4rem; }
+/********************************/
+
+/* 明星推荐*/
+.starRecommend .starRecommendAvtivities>ul{clear:both;width:100%;}
+.starRecommend .starRecommendAvtivities>ul>li{margin:1rem 2%;border:0.1rem solid #ccc;float:left;width:44%;height:21.825rem;position: relative;}
+.starRecommend .starRecommendAvtivities>ul>li p{font-size:1.35rem;color:#585858;line-height:1.8rem;margin:1rem 0.5rem;}/*Title*/
+.starRecommend .starRecommendAvtivities>ul>li span{clear:both;font-size: 1.2rem;color:#969696;margin-left: 0.5rem;}/*Last orders*/
+.starRecommend .starRecommendAvtivities .RecommendDetailImg{width:100%;height:11.25rem;}/*设置 图片 容器 */
+.starRecommend .starRecommendAvtivities img{width:100%;height:100%;}/*图片铺满容器*/
+.starRecommend .starRecommendAvtivities>ul>li .recommendAvtivitiesPirce{font-size:2.5rem;right:0.9rem;bottom:1rem;color:#fad74b;position: absolute;}
+
+/********************************/
+
+/**************页面底部的价格浮动标签******************/
+.priceMenuBlank{clear:both;width:100%;height:3.8rem;position:static;bottom:0;}
+.priceMenu{position:fixed;bottom:0;width:100%;border-top:#fc0 solid 0.2rem;height:3.8rem;}
+.priceMenu>ul{height:100%;width:100%;}
+.priceMenu>ul>li{height:3.8rem;line-height:3.8rem;}
+.priceMenu>ul>li:nth-child(1){color:#585858;font-size:1.5rem;background:#fff;text-align:center;float:left;width:45%;}
+.priceMenu>ul>li:nth-child(1) small{font-size:1rem;}
+.priceMenu>ul>li:nth-child(2) a{font-size:1.5rem;color:#fff;background:#fad74b;text-align:center;float:left;width:55%;}
+/********************************/

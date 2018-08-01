@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+.page_themeList .userMsg {position: absolute; top: 0.1rem; right: 0.3rem; width:4.5rem; height:4.3rem; line-height: 4.3rem; color: #333; background:url('../images/mine.png') no-repeat center center / 1.8rem;}
+
+/**********设置图片轮播 默认占用的高度*******8*/
+.page_themeList .pageHead {height:18rem; width:36rem; background:#ccc;}
+/***************/
+/*******饭局列表*******/
+.page_themeList .pro_list{display:block; margin-top:4.6rem;}
+.page_themeList .pro_list>ul{width:100%; background-color:#fff;}
+.page_themeList .pro_list>ul>li{width:36rem;position:relative;}
+.page_themeList .pro_list>ul>li img{width:36rem; height:auto;}
+.page_themeList .pro_list>ul>li .t_time{width:100%; line-height:2rem; color:#000; font-size:1.2rem; text-indent: -9999px; background: url("../images/triangle.png") no-repeat center center / 1.3rem;}
+.page_themeList .pro_list>ul>li .t_titl{color:#000; font-size:1.4rem;}
+.page_themeList .pro_list>ul>li .t_subtitl{color:#aaa; font-size:1.2rem;padding-top: 0.8rem;}
+.page_themeList .coveres{padding: 1rem 1.6rem 3.3rem 1.6rem;text-align: center;}
+
+.page_themeList .product_list .no_msgs{width:36rem; background:#f5f5f5; position:absolute; top:4.5rem; left:0; right:0; bottom:0rem;}
+.page_themeList .product_list .no_msgs img{width:9rem; height:9rem; margin:8rem 13.5rem auto 13.5rem;}
+.page_themeList .product_list .no_msgs span{display:block; width:36rem; font-size:1.2rem; text-align:center; color:#969696; margin-top:0rem;}

@@ -1,0 +1,39 @@
+.clearfix {
+    &:after {
+        display: block;
+        content: '';
+        height: 0;
+        clear: both;
+    }
+}
+
+.last-child {
+    margin-right: 0!important;
+    padding-right: 0!important;
+}
+
+.last-child-bottom {
+    padding-bottom: 0!important;
+    margin-bottom: 0!important;
+}
+
+#no-info-tip,
+#no-list-tip {
+    height: 50px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#main {
+    .main-header {
+        width: 100%;
+        min-width: 1200px;
+        height: 400px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,.21);
+    }
+    .main-content {
+        width: 1200px;
+        margin: 0 auto;
+    }
+}

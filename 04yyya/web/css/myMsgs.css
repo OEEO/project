@@ -1,0 +1,33 @@
+@charset "utf-8";
+/******************************/
+
+.page_myMsgs .allRead{font-size:1.2rem;color:#585858;position:absolute;right:1rem;top:1.6rem;}
+/******************************/
+.page_myMsgs .content {margin-top:4.5rem;}
+.page_myMsgs .msgList {height:100%; letter-spacing:0;}
+.page_myMsgs .msgList .item{display:block;position:relative;padding:0.8rem 0rem 0.8rem 1.8rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;/*background:url('../images/redPoint@2x.png')no-repeat 0.4rem 2.4rem;background-size:0.58rem;*/}
+.page_myMsgs .msgList .item.customer {display: none;}
+/**************/
+.page_myMsgs .msgList .User_Img{margin-top:0;;margin-right:1.2rem; position:relative;}
+.page_myMsgs .msgList .User_Img .imgPortrait{width:3.9rem;height:3.9rem; border:none;}
+.page_myMsgs .msgList .User_Img .num_img{width:1.4rem;height:1.4rem; line-height:1.4rem; display:block; font-size:0.77rem; text-align:center; color:#FFF; background-color:#ff3f3f; position:absolute; right:-0.3rem; top:-0.2rem; border-radius:50%;}
+
+.page_myMsgs .msgList .User_Conten{float:right;width:29rem; padding-bottom:0.6rem; border-bottom:solid #eee 0.1rem;}
+.page_myMsgs .msgList .User_Conten .Contens{float:left; width:22rem;}
+.page_myMsgs .msgList .User_Conten .Contens .qUserName{font-size:1.5rem;color:#414141;}
+.page_myMsgs .msgList .User_Conten .Contens .msgDetail{font-size:1.2rem; width:100%; height:1.6rem; line-height:1.6rem;letter-spacing:0.1rem;color:#B8B7B7;white-space:nowrap; overflow: hidden; text-overflow:ellipsis;/*padding:1rem 0.8rem;background:#f2f1f7;*/position:relative;margin:0.4rem auto;}
+.page_myMsgs .msgList .User_Conten .Contens .msgDetail span{display:inline-block; overflow:hidden;}
+.page_myMsgs .msgList .User_Conten .Contens .msgDetail .one_title{width:21rem; white-space:nowrap; text-overflow:ellipsis;}
+.page_myMsgs .msgList .User_Conten .commitTime{font-size:1.3rem;color:#B8B7B7; margin-top:2.2rem; margin-right:1.2rem; float:right;}
+
+.page_myMsgs .msgList .User_Conten .User_right{float:right; padding:1.4rem;}
+.page_myMsgs .msgList .User_Conten .User_right .dayu{width:0.9rem; height:1.5rem;}
+
+.page_myMsgs .msgList .no_msgs{width:36rem; position:absolute; top:4.5rem; left:0rem; right:0rem; bottom:0rem; background:#f5f5f5;}
+.page_myMsgs .msgList .no_msgs img{width:10rem; height:10rem; margin:8rem 13rem auto 13rem;}
+.page_myMsgs .msgList .no_msgs span{display:block; width:36rem; font-size:1.2rem; text-align:center; color:#969696; margin-top:2rem;}
+
+.page_myMsgs .msgList .the_end{background:#fff none repeat scroll 0 0;clear: both;height: 1.2rem;margin: 0;padding: 0;}
+
+
+/***********结束***********/

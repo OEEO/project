@@ -1,0 +1,33 @@
+
+<form class="am-g">
+    <sapn>状态</sapn>
+    <select name="status" id="search_status" style="width: 100px">
+        <option value="1" <?php if($search_status == 1)echo "selected='selected'";?>>正常状态</option>
+        <option value="2" <?php if($search_status == 2)echo "selected='selected'";?>>下架状态</option>
+    </select>
+    &nbsp;&nbsp;
+    <sapn>城市</sapn>
+    <select name="citys" id="search_citys" style="width: 100px">
+        <option value="">请选择</option>
+
+        <foreach name="citys" item="row" key="key">
+            <?php if($key == $search_citys){ ?>
+            <option value="{$key}" selected='selected'>{$row}</option>
+            <?php }else{ ?>
+            <option value="{$key}" >{$row}</option>
+            <?php } ?>
+        </foreach>
+        <!--<option value="224" <?php if($search_citys == 224)echo "selected='selected'";?>>广州</option>
+        <option value="234" <?php if($search_citys == 234)echo "selected='selected'";?>>深圳</option>-->
+    </select>
+    <input type="text" name="title" id="search_title" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="活动标题模糊查询" value="{$search_title}"/>
+    <button class="am-btn am-btn--success" id="search" type="submit">提交</button>
+</form>
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+
+<script>
+    $('.am-modal').appendTo('body');
+
+
+</script>

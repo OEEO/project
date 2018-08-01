@@ -1,0 +1,49 @@
+<scroll-view class="msgList" scroll-y="true" scroll-top="{{scrollTop}}" scroll-into-view="{{scrollId}}" bindscrolltoupper="upper">
+    <block wx:for="{{msgdetail}}" wx:key="msgdetail" >
+        <view class="item" id = "{{index == 9 ? 'toview' : ''}}">
+            <view class="timess">{{item.datetime}}</view> 
+            <view class="bottom_t">  
+                <view class="User_Img">      
+                    <image class="imgPortrait" src="{{item.member_path}}"/>  
+                </view>  
+                <view class="User_Conten">   
+                    <view class="jiao"></view>      
+                    <view class="Contens">{{item.content}}</view>
+                    <block wx:if="{{item.relation != ''}}">
+                        <view wx:if="{{item.type == 3}}">
+                            <navigator class="top" url="../order/detail?order_id={{item.type_id}}">     
+                                <view class="User_right">          
+                                    <image class="dayu" src="{{item.relation.path}}"/>          
+                                    <view class="t_right">           
+                                        <view class="titles">{{item.relation.title}}</view>                     
+                                    </view>      
+                                </view>  
+                            </navigator>  
+                        </view>
+                        <view wx:elif="{{item.type == 4}}">
+                            <navigator class="top" url="../tips/detail?tips_id={{item.type_id}}">
+                                <view class="User_right">          
+                                    <image class="dayu" src="{{item.relation.path}}"/>          
+                                    <view class="t_right">           
+                                        <view class="titles">{{item.relation.title}}</view>                     
+                                    </view>      
+                                </view>  
+                            </navigator>  
+                        </view>
+                        <view wx:elif="{{item.type == 5}}">
+                            <navigator class="top" url="{{item.relation.url == '' ? '../theme/detail?theme_id={{item.type_id}}' : '{{item.relation.url}}'}}">  
+                                <view class="User_right">          
+                                    <image class="dayu" src="{{item.relation.path}}"/>          
+                                    <view class="t_right">           
+                                        <view class="titles">{{item.relation.title}}</view>                     
+                                    </view>      
+                                </view>  
+                            </navigator>      
+                        </view>
+                    </block>
+                </view>  
+            </view>
+        </view>
+    </block>
+    <view class="the_blankes"></view>
+</scroll-view>

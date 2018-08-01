@@ -1,0 +1,29 @@
+.top{width:688rpx; height:83rpx; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; margin:52rpx 31rpx;}
+.top .catch{width:531rpx; height:65rpx; line-height:65rpx; background:#fff; font-size:29rpx; padding:4rpx 0;  border-radius:4%;}
+.top .catch input{display:block; width:500rpx; height:65rpx; line-height:65rpx; background:#fff; border:none; padding-left:31rpx; color:#999; outline: 0 none;}
+.top .serch_buttom{width:135rpx; height:73rpx; line-height:73rpx; background:#b39851; margin-left:21rpx; color:#FFF; font-size:33rpx; text-align:center; border-radius:5%;}
+
+.content{margin-bottom:67rpx;}
+.content.empty {min-height:417rpx; background: url('http://img.yummy194.cn/images/coupon_noon_icon@2x.png') no-repeat center center / 208rpx 208rpx;box-sizing: border-box; color: #b2b2b2; font-size: 25rpx; min-height: 417rpx; padding-top: 354rpx; text-align: center;}
+
+.content .canUser{width:667rpx; margin:42rpx auto 21rpx auto; color:#888888; font-size:29rpx;text-align: center;}
+.content .canUser .c_border{display:inline-block;width:167rpx; margin:10rpx 21rpx; color:#cccccc; border-bottom:1px solid #cccccc;}
+.coupon{cursor: pointer;margin:0 auto;margin-top:25rpx;width:667rpx;height:313rpx;background:url('http://img.yummy194.cn/images/choosecoupon_pho_n@2x.png') -4rpx 0 no-repeat;background-size:675rpx 323rpx;position:relative;}
+.overdue{cursor: pointer;margin:0 auto;margin-top:25rpx;width:667rpx;height:313rpx;background:url('http://img.yummy194.cn/images/choosecoupon_pho_d@2x.png') no-repeat;background-size:675rpx 313rpx;position:relative;}
+
+.unavailable{background-position:left bottom;}
+
+.couponLeft{font-size:67rpx;letter-spacing:0;color:#fdfffe;width:667rpx;height:125rpx;line-height:229rpx;text-align:center;text-indent:-21rpx;}
+.couponLeft font{font-size:42rpx;letter-spacing:0;line-height:188rpx;text-align:center;}
+.couponRight{position:absolute;width:625rpx;height:115rpx; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; line-height:115rpx; padding:0 10rpx 0 27rpx;}
+.type_title{font-size:31rpx;color:#fdfffe;margin:0;padding:0; line-height:115rpx; text-align:center; height:73rpx;}
+
+.couponRight>div{width:323rpx; margin-left:10rpx; font-size:25rpx;color:#c3c3c3; letter-spacing:0; line-height:125rpx; overflow:hidden;}
+.couponRight>i{width:302rpx; font-size:25rpx;color:#c3c3c3;display:block; letter-spacing:0; line-height:125rpx; overflow:hidden;}
+
+.choosed:after {content:''; position: absolute; top:0; left:0; right:0; bottom:0; border:4rpx solid #ffdc00;}
+.choosed .couponLeft {color:#ffdc00;}
+.choosed .type_title {color:#ffdc00;}
+
+.nolist{width:292rpx; height:292rpx; margin-top:125rpx; margin-left:229rpx;}
+.nolist_title{display:inline-block; width:750rpx; height:104rpx; line-height:104rpx; text-align:center; font-size:31rpx; color:#bdbdbd;}

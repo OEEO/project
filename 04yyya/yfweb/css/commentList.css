@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+.page_commentList .item {border-bottom:solid 0.1rem rgba(238, 238, 238, 1); margin: 0 2rem; padding: 1.5rem 0;}
+.page_commentList .item .headpic {width:3.7rem; height: 3.7rem; border-radius: 50%; float: left; overflow: hidden;}
+.page_commentList .item .headpic img {width:100%; height:100%;}
+
+.page_commentList .item .right {width:26.5rem; min-height:5rem; float:right;}
+.page_commentList .item .right .nickname {line-height:1.6rem; font-size:1.4rem; color:#343434;}
+.page_commentList .item .right .nickname span {color:#999;}
+.page_commentList .item .right .starGrade {float:right; margin-top:0.5rem;}
+.page_commentList .item .right .starGrade span{margin:0 0.1rem; width:1.4rem; height:1.4rem; display:inline-block; background:url('../images/evaluate_star_icon@2x.png') no-repeat center center / 1.4rem auto;}
+.page_commentList .item .right .starGrade span.empty{background:url(../images/evaluate_star_icon_h@2x.png) no-repeat center center / 1.4rem auto;}
+.page_commentList .item .right .nickname .report_time{text-align: left;}
+.page_commentList .item .right .nickname .report_time .report{float: right;}
+
+.page_commentList .item .right .context {line-height:1.6rem; font-size:1.2rem; color:rgba(51, 51, 51, 1); margin: 0.5rem 0;}
+.page_commentList .item .right .bottom {height:1.6rem; line-height:1.6rem; color:rgba(136, 136, 136, 1); float:right;}
+.page_commentList .item .right .bottom .datetime {float:left; font-size:1.2rem; letter-spacing:0;}
+.page_commentList .item .right .bottom button {float:right; border:none; background: none;}
+.page_commentList .item .right .pics {display: flex; flex-flow: wrap;}
+.page_commentList .item .right .pics img {display:inline-block; width:6rem; height:6rem; margin: 0.2rem;}
+/*.page_commentList .item .right .pics span img {min-width:100%; max-width:150%; min-height:100%; max-width:150%;}*/
+.page_commentList .end {text-align: center; line-height: 4rem;}
+
+.page_commentList .commitQuestionBlank{clear:both;height:8rem;}
+.page_commentList.commitQuestion{background:#fff; border-top:0.1rem #ccc solid; width:36rem; display: flex;}
+
+.page_commentList .tips_title{font-size:1.2rem; line-height:2rem; color:#888888; letter-spacing:0rem;}
+.page_commentList .tips_hui{font-size:1.2rem; line-height:2rem; letter-spacing:0rem;}
+.page_commentList .tips_hui font{color:#128875;}
+.page_commentList .tips_time{font-size:1.1rem; letter-spacing:0; color:rgba(136, 136, 136, 1);}
+
+.page_commentList.commitQuestion .replyBox {display:none;box-sizing: border-box; position:relative; max-width:8rem; height: 3rem; line-height:2.8rem; color:#bbb; padding-left: 0.4rem; border:solid 0.1rem #eee; white-space:nowrap; overflow: hidden; text-overflow:ellipsis; border-radius: 1rem 0 0 1rem; border-right:none; margin: 0.4rem 0 0 0.8rem;}
+.page_commentList.commitQuestion .replyBox:after {content:':'; position:absolute; right:0.1rem; top:0; line-height:3rem;}
+.page_commentList.commitQuestion .replyBox span {color:#666;}
+.page_commentList.commitQuestion .m_question{color:#a3a3a3; margin:0.4rem 0 0 0.8rem; font-size:1.2rem; padding:0.5rem 1rem 0.5rem 1rem; overflow:hidden; height:3rem; flex:6; box-sizing: border-box; border:0.1rem solid #eee; border-radius:1rem;}
+.page_commentList.commitQuestion .m_question.reply {flex:5; border-radius: 0 1rem 1rem 0; border-left:none; margin-left: 0;}
+
+.page_commentList.commitQuestion button{color:#a0a0a0;font-size:1.4rem;margin:0 auto;border:none;background:none; flex:1;}
+.page_commentList .no_more {width:15rem; height:1.5rem; background:url(../images/no_mre.png) 0 0 / 15rem 1.5rem no-repeat; margin:5rem auto;}
+
+.page_commentList .content .no_msgs{width:36rem; background:#f5f5f5; position:absolute; top:4.5rem; left:0; right:0; bottom:0rem;}
+.page_commentList .content .no_msgs img{width:10rem; height:10rem; margin:8rem 13rem auto 13rem;}
+.page_commentList .content .no_msgs span{display:block; width:36rem; font-size:1.2rem; text-align:center; color:#969696; margin-top:2rem;}
+
+.page_commentList .no_more {width:15rem; height:1.5rem; background:url(../images/no_mre.png) 0 0 / 15rem 1.5rem no-repeat; margin:2rem auto;}
+
+/***加载缓冲开始***/
+.page_commentList .loading {width:2.5rem; height:2.5rem;}
+@-webkit-keyframes btnRotate {
+    0% {
+        -webkit-transform: rotateZ(0deg);
+    }
+    100% {
+        -webkit-transform: rotateZ(360deg);
+    }
+}
+@-moz-keyframes btnRotate {
+    0% {
+        -moz-transform: rotateZ(0deg);
+    }
+    100% {
+        -moz-transform: rotateZ(360deg);
+    }
+}
+.page_commentList .loading {
+    /*-moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); */
+    -webkit-animation: btnRotate 1.5s linear infinite;
+    -moz-animation: btnRotate 1.5s linear infinite;
+}
+.page_commentList center{ display:none;}
+/***加载缓冲结束***/

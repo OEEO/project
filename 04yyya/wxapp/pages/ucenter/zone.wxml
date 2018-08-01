@@ -1,0 +1,92 @@
+<view class="userCenter_body">
+	<view class="userCenter_head">
+		<image src="{{darenData.base_info.daren_info.cover_path}}" class="bg"  />
+		<view class="front">
+			<view class="imgPortrait"><image width="100%" src="{{darenData.base_info.daren_info.pic_path}}"/></view>
+			<view id="nickname" class="name">{{darenData.base_info.daren_info.nickname}}</view>
+			<!--<view id="signature" class="user_introduce" style="display:none;">
+            	<view>活动：</view>
+                <view class="activity_num">{{darenData.base_info.tips}}</view>
+                <view class="center_null"></view>
+                <view>赏味：</view>
+                <view class="shanwei">{{darenData.base_info.shangwei}}</view>
+            </view>-->
+		</view>
+	</view>
+    <view class="menus_li">
+       <view class="m_li">活动<font style="color:#b39851;padding-left: 1rem;">{{darenData.base_info.tips}}</font></view> 
+       <view class="m_li">赏味<font style="color:#b39851;padding-left: 1rem;">{{darenData.base_info.shangwei}}</font></view> 
+       <view class="m_li">粉丝<font style="color:#b39851;padding-left: 1rem;">{{follow_num}}</font></view> 
+    </view>
+    <view class="followBtn"><view class="follow{{is_follow == 0 ? '' : ' valued'}}" bindtap="follow"></view></view>
+    <view class="them_line"></view>
+    <view class="text_intro">
+    	<view class="title_intro">HOST简介</view>
+        <view wx:if="{{darenData.base_info.daren_info.introduce != ''}}">
+            <pre class="intro_content">{{darenData.base_info.daren_info.introduce}}</pre>
+        </view>
+        <view wx:else>
+            <view class="intro_content">主人暂无介绍~</view>
+        </view>
+    </view>
+    <view class="the_blank"></view>
+    <view class="m_lies">
+    	<navigator class="lies" url="../tips/activitied?is_overdue=0&member_id={{member_id}}">
+        	<view class="lies_left">即将开始的活动</view>
+            <view class="number_r activiting">{{darenData.base_info.doing}}</view>
+            <view class="lies_right"></view>
+        </navigator>
+        <navigator class="lies" url="../tips/activitied?is_overdue=1&member_id={{member_id}}">
+        	<view class="lies_left">举办过的活动</view>
+            <view class="number_r activitied">{{darenData.base_info.over_tips}}</view>
+            <view class="lies_right"></view>
+        </navigator>
+        <navigator class="lies last_lies" url="../comment/index?member_id={{member_id}}">
+        	<view class="lies_left">用户评价</view>
+            <view class="number_r commentss">{{darenData.base_info.comment}}</view>
+            <view class="lies_right"></view>
+        </navigator>
+    </view>
+    <view class="the_blank"></view>
+    <view class="center_title">最新饭局</view>
+    <view class="pro_list">
+    	<view class="product_list">
+           <view wx:if="{{darenData.dynamic.tips.id}}">
+            <!--<view class="pro_top"> 
+                <view class="User_Img">   
+                    <image class="imgPortrait" src="http://img.yummy194.cn/20160619/969e09238284c43f5456f9f7c6b3b8f83beff436.jpg"/> 
+                </view> 
+                <view class="User_Conten">  
+                    <view class="Contens">   
+                        <view class="qUserName">广州K11</view>    
+                        <view class="msgDetail">     
+                            <view class="song_mi b_right">      
+                                <font>粉丝:&nbsp;</font>111人     
+                            </view>     
+                            <view class="song_mi">      
+                                <font>赏味:&nbsp;</font>123人     
+                            </view>    
+                        </view>   
+                    </view>
+                </view> 
+            </view>-->
+            <view class="pro_center">  
+                <view>{{darenData.dynamic.tips.catname}}</view>  
+                <navigator url="../tips/detail?tips_id = {{darenData.dynamic.tips.id}}">
+                    <image src="{{darenData.dynamic.tips.mainpic}}"/>
+                </navigator> 
+            </view>
+            <view class="pro_title">  
+                <view class="title_left">{{darenData.dynamic.tips.title}}</view> 
+            </view>
+            <view class="pro_buttom">  
+                <view class="pro_time">{{darenData.dynamic.tips.start_time}}</view>  
+                <view class="pro_adress">{{darenData.dynamic.tips.address}}</view>  
+                <view class="price_right">￥{{darenData.dynamic.tips.price}}/份</view> 
+            </view>
+            <view class="pro_line"></view>
+           </view> 
+        </view>
+    </view>
+    <view class="bottom_null"></view>
+</view>

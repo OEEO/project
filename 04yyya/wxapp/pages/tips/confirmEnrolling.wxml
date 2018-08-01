@@ -1,0 +1,96 @@
+<scroll-view scroll-y="true" class="wrapper">
+    <view class="pageTitleMenu">
+        <view class="Left mainpic"><image src="{{detailData.mainpic}}"/></view>
+        <view class="Right">
+            <view class="title">{{detailData.title}}</view>
+            <view class="price">{{detailData.price}}元/份</view>
+            <view wx:if="{{selectdata.limit_num != 0}}" class="limit">(限购 {{selectdata.limit_num}} 份)</view>
+        </view>
+        <view class="clearfix"></view>
+    </view>
+    <view class="titlees">选择日期</view>
+    <view class="li_item">
+        <view id="times" class="acttime">
+            <block wx:if="{{selectdata.id}}">
+                <view class="texts">
+                    <text>{{selectdata.start_time[0]}}{{selectdata.start_time[1]}}</text>
+                    <text>{{selectdata.start_time[0]}} {{selectdata.start_time[2]}}-{{selectdata.end_time}}</text>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="texts">没有可用的时间段</view>
+            </block>
+            <view class="a more_time" bindtap="moretime">更多时间</view>
+        </view>
+    </view>
+
+    <view wx:if="{{detailData.buy_status != 0}}" class="kill_all">
+        <view class="titlees">就餐形式</view>
+        <view class="li_item">
+            <view class="cao_dan" is_book="0">
+                <view class="buy_st no_book add_bg">我要购买</view>
+                <view class="buy_st buy_all" no_book="no">我要包桌（6~12/人）</view>
+            </view>
+            <view class="buy_cao">
+                <view class="buy_cao_title">定制接待人数范围</view>
+                <view class="buy_cao_num">6~12（人）</view>
+            </view>
+        </view>
+        <view bindtap="alert" class="kill_bottom">什么是定制？</view>
+    </view>
+
+    <view class="titlees">就餐人数</view>
+    <view class="li_item">
+        <view class="copies">
+            <view class="num">
+                <view class="num_c" data-num = "-1"  bindtap="changeCopies">
+                    <image src="http://img.yummy194.cn/images/submitorder_quantity_reduce_btn_h@2x.png"/>
+                </view>
+                <!--<block wx:if="{{selectdata.count==0 && detailData.buy_status==2}}">-->
+                    <!--<input type="number" class="b" placeholder="请输入购买量"/>-->
+                    <view id="num" class="b" onblur="confirmEnrollingObject.vals(this)" title="请输入购买量">{{lc}}</view>
+                <!--</block>-->
+                <view class="num_c" data-num = "1"  bindtap="changeCopies">
+                    <image src="http://img.yummy194.cn/images/submitorder_quantity_increase_btn_h@2x.png"/>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="titlees">个人信息</view>
+    <view class="li_item add_pad">
+        <view class="a">合计<text id="number_price">{{last_price}}元</text></view>
+        <view class="a">绑定的手机号<text id="telephone">{{detailData.telephone}}</text></view>
+        <view class="a coupon">使用优惠券<text id="coupon_price">没有优惠券可用</text></view>
+        <!--<view class="cancelCoupon" bindtap="cancelCoupon">×</view>-->
+    </view>
+    <!--<view class="titlees">留言</view>
+    <view class="li_item">
+        <textarea class="words" bindinput="bindTextAreaBlur"></textarea>
+    </view>-->
+</scroll-view>
+
+<view class="footer priceMenu">
+    <view class="goodPrice">金额：{{last_price}}元</view>
+    <view class="submitBtn" bindtap="submitdata">提交订单</view>
+</view>
+
+<view class="Times" hidden="{{hidden}}">
+    <view class="time_list">
+    	<view class="time_title">时间表</view>
+        <view class="center_list">
+            <block wx:for="{{detailData.times}}" wx:key="times" wx:for-item="titem" wx:for-index="idx">
+            <block wx:if="{{titem.none == ''}}">
+            <view class="list_t">
+                <view class="t_left">   
+                    <text class="top">{{titem.start_time[0]}}{{titem.start_time[1]}}</text>   
+                    <text>{{titem.start_time[2]}}-{{titem.end_time}}{{titem.signtext}}</text>
+                </view>
+                <view class="t_right{{titem.id == selectdata.id ? ' select' : ' yes'}}" data-count="{{titem.count}}" data-min="{{titem.min_num}}" data-max="{{titem.stock}}" data-starttime="{{titem.start_time}}" data-endtime="{{titem.end_time}}" data-index="{{idx}}" data-timeid="{{titem.id}}" data-limitnum="{{titem.limit_num}}" bindtap="selectTime" ></view>
+            </view>
+            </block>
+            </block>
+        </view>
+        <view class="time_but" bindtap="moretime">选择</view>
+    </view>
+</view>

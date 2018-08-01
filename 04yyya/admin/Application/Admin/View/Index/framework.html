@@ -1,0 +1,50 @@
+{__NOLAYOUT__}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$pagetitle}</title>
+<script src="__AMUI__/js/jquery.min.js"></script>
+<script>
+$(function(){
+	$('select[name="type"]').change(function(){
+		if($(this).val() == 1){
+			$('#controller_list').hide();
+		}else{
+			$('#controller_list').show();
+		}
+	});
+});
+</script>
+<style>
+form {border:solid 1px #ddd; background:#f7f7f7; padding:20px; width:400px;}
+font {font-size:11px; color:#888;}
+#controller_list {display:none;}
+</style>
+</head>
+<body>
+<form method="post">
+	<p><input type="text" name="name" placeholder="架构中文名称"> *</p>
+	<p><input type="text" name="sign" placeholder="架构英文标签"> *</p>
+	<p>
+		<select name="type">
+			<option value="1">控制器</option>
+			<option value="2">非菜单方法</option>
+			<option value="3">菜单方法</option>
+		</select><br />
+		<font>例如：列表页面属于菜单方法；删除等不在菜单上显示的属于非菜单方法。</font>
+	</p>
+	<p id="controller_list">
+		<select name="pid">
+			<option value="">所属控制器</option>
+<foreach name="controller" item="vo">
+			<option value="{$vo.id}">{$vo.name}</option>
+</foreach>
+		</select>
+	</p>
+	<p><input type="text" name="content" placeholder="架构备注"></p>
+	<p><input type="submit" value="添加"></p>
+</form>
+<p><font>修改则直接编辑表 admin_framework</font></p>
+</body>
+</html>

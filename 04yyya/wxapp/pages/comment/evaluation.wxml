@@ -1,0 +1,14 @@
+<view class="header">
+  <view class="title">评价</view>
+  <view class="orderOperation" bindtap="submits">提交</view>
+</view>
+<view class="content">
+	<view class="item">评分:</view>
+	<view class="stars">
+        <view wx:for="{{stars}}" wx:key="star" data-index="{{index}}" class="{{item == 1 ? 'linght' : ''}}" bindtap="change"></view>
+    </view>
+	<textarea class="detailWords" placeholder-style="color:#ccc" placeholder="长度在1-500字之间,写下购买体会或使用过程中带来的帮助,可以为其它小伙伴提供参考～" maxlength="500" bindinput="bindvalue"></textarea>
+	<view class="addImgs">
+		<view class="li btn" bindtap="tishi"></view>
+	</view>
+</view>

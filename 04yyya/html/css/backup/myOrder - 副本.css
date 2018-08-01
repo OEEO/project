@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+/***************************** 今日 *******************************************/
+.orderListLeft{float:left;width:11.2rem;height:7.31rem;margin:1rem;/*margin-top:0.6rem;margin-left:1rem;*/}/*图片*/
+.orderListLeft .orderTypeBg{line-height:2rem;height:2rem;width:4.5rem;position:absolute;background:rgba(0,0,0,0.5);}/*订单分类 饭局、商品 等 的背景*/
+.orderListLeft .orderType{font-size:105%;color:#fff;line-height:2rem;height:2rem;width:4.5rem;position:absolute;text-align:center;}/*订单分类 饭局、商品 等*/
+
+.orderListRight{float:left;width:21.5rem;height:7.33rem;margin-top:0.8rem;margin-left:0.1rem;}/*右侧信息列表*/
+.orderTitle{font-size:125%;color:#636363;height:3.8rem;overflow:hidden;/*white-space:nowrap;*/text-overflow:ellipsis;}/*右 商品标题*/
+.orderTime,.postage{font-size:120%;color:#a6a6a6;margin-top:0rem;}/*右 时间、邮费等*/
+.ordersAndPrice{height:auto;margin-top:0rem;}
+.orders{font-size:120%;color:#594943;float:left;}/*右 商品 量*/
+.total{font-size:120%;color:#594943;margin-left:4rem;}/*右 合计*/
+.goodsBetweens{background:#ccc;margin:0 1rem;height:0.15rem;}/*商品与状态之间的横线 */
+.orderState{font-size:120%;color:#a6a6a6;float:left;margin-left:2rem;}/*订单状态*/
+.orderAct{font-size:115%;color:#594943;margin:1rem 2rem;line-height:2.25rem;height:2.25rem;width:6.75rem;text-align:center;float:right;border:0.1rem solid #4b4c47;}/*商品可采取的行动 付款收获等 */
+.queryLogistics{font-size:115%;color:#594943;margin-right:0.67rem;margin-top:1rem;line-height:2.25rem;height:2.25rem;width:6.75rem;text-align:center;float:right;border:0.1rem solid #4b4c47;}/*查询物流 */
+.confirmReceipt{font-size:115%;color:#594943;margin-right:2rem;margin-top:1rem;line-height:2.25rem;height:2.25rem;width:6.75rem;text-align:center;float:right;border:0.1rem solid #4b4c47;}/*确认收货*/
+/***************************** 结束 *******************************************/
+

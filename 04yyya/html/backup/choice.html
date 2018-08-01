@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/choice.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="js/plugins/jquery.mobile.min.js"></script>
+<script type="text/javascript" src="js/plugins/scrollByJie.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/choice.js"></script>
+<script type="text/javascript" src="js/choiceDate.js"></script>
+
+</head>
+<body>
+<div class="content">
+	<div class="header">
+        <div class="location"><span id="locationSpan">广州</span><i></i></div>
+        <div class="logo"><img src="images/logo.png" alt="logo"></div>
+        <div class="userMsg"><a href="ucenter.html"><img src="images/mine.png"></a></div>
+	</div>
+	<div class="headerBlank"></div><!--设置空白，避免顶部菜单遮住网页内容-->
+<!-- ---------------------------------------------------------------------------------- -->
+	<div class="pageHead"></div>
+<!-- --------------------------------------------------------------------------------- -->
+	<div class="discover_menu">
+		<ul class="discoverMenuDetail">
+		</ul>
+	</div> 
+	<div class="clearfix"></div>
+	<div class="the_blank" style="margin-top:1.5rem;"></div>
+  <!-- ------------------------------------------------------活动精选  Top 5 开始-------------------------------------------------- --> 
+	<div class="top5">
+		<div class="item_title"><a href="">
+			<span>精选TOP5</span></a>
+		</div> 
+		<!-- ----------------------------------------------------------------------------- -->
+		<div class="top5Activity">
+			<ul class="top5activitiesList">
+				<!--
+				<li>
+					<div class="top5activitiesListLeft"><img src="uploads/20151012/561ba6858a844.jpg"></div>
+					<div class="top5activitiesListRight">
+						<ul class="top5ActList">
+							<li>美美味美美咩</li>
+							<li>珠江新城</li>
+							<li>09.26 周五 16:00</li>
+							<li>Sammi Hoo</li>
+						</ul>
+					</div>
+					<div class="top5ActivityPrice"><span>200<i>元</i></span></div>
+				</li><div class="clearfix"></div> 
+				
+				-->
+			</ul>
+		</div>
+	</div>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ --> 
+	<div class="the_blank" style="margin-top:1.5rem;"></div>
+  <!-- -------------------------------------------活动精选 Top 5 结束------------------------------------------ -->     
+	<div class="recommendClass">
+		<div class="item_title"><a href="">
+            <span>精选活动</span></a><a href=""><i>更多</i></a>
+		</div>
+		<div class="recommendClassPics"></div>
+	</div> 
+	<div class="the_blank" style="margin-top:1.5rem;"></div>
+	<!-- ----------------------------------------------------------------------------------------------------------------- -->
+ 	<div class="todayFlash"><!-- 今日闪购 -->
+		<div class="item_title">
+			<a href=""><span>今日闪购</span></a>
+		</div> 
+		<div class="todayFlashList">
+			<div class="pic"><img src=""></div>
+			<div class="right">
+				<div class="t"></div>
+				<div class="c">
+					<font class="price1"></font>&nbsp;&nbsp;&nbsp;<font class="price2"></font>
+				</div>
+				<div class="b">
+					<div class="l"></div>
+					<div class="r"><font class="w">距离开抢</font><span class="h"></span>:<span class="i"></span>:<span class="s"></span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="the_blank" style="margin-top:1.5rem;"></div>
+  <!-- ----------------------------------------------------------------------------------------------------------------- -->
+  
+ 
+ 	<div class="hotSale"><!-- 热门商品 -->
+		<div class="item_title">
+			<a href=""><span>热门商品</span></a>
+		</div> 
+		<div class="hotSaleList"></div>
+	</div>
+	<div class="the_blank" style="margin-top:1.5rem;"></div>
+  <!-- ----------------------------------------------------------------------------------------------------------------- -->
+  
+	<div class="starPicturns">
+		<div class="item_title">
+			<a href=""><span>明星达人</span></a>
+		</div>
+		<div class="starsPics"></div>
+	</div>
+	<div class="the_blank" style="margin-top:1.5rem;"></div>
+  <!-- ----------------------------------------------------------------------------------------------------------------- -->       
+	<div class="filterMenu">
+		<ul>
+			<li style="margin-left:-3%;" onclick="ChangeSelectMenuStyle(this,0)">标签</li>
+			<li onclick="ChangeSelectMenuStyle(this,1)">时间</li>
+			<li onclick="ChangeSelectMenuStyle(this,2)">区域</li>
+			<li onclick="ChangeSelectMenuStyle(this,3);">价格</li>
+		</ul>
+	</div>
+   <!-- ------------------------------------------------------------------------------------------ -->
+    <div class="img_item">
+        <div class="img_item_bg"></div>
+        <div class="triangle-up"></div>
+		<div class="nav_1">
+<!--		
+			<ul>
+				<li>饭局</li>
+				<li>松饼</li>
+				<li>糕点</li>
+				<li>饭局</li>
+				<li>松饼</li>
+				<li>糕点</li>
+			</ul>
+			-->
+		</div>
+		<div class="nav_2">
+			<ul>
+				<a href="javascript:loadtips({page:1, week:null})">全部</a>
+				<a href="javascript:loadtips({page:1, week:1})">周一</a>
+				<a href="javascript:loadtips({page:1, week:2})">周二</a>
+				<a href="javascript:loadtips({page:1, week:3})">周三</a>
+				<a href="javascript:loadtips({page:1, week:4})">周四</a>
+				<a href="javascript:loadtips({page:1, week:5})">周五</a>
+				<a href="javascript:loadtips({page:1, week:6})">周六</a>
+				<a href="javascript:loadtips({page:1, week:0})">周日</a>
+			</ul>
+		</div>
+		<div class="nav_3">
+			<!--
+			<ul>
+				<li><a href="">区域</a></li>
+			</ul>
+			-->
+		</div>
+		<div class="nav_4">
+			<ul>
+				<li><a href="javascript:loadtips({page:1, price:null})">全部</a></li>
+				<li><a href="javascript:loadtips({page:1, price:'0-300'})">0-300元</a></li>
+				<li><a href="javascript:loadtips({page:1, price:'300-600'})">300-600元</a></li>
+				<li><a href="javascript:loadtips({page:1, price:'600-'})">600以上</a></li>
+			</ul>
+		</div>
+	</div>
+        <!-- ------------------------------------------------------------------------------------ -->
+	<div class="the_blank"></div>
+	<div class="activities">
+		<ul class="activityList" id="actList"></ul>
+		<p class="tips_loading">loading...</p>
+		<p class="nothing">The End!<br /><button onClick="$('html,body').animate({'scrollTop':0}, 'fast')">回到顶部</button></p>	
+	</div>
+</div>
+</body>
+</html>

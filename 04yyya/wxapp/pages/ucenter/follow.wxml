@@ -1,0 +1,28 @@
+<scroll-view scroll-y="true" class="follow" bindscrolltolower="loadMore">
+<view class="content">
+    <view class="msgList">
+    <block wx:if="{{followdata.length > 0}}">
+    <block wx:for="{{followdata}}" wx:key="follow">
+        <view class="item">	
+            <view class="User_Img">    	
+                <image class="imgPortrait" src="{{item.path}}"/>	
+            </view>	
+            <view class="User_Conten">		
+                <view class="Contens">        	
+                    <view class="qUserName">{{item.fans_nickname}}</view>
+                    <view wx:if="{{item.tips != ''}}" class="msgDetail">
+                        <font>发布了</font>{{item.tips}}
+                    </view>    	
+                    <view wx:else class="msgDetail">尚未发布活动</view>
+                </view>    	
+                <view class="User_right" data-id="{{item.member_id}}" bindtap="follow">取消关注</view>
+            </view>	
+        </view>
+    </block>
+    </block>
+    <block wx:else>
+		<view class="no_msgs"><image src="http://img.yummy194.cn/images/followover.png" /><text>抱歉！您还没有任何关注！</text></view>
+	</block>
+    </view>
+</view>
+</scroll-view>

@@ -1,0 +1,271 @@
+<!-- 修改分类 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="updateCategory">
+    <div class="am-modal-dialog">
+        <form name="updateCategory" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">分类更改</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <input type="hidden" id="update_cat_id">
+                    <span>分类名称</span>
+                    <input type="text" name="name" class="am-input-sm" id="update_name"  value="" required/>
+                    <span>标识符</span>
+                    <input type="text" name="sign" class="am-input-sm" id="update_sign" />
+                </div>
+            </div>
+            <button type="button" class="am-btn am-btn-danger" id="update_del" onclick="dele()">删除该分类</button>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 新建分类 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="createCategory">
+    <div class="am-modal-dialog">
+        <form name="createCategory" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">添加分类</div>
+            <div class="am-modal-bd">
+                <div class="am-g am-margin-top-sm">
+                    <!--隐藏域-->
+                    <input type="hidden" id="create_cat_id">
+                    <input type="hidden" id="create_type">
+                    <!--隐藏域-->
+                    <span>分类名称</span>
+                    <input type="text" name="name" class="am-input-sm" id="create_name"  value="" required/>
+                    <span>标识符</span>
+                    <input type="text" name="sign" class="am-input-sm" id="create_sign" />
+                </div>
+                <div class="am-g am-margin-top-sm" id="create_belong">
+                    <span>归属于</span>
+                    <select name="pid" id="create_pid">
+                        <option value="" selected>独立</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="am-panel am-panel-primary">
+        <div class="am-panel-hd">活动分类</div>
+        <button type="button" class="am-btn am-btn-success am-round" onclick="add(0)">添加新分类</button>
+        <div class="am-panel-bd">
+            <ul>
+                <foreach name="tips_category" item="row">
+                <li class="am-panel" data-main="{$row.id}">
+                    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#{$row.id}'}" data-id="{$row.id}">
+                        <i class="am-icon-users am-margin-left-sm"></i> {$row.name}<i class="am-icon-angle-right am-fr am-margin-right" ></i>
+                    </a>
+                    <i class="am-icon-cog" data-id="{$row.id}"></i>
+                    <ul class="am-list am-collapse admin-sidebar-sub" id="{$row.id}">
+                        <li><a href="#/userAdd"><i class="am-icon-user am-margin-left-sm"></i> 无 <i class="am-icon-cog"></i></a></li>
+                    </ul>
+                </li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+    <div class="am-panel am-panel-secondary">
+        <div class="am-panel-hd">商品分类</div>
+        <button type="button" class="am-btn am-btn-success am-round" onclick="add(1)">添加新分类</button>
+        <div class="am-panel-bd">
+            <ul>
+                <foreach name="goods_category" item="row">
+                    <li class="am-panel" data-main="{$row.id}">
+                        <a data-am-collapse="{parent: '#collapase-nav-1', target: '#{$row.id}'}" data-id="{$row.id}">
+                            <i class="am-icon-users am-margin-left-sm"></i> {$row.name}<i class="am-icon-angle-right am-fr am-margin-right" ></i>
+                        </a>
+                        <i class="am-icon-cog" data-id="{$row.id}"></i>
+                        <ul class="am-list am-collapse admin-sidebar-sub" id="{$row.id}">
+                            <li><a href="#/userAdd"><i class="am-icon-user am-margin-left-sm"></i> 无 <i class="am-icon-cog"></i></a></li>
+                        </ul>
+                    </li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+    <div class="am-panel am-panel-success">
+        <div class="am-panel-hd">文章分类</div>
+        <button type="button" class="am-btn am-btn-success am-round" onclick="add(2)">添加新分类</button>
+        <div class="am-panel-bd">
+            <ul>
+                <foreach name="article_category" item="row">
+                    <li class="am-panel" data-main="{$row.id}">
+                        <a data-am-collapse="{parent: '#collapase-nav-1', target: '#{$row.id}'}" data-id="{$row.id}">
+                            <i class="am-icon-users am-margin-left-sm"></i> {$row.name}<i class="am-icon-angle-right am-fr am-margin-right" ></i>
+                        </a>
+                        <i class="am-icon-cog" data-id="{$row.id}"></i>
+                        <ul class="am-list am-collapse admin-sidebar-sub" id="{$row.id}">
+                            <li><a href="#/userAdd"><i class="am-icon-user am-margin-left-sm"></i> 无 <i class="am-icon-cog"></i></a></li>
+                        </ul>
+                    </li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+    <div class="am-panel am-panel-warning">
+        <div class="am-panel-hd">调查分类</div>
+        <button type="button" class="am-btn am-btn-success am-round" onclick="add(3)">添加新分类</button>
+        <div class="am-panel-bd">
+            <ul>
+                <foreach name="apply_category" item="row">
+                    <li class="am-panel" data-main="{$row.id}">
+                        <a data-am-collapse="{parent: '#collapase-nav-1', target: '#{$row.id}'}" data-id="{$row.id}">
+                            <i class="am-icon-users am-margin-left-sm"></i> {$row.name}<i class="am-icon-angle-right am-fr am-margin-right" ></i>
+                        </a>
+                        <i class="am-icon-cog" data-id="{$row.id}"></i>
+                        <ul class="am-list am-collapse admin-sidebar-sub" id="{$row.id}">
+                            <li><a href="#/userAdd"><i class="am-icon-user am-margin-left-sm"></i> 无 <i class="am-icon-cog"></i></a></li>
+                        </ul>
+                    </li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+    <div class="am-panel am-panel-warning">
+        <div class="am-panel-hd">场地分类</div>
+        <button type="button" class="am-btn am-btn-success am-round" onclick="add(4)">添加新分类</button>
+        <div class="am-panel-bd">
+            <ul>
+                <foreach name="kitchen_category" item="row">
+                    <li class="am-panel" data-main="{$row.id}">
+                        <a data-am-collapse="{parent: '#collapase-nav-1', target: '#{$row.id}'}" data-id="{$row.id}">
+                            <i class="am-icon-users am-margin-left-sm"></i> {$row.name}<i class="am-icon-angle-right am-fr am-margin-right" ></i>
+                        </a>
+                        <i class="am-icon-cog" data-id="{$row.id}"></i>
+                        <ul class="am-list am-collapse admin-sidebar-sub" id="{$row.id}">
+                            <li><a href="#/userAdd"><i class="am-icon-user am-margin-left-sm"></i> 无 <i class="am-icon-cog"></i></a></li>
+                        </ul>
+                    </li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    $('.am-modal').appendTo('body');
+    //点击事件绑定
+    function click_do(){
+        $('.am-icon-cog').click(function(){
+            var id = $(this).data('id');
+            $('#update_cat_id').val(id);
+            $('#updateCategory').modal({
+                relatedTarget: this,
+                closeViaDimmer : false,
+                onConfirm: function() {
+                    var name = $('#update_name').val();
+                    var sign = $('#update_sign').val();
+                    if(name == '' || sign == ''){
+                        alert('信息填写不完整');
+                        return;
+                    }else{
+                        var data = {};
+                        data.name = name;
+                        data.sign = sign;
+                        data.id = $('#update_cat_id').val();
+                        $.ajax({
+                            url: '__CONTROLLER__/modifyCategory.html',
+                            data: {'data': data , 'oper':1},
+                            dataType: 'json',
+                            type: 'POST',
+                            success: function (d) {
+
+                            }
+                        });
+                    }
+                }
+            });
+        })
+    }
+
+    click_do();
+
+    //加载子分类
+    $('.am-panel>a').click(function(){
+        var id = $(this).data('id');
+        $.ajax({
+            url: '__CONTROLLER__/category.html',
+            data: {'id': id , 'oper':1},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                $('#'+id).empty();
+                var code = '';
+                for(i in d){
+                    code += '<li><a href="#/userAdd"><i class="am-icon-user am-margin-left-sm"></i> ' + d[i].name + ' <i class="am-icon-cog" data-id="' + d[i].id + '" data-type="' + d[i].type + '"></i></a></li>'
+                }
+                $('#'+id).append(code);
+
+                //重新绑定点击事件
+                $('.am-icon-cog').unbind('click');
+                click_do();
+            }
+        });
+
+
+    })
+
+    //新建分类
+    function add(type){
+        $('#create_type').val(type);
+        $.ajax({
+            url: '__CONTROLLER__/category.html',
+            data: {'type': type , 'oper':2},
+            dataType: 'json',
+            type: 'POST',
+            success: function (d) {
+                $('#create_pid').empty();
+                var code = '<option value ="">独立</option>';
+                for(i in d){
+                    code += '<option value ="' + d[i].id + '">' + d[i].name+ '</option>';
+                }
+                $('#create_pid').append(code);
+
+            }
+        });
+        $('#createCategory').modal({
+            relatedTarget: this,
+            closeViaDimmer : false,
+            onConfirm: function () {
+                var data = {};
+                data.type = $('#create_type').val();
+                data.pid = $('#create_pid').val();
+                data.name = $('#create_name').val();
+                data.sign = $('#create_sign').val();
+                $.ajax({
+                    url: '__CONTROLLER__/modifyCategory.html',
+                    data: {'data' : data , 'oper' : 2},
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (d) {
+                        alert(d.info);
+                    }
+                });
+            }
+        });
+    }
+
+    //删除分类
+    function dele(){
+        if(confirm('确定删除该分类吗？')){
+            var id = $('#update_cat_id').val();
+            $.ajax({
+                url: '__CONTROLLER__/modifyCategory.html',
+                data: {'id' : id , 'oper' : 0},
+                dataType: 'json',
+                type: 'POST',
+                success: function (d) {
+                    alert(d.info);
+                }
+            });
+        }
+    }
+
+</script>

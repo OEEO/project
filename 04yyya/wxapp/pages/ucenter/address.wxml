@@ -1,0 +1,21 @@
+<view class="address-list">
+    <view class="address-item" 
+        wx:for="{{addressList}}" 
+        wx:for-item="item" 
+        wx:key="id">
+        <view class="address-item_info" data-id="{{ item.id }}" data-address="{{ item.address }}" bindtap="selectAddress">
+            <view class="text28 text-default">
+                <text>{{ item.linkman }}</text>
+                <text class="fr">{{ item.telephone }}</text>
+            </view>
+            <view class="text24">
+                <text class="text-yellow" wx:if="{{ item.is_default === '1' }}">[默认地址]</text>
+                {{ item.province_name + item.city_name + item.area_name + item.address }}
+            </view>
+        </view>
+        
+        <view class="select-btn" data-id="{{ item.id }}" bindtap="addressEdit"></view>
+    </view>
+
+    <button class="new-btn" bindtap="addressEdit">新增地址</button>
+</view>

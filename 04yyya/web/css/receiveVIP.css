@@ -1,0 +1,81 @@
+/*
+.page_receiveVIP .receivebox{width: 36rem;height:100%;background: url("../images/vipbg.png") no-repeat 0 0 / 36rem 100%;display: block;position: relative;}
+*/
+.page_receiveVIP .receivebox{width: 36rem;height:100%;background: url("../images/wuhuaguo_bg-2.jpg") no-repeat 0 0 / 36rem 100%;display: block;position: relative;}
+.page_receiveVIP .receivebox .centerbox{width: 28.8rem;height: 48rem;text-align:center;display: block;background: url("../images/frame.png") no-repeat 0 0 / 100% 100%;position: absolute;left: 50%;top: 50%;transform: translateX(-50%) translateY(-50%);-webkit-transform: translateX(-50%) translateY(-50%);}
+.page_receiveVIP .receivebox .centerbox .headpic {border: 0.1rem solid rgba(255, 255, 255, 0.3);border-radius: 50%;height: 6rem;width: 6rem;margin-top: 3.84rem;}
+.page_receiveVIP .receivebox .centerbox p{color: #9c855c;margin: 0 3rem;padding: 0;text-align: center}
+.page_receiveVIP .receivebox .centerbox .title-bar{
+    font-size: 1.728rem;
+    padding: 4.96rem 0 2.10rem 0;
+    line-height: 1.8rem;
+    font-weight: bold;
+}
+
+.page_receiveVIP .receivebox .centerbox .intro{
+    font-size: 1.44rem;
+    color: #fff;
+    padding: 1.96rem 0 0.96rem 0;
+    line-height: 1.9rem;
+}
+.page_receiveVIP .receivebox .centerbox .title{
+    font-size: 1.436rem;
+    line-height: 1.8rem;
+}
+.page_receiveVIP .centerbox .vipbeform{display: none;}
+.page_receiveVIP .vipform{width: 19.2rem;font-size: 1.44rem;color: #9c855c;margin: 3rem auto 0;}
+.page_receiveVIP .vipform input::-webkit-input-placeholder{color: #888;}
+.page_receiveVIP .vipform input::-moz-placeholder{color: #888;}
+.page_receiveVIP .vipform input::-ms-input-placeholder{color: #888;}
+.page_receiveVIP .vipform label{border-bottom: 0.1rem solid #9c855c;display: flex;}
+.page_receiveVIP .vipform label input{width:19.2rem;padding: 1.15rem 0;border: none;background: none;color: #9c855c;font-size: 1.44rem;}
+.page_receiveVIP .vipform input.code{width: 9rem; flex: 1;}
+.page_receiveVIP .vipform .sendcode{padding: 1.2rem 0;color: #9c855c;text-align: right;}
+.page_receiveVIP .vipform .codeinput{margin-top: 1rem;}
+.page_receiveVIP .vipform .vipsubmit{width: 19.2rem;background: #9c855c;color: #ddd;height: 4rem;line-height: 4rem;margin-top: 2.68rem;border: none;font-size: 1.44rem;}
+.page_receiveVIP .vipform .remine{font-size: 1.15rem;margin: 1rem 0 0 !important;color: #ccc !important;text-align: left !important;}
+
+.page_receiveVIP .vipafter,.page_receiveVIP .novip{display: none;}
+.page_receiveVIP .vipafter .vipbtn{
+    width: 16rem;
+    height: 11.52rem;
+    display: flex;
+    margin: 0 auto;
+    padding-top: 1.3rem;
+}
+.page_receiveVIP .vipafter .alert-title{
+    font-size: 1.5rem !important;
+    color: white !important;
+    padding-top: 0.5rem !important;
+}
+.page_receiveVIP .vipafter p{font-size: 1.15rem;color: #9c855c;}
+
+.page_receiveVIP .vipafter p.sm{margin-bottom: 3rem;}
+.page_receiveVIP .vipafter p.stall_title{
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    padding-top: 1.0rem;
+    padding-bottom: 0.5rem;
+}
+.page_receiveVIP .vipafter p.stall_price{font-size: 2.3rem;margin: 0.77rem 0 1.53rem;line-height: 2.2rem;}
+.page_receiveVIP .vipafter .stall_des{height: 10.8rem;width: 23rem;display: block;overflow-y: auto;font-size: 1.152rem;color: #9c855c;margin: 0 auto;text-align: left;}
+.page_receiveVIP .vipafter a.usebtn{
+    width: 19.2rem;
+    background: #9c855c;
+    color: #ddd;
+    height: 4rem;
+    line-height: 4rem;
+    display: block;
+    position: absolute;
+    /* bottom: 5rem; */
+    left: 0;
+    right: 0;
+    margin: 6rem auto;
+    font-size: 1.44rem;
+}
+
+.page_receiveVIP .novip .novipbtn{width: 6.336rem;height: 7.296rem;display: block;margin: 9.6rem auto 3.84rem;}
+.page_receiveVIP .novip p{font-size: 1.44rem;}
+
+
+.page_receiveVIP .vipafter .cline {background: #9c855c;height: 0.1rem;margin: 0.77rem auto;width: 5.76rem;}

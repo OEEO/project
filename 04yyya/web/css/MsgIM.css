@@ -1,0 +1,53 @@
+@charset "utf-8";
+/******************************/
+.page_MsgIM.wrapper { background: #f5f5f5;}
+.page_MsgIM .allRead{font-size:1.2rem;color:#585858;position:absolute;right:1rem;top:1.6rem;}
+/******************************/
+.page_MsgIM .content {padding:6.5rem 0;}
+.page_MsgIM .msgList {height:100%; letter-spacing:0; padding: 1rem; font-size:1.35rem;}
+.page_MsgIM .msgList li {padding: 0.95rem 0;position: relative;}
+.page_MsgIM .msgList li > img {width: 3.6rem; height: 3.6rem;float:left; border:solid 0.1rem #eee; vertical-align: top; border-radius: 50%;}
+.page_MsgIM .msgList li > i {width:0.6rem; height:0.6rem; border-top:solid 0.1rem #eee;border-left:solid 0.1rem #eee; position: absolute; left:4.9rem; top:1.8rem;transform:rotate(-45deg); background: #fff;z-index: 1000;}
+.page_MsgIM .msgList li > span {float:left; max-width:60%;overflow-x: hidden; vertical-align: top; margin-left: 1.5rem; border:solid 0.1rem #eee; background: #fff; border-radius: 0.2rem; padding: 0.9rem 0.96rem 0.96rem;}
+.page_MsgIM .msgList li > span img {max-width:100%;vertical-align: bottom;}
+.page_MsgIM .msgList li > span img.faceimg {height:2rem;}
+.page_MsgIM .msgList li.right > img {float:right;}
+.page_MsgIM .msgList li.right > span {float:right; background: #b39851; color:#fff; border:solid 0.1rem #b39851; margin-left:0; margin-right: 1.5rem;}
+.page_MsgIM .msgList li.right > i {transform:rotate(135deg); background: #b39851; border-left:solid 0.1rem #b39851; border-top:solid 0.1rem #b39851; left:auto; right:5rem;}
+.page_MsgIM .msgList small {background:#ccc; color: #fff; clear:both; border-radius: 0.2rem; display: block; font-size:0.96rem; line-height: 1.8rem; margin: 3rem auto 0.95rem auto; width: 10.08rem; text-align: center;}
+.page_MsgIM .msgList li > span a {color:#00f; text-decoration: underline;}
+.page_MsgIM .msgList li > i.goods {background: #fff;border-left: 0.1rem solid #eee;border-top: 0.1rem solid #eee;}
+.page_MsgIM .msgList li > span.goods {background: #fff;border: 0.1rem solid #eee;}
+.page_MsgIM .msgList li > span.goods > a {display: flex; text-decoration: none; color: #b39851;font-size: 1.35rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; width:18rem; height:4.4rem;overflow: hidden;}
+.page_MsgIM .msgList li > span.goods > a img {width:4.4rem; height:4.4rem; flex:none; object-fit: cover;}
+.page_MsgIM .msgList li > span.goods > a div {height:4.4rem; line-height:2.2rem; margin-left: 0.9rem;}
+
+.page_MsgIM .facesBox {position: fixed; bottom:-20rem; left:0; right:0; overflow: hidden; height:18rem; background: #fff; border-top:solid 0.1rem #ddd; transition:all 0.5s ease;}
+.page_MsgIM .facesBox .facelist {border-collapse:collapse; width: 34rem; position: absolute; top:0.8rem; left:1rem; transition:all 0.5s ease;}
+.page_MsgIM .facesBox .facelist td {background: #fff; height:3.5rem; vertical-align: middle; text-align: center; padding: 0.2rem; box-sizing: content-box;}
+.page_MsgIM .facesBox .facelist td img {width:60%;}
+.page_MsgIM .facesBox .facelist:nth-child(1) {left: 1rem;}
+.page_MsgIM .facesBox .facelist:nth-child(2) {left: 36rem;}
+.page_MsgIM .facesBox .facelist:nth-child(3) {left: 36rem;}
+.page_MsgIM .facesBox .dian {bottom: 0.5rem;left: 0;position: absolute;right: 0;text-align: center;}
+.page_MsgIM .facesBox .dian span.now {background: #999;}
+.page_MsgIM .facesBox .dian span {background: #ddd; border-radius: 50%; display: inline-block; height: 0.4rem; margin: 0 0.6rem; width: 0.4rem;}
+.page_MsgIM .facesBox.show {bottom:5rem;}
+
+.page_MsgIM .hs{background: #fff;bottom: -20rem;display: block;max-height: 21.4rem;left: 0;position: fixed;width: 20.7rem; border: 0.1rem solid #eee;border-radius: 0 0.2rem 0.2rem 0; }
+.page_MsgIM .hs.show {bottom:5rem;}
+.page_MsgIM .hs .htitle{color: #888;font-size: 1.1rem;margin: 0;padding: 0.96rem 0;text-align: center;}
+.page_MsgIM .history {margin-bottom:0.48rem; width:20rem;overflow: auto;max-height:17.4rem; transition:all 0.5s ease;padding-right: 0.6rem;}
+.page_MsgIM .history a {display: flex; display: -webkit-box; display: -webkit-flex; background: #fff; border:solid 0.1rem #eee; border-left:none; border-radius: 0 0.2rem 0.2rem 0; margin: 0.1rem 0 0.2rem; display: -ms-flexbox; padding: 0.5rem; height:4.4rem;color: #333;}
+.page_MsgIM .history a img {width:4.4rem; height:4.4rem; flex:none; object-fit: cover;}
+.page_MsgIM .history a div {height:4.4rem; line-height:2.2rem; margin-left: 0.4rem; overflow: hidden;}
+
+.page_MsgIM.footer {background: #fff; border-top:solid 0.1rem #eee; display: flex; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; height:4.7rem; box-sizing: content-box; padding:0;}
+.page_MsgIM.footer button {width:4rem; height:4.7rem; flex:none; border:none; margin:0 0.5rem;}
+.page_MsgIM.footer button.goodslist {background: url(../images/browsing_history@3x.png) no-repeat center center / auto 2.3rem}
+.page_MsgIM.footer button.facesBtn {background: url(../images/emoticons@3x.png) no-repeat center center / auto 2.3rem}
+.page_MsgIM.footer button.imageBtn {background: url(../images/picture@3x.png) no-repeat center center / auto 2.3rem}
+.page_MsgIM.footer button.sendBtn {background: #b39851; color:#fff; display: none; border:solid 0.1rem #b39851; border-radius: 0.2rem; font-size:1.2rem; width:4.6rem; height:3.8rem; margin: 0.42rem 1.5rem 0.42rem 0;}
+.page_MsgIM.footer .writer {flex:auto; height:1.7rem; margin:0.42rem 0; padding: 0.9rem 0.3rem; font-size:1.4rem; line-height:1.7rem; overflow: hidden; border:solid 0.1rem #eee; border-radius: 0.2rem;}
+.page_MsgIM.footer .writer:focus {border:solid 0.1rem #eee;}
+.page_MsgIM.footer .writer img.faceimg {height:2rem;vertical-align: middle;}

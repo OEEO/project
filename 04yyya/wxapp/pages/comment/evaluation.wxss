@@ -1,0 +1,16 @@
+.header{background: #fff;border-bottom: 1rpx solid #eee;}
+.orderOperation {font-size:33rpx;position:absolute;right:33rpx;top:27rpx;color:#b39851;}
+
+.content {margin-top:96rpx;padding-top:21rpx; border-bottom:solid 2rpx #eee; background:#FFF;}
+.content .item{font-size:31rpx;color:#585858;height:63rpx;line-height:63rpx;margin-left:38rpx;}
+.content .stars{height:125rpx;background:#fff; text-align: center;border-bottom:solid 2rpx #eee;margin:0 42rpx 21rpx 42rpx;}
+.content .stars view{display:inline-block; width:50rpx; height:50rpx; background: url(http://img.yummy194.cn/images/evaluate_star_icon_h@2x.png) no-repeat 0 0 / 50rpx 50rpx; margin:10rpx 10rpx 21rpx 10rpx;}
+.content .stars view.linght {background: url(http://img.yummy194.cn/images/evaluate_star_icon@2x.png) no-repeat 0 0 / 50rpx 50rpx;}
+
+.content .detailWords{font-size:27rpx;resize: none;color:#999;padding:0 25rpx;width:667rpx; box-sizing:border-box;border:none;min-height:292rpx; margin:0 42rpx 21rpx 42rpx;border-bottom:solid 2rpx #eee;}
+
+.content .addImgs{margin:17rpx 38rpx 10rpx 38rpx; display: flex; flex-flow: row wrap;}
+.content .addImgs .li{width:125rpx; height:125rpx; margin:0 21rpx 31rpx 21rpx; list-style:none; position:relative;}
+.content .addImgs .li image {width:100%; height:100%;}
+.content .addImgs .li a{position:absolute; width:33rpx; height:33rpx; background:#FCAB32; color:#fff; border-radius:50%; text-align:center; line-height:29rpx; right:-10rpx; top:-10rpx;}
+.content .addImgs .li.btn {background:#fff url(http://img.yummy194.cn/images/add%20160x160@2x.png) no-repeat center center / 100% 100%;}

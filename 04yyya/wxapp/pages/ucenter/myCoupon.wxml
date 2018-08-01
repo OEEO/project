@@ -1,0 +1,80 @@
+<view class="top">
+	<view class="catch"><input type="text" maxlength="12" bindinput="bindKeyInput" value="" placeholder-style="color:#ccc" placeholder="输入兑换码"/></view>
+    <view class="serch_buttom" bindtap="seach">兑换</view>
+</view>
+<view class="content empty" wx:if="{{couponlist.length==0}}">抱歉！您还没有优惠券~</view>
+<view class="content" wx:else>
+    <view class="Not_expired">
+        <view class="canUser">
+            <view class="c_border"></view>{{code1.length}}张优惠券可用<view class="c_border"></view>
+        </view>
+        <view class="list">
+            <block wx:for="{{code1}}" wx:key="code1">
+                <view class="coupon{{item.id == coupon_id ?' choosed':''}}" data-coupon_id="{{item.id}}" data-type="{{item.type}}"> 
+                    <view class="couponLeft" data-price="{{item.value[0]}}.{{item.value[1]}}">
+                        <view wx:if="{{item.type == 0}}">
+                            <font>￥</font>{{item.value[0]}}.<small>{{item.value[1]}}</small>
+                        </view>
+                        <view wx:if="{{item.type == 1}}">{{item.value[0]}}.<small>{{item.value[1]}}</small>%</view>
+                        <view wx:if="{{item.type == 2}}"><small>赠品{{item.value[0]}}</small></view>
+                    </view> 
+                    <text class="type_title">{{item.name}}</text> 
+                    <view class="couponRight">  
+                        <view>订单金额高于{{item.min_amount}}元可用</view>  
+                        <i>{{item.end_time}} 到期</i> 
+                    </view> 
+                    <view class="icon{{item.id == coupon_id ?' choosed':''}}"></view>
+                </view>
+            </block>
+        </view>
+    </view>
+
+	<view class="canot_use">
+		<view class="canUser">
+			<view class="c_border"></view>{{code2.length}}张优惠券不可用<view class="c_border"></view>
+		</view>
+		<view class="list">
+            <block wx:for="{{code2}}" wx:key="code2">
+                <view class="overdue{{item.id == coupon_id ?' choosed':''}}" data-coupon_id="{{item.id}}" data-type="{{item.type}}"> 
+                    <view class="couponLeft" data-price="{{item.value[0]}}.{{item.value[1]}}">
+                        <view wx:if="{{item.type == 0}}">
+                            <font>￥</font>{{item.value[0]}}.<small>{{item.value[1]}}</small>
+                        </view>
+                        <view wx:if="{{item.type == 1}}">{{item.value[0]}}.<small>{{item.value[1]}}</small>%</view>
+                        <view wx:if="{{item.type == 2}}"><small>赠品{{item.value[0]}}</small></view>
+                    </view> 
+                    <text class="type_title">{{item.name}}</text> 
+                    <view class="couponRight">  
+                        <view>订单金额高于{{item.min_amount}}元可用</view>  
+                        <i>{{item.end_time}} 到期</i> 
+                    </view> 
+                    <view class="icon{{item.id == coupon_id ?' choosed':''}}"></view>
+                </view>
+            </block>
+        </view>
+	</view>
+    <view class="timeout">
+    	<view class="canUser">
+        	<view class="c_border"></view>{{code3.length}}张优惠券已过期<view class="c_border"></view>
+        </view>
+		<view class="list">
+            <block wx:for="{{code3}}" wx:key="code3">
+                <view class="coupon{{item.id == coupon_id ?' choosed':''}}" data-coupon_id="{{item.id}}" data-type="{{item.type}}"> 
+                    <view class="couponLeft" data-price="{{item.value[0]}}.{{item.value[1]}}">
+                        <view wx:if="{{item.type == 0}}">
+                            <font>￥</font>{{item.value[0]}}.<small>{{item.value[1]}}</small>
+                        </view>
+                        <view wx:if="{{item.type == 1}}">{{item.value[0]}}.<small>{{item.value[1]}}</small>%</view>
+                        <view wx:if="{{item.type == 2}}"><small>赠品{{item.value[0]}}</small></view>
+                    </view> 
+                    <text class="type_title">{{item.name}}</text> 
+                    <view class="couponRight">  
+                        <view>订单金额高于{{item.min_amount}}元可用</view>  
+                        <i>{{item.end_time}} 到期</i> 
+                    </view> 
+                    <view class="icon{{item.id == coupon_id ?' choosed':''}}"></view>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,317 @@
+@charset "utf-8";
+/**************************** common start ****************************/
+html {font-size:100px;}
+html, body {width:100%; height:100%; overflow:hidden;}
+html, body, div, span, em, img, b, i, dl, dt, dd, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section,p,h1,h2,h3,h4,h5,h6 {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    vertical-align:baseline;
+}
+body{
+    font-family:"微软雅黑",Arial;
+    color: #fff;
+    letter-spacing:1px;
+    -webkit-text-size-adjust:100%;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-touch-callout:none;
+    /*background:url(../img/bg.jpg?v=1.1) top center;*/
+}
+.clearfix:after {
+    content:'';
+    display:block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+ul {
+    list-style:none
+}
+a:link, a:visited, a:hover, a:active {
+    color: #555;
+    text-decoration:none;
+}
+input, textarea, button {
+    padding: 0;
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+    border-radius:0;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+/*垂直水平居中样式*/
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.container{
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+.index{background: #fccf00;}
+.index .title{
+    width: 4.95rem;
+    height: 3.58rem;
+    margin: 0.32rem 0 0;
+}
+.index .mainimg{
+    width: 100%;
+    height: 8rem;
+    padding-top: 0.3rem;
+    position: relative;
+}
+.index .mainimg .h{
+    width: 3.67rem;
+    height: 3.7rem;
+    position: absolute;
+    top:0;
+    left:0.3rem;
+}
+.index .mainimg .vs{
+    width: 5.18rem;
+    height: 5.16rem;
+    position: absolute;
+    top:1.27rem;
+    left:1.38rem;
+}
+.index .mainimg .g{
+    width: 3.65rem;
+    height: 5.63rem;
+    position: absolute;
+    bottom:0.8rem;
+    right:0.2rem;
+}
+.index .mainimg .go{
+    width: 5.91rem;
+    height: 1.81rem;
+    position: absolute;
+    z-index: 2;
+    left: 0.35rem;
+    bottom: 0;
+}
+/*第二页*/
+.second{
+    display: none;
+    background:url(../img/goose/2/bg.png) no-repeat center top / 100% 100%;
+}
+.second .hot,.third .p{
+    width: 4.68rem;
+    height: 1.34rem;
+    padding: 0.55rem 0 1.4rem;
+}
+.second .input{
+    width: 5.12rem;
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+}
+.second .input .namebg{
+    width: 2.71rem;
+    height: 0.84rem;
+    display: block;
+    margin-bottom: 0.2rem;
+    margin-left: 0.22rem;
+}
+.second .input .name {
+    width: 5.06rem;
+    height: 1.19rem;
+    position: relative;
+    background: url("../img/goose/2/3.png") no-repeat 0 0 / 5.06rem auto;
+}
+.second .input .name .nickname{
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    height: 0.6rem;
+    left: 0.2rem;
+    position: absolute;
+    top: 0.3rem;
+    width: 4.4rem;
+}
+.second .input .sex{
+    display: flex;
+    margin-bottom: 1.2rem;
+}
+.second .input .sexbg{
+    width: 2.72rem;
+    height: 0.85rem;
+    display: block;
+    margin: 0.4rem 0 0.1rem 0.22rem;
+}
+.second .input .sex input[type="button"]{
+    width: 2.25rem;
+    height: 1.19rem;
+    border: none;
+    flex: 1;
+    text-indent: -222em;
+}
+.second .input .sex .girl{
+    background: url("../img/goose/2/5.png") no-repeat 0 0 / 2.25rem auto;
+}
+.second .input .sex .boy{
+    background: url("../img/goose/2/6.png") no-repeat 0 0 / 2.25rem auto;
+}
+.second .input .save{
+    width: 4.89rem;
+    height: 1.15rem;
+    background-image: url(../img/goose/2/7.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+/*第三页*/
+.third{
+    display: none;
+    text-align: left;
+    background:#fff;
+}
+.third .p{
+    width: 4.08rem;
+    height: 1.14rem;
+    padding: 0.4rem 0 0;
+    margin: 0 auto;
+    display: block;
+}
+.third .btn{
+    width: 100%;
+    height: 1.14rem;
+    display: flex;
+    margin: 0.4rem auto 0.2rem auto;
+}
+.third .btn .back{
+    width: 2.82rem;
+    height: 1.14rem;
+    margin-right: 0.3rem;
+    margin-left: 0.8rem;
+}
+.third .btn input[type="file"] {
+    height: 1.14rem;
+    left: 3.9rem;
+    opacity: 0;
+    position: absolute;
+    top: auto;
+    width: 2.8rem;
+}
+.third .btn .up-img{
+    width: 2.8rem;
+    height: 1.14rem;
+}
+.third .upload{
+    position: relative;
+}
+.third .upload .rota{
+    width: 0.76rem;
+    height: 0.75rem;
+    position: absolute;
+    left: 0.4rem;
+    top:0;
+}
+.third .upload .zoom{
+    height: 4.85rem;
+    width: 0.76rem;
+    position: absolute;
+    left: 0.4rem;
+    top:0.88rem;
+}
+.third .upload .zoom span{
+    width: 0.76rem;
+    height: 0.77rem;
+    position: absolute;
+}
+.third .upload .zoom .add{
+    background: url("../img/goose/3/7.png") no-repeat 0 0 / 0.76rem 0.77rem;
+    top: 0;
+    left: 0;
+}
+.third .upload .zoom .sub{
+    background: url("../img/goose/3/8.png") no-repeat 0 0 / 0.76rem 0.77rem;
+    bottom: 0;
+    left: 0;
+}
+.third .upload .zoom .line{
+    width: 0.4rem;
+    height: 3.31rem;
+    position: absolute;
+    top: 0.77rem;
+    left: 0.18rem;
+}
+.third .upload .zoom .line .subline{
+    width: 0.06rem;
+    height: 3.31rem;
+    background: #40260f;
+    position: absolute;
+    top: 0;
+    left: 0.17rem;
+}
+.third .upload .zoom .line .move{
+    width: 0.4rem;
+    height: 0.4rem;
+    position: absolute;
+    top: 0;
+    left: 0rem;
+    border-radius: 50%;
+    background: #40260f;
+}
+.third .upload .up{
+    width: 5.9rem;
+    height: 8.51rem;
+    background: url("../img/goose/3/4.png") no-repeat top center / 5.9rem auto;
+    position: absolute;
+    right: 0.2rem;
+    top: 0;
+}
+.third .upload .make{
+    width: 6.83rem;
+    height: 1.76rem;
+    background-image: url(../img/goose/3/6.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.third .upload .canvaslay{
+    border-radius: 100%;
+    height: 4.7rem;
+    left: 0.2rem;
+    position: absolute;
+    top: 0.9rem;
+    width: 4.7rem;
+}
+.third .upload .canvas{
+    width: 4.7rem;
+    height: 4.7rem;
+    border-radius: 100%;
+}
+
+.layBox {position:absolute; left:0; right:0; top:0; bottom:0; background:rgba(0,0,0,0.6); z-index:999;}
+.layBox .contentBox {padding:0 0.2rem; color:#333; text-align:center; line-height:0.8rem; font-size:0.4rem; background:#fff; border-radius:0.1rem; position:absolute; left:50%; top:50%; margin:-0.4rem 0 0 -2.62rem;}
+.layBox .contentBoxs {padding:0 0.2rem; color:#333; text-align:center; line-height:0.8rem; font-size:0.35rem; background:#fff; border-radius:0.1rem; position:absolute; left:50%; top:50%; margin:-0.8rem 0 0 -2rem;}
+.layBox .share{
+    position: absolute;
+    right: 0.2rem;
+    top: 0;
+}
+.layBox .text {
+    height: 0.27rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 2.5rem;
+    width: 2.8rem;
+}
+.contentBoxs .yuan {
+    display: block;
+    height: 1.43rem;
+    text-align: center;
+    width: 2.88rem;
+    padding-left: 0.4rem;
+}

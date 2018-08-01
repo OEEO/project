@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>吖咪API接口文档</title>
+<script src="__AMUI__/js/jquery.min.js"></script>
+<script>
+$(function(){
+	$('.module').click(function(){
+		if($(this).hasClass('show')){
+			$(this).next('ul').hide();
+			$(this).removeClass('show');
+		}else{
+			$(this).next('ul').show();
+			$(this).addClass('show')
+		}
+	});
+	
+	$('.controller').click(function(){
+		if($(this).hasClass('show')){
+			$(this).next('li').slideUp('fast');
+			$(this).removeClass('show');
+		}else{
+			$(this).next('li').slideDown('fast');
+			$(this).addClass('show')
+		}
+	});
+	
+	$('.controller').each(function(){
+		if($(this).next('li').find('.new').size() > 0){
+			$(this).addClass('new');
+			$(this).parent().prev('a').addClass('new');
+		}
+		if($(this).next('li').find('.now').size() > 0){
+			$(this).addClass('show');
+			$(this).next('li').show();
+		}
+	});
+	
+	var height = 0;
+	$('.Response pre').each(function(){
+		if($(this).height() > height)height = $(this).height();
+	});
+	$('.Response .tab a:first').addClass('now');
+	$('.Response pre:first').show();
+	$('.Response code').each(function(){
+		var html = $(this).html();
+		html = html.replace(/(".+?")/g, '<span class="str">$1</span>');
+		html = html.replace(/(\/\/.+)/g, '<span class="notes">$1</span>');
+		$(this).html(html);
+	});
+	$('.Response').height(height + 80);
+});
+
+function changeResponse(e, str){
+	$('.Response .tab a').removeClass('now');
+	$(e).addClass('now');
+	$('.Response pre').hide();
+	$('.Response').find('.' + str).show();
+};
+
+function version_submit(){
+	var number = window.prompt('请输出大版本号：','{$ver}');
+	if(number)
+		window.location.href = "__CONTROLLER__/submit.html?ver=" + number;
+}
+
+function changeVersion(version_id){
+	var api_id = "{:I('get.api_id')}";
+	window.location.href = "__ACTION__.html?api_id="+ api_id +"&version_id=" + version_id;
+}
+</script>
+<style>
+html,body {margin:0; padding:0; font-size:12px; color:#444; width:100%; height:100%; font-family:"微软雅黑";}
+a {text-decoration:none; color:#444;}
+a:hover {color:#888;}
+ul,li {list-style:none; margin:0; padding:0;}
+
+header {position:absolute; left:100px; right:100px; border-bottom:solid 1px #ddd; height:100px;}
+header .logo {height:87px; margin-top:13px; font-size:24px; float:left;}
+header .logo img {vertical-align:-22px;}
+header .right {float:right; margin-top:68px;}
+/*header button {background:#eee; border:solid 1px #ddd; padding:2px 6px; border-radius:3px; cursor:pointer; color:#444;}
+header button:hover {background:#f3f3f3;}*/
+header button {
+  background-color: #ee432e;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ee432e), color-stop(50%, #c63929), color-stop(50%, #b51700), color-stop(100%, #891100));
+  background-image: -webkit-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  background-image: -moz-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  background-image: -ms-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  background-image: -o-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  background-image: linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  border: 1px solid #951100;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+  box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+  color: #fff;
+  font: bold 14px/1 "helvetica neue", helvetica, arial, sans-serif;
+  line-height:25px;
+  padding: 0;
+  text-align: center;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
+  width: 100px; cursor:pointer;}
+header button:hover {
+    background-color: #f37873;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f37873), color-stop(50%, #db504d), color-stop(50%, #cb0500), color-stop(100%, #a20601));
+    background-image: -webkit-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    background-image: -moz-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    background-image: -ms-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    background-image: -o-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    background-image: linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    cursor: pointer; }
+header button:active {
+    background-color: #d43c28;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d43c28), color-stop(50%, #ad3224), color-stop(50%, #9c1500), color-stop(100%, #700d00));
+    background-image: -webkit-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+    background-image: -moz-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+    background-image: -ms-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+    background-image: -o-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+    background-image: linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4);
+    box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4); }
+
+
+.sidebar {position:absolute; left:100px; top:110px; width:230px; padding:5px; bottom:10px; border:solid 1px #ddd; overflow:auto;}
+.sidebar a {display:block; height:25px; line-height:25px; padding-left:5px;}
+.sidebar .title {cursor:pointer; padding-left:22px; position:relative; margin:5px 0 0 0;}
+.sidebar .title:before {content:'+'; border:solid 1px #ccc; color:#ccc; font-weight:bold; width:14px; height:14px; line-height:12px; text-align:center; position:absolute; left:0px; top:4px;}
+.sidebar .show:before {content:'-';}
+.sidebar .title.new:after {content:""; width:4px; height:4px; border-radius:2px; background:#393; position:absolute; top:10px; margin-left:5px;}
+.sidebar ul {margin:0; padding-left:12px;}
+.sidebar ul li {margin:0 0 0 7px; padding-left:8px; background:url(__RS__/admin/images/line.gif); display:none;}
+.sidebar ul li a { background:#fff;}
+.sidebar ul li a.new {color:#393;}
+.sidebar ul li a.new:hover {color:#46B546;}
+.sidebar ul li a.now {background:#F0FAFF;}
+
+.main {position:absolute; left:350px; top:110px; right:100px; bottom:10px; border:solid 1px #ddd; padding:15px; overflow:auto;}
+.main .dh {border-bottom:solid 1px #ddd; line-height:25px;}
+.main .url {padding:15px; background:#292b36; border-radius:6px; position:relative; margin-top:50px; color:#fff; font-weight:bold;}
+.main .url:before {content:"API-URL"; position:absolute; top:-30px; left:0; line-height:25px; color:#fff; background:#093; border-radius:5px; padding:0 5px;}
+.main .params .title {display:inline-block; line-height:25px; color:#fff; background:#093; border-radius:5px; padding:0 5px; margin-top:20px;}
+.main .params table {padding:0; border-spacing:1px; background:#ddd; width:100%; border:none; margin-top:5px;}
+.main .params table th {background:#EEF8FF; text-align:left; padding:8px;}
+.main .params table td {background:#fff; padding:8px; border:none; color:#666;}
+
+.main .Response {margin-top:20px;}
+.main .Response .tab {height:40px; position:relative; border-bottom:solid 1px #ddd; box-shadow:0 -1px 1px #eee inset;}
+.main .Response .tab a {padding:10px 14px 6px 14px; line-height:23px; border-radius:5px 5px 0 0; background:#eee; margin-right:10px; border:solid 1px #ddd; border-bottom:none; float:left; box-shadow:1px -1px 1px #eee; font-weight:bold; color:#888;}
+.main .Response .tab a:hover {background:#f7f7f7;}
+.main .Response .tab a.now {background:#fff; line-height:24px; color:#444;}
+
+.main .Response pre {margin-top:10px; padding:0 15px; background:#292b36; border-radius:6px; color:#fff; display:none;}
+.main .Response pre code {font-family:"Source Code Pro";}
+.main .Response pre .str {color:#65b042;}
+.main .Response pre .notes {color:#99b; font-size:10px;}
+</style>
+</head>
+<body>
+<header>
+	<div class="logo"><img src="__RS__/admin/images/logo.png" width="131">&nbsp;&nbsp;&nbsp;API接口文档</div>
+	<div class="right">
+		切换版本号：
+		<select id="version_id" onChange="changeVersion(this.value)">
+<foreach name="version" item="row">
+			<option value="{$row.id}"<if condition="$row.id eq session('version_id')"> selected</if>>v{$row.num1}.{$row.num2}.{$row.num3}</option>
+</foreach>
+		</select>&nbsp;&nbsp;&nbsp;
+		<button onClick="version_submit()">新版本发布</button>
+	</div>
+</header>
+<div class="sidebar">
+<foreach name="menu" item="module">
+	<a href="javascript:void(0);" class="title module show">{$module.title}</a>
+	<ul>
+	<foreach name="module.sub" key="cont_id" item="controller">
+		<a href="javascript:void(0);" class="title controller">{$controller.title}</a>
+		<li>
+		<foreach name="apis[$cont_id]" key="api_id" item="api">
+			<a href="__ACTION__.html?api_id={$api_id}" class="<if condition="$api['isnew']">new</if> <if condition="$api_id eq I('get.api_id')">now</if>" title="更新时间：{$api.datetime}">{$api.title}</a>
+		</foreach>
+		</li>
+	</foreach>
+	</ul>
+</foreach>
+</div>
+<div class="main">
+<if condition="I('get.api_id')">
+	<div class="dh"><a href="javascript:void(0);">{$doc.module_title}</a> / <a href="javascript:void(0);">{$doc.controller_title}</a> / {$doc.title}</div>
+	<h1>{$doc.title} <small>[{$doc.module_sign}/{$doc.controller_sign}/{$doc.sign}]</small></h1>
+	<div class="url">{$doc.url}</div>
+	<div class="params">
+<if condition="!empty($doc['getparams'])">
+		<div class="title">GET参数</div>
+		<table>
+			<tr>
+				<th width="20%">参数名</th>
+				<th width="20%">数据类型</th>
+				<th>描述</th>
+			</tr>
+<foreach name="doc.getparams" item="param">
+			<tr>
+				<td>{$param.name}</td>
+				<td>{$param.type}</td>
+				<td>{$param.context}</td>
+			</tr>
+</foreach>
+		</table>
+</if>
+<if condition="!empty($doc['postparams'])">
+		<div class="title">POST参数</div>
+		<table>
+			<tr>
+				<th width="20%">参数名</th>
+				<th width="20%">数据类型</th>
+				<th>描述</th>
+			</tr>
+<foreach name="doc.postparams" item="param">
+			<tr>
+				<td>{$param.name}</td>
+				<td>{$param.type}</td>
+				<td>{$param.context}</td>
+			</tr>
+</foreach>
+		</table>
+</if>
+	</div>
+	<div class="Response">
+		<div class="tab">
+<if condition="!empty($doc['success'])">
+			<a href="javascript:void(0);" onClick="changeResponse(this, 'success')">Success-Response</a>
+</if>
+<if condition="!empty($doc['error'])">
+			<a href="javascript:void(0);" onClick="changeResponse(this, 'error')">Error-Response</a>
+</if>
+		</div>
+<if condition="!empty($doc['success'])">
+		<pre class="success">
+			<code>
+{$doc.success}
+			</code>
+		</pre>
+</if>
+<if condition="!empty($doc['error'])">
+		<pre class="error">
+			<code>
+{$doc.error}
+			</code>
+		</pre>
+</if>
+	</div>
+</if>
+</div>
+</body>
+</html>

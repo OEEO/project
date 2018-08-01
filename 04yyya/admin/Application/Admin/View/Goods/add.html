@@ -1,0 +1,501 @@
+
+<!--加载文本编辑器组件-->
+<link href="__RS__/css/DeanEditor.css" rel="stylesheet">
+<script src="__RS__/js/DeanEditor.js" type="text/javascript"></script>
+<!--加载文本编辑器组件-->
+
+<div class="tips_add_member">
+    <h3>选择达人会员账户</h3>
+    <div class="am-form-group">
+        <input type="text" name="member_id" id="mid" class="am-input am-input-lg" placeholder="会员ID">
+    </div>
+    <div class="am-form-group">
+        <input type="text" name="" class="am-input am-input-lg" id="search_member" placeholder="昵称查找" value="" required/>
+    </div>
+
+    <div id="getUser" style="display: none; height: 200px; overflow:auto;"></div>
+
+    <button class="am-btn am-btn-danger">进入商品添加</button>
+</div>
+
+<div class="tips_add_content">
+    <div class="view">
+        <iframe name="viewBox"></iframe>
+    </div>
+    <form name="addForm" class="am-form editerBox">
+
+        <div class="am-tabs am-margin"  data-am-tabs="{noSwipe: 1}">
+            <ul class="am-tabs-nav am-nav am-nav-tabs">
+                <li class="am-active"><a href="#tab1">基本信息</a></li>
+                <li><a href="#tab2">价位规格</a></li>
+                <li><a href="#tab3">商品描述</a></li>
+                <li><a href="#tab4">温馨提示</a></li>
+            </ul>
+
+            <div class="am-tabs-bd">
+                <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">所属类别</div>
+                        <div class="am-u-sm-3">
+                            <select name="category_id">
+                                <foreach name="categorys" item="row">
+                                    <option value="{$row.id}">{$row.name}</option>
+                                </foreach>
+                            </select>
+                        </div>
+                        <div class="am-u-sm-7"></div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            商品标题
+                        </div>
+                        <div class="am-u-sm-4">
+                            <input type="text" name="title" class="am-input-sm">
+                        </div>
+                        <div class="am-u-sm-6">*必填，不可重复</div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            商品亮点
+                        </div>
+                        <div class="am-u-sm-4">
+                            <input type="text" name="edge[]" class="am-input-sm" placeholder="亮点一">
+                            <input type="text" name="edge[]" class="am-input-sm" placeholder="亮点二">
+                            <input type="text" name="edge[]" class="am-input-sm" placeholder="亮点三">
+                        </div>
+                        <div class="am-u-sm-6">至少填写一项</div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">商品标签</div>
+                        <div class="am-u-sm-6 tags">
+                            <div class="am-btn-group" data-am-button>
+                                <foreach name="tags" item="row">
+                                <label class="am-btn am-btn-default am-btn-xs">
+                                    <input type="checkbox" name="tags[]" value="{$row.id}"> {$row.name}
+                                </label>
+                                </foreach>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-4">最多可以选择3个</div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            商品图组
+                            <small style="display: block; margin-top: 20px; text-align: right; color:#999;">*注: 尺寸限制 640*420 (px)</small>
+                        </div>
+                        <div class="am-u-sm-10 pics pics_group">
+                            <a href="javascript:void(0);" class="add">+</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-tab-panel am-fade" id="tab2">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            库存数量
+                        </div>
+                        <div class="am-u-sm-3">
+                            <input type="text" name="stocks" class="am-input-sm am-text-center">
+                        </div>
+                        <div class="am-u-sm-7">*必填，必须为数字</div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            商品单价
+                        </div>
+                        <div class="am-u-sm-4 price">
+                            <input type="text" name="price" class="am-input-sm am-text-center">
+                        </div>
+                        <div class="am-u-sm-6">*必填，必须为数字</div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            邮费
+                        </div>
+                        <div class="am-u-sm-4 shipping">
+                            <input type="text" name="shipping" class="am-input-sm am-text-center" value="0">
+                        </div>
+                        <div class="am-u-sm-6">*必填，必须为数字</div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-3 am-text-right">
+                            <select class="am-input-sm" name="attr_type" onchange="changeAttr(this.value)">
+                                <option value="A" selected="selected">美食规格</option>
+                                <option value="B">其他规格</option>
+                            </select><br><br>
+                            <button type="button" class="am-btn am-btn-default am-btn-sm" onclick="addAttr()">添加规格</button>
+                        </div>
+                        <ul class="am-u-sm-9 attr attrA">
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>内容</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>品牌</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>产地</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>规格</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>净含量</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>赏味期限</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>包装</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>贮存</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>注意事项</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="am-u-sm-9 attr attrB" style="display: none;">
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>内容</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>品牌</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>产地</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>规格</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>材质</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>尺寸</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>重量</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>包装</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>贮存</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                            <li class="am-g">
+                                <div class="am-u-sm-3 name"><font>注意事项</font>:</div>
+                                <div class="am-u-sm-9 value">
+                                    <input type="text">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="am-tab-panel am-fade" id="tab3">
+                    <textarea name="content"></textarea>
+                </div>
+                <div class="am-tab-panel am-fade" id="tab4">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">是否公开</div>
+                        <div class="am-u-sm-10 is_public">
+                            <div class="am-btn-group" data-am-button>
+                                <label class="am-btn am-btn-default am-btn-xs am-active">
+                                    <input type="radio" name="is_public" value="1"> 公开
+                                </label>
+                                <label class="am-btn am-btn-default am-btn-xs">
+                                    <input type="radio" name="is_public" value="0"> 不公开
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-text-right">
+                            温馨提示
+                        </div>
+                        <div class="am-u-sm-10 notices">
+                            <foreach name="notices" item="row">
+                                <if condition="$row.status eq 1">
+                                    <label><input type="checkbox" checked="checked" disabled="disabled"> {$row.context}</label>
+                                <else/>
+                                    <label><input type="checkbox" name="notice_id[]" value="{$row.id}"> {$row.context}</label>
+                                </if>
+                            </foreach>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="am-margin">
+            <button type="button" class="am-btn am-btn-success am-btn-sm" onclick="saveAndView()">保存并预览</button>
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="goods_submit()">提交审核</button>
+        </div>
+    </form>
+    <div style="clear:both;"></div>
+</div>
+
+<script>
+    var member_id = null;
+    var goods_id = null;
+
+    if(member_id !== null && goods_id !== null){
+        $('.tips_add_member').fadeOut('fast', function(){
+            setTimeout(function(){
+                $('.view iframe').attr('src', 'http://<?=WEB_DOMAIN?>/?page=goodsDetail&goods_id=' + goods_id);
+                $('.tips_add_content').css('display', 'flex');
+            }, 500);
+        });
+    }
+
+    function goods_submit(){
+        $.post('', {goods_id:goods_id, submit:1}, function(d){
+            if(d.status == 1){
+                alert(d.info);
+                location.href = '__CONTROLLER__/index.html';
+            }else{
+                alert(d.info);
+            }
+        }, 'json');
+    }
+
+    var webEditor = new DeanEditor({
+        em : 'textarea[name="content"]',
+        uploadURL : 'upload.html'
+    });
+
+    //保存并预览
+    function saveAndView(){
+        var data = {};
+        data.goods_id = goods_id;
+        data.member_id = member_id;
+        data.category_id = document.addForm.category_id.value;
+        data.title = document.addForm.title.value;
+        data.shipping = document.addForm.shipping.value;
+        data.edge = [];
+        $('input[name="edge[]"]').each(function(){
+            if(this.value != '')
+                data.edge.push(this.value);
+        });
+        data.price = document.addForm.price.value;
+        data.stocks = document.addForm.stocks.value;
+        data.pic_id = $('.pics_group .mainpic img').attr('data');
+        data.is_public = $('.is_public label.am-active input').val();
+        data.submit = 0;
+        data.content = webEditor.getHtml();
+
+        //判断亮点
+        if(data.edge.length == 0){
+            alert('必须设定一个亮点！');
+            return;
+        }
+
+        //商品图组
+        var pics = [];
+        $('.pics_group img').each(function(){
+            pics.push($(this).attr('data'));
+        });
+        data.group_pic_ids = pics.join(',');
+
+        //商品标签
+        var tags_id = [];
+        $('.tags label.am-active input').each(function(){
+            tags_id.push(this.value);
+        });
+        data.tags_id = tags_id.join(',');
+
+        //商品规格
+        var attrArr = [];
+        var attrType = document.addForm.attr_type.value;
+        $('ul.attr'+ attrType +' li').each(function(){
+            var id = $(this).find('.name font').attr('data');
+            if($(this).find('.name font').size() > 0)
+                var name = $(this).find('.name font').text();
+            else
+                var name = $(this).find('.name input').val();
+            var attr = menuStrToBase($(this).find('.value input').val());
+            if(id)
+                attrArr.push(attrType + '@'+ id +'-'+ name +':' + attr);
+            else
+                attrArr.push(attrType + '@'+ name +':' + attr);
+        });
+        data.attrs = attrArr.join('|');
+
+        //活动须知
+        var notice = [];
+        $('[name="notice_id[]"]:checked').each(function(){
+            notice.push(this.value);
+        });
+        data.notice = notice.join(',');
+
+        $.ajax({
+            data : data,
+            type : 'post',
+            dataType : 'json',
+            success : function(d){
+                if(d.status == 1){
+                    alert('保存成功!');
+                    $('.view iframe').attr('src','http://<?=WEB_DOMAIN?>/?page=goodsDetail&goods_id=' + goods_id);
+                }else{
+                    alert(d.info);
+                }
+            }
+        });
+    }
+
+    function changeAttr(option){
+        var option = option||'A';
+        $('.attr').hide();
+        $('.attr' + option).show();
+    }
+
+    function addAttr(){
+        var code = '<li class="am-g">';
+        code += '<div class="am-u-sm-3 name"><input type="text" placeholder="规格名"></div>';
+        code += '<div class="am-u-sm-9 value">';
+        code += '    <input type="text" placeholder="规格值">';
+        code += '</div>';
+        code += '</li>';
+        $('.attr:visible').append(code);
+    }
+
+    $('.pics_group .add').click(function(){
+        pic_upload(this, [640, 420], function(files){
+            for(var i in files){
+                if($('.pics_group .mainpic').size() == 0)
+                    $('.pics_group .add').before('<span class="mainpic"><img data="'+ files[i].pic_id +'" src="'+ files[i].path +'" onclick="imgEnlarge(this)"><a href="javascript:void(0);" onclick="removePic(this)">×</a></span>');
+                else
+                    $('.pics_group .add').before('<span><img data="'+ files[i].pic_id +'" src="'+ files[i].path +'" onclick="imgEnlarge(this)"><a href="javascript:void(0);" onclick="removePic(this)">×</a></span>');
+            }
+            $('.pics_group span').click(function(d){
+                $('.pics_group .mainpic').removeClass('mainpic');
+                $(this).addClass('mainpic');
+            });
+        });
+    });
+
+    function removePic(em){
+        $(em).parents('span').remove();
+    }
+
+    $('.tips_add_member button').click(function(){
+        member_id = $('.tips_add_member #mid').val();
+        if(/^\d+$/.test(member_id)){
+            $.post('__ACTION__.html', {'member_id':member_id}, function(id){
+                if(/^\d+$/.test(id)){
+                    goods_id = id;
+                    $('.view iframe').attr('src', 'http://<?=WEB_DOMAIN?>/?page=goodsDetail&goods_id=' + goods_id);
+                    $('.tips_add_member').fadeOut('fast');
+                    $('.tips_add_content').css('display', 'flex');
+                }
+            });
+        }else{
+            alert('会员ID填写不正确!');
+        }
+    });
+
+    //昵称模糊查询
+    $('#search_member').keyup(function(){
+        $('#getUser').empty();
+        var search_key = $(this).val();
+
+        $.ajax({
+            url: '__CONTROLLER__/getDaren.html',
+            data: {'search_key': search_key},
+            dataType: 'json',
+            type: 'POST',
+            async: false,       //取消异步
+            success: function (d) {
+                var code = '<table class="am-table am-table-striped am-table-hover table-main">';
+                code += '  <thead>';
+                code += '    <tr>';
+                code += '        <th class="table-id">ID</th><th class="table-title">昵称</th><th class="table-type">性别</th><th class="table-author">手机号</th>';
+                code += '    </tr>';
+                code += '  </thead>';
+                code += '  <tbody>';
+                var sex = ['', '男', '女'];
+                for(i in d){
+                    code += '    <tr>';
+                    code += '      <td>'+ d[i].id +'</td>';
+                    code += '      <td><a href="javascript:choose('+d[i].id+')">'+ d[i].nickname +'</a></td>';
+                    code += '      <td>'+ sex[d[i].sex] +'</td>';
+                    code += '      <td>'+ d[i].telephone +'</td>';
+                    code += '    </tr>';
+                }
+                code += '  </tbody>';
+                code += '</table>';
+                $(code).appendTo('#getUser');
+                $('#getUser').show();
+            }
+        });
+    });
+
+    function choose(id){
+        $('#mid').val(id);
+    }
+
+    $('.buy_status label').click(function(){
+        if($(this).find('input').val() == 1){
+            $('.discount').show();
+        }else{
+            $('.discount').hide();
+        }
+    });
+</script>

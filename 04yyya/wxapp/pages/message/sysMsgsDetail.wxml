@@ -1,0 +1,87 @@
+<!--<scroll-view class="msgList" scroll-y="true" scroll-top="{{scrollTop}}" scroll-into-view="{{scrollId}}" bindscrolltoupper="upper">
+    <block wx:for="{{sysdetail}}" wx:key="sysdetail" >
+        <block wx:if="{{item.content != ''}}">
+        <view class="item" id = "{{index == 9 ? 'toview' : ''}}"> 
+            <view class="timess">{{item.datetime}}</view> 
+            <view class="bottom_t">  
+                <view class="User_Img">
+                    <view wx:if="{{type == 0 || type == 3}}">    
+                        <image class="imgPortrait" src="http://img.yummy194.cn/images/mymsgs_x1.png"/>  
+                    </view>
+                    <view wx:elif="{{type == 1}}">      
+                        <image class="imgPortrait" src="http://img.yummy194.cn/images/mymsgs_x2.png"/>  
+                    </view>
+                    <view wx:elif="{{type == 2}}">      
+                        <image class="imgPortrait" src="http://img.yummy194.cn/images/mymsgs_x3.png"/>  
+                    </view>
+                </view>  
+                <view class="User_Conten">   
+                    <view class="jiao"></view>      
+                    <view class="Contens">{{item.content}}</view>
+                    <block wx:if="{{item.relation != ''}}">
+                        <view wx:if="{{item.type == 3}}">
+                            <navigator class="top" url="../order/detail?order_id={{item.type_id}}">     
+                                <view class="User_right">          
+                                    <image class="dayu" src="{{item.relation.path}}"/>          
+                                    <view class="t_right">           
+                                        <view class="titles">{{item.relation.title}}</view>
+                                        <view class="titles_sub">价格：{{item.relation.price}} 数量：{{item.relation.count}}</view>                     
+                                    </view>      
+                                </view>  
+                            </navigator>  
+                        </view>
+                        <view wx:elif="{{item.type == 4}}">
+                            <navigator class="top" url="../tips/detail?tips_id={{item.type_id}}">
+                                <view class="User_right">          
+                                    <image class="dayu" src="{{item.relation.path}}"/>          
+                                    <view class="t_right">           
+                                        <view class="titles">{{item.relation.title}}</view>                     
+                                    </view>      
+                                </view>  
+                            </navigator>  
+                        </view>
+                        <view wx:elif="{{item.type == 5}}">
+                            <navigator class="top" url="{{item.relation.url == '' ? '../theme/detail?theme_id={{item.type_id}}' : '{{item.relation.url}}'}}">  
+                                <view class="User_right">          
+                                    <image class="dayu" src="{{item.relation.path}}"/>          
+                                    <view class="t_right">           
+                                        <view class="titles">{{item.relation.title}}</view> 
+                                        <view class="titles_sub">{{item.relation.content}}</view>                 
+                                    </view>      
+                                </view>  
+                            </navigator>      
+                        </view>
+                    </block>
+                </view>  
+            </view>
+        </view>
+        </block>
+    </block>
+    <view class="the_blankes"></view>
+</scroll-view>-->
+
+
+
+<scroll-view class="msgList" scroll-y="true" bindscrolltolower="lower">
+    <!-- 顶部线 -->
+    <view style="position: fixed; top:0; left: 0; height:0; border-top: 1rpx solid #eee; width: 100%;"></view>
+    <!-- 顶部线 -->
+    <block wx:for="{{sysdetail}}" wx:key="sysdetail" >
+        <block wx:if="{{item.content != ''}}">
+        <view class="item" bindtap="toggleClassActive" data-index="{{index}}"> 
+            <view class="timess">{{item.datetime}}</view> 
+            <view class="bottom_t">  
+                <view class="User_Conten">   
+                    <!-- <view class="jiao"></view>       -->
+                    <view class="Contens {{ curIndex === index ? 'active' : '' }}" >{{item.content}}</view>
+                </view>  
+            </view>
+        </view>
+        </block>
+    </block>
+    <view class="the_blankes"></view>
+    <block wx:if="{{message === 0 && sysdetail.length < 1}}">
+        <image class="wx-icon" src="http://test.yummy194.cn/images/category_over.png"></image>
+        <view class="tips">暂时没有消息哦</view>
+    </block>
+</scroll-view>

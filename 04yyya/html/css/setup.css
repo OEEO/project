@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+/******************************/
+.settingMenu {padding:0;width:100%;background:#ccc;}
+/*  .settingMenu a{display:block;}*/
+.settingMenu .menuItem {background:#ffffff;/* margin-top:1rem;*/ width:100%;}
+.settingMenu .menuItem .itemBetweens{height:0.1rem; background:#e0e0e0; margin:0rem 1.2rem;}
+.settingMenu a {font-size:1.4rem; display:block;height:3.6rem; line-height:3.6rem;  padding-left:1.8rem; position:relative;}
+.settingMenu a .arrowRight{top:1.2rem;}
+/*.settingMenu a:after {content:'>'; font-size:1.6rem;font-family:'黑体'; right:0.2rem;width:2rem;height:2rem;position:absolute; top:0.1rem;font-weight:bolder; color:#ccc;}*/
+
+/**页面底部菜单选项 设置**/
+.pageBottom{bottom:0;width:100%;height:4rem;line-height:4.2rem;text-align:center;background:#fcd74b;}
+.pageBottom a{display:block;color:#fff;font-size:1.6rem;}
+/***/
+
+
+/***********结束************/

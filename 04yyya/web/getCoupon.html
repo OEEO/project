@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/getCoupon.css">
+
+<script src="js/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/getCoupon.js"></script>
+
+</head>
+<body>
+	<div class="header changeStyle">
+		<div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+	</div>
+	<div class="content page1">
+		<div class="title">K11专属福利限量领!!</div>
+		<div class="text">K11*吖咪 专属福利限量领！<br />
+			广州K11邀请海内外星级匠人精心打造<br />
+			Klass 11系列匠人课程<br />
+			贝克汉姆的晚宴私厨 与您分享食材的故事<br />
+			米其林三星主厨亲自教您制作顶级美味<br />
+			体验传承意大利匠心的皮革艺术<br />
+			最炫酷的3D打印艺术释放您的奇思妙想<br />
+			……<br />
+			本年度13场 Klass11均可使用</div>
+		<div class="bottom"><button onclick="$('.page_getCoupon .qrcode').fadeIn('fast');setTimeout(function(){$('.page_getCoupon .page1').one('click', function(){$('.page_getCoupon .qrcode').fadeOut('fast')})}, 1000)">一键领取代金券</button></div>
+	</div>
+	<div class="content page2">
+		<div class="top">恭喜您获得KLASS11专属代金券！</div>
+		<div class="coupons">
+			<div class="item">
+				<div class="left">
+					满1000减100<br>
+					<small>KLASS11专属代金券</small>
+				</div>
+				<div class="right">
+					<small>￥</small>100
+				</div>
+			</div>
+			<!--<button onclick="showShareBox();">分享并增值优惠券</button>-->
+			<div class="item">
+				<div class="left">
+					满500减50<br>
+					<small>KLASS11专属代金券</small>
+				</div>
+				<div class="right">
+					<small>￥</small>50
+				</div>
+			</div>
+			<div class="item">
+				<div class="left">
+					满100减20<br>
+					<small>KLASS11专属代金券</small>
+				</div>
+				<div class="right">
+					<small>￥</small>20
+				</div>
+			</div>
+		</div>
+		<div class="ps">*代金券使用期限：2016.06.20-2016.12.17 <br>*代金券使用范围：仅用于KLASS11专场活动 <!--<br>*代金券增值方式：分享代金券给好友或朋友圈，每位好友都有一次领取机会，前五名领取者每人会为您的代金券增值100元哦！--></div>
+		<div class="pro_list">
+			<div class="ac_title">KLASS11精选活动<br><small>（点击下方列表参与）</small></div>
+			<ul class="product_list"></ul>
+		</div>
+		<div class="bottom">更多吖咪美食活动请关注吖咪精选！</div>
+	</div>
+	<div class="qrcode"><img src="images/ym_qrcode.jpg"><p>扫码关注领取代金券</p></div>
+</body>
+</html>

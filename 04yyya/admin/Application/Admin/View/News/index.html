@@ -1,0 +1,127 @@
+
+<?
+
+<form style="margin: 20px;">
+    <div class="am-g" style="margin-bottom: 10px;">
+        <sapn>状态</sapn>
+        <select name="status" id="search_status" style="width: 100px">
+            <option value="0" <?php if($search_status == 0)echo "selected='selected'";?>>下架</option>
+            <option value="1" <?php if($search_status == 1 || $search_status == null)echo "selected='selected'";?> >正常</option>
+        </select>
+        <input type="text" name="title" id="search_title" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="关键字模糊查询" value="{$search_title}"/>
+        <input type="text" name="member" id="search_member" class="am-form-field am-radius" style="width: 15%;float: left;" placeholder="发布者查询" value="{$search_member}"/>
+        <button type="button" class="am-btn am-btn-primary" onclick="search_rest()">重置</button>
+        <button type="submit" class="am-btn am-btn--success">提交</button>
+    </div>
+</form>
+
+{:W('Cate/table', [$datas, $lang, $operations, $pages, $batch])}
+
+
+<!-- 拒绝理由 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="refuse">
+    <div class="am-modal-dialog">
+        <form name="detail" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-g am-margin-top-sm am-text-left" >
+                <span>拒绝通过理由：</span><br/>
+                <input type="checkbox" value="0"><span>活动分类不正确</span>
+                <input type="checkbox" value="1"><span>活动标签不正确</span>
+                <input type="checkbox" value="2"><span>图片有第三方水印</span>
+                <input type="checkbox" value="3"><span>活动标题或小标题有极限词</span>
+                <textarea id="reason"></textarea>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $('.am-modal').appendTo('body');
+
+    //跳转详情页面
+    function detail(id){
+        window.location.href = '__CONTROLLER__/detail?'+id;
+    }
+    //审核活动（id：活动id ，oper：1通过 0拒绝）
+    function checkout(id, oper){
+        var reason = null;  //拒绝理由
+        if(oper == 0){
+            c = false;
+            $('#refuse').modal({
+                relatedTarget: this,
+                onConfirm: function() {
+                    var reason = $('textarea').val();
+                    var select_reason = [];
+                    $('#refuse input').each(function(){
+                        if($(this).is(':checked'))select_reason.push($(this).val());
+                    })
+                    if(reason.length == 0 && select_reason.length==0){
+                        alert('拒绝理由不能为空');
+                    }else{
+                        $.ajax({
+                            url : '__CONTROLLER__/checkout.html',
+                            data : {'id' : id ,'oper' : oper , 'reason' : reason , 'select_reason':select_reason},
+                            dataType : 'json',
+                            type : 'POST',
+                            success: function(d){
+                                if(d.status == 1){
+                                    alert(d.info);
+                                }else{
+                                    alert(d.info);
+                                }
+                                window.location.reload();
+                            }
+                        });
+                    }
+                }
+            });
+        }
+        if(oper == 1){ //审核通过
+            $.ajax({
+                url : '__CONTROLLER__/checkout.html',
+                data : {'id' : id ,'oper' : oper , 'reason' : reason},
+                dataType : 'json',
+                type : 'POST',
+                success: function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                    }else{
+                        alert(d.info);
+                    }
+                    window.location.reload();
+                }
+            });
+        }
+    }
+
+    //删除
+    function dataDelete(id){
+        if(window.confirm('确定要删除这条记录吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/delete.html',
+                data : {'id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+    //导出Excel
+    function exportExcel(){
+        var search_status = $('#search_status').val();
+        var search_title = $('#search_title').val();
+        var search_member = $('#search_member').val();
+
+        window.open("__CONTROLLER__/NewsExport.html?title="+search_title+"&member="+search_member+"&status="+search_status,"_blank","width=1000,height=600 ")
+    }
+
+</script>

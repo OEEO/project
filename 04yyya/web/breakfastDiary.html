@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/breakfastDiary.css">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/breakfastDiary.js"></script>
+</head>
+<body>
+<div class="punch_head">
+    <img src="images/punch_symbol.png" class="symbol"/>
+    <img src="images/punch_btn.png" class="punch_btn" onclick="javascript:breakfastDiaryObject.punch();"/>
+    <p class="punch_time"></p>
+    <div class="intro">
+        <div class="ileft">
+            <img onerror="this.src='http://img.yummy194.cn/20160608/99a2e57830afb6d3071939576771a023eae18b59.jpg'" class="headimg"/>
+            <span class="punch_user"></span>
+        </div>
+        <div class="iright">
+            <span><font name="join">0</font>加入天数</span>
+            <span><font name="series">0</font>连续打卡</span>
+            <span><font name="total">0</font>累计打卡</span>
+        </div>
+    </div>
+</div>
+<div class="banner"></div>
+<div class="punch_content">
+</div>
+<center><img class="loading" src="images/loading@2x.png" /></center>
+<div class="fadebox">
+    <div class="fadebg" onclick="breakfastDiaryObject.boxhide()"></div>
+    <div class="fadecontext">
+        <p class="create" onclick="breakfastDiaryObject.create()">生成早餐日志</p>
+        <p class="sharet" onclick="breakfastDiaryObject.punchshare()">分享</p>
+        <p class="delt" onclick="breakfastDiaryObject.del()">删除</p>
+        <div class="space"></div>
+        <p class="cancel" onclick="breakfastDiaryObject.boxhide()">取消</p>
+    </div>
+</div>
+
+<div class="er_wei_ma">
+    <div class="box_t">
+        <div class="title_top">长按二维码关注公众号一起加入早餐打卡</div>
+        <img src="images/20170804095209.jpg" />
+    </div>
+</div>
+<div class="imgbox" onclick="breakfastDiaryObject.closeimg()">
+    <div class="imgboxbg"></div>
+    <img src=""/>
+</div>
+</body>
+</html>

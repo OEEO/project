@@ -1,0 +1,49 @@
+page {background-color: #f5f5f5;}
+.geren{cursor: pointer; display: block; height: 42rpx;left: 31rpx;position: absolute;text-align: center;top: 27rpx;width: 142rpx; color:#FFDC00; font-size:31rpx;}
+.userCenter_body {background:#f5f5f5;}
+
+.userCenter_head {overflow:hidden; width:100%; height:420rpx; position:relative; background-color: #fff;}
+.userCenter_head .bg {width:750rpx;}
+.userCenter_head .myset {width:50rpx; height:50rpx; position:absolute; z-index:99; top:25rpx; right:31rpx; background:url('http://img.yummy194.cn/images/my_setup_btn@2x.png') no-repeat 0 4rpx / 42rpx auto;cursor: pointer;}
+.userCenter_head .overbg{overflow:hidden;z-index:1;background-color:rgba(0,0,0,0);width:100%;min-height:417rpx;height:100%;position:absolute; top:0; left:0;}
+.userCenter_head .front{z-index:2; width:417rpx; left:167rpx; top:80rpx; position:absolute; text-align:center;}
+.userCenter_head .imgPortrait{width:188rpx; height:188rpx; /*border:8rpx solid rgba(255, 255, 255, 0.3); */margin-bottom:4rpx; /*box-shadow:0 0 6rpx rgba(255,255,255,0.5);*/ border-radius:50%; background:none; display:inline-block; overflow:hidden;}
+.userCenter_head .imgPortrait image {width:188rpx; height:188rpx; border-radius:50%;}
+.userCenter_head .front .nickname {font-size: 30rpx;margin:30rpx 0 0;}
+
+
+.userCenter_head .my_menus{z-index:2; width:50%; left:0; top:271rpx; position:absolute; padding:0 25%; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.userCenter_head .my_menus .menu_li{width:50%; font-size:27rpx; color:#FFF; text-align:center;}
+.userCenter_head .my_menus .menu_li font{font-size:29rpx; line-height:54rpx;text-shadow: 2rpx 2rpx 5rpx #99cccc;}
+.userCenter_head .my_menus .menu_li .faness{display:inline-block; font-size:29rpx; text-shadow: 2rpx 2rpx 5rpx #99cccc; width:40%; text-align:left;}
+
+.userCenter_menu {margin-top:21rpx;padding:0;width:100%;background: #fff;}
+
+.userCenter_menu .li_item {height:94rpx; line-height:94rpx; background:#ffffff; width:100%;}
+
+.userCenter_menu .li_item .liBetweens{height:2rpx; background:#e0e0e0; margin:0rpx 31rpx;}
+.userCenter_menu navigator {font-size:28rpx; display:block;height:94rpx; line-height:94rpx;  padding-left:104rpx; position:relative; color:#333;}
+.userCenter_menu navigator .arrowRight{content:''; width:17rpx; height:29rpx; right:42rpx;background:url('http://img.yummy194.cn/images/my_next_icon@3x.png') 0 0 / 17rpx 29rpx no-repeat; position:absolute; top:33rpx;}
+
+.userCenter_menu .li_item .number {position:absolute; right:79rpx; top:0rpx; color:#b39851; font-size:25rpx;}
+.userCenter_menu .li_item .number2 {position:absolute; right:79rpx; top:0rpx; color:#b39851; font-size:25rpx;}
+
+
+.userCenter_menu navigator.list3:before {content:''; width:40rpx; height:40rpx; left:25rpx;background:url('http://img.yummy194.cn/images/my_coupon_icon@2x.png') 0 0 no-repeat / 40rpx auto;position:absolute; top:25rpx;}
+
+.userCenter_menu navigator.list4:before {content:''; width:40rpx; height:40rpx; left:45rpx;background:url('http://test.yummy194.cn/images/miniprogram_order_icon.png') 0 0 no-repeat / 40rpx auto;position:absolute; top:28rpx;}
+
+.userCenter_menu navigator.list7:before {content:''; width:40rpx; height:40rpx; left:45rpx;background:url('http://test.yummy194.cn/images/miniprogram_privilege_icon.png') 0 0 no-repeat / 40rpx auto;position:absolute; top:28rpx;}
+
+
+.userCenter_menu navigator.list5:before {content:''; width:40rpx; height:40rpx; left:25rpx;background:url('http://img.yummy194.cn/images/my_service_icon@2x.png') 0 0 no-repeat;background-size:40rpx auto; position:absolute; top:17rpx;}
+.userCenter_menu navigator.list6:before {content:''; width:40rpx; height:40rpx; left:25rpx;background:url('http://img.yummy194.cn/images/my_customerservice_icon@2x.png') 0 0 no-repeat;background-size:40rpx auto; position:absolute; top:25rpx;}
+
+
+.userCenter_menu navigator.list10:before {content:''; width:52rpx; height:52rpx; left:25rpx;background:url('http://img.yummy194.cn/images/my_zone_icon@3x.png') 0 0 no-repeat / 52rpx auto; position:absolute; top:22rpx;}
+
+.userCenter_menu navigator.list11:before {content:''; width:40rpx; height:40rpx; left:25rpx;background:url('http://img.yummy194.cn/images/my_message_icon@6x.png') center center no-repeat;background-size:40rpx auto; position:absolute; top:25rpx;}
+.userCenter_menu navigator.list12:before {content:''; width:40rpx; height:40rpx; left:25rpx;background:url('http://img.yummy194.cn/images/my_collect_icon.png') no-repeat 0 0 / 40rpx auto; position:absolute; top:25rpx;}
+
+.userCenter_menu .add_border{border-top:#f5f5f5 solid 2rpx; margin:0 40rpx; width:670rpx;}
+.userCenter_menu .add_border_bian{width:750rpx; margin:0; border-top-color:rgba(0,0,0,0);}

@@ -1,0 +1,53 @@
+<!-- 文章详情 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="articleDetail">
+    <div class="am-modal-dialog">
+        <form name="resetBanner" class="am-form am-modal-bd" data-am-validator>
+            <div class="am-modal-hd">文章详情</div>
+            <div class="am-modal-bd">
+                <iframe height="640px" width="360px" src="">
+
+                </iframe>
+            </div>
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+
+{:W('Cate/table', array($datas, $lang, $operations, $pages, $batch))}
+
+<script>
+    $('.am-modal').appendTo('body');
+
+    function articleDetail(id){
+        var url = ''+id;
+        $('iframe').attr('src',url);
+        $('#articleDetail').modal({
+            relatedTarget: this,
+            onConfirm: function() {
+
+            }
+        });
+    }
+
+    function dataDelete(id){
+        if(confirm('确定删除该文章吗？')){
+            $.ajax({
+                url : '__CONTROLLER__/articleDelete.html',
+                data : {'id' : id},
+                type : 'post',
+                success : function(d){
+                    if(d.status == 1){
+                        alert(d.info);
+                        window.location.reload();
+                    }else{
+                        alert(d.info);
+                    }
+                }
+            });
+        }
+    }
+</script>

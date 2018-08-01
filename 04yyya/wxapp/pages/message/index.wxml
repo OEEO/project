@@ -1,0 +1,62 @@
+<view class="msgList">
+    <navigator wx:if="{{power}}" class="item im" url="MsgIM">
+        <view class="User_Img">     
+            <image class="imgPortrait" src="http://img.yummy194.cn/images/mymsgs_x2.png"/>     
+        </view>
+        <view class="User_Conten">
+            <view class="Contens">         
+                <view class="qUserName">在线客服</view>         
+                <view class="msgDetail">
+                    <view class="one_title">服务时间: 工作日9:30-12:00 14:00-18:00</view>
+                </view>     
+            </view>     
+            <view class="User_right">      
+                <image class="dayu" src="http://img.yummy194.cn/images/mymsgs_xl.png"/>     
+            </view> 
+        </view>
+        <view class="clearfix"></view>
+    </navigator>
+    <navigator class="item" url="sysMsgsDetail?type=0">
+        <view class="User_Img">     
+            <image class="imgPortrait" src="http://img.yummy194.cn/images/mymsgs_x1.png"/>     
+            <view wx:if="{{msgData.system.message.count != 0}}">
+                <view class="num_img">{{msgData.system.message.count}}</view> 
+            </view>
+        </view>
+        <view class="User_Conten">  
+            <view class="Contens">         
+                <view class="qUserName">吖咪小助理</view>         
+                <view class="msgDetail">
+                    <view class="one_title">{{msgData.system.message.content}}</view>
+                </view>     
+            </view>     
+            <view class="User_right">      
+                <image class="dayu" src="http://img.yummy194.cn/images/mymsgs_xl.png"/>     
+            </view> 
+        </view>
+        <view class="clearfix"></view>
+    </navigator>
+    <block wx:for="{{msgData.more}}" wx:key="more" >
+        <navigator class="item" url="detail?origin_id={{item.id}}">
+            <view class="User_Img">  
+                <view wx:if="{{item.headpic}}"> 
+                    <image class="imgPortrait" src="{{item.headpic}}"/>
+                </view>
+                <view wx:else>
+                    <image class="imgPortrait" src="http://img.yummy194.cn/images/portrait.jpg"/>
+                </view>     
+                <view wx:if="{{item.count != 0}}">
+                    <view class="num_img">{{item.count}}</view> 
+                </view>
+            </view>
+            <view class="User_Conten">  
+                <view class="Contens">         
+                    <view class="qUserName">{{item.nickname}}</view>         
+                    <view class="msgDetail">{{item.content}}</view>     
+                </view>     
+                <view class="commitTime">{{item.datetime[1]}}-{{item.datetime[2]}}</view>
+            </view>
+            <view class="clearfix"></view>
+        </navigator>
+    </block>
+</view>

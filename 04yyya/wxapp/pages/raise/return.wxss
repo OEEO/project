@@ -1,0 +1,198 @@
+
+
+.raise-return .raise-return_header {
+    background: #fff;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    font-size: 24rpx;
+    text-align: right;
+    line-height: 28rpx;
+    padding: 24rpx 40rpx;
+    box-sizing: border-box;
+    border-top: 1rpx solid #eee;
+}
+
+.raise-return .raise-return_header image {
+    width: 28rpx;
+    height: 28rpx;
+    margin-left: 10rpx;
+    vertical-align: text-top;
+}
+
+.raise-return .raise-return_list {
+    margin-top: 76rpx;
+}
+
+.raise-return .raise-return_list .raise-return_item {
+    width: 100%;
+    background: #fff;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+    border-top: 20rpx solid #eee;
+}
+
+.raise-return .l_title {
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 36rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.raise-return .l_title image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 18rpx;
+    vertical-align: middle;
+}
+
+.raise-return .l_title .money {
+    font-size:  36rpx;
+    position: relative;
+    padding-left: 50rpx;    
+    display: inline-block;
+}
+
+.raise-return .l_title .money:after {
+    content: '';
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjkzMUE5RkY3OEM2RjExRTY4NDVGOUI2MkVFM0E3QUZCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjkzMUE5RkY4OEM2RjExRTY4NDVGOUI2MkVFM0E3QUZCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OTMxQTlGRjU4QzZGMTFFNjg0NUY5QjYyRUUzQTdBRkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTMxQTlGRjY4QzZGMTFFNjg0NUY5QjYyRUUzQTdBRkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4eddHgAAAD5klEQVR42sxZXUhUQRQeZXdd/Cn/Mi3Xwi0326QiN0Qh0LdANOk/e+mPrKheeoiIXuol6CUospIgKkt6qKzwJZIKy9SwKPOvFWwVTSvNbcvWkM65nnvbXXbvzr277u4HH8zsnZnz3TMz556ZjXpYXcFUIBpoARYD84E5wIXAOHruAA4Ce4BtwEZgK3BaqSGNwvaZwEPASqBBpl0MMBmYB9xIv9mAt4AXgQNKPMGDFBrYCjzuR5wvGKivlcZKCZbALcAu4EGgjgUOHY2FY24NRCBO/yVgHTCVBR845h2yoVEqMBZ4D1jFZh9VZCuWVyC+zW1gKQsdSsmmhkfgBWAZCz3KyLasQFy0+1n4gLa3+4qDKd7ewBWJaWaWnl0o1buar3JZXVawTyoP971k4yMdcs1RwxPgqKfAM/52q2NikC1eXsw0Wr1Q/20fYf0dD2TFLTKXsyUr1wvlSccYs7696+99MMCfFjeoOMVZwD3+ek5NjrPO13VSfelq+aWq1Se6teltrxfG4MBu0iQJPIDj8fREj9nHhoSyPi7Jbfo8YVy1WWiDwD7+vO36bqRJEIjcqWQlf3x1QyrjlKOnvHkPn3nrwwnUFC1mJZlKeo7amtmI7cPMLoP1iJ7y5j1xrWJb7KMiMbGgwBI18aCjqcbNi3Fzs6Q6lsWN4dlWIYpR4Bo1PR0/PrP+zmeSF02WSumZa/nTuwahrUrko0CT2t5dLdfZ36lJobzAaBE8h8QyAp9xhBU5mDAOZqjtjSGjt/0Ry127Saibi/Yyre7/Nx9DEmdY8YUM9GBCICNY22uFAIxIM6xgSfOz1YQVX0jQqOmVt+4om5Msn1RrdXpWtOGcVJ/4bmPvn59XbAsF2nnTbxEoTvSUL2CAFoN0ALCjwCGlApvuH/OaEIihBXcubyLhB0O4BrtZ5KIbPfjG5WjIBUy7tDHueys2PtWtPM9Q4L7j/9j9pVne0KahQ7UimAt3ya5BjINiLBQx9qXP69Lwg0YU2EIHae7v8UDvC/Zt2H1lpKSbJNEoxvM55o4KgZpaNXQdcZMO1VzwFt9wk4gCUVwQNglqmhbzQTzpOyNoczhJk5SwojtrIkjgNfH+xvVUdwpnJwLEoYaTYiXK4/ptGx2gwwnM1Wp9nYvxruRyGMVdcRXn62bhCLA+DOLQ5mGeqw8nne4bQijuMdl08t5u/QKWh2i60UYF2eS+fhM+n3S6xzf7OgvCcMwdZGPKVyOeG1bcOLnA6iAFcyeNlcsTMaIVvC2e9I3As2zmBl8pBqmvkcbimhWlKf8AfbNP0IG/hI6tOZRsxFO7n9S2h9K5p0zl3xD/BBgAowIUbfhZFOcAAAAASUVORK5CYII=) no-repeat 100% / 100%;
+}
+
+.raise-return .l_title .info {
+    float: right;
+    font-size: 24rpx;
+    color: #999;
+}
+
+.raise-return .l_con {
+    padding: 50rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.raise-return .raise-return-title {
+    font-size: 30rpx;
+}
+
+.raise-return .raise-return-content {
+    display: block;
+    font-size: 24rpx;
+    color: #666;
+    margin-top: 36rpx;
+}
+
+.raise-return .l_foot {
+    padding: 46rpx 0;
+    color: #666;
+    font-size: 24rpx;
+}
+
+.raise-return .raise-return-nav_btn {
+    color: #fff;
+    background: #b39851;
+    text-align: center;
+    border-radius: 2rpx;
+    float: right;
+    height: 48rpx;
+    line-height: 48rpx;
+    padding: 0 12rpx;
+}
+    
+.raise-return .raise-return-nav_btn.disabled {
+    color: #999;
+    background: #f9f9f9;
+}
+/* 风险提示对话框 */
+.risk-tips-modal-wrap{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(50, 50, 50, 0.3);
+}
+.risk-tips-modal{
+  box-sizing: border-box;
+  position: relative;
+  width: 600rpx;
+  height: 580rpx;
+  border-radius: 4rpx;
+  background-color: #fff;
+  padding: 80rpx 38rpx 0 58rpx;
+}
+
+/* 隐藏滚动条 */
+
+.risk-tips-modal::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background-color: transparent;
+}
+.risk-tips-modal-cancel-icon{
+  position: absolute;
+  top: 24rpx;
+  right: 24rpx;
+}
+.risk-tips-modal-body{
+  height: 492rpx;
+}
+
+.risk-tips-modal-header{
+  font-size: 32rpx;
+  text-align: center;
+}
+.risk-tips-modal-content{
+  font-size: 22rpx;
+  line-height: 36rpx;
+  margin-top: 17rpx;
+}
+.risk-tips-modal-confirm{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 30rpx;
+  text-align: center;
+  background-color: #b39851;
+  color: #fff;
+}
+
+.risk-tips-modal-body .raise-tag {
+    color: #fff;
+    height: 48rpx;
+    font-size: 24rpx;
+    line-height: 48rpx;
+    background-color: #b39851;
+    padding: 0 12rpx;
+    display: inline-block;
+}
+.risk-tips-modal-body .raise-tag:not(:first-child){
+  margin-top: 48rpx;
+}
+
+
+.risk-tips-modal-body .wxParse-p {
+    font-size: 24rpx;
+    line-height: 48rpx;
+    color: #333;
+    margin-top: 25rpx;
+}
+
+.risk-tips-modal-body .line-p text {
+    display: block;
+    margin-bottom: 20rpx;
+}

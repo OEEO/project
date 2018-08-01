@@ -1,0 +1,44 @@
+<import src="../index/share.wxml"/>
+<template is="reportItem" data="{{isshow}}"/>
+<scroll-view scroll-y="true" class="cwrapper" bindscrolltolower="">
+<view class="content">
+    <block wx:for="{{commentData}}" wx:key="comment">
+                <view class="item"> 
+                    <view class="headpic">  
+                        <image src="{{item.head_path != '' ? item.head_path : 'http://img.yummy194.cn/20160608/99a2e57830afb6d3071939576771a023eae18b59.jpg'}}" /> 
+                    </view> 
+                    <view class="right">  
+                        <view class="nickname">   
+                            <view class="names">{{item.nickname}}</view>    
+                            <block wx:if="{{item.type == 0 || item.type == 1}}">
+                                <view class="starGrade">
+                                    <block wx:for="{{cinx}}" wx:key="grade">
+                                        <view class="{{index > item.stars ? 'empty' : ''}}"></view>
+                                    </block>
+                                </view>  
+                            </block>
+                        </view>
+                        <view class="context">{{item.content}}</view>
+                        <block wx:if="{{item.pics.length > 0}}">
+                            <view class="pics" data-pics="{{item.pics}}" bindtap="checkpic">
+                                <block wx:for="{{item.pics}}" wx:for-item="j">
+                                    <image src="{{j}}" data-url="{{j}}" bindtap="geturl"/>
+                                </block>
+                            </view>
+                        </block>
+                        <view class="report_time">   
+                            <view class="rt">{{item.datetime}}</view>   
+                            <view wx:if="{{item.is_report == 1}}" class="report">[已举报]</view>
+                            <view wx:else class="report" data-id="{{item.id}}" bindtap="report">[举报]</view>
+                        </view>
+                        <view wx:if="{{item.type == 2 || item.type == 3}}" onclick="commentListObject.reply('+ d[i].member_id +', '+ d[i].nickname +')">回复</view>
+                        <block wx:if="{{item.reply && item.reply.length > 0}}">
+                            <view class="tips_title">饭局 • {{item.tips_title}}</view>
+                            <view class="tips_hui"><font>达人回复：</font>{{item.reply[0].content}}</view>
+                            <view class="tips_time">{{item.reply[0].datetime}}</view>
+                        </block>
+                    </view>
+                </view>
+            </block>
+</view>
+</scroll-view>

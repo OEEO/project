@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/public.css">
+    <script type="text/javascript" src="../js/plugins/jquery.min.js"></script>
+    <script src="../js/plugins/storage.js"></script>
+    <style>
+        .main {
+            padding: 15px;
+        }
+
+        .main > div {
+
+        }
+
+        .main pre {
+            background: #3C536B;
+            color: #f2f2f2;
+            text-align: left;
+            padding: 5px;
+            position: relative;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            display: block;
+        }
+
+        .main code {
+            width: 100%;
+            overflow: scroll;
+            white-space: normal;
+        }
+
+        .btn {
+            margin-left: 15px;
+            font-size: 16px;
+            outline: none;
+            background: #5CC36D;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <p class="text-danger">Information</p>
+    <div>
+        <span>href</span>
+        <pre id="href"></pre>
+    </div>
+    <div>
+        <span>punch</span>
+        <pre id="punch"></pre>
+    </div>
+    <div>
+        <span>autologin</span>
+        <pre id="autologin"></pre>
+    </div>
+</div>
+<button id="delete" class="btn">delete</button>
+</body>
+
+<script>
+    $(document).ready(function () {
+        var punch = storage.get('punch');
+        $('#punch').html(JSON.stringify(punch));
+        $('#href').html(storage.get('href') || '没有');
+        $('#autologin').html(JSON.stringify(storage.get('autologin')) || '没有');
+
+        $('#delete').click(function () {
+            storage.rm('punch');
+            storage.rm('href');
+            storage.rm('autologin');
+
+            history.go(0);
+        });
+    });
+</script>
+</html>

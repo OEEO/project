@@ -1,0 +1,183 @@
+
+<p style="margin-left:20px;">
+	<button class="am-btn am-btn-warning" id="doc-confirm-toggle">添加管理组</button>
+</p>
+{:W('Cate/table', array($datas, $lang, $operations, $pages))}
+
+
+<!-- 新建管理组 -->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm" style="width:600px;">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">管理组添加</div>
+    <form name="add" class="am-form am-modal-bd" data-am-validator>
+		<div class="am-g am-margin-top-sm">
+			<div class="am-u-sm-3 am-u-md-3 am-text-right">管理组名称：</div>
+			<div class="am-u-sm-9 am-u-md-9 am-text-left">
+				<input type="text" name="name" class="am-input-sm" placeholder="管理员名称" required/>
+			</div>
+		</div>
+		
+		<div class="am-g am-margin-top" id="groupEdit">
+			<div class="am-u-sm-3 am-u-md-3 am-text-right">选择管理员组：</div>
+			<div class="am-u-sm-9 am-u-md-9 am-text-left">
+<foreach name="framework" key="key" item="row">
+				<div class="item_list">
+					<label class="am-checkbox am-secondary item_group">
+					  <input type="checkbox" name="framework" value="{$key}" data-am-ucheck> {$row.name}
+					</label>
+					<div class="am-g item_list">
+	<foreach name="row.sub" item="r">
+						<label class="am-checkbox am-secondary">
+						  <input type="checkbox" name="framework" value="{$r.id}" data-am-ucheck> {$r.name}
+						</label>
+	</foreach>
+					</div>
+				</div>
+</foreach>
+			</div>
+		</div>
+    </form>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+    </div>
+  </div>
+</div>
+
+<script>
+$('.am-modal').appendTo('body');
+
+$('.item_group').change(function(){
+	var checked = $(this).children('input').get(0).checked;
+	$(this).next().find(':checkbox').each(function(){
+		this.checked = checked;
+	});
+});
+
+var fun = {};
+
+//会员添加
+$('#doc-confirm-toggle').on('click', function(){
+    $('#groupEdit :checkbox').each(function(){
+        this.checked = false;
+    });
+
+    showModal(function() {
+
+        if (document.add.name.value == '') {
+            alert('管理组名不能为空！');
+            return;
+        }
+        if ($('[name="framework"]:checked').size() == 0) {
+            alert('权限选择不能为空！');
+            return;
+        }
+
+        var data = {};
+        data.name = document.add.name.value;
+        data.framework = [];
+        $('[name="framework"]:checked').each(function () {
+            data.framework.push(this.value);
+        });
+
+        $.ajax({
+            url: '__CONTROLLER__/addGroup.html',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            success: function (d) {
+                if (d.status == 1) {
+                    alert(d.info);
+                    window.location.href = window.location.href;
+                } else {
+                    alert(d.info);
+                }
+            }
+        });
+
+    });
+});
+
+//密码修改
+function dataModify(id, name){
+	document.add.name.value = name;
+	$.ajax({
+		data : {'group_id':id},
+		dataType:"json",
+		type:'POST',
+		success:function(d){
+			$('#groupEdit :checkbox').each(function(){
+				if(d.indexOf(this.value) >= 0){
+					this.checked = true;
+				}else{
+					this.checked = false;
+				}
+			});
+
+            showModal(function(){
+                if(document.add.name.value == ''){
+                    alert('管理组名不能为空！');
+                    return;
+                }
+                if($('[name="framework"]:checked').size() == 0){
+                    alert('权限选择不能为空！');
+                    return;
+                }
+
+                var data = {};
+                data.group_id = id;
+                data.name = document.add.name.value;
+                data.framework = [];
+                $('[name="framework"]:checked').each(function(){
+                    data.framework.push(this.value);
+                });
+
+                $.ajax({
+                    url : '__CONTROLLER__/modifyGroup.html',
+                    type : 'POST',
+                    dataType : 'json',
+                    data : data,
+                    success: function(d){
+                        if(d.status == 1){
+                            alert(d.info);
+                            window.location.href = window.location.href;
+                        }else{
+                            alert(d.info);
+                        }
+                    }
+                });
+            });
+		}
+	});
+}
+
+function showModal(fn){
+    fun = fn;
+    $('#my-confirm').modal({
+        relatedTarget: this,
+        onConfirm: function() {
+            if(typeof(fun) == 'function')fun();
+        }
+    });
+}
+
+
+//单条删除
+function dataDelete(id){
+	if(window.confirm('确定要删除这条记录吗？')){
+		$.ajax({
+			url : '__CONTROLLER__/deleteGroup.html',
+			data : {'id' : id},
+			type : 'post',
+			success : function(d){
+				if(d.status == 1){
+					alert(d.info);
+					window.location.reload();
+				}else{
+					alert(d.info);
+				}
+			}
+		});
+	}
+}
+</script>

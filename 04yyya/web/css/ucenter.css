@@ -1,0 +1,53 @@
+@charset "utf-8";
+.page_ucenter {background:#f5f5f5;}
+.page_ucenter.header {border:none !important; background:none !important;}
+.page_ucenter .geren{cursor: pointer; display: block; height: 2rem;left: 1.5rem;position: absolute;text-align: center;top: 1.3rem;width: 6.8rem; color:#FFDC00; font-size:1.5rem;}
+.page_ucenter .userCenter_body {background:#f5f5f5;}
+
+.page_ucenter .userCenter_head {overflow:hidden; width:100%; height:19rem; position:relative;}
+.page_ucenter .userCenter_head .bg {/*width:40rem;filter: blur(0.1rem); margin: -1rem 0 0 -1rem;*/width:36rem;}
+.page_ucenter .userCenter_head .overbg{overflow:hidden;z-index:1;background-color:rgba(0,0,0,0);width:100%;min-height:20rem;height:100%;position:absolute; top:0; left:0;}
+.page_ucenter .userCenter_head .front{z-index:2; width:20rem; left:8rem; top:4.78rem; position:absolute; text-align:center;}
+.page_ucenter .userCenter_head .imgPortrait{width:6.72rem; height:6.72rem; border:0.38rem solid rgba(255, 255, 255, 0.3); margin-bottom:0.2rem; box-shadow:0 0 0.3rem rgba(255,255,255,0.5); border-radius:50%; background:none; display:inline-block; overflow:hidden;}
+.page_ucenter .userCenter_head .imgPortrait img {width:6.72rem; height:6.72rem; border-radius:50%;}
+
+/*.page_ucenter .userCenter_head .front .name{font-size:1.8rem;margin-top:0.5rem;color:white;line-height:2.4rem;}
+.page_ucenter .user_introduce{font-size:1.2rem;margin-top:0.5rem;width:100%;height:4rem;position:relative;text-align:center;color:white;line-height:2rem;}*/
+.page_ucenter .userCenter_head .my_menus{z-index:2; width:50%; left:0; top:13rem; position:absolute; padding:0 25%; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex;}
+.page_ucenter .userCenter_head .my_menus .menu_li{/*width:5rem;*/width:50%; font-size:1.3rem; color:#FFF; /*margin:0 2rem;*/ text-align:center;}
+.page_ucenter .userCenter_head .my_menus .menu_li font{font-size:1.4rem; line-height:2.6rem;text-shadow: 0.1rem 0.1rem 0.25rem #99cccc;}
+.page_ucenter .userCenter_head .my_menus .menu_li .faness{display:inline-block; font-size:1.4rem; text-shadow: 0.1rem 0.1rem 0.25rem #99cccc; width:40%; text-align:left;}
+
+.page_ucenter .userCenter_menu {padding:0;width:100%;background: #fff;}
+/*  .userCenter_menu a{display:block;}*/
+.page_ucenter .userCenter_menu .li_item {height:5.28rem; line-height:5.28rem; background:#ffffff; width:100%;}
+
+.page_ucenter .userCenter_menu .li_item .liBetweens{height:0.1rem; background:#e0e0e0; margin:0rem 1.5rem;}
+.page_ucenter .userCenter_menu a {font-size:1.44rem; display:block;height:5.28rem; line-height:5.38rem;  padding-left:4rem; position:relative; color:#333;}
+.page_ucenter .userCenter_menu a .arrowRight{content:''; width:0.8rem; height:1.4rem; right:2rem;background:url('../images/my_next_icon@3x.png') 0 0 / 0.8rem 1.4rem no-repeat; position:absolute; top:1.99rem;}/*右侧的箭头*/
+
+.page_ucenter .userCenter_menu .li_item .number, .number2, .number3, .number4, .number5 {position:absolute; right:3.8rem; top:0rem; color:#b39851; font-size:1.2rem;}
+
+.page_ucenter .userCenter_menu a.list1:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_activity_icon@2x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list13:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my-products@2x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list14:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my-raise@2x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list2:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_record_icon@22x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list3:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_coupon_icon@2x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list4:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_record_icon@2x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list5:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_service_icon@2x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list6:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_customerservice_icon@2x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list7:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_new_icon@2x.png') 0 0.6rem no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list8:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_activitys_icon@2x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list9:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_service_icon@2x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list15:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_daren_priority@2x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list16:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_profit@2x.png') 0 0 no-repeat;background-size:1.72rem auto; position:absolute; top:1.68rem;left: 1.31rem;}
+
+
+.page_ucenter .userCenter_menu a.list10:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_zone_icon@3x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+
+.page_ucenter .userCenter_menu a.list11:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_message_icon@6x.png') 0 0 no-repeat;background-size:1.92rem auto; position:absolute; top:1.68rem;}
+.page_ucenter .userCenter_menu a.list12:before {content:''; width:1.92rem; height:1.92rem; left:1.2rem;background:url('../images/my_collect_icon.png') no-repeat 0 0 / 1.92rem auto; position:absolute; top:1.68rem;}
+
+.page_ucenter .userCenter_menu .add_border{border-top:#eeeeee solid 0.1rem; margin-left:1.5rem; width:34.5rem;}
+
+.page_ucenter .userCenter_menu .add_border_bian{width:36rem;}

@@ -1,0 +1,55 @@
+<view>
+    <!-- 顶部线 -->
+    <view style="position: fixed; top:0; left: 0; height:0; border-top: 1rpx solid #eee; width: 100%; z-index: 1000" ></view>
+    <!-- 顶部线 -->
+    <view class="raise-list-selector">
+        <view class="raise-list-selector_item {{ act_status === item.key ? 'active': '' }}" wx:for="{{nav}}" wx:for-item="item" wx:key="key" data-status="{{ item.key }}" bindtap="changeStatus">
+            <view>{{ item.name }}</view>
+        </view>
+    </view>
+    <scroll-view style="height: 1110rpx;" class="raise-order-list" scroll-y="true" bindscrolltolower="loadMore">
+        <block wx:if="{{ orderlist.length > 0 }}">
+            <navigator 
+                class="raise-order-list_item" 
+                wx:for="{{ orderlist }}" 
+                wx:for-item="item" 
+                wx:key="id"
+                url="detail?order_id={{ item.id }}">
+                <view class="raise-order-header">
+                    <text class="raise-order-time">{{ item.create_time }}</text>
+                    <text class="raise-order-status">{{ item.act_status_title }}</text>
+                </view>
+                <view class="raise-order-body">
+                    <view class="raise-order-item_info">
+                        <image src="{{item.path}}" class="raise-order-item_img" />
+                        <view class="raise-order-item_sub bg">
+                            <view class="raise-order-item_title">{{ item.title }}</view>
+                            <view class="raise-order-item_sub_title">
+                                {{ item.raise_times_title }}
+                            </view>
+                        </view>
+                        <view class="raise-order-item_sub sm">
+                            <view class="raise-order-item_sub_title">￥{{ item.price }}</view>
+                            <view class="raise-order-item_sub_title">X{{ item.count }}</view>
+                        </view>
+                    </view>
+                    <view class="text-right md-text text-gray">项目结束时间：{{ item.end_time }}</view>
+                </view>
+                <view class="raise-order-footer text-right" wx:if="{{ item.act_status === '0'}}">
+                    <button class="btn btn-danger" wx:if="{{ item.can_pay }}">
+                        去付款
+                    </button>
+                    <button class="btn btn-default" wx:else>
+                        删除
+                    </button>
+                </view>
+            </navigator>
+        </block>
+        <block wx:else>
+            <view class="no_msgs">
+                <image src="http://img.yummy194.cn/images/order_over.png" />
+                <text>抱歉！您还没有相关的订单！</text>
+            </view>
+        </block>
+    </scroll-view>
+</view>

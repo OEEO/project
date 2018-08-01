@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+ul {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #303030
+}
+
+a:hover {
+    text-decoration: none;
+    color: #303030
+}
+
+body {
+    background-color: #F3F5F7;
+}
+
+#main {
+    width: 100%;
+    /* padding: 25px 0 89px 0; */
+    font-size: 14px;
+    color: #303030;
+}
+
+#data-box {
+    width: 1200px;
+    margin: 24px auto 89px;
+    border: 1px solid #E1E2E2;
+    background-color: #fff;
+    position: relative;
+}
+
+#data-header {
+    width: 100%;
+    height: 60px;
+    user-select: none
+}
+
+#league,#league-select,#data,#data-select {
+    cursor: pointer;
+}
+
+#league-select,#data-select {
+    overflow-y: auto;
+}
+
+#league-select,#data-select,#lane-select {
+    position: absolute;
+    box-shadow: 0 0 18px #dee0e2;
+    background-color: #fff;
+    border: 1px solid #f2eaec;
+    display: none;
+    z-index: 9999
+}
+
+#league {
+    margin-left: 26px;
+    margin-top: 23px;
+    display: inline-block;
+}
+
+.league-data-selected {
+    color: #14b8fb;
+}
+
+#league-select {
+    width: 188px;
+    height: 144px;
+    margin: 18px 0 0 -28px;
+}
+
+#league-select::-webkit-scrollbar,#data-select::-webkit-scrollbar {
+    width: 4px;
+     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 100px;
+}
+
+#league-select::-webkit-scrollbar-thumb,#data-select::-webkit-scrollbar {
+/*滚动条里面小方块*/
+    background: #b2bdc1;
+}
+
+#league-select>ul,#data-select>ul {
+    list-style: none
+}
+
+#league-select>ul>li,#data-select>ul>li {
+    padding: 8px
+}
+
+#league-select>ul>li:hover,#data-select>ul>li:hover {
+    background-color: #f5fcff;
+    color: #14b8fb;
+}
+
+#data {
+    display: inline-block;
+    margin-left: 74px
+}
+
+#data-select {
+    width: 100px;
+    height: 144px;
+    margin: 18px 0 0 -25px;
+}
+
+#data-select>ul>li {
+    padding: 8px;
+    text-align: center;
+}
+
+#table-scroll {
+    display: inline-block;
+    font-size: 20px;
+    color: #fff;
+    float: right;
+    margin: 20px 24px 0 0
+}
+
+#lane-select {
+    width: 76px;
+    left: 428px;
+    top: 100px;
+}
+
+#lane-select>ul {
+    list-style: none
+}
+
+#lane-select>ul>li {
+    padding: 8px;
+    text-align: center;
+}
+
+#lane-select>ul>li:hover,#data-select>ul>li:hover {
+    background-color: #f5fcff;
+    color: #14b8fb;
+    cursor: pointer;
+}
+
+.table-scroll {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #cdcdcd;
+    cursor: pointer;
+}
+
+.table-scroll:hover {
+    background-color: #999999;
+}
+
+.table-scroll>span {
+    position: relative;
+    top: -4px;
+    left: 4px
+}
+
+.player-img {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.player-img>img {
+    width: 100%
+}
+
+#table {
+    table-layout: fixed;
+}
+
+.page-item a {
+    width: 32px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.page-item:nth-last-child(1) a,.page-item:nth-child(1) a {
+    border-radius: 8px;
+    width: auto;
+    padding: 6px 12px;
+}
+
+.page-item:nth-last-child(2) a,.page-item:nth-child(2) a {
+    border-radius: 8px;
+    width: auto;
+    padding: 6px 12px;
+}
+
+.page-pre .page-link, .page-next .page-link, .page-start .page-link, .page-end .page-link {
+    width: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+tr th {
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.fixed-table-toolbar {
+    display: none;
+}
+
+.spinner {
+      /*loading动画*/
+    margin: 100px auto;
+    width: 50px;
+    height: 60px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: #67CF22;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+    0%, 40%, 100% {
+        -webkit-transform: scaleY(0.4)
+    }
+
+    20% {
+        -webkit-transform: scaleY(1.0)
+    }
+}
+
+@keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }
+
+    20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+}
+
+#team-group span {
+    color: #c5c5c5;
+    cursor: pointer;
+}
+
+#team-group span:first-child {
+    color: #3e3e3e;
+}
+
+#now-lane {
+    cursor: pointer;
+}
+
+.table-color-white{
+    background-color: #fff
+}
+
+.table-color-red{
+    background-color: #fff8fa
+}

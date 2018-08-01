@@ -1,0 +1,279 @@
+/* 三角形 */
+.triangle(@height, @width, @color) {
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: @color;
+    border-width: @height/2 @width/2;
+}
+
+.history-match-item {
+    width: 1200px;
+    border: 1px solid #cbcbcb;
+    background: #fff;
+    color: #333333;
+    font-weight: bold;
+    margin: 12px auto;
+    .match-title {
+        height: 80px;
+        margin: 15px 0;
+        text-align: center;
+        background: url("../../assets/match-header.png") no-repeat center center;
+        .league-name {
+            display: inline-block;
+            font-size: 18px;
+        }
+        .teams {
+            margin-top: -5px;
+            font-size: 0;
+            .logo {
+                display: inline-block;
+                width: 48px;
+                height: 48px;
+                background-color: #fff;
+            }
+            .name {
+                display: inline-block;
+                height: 48px;
+                width: 142px;
+                font-size: 16px;
+                text-align: center;
+                line-height: 48px;
+                vertical-align: top;
+                color: #fff;
+            }
+            .left-team {
+                display: inline-block;
+                width: 50%;
+                text-align: left;
+                .logo {
+                    margin-left: 346px;
+                }
+                .name {
+                    margin-left: -16px;
+                }
+            }
+            .right-team {
+                display: inline-block;
+                width: 50%;
+                text-align: right;
+                .logo {
+                    margin-right: 346px;
+                }
+                .name {
+                    margin-right: -16px;
+                }
+            }
+        }
+        .info {
+            margin-top: -48px;
+            .score {
+                height: 48px;
+                line-height: 48px;
+                font-size: 24px;
+            }
+            span {
+                padding: 0 7px;
+                font-size: 14px;
+            }
+        }
+    }
+    .match-item {
+        height: 280px;
+        .match-item-header {
+            position: relative;
+            height: 40px;
+            background: url("../../assets/bo-header.png");
+            font-size: 0;
+            color: #ffffff;
+            div {
+                display: inline-block;
+                line-height: 40px;
+                vertical-align: top;
+                text-align: center;
+            }
+            div:first-child {
+                margin-left: 60px;
+                line-height: 20px;
+                text-align: left;
+                p {
+                    height: 20px;
+                    font-size: 16px;
+                    &:first-child {
+                        line-height: 28px;
+                    }
+                }
+                .duration {
+                    display: inline-block;
+                    width: 40px;
+                    font-size: 12px;
+                    padding-left: 16px;
+                }
+            }
+            span {
+                display: inline-block;
+                margin-left: 24px;
+                font-size: 16px;
+            }
+            .result {
+                width: 48px;
+                font-size: 16px;
+            }
+            .golds {
+                width: 92px;
+            }
+            .left {
+                margin-right: 22px;
+                .golds{
+                    margin-left: 20px;
+                }
+                .dragon,
+                .baron {
+                    width: 50px;
+                    padding-left: 10px;
+                }
+                .total_kill {
+                    width: 50px;
+                    padding-left: 70px;
+                }
+            }
+            .right {
+                .dragon,
+                .baron {
+                    width: 50px;
+                    padding-right: 10px;
+                }
+                .total_kill {
+                    width: 50px;
+                    padding-right: 70px;
+                    margin-left: 0;
+                }
+            }
+            .video {
+                display: inline-block;
+                width: 34px;
+                height: 20px;
+                position: absolute;
+                right: 63px;
+                top: 10px;
+                background: url("../../assets/camera-icon.png");
+                cursor: pointer;
+            }
+        }
+        .match-item-content {
+            height: 200px;
+            padding: 20px 60px;
+            &>div {
+                float: left;
+                width: 33.3%;
+                height: 100%;
+            }
+            .left-team-member {
+                text-align: left;
+            }
+            .right-team-member {
+                text-align: right;
+            }
+            .member {
+                height:30px;
+                padding-bottom: 12px;
+                letter-spacing: 1px;
+                &:last-child {
+                    padding-bottom: 0;
+                }
+                .text-danger {
+                    color: #ff235d;
+                }
+                div {
+                    display: inline-block;
+                    height: 30px;
+                    vertical-align: top;
+                    line-height: 30px;
+                    color: #303030;
+                    font-size: 14px;
+                }
+                .avatar,
+                .hero {
+                    width: 30px;
+                }
+                .name {
+                    width: 57px;
+                    padding: 0 7px;
+                    overflow: hidden;
+                }
+                .kda {
+                    width: 120px;
+                    text-align: center;
+                    p {
+                        line-height: 15px;
+                    }
+                }
+                .gold {
+                    width: 50px;
+                    text-align: center;
+                }
+            }
+            .compare {
+                text-align: center;
+                height: 156px;
+                padding: 22px 0;
+                .compare-item {
+                    height: 52px;
+                    div {
+                        float: left;
+                        height: 100%;
+                        font-size: 14px;
+                        vertical-align: top;
+                    }
+                    .compare-item-left,
+                    .compare-item-right {
+                        width: 20%;
+                        box-sizing: border-box;
+                        padding-top: 20px;
+                        line-height: 32px;
+                        p {
+                            line-height: 16px;
+                        }
+                    }
+                    .compare-item-middle {
+                        width: 60%;
+                        text-align: center;
+                        .compare-title {
+                            width: 100%;
+                            height: 38px;
+                            line-height: 38px;
+                        }
+                        .progress-bar {
+                            width: 100%;
+                            height: 14px;
+                            .left-progress,
+                            .right-progress {
+                                display: inline-block;
+                                height: 4px;
+                                line-height: 0;
+                                width: 50%;
+                            }
+                            .left-progress {
+                                background-color: #ff285c;
+                                text-align: right;
+                                &:after {
+                                    .triangle(4px, 4px, #ff285c #fff #fff #ff285c);
+                                }
+                            }
+                            .right-progress {
+                                background-color: #30adf5;
+                                text-align: left;
+                                &:before {
+                                    .triangle(4px, 4px,  #fff #30adf5 #30adf5 #fff);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

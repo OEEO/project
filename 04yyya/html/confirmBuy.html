@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/confirmBuy.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/confirmBuy.js"></script>
+</head>
+<body style="min-height:100%;background:#ebecf0;">
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">确认购买</div>
+</div>
+
+<div class="the_blank"></div>
+<a class="add" href="chooseReceiptAddress.html">
+	<div class="consigneeInfo">
+		<div class="a">收货人：周先生<i>1382838438</i></div>
+		<div class="b">收货地址：广州越秀区五羊新村春风路某大街五香187号广州越秀区</div>
+		<div class="c">邮编：510000</div>
+		<i class="arrowRight"></i>
+	</div>
+</a>
+<div class="the_blank"></div>
+	
+<div class="buyingInfo"><!-- 购买的商品 介绍 -->
+	<div class="Left"><img src="uploads/20151012/561ba6858a844.jpg"></div>
+	<div class="Right">
+			<div class="title">广州越秀区五羊新村春风路某大街五香187号</div>
+			<div class="price">￥200.00</div><div class="stock">剩余23份</div>
+	</div>
+	<div class="clearfix"></div>
+
+<!--	<div class="copies">数量
+		<span class="num">
+			<img src="./images/confirmBuySub.png" onclick="changeCopies(this,-1)" title="减1">
+			<div class="b" contenteditable="true" onKeyUp="vals(this)" onafterpaste="vals(this)"  title="请输入购买量">1</div>
+			<img src="./images/confirmBuyAdd.png" onclick="changeCopies(this,1)" title="加1">
+		</span> 
+	</div>-->
+	<div class="copies">数量
+		<span class="num">
+			<img src="./images/confirmBuySub.png" onclick="changeCopies(this,-1)" title="减1">
+			<div class="b" contenteditable="true" onblur="vals(this)" title="请输入购买量">1</div>
+			<img src="./images/confirmBuyAdd.png" onclick="changeCopies(this,1)" title="加1">
+		</span> 
+	</div>
+	
+	<div class="clearfix"></div>
+</div>
+
+<div class="li_item">
+	<div class="freight">运费<span>￥12.00</span></div>
+	<div class="liBetweens"></div>
+	<a href="myCoupon.html" class="coupon">使用优惠券<span>-￥25.00</span><i class="arrowRight"></i></a>
+</div>
+	
+<div class="li_item">
+	<a href="changePhoneNum.html" class="">绑定的手机号<span>18888888888</span><i class="arrowRight"></i></a>
+</div>
+
+<div class="li_item">
+	<div class="leaveWords">留言<div class="words" contenteditable="true"></div></div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="contactCustomerService" onclick="javascript:alert();">联系客服</div>
+
+<div class = "priceMenuBlank"></div>
+<div class = "priceMenu">
+		<div class="goodPrice">175 <small>元</small></div>
+		<a href="payMoney.html">提交订单</a>
+</div>
+</body>
+</html>

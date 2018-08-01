@@ -1,0 +1,81 @@
+﻿$axure.loadCurrentPage({
+  "url":"活动订单状态变化图.html",
+  "generationDate":new Date(1453949375359.17),
+  "isCanvasEnabled":false,
+  "variables":["OnLoadVariable",
+"search_text",
+"tab_text",
+"search_entrance",
+"search_result",
+"class_entrance",
+"dinner_entrance",
+"master_entrance",
+"near_entrance",
+"hot_entrance",
+"map_entrance",
+"classtable_entrance",
+"phonenum_entrance",
+"coupon_entrance",
+"order_class",
+"labelsClick",
+"modelChoose"],
+  "page":{
+    "packageId":"24471714c90c49d085744753a4076b0f",
+    "type":"Axure:Page",
+    "name":"活动订单状态变化图",
+    "notes":{
+},
+    "style":{
+      "baseStyle":"627587b6038d43cca051c114ac41ad32",
+      "pageAlignment":"near",
+      "fill":{
+        "fillType":"solid",
+        "color":0xFFF9F9F9},
+      "image":null,
+      "imageHorizontalAlignment":"near",
+      "imageVerticalAlignment":"near",
+      "imageRepeat":"auto",
+      "favicon":null,
+      "sketchFactor":"0",
+      "colorStyle":"appliedColor",
+      "fontName":"Applied Font",
+      "borderWidth":"0"},
+    "adaptiveStyles":{
+},
+    "interactionMap":{
+},
+    "diagram":{
+      "objects":[{
+          "id":"829199d1e14744c79f4e21a276ffc00b",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "size":{
+              "width":1242,
+              "height":524}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"3ea360a0cf2f433cadf68e422210f9d2",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "size":{
+                  "width":1242,
+                  "height":524}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/活动订单状态变化图/u0.jpg"}}]}},
+  "masters":{
+},
+  "objectPaths":{
+    "829199d1e14744c79f4e21a276ffc00b":{
+      "scriptId":"u0"},
+    "3ea360a0cf2f433cadf68e422210f9d2":{
+      "scriptId":"u1"}}});

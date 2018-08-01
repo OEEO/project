@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/calendar.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="js/public.js"></script>
+<script>
+$(function(){
+	var date = new Date();
+	var code = $('.calendar').html();
+	var year = date.getFullYear();
+	var month = date.getMonth();
+	var day = date.getDate();
+	var html = [];
+	// 获取本月天数
+	days = new Date(year, month + 1, 0).getDate();
+	// 获取本月第一天是星期几
+	weekStart = new Date(year, month, 1).getDay();
+	for(i = 1; i <= 35; i ++){
+		var d = i - weekStart;
+		if(d <= 0 || d > days){
+			html.push('<td></td>');
+		}else{
+			if(d == day)
+				html.push('<td class="now clicked">'+ d +'</td>');
+			else
+				html.push('<td>'+ d +'</td>');
+			if(i % 7 == 0 && i < 35)html.push('</tr><tr>');
+		}
+	}
+	
+	$('.calendar').html(code + "<tr>" + html.join('') + "</tr>");
+	$('.calendar tbody td:not(.calendar tbody td:empty)').click(function(){
+		$('td.clicked').removeClass('clicked');
+		var day = $(this).text();
+		$("td").each(function(){
+			if($(this).text() == day)$(this).addClass('clicked');
+		});
+		lock = true;
+		page = 1;
+		$('html, body').animate({scrollTop: 0}, 'fast', function(){
+			if(load_lock)return;
+			load_lock = true;
+			$('.tipslist').hide();
+			loadTips(day, 1, function(){
+				$('.tipslist').fadeIn('fast');
+				lock = false;
+				window.setTimeout(function(){load_lock = false;}, 500);
+			});
+		});
+	});
+	
+	$(window).scroll(function(){
+		if($(this).scrollTop() > $('#calendarTable td.clicked').offset().top - $('thead').height()){
+			if(!window.table){
+				window.table = $("<table>").addClass('calendar');
+				$('thead').clone().appendTo(window.table);
+				$('td.clicked').parent().clone(true).appendTo($("<tbody>").appendTo(window.table));
+				window.table.css({'position':'fixed', 'top':'0', 'left':'0', 'right':'0', 'margin-top':'0'}).appendTo('body');
+			}
+		}else{
+			if(window.table){
+				window.table.remove();
+				delete window.table;
+			}
+		}
+		if($(this).scrollTop() >= $(document).height() - $(this).height() - 10 && !lock){
+			var p = Math.ceil($('.tipslist').children().size() / 5) + 1;
+			if(p == page + 1){
+				loadTips(cur_day, p, function(){window.setTimeout(function(){page = Math.ceil($('.tipslist').children().size() / 5);}, 500)});
+			}
+		}
+	});
+	loadTips();
+});
+
+var cur_day = null;
+var page = 1;
+var lock = false;
+var load_lock = false;
+function loadTips(day, page, fn){
+	var d = new Date();
+	var day = day||d.getDate();
+	if(day == cur_day && $('.tipslist .the_end').size() > 0)return;
+	var page = page||1;
+	var date = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + day;
+	$('.tipslist').append('<div class="loading">正在加载更多的内容…</div>');
+	ajax('Home/Index/tips', {get:{page:page}, post:{date:date}}, function(thisData){
+		$('.tipslist .loading').remove();
+		if(cur_day != day)$('.tipslist').empty();
+		if(thisData.length == 0){
+			$('.tipslist').append('<div class="the_end">后面没有了哦！</div>');
+			$('.tipslist').fadeIn('fast');
+			if(typeof(fn) == 'function')fn();
+			return;
+		}
+		var code = '';
+		for(var i in thisData){
+			var start_date = thisData[i].start_time.timeFormat('Y-m-d');
+			var end_date = thisData[i].end_time.timeFormat('Y-m-d');
+			if(start_date == end_date){
+				start_h = thisData[i].start_time.timeFormat('H');
+				start = (start_h > 12 ? "PM " + ((start_h-1) % 12 + 1) : "AM " + start_h) + thisData[i].start_time.timeFormat(':m');
+				end_h = thisData[i].end_time.timeFormat('H');
+				end = (end_h > 12 ? "PM " + ((end_h-1) % 12 + 1) : "AM " + end_h) + thisData[i].end_time.timeFormat(':m');
+			}else{
+				start = thisData[i].start_time.timeFormat('Y-m-d H:i');
+				end = thisData[i].end_time.timeFormat('Y-m-d H:i');
+			}
+			var tags = thisData[i].tags;
+			var taghtml = '';
+			for(var j in tags){
+				taghtml += '<a href="#">'+ tags[j] +'</a>';
+			}
+			code += '<div class="tips">';
+			code += '<div class="top">'+ start +' - '+ end +'</div>';
+			code += '<div class="center">';
+			code += '<div class="pic"><img src="'+ thisData[i].path.pathFormat() +'"></div>';
+			code += '<div class="right">';
+			code += '<div class="t">'+ thisData[i].title +'</div>';
+			code += '<div class="c">￥'+ thisData[i].price +'</div>';
+			code += '<div class="b">'+ thisData[i].address +'</div>';
+			code += '</div>';
+			code += '</div>';
+			code += '<div class="bottom"><a href="#">'+ thisData[i].catename +'</a>'+ taghtml +'</div>';
+			code += '</div>';
+		}
+		$('.tipslist').append(code);
+		cur_day = day;
+		if(typeof(fn) == 'function')fn();
+	}, false);
+}
+</script>
+</head>
+<body>
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title"><script>document.write(parent.win.city.name + (new Date().getMonth() + 1));</script>月活动</div>
+	<a class="uCenter" href="ucenter.html"></a>
+</div>
+<table id="calendarTable" class="calendar">
+	<thead>
+		<tr class="week">
+			<td>周日</td>
+			<td>周一</td>
+			<td>周二</td>
+			<td>周三</td>
+			<td>周四</td>
+			<td>周五</td>
+			<td>周六</td>
+		</tr>
+	</thead>
+</table>
+<div class="tipslist"></div>
+</body>
+</html>

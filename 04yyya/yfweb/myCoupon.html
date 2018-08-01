@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/myCoupon.css">
+<script src="js/plugins/jquery.min.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script src="js/myCoupon.js"></script>
+</head>
+<body>
+<div class="header line">
+	<div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+	<div class="title">我的优惠券</div>
+    <!--<div class="Operation" onclick="javascript:;">完成</div>-->
+</div>
+<div class="headerBlank"></div>
+<div class="top">
+	<div class="catch"><input type="text" value="" placeholder="输入兑换码"/></div>
+    <div class="serch_buttom">兑换</div>
+</div>
+<div class="content">
+	<div class="Not_expired">
+    	<div class="canUser">
+        	<span class="c_border"></span><font></font>张优惠券可用<span class="c_border"></span>
+        </div>
+		<div class="list"></div>
+    </div>
+	<div class="canot_use">
+		<div class="canUser">
+			<span class="c_border"></span><font></font>张优惠券不可用<span class="c_border"></span>
+		</div>
+		<div class="list"></div>
+	</div>
+    <div class="timeout">
+    	<div class="canUser">
+        	<span class="c_border"></span><font></font>张优惠券已过期<span class="c_border"></span>
+        </div>
+		<div class="list"></div>
+    </div>
+</div>
+</body>
+</html>

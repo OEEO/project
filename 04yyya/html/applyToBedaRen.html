@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/applyToBedaRen.css">
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__AMUI__/js/polyfill/rem.min.js"></script>
+<script src="__AMUI__/js/polyfill/respond.min.js"></script>
+<script src="__AMUI__/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript" src="js/applyToBedaRen.js"></script>
+</head>
+<body>
+<div class="header">
+	<div class="turnBack" onclick="javascript:parent.page.back();"><div class="arrow"></div></div>
+	<div class="title">申请成为达人</div>
+	<div class="Operation" onclick="javascript:alert();">提交</div>
+</div>
+<div class="content">
+<!-- ---------两行注释h线之间是本页 工具部分------------ -->
+	<div class="userInfTitle">个人资料 </div>
+	<form action="" method="get"> 
+		<ul class="userInf">
+			<li>&#160;姓&#160;&#160;&#160;&#160;名&#160;<input type="" name="" value="请填写真实姓名" onfocus="if(value=='请填写真实姓名'){value=''}" onblur="if (value ==''){value='请填写真实姓名'}" ></li>
+			<li>擅长料理<input type="" name="" value="请填写擅长的料理" onfocus="if(value=='请填写擅长的料理'){value=''}" onblur="if (value ==''){value='请填写擅长的料理'}"></li>
+			<li>联系电话<input type="" name="" value="请填写联系电话" onfocus="if(value=='请填写联系电话'){value=''}" onblur="if (value ==''){value='请填写联系电话'}" ></li>
+			<li class="signature">个人介绍<div class="instruct default" contenteditable="true" onfocus="if($(this).text()=='请简单的介绍自己（选填）')$(this).empty();$(this).removeClass('default');" onblur="	if($(this).text()==''){$(this).append('请简单的介绍自己（选填）');$(this).addClass('default');}">请简单的介绍自己（选填）</div></li>
+			<div class="clearfix"></div>
+		</ul>
+	</form>
+	<div class="clearfix"></div>
+	<div class="userInfTitle">作品图片（1~3张）</div>
+	<div class="addPic"><img onclick="javascript:alert();" src="./images/add 160x160@2x.png"></div>
+	<!-- --------------------- -->	
+</div>
+</body>
+</html>

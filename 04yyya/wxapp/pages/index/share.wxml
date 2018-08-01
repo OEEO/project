@@ -1,0 +1,21 @@
+<template name="shareItem">
+  <view class="shareBox" hidden="{{shareshow}}">
+    <view class="p">点击右上角推荐给好友</view>
+    <view class="share_know" bindtap="share">我知道了</view>
+  </view>
+</template>
+
+<template name="reportItem">
+<view class="Times" wx:if="{{isshow}}">
+    <view class="time_list">
+        <view class="rcontext">
+            <view class="rtitle">举报内容</view>
+            <textarea placeholder="输入你要举报的内容……" placeholder-style="color:#ccc" bindinput="reporttext"></textarea>
+        </view>
+        <view class="btnss">
+            <text class="yes" bindtap="isreport">提交</text>
+            <text class="no" bindtap="report">取消</text>
+        </view>
+    </view>
+</view>
+</template>

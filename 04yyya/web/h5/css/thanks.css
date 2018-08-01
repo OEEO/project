@@ -1,0 +1,13 @@
+@charset "utf-8";
+*,html,body{padding:0px;margin:0px;}
+.div{position: relative;}
+img{width: 100%;height: 100%;display: block;}
+a{width: 2.3rem;height: 0.72rem; background:rgba(0,255,0,0);position: absolute;z-index: 99;}
+.o .one{top: 8.84rem;left: 0.62rem}
+
+.s .one{top: 4.35rem;right: 2.1rem}
+
+.t .one{top: 0.64rem;left: 1rem}
+.t .two{bottom: 0.85rem;right: 2.15rem}
+
+

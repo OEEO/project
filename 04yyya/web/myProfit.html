@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/myProfit.css">
+<script src="js/plugins/jquery.min.js"></script>
+<script src="js/plugins/jquery.touchwipe.min.js"></script>
+<script src="js/public.js"></script>
+<script src="js/myProfit.js"></script>
+</head>
+<body>
+<canvas id="cv" width="798px" height="1098px" style="display:none;"></canvas>
+<div class="header line">
+    <div class="turnBack" onclick="javascript:page.back();"><div class="arrow"></div></div>
+<!--    <div class="title">收益专区</div> -->
+    <!--<a class="msg" href="javascript:jump('myMsgs')"></a>-->
+    <div class="rule" style="float: right;margin: 1.5rem;">
+        <span>规则说明</span>
+        <img src="images/risk_warning.png" style="width: 2.4rem;height: 2.4rem;float: right;position: relative;bottom: 0.3rem;left: 0.5rem;">
+    </div>
+</div>
+    <!--
+<div class="header">
+	<!-<div class="location">广州</div>->
+	<div class="logo"><img src="images/logo.png" alt="logo"></div>
+	<a class="userMsg" href="javascript:jump('ucenter')"></a>
+</div>
+-->   
+
+<div class="headerBlank"></div>
+<h1 style="color: black;margin: 1rem 0 3rem 1.8rem;">收益专区</h1>
+<!--<div class="table_one">-->
+    <!--设置空白，避免顶部菜单遮住网页内容--> 
+    <div class="pageHead2" style="background: no-repeat"></div>
+<!--
+    <!- 活动列表开始 ->
+    <div class="pro_list">
+        <!-\-<div class="list_title">精选活动</div>->
+    	<ul class="product_list raiseList"></ul>
+    </div>
+    <center><img class="loading" src="images/loading@2x.png" /></center>
+-->
+    <!-- 专场列表结束 -->
+<div>
+    <div class="status_check">
+        <a href="javascript:void(0);" act_status="0" class="statu add_hei profitarea"><span style="font-size: 1.2rem;letter-spacing: 1px;">分销中心</span></a>
+        <a href="javascript:void(0);" act_status="0" class="statu myprofit"><span style="font-size: 1.2rem;letter-spacing: 1px;">收益记录</span></a>
+        <a href="javascript:void(0);" act_status="0" class="statu mycustomer"><span style="font-size: 1.2rem;letter-spacing: 1px;">我的客户</span></a>
+        <!--
+        <a href="javascript:void(0);" act_status="1" class="statu"><span>待发货</span></a>
+        <a href="javascript:void(0);" act_status="2" class="statu"><span>待收货</span></a>
+        <a href="javascript:void(0);" act_status="3" class="statu"><span>待评价</span></a>
+        <a href="javascript:void(0);" act_status="8" class="statu"><span>退款</span></a>-->
+    </div>
+</div>
+
+<!--<div class="the_blank"></div>-->
+<ul class="balance" style="display: none;">
+    <li class="number">
+        <div style="height: 8rem;">
+            <div style="float: left;">
+                <p class="p_a" style="font-weight: bold;">0.00</p>
+                <p style="font-size: 1.3rem;margin:0;">可提现余额 (元)</p>
+            </div>
+
+            <div class="withdraw"><div class="context"><a style="color:white;" href="javascript:jump('withdraw')">立即提现</a></div></div>
+        </div>
+        <div style="height: 6rem;font-size: 1.3rem;">
+            <div style="float: left;margin-right: 1rem;">
+                <p style="margin:0;"><font class="p_c" style="font-weight: bold;">0.00</font></p>
+                <p style="margin: 0.3rem 0;">历史总收益 (元)</p>
+            </div>
+            <div style="float: left;">
+                <p style="margin:0;"><font class="p_b" style="font-weight: bold;">0.00</font></p>
+                <p style="margin: 0.3rem 0;">今日收益 (元)</p>
+            </div>
+        </div>
+    </li>
+    <p style="border-top: 1px solid #eee; text-align: center;height: 4.6rem;font-size: 1.5rem;line-height: 4.6rem;background: #F8F8F8;color: black;">
+    <!--    <span class="balance_all" style="float: left;height: 4.6rem;width: 33%;background: white;">全部</span> -->
+        <span class="balance_income" style="float: left;height: 4.6rem;width: 50%;background: white;">收益记录</span>
+        <span class="balance_payment" style="float: right;height: 4.6rem;width: 50%;">提现记录</span>
+    </p>
+    <li>
+
+        <div class="profit_mark"></div>
+        <div class="profit_mark_none" style="display: none;">
+            暂无数据
+        </div>
+        <div class="withdraw_mark" style="display: none;"></div>
+        <!--
+        <div style="margin: 1rem 0;border-bottom: 1px solid #eee;">
+            <p style="font-size: 1.5rem;margin: 0;">邀请奖励 "..."<span style="text-align: right;float:right;">+0.00</span></p>
+            <p style="color:#A0A0A0;margin: 0.2rem 0 0.8rem 0;">0000.00.00 00:00</p>
+        </div>
+-->
+        </div>
+        <div style="height:3rem;width:100%;"></div>
+    </li>
+<!--
+    <div class="profit_blank">
+        <div class="the_blank"></div>
+        <div class="the_blank"></div>
+        <div class="the_blank"></div>
+        <div class="the_blank"></div>
+    </div>
+-->
+</ul>
+<div class="content">
+    <ul class="content_list"></ul>
+</div>
+<ul class="customer" style="display: none;">
+  <!--  <div style="height: 4rem;line-height: 5rem;font-size: 1.5rem;color: #909090;padding-left: 2rem;">全部客户</div> -->
+    <div class="customer_list"></div>
+</ul>   
+<div class="clearfix"></div>
+<!--    <div class="the_blank"></div>-->
+
+<!--<div class="footer priceMenu orderBottom"></div>-->
+
+
+
+<div class="profit_info" style="display: none;">
+    <div class="info_content">
+        <div class="info"><!--1.分享众筹项目/活动/商品，每成功邀请一位好友付费将获得相应的现金收益作为奖励。<br />2.众筹/活动结束后，商品确认收货后，您所获得得奖励即可解冻并使用。<br />3.长按保存图片到相册，分享到朋友圈或发送给好友。-->
+        <a href="javascript:void(0);" class="knowe">知道了</a>
+    </div>
+</div>
+</body>
+</html>

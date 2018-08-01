@@ -1,0 +1,68 @@
+<import src="../index/share.wxml"/>
+<template is="shareItem" data="{{shareshow}}"/>
+<view class="header">
+  <view class="u_shares" bindtap="share"></view>
+</view>
+
+<view class="bodyTop">
+	  <swiper class="top_img" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{list.theme.groupPath}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="center_t">
+    	  <view class="ct_title">{{list.theme.title[0]}}</view>
+        <view class="subct">{{list.theme.title[1]}}</view>
+        <view class="ct_time">{{list.theme.datetime}}</view>
+        <view class="ct_content">{{list.theme.html_content}}</view>
+    </view>
+</view>
+<view class="pro_list">
+	<view class="ac_title">活动推荐</view>
+    <view class="product_list">
+        <block wx:for="{{list.tips}}" wx:key="tips" wx:for-item="i">
+        <view class="li">
+          <view class="pro_top">{{i.start_time}} {{i.catname}}</view>
+          <navigator class="a" url="../tips/detail?tips_id={{i.id}}">
+              <view class="pro_bottom">
+                  <view class="ac_img">
+                      <image src="{{i.path}}" />
+                  </view>
+                  <view class="ac_title">
+                      <view class="ac_t">{{i.title}}</view>
+                      <view class="ac_p">
+                            <view class="ad">{{i.simpleaddress}}</view>
+                            <view class="span">￥{{i.price}}/份</view>
+                      </view>
+                  </view>
+              </view>
+          </navigator>
+        </view>
+        </block>
+        <block wx:if="{{list.tipsPass.length > 0}}">
+            <view class="split"> ---------- 已售罄 ---------- </view>
+            <block wx:for="{{list.tipsPass}}" wx:key="tipsPass" wx:for-item="j">
+            <view class="li passed">
+                <view class="pro_top"></view>
+                <navigator class="a" url="">
+                    <view class="pro_bottom">
+                        <view class="ac_img">
+                            <image src="{{j.path}}" />
+                        </view>
+                        <view class="ac_title">
+                            <view class="ac_t">{{j.title}}</view>
+                            <view class="ac_p">
+                                <view class="ad">{{j.simpleaddress}}</view>
+                                <view class="span">￥{{j.price}}/份</view>
+                        </view>
+                            </view>
+                    </view>
+                </navigator>
+            </view>
+            </block>
+        </block>
+    </view>
+</view>
